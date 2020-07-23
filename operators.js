@@ -1,3 +1,8 @@
+module.exports.nuevoMensaje = nuevoMensaje;
+module.exports.altaOperador = altaOperador;
+module.exports.bajaOperador = bajaOperador;
+
+
 var Queue = require("better-queue");
 chat_asig = {};
 chat_all = [];
@@ -21,9 +26,12 @@ async function nuevoMensaje(id, cont, origen) {
             .on('finish', function (res) {
                 // Save the assignment
                 chat_asig[id] = res.op;
+                return true;
             })
             .on('failed', function (err) {
                 // Exception, I hope never see this
+                // ? evaluar que hacer en este caso
+                return new Error("No se puedo asignar el chat");
             })
     }
 }

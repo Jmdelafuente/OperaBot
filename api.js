@@ -1,7 +1,7 @@
 const request = require("request");
 const express = require("express");
 const bodyParser = require("body-parser");
-var api = require("./operators.js");
+var op = require("./operators.js");
 const app = express();
 const port = 3001;
 var jsonParser = bodyParser.json();
@@ -49,12 +49,14 @@ app.get("/api/allChats", (req, res) =>
 app.post("/api/wa/newmessage", jsonParser, (req, res) => {
   // TODO authenticate origin
   // New whatsapp ("w") messaje
-  api.nuevoMensaje(req.body.user, req.body.text, "w")
+  op.nuevoMensaje(req.body.user, req.body.text, "w")
     .then( 
       cb => {
+        console.log("\u{1F919}")
         res.sendStatus(200);
       },
       err => {
+        console.log("Oh no! Maldición!")
         res.sendStatus(504);
       });
 });
