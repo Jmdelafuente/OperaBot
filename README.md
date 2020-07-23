@@ -34,7 +34,7 @@ node index.js
 it and you should be good to go.
 
 Note: on Linux you need a running display server (X11 or Wayland).
-If you run Linux on a headless server or wan't to run chmomium without visible, change the option *headless* in _bot.json_ .
+If you run Linux on a headless server or wan't to run chromium without visible, change the option *headless* in _bot.json_ .
 
 *I haven't tested on Mac. Please be free of test and push new issue if needed*
 
