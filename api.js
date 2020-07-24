@@ -1,11 +1,19 @@
 const request = require("request");
 const express = require("express");
 const bodyParser = require("body-parser");
+var wabot = require("../WA_Server/src/index");
 var op = require("./operators.js");
 const app = express();
 const port = 3001;
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+// Imports from websockets
+var appFront = express();
+var http = require("http").Server(appFront);
+var path = require("path");
+var io = require("socket.io")(http);
+var portFront = 3000;
+
 
 //allowing requests from outside of the domain
 app.use(function (req, res, next) {
@@ -61,10 +69,42 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
       });
 });
 
-app.get("/api/connect",jsonParser, (req,res) => {
+// * Nuevo mensaje de whatsapp
+app.post("/api/face/newmessage", jsonParser, (req, res) => {
+  // TODO authenticate origin
+  // New facebook ("f") messaje
+  op.nuevoMensaje(req.body.user, req.body.text, "f")
+    .then(
+      cb => {
+        console.log("\u{1F919}")
+        res.sendStatus(200);
+      },
+      err => {
+        console.log("Oh no! Maldición!")
+        res.sendStatus(504);
+      });
+});
 
-})
 
 // app.get("/", (req, res) => res.send("Hello World!"));
 
 app.listen(port, () => console.log(`OperaBot listening on port ${port}!`));
+
+
+
+// Front websockets
+appFront.set("port", process.env.PORT);
+appFront.use(express.static(path.join(__dirname, "public")));
+appFront.get("/", function (req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
+
+io.on("connection", function (socket) {
+  socket.on("chat message", function (msg) {
+    io.emit("chat message", msg);
+  });
+});
+
+http.listen(portFront, function () {
+  console.log("Websockets on *:" + portFront);
+});
