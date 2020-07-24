@@ -57,7 +57,7 @@ app.get("/api/allChats", (req, res) =>
 app.post("/api/wa/newmessage", jsonParser, (req, res) => {
   // TODO authenticate origin
   // New whatsapp ("w") messaje
-  op.nuevoMensaje(req.body.user, req.body.text, "w")
+  op.nuevoMensaje(req.body.user, req.body.text, "W")
     .then( 
       cb => {
         console.log("\u{1F919}")
