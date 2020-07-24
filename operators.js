@@ -1,13 +1,13 @@
-module.exports.nuevoMensaje = enviarMensaje;
+module.exports.nuevoMensaje = nuevoMensaje;
+module.exports.enviarMensaje = enviarMensaje;
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
-module.exports.listaMensajes = chat_all;
-
+module.exports.chat_all = chat_all;
 var Queue = require("better-queue");
 const request = require("request");
-chat_asig = {};
-chat_all = [];
-operators = {};
+var chat_asig = {};
+var chat_all = [];
+var operators = {};
 
 // TODO: Tenemos que definir una estructura interna para el chat
 // ? posible estructura guardada en models/chat.js
@@ -26,7 +26,11 @@ var notify_newAssig = new Queue(function (input, cb) {
 });
 
 async function enviarMensaje(id, cont){
-    var chat = chat_all[id];
+    // var chat = chat_all[id];
+    // ! Datos de prueba
+    var chat = {};
+    chat.origin = 'W';
+
     var org = "";
     var port = "";
     if(chat.origin = 'W'){
@@ -43,8 +47,8 @@ async function enviarMensaje(id, cont){
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: id,
-        message: cont
+        'id': id,
+        'message': cont
       }),
     };
     request(options, function (error, response) {

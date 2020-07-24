@@ -13,7 +13,28 @@ var http = require("http").Server(appFront);
 var path = require("path");
 var io = require("socket.io")(http);
 var portFront = 3000;
+appFront.set("port", portFront);
 
+// Front websockets
+appFront.use(express.static(path.join(__dirname, "public")));
+appFront.get("/", function (req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
+
+io.on("connection", function (socket) {
+  socket.on("send_op_message", function (msg) {
+    op.enviarMensaje(msg.id,msg.contenido);
+  });
+  // socket.on("recive_op_message", function (msg) {
+  //   io.emit("recive_op_message",msg);
+  // });
+});
+
+http.listen(portFront, function () {
+  console.log("Websockets on *:" + portFront);
+});
+
+// * Begging of API
 
 //allowing requests from outside of the domain
 app.use(function (req, res, next) {
@@ -60,6 +81,10 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
   op.nuevoMensaje(req.body.user, req.body.text, "W")
     .then( 
       cb => {
+        var mensaje = {};
+        mensaje.id = req.body.user;
+        mensaje.contenido = req.body.text;
+        io.emit("recive_op_message", mensaje);
         console.log("\u{1F919}")
         res.sendStatus(200);
       },
@@ -69,14 +94,21 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
       });
 });
 
-// * Nuevo mensaje de whatsapp
+// * Incio de WA_Server, recibimos la lista de chats
+app.post("/api/wa/list", jsonParser, (req, res) => {
+  // TODO authenticate origin
+  // New whatsapp ("w") messaje
+  
+});
+
+// * Nuevo mensaje de facebook
 app.post("/api/face/newmessage", jsonParser, (req, res) => {
   // TODO authenticate origin
   // New facebook ("f") messaje
   op.nuevoMensaje(req.body.user, req.body.text, "f")
     .then(
       cb => {
-        console.log("\u{1F919}")
+        console.log("\u{1F919}");
         res.sendStatus(200);
       },
       err => {
@@ -89,22 +121,3 @@ app.post("/api/face/newmessage", jsonParser, (req, res) => {
 // app.get("/", (req, res) => res.send("Hello World!"));
 
 app.listen(port, () => console.log(`OperaBot listening on port ${port}!`));
-
-
-
-// Front websockets
-appFront.set("port", process.env.PORT);
-appFront.use(express.static(path.join(__dirname, "public")));
-appFront.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
-
-io.on("connection", function (socket) {
-  socket.on("chat message", function (msg) {
-    io.emit("chat message", msg);
-  });
-});
-
-http.listen(portFront, function () {
-  console.log("Websockets on *:" + portFront);
-});
