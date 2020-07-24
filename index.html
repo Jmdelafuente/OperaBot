@@ -1,41 +1,161 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages { margin-bottom: 40px }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    
-  </body>
-  <script src="js/socket.io.js"></script>
-  <script src="js/jquery-3.5.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script>
-    $(function () {
-      var socket = io();
-      $('form').submit(function () {
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function (msg) {
-        $('#messages').append($('<li>').text(msg));
-        window.scrollTo(0, document.body.scrollHeight);
-      });
+
+<head>
+  <title>147 Atención al Ciudadano</title>
+  <link rel="stylesheet" href="css/font-awesome5-5-all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+</head>
+
+<body>
+<div class="container-fluid h-100">
+  <div class="row justify-content-center h-100">
+    <div class="col-md-4 col-xl-3 chat">
+      <div class="card mb-sm-3 mb-md-0 contacts_card">
+        <div class="card-header">
+          <div class="input-group">
+            <input type="text" placeholder="Buscar..." name="" class="form-control search">
+            <div class="input-group-prepend">
+              <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+            </div>
+          </div>
+          <div class="input-group mt-2">
+            <button class="btn btn-secondary">Todos</button>
+            <button class="btn btn-secondary-outline">Asignados</button>
+          </div>
+        </div>
+        <div class="card-body contacts_body">
+          <ui class="contacts">
+            <li class="active">
+              <div class="d-flex bd-highlight">
+                <div class="img_cont">
+                  <img src="user-profile.png" class="rounded-circle user_img">
+                  <span class="online_icon"></span>
+                </div>
+                <div class="user_info">
+                  <span>Usuario 1</span>
+                  <p>Online</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="d-flex bd-highlight">
+                <div class="img_cont">
+                  <img
+                    src="user-profile.png"
+                    class="rounded-circle user_img">
+                  <span class="online_icon offline"></span>
+                </div>
+                <div class="user_info">
+                  <span>Usuario 2</span>
+                  <p>Conversaci&oacute;n cerrada</p>
+                </div>
+              </div>
+            </li>
+          </ui>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-8 chat">
+      <div class="card">
+        <div class="card-header msg_head">
+          <div class="d-flex bd-highlight">
+            <div class="img_cont">
+              <img src="user-profile.png" class="rounded-circle user_img">
+              <span class="online_icon"></span>
+            </div>
+            <div class="user_info">
+              <span>Chat con Usuario 1</span>
+              <p>1767 Mensajes</p>
+            </div>
+            <div class="video_cam">
+              <span><i class="fas fa-window-close"></i></span>
+              <span><i class="fas fa-tags"></i></span>
+            </div>
+          </div>
+          <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+          <div class="action_menu">
+            <ul>
+              <li><i class="fas fa-user-circle"></i> Accion 1</li>
+              <li><i class="fas fa-users"></i> Accion 2</li>
+              <li><i class="fas fa-plus"></i> Accion 3</li>
+              <li><i class="fas fa-ban"></i> Accion 4</li>
+            </ul>
+          </div>
+        </div>
+        <div id="mensajes" class="card-body msg_card_body">
+          
+        </div>
+        <div class="card-footer">
+          <form action="" class="input-group">
+            <input type="hidden" name="idChat" id="idChat" value="5492995975891@c.us">
+            <div class="input-group-append">
+              <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+            </div>
+            <input id="m" autocomplete="off" class="form-control type_msg" placeholder="Mensaje..." />
+            <div class="input-group-append">
+              <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="js/socket.io.js"></script>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+<script>
+  $(function () {
+    $('#action_menu_btn').click(function () {
+      $('.action_menu').toggle();
     });
-  </script>
+
+    function addChat(cont, tipo, t){
+      var ex = document.createElement("div");
+      var msj = document.createElement("div");
+      var hora = document.createElement("span");
+      if(tipo == "R"){
+        ex.className = "d-flex justify-content-start mb-4";
+        msj.className = "msg_cotainer";
+      }else{
+        ex.className = "d-flex justify-content-end mb-4";
+        msj.className = "msg_cotainer_send";
+      }
+      hora.className = "msg_time";
+      hora.innerText = t;
+      msj.innerText = cont;
+      document.getElementById('mensajes').appendChild(ex);
+      ex.appendChild(msj);
+      msj.appendChild(hora);
+    }
+    
+    var socket = io();
+    $('form').submit(function () {
+      var mensaje = {};
+      mensaje.id=$("#idChat").val();
+      mensaje.contenido = $('#m').val();
+      socket.emit('send_op_message', mensaje);
+      addChat($('#m').val(), "E", "Ahora");
+      $('#m').val('');
+      return false;
+    });
+    socket.on('recive_op_message', function (msg) {
+      console.log("Mensaje recibido: "+JSON.stringify(msg));
+      addChat(msg.contenido,"R","Ahora");
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    socket.on('confirm_op_message', function (msg) {
+      confirm(msg, "R", "Ahora");
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  });
+</script>
+
 </html>
