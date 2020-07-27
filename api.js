@@ -61,6 +61,21 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
       });
 });
 
+// * Nuevo mensaje de facebook
+app.post("/api/face/newmessage", jsonParser, (req, res) => {
+  // New facebook ("w") message
+  op.nuevoMensaje(req.body.user, req.body.text, "f")
+    .then( 
+      cb => {
+        console.log("\u{1F919}")
+        res.sendStatus(200);
+      },
+      err => {
+        console.log("Oh no! Maldición!")
+        res.sendStatus(504);
+      });
+});
+
 app.get("/api/connect",jsonParser, (req,res) => {
 
 })
