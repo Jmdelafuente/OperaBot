@@ -1,4 +1,3 @@
-
 # WA_Server
 
 > A simple API Server for unify multiples chat source in one way. Uses [WA_Server proyect](https://gitlab.com/jmdelafuente/_node_wa_server).
@@ -27,7 +26,7 @@ Clone the repo, enter the folder and run
 
 ```
 git clone https://gitlab.com/jmdelafuente/_node_operabot.git
-cd operabot
+cd _node_operabot
 node index.js
 ```
 
