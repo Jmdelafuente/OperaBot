@@ -28,6 +28,7 @@ io.on("connection", function (socket) {
     socket.user = msg.SESSIONKEY; // * Cambiar por nombre de usuario cuando este la conexion con WL
     sockets[socket.id] = socket;
     op.altaOperador(msg.SESSIONKEY); // * Cambiar por nombre de usuario cuando este la conexion con WL
+    // TODO: enviar lista de chats
   });
   // Remove disconnected op
   socket.on("disconnect", function () {
