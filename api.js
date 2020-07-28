@@ -1,42 +1,15 @@
 const request = require("request");
 const express = require("express");
 const bodyParser = require("body-parser");
-var wabot = require("../WA_Server/src/index");
-var op = require("./operators.js");
 const app = express();
 const port = 3001;
 var jsonParser = bodyParser.json();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-// Imports from websockets
-var appFront = express();
-var http = require("http").Server(appFront);
-var path = require("path");
-var io = require("socket.io")(http);
-var portFront = 3000;
-appFront.set("port", portFront);
+// var urlencodedParser = bodyParser.urlencoded({ extended: false });
+// Business Logic
+var op = require("./operators.js");
+var socket = require("./websocket.js");
 
-// Front websockets
-appFront.use(express.static(path.join(__dirname, "public")));
-appFront.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
-
-io.on("connection", function (socket) {
-  socket.on("send_op_message", function (msg) {
-    op.enviarMensaje(msg.id,msg.contenido);
-  });
-  // socket.on("recive_op_message", function (msg) {
-  //   io.emit("recive_op_message",msg);
-  // });
-});
-
-http.listen(portFront, function () {
-  console.log("Websockets on *:" + portFront);
-});
-
-// * Begging of API
-
-//allowing requests from outside of the domain
+// * Allowing requests from outside of the domain
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header(
@@ -46,8 +19,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/api/allChats", (req, res) =>
-{
+// * Begging of API
+app.get("/api/allChats", (req, res) => {
   // TODO authenticate origin
   // * Get all WA chats
   var wa_list = [];
@@ -78,26 +51,21 @@ app.get("/api/allChats", (req, res) =>
 app.post("/api/wa/newmessage", jsonParser, (req, res) => {
   // TODO authenticate origin
   // New whatsapp ("w") messaje
-  op.nuevoMensaje(req.body.user, req.body.text, "W")
-    .then( 
-      cb => {
-        var mensaje = {};
-        mensaje.id = req.body.user;
-        mensaje.contenido = req.body.text;
-        io.emit("recive_op_message", mensaje);
-        console.log("\u{1F919}")
-        res.sendStatus(200);
-      },
-      err => {
-        console.log("Oh no! Maldición!")
-        res.sendStatus(504);
-      });
+  op.nuevoMensaje(req.body.user, req.body.text, "W").then(
+    (cb) => {
+      socket.recibirMensaje("", req.body.user, req.body.text);
+      res.sendStatus(200);
+    },
+    (err) => {
+      console.log("Oh no! Maldición!");
+      res.sendStatus(504);
+    }
+  );
 });
 
 // * Incio de WA_Server, recibimos la lista de chats
 app.post("/api/wa/list", jsonParser, (req, res) => {
   // TODO authenticate origin
-  // New whatsapp ("w") messaje
   
 });
 
@@ -105,18 +73,17 @@ app.post("/api/wa/list", jsonParser, (req, res) => {
 app.post("/api/face/newmessage", jsonParser, (req, res) => {
   // TODO authenticate origin
   // New facebook ("f") messaje
-  op.nuevoMensaje(req.body.user, req.body.text, "f")
-    .then(
-      cb => {
-        console.log("\u{1F919}");
-        res.sendStatus(200);
-      },
-      err => {
-        console.log("Oh no! Maldición!")
-        res.sendStatus(504);
-      });
+  op.nuevoMensaje(req.body.user, req.body.text, "f").then(
+    (cb) => {
+      console.log("\u{1F919}");
+      res.sendStatus(200);
+    },
+    (err) => {
+      console.log("Oh no! Maldición!");
+      res.sendStatus(504);
+    }
+  );
 });
-
 
 // app.get("/", (req, res) => res.send("Hello World!"));
 
