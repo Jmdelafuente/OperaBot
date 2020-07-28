@@ -63,7 +63,7 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
 
 // * Nuevo mensaje de facebook
 app.post("/api/face/newmessage", jsonParser, (req, res) => {
-  // New facebook ("w") message
+  // New facebook ("f") message
   op.nuevoMensaje(req.body.user, req.body.text, "f")
     .then( 
       cb => {
