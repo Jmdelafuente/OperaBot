@@ -1,13 +1,15 @@
-module.exports.nuevoMensaje = enviarMensaje;
+module.exports.nuevoMensaje = nuevoMensaje;
+module.exports.enviarMensaje = enviarMensaje;
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
-module.exports.listaMensajes = chat_all;
+module.exports.chat_all = chat_all;
+module.exports.operators = operators;
 
 var Queue = require("better-queue");
 const request = require("request");
-chat_asig = {};
-chat_all = [];
-operators = {};
+var chat_asig = {};
+var chat_all = [];
+var operators = {};
 
 // TODO: Tenemos que definir una estructura interna para el chat
 // ? posible estructura guardada en models/chat.js
@@ -19,87 +21,108 @@ operators = {};
 // * chat.avatar;       -> Tal vez sea necesario usar las fotos de perfil o avatares para mejor usabilidad
 
 var notify_newAssig = new Queue(function (input, cb) {
-    // Pick an op and try to assign it
+  // Pick an op and try to assign it
 
-    // Callback / response
-    cb(null, result);
+  // Callback / response
+  cb(null, result);
 });
 
-async function enviarMensaje(id, cont){
-    var chat = chat_all[id];
-    var org = "";
-    var port = "";
-    if(chat.origin = 'W'){
-        org='wa';
-        port=3003
-    }else{
-        org = "fa";
-        port = 3002
-    }
-    var options = {
-      'method': "POST",
-      'url': `http://localhost:${port}/${org}/sendMessage`,
-      'headers': {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: id,
-        message: cont
-      }),
-    };
-    request(options, function (error, response) {
-      if (error) throw new Error(error);
-      wa_list = response.body;
-    });
+async function enviarMensaje(id, cont) {
+  // var chat = chat_all[id];
+  // ! Datos de prueba
+  var chat = {};
+  chat.origin = "W";
+
+  var org = "";
+  var port = "";
+  if ((chat.origin = "W")) {
+    org = "wa";
+    port = 3003;
+  } else {
+    org = "fa";
+    port = 3002;
+  }
+  var options = {
+    method: "POST",
+    url: `http://localhost:${port}/${org}/sendMessage`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: id,
+      message: cont,
+    }),
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    wa_list = response.body;
+  });
 }
 
 async function nuevoMensaje(id, cont, origen) {
-    // Check if chat is already assigned
-    if (chat_asig[id]) {
-        // Push notification to operator
-        chat_asig[id].notify_newMessage(id, cont);
-    } else {
-        // * We need to assign it
-        var chat = {};
-        
-        notify_newAssig.push({ id: id, cont: chat })
-            .on('finish', function (res) {
-                // Save the assignment
-                chat_asig[id] = res.op;
-                return true;
-            })
-            .on('failed', function (err) {
-                // Exception, I hope never see this
-                // ? evaluar que hacer en este caso
-                return new Error("No se puedo asignar el chat");
-            })
-        chat_all.push(chat);
-    }
+  // Check if chat is already assigned
+  if (chat_asig[id]) {
+    // Push notification to operator
+    chat_asig[id].notify_newMessage(id, cont);
+  } else {
+    // * We need to assign it
+    var chat = {};
+    chat.id = id;
+    chat.origen = origen;
+    notify_newAssig
+      .push({ id: id, cont: chat })
+      .on("finish", function (res) {
+        // Save the assignment
+        chat_asig[id] = res.op;
+        return true;
+      })
+      .on("failed", function (err) {
+        // Exception, I hope never see this
+        // ? evaluar que hacer en este caso
+        return new Error("No se puedo asignar el chat");
+      });
+    chat_all.push(chat);
+  }
 }
 
-async function altaOperador(id) {
-    // Create new connection for this op
-    
-    // Save {id,connection} for later
+async function altaOperador(id, socket) {
+  // Create new connection for this op
+  operators[id] = socket;
+  // Save {id,connection} for later
 }
 
 async function bajaOperador(id) {
-    // Reassign chats
-    var assigned_chats = Object.assign({}, ...
-        Object.entries(chat_asig).filter(([k, v]) => v == id).map(([k, v]) => ({ [k]: v }))
-    );
-    assigned_chats.forEach(chat => {
-        notify_newAssig.push({ id: chat.id, cont: chat.cont })
-            .on('finish', function (res) {
-                // Save the new assignment
-                chat_asig[id] = res.op;
-            })
-            .on('failed', function (err) {
-                // The last one op
-                // ? siendo el último se puede desconectar con chats aún abiertos?
-            })
-    });
-    // 'Disconnect' the op
+    var baja = false;
     delete operators[id];
-    // Release its connection
+    //  Antes de dar de baja un operador, esperamos un tiempo prudencial
+    //  -4min- tal vez sea sólo una ligera desconexión.
+    setTimeout(
+        (id)=>{
+            // Si no se volvio a conectar, le doy la desconexion logica
+            if (operators.indexOf(id) < 0) {
+                // ? Cuando un operador se deconecta, sus chats se reasignan?
+                // Reassign chats
+                var assigned_chats = Object.assign(
+                    {},
+                    ...Object.entries(chat_asig)
+                    .filter(([k, v]) => v == id)
+                    .map(([k, v]) => ({ [k]: v }))
+                );
+                assigned_chats.forEach((chat) => {
+                    notify_newAssig
+                    .push({ id: chat.id, cont: chat.cont })
+                    .on("finish", function (res) {
+                        // Save the new assignment
+                        chat_asig[id] = res.op;
+                    })
+                    .on("failed", function (err) {
+                        // The last one op
+                        // ? siendo el último se puede desconectar con chats aún abiertos?
+                    });
+                });
+                baja = true;
+            }
+        }, 240000, id
+    );
+    return baja;
 }
