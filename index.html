@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="card-body contacts_body">
-          <ui class="contacts">
+          <ui class="contacts" id="listaContactos">
             <li class="active">
               <div class="d-flex bd-highlight">
                 <div class="img_cont">
@@ -112,6 +112,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 <script>
+  var conn = false;
   $(function () {
     $('#action_menu_btn').click(function () {
       $('.action_menu').toggle();
@@ -153,18 +154,59 @@
       msj.appendChild(hora);
     }
     
+    function asign(nom,id){
+      var li = document.createElement("li");
+      var ex = document.createElement("div");
+      var img = document.createElement("div");
+      var avatar = document.createElement("img");
+      var info = document.createElement("div");
+      var nombre = document.createElement("span");
+      var estatus = document.createElement("p");
+      // li.classList = "active";
+      ex.className = "d-flex bd-highlight";
+      img.className = "img_cont";
+      avatar.src = "user-profile.png";
+      avatar.className = "rounded-circle user_img";
+      info.className = "user_info";
+      nombre.innerText = nom;
+      estatus.innerText = "Online";
+      document.getElementById('listaContactos').appendChild(li);
+      li.appendChild(ex);
+      ex.appendChild(img);
+      img.appendChild(avatar);
+      ex.appendChild(info);
+      info.appendChild(nombre);
+      info.appendChild(estatus);
+      li.onclick = function(){
+        $("#idChat").val(id);
+      };
+    };
+
+    function newList(lista){
+      for (let c of Object.keys(lista)) {
+        asign(lista[c].name,lista[c].id);
+      };
+    };
+
     var socket = io();
     $('form').submit(function () {
       var mensaje = {};
-      mensaje.id=$("#idChat").val();
+      mensaje.id = $("#idChat").val();
       mensaje.contenido = $('#m').val();
       socket.emit('send_op_message', mensaje);
       addChat($('#m').val(), "E", "Ahora");
       $('#m').val('');
       return false;
     });
-    socket.on("connection", function (socket) {
-      socket.emit('new_operator', params);
+
+    socket.on("connect", function () {
+      if(!conn){
+        socket.emit('new_operator', params);
+        conn = true;
+      }
+    });
+    socket.on('send_op_list', function (msg) {
+      newList(JSON.parse(msg));
     });
     socket.on('recive_op_message', function (msg) {
       console.log("Mensaje recibido: "+JSON.stringify(msg));
@@ -174,6 +216,9 @@
     socket.on('confirm_op_message', function (msg) {
       confirm(msg, "R", "Ahora");
       window.scrollTo(0, document.body.scrollHeight);
+    });
+    socket.on('assign_op_message', function (msg) {
+      asign(msg.id,msg.contenido);
     });
   });
 </script>
