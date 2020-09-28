@@ -4,8 +4,8 @@
   "description": "A simple API for unify multiples chat sources into an unique manager.",
   "main": "index.js",
   "scripts": {
-    "app": "node index.js",
-    "start": "node index.js",
+    "app": "node app.js",
+    "start": "node app.js",
     "pack": "pkg ."
   },
   "bin": "api.js",
@@ -38,6 +38,7 @@
   "dependencies": {
     "better-queue": "^3.8.10",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "request": "^2.88.2",
     "socket.io": "^2.3.0"
