@@ -30,16 +30,13 @@ msg = require("./messengerService.js");
 // Allowing requests from outside of the domain
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type,Accept"
-  );
+  res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type,Accept");
   next();
 });
 
 // APIs
 var api = require("./api");
-var wabot = require("../WA_Server/src/index");
+// var wabot = require("../WA_Server/src/index.ts");
 // var fabot = require('../FA_Server/app');
 
 // Websokets (usa la configuracion previa de socket io)

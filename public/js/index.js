@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("localhost:3001");
 
 var conn = false;
   $(function () {
