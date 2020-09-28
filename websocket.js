@@ -1,7 +1,5 @@
-module.exports.enviarMensaje = enviarMensaje;
-module.exports.recibirMensaje = recibirMensaje;
-
 // Imports from websockets
+const express = require("express");
 var appFront = express();
 var http = require("http").Server(appFront);
 var path = require("path");
@@ -55,3 +53,6 @@ const recibirMensaje = function (operador, id, contenido){
 http.listen(portFront, function () {
   console.log("Websockets on *:" + portFront);
 });
+
+module.exports.enviarMensaje = enviarMensaje;
+module.exports.recibirMensaje = recibirMensaje;
