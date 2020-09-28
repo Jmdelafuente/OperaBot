@@ -11,3 +11,25 @@ export const FB_SERVER = "http://localhost";
 export const WA_URL = `${WA_SERVER}${WA_PORT}/${WA_PREFIX}`;
 export const FB_URL = `${FB_SERVER}${FB_PORT}/${FB_PREFIX}`;
 export var URLs = {'W' : WA_URL, 'F': FB_URL};
+
+export function bodyParser(origen,destino, mensaje, tipo = "text") {
+         let body;
+         switch (origen) {
+           case "W":
+             body = JSON.stringify({
+               id: destino,
+               message: mensaje,
+             });
+             break;
+           case "F":
+             body = JSON.stringify({
+               senderID: destino,
+               messageText: mensaje,
+               type: tipo,
+             });
+             break;
+           default:
+             break;
+         }
+         return body;
+       }
