@@ -1,24 +1,3 @@
-// const request = require("request");
-const express = require("express");
-const bodyParser = require("body-parser");
-const app = express();
-const port = 3001;
-var jsonParser = bodyParser.json();
-// var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-// * Business Logic
-var msg = require("./messengerService.js");
-
-// * Allowing requests from outside of the domain
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type,Accept"
-  );
-  next();
-});
-
 // * Begging of API
 // ? Tiene sentido pedir todos los chats a la API si no es por websocket?
   app.get("/api/allChats", (req, res) => {
@@ -96,9 +75,3 @@ app.post("/api/fa/newmessage", jsonParser, (req, res) => {
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
-
-app.get("/index", function (req, res) {
-  res.sendFile(path.join(__dirname + "/index.html"));
-});
-
-app.listen(port, () => console.log(`OperaBot listening on port ${port}!`));
