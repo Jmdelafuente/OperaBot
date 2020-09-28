@@ -4,7 +4,7 @@ var appFront = express();
 var http = require("http").Server(appFront);
 var path = require("path");
 var io = require("socket.io")(http);
-var portFront = 3000;
+var portFront = 3001;
 var sockets = {};
 
 // Operator's logic
@@ -64,11 +64,6 @@ const recibirLista = function (operador, lista){
   console.log(`Propagando lista ${lista}`);
   operador.emit("send_op_list", lista);
 }
-
-http.listen(portFront, function () {
-  console.log("Websockets on *:" + portFront);
-});
-
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
