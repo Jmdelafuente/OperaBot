@@ -52,9 +52,11 @@ app.use(function (req, res, next) {
 app.post("/api/wa/newmessage", jsonParser, (req, res) => {
   // TODO authenticate origin
   // New whatsapp ("w") messaje
-  op.nuevoMensaje(req.body.user, req.body.text, "W").then(
+  let data = JSON.parse(req.body.body);
+  // console.log(data);
+  op.nuevoMensaje(data.user, data.text, "W").then(
     (cb) => {
-      socket.recibirMensaje("", req.body.user, req.body.text);
+      socket.recibirMensaje("", data.user, data.text);
       res.sendStatus(200);
     },
     (err) => {
