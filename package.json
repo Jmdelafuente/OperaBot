@@ -24,9 +24,9 @@
   "pkg": {
     "scripts": "*.js",
     "targets": [
-      "node10-win",
-      "node10-linux",
-      "node10-macos"
+      "node12-win",
+      "node12-linux",
+      "node12-macos"
     ]
   },
   "author": "de la Fuente Juan",
