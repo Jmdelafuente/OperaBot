@@ -1,4 +1,5 @@
-import { URLs, bodyParser } from "../configs/services";
+// import { URLs, bodyParser } from "../configs/services";
+const services = require("../configs/services");
 /**
  *
  *
@@ -34,11 +35,11 @@ class Chat {
   async enviarMensaje(cont) {
     var options = {
       method: "POST",
-      url: URLs[this.origin],
+      url: services.URLs[this.origin],
       headers: {
         "Content-Type": "application/json",
       },
-      body: bodyParser(this.origin, this.id, cont),
+      body: services.bodyParser(this.origin, this.id, cont),
     };
     request(options, function (error, response) {
       if (error) throw new Error(error);
