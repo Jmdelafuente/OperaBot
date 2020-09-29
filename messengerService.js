@@ -24,7 +24,7 @@ async function nuevoMensaje(id, cont, origen, t, nombre) {
     chatsList[id].pendingmessage++;
   } else {
     var chat = new Chat(id, origen, t, 1, nombre);
-    chatsList.push(chat);
+    chatsList[id] = chat;
   }
   // Notify new message
   op.recibirMensaje(id, cont);
