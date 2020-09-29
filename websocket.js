@@ -26,7 +26,7 @@ appFront.use(function (req, res, next) {
 appFront.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
-// http.listen(portFront);
+http.listen(portFront);
 
 io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
@@ -34,15 +34,18 @@ io.on("connection", function (socket) {
   });
   socket.on("new_operator", function (msg) {
     // TODO: validar con weblogin el token/sessionkey
-    socket.user = msg.SESSIONKEY; // * Cambiar por nombre de usuario cuando este la conexion con WL
+    console.log(`Nuevo operador ${msg.SESSIONKEY}`);
+    socket.user = msg.SESSIONKEY; // TODO Cambiar por nombre de usuario cuando este la conexion con WL
+    op.altaOperador(msg.SESSIONKEY, socket);
     sockets[socket.id] = socket;
-    op.altaOperador(msg.SESSIONKEY); // * Cambiar por nombre de usuario cuando este la conexion con WL
-    // TODO: enviar lista de chats
   });
   // Remove disconnected op
-  socket.on("disconnect", function () {
-    op.bajaOperador(sockets[socket.id].user);
-    delete sockets[socket.id];
+  socket.on("disconnect", function (causa) {
+    if (causa == "transport close" && sockets[socket.id]) {
+      op.bajaOperador(sockets[socket.id].user);
+      delete sockets[socket.id];
+    }
+    // console.log(`Disconnect ${socket.id} ${causa}`);
   });
   // socket.on("recive_op_message", function (msg) {
   //   io.emit("recive_op_message",msg);
@@ -50,20 +53,30 @@ io.on("connection", function (socket) {
 });
 
 // Functions define for export and modularization
-const enviarMensaje = function (id, contenido){
+const enviarMensaje = function (id, contenido) {};
 
+const recibirMensaje = function (operador, id, contenido) {
+  var mensaje = {};
+  mensaje.id = id;
+  mensaje.contenido = contenido;
+  io.emit("recive_op_message", mensaje);
+  return true;
 };
 
-const recibirMensaje = function (operador, id, contenido){
-    var mensaje = {};
-    mensaje.id = id;
-    mensaje.contenido = contenido;
-    io.emit("recive_op_message", mensaje);
+const asignarMensaje = function (socket, id, contenido) {
+  var mensaje = {};
+  mensaje.id = id;
+  mensaje.contenido = contenido;
+  socket.emit("assign_op_message", mensaje);
+  return socket;
 };
 
-http.listen(portFront, function () {
-  console.log("Websockets on *:" + portFront);
-});
+const recibirLista = function (operador, lista) {
+  console.log(`Propagando lista ${lista}`);
+  operador.emit("send_op_list", lista);
+};
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
+module.exports.asignarMensaje = asignarMensaje;
+module.exports.recibirLista = recibirLista;
