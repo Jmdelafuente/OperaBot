@@ -1,5 +1,6 @@
 // import { URLs, bodyParser } from "../configs/services";
 const services = require("../configs/services");
+const axios = require("axios").default;
 /**
  *
  *
@@ -33,23 +34,25 @@ class Chat {
   }
 
   async enviarMensaje(cont) {
-    var options = {
-      method: "POST",
-      url: services.URLs[this.origin],
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: services.bodyParser(this.origin, this.id, cont),
-    };
-    request(options, function (error, response) {
-      if (error) throw new Error(error);
-      res = response.body;
-      // Actualizamos el estado interno del chat
-      this.pendingmessage = 0;
-      this.lastmessage = cont;
-      this.timestamp = Date.now();
-    });
-    return res;
+    let res = false;
+    axios
+      .post(services.URLs[this.origin]+"/sendMessage", {
+        body: services.bodyParser(this.origin, this.id, cont),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        res = response.data;
+        // Actualizamos el estado interno del chat
+        this.pendingmessage = 0;
+        this.lastmessage = cont;
+        this.timestamp = Date.now();
+        return res;
+      })
+      .catch(function (error) {
+        throw new Error(error);
+      });
   }
 }
 
