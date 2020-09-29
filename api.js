@@ -1,4 +1,6 @@
-// * Begging of API
+const ms = require('./messengerService');
+var socket = require("./websocket");
+
 // ? Tiene sentido pedir todos los chats a la API si no es por websocket?
   app.get("/api/allChats", (req, res) => {
   // ? TODO authenticate origin
@@ -34,7 +36,7 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
   // New whatsapp ("w") messaje
   let data = JSON.parse(req.body.body);
   // console.log(data);
-  op.nuevoMensaje(data.user, data.text, "W").then(
+  ms.nuevoMensaje(data.user, data.text, "W").then(
     (cb) => {
       socket.recibirMensaje("", data.user, data.text);
       res.sendStatus(200);
