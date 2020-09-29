@@ -17,6 +17,7 @@ class Chat {
    * @param {*} id remitente del chat, igual que el original que usan las plataformas
    * @param {*} origen (W)hatsapp, (F)acebook...
    * @param {*} timestamp ultima marca de tiempo
+   * @param {*} pendingmessage cantidad de mensajes sin leer
    * @param {*} lastmessage contenido del ultmo mensaje (para que exista un chat, al menos un mensaje hubo)
    * @param {*} name nombre humano-legible del remitente
    * @memberof Chat
@@ -42,6 +43,10 @@ class Chat {
     request(options, function (error, response) {
       if (error) throw new Error(error);
       res = response.body;
+      // Actualizamos el estado interno del chat
+      this.pendingmessage = 0;
+      this.lastmessage = cont;
+      this.timestamp = Date.now();
     });
     return res;
   }

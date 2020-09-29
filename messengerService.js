@@ -10,6 +10,7 @@ async function nuevalistaChats(lista, origen) {
     }
     chatsList[newChat.id] = newChat;
   }
+  // Ordenamos de mas reciente a menos reciente
   chatsList.sort(function (a, b) {
     return b.t - a.t;
   });
@@ -19,7 +20,7 @@ async function nuevoMensaje(id, cont, origen, t, nombre) {
   // Check if chat exists
   if (chatsList[id]) {
     chatsList[id].timestamp = t;
-    chatsList[id].name = name;
+    chatsList[id].name = name; //puede haber cambiado de nombre la persona
     chatsList[id].pendingmessage++;
   } else {
     var chat = new Chat(id, origen, t, 1, nombre);
@@ -31,10 +32,6 @@ async function nuevoMensaje(id, cont, origen, t, nombre) {
 
 async function enviarMensaje(id, cont) {
   var chat = chatsList[id];
-  chat.timestamp = Date.now();
-  // ? pendingmessage seria para saber si hay mensajes pendientes de envio?
-  chat.pendingmessage = 0;
-
   let res = await chat.enviarMensaje(cont);
   return res;
 }
