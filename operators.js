@@ -11,12 +11,18 @@ var operators = {}; // * Todos los operadores disponbles
 var newAsign = new Queue(function (input, cb) {
   // Pick an op and try to assign it
   // FIXME: a modo de prueba, tomamos uno 'aleatorio'
-  let op = operators[Math.floor(Math.random() * arr.length)];
+  let op = random_item(operators);
   result = socket.asignarMensaje(operators[op], input.id, input.cont);
   // Callback / response
   cb(null, result);
 });
 
+function random_item(items) {
+  let keys = Object.keys(items);
+  let i = keys.length;
+  let random = Math.floor(Math.random() * i);
+  return items[keys[random]];
+}
 
 async function altaOperador(id, canal) {
   // Save {id,connection} for later
@@ -68,8 +74,9 @@ async function recibirMensaje(id, cont) {
     socket.recibirMensaje(chat_asig[id], id, cont);
   } else {
     // * We need to assign it
+
     newAsign
-      .push({ cont: chat })
+      .push({id:id, cont: cont })
       .on("finish", function (res) {
         // Save the assignment
         chat_asig[id] = res.op;
