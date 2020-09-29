@@ -22,7 +22,7 @@ async function altaOperador(id, canal) {
   // Save {id,connection} for later
   operators[id] = canal;
   lista = messenger.chatsList();
-  socket.recibirLista(canal, lista);
+  // socket.recibirLista(canal, lista);
 }
 
 async function bajaOperador(id) {
