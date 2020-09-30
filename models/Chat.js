@@ -13,7 +13,7 @@ class Chat {
   // * chat.origin;       -> Origen 'F' o 'W'
   // * chat.name;         -> Nombre para mostrar / humano legible
   // ? chat.avatar;       -> Tal vez sea necesario usar las fotos de perfil o avatares para mejor usabilidad
-
+  // ? chat.estado        -> Para llevar control de los estados de una conversacion
   /**
    *Creates an instance of Chat.
    * @param {*} id remitente del chat, igual que el original que usan las plataformas
