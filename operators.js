@@ -13,6 +13,11 @@ var newAsign = new Queue(function (input, cb) {
   // FIXME: a modo de prueba, tomamos uno 'aleatorio'
   let op = random_item(operators);
   result = socket.asignarMensaje(operators[op], input.id, input.cont);
+  if(result){
+    // Save the new assignment
+    chat_asig[id] = res.op;
+    result = true;
+  }
   // Callback / response
   cb(null, result);
 });
@@ -50,25 +55,22 @@ async function bajaOperador(id) {
             // Si no se volvio a conectar, le doy la desconexion logica
             if (! operators[id]) {
                 // ? Cuando un operador se deconecta, sus chats se reasignan?
-                // Reassign chats
+                // Buscar chats asignados a ese operador
                 var assigned_chats = Object.assign(
                     {},
                     ...Object.entries(chat_asig)
                     .filter(([k, v]) => v == id)
                     .map(([k, v]) => ({ [k]: v }))
                 );
-                assigned_chats.forEach((chat) => {
+                // Solicitar reasignacion
+                for (const [chat, op] of Object.entries(assigned_chats)) {
                     newAsign
                     .push({ id: chat.id, cont: chat.cont })
-                    .on("finish", function (res) {
-                        // Save the new assignment
-                        chat_asig[id] = res.op;
-                    })
-                    .on("failed", function (err) {
+                    .on("failed", err => {
                         // The last one op
                         // ? siendo el último se puede desconectar con chats aún abiertos?
                     });
-                });
+                }
                 baja = true;
             }
         }, 240000, id
@@ -90,7 +92,6 @@ async function recibirMensaje(id, cont) {
     socket.recibirMensaje(chat_asig[id], id, cont);
   } else {
     // * We need to assign it
-
     newAsign
       .push({id:id, cont: cont })
       .on("finish", function (res) {
