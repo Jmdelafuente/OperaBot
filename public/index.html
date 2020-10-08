@@ -21,42 +21,80 @@
               <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
             </div>
           </div>
-          <div class="input-group mt-2">
-            <button class="btn btn-secondary">Todos</button>
-            <button class="btn btn-secondary-outline">Asignados</button>
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-todos-tab" data-toggle="tab" href="#nav-todos" role="tab"
+                aria-controls="nav-todos" aria-selected="true">Todos</a>
+              <a class="nav-item nav-link" id="nav-asignados-tab" data-toggle="tab" href="#nav-asignados" role="tab"
+                aria-controls="nav-asignados" aria-selected="false">Asignados</a>
+            </div>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-todos" role="tabpanel" aria-labelledby="nav-todos-tab">
+            <div class="card-body contacts_body">
+              <ui class="contacts" id="listaContactos">
+                <li class="active">
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="user-profile.png" class="rounded-circle user_img">
+                      <span class="online_icon"></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Usuario 1</span>
+                      <p>Online</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img
+                        src="user-profile.png"
+                        class="rounded-circle user_img">
+                      <span class="online_icon offline"></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Usuario 2</span>
+                      <p>Conversaci&oacute;n cerrada</p>
+                    </div>
+                  </div>
+                </li>
+              </ui>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="tab-pane fade" id="nav-asignados" role="tabpanel" aria-labelledby="nav-asignados-tab">
+            <div class="card-body contacts_body">
+              <ui class="contacts" id="listaContactos">
+                <li class="active">
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="user-profile.png" class="rounded-circle user_img">
+                      <span class="online_icon"></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Usuario 3</span>
+                      <p>Online</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="user-profile.png" class="rounded-circle user_img">
+                      <span class="online_icon offline"></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Usuario 4</span>
+                      <p>Conversaci&oacute;n cerrada</p>
+                    </div>
+                  </div>
+                </li>
+              </ui>
+            </div>
+            <div class="card-footer"></div>
           </div>
         </div>
-        <div class="card-body contacts_body">
-          <ui class="contacts" id="listaContactos">
-            <li class="active">
-              <div class="d-flex bd-highlight">
-                <div class="img_cont">
-                  <img src="user-profile.png" class="rounded-circle user_img">
-                  <span class="online_icon"></span>
-                </div>
-                <div class="user_info">
-                  <span>Usuario 1</span>
-                  <p>Online</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="d-flex bd-highlight">
-                <div class="img_cont">
-                  <img
-                    src="user-profile.png"
-                    class="rounded-circle user_img">
-                  <span class="online_icon offline"></span>
-                </div>
-                <div class="user_info">
-                  <span>Usuario 2</span>
-                  <p>Conversaci&oacute;n cerrada</p>
-                </div>
-              </div>
-            </li>
-          </ui>
-        </div>
-        <div class="card-footer"></div>
       </div>
     </div>
     <div class="col-md-6 col-xl-8 chat">
