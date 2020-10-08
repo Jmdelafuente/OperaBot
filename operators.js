@@ -2,7 +2,7 @@ var Queue = require("better-queue");
 var Chat = require("./models/Chat");
 var socket = require("./websocket");
 var messenger = require("./messengerService");
-var chat_asig = {}; // * Diccionario 'operadorID' -> socket
+var chat_asig = {}; // * Diccionario 'chatID' -> operadorID (ID del socket)
 var operators = {}; // * Todos los operadores disponbles
 
 // TODO: Tenemos que definir una estructura interna para el chat
@@ -24,6 +24,15 @@ function random_item(items) {
   return items[keys[random]];
 }
 
+
+/**
+ * Notificar el alta de un operador
+ * cuando un operador se conecta a la plataforma, se registra
+ * el id del operador y el id del canal de comunicación del mismo
+ * 
+ * @param {*} id del operador nuevo
+ * @param {*} canal socket o websocket de comunicacion con el operador
+ */
 async function altaOperador(id, canal) {
   // Save {id,connection} for later
   operators[id] = canal;
@@ -66,7 +75,14 @@ async function bajaOperador(id) {
     );
     return baja;
 }
-
+/**
+ * Funcion que captura la recepcion de un mensaje a traves
+ * de los servicios de mensajeria y la envia a un operador
+ * (asignando el chat de ser necesario)
+ *
+ * @param {*} id del remitente (propio del servicio de mensajeria)
+ * @param {*} cont contenido del mensaje
+ */
 async function recibirMensaje(id, cont) {
   // Check if chat is already assigned
   if (chat_asig[id]) {
@@ -90,6 +106,14 @@ async function recibirMensaje(id, cont) {
   }
 }
 
+/**
+ * Envia el contenido cont redactado por un operador al remitente id
+ * Sin importar el origen del chat.
+ * Responsabilidad delegada a la clase chat.
+ *
+ * @param {*} id del desintatario (propio del servicio de mensajeria)
+ * @param {*} cont contenido del mensaje
+ */
 async function enviarMensaje(id, cont) {
   messenger.enviarMensaje(id,cont);
 }
