@@ -1,25 +1,27 @@
 var Queue = require("better-queue");
-var Chat = require("./models/Chat");
+// var Chat = require("./models/Chat");
 var socket = require("./websocket");
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' -> operadorID (ID del socket)
 var operators = {}; // * Todos los operadores disponbles
 
-// TODO: Tenemos que definir una estructura interna para el chat
-// ? posible estructura guardada en models/chat.js
-
 var newAsign = new Queue(function (input, cb) {
   // Pick an op and try to assign it
   // FIXME: a modo de prueba, tomamos uno 'aleatorio'
   let op = random_item(operators);
-  result = socket.asignarMensaje(operators[op], input.id, input.cont);
-  if(result){
-    // Save the new assignment
-    chat_asig[id] = res.op;
-    result = true;
-  }
+  socket.asignarMensaje(op, input.id, input.cont, input.nombre).then((result) => {
+    if (result) {
+      // Save the new assignment
+      chat_asig[id] = res.op;
+      result = true;
+      cb(null, result);
+    } else {
+      // ? TODO:
+    }
+  }, error=>{
+    cb(error, null);
+  });
   // Callback / response
-  cb(null, result);
 });
 
 function random_item(items) {
@@ -65,7 +67,7 @@ async function bajaOperador(id) {
                 // Solicitar reasignacion
                 for (const [chat, op] of Object.entries(assigned_chats)) {
                     newAsign
-                    .push({ id: chat.id, cont: chat.cont })
+                    .push({ id: chat.id, cont: chat.cont, nombre: chat.nombre })
                     .on("failed", err => {
                         // The last one op
                         // ? siendo el último se puede desconectar con chats aún abiertos?
@@ -92,11 +94,12 @@ async function recibirMensaje(id, cont) {
     socket.recibirMensaje(chat_asig[id], id, cont);
   } else {
     // * We need to assign it
+    chat = messenger.getChatById(id);
     newAsign
-      .push({id:id, cont: cont })
+      .push({id:id, cont: cont, nombre:chat.name })
       .on("finish", function (res) {
         // Save the assignment
-        chat_asig[id] = res.op;
+        // chat_asig[id] = res.op;
         return true;
       })
       .on("failed", function (err) {
@@ -105,6 +108,14 @@ async function recibirMensaje(id, cont) {
         return new Error("No se puedo asignar el chat");
       });
   }
+}
+/**
+ * Recupera todos los mensajes de un chat.
+ * Puede recurrir a la cache/DB o pedirle al servicio de mensajeria los mensajes
+ * @param {*} chatId del cual quieren recuperarse los mensajes
+ */
+async function mensajesChat(chatId){
+  
 }
 
 /**

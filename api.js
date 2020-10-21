@@ -1,5 +1,5 @@
 const ms = require('./messengerService');
-var socket = require("./websocket");
+// var socket = require("./websocket");
 
 // ? Tiene sentido pedir todos los chats a la API si no es por websocket?
   app.get("/api/allChats", (req, res) => {
@@ -36,13 +36,13 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
   // New whatsapp ("w") messaje
   let data = JSON.parse(req.body.body);
   // console.log(data);
-  ms.nuevoMensaje(data.user, data.text, "W").then(
+  ms.nuevoMensaje(data.user, data.text, "W",data.timestamp,data.name).then(
     (cb) => {
-      socket.recibirMensaje("", data.user, data.text);
+      // socket.recibirMensaje("", data.user, data.text);
       res.sendStatus(200);
     },
     (err) => {
-      console.log("Oh no! Maldición!");
+      console.log("Oh no! Maldición! - "+err);
       res.sendStatus(504);
     }
   );
@@ -51,8 +51,8 @@ app.post("/api/wa/newmessage", jsonParser, (req, res) => {
 // * Incio de WA_Server, recibimos la lista de chats
 app.post("/api/wa/list", jsonParser, (req, res) => {
   // TODO authenticate origin
-  msg.nuevalistaChats(req.body,'W')
-    .then(()=> {
+  ms.nuevalistaChats(req.body, "W")
+    .then(() => {
       res.sendStatus(200);
     })
     .catch(() => {
@@ -64,7 +64,7 @@ app.post("/api/wa/list", jsonParser, (req, res) => {
 app.post("/api/fa/newmessage", jsonParser, (req, res) => {
   // TODO authenticate origin
   // New facebook ("f") messaje
-  msg.nuevoMensaje(req.body.user, req.body.text, "F").then(
+  ms.nuevoMensaje(req.body.user, req.body.text, "F").then(
     (cb) => {
       console.log("Facebook \u{1F919}");
       res.sendStatus(200);

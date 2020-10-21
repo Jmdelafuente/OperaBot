@@ -6,6 +6,10 @@ var conn = false;
       $('.action_menu').toggle();
     });
 
+    function jq(myid) {
+      return "#" + myid.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1");
+    }
+
     function getSearchParameters() {
       var prmstr = window.location.search.substr(1);
       return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
@@ -23,7 +27,7 @@ var conn = false;
 
     var params = getSearchParameters();
 
-    function addChat(cont, tipo, t){
+    function addMessage(cont, tipo, t){
       var ex = document.createElement("div");
       var msj = document.createElement("div");
       var hora = document.createElement("span");
@@ -42,7 +46,7 @@ var conn = false;
       msj.appendChild(hora);
     }
     
-    function asign(nom,id){
+    function addChat(nom,id, asign){
       var li = document.createElement("li");
       var ex = document.createElement("div");
       var img = document.createElement("div");
@@ -51,6 +55,7 @@ var conn = false;
       var nombre = document.createElement("span");
       var estatus = document.createElement("p");
       // li.classList = "active";
+      li.id = "usuario_"+id;
       ex.className = "d-flex bd-highlight";
       img.className = "img_cont";
       avatar.src = "user-profile.png";
@@ -58,7 +63,11 @@ var conn = false;
       info.className = "user_info";
       nombre.innerText = nom;
       estatus.innerText = "Online";
-      document.getElementById('listaContactos').appendChild(li);
+      if(asign){
+        document.getElementById("listaContactosAsignados").appendChild(li);
+      }else{
+        document.getElementById("listaContactos").appendChild(li);
+      }
       li.appendChild(ex);
       ex.appendChild(img);
       img.appendChild(avatar);
@@ -66,13 +75,27 @@ var conn = false;
       info.appendChild(nombre);
       info.appendChild(estatus);
       li.onclick = function(){
-        $("#idChat").val(id);
+        changeChat(id);
       };
     }
 
-    function newList(lista){
+    function changeChat(id) {
+      // Actualizamos el destinatario
+      $("#idChat").val(id);
+      // TODO: dibujar mensajes, avatar y nombre
+      let li = $(jq("#usuario_" + id));
+      let nom = $(jq("#" + li + " span")).innerText;
+      $("#nombreActivo").innerText = nom;
+      // Marcamos el chat como activo
+      $(".chat .active").removeClass("active");
+      $(li).addClass("active");
+      // Enviamos el 'visto' al servidor
+      socket.emit("send_op_seen", id);
+    }
+
+    function newList(lista, asig){
       for (let c of Object.keys(lista)) {
-        asign(lista[c].name,lista[c].id);
+        addChat(lista[c].name, lista[c].id, asig);
       }
     }
 
@@ -81,7 +104,7 @@ var conn = false;
       mensaje.id = $("#idChat").val();
       mensaje.contenido = $('#m').val();
       socket.emit('send_op_message', mensaje);
-      addChat($('#m').val(), "E", "Ahora");
+      addMessage($('#m').val(), "E", "Ahora");
       $('#m').val('');
       return false;
     });
@@ -98,14 +121,20 @@ var conn = false;
     });
     socket.on('recive_op_message', function (msg) {
       console.log("Mensaje recibido: "+JSON.stringify(msg));
-      addChat(msg.contenido,"R","Ahora");
+      addMessage(msg.contenido,"R","Ahora");
       window.scrollTo(0, document.body.scrollHeight);
     });
     socket.on('confirm_op_message', function (msg) {
       confirm(msg, "R", "Ahora");
       window.scrollTo(0, document.body.scrollHeight);
     });
-    socket.on('assign_op_message', function (msg) {
-      asign(msg.id,msg.contenido);
+    socket.on('assign_op_message', function (msg, ack) {
+      // Confirmamos la asignacion al servidor
+      ack(true);
+      // Generamos los elementos del DOM
+      addChat(msg.nom,msg.id,true);
+      // addChat(msg.id,msg.contenido, true);
     });
+
+  // Fin onload
   });

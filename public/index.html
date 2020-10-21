@@ -29,11 +29,12 @@
                 aria-controls="nav-asignados" aria-selected="false">Asignados</a>
             </div>
         </div>
+        <!-- Pestanas de la barra lateral -->
         <div class="tab-content" id="nav-tabContent">
+          <!-- Todos los chats -->
           <div class="tab-pane fade show active" id="nav-todos" role="tabpanel" aria-labelledby="nav-todos-tab">
-            <div class="card-body contacts_body">
-              <ui class="contacts" id="listaContactos">
-                <li class="active">
+            <div class="contacts list-group" id="listaContactos">
+                <li class="active list-group-item list-group-item-action flex-column align-items-start active list-group-item-dark">
                   <div class="d-flex bd-highlight">
                     <div class="img_cont">
                       <img src="user-profile.png" class="rounded-circle user_img">
@@ -45,7 +46,7 @@
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="list-group-item list-group-item-action flex-column align-items-start list-group-item-dark">
                   <div class="d-flex bd-highlight">
                     <div class="img_cont">
                       <img
@@ -59,14 +60,14 @@
                     </div>
                   </div>
                 </li>
-              </ui>
+
             </div>
-            <div class="card-footer"></div>
           </div>
+          <!-- Chats asignados -->
           <div class="tab-pane fade" id="nav-asignados" role="tabpanel" aria-labelledby="nav-asignados-tab">
             <div class="card-body contacts_body">
-              <ui class="contacts" id="listaContactos">
-                <li class="active">
+              <ui class="contacts" id="listaContactosAsignados">
+                <li class="active chat">
                   <div class="d-flex bd-highlight">
                     <div class="img_cont">
                       <img src="user-profile.png" class="rounded-circle user_img">
@@ -78,7 +79,7 @@
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="chat">
                   <div class="d-flex bd-highlight">
                     <div class="img_cont">
                       <img src="user-profile.png" class="rounded-circle user_img">
@@ -105,9 +106,9 @@
               <img src="user-profile.png" class="rounded-circle user_img">
               <span class="online_icon"></span>
             </div>
-            <div class="user_info">
-              <span>Chat con Usuario 1</span>
-              <p>1767 Mensajes</p>
+            <div class="user_info" id="usuarioActivo">
+              <span id="nombreActivo">Chat con Usuario 1</span>
+              <p id="informacionActivo">1767 Mensajes</p>
             </div>
             <div class="video_cam">
               <span><i class="fas fa-window-close"></i></span>

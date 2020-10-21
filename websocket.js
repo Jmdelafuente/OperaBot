@@ -35,7 +35,7 @@ io.on("connection", function (socket) {
   socket.on("new_operator", function (msg) {
     // TODO: validar con weblogin el token/sessionkey
     console.log(`Nuevo operador ${msg.SESSIONKEY}`);
-    socket.user = msg.SESSIONKEY; // TODO Cambiar por nombre de usuario cuando este la conexion con WL
+    socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
     op.altaOperador(msg.SESSIONKEY, socket);
     sockets[socket.id] = socket;
   });
@@ -47,6 +47,11 @@ io.on("connection", function (socket) {
     }
     // console.log(`Disconnect ${socket.id} ${causa}`);
   });
+
+  socket.on("all_messages_chat", function(id){
+    
+  });
+
   // socket.on("recive_op_message", function (msg) {
   //   io.emit("recive_op_message",msg);
   // });
@@ -63,12 +68,20 @@ const recibirMensaje = function (operador, id, contenido) {
   return true;
 };
 
-const asignarMensaje = function (socket, id, contenido) {
+const asignarMensaje = async function (socket, id, contenido, nombre) {
   var mensaje = {};
   mensaje.id = id;
   mensaje.contenido = contenido;
-  socket.emit("assign_op_message", mensaje);
-  return socket;
+  mensaje.nom = nombre;
+  socket.emit("assign_op_message", mensaje, (ack)=>{
+    if(ack){
+      // El chat fue correctamente asignado
+      return socket;
+    }else{
+      // El chat no fue asignado
+      return false;
+    }
+  });
 };
 
 const recibirLista = function (operador, lista) {

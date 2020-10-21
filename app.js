@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  * Require api/operators/websockets/bots/etc
  */
 // Business Logic
-msg = require("./messengerService.js");
+// msg = require("./messengerService.js");
 
 // Allowing requests from outside of the domain
 app.use(function (req, res, next) {
