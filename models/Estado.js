@@ -16,21 +16,15 @@ class Estado {
    * @constructor
    */
 
-  constructor(id, nombre, descripcion) {
+  constructor(id, nombre, descripcion, chat) {
     if (this.constructor === Estado) {
       throw new Error("No se pude inicializar una clase abstracta");
     }
     this.id = id;
     this.nombre = nombre;
     this.descripcion = descripcion;
+    this.chat = chat;
   }
-
-    /**
-     @abstract
-    */
-    // Estado.prototype.say = function() {
-    //     throw new Error("Abstract method!");
-    // }
 
 }
 
@@ -38,9 +32,26 @@ class Estado {
  *
  *
  * @class Cerrado
- * @extends {Estado}
  */
 class Cerrado extends Estado {
+
+  constructor(chat) {
+    this.id = 1;
+    this.nombre = 'Cerrado';
+    this.chat = chat;
+  }
+  
+  asignacion () {
+    this.chat.state = new Abierto(this.chat);
+  }
+  
+  resolucionOk () {
+    this.chat.state = new Cerrado(this.chat);
+  }
+
+  resolucionFallida () {
+    this.chat.state = new Cerrado(this.chat); 
+  }
 
 }
 
@@ -48,8 +59,27 @@ class Cerrado extends Estado {
  *
  *
  * @class Abierto
- * @extends {Estado}
  */
 class Abierto extends Estado{
 
+  constructor(chat) {
+    this.id = 2;
+    this.nombre = 'Abierto';
+    this.chat = chat;
+  }
+  
+  asignacion () {
+    this.chat.state = new Abierto(this.chat);
+  }
+  
+  resolucionOk () {
+    this.chat.state = new Cerrado(this.chat);
+  }
+
+  resolucionFallida () {
+    this.chat.state = new Abierto(this.chat);
+  }
 }
+
+module.exports = Abierto;
+module.exports = Cerrado;
