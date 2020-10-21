@@ -11,6 +11,7 @@ class Estado {
    * @param {*} id en la DB
    * @param {*} nombre del estado, humano-legible
    * @param {*} descripcion adicional si hiciera falta
+   * @param {*} chat instancia del chat cuyo estado se modifica
    * @memberof Estado
    * @abstract
    * @constructor
@@ -36,9 +37,7 @@ class Estado {
 class Cerrado extends Estado {
 
   constructor(chat) {
-    this.id = 1;
-    this.nombre = 'Cerrado';
-    this.chat = chat;
+    super(1, 'Cerrado', 'asdf',chat);
   }
   
   asignacion () {
@@ -63,9 +62,7 @@ class Cerrado extends Estado {
 class Abierto extends Estado{
 
   constructor(chat) {
-    this.id = 2;
-    this.nombre = 'Abierto';
-    this.chat = chat;
+    super(1, 'Abierto', 'asdf', chat);
   }
   
   asignacion () {
