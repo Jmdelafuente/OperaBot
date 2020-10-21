@@ -2,8 +2,7 @@
 const services = require("../configs/services");
 const axios = require("axios").default;
 const estado = require("./estado"); // estado.js exporta las clases 'Abierto' y 'Cerrado'
-const Abierto = estado.Abierto();
-const Cerrado = estado.Cerrado();
+
 /**
  *
  *
@@ -34,7 +33,7 @@ class Chat {
     this.lastmessage = lastmessage;
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
-    this.state = new Abierto(this);
+    this.state = new estado.Abierto(this);
   }
 
   async enviarMensaje(cont) {
