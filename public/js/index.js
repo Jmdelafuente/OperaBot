@@ -83,12 +83,15 @@ var conn = false;
       // Actualizamos el destinatario
       $("#idChat").val(id);
       // TODO: dibujar mensajes, avatar y nombre
-      let li = $(jq("#usuario_" + id));
-      let nom = $(jq("#" + li + " span")).innerText;
-      $("#nombreActivo").innerText = nom;
+      let idchat = jq("usuario_" + id);
+      let li = $(idchat);
+      let nom = $(idchat + " span").html();
+      // Actualizamos el nombre
+      $("#nombreActivo").html('Chat con '+nom);
       // Marcamos el chat como activo
       $(".chat .active").removeClass("active");
       $(li).addClass("active");
+      // TODO: Recuperar mensajes y los dibujarlos
       // Enviamos el 'visto' al servidor
       socket.emit("send_op_seen", id);
     }
@@ -116,8 +119,9 @@ var conn = false;
         conn = true;
       }
     });
-    socket.on('send_op_list', function (msg) {
-      newList(JSON.parse(msg));
+    socket.on("send_op_list", function (listaChats) {
+      // let listaChats = JSON.parse(msg);
+      newList(listaChats.chats, listaChats.asignado);
     });
     socket.on('recive_op_message', function (msg) {
       console.log("Mensaje recibido: "+JSON.stringify(msg));
