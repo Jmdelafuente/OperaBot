@@ -2,26 +2,23 @@ var Queue = require("better-queue");
 // var Chat = require("./models/Chat");
 var socket = require("./websocket");
 var messenger = require("./messengerService");
-var chat_asig = {}; // * Diccionario 'chatID' -> operadorID (ID del socket)
+var chat_asig = {}; // * Diccionario 'chatID' -> operadorID (SESSIONKEY)
 var operators = {}; // * Todos los operadores disponbles
 
-var newAsign = new Queue(function (input, cb) {
+var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
   // FIXME: a modo de prueba, tomamos uno 'aleatorio'
   let op = random_item(operators);
-  socket.asignarMensaje(op, input.id, input.cont, input.nombre).then((result) => {
-    if (result) {
-      // Save the new assignment
-      chat_asig[id] = res.op;
-      result = true;
-      cb(null, result);
-    } else {
-      // ? TODO:
-    }
-  }, error=>{
+  let result = await socket.asignarMensaje(op, input.id, input.cont, input.nombre);
+  if (result) {
+    // Save the new assignment
+    chat_asig[input.id] = result.user;
+    result = true;
+    cb(null, result);
+  } else {
+    // ? TODO:
     cb(error, null);
-  });
-  // Callback / response
+  }
 });
 
 function random_item(items) {
@@ -41,15 +38,38 @@ function random_item(items) {
  * @param {*} canal socket o websocket de comunicacion con el operador
  */
 async function altaOperador(id, canal) {
-  // Save {id,connection} for later
-  operators[id] = canal;
+  // Check si el operador ya existe
+  if (!operators[id]){
+    // Save {id,connection} for later
+    operators[id] = canal;
+  }else{
+    // TODO: recuperar chats asignados/asignar chats y enviar
+    lista_asig = recuperarChatsOperador(id);
+    socket.recibirLista(canal, lista_asig, true);
+  }
+  // TODO: enviar todos los chats
   lista = messenger.chatsList();
-  // socket.recibirLista(canal, lista);
+  socket.recibirLista(canal, lista, false);
+}
+/**
+ *  Recupera todos los chats asignados a un operador dado el id del mismo.
+ *
+ * @param {*} id ID del operador que se requiren recuperar sus chats
+ * @returns {Chat[]}  Lista de chats
+ */
+function recuperarChatsOperador(id){
+  return Object.assign(
+                    {},
+                    ...Object.entries(chat_asig)
+                    .filter(([k, v]) => v == id)
+                    .map(([k, v]) => ({ [k]: v }))
+                );
 }
 
 async function bajaOperador(id) {
     var baja = false;
     delete operators[id];
+    console.log('Baja operador '+id);
     //  Antes de dar de baja un operador, esperamos un tiempo prudencial
     //  -4min- tal vez sea sólo una ligera desconexión.
     setTimeout(
@@ -58,12 +78,7 @@ async function bajaOperador(id) {
             if (! operators[id]) {
                 // ? Cuando un operador se deconecta, sus chats se reasignan?
                 // Buscar chats asignados a ese operador
-                var assigned_chats = Object.assign(
-                    {},
-                    ...Object.entries(chat_asig)
-                    .filter(([k, v]) => v == id)
-                    .map(([k, v]) => ({ [k]: v }))
-                );
+                var assigned_chats = recuperarChatsOperador(id);
                 // Solicitar reasignacion
                 for (const [chat, op] of Object.entries(assigned_chats)) {
                     newAsign
