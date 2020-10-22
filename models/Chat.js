@@ -1,6 +1,8 @@
 // import { URLs, bodyParser } from "../configs/services";
 const services = require("../configs/services");
 const axios = require("axios").default;
+const estado = require("./estado"); // estado.js exporta las clases 'Abierto' y 'Cerrado'
+
 /**
  *
  *
@@ -18,19 +20,20 @@ class Chat {
    *Creates an instance of Chat.
    * @param {*} id remitente del chat, igual que el original que usan las plataformas
    * @param {*} origen (W)hatsapp, (F)acebook...
+   * @param {*} name nombre humano-legible del remitente
    * @param {*} timestamp ultima marca de tiempo
    * @param {*} pendingmessage cantidad de mensajes sin leer
    * @param {*} lastmessage contenido del ultmo mensaje (para que exista un chat, al menos un mensaje hubo)
-   * @param {*} name nombre humano-legible del remitente
    * @memberof Chat
    */
-  constructor(id, origen, timestamp, pendingmessage = 0, name, lastmessage='') {
+  constructor(id, origen, name, timestamp, pendingmessage = 0, lastmessage='') {
     this.id = id;
     this.origin = origen;
-    this.timestamp = timestamp;
-    this.lastmessage = lastmessage;
     this.name = name;
+    this.lastmessage = lastmessage;
     this.pendingmessage = pendingmessage;
+    this.timestamp = timestamp;
+    this.state = new estado.Abierto(this);
   }
 
   async enviarMensaje(cont) {
@@ -54,6 +57,26 @@ class Chat {
         throw new Error(error);
       });
   }
+
+  changeState (state) {
+    this.state = state;
+  }
+
+  // funcionalidad para modificar el estado del chat
+  asignacion () {
+    this.state.asignacion();
+  }
+  
+  // funcionalidad para modificar el estado del chat
+  resolucionOk () {
+    this.state.resolucionOk();
+  }
+  
+  // funcionalidad para modificar el estado del chat
+  resolucionFallida () {
+    this.state.resolucionFallida();
+  }
+  
 }
 
 module.exports = Chat;
