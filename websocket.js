@@ -65,6 +65,10 @@ io.on("connection", function (socket) {
     
   });
 
+  socket.on("send_op_seen", function(chat){
+    op.confirmarVisto(chat, sockets[socket.id].user);
+  });
+
   // socket.on("recive_op_message", function (msg) {
   //   io.emit("recive_op_message",msg);
   // });

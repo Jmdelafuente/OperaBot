@@ -124,6 +124,8 @@ async function recibirMensaje(id, cont) {
       });
   }
 }
+
+
 /**
  * Recupera todos los mensajes de un chat.
  * Puede recurrir a la cache/DB o pedirle al servicio de mensajeria los mensajes
@@ -145,9 +147,17 @@ async function enviarMensaje(id, cont) {
   messenger.enviarMensaje(id,cont);
 }
 
+async function confirmarVisto(chatId,operadorId){
+  let operador = operators[operadorId];
+  var asignado = await operador.guardarAsignacion(chat);
+  // TODO: analiticas?
+  // TODO: faltaria enviar el visto a la mensajeria
+}
+
 
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
 module.exports.recibirMensaje = recibirMensaje;
 module.exports.enviarMensaje = enviarMensaje;
+module.exports.confirmarVisto = confirmarVisto;
 module.exports.operators = operators;
