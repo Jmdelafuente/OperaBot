@@ -1,7 +1,7 @@
 // import { URLs, bodyParser } from "../configs/services";
 const services = require("../configs/services");
 const axios = require("axios").default;
-const estado = require("./estado"); // estado.js exporta las clases 'Abierto' y 'Cerrado'
+const estado = require("./Estado"); // estado.js exporta las clases 'Abierto' y 'Cerrado'
 
 /**
  *
