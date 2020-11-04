@@ -1,7 +1,6 @@
 const sqlite3 = require("sqlite3");
 const Promise = require("bluebird");
-const { response } = require("express");
-const dbPath = "./operaBOT.db";
+// const dbPath = "./operaBOT.db";
 
 class OperaDB {
   constructor(dbPath) {
