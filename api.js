@@ -3,7 +3,7 @@ const ms = require('./messengerService');
 
 // ? Tiene sentido pedir todos los chats a la API si no es por websocket?
   app.get("/api/allChats", (req, res) => {
-  // ? TODO authenticate origin
+  // ? TODO: authenticate origin
   // ? // * Get all WA chats
   // ? var wa_list = [];
   // ? var fc_list = [];
@@ -21,7 +21,7 @@ const ms = require('./messengerService');
   // ? });
   // ? // ? Add a mark for know is whatsapp chat
   // ? // * Get all Facebook chats
-  // ? // TODO consume api
+  // ? // TODO: consume api
 
   // ? // * Order all chats by timestamp
   // ? // ? wa uses a variable called 't', facebook ?
