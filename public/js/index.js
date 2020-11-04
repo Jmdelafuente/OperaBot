@@ -117,6 +117,8 @@ var conn = false;
         console.log(`conn: ${conn}, params: ${params}`);
         socket.emit('new_operator', params);
         conn = true;
+      }else{
+        // TODO: Recuperar chats asignados
       }
     });
     socket.on("send_op_list", function (listaChats) {
