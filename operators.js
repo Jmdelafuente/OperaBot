@@ -1,8 +1,9 @@
 var Queue = require("better-queue");
 // var Chat = require("./models/Chat");
 var socket = require("./websocket");
+const Asignacion = require("./models/Asignacion");
 var messenger = require("./messengerService");
-var chat_asig = {}; // * Diccionario 'chatID' -> operadorID (SESSIONKEY)
+var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
 
 var newAsign = new Queue(async function (input, cb) {
@@ -12,7 +13,7 @@ var newAsign = new Queue(async function (input, cb) {
   let result = await socket.asignarMensaje(op, input.id, input.cont, input.nombre);
   if (result) {
     // Save the new assignment
-    chat_asig[input.id] = result.user;
+    chat_asig[input.id] = new Asignacion(input.id,result.user);
     result = true;
     cb(null, result);
   } else {
@@ -61,7 +62,7 @@ function recuperarChatsOperador(id){
   return Object.assign(
                     {},
                     ...Object.entries(chat_asig)
-                    .filter(([k, v]) => v == id)
+                    .filter(([k, v]) => v.user == id)
                     .map(([k, v]) => ({ [k]: v }))
                 );
 }
@@ -106,7 +107,7 @@ async function recibirMensaje(id, cont) {
   // Check if chat is already assigned
   if (chat_asig[id]) {
     // Push notification to operator
-    socket.recibirMensaje(chat_asig[id], id, cont);
+    socket.recibirMensaje(chat_asig[id].user, id, cont);
   } else {
     // * We need to assign it
     chat = messenger.getChatById(id);
@@ -149,7 +150,7 @@ async function enviarMensaje(id, cont) {
 
 async function confirmarVisto(chatId,operadorId){
   let operador = operators[operadorId];
-  var asignado = await operador.guardarAsignacion(chat);
+  var asignado = await operador.guardarAsignacion(chatId);
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
 }

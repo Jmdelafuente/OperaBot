@@ -1,6 +1,13 @@
 const db = require("../dbService");
 
 class Asignacion {
+  /**
+   *Creates an instance of Asignacion.
+   * @param {*} chatId Identificador del chat asignado
+   * @param {*} operadorId Identificador del operador a tratar el chat
+   * @param {boolean} [asignacionEstable=false] Por defecto la asignacion es transitoria hasta que el operador abra el chat o escriba un mensaje.
+   * @memberof Asignacion
+   */
   constructor(chatId, operadorId, asignacionEstable = false) {
     this.chatId = chatId;
     this.operadorId = operadorId;
@@ -20,3 +27,5 @@ class Asignacion {
       );
   }
 }
+
+module.exports = Asignacion;
