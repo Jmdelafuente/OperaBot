@@ -37,9 +37,8 @@ class Operador {
           this.id = done;
           return done;
         },
-        (fail) => {
-          return fail;
-        }
+        (fail) => {return fail;}
       );
   }
 }
+module.exports = Operador;
