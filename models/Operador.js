@@ -5,6 +5,8 @@
  * @class Operador
  */
 const db = require("../dbService");
+const weblogin = require("../configs/weblogin");
+
 class Operador {
   /**
    *Creates an instance of Operador.
@@ -22,6 +24,7 @@ class Operador {
     this.online = false;
     this.autoasignacion = true;
     this.perfil = perfil;
+    this.socket = null;
     this.db = new db("../operaBOT.db");
   }
 
@@ -40,5 +43,75 @@ class Operador {
         (fail) => {return fail;}
       );
   }
+
+  validar(token){
+    var res = false;
+    var operadorGuardado = null;
+    let usuario = weblogin.validarToken(token);
+    let hoy = new Date().toISOString();
+    let esValido = false;
+    // TODO: verificar si el usuario existe
+    if(usuario.perfil){
+      esValido = true;
+      this.db
+        .buscar(
+          "operadores",
+          ["operadorId", "email", "cuit", "razonSocial", "wapPersonaId"],
+          [["email", usuario.correoElectronico]]
+        )
+        .then(
+          (op) => {
+            if (op) {
+              operadorGuardado = op[0];
+              // TODO: revisar si es necesario actualizar datos
+            } else {
+              // TODO: No existe el usuario, pero tiene permiso, dar alta
+              operadorGuardado.id = this.db
+                .insertar(
+                  "operadores",
+                  [
+                    "email",
+                    "cuit",
+                    "razonSocial",
+                    "wapPersonaId",
+                    "ultimoAcceso",
+                  ],
+                  [
+                    usuario.correoElectronico,
+                    usuario.cuit,
+                    usuario.datosPersonales.razonSocial,
+                    usuario.datosPersonales.referenciaID,
+                    hoy,
+                  ]
+                )
+                .then((v) => {
+                  operadorGuardado.wapPersonaId =
+                    usuario.datosPersonales.referenciaID;
+                  operadorGuardado.email = usuario.correoElectronico;
+                  operadorGuardado.razonSocial =
+                    usuario.datosPersonales.razonSocial;
+                  operadorGuardado.cuit = usuario.cuit;
+                });
+            }
+          },
+          (err) => {throw new Error(err);}
+        );
+      if (esValido && operadorGuardado.id) {
+        // TODO: actualizar estado interno
+        this.idwappersona = operadorGuardado.wapPersonaId;
+        this.email = operadorGuardado.email;
+        this.razonSocial = operadorGuardado.razonSocial;
+        this.cuit = operadorGuardado.cuit;
+        this.id = operadorGuardado.id;
+        this.online = true;
+        this.autoasignacion = true;
+        this.perfil = usuario.perfil;
+        // Es valido
+        res = true;
+      }
+    }
+    return res;
+  }
+
 }
 module.exports = Operador;
