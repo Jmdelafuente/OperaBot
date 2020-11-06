@@ -67,6 +67,7 @@ io.on("connection", function (socket) {
 
   socket.on("send_op_seen", function(chat){
     op.confirmarVisto(chat, sockets[socket.id].user);
+    console.log(`${sockets[socket.id]}`);
   });
 
   // socket.on("recive_op_message", function (msg) {
@@ -104,7 +105,7 @@ async function asignarMensaje(socket, id, contenido, nombre) {
 }
 
 const recibirLista = function (operador, lista, asignado) {
-  console.log(`Propagando lista ${lista}`);
+  console.log(`Propagando lista ${JSON.stringify(lista)}`);
   let msg = {};
   msg.chats = lista;
   msg.asignado = asignado;
