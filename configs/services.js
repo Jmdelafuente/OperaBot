@@ -12,12 +12,12 @@ const FB_URL = `${FB_SERVER}:${FB_PORT}/${FB_PREFIX}`;
 const URLs = { W: WA_URL, F: FB_URL };
 
 // Configure los puertos, prefijos y servidores para los servicios de chats
-module.exports.WA_PORT;
-module.exports.WA_PREFIX;
-module.exports.WA_SERVER;
-module.exports.FB_PORT;
-module.exports.FB_PORT;
-module.exports.FB_SERVER;
+// module.exports.WA_PORT = WA_PORT;
+// module.exports.WA_PREFIX = WA_PREFIX;
+// module.exports.WA_SERVER = WA_SERVER;
+// module.exports.FB_PORT = FB_PORT;
+// module.exports.FB_PREFIX = FB_PREFIX;
+// module.exports.FB_SERVER = FB_SERVER;
 
 // formateo automatico para los imports
 // module.exports.WA_URL = `${WA_SERVER}:${WA_PORT}/${WA_PREFIX}`;
