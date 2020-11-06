@@ -11,7 +11,7 @@ class Estado {
    * @param {*} id en la DB
    * @param {*} nombre del estado, humano-legible
    * @param {*} descripcion adicional si hiciera falta
-   * @param {*} chat instancia del chat cuyo estado se modifica
+   * @param {*} chat id del chat cuyo estado se modifica
    * @memberof Estado
    * @abstract
    * @constructor
@@ -78,5 +78,5 @@ class Abierto extends Estado{
   }
 }
 
-module.exports = Abierto;
-module.exports = Cerrado;
+module.exports.Abierto = Abierto;
+module.exports.Cerrado = Cerrado;
