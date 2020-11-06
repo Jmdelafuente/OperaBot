@@ -2,6 +2,7 @@ var Queue = require("better-queue");
 // var Chat = require("./models/Chat");
 var socket = require("./websocket");
 const Asignacion = require("./models/Asignacion");
+const Operador = require("./models/Operador");
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
@@ -10,7 +11,7 @@ var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
   // FIXME: a modo de prueba, tomamos uno 'aleatorio'
   let op = random_item(operators);
-  let result = await socket.asignarMensaje(op, input.id, input.cont, input.nombre);
+  let result = await socket.asignarMensaje(op.user, input.id, input.cont, input.nombre);
   if (result) {
     // Save the new assignment
     chat_asig[input.id] = new Asignacion(input.id,result.user);
@@ -41,6 +42,8 @@ function random_item(items) {
 async function altaOperador(id, canal) {
   // Check si el operador ya existe
   if (!operators[id]){
+    // Validar el SESSIONKEY y recuperar el operador
+    
     // Save {id,connection} for later
     operators[id] = canal;
   }else{
