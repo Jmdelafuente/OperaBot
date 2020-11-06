@@ -33,7 +33,7 @@ class Chat {
     this.lastmessage = lastmessage;
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
-    this.state = new estado.Abierto(this);
+    this.state = new estado.Abierto(this.id);
   }
 
   async enviarMensaje(cont) {
