@@ -1,6 +1,6 @@
-# WA_Server
+# OperaBOT
 
-> A simple API Server for unify multiples chat source in one way. Uses [WA_Server proyect](https://gitlab.com/jmdelafuente/_node_wa_server).
+> A simple API Server for unify multiples chats sources in one way. It use [WA_Server proyect](https://gitlab.com/jmdelafuente/_node_wa_server) and [FACE_Server proyect](https://gitlab.com/San-ti/_node_face_server) for messengers services. It's front-end agnostic and provides websockets for comunication with real operators (simple web frontend for testing but a Flutter or React app will be great). More documentation is needed.
 
 ## Supported Platforms
 
@@ -24,22 +24,22 @@ Windows 7 and later are supported.
 
 Clone the repo, enter the folder and run
 
-```
+```bash
 git clone https://gitlab.com/jmdelafuente/_node_operabot.git
 cd _node_operabot
+npm install
 node index.js
 ```
 
-it and you should be good to go.
-
-Note: on Linux you need a running display server (X11 or Wayland).
-If you run Linux on a headless server or wan't to run chromium without visible, change the option *headless* in _bot.json_ .
-
+... it and you should be good to go.
 *I haven't tested on Mac. Please be free of test and push new issue if needed*
 
 ## 💻 Technologies
-* [Node](https://nodejs.org/en/)
-* [Express](https://expressjs.com/)
+
+- [Node](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [SocketIO](https://socket.io/)
+- [SQLite](https://sqlite.org)
 
 ## FAQ
 
@@ -49,7 +49,12 @@ If you run Linux on a headless server or wan't to run chromium without visible, 
 
 - **What boilerplate did you use?**
 
-  None. The idea was to get a better understanding of how things work together, But I do take a cue from other projects.
+  None. The idea was to get a better understanding of how things work together, But I do take a cue from other projects. Some Design Patterns are being used.
+
+- **..but why? This doesn't exists already?**
+
+  This solution is already provided by some companies but, I'm Argentinian and U$S and Euros are too expensive to pay for it. So, here is my free solution if you nedeed (as my employee need it!).
 
 ## 📃 Legal
-This is an independent and unofficial software. Use at your own risk. **Commercial use of this code/repo is strictly prohibited.**
+
+This is an independent software. Use at your own risk. **Commercial use of this code/repo is strictly prohibited.**. See LICENSE for detailed info.
