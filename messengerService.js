@@ -23,7 +23,7 @@ async function nuevoMensaje(id, cont, origen, t, nombre) {
     chatsList[id].name = nombre; //puede haber cambiado de nombre la persona
     chatsList[id].pendingmessage++;
   } else {
-    var chat = new Chat(id, origen, t, 1, nombre);
+    var chat = new Chat(id, origen, nombre, t, 1, cont);
     chatsList[id] = chat;
   }
   // Notify new message
