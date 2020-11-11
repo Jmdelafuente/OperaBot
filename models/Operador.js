@@ -15,7 +15,20 @@ class Operador {
    * @param {*} perfil
    * @memberof Operador
    */
-  constructor(wappersona, perfil, email, razonSocial, cuit) {
+  constructor(){
+    this.id = "";
+    this.idwappersona = '';
+    this.email = '';
+    this.razonSocial = '';
+    this.cuit = '';
+    this.online = false;
+    this.autoasignacion = true;
+    this.perfil = '';
+    this.socket = null;
+    this.db = new db("../operaBOT.db");
+  }
+
+  init(wappersona, perfil, email, razonSocial, cuit) {
     this.id = '';
     this.idwappersona = wappersona;
     this.email = email;
@@ -25,7 +38,6 @@ class Operador {
     this.autoasignacion = true;
     this.perfil = perfil;
     this.socket = null;
-    this.db = new db("../operaBOT.db");
   }
 
   async guardar() {
@@ -64,6 +76,7 @@ class Operador {
             if (op) {
               operadorGuardado = op[0];
               // TODO: revisar si es necesario actualizar datos
+              this.db.actualizar("operadores",["ultimoAcceso"],[hoy],[["id",operadorGuardado.id]]);
             } else {
               // TODO: No existe el usuario, pero tiene permiso, dar alta
               operadorGuardado.id = this.db
