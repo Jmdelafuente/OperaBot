@@ -36,64 +36,71 @@ function random_item(items) {
  * cuando un operador se conecta a la plataforma, se registra
  * el id del operador y el id del canal de comunicación del mismo
  * 
- * @param {*} id del operador nuevo
+ * @param {Number} id del operador nuevo
  * @param {*} canal socket o websocket de comunicacion con el operador
  */
 async function altaOperador(id, canal) {
-  // Check si el operador ya existe
-  if (!operators[id]){
-    // Validar el SESSIONKEY y recuperar el operador
-    
-    // Save {id,connection} for later
-    operators[id] = canal;
+  // Validar el SESSIONKEY y recuperar el operador
+  var operador = new Operador();
+  if(!operador.validar(id)){
+    // TODO: no es un token valido, salir
   }else{
-    // TODO: recuperar chats asignados/asignar chats y enviar
-    lista_asig = recuperarChatsOperador(id);
-    socket.recibirLista(canal, lista_asig, true);
+    // Check si el operador ya existe
+    if (!operators[operador.id]){
+      // Save {id: connection} for later
+      operators[operador.id] = canal;
+      operador.socket = canal;
+    }else{
+      // TODO: recuperar chats asignados/asignar chats y enviar
+      lista_asig = recuperarChatsOperador(operador.id);
+      socket.recibirLista(canal, lista_asig, true);
+    }
+    // TODO: enviar todos los chats
+    lista = messenger.chatsList();
+    socket.recibirLista(canal, lista, false);
   }
-  // TODO: enviar todos los chats
-  lista = messenger.chatsList();
-  socket.recibirLista(canal, lista, false);
 }
 /**
  *  Recupera todos los chats asignados a un operador dado el id del mismo.
  *
- * @param {*} id ID del operador que se requiren recuperar sus chats
+ * @param {Numbers} id ID del operador que se requiren recuperar sus chats
  * @returns {Chat[]}  Lista de chats
  */
 function recuperarChatsOperador(id){
   return Object.assign(
-                    {},
-                    ...Object.entries(chat_asig)
-                    .filter(([k, v]) => v.user == id)
-                    .map(([k, v]) => ({ [k]: v }))
-                );
+      {},
+      ...Object.entries(chat_asig)
+      .filter(([k, v]) => v.user == id)
+      .map(([k, v]) => ({ [k]: v }))
+  );
 }
 
 async function bajaOperador(id) {
     var baja = false;
-    delete operators[id];
+    var operador = new Operador();
+    operador.validar(id);
+    delete operators[operador.id];
     console.log('Baja operador '+id);
     //  Antes de dar de baja un operador, esperamos un tiempo prudencial
     //  -4min- tal vez sea sólo una ligera desconexión.
     setTimeout(
         id=>{
-            // Si no se volvio a conectar, le doy la desconexion logica
-            if (! operators[id]) {
-                // ? Cuando un operador se deconecta, sus chats se reasignan?
-                // Buscar chats asignados a ese operador
-                var assigned_chats = recuperarChatsOperador(id);
-                // Solicitar reasignacion
-                for (const [chat, op] of Object.entries(assigned_chats)) {
-                    newAsign
-                    .push({ id: chat.id, cont: chat.cont, nombre: chat.nombre })
-                    .on("failed", err => {
-                        // The last one op
-                        // ? siendo el último se puede desconectar con chats aún abiertos?
-                    });
-                }
-                baja = true;
+          // Si no se volvio a conectar, le doy la desconexion logica
+          if (!operators[operador.id]) {
+            // TODO: Reasignar chats que no hayan sido respondidos por el operador
+            // Buscar chats asignados a ese operador
+            var assigned_chats = recuperarChatsOperador(operador.id);
+            // Solicitar reasignacion
+            for (const [chat, op] of Object.entries(assigned_chats)) {
+              newAsign
+                .push({ id: chat.id, cont: chat.cont, nombre: chat.nombre })
+                .on("failed", (err) => {
+                  // The last one op
+                  // ? como guardamos los chats sin asignacion
+                });
             }
+            baja = true;
+          }
         }, 240000, id
     );
     return baja;
@@ -103,8 +110,8 @@ async function bajaOperador(id) {
  * de los servicios de mensajeria y la envia a un operador
  * (asignando el chat de ser necesario)
  *
- * @param {*} id del remitente (propio del servicio de mensajeria)
- * @param {*} cont contenido del mensaje
+ * @param {Numbers} id del remitente (propio del servicio de mensajeria)
+ * @param {String} cont contenido del mensaje
  */
 async function recibirMensaje(id, cont) {
   // Check if chat is already assigned
@@ -117,8 +124,6 @@ async function recibirMensaje(id, cont) {
     newAsign
       .push({id:id, cont: cont, nombre:chat.name })
       .on("finish", function (res) {
-        // Save the assignment
-        // chat_asig[id] = res.op;
         return true;
       })
       .on("failed", function (err) {
@@ -144,8 +149,8 @@ async function mensajesChat(chatId){
  * Sin importar el origen del chat.
  * Responsabilidad delegada a la clase chat.
  *
- * @param {*} id del desintatario (propio del servicio de mensajeria)
- * @param {*} cont contenido del mensaje
+ * @param {Number} id del desintatario (propio del servicio de mensajeria)
+ * @param {String} cont contenido del mensaje
  */
 async function enviarMensaje(id, cont) {
   messenger.enviarMensaje(id,cont);
