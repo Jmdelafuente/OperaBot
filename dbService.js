@@ -80,6 +80,44 @@ class OperaDB {
     });
   }
   /**
+   * Función de actualización de datos en una tabla parametrizada. Realiza un UPDATE sobre los datos especificados utilizando el WHERE especificado
+   *
+   * @param {*} tabla nombre de la tabla a la cual hacerle select
+   * @param {*} campos listado de los campos de la tabla a actualizar
+   * @param {*} valores valores correspondientes con los campos listados
+   * @param {*} filtros arreglo del tipo [clave,valor] para filtrar la actualización
+   * @returns Int Cantidad de filas actualizadas
+   * @memberof OperaDB
+   */
+  actualizar(tabla, campos, valores, filtros) {
+    var query = "";
+    var values = "";
+    var where = "";
+    campos.forEach((element) => {
+      query += `${element} = ?, `;
+    });
+    filtros.forEach(([e, v]) => {
+      where += `${e} = ?`;
+      values.push(v);
+    });
+    query = query.slice(0, -2);
+    return new Promise((resolve, reject) => {
+      this.db.run(
+        `UPDATE ${tabla} SET ${query} WHERE ${where}`,
+        valores,
+        function (error) {
+          if (error) {
+            this.lastError = error;
+            reject(0);
+          } else {
+            resolve(this.changes);
+          }
+        }
+      );
+    });
+  }
+
+  /**
    * Recupera el ultimo error ocurrido en la DB o string vacio.
    *
    * @returns String que contiene el ultimo mensaje de error
