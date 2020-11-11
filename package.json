@@ -6,7 +6,8 @@
   "scripts": {
     "app": "node app.js",
     "start": "node app.js",
-    "pack": "pkg ."
+    "pack": "pkg .",
+    "test": "mocha configs/weblogin.test.js"
   },
   "bin": "api.js",
   "repository": {
@@ -43,13 +44,14 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "node-cache": "^5.1.2",
-    "request": "^2.88.2",
     "socket.io": "^2.3.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "jshint": "^2.12.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6",
     "pkg": "^4.4.9",
-    "nodemon": "^2.0.6"
+    "request": "^2.88.2"
   }
 }
