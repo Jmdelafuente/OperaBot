@@ -31,6 +31,35 @@ describe("operador test", function () {
       usuario.perfil = perfil;
     });
 
+    it("Deberia guardar() un operador", async function () {
+      let operador = new Operador();
+      operador.init(
+        usuario.datosPersonales.referenciaID,
+        usuario.perfil,
+        usuario.userName,
+        usuario.datosPersonales.razonSocial,
+        usuario.datosPersonales.cuil
+      );
+      await operador.guardar();
+      assert.strictEqual(operador.db.error(), "");
+    });
+    it("Deberia validar() un operador ya guardado", async function () {
+      let operador = new Operador();
+      operador.init(
+        usuario.datosPersonales.referenciaID,
+        usuario.perfil,
+        usuario.userName,
+        usuario.datosPersonales.razonSocial,
+        usuario.datosPersonales.cuil
+      );
+      await operador.guardar();
+      assert.strictEqual(operador.db.error(), "");
+
+      let operador2 = new Operador();
+      let esValido = await operador2.validar(usuario.securityToken);
+      assert.strictEqual(esValido, true);
+      assert.strictEqual(operador2.db.error(), "");
+    });
     it("Deberia validar() un operador con guardado", async function () {
         let operador = new Operador();
         let esValido = await operador.validar(usuario.securityToken);
@@ -38,36 +67,8 @@ describe("operador test", function () {
         assert.strictEqual(esValido, true);
         assert.strictEqual(operador.db.error(), "");
     });
-    
-    it("Deberia validar() un operador ya guardado", async function () {
-        let operador = new Operador();
-        operador.init(
-          usuario.datosPersonales.referenciaID,
-          usuario.perfil,
-          usuario.userName,
-          usuario.datosPersonales.razonSocial,
-          usuario.datosPersonales.cuil
-        );
-        await operador.guardar();
-        assert.strictEqual(operador.db.error(), "");
 
-        let operador2 = new Operador();
-        let esValido = await operador2.validar(usuario.securityToken);
-        assert.strictEqual(esValido, true);
-        assert.strictEqual(operador2.db.error(), "");
-    });
-    it("Deberia guardar() un operador", async function () {
-        let operador = new Operador();
-        operador.init(
-        usuario.datosPersonales.referenciaID,
-        usuario.perfil,
-        usuario.userName,
-        usuario.datosPersonales.razonSocial,
-        usuario.datosPersonales.cuil
-        );
-        await operador.guardar();
-        assert.strictEqual(operador.db.error(), "");
-    });
+    
     
     afterEach("limpiar la DB", async function () {
         this.timeout(10000);
