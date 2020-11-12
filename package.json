@@ -7,7 +7,7 @@
     "app": "node app.js",
     "start": "node app.js",
     "pack": "pkg .",
-    "test": "mocha configs/weblogin.test.js"
+    "test": "mocha configs/weblogin.test.js models/*.test.js"
   },
   "bin": "api.js",
   "repository": {
