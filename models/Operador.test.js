@@ -2,7 +2,6 @@ const assert = require("assert").strict;
 const axios = require("axios").default;
 const weblogin = require("../configs/weblogin");
 const Operador = require("./Operador");
-const db = require("../dbService");
 const OperaDB = require("../dbService");
 var usuario;
 describe("operador test", function () {
@@ -65,7 +64,6 @@ describe("operador test", function () {
     it("Deberia validar() un operador con guardado", async function () {
         let operador = new Operador();
         let esValido = await operador.validar(usuario.securityToken);
-        // console.log("ERROR:" + operador2.db.error());
         assert.strictEqual(esValido, true);
         assert.strictEqual(operador.db.error(), "");
     });
