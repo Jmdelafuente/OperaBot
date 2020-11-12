@@ -1,7 +1,7 @@
 const assert = require("assert").strict;
 const weblogin = require("../configs/weblogin");
 const axios = require("axios").default;
-describe("integration test", function () {
+describe("weblogin integration test", function () {
     it("Deberia conectarse correctamente a weblogin y validar el TOKEN", async function () {
     this.timeout(10000);
     var data = JSON.stringify({ userName: "prueba2", userPass: "_Prueb@2" });
