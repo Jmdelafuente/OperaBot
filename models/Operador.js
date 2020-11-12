@@ -28,8 +28,8 @@ class Operador {
     this.db = new OperaDB();
   }
 
-  init(idwappersona, perfil, email, razonSocial, cuit) {
-    this.id = "";
+  init(operadorId, idwappersona, perfil, email, razonSocial, cuit) {
+    this.id = operadorId;
     this.idwappersona = idwappersona;
     this.email = email;
     this.razonSocial = razonSocial;
@@ -52,12 +52,13 @@ class Operador {
     var promesa = this.db
       .buscar(
         "operadores",
-        ["email", "cuit", "razonSocial", "wapPersonaId"],
+        ["email", "cuit", "razonSocial", "wapPersonaId", "operadorId"],
         filtro
       )
       .then((response) => response[0]);
     let operador = await promesa;
     this.init(
+      operador.operadorId,
       operador.idwappersona,
       undefined,
       operador.email,
@@ -91,19 +92,18 @@ class Operador {
 
   async validar(token) {
     var res = false;
-    var operadorGuardado = null;
+    var operadorGuardado = {};
     let usuario = await weblogin.validarToken(token);
     let hoy = new Date().toISOString();
     let esValido = false;
     // TODO: verificar si el usuario existe
     if (usuario.perfil) {
       esValido = true;
-      let promise = this.db
-        .buscar(
-          "operadores",
-          ["operadorId", "email", "cuit", "razonSocial", "wapPersonaId"],
-          [["email", usuario.userName]]
-        );
+      let promise = this.db.buscar(
+        "operadores",
+        ["operadorId", "email", "cuit", "razonSocial", "wapPersonaId"],
+        [["email", usuario.userName]]
+      );
       let op = await promise;
       if (op.length != 0) {
         operadorGuardado = op[0];
@@ -121,7 +121,6 @@ class Operador {
           ]
         );
         let v = await promise;
-        operadorGuardado = {};
         operadorGuardado.operadorId = v.id;
         operadorGuardado.wapPersonaId = usuario.datosPersonales.referenciaID;
         operadorGuardado.email = usuario.correoElectronico;
