@@ -3,9 +3,9 @@ const Promise = require("bluebird");
 // const dbPath = "./operaBOT.db";
 
 class OperaDB {
-  constructor(dbPath) {
+  constructor() {
     this.lastError = "";
-    this.db = new sqlite3.Database(dbPath, (err) => {
+    this.db = new sqlite3.Database("operaBOT.db", (err) => {
       if (err) {
         console.log("Could not connect to database", err);
         this.lastError = err;
@@ -15,8 +15,8 @@ class OperaDB {
   /**
    * Funcion Insertar en la base de datos
    *
-   * @param {*} tabla nombre de la tabla donde insertar el valor
-   * @param {[*]} campos listado de los campos de la tabla a insertar
+   * @param {String} tabla nombre de la tabla donde insertar el valor
+   * @param {[String]} campos listado de los campos de la tabla a insertar
    * @param {[*]} valores valores correspondientes con los campos listados
    * @returns Si la insercion fue correcta el ID corresponiente, -1 en caso contrario y exporta el error.
    * @memberof OperaDB
@@ -24,6 +24,7 @@ class OperaDB {
   insertar(tabla, campos, valores) {
     var query = "";
     var values = "";
+    var objeto = this;
     campos.forEach((element) => {
       query += `${element}, `;
       values += "?, ";
@@ -36,7 +37,8 @@ class OperaDB {
         valores,
         function (error) {
           if (error) {
-            this.lastError = error;
+            objeto.lastError = error;
+            console.log(error);
             reject({ id: -1 });
           } else {
             resolve({ id: this.lastID });
@@ -56,18 +58,40 @@ class OperaDB {
    */
   buscar(tabla, campos, filtros) {
     var where = "";
-    var placeholder = "";
-    var ret = [];
+    var placeholder = [];
+    var objeto = this;
     filtros.forEach(([e, v]) => {
-      where += `${e}=\$${e}`;
-      placeholder += `\$${e}:${v}, \n`;
+      where += `${e}=? AND `;
+      placeholder.push(v);
+    });
+    where += "TRUE";
+    return new Promise((resolve, reject) => {
+      this.db.all(
+        `SELECT ${campos} FROM ${tabla} where ${where}`,
+        placeholder,
+        (error, rows) => {
+          if (error) {
+            objeto.lastError = error;
+            reject(error);
+          } else {
+            resolve(rows);
+          }
+        }
+      );
+    });
+  }
+
+  borrar(tabla, filtros) {
+    var where = "";
+    var valores = [];
+    filtros.forEach(([e, v]) => {
+      where += `${e}=?`;
+      valores.push(v);
     });
     return new Promise((resolve, reject) => {
-      db.all(
-        `SELECT ${campos} FROM ${tabla} where ${where}`,
-        {
-          placeholder,
-        },
+      this.db.run(
+        `DELETE FROM ${tabla} where ${where}`,
+        valores,
         (error, rows) => {
           if (error) {
             this.lastError = error;
@@ -79,6 +103,7 @@ class OperaDB {
       );
     });
   }
+
   /**
    * Función de actualización de datos en una tabla parametrizada. Realiza un UPDATE sobre los datos especificados utilizando el WHERE especificado
    *
@@ -91,8 +116,9 @@ class OperaDB {
    */
   actualizar(tabla, campos, valores, filtros) {
     var query = "";
-    var values = "";
+    var values = [];
     var where = "";
+    var objeto = this;
     campos.forEach((element) => {
       query += `${element} = ?, `;
     });
@@ -107,7 +133,7 @@ class OperaDB {
         valores,
         function (error) {
           if (error) {
-            this.lastError = error;
+            objeto.lastError = error;
             reject(0);
           } else {
             resolve(this.changes);
