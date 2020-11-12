@@ -34,6 +34,7 @@ describe("operador test", function () {
     it("Deberia guardar() un operador", async function () {
       let operador = new Operador();
       operador.init(
+        "",
         usuario.datosPersonales.referenciaID,
         usuario.perfil,
         usuario.userName,
@@ -46,6 +47,7 @@ describe("operador test", function () {
     it("Deberia validar() un operador ya guardado", async function () {
       let operador = new Operador();
       operador.init(
+        "",
         usuario.datosPersonales.referenciaID,
         usuario.perfil,
         usuario.userName,
