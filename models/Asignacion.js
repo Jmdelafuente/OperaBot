@@ -14,7 +14,7 @@ class Asignacion {
     this.asignacionEstable = asignacionEstable;
   }
   async guardar() {
-    this.db
+    await this.db
       .insertar("asignaciones", ["operadorId", "chatId"], [this.operadorId, this.chatId])
       .then(
         (done) => {

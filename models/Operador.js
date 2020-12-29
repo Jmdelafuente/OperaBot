@@ -133,14 +133,14 @@ class Operador {
           "operadores",
           ["ultimoAcceso"],
           [hoy],
-          [["id", operadorGuardado.id]]
+          [["operadorId", operadorGuardado.id]]
         );
         // TODO: actualizar estado interno
         this.idwappersona = operadorGuardado.wapPersonaId;
         this.email = operadorGuardado.email;
         this.razonSocial = operadorGuardado.razonSocial;
         this.cuit = operadorGuardado.cuit;
-        this.id = operadorGuardado.id;
+        this.id = operadorGuardado.operadorId;
         this.online = true;
         this.autoasignacion = true;
         this.perfil = usuario.perfil;

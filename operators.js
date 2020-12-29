@@ -11,7 +11,12 @@ var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
   // FIXME: a modo de prueba, tomamos uno 'aleatorio'
   let op = random_item(operators);
-  let result = await socket.asignarMensaje(op.user, input.id, input.cont, input.nombre);
+  let result = await socket.asignarMensaje(
+    op.socket,
+    input.id,
+    input.cont,
+    input.nombre
+  );
   if (result) {
     // Save the new assignment
     chat_asig[input.id] = new Asignacion(input.id,result.user);
@@ -42,22 +47,21 @@ function random_item(items) {
 async function altaOperador(id, canal) {
   // Validar el SESSIONKEY y recuperar el operador
   var operador = new Operador();
-  if(!operador.validar(id)){
+  let esValido = operador.validar(id);
+  if(!await esValido){
     // TODO: no es un token valido, salir
   }else{
     // Check si el operador ya existe
     if (!operators[operador.id]){
-      // Save {id: connection} for later
-      operators[operador.id] = canal;
       operador.socket = canal;
+      operators[operador.id] = operador;
     }else{
       // TODO: recuperar chats asignados/asignar chats y enviar
       lista_asig = recuperarChatsOperador(operador.id);
       socket.recibirLista(canal, lista_asig, true);
     }
     // TODO: enviar todos los chats
-    lista = messenger.chatsList();
-    socket.recibirLista(canal, lista, false);
+    socket.recibirLista(canal, messenger.chatsList(), false);
   }
 }
 /**
@@ -119,7 +123,7 @@ async function recibirMensaje(id, cont) {
     // Push notification to operator
     socket.recibirMensaje(chat_asig[id].user, id, cont);
   } else {
-    // * We need to assign it
+    // Se asigna el chat
     chat = messenger.getChatById(id);
     newAsign
       .push({id:id, cont: cont, nombre:chat.name })
@@ -157,8 +161,11 @@ async function enviarMensaje(id, cont) {
 }
 
 async function confirmarVisto(chatId,operadorId){
-  let operador = operators[operadorId];
-  var asignado = await operador.guardarAsignacion(chatId);
+  // let operador = operators[operadorId];
+  // Al abrir el mensaje, la asignacion pasa a ser estable (no se busca nuevo operador para el chat)
+  let asignacion = new Asignacion(chatId,operadorId);
+  await asignacion.guardar();
+  var asignado = asignacion.asignacionEstable;
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
 }
