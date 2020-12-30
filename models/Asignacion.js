@@ -1,4 +1,4 @@
-const db = require("../dbService");
+const operaDB = require("../dbService");
 
 class Asignacion {
   /**
@@ -12,6 +12,7 @@ class Asignacion {
     this.chatId = chatId;
     this.operadorId = operadorId;
     this.asignacionEstable = asignacionEstable;
+    this.db = operaDB;
   }
   async guardar() {
     await this.db
