@@ -6,25 +6,32 @@ const Operador = require("./models/Operador");
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
-
+var chat_unassig = [];
 var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
-  // FIXME: a modo de prueba, tomamos uno 'aleatorio'
-  let op = random_item(operators);
-  let result = await socket.asignarMensaje(
-    op.socket,
-    input.id,
-    input.cont,
-    input.nombre
-  );
-  if (result) {
-    // Save the new assignment
-    chat_asig[input.id] = new Asignacion(input.id,result.user);
-    result = true;
-    cb(null, result);
+  if (Object.keys(operators).length === 0) {
+    // No hay operadores online
+    // TODO: chequear la hora de trabajo y esperar
+    chat_unassig.push(input);
+    cb('fail', null);
   } else {
-    // ? TODO:
-    cb(error, null);
+    // FIXME: a modo de prueba, tomamos uno 'aleatorio'
+    let op = random_item(operators);
+    let result = await socket.asignarMensaje(
+      op.socket,
+      input.id,
+      input.cont,
+      input.nombre
+    );
+    if (result) {
+      // Save the new assignment
+      chat_asig[input.id] = new Asignacion(input.id, result.user);
+      result = true;
+      cb(null, result);
+    } else {
+      // ? TODO:
+      cb(error, null);
+    }
   }
 });
 
@@ -138,6 +145,13 @@ async function recibirMensaje(id, cont) {
   }
 }
 
+async function getAllMessages(id,operador){
+  operador = operators[operador.id];
+  chat = messenger.getChatById(id);
+  lista_mensajes = await chat.getAllMessages(true);
+  socket.recibirMensajesByChat(id,lista_mensajes,operador);
+}
+
 
 /**
  * Recupera todos los mensajes de un chat.
@@ -166,6 +180,7 @@ async function confirmarVisto(chatId,operadorId){
   let asignacion = new Asignacion(chatId,operadorId);
   await asignacion.guardar();
   var asignado = asignacion.asignacionEstable;
+  console.log(`Operador -> confirmarVisto: ${asignado}`);
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
 }
@@ -176,4 +191,5 @@ module.exports.bajaOperador = bajaOperador;
 module.exports.recibirMensaje = recibirMensaje;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.confirmarVisto = confirmarVisto;
+module.exports.getAllMessages = getAllMessages;
 module.exports.operators = operators;

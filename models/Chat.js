@@ -58,6 +58,27 @@ class Chat {
       });
   }
 
+  async getAllMessages(includeMe){
+    let b = JSON.stringify({
+      id: this.id,
+      includeMe: includeMe,
+    });
+    axios
+      .post(services.URLs[this.origin] + "/getAllMessages", {
+        body: b,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        res = response.data;
+        return res;
+      })
+      .catch(function (error) {
+        throw new Error(error);
+      });
+  }
+
   changeState (state) {
     this.state = state;
   }

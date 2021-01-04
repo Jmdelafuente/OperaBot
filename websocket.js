@@ -13,6 +13,8 @@ var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion te
 var op = require("./operators.js");
 const { resolve } = require("path");
 
+// * CONFIGURACION DE FRONT-END * //
+
 // Front for websockets
 appFront.set("port", portFront);
 appFront.use(express.static(path.join(__dirname, "public")));
@@ -29,6 +31,8 @@ appFront.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 http.listen(portFront);
+
+// * EVENTOS * //
 
 io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
@@ -52,9 +56,11 @@ io.on("connection", function (socket) {
     if (causa == "transport close" && sockets[socket.id]) {
       setTimeout(function () {
         let s = sockets[socket.id];
-        if(!sessions[s.user]){
-          op.bajaOperador(s.user);
-          delete sockets[socket.id];
+        if (typeof s !== "undefined") {
+          if (!sessions[s.user]) {
+            op.bajaOperador(s.user);
+            delete sockets[socket.id];
+          }
         }
       }, 10000);
     }
@@ -62,18 +68,20 @@ io.on("connection", function (socket) {
   });
 
   socket.on("all_messages_chat", function(id){
-    
+    op.getAllMessages(id, sockets[socket.id].user);
   });
 
   socket.on("send_op_seen", function(chat){
     op.confirmarVisto(chat, sockets[socket.id].user);
-    console.log(`${sockets[socket.id]}`);
+    console.log(`WebSocket -> send_op_seen: ${(sockets[socket.id]).toString()}`);
   });
 
   // socket.on("recive_op_message", function (msg) {
   //   io.emit("recive_op_message",msg);
   // });
 });
+
+// * FUNCIONES * //
 
 // Functions define for export and modularization
 const enviarMensaje = function (id, contenido) {};
@@ -104,6 +112,13 @@ async function asignarMensaje(socket, id, contenido, nombre) {
   });
 }
 
+const mensajesByChat = function(id, listamensajes, socket) {
+  let msg = {};
+  msg.id = id;
+  msg.lista = listamensajes;
+  socket.emit("getAllMessagesByChat", msg);
+};
+
 const recibirLista = function (operador, lista, asignado) {
   console.log(`Propagando lista ${JSON.stringify(lista)}`);
   let msg = {};
@@ -115,4 +130,5 @@ const recibirLista = function (operador, lista, asignado) {
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
 module.exports.asignarMensaje = asignarMensaje;
+module.exports.recibirMensajesByChat = mensajesByChat;
 module.exports.recibirLista = recibirLista;

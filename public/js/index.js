@@ -40,10 +40,22 @@ var conn = false;
       }
       hora.className = "msg_time";
       hora.innerText = t;
-      msj.innerText = cont;
+      msj.innerHTML = twemoji.parse(cont);
       document.getElementById('mensajes').appendChild(ex);
       ex.appendChild(msj);
       msj.appendChild(hora);
+      setTimeout(function () {
+        let time;
+        if(t == 'Ahora'){
+          time = new Date();
+        }else{
+          time = new Date(t);
+        }
+        hora.innerText =
+          time.getHours().toString() +
+          ":" +
+          (time.getMinutes() - 1).toString();
+      }, 59 * 1000);
     }
     
     function addChat(nom,id, asign){
@@ -92,6 +104,10 @@ var conn = false;
       $(".chat .active").removeClass("active");
       $(li).addClass("active");
       // TODO: Recuperar mensajes y los dibujarlos
+      // Borramos la lista de mensajes
+      $('mensajes').html("");
+      // Pedimos los mensajes del chat
+      socket.emit("all_messages_chat", id); 
       // Enviamos el 'visto' al servidor
       socket.emit("send_op_seen", id);
     }
@@ -141,6 +157,18 @@ var conn = false;
       addChat(msg.nom,msg.id,true);
       // addChat(msg.id,msg.contenido, true);
     });
-
+    socket.on("getAllMessagesByChat", function (msg) {
+      let lista = msg.lista;
+      let chat_activo = $("#idChat").val();
+      if(chat_activo == id){
+        lista.forEach((message) => {
+          if (message.user == "me") {
+            addMessage(message.contenido, "E", message.t);
+          } else {
+            addMessage(message.contenido, "R", message.t);
+          }
+        });
+      }
+    });
   // Fin onload
   });
