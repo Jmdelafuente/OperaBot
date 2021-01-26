@@ -6,6 +6,7 @@ const Operador = require("./models/Operador");
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
+var operators_channels = {}; // * channelID -> OperatorID
 var chat_unassig = [];
 var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
@@ -25,7 +26,8 @@ var newAsign = new Queue(async function (input, cb) {
     );
     if (result) {
       // Save the new assignment
-      chat_asig[input.id] = new Asignacion(input.id, result.user);
+      let operadorID = operators_channels[op.socket.user];
+      chat_asig[input.id] = new Asignacion(input.id, operadorID);
       result = true;
       cb(null, result);
     } else {
@@ -48,7 +50,7 @@ function random_item(items) {
  * cuando un operador se conecta a la plataforma, se registra
  * el id del operador y el id del canal de comunicación del mismo
  * 
- * @param {Number} id del operador nuevo
+ * @param {Number} id TOKEN del operador nuevo
  * @param {*} canal socket o websocket de comunicacion con el operador
  */
 async function altaOperador(id, canal) {
@@ -57,18 +59,23 @@ async function altaOperador(id, canal) {
   let esValido = operador.validar(id);
   if(!await esValido){
     // TODO: no es un token valido, salir
+    return false;
   }else{
     // Check si el operador ya existe
     if (!operators[operador.id]){
       operador.socket = canal;
       operators[operador.id] = operador;
-    }else{
-      // TODO: recuperar chats asignados/asignar chats y enviar
-      lista_asig = recuperarChatsOperador(operador.id);
+      operators_channels[canal.user] = operador.id;
+    }
+    // TODO: recuperar chats asignados/asignar chats y enviar
+    lista_asig = recuperarChatsOperador(operador.id);
+    if(lista_asig.length > 0){
       socket.recibirLista(canal, lista_asig, true);
     }
+    
     // TODO: enviar todos los chats
     socket.recibirLista(canal, messenger.chatsList(), false);
+    return true;
   }
 }
 /**
@@ -78,12 +85,18 @@ async function altaOperador(id, canal) {
  * @returns {Chat[]}  Lista de chats
  */
 function recuperarChatsOperador(id){
-  return Object.assign(
-      {},
-      ...Object.entries(chat_asig)
-      .filter(([k, v]) => v.user == id)
-      .map(([k, v]) => ({ [k]: v }))
+  let chats = {};
+  let asigns = Object.assign(
+    [],
+    ...Object.entries(chat_asig)
+      .filter(([k, v]) => v.operadorId == id)
+      .map(([k, v]) => ([k]))
   );
+  asigns.forEach((chatId) => {
+    let chat = messenger.getChatById(chatId);
+    chats[chatId]=chat;
+  });
+  return chats;
 }
 
 async function bajaOperador(id) {
@@ -128,7 +141,7 @@ async function recibirMensaje(id, cont) {
   // Check if chat is already assigned
   if (chat_asig[id]) {
     // Push notification to operator
-    socket.recibirMensaje(chat_asig[id].user, id, cont);
+    socket.recibirMensaje(chat_asig[id].operadorId, id, cont);
   } else {
     // Se asigna el chat
     chat = messenger.getChatById(id);
@@ -145,11 +158,11 @@ async function recibirMensaje(id, cont) {
   }
 }
 
-async function getAllMessages(id,operador){
-  operador = operators[operador.id];
+async function getAllMessages(id,user){
+  operador = operators_channels[user];
   chat = messenger.getChatById(id);
-  lista_mensajes = await chat.getAllMessages(true);
-  socket.recibirMensajesByChat(id,lista_mensajes,operador);
+  let lista_mensajes = await chat.getAllMessages(true);
+  return lista_mensajes;
 }
 
 
@@ -174,10 +187,10 @@ async function enviarMensaje(id, cont) {
   messenger.enviarMensaje(id,cont);
 }
 
-async function confirmarVisto(chatId,operadorId){
+async function confirmarVisto(chatId,channelId){
   // let operador = operators[operadorId];
   // Al abrir el mensaje, la asignacion pasa a ser estable (no se busca nuevo operador para el chat)
-  let asignacion = new Asignacion(chatId,operadorId);
+  let asignacion = new Asignacion(chatId, operators_channels[channelId]);
   await asignacion.guardar();
   var asignado = asignacion.asignacionEstable;
   console.log(`Operador -> confirmarVisto: ${asignado}`);
@@ -185,6 +198,17 @@ async function confirmarVisto(chatId,operadorId){
   // TODO: faltaria enviar el visto a la mensajeria
 }
 
+// * Init
+// Load static/stable asignations
+Asignacion.getAll()
+  .then((stable_assig)=>{
+    stable_assig.forEach((asig) => {
+      chat_asig[asig.chatId] = asig;
+    });
+  })
+  .catch((error)=>{
+    console.log(`Error leyendo Asignaciones en DB :${error}`);
+  });
 
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
