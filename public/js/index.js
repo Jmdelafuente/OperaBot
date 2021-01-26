@@ -129,13 +129,14 @@ var conn = false;
     });
 
     socket.on("connect", function () {
-      if(!conn){
+      // if(!conn){
         console.log(`conn: ${conn}, params: ${params}`);
         socket.emit('new_operator', params);
         conn = true;
-      }else{
-        // TODO: Recuperar chats asignados
-      }
+      // }else{
+      //   // TODO: Recuperar chats asignados
+        
+      // }
     });
     socket.on("send_op_list", function (listaChats) {
       // let listaChats = JSON.parse(msg);
@@ -155,17 +156,16 @@ var conn = false;
       ack(true);
       // Generamos los elementos del DOM
       addChat(msg.nom,msg.id,true);
-      // addChat(msg.id,msg.contenido, true);
     });
     socket.on("getAllMessagesByChat", function (msg) {
       let lista = msg.lista;
       let chat_activo = $("#idChat").val();
-      if(chat_activo == id){
+      if(chat_activo == msg.id){
         lista.forEach((message) => {
           if (message.user == "me") {
-            addMessage(message.contenido, "E", message.t);
+            addMessage(message.text, "E", message.t);
           } else {
-            addMessage(message.contenido, "R", message.t);
+            addMessage(message.text, "R", message.t);
           }
         });
       }
