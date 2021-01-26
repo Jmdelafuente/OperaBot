@@ -36,9 +36,50 @@ class Chat {
     this.state = new estado.Abierto(this.id);
   }
 
+  static async getAll(){
+    let res = {};
+    let promises = [];
+    let urls = Object.values(services.URLs).map((url)=>(url+"/list"));
+    for (let i = 0; i < urls.length; i++) {
+      promises.push(axios.get(urls[i]));
+    }
+    const sendGetRequest = async () => {
+      try {
+        await axios.all(promises).then(
+          axios.spread((...responses) => {
+            let i = 0;
+            responses.forEach((response) => {
+              let chat_temp;
+              response.data.forEach((chat) => {
+                chat_temp = services.chatParser(
+                  Object.keys(services.URLs)[i],
+                  chat
+                );
+                res[chat_temp.id] = new Chat(
+                  chat_temp.id,
+                  chat_temp.origin,
+                  chat_temp.name,
+                  chat_temp.timestamp,
+                  chat_temp.pendingmessage,
+                  undefined
+                );
+              });
+              i += 1;
+            });
+          })
+        );
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+    };
+    await sendGetRequest();
+    return res;
+  }
+
   async enviarMensaje(cont) {
-    let res = false;
-    axios
+    let res;
+    await axios
       .post(services.URLs[this.origin]+"/sendMessage", {
         body: services.bodyParser(this.origin, this.id, cont),
         headers: {
@@ -51,32 +92,39 @@ class Chat {
         this.pendingmessage = 0;
         this.lastmessage = cont;
         this.timestamp = Date.now();
-        return res;
       })
       .catch(function (error) {
-        throw new Error(error);
+        res = new Error(error);
       });
+    return res;
   }
 
   async getAllMessages(includeMe){
+    let res;
     let b = JSON.stringify({
       id: this.id,
       includeMe: includeMe,
     });
-    axios
-      .post(services.URLs[this.origin] + "/getAllMessages", {
-        body: b,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        res = response.data;
-        return res;
-      })
-      .catch(function (error) {
-        throw new Error(error);
-      });
+    const sendRequest = async () => {
+      try {
+        await axios
+        .post(services.URLs[this.origin] + "/getAllMessages", {
+          body: b,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          res = response.data;
+          console.log(response.data);
+        });
+        } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+    };
+    await sendRequest();
+    return res;
   }
 
   changeState (state) {
