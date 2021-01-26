@@ -40,6 +40,11 @@ class Operador {
     this.socket = null;
     // this.db = new db("../operaBOT.db");
   }
+
+  desconectar(){
+    this.online = false;
+  }
+
   /**
    * Método para recuperar un operador dado un filtro o conjunto de igualdades a cumplir
    *
