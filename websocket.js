@@ -1,10 +1,11 @@
 // Imports from websockets
 const express = require("express");
 var appFront = express();
-var http = require("http").createServer(appFront);
-var path = require("path");
-var io = require("socket.io")(http);
 var cors = require("cors");
+var helmet = require("helmet");
+var http = require("http").createServer(appFront);
+var io = require("socket.io")(http);
+var path = require("path");
 var portFront = 3001;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
@@ -17,6 +18,7 @@ const { resolve } = require("path");
 
 // Front for websockets
 appFront.set("port", portFront);
+appFront.use(helmet());
 appFront.use(express.static(path.join(__dirname, "public")));
 appFront.use(cors);
 appFront.use(function (req, res, next) {
@@ -40,15 +42,27 @@ io.on("connection", function (socket) {
   });
   socket.on("new_operator", function (msg) {
     // TODO: validar con weblogin el token/sessionkey
-    socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
-    sockets[socket.id] = socket;
-    op.altaOperador(msg.SESSIONKEY, socket);
     if (sessions[msg.SESSIONKEY]) {
       var s = sessions[msg.SESSIONKEY];
       delete sockets[s.id];
-    }else{
       sessions[msg.SESSIONKEY] = socket;
-      console.log(`Nuevo operador ${msg.SESSIONKEY}`);
+    } else {
+      op.altaOperador(msg.SESSIONKEY, socket).then(
+        (valido) => {
+          if (valido) {
+            socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
+            sessions[msg.SESSIONKEY] = socket;
+            sockets[socket.id] = socket;
+            console.log(`Nuevo operador ${msg.SESSIONKEY}`);
+          } else {
+            // ! SALIR
+          }
+        },
+        (error) => {
+          // TODO: registrar error
+          console.log(error);
+        }
+      );
     }
   });
   // Remove disconnected op
@@ -68,12 +82,20 @@ io.on("connection", function (socket) {
   });
 
   socket.on("all_messages_chat", function(id){
-    op.getAllMessages(id, sockets[socket.id].user);
+    op.getAllMessages(id, socket.user).then(
+      (lista) => {
+        mensajesByChat(id, lista, socket);
+      },
+      (error) => {
+        //  TODO: registrar el error
+        console.log(error);
+      }
+    );
   });
 
   socket.on("send_op_seen", function(chat){
-    op.confirmarVisto(chat, sockets[socket.id].user);
-    console.log(`WebSocket -> send_op_seen: ${(sockets[socket.id]).toString()}`);
+    op.confirmarVisto(chat, socket.user);
+    console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
 
   // socket.on("recive_op_message", function (msg) {
