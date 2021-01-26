@@ -1,8 +1,9 @@
 port = 3000;
 
-path = require('path'),
-express = require('express'),
-bodyParser = require("body-parser"),
+const path = require('path');
+const express = require('express');
+const morgan = require("morgan");
+bodyParser = require("body-parser");
 jsonParser = bodyParser.json();
 app = express();
  
@@ -17,15 +18,10 @@ app.set('port', process.env.PORT || port);
 const server = app.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
 });
-
+// logging http requests
+app.use(morgan("tiny"));
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
-
-/* 
- * Require api/operators/websockets/bots/etc
- */
-// Business Logic
-// msg = require("./messengerService.js");
 
 // Allowing requests from outside of the domain
 app.use(function (req, res, next) {
@@ -36,8 +32,6 @@ app.use(function (req, res, next) {
 
 // APIs
 var api = require("./api");
-// var wabot = require("../WA_Server/src/index.ts");
-// var fabot = require('../FA_Server/app');
 
 // Websokets (usa la configuracion previa de socket io)
 var websocket = require('./websocket.js');

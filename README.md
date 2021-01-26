@@ -25,7 +25,7 @@ Windows 7 and later are supported.
 Clone the repo, enter the folder and run
 
 ```bash
-git clone https://gitlab.com/jmdelafuente/_node_operabot.git
+git clone https://github.com/jmdelafuente/_node_operabot.git
 cd _node_operabot
 npm install
 node index.js
@@ -53,7 +53,7 @@ node index.js
 
 - **..but why? This doesn't exists already?**
 
-  This solution is already provided by some companies but, I'm Argentinian and U$S and Euros are too expensive to pay for it. So, here is my free solution if you nedeed (as my employee need it!).
+  This solution is already provided by some companies but, I'm Argentinian and U$S and Euros are too expensive to pay for it. So, here is my free solution if you need it (as my employer needed it!).
 
 ## 📃 Legal
 

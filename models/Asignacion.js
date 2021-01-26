@@ -1,4 +1,4 @@
-const db = require("../dbService");
+const OperaDB = require("../dbService");
 
 class Asignacion {
   /**
@@ -12,19 +12,34 @@ class Asignacion {
     this.chatId = chatId;
     this.operadorId = operadorId;
     this.asignacionEstable = asignacionEstable;
+    this.db = new OperaDB();
   }
   async guardar() {
-    this.db
-      .insertar("asignaciones", ["operadorId", "chatId"], [this.operadorId, this.chatId])
+    await this.db
+      .insertar(
+        "asignaciones",
+        ["operadorId", "chatId"],
+        [this.operadorId, this.chatId]
+      )
       .then(
         (done) => {
-            this.asignacionEstable = true;
-            return done;
+          this.asignacionEstable = true;
+          return done;
         },
         (fail) => {
-            return fail;
+          return fail;
         }
       );
+  }
+
+  static async getAll() {
+    let db = new OperaDB();
+    let asigns = [];
+    let res = await db.buscar("asignaciones", ["*"], []);
+    res.forEach((element) => {
+      asigns.push(new Asignacion(element.chatId, element.operadorId, true));
+    });
+    return asigns;
   }
 }
 
