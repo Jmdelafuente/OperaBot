@@ -36,16 +36,16 @@ node index.js
 
 ## 💻 Technologies
 
-- [Node](https://nodejs.org/en/)
-- [Express](https://expressjs.com/)
-- [SocketIO](https://socket.io/)
-- [SQLite](https://sqlite.org)
+- [Node](https://nodejs.org/en/)    -  Backend
+- [Express](https://expressjs.com/) - Serverless / REST API
+- [SocketIO](https://socket.io/)    - Comm with Frontend
+- [SQLite](https://sqlite.org)      - DB
 
 ## FAQ
 
 - **Is this app built with NodeJS?**
 
-  Yes, it's built with [NodeJS](https://nodejs.org/en/). Please see the [Technologies](#technologies) section for more info.
+  Yes, it's built with [NodeJS](https://nodejs.org/en/) on backend and SocketIO for frontend communication. Please see the [Technologies](#technologies) section for more info.
 
 - **What boilerplate did you use?**
 
