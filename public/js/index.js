@@ -8,9 +8,9 @@ $(function () {
     $(".action_menu").toggle();
   });
   /**
-   * Escape an ID for being HTML compatible. This allow to use it with JQuery
+   * Escape an ID for being HTML and Jquery compatible. This allow to use it with JQuery
    *
-   * @param {*} myid ID for being transform
+   * @param {String} myid ID for being transform
    * @returns string. The ID already escaped
    */
   function jq(myid) {
@@ -45,7 +45,7 @@ $(function () {
   /**
    * Dibuja en el DOM un mensaje de texto
    *
-   * @param {*} cont Contenido del mensaje o texto a mostrar
+   * @param {String} cont Contenido del mensaje o texto a mostrar
    * @param {*} tipo 'E' para los mensajes enviados, 'R' para los mensajes recibidos
    * @param {*} t Timestamp o marca de tiempo del mensaje
    */
@@ -81,9 +81,9 @@ $(function () {
    * Dibuja en el DOM un chat en particular.
    * Pudiendo dibujarse en la lista de todos los contactos o sólo en los asignados
    *
-   * @param {*} nom Nombre a mostrar del contacto
-   * @param {*} id Identificador interno del chat para saber el destinatario
-   * @param {*} asign Boolean. True si esta asignado a este operador, false en otro caso.
+   * @param {String} nom Nombre a mostrar del contacto
+   * @param {String} id Identificador interno del chat para saber el destinatario
+   * @param {Boolean} asign true si esta asignado a este operador, false en otro caso.
    */
   function addChat(nom, id, asign) {
     var li = document.createElement("li");
@@ -118,24 +118,26 @@ $(function () {
   }
 
   function changeChat(id) {
-    // Actualizamos el destinatario
-    $("#idChat").val(id);
-    // TODO: dibujar mensajes, avatar y nombre
-    let idchat = jq("usuario_" + id);
-    let li = $(idchat);
-    let nom = $(idchat + " span").html();
-    // Actualizamos el nombre
-    $("#nombreActivo").html("Chat con " + nom);
-    // Marcamos el chat como activo
-    $(".chat .active").removeClass("active");
-    $(li).addClass("active");
-    // TODO: Recuperar mensajes y los dibujarlos
-    // Borramos la lista de mensajes
-    $("mensajes").html("");
-    // Pedimos los mensajes del chat
-    socket.emit("all_messages_chat", id);
-    // Enviamos el 'visto' al servidor
-    socket.emit("send_op_seen", id);
+    if($("#idChat").val() != id){
+      // Actualizamos el destinatario
+      $("#idChat").val(id);
+      // Dibujar mensajes, avatar y nombre
+      let idchat = jq("usuario_" + id);
+      let li = $(idchat);
+      let nom = $(idchat + " span").html();
+      // Actualizamos el nombre
+      $("#nombreActivo").html("Chat con " + nom);
+      // Marcamos el chat como activo
+      $(".chat .active").removeClass("active");
+      $(li).addClass("active");
+      // TODO: Recuperar mensajes y los dibujarlos
+      // Borramos la lista de mensajes
+      $("mensajes").html("");
+      // Pedimos los mensajes del chat
+      socket.emit("all_messages_chat", id);
+      // Enviamos el 'visto' al servidor
+      socket.emit("send_op_seen", id);
+    }
   }
 
   function newList(lista, asig) {
