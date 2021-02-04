@@ -45,12 +45,14 @@ io.on("connection", function (socket) {
     if (sessions[msg.SESSIONKEY]) {
       var s = sessions[msg.SESSIONKEY];
       delete sockets[s.id];
+      socket.user = msg.SESSIONKEY;
       sessions[msg.SESSIONKEY] = socket;
+      op.reconectarOperador(msg.SESSIONKEY, socket);
     } else {
+      socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
       op.altaOperador(msg.SESSIONKEY, socket).then(
         (valido) => {
           if (valido) {
-            socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
@@ -98,9 +100,6 @@ io.on("connection", function (socket) {
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
 
-  // socket.on("recive_op_message", function (msg) {
-  //   io.emit("recive_op_message",msg);
-  // });
 });
 
 // * FUNCIONES * //
