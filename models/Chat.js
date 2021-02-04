@@ -124,6 +124,9 @@ class Chat {
       }
     };
     await sendRequest();
+    res = res.sort(function (a, b) {
+      return a.timestamp - b.timestamp;
+    });
     return res;
   }
 
