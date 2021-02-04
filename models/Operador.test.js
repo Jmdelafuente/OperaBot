@@ -3,21 +3,25 @@ const axios = require("axios").default;
 const weblogin = require("../configs/weblogin");
 const Operador = require("./Operador");
 const OperaDB = require("../dbService");
+const https = require("https");
 var usuario;
 describe("operador test", function () {
     before("recuperamos datos de un usuario de prueba", async function () {
       this.timeout(10000);
       var data = JSON.stringify({
-        userName: "prueba2",
+        userName: "perez.pedro@servidor.com",
         userPass: "_Prueb@2",
       });
       var config = {
         method: "post",
-        url: "https://webLogin.muninqn.gov.ar/api/getToken",
+        url: "http://webLogin.muninqn.gov.ar/api/getToken",
         headers: {
           "Content-Type": "application/json",
         },
         data: data,
+        httpsAgent: new https.Agent({
+          rejectUnauthorized: false,
+        }),
       };
 
       let promise = axios(config)
@@ -64,8 +68,8 @@ describe("operador test", function () {
     it("Deberia validar() un operador con guardado", async function () {
         let operador = new Operador();
         let esValido = await operador.validar(usuario.securityToken);
-        assert.strictEqual(esValido, true);
         assert.strictEqual(operador.db.error(), "");
+        assert.strictEqual(esValido, true);
     });
 
     

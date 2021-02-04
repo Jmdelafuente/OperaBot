@@ -1,17 +1,21 @@
 const assert = require("assert").strict;
 const weblogin = require("../configs/weblogin");
 const axios = require("axios").default;
+const https = require("https");
 describe("weblogin integration test", function () {
     it("Deberia conectarse correctamente a weblogin y validar el TOKEN", async function () {
     this.timeout(10000);
-    var data = JSON.stringify({ userName: "prueba2", userPass: "_Prueb@2" });
+    var data = JSON.stringify({ userName: "perez.jose@servidor.com", userPass: "_Prueb@1" });
     var config = {
       method: "post",
-      url: "https://webLogin.muninqn.gov.ar/api/getToken",
+      url: "http://webLogin.muninqn.gov.ar/api/getToken",
       headers: {
         "Content-Type": "application/json",
       },
       data: data,
+      httpsAgent: new https.Agent({
+        rejectUnauthorized: false,
+      }),
     };
 
     let promise = axios(config)

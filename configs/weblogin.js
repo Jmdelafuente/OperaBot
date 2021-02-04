@@ -1,13 +1,16 @@
 const axios = require("axios").default;
-const URL = "https://weblogin.muninqn.gov.ar/api/getUserByToken/";
+const https = require("https");
+const URL = "http://weblogin.muninqn.gov.ar/api/getUserByToken/";
 const APPID = "30"; //TODO: FIX el APPID es 41, fue modificado para testing
 
 module.exports.validarToken = async function (token){
   let usuario;
   var config = {
     method: "get",
-    url:
-      `${URL}${token}`,
+    url: `${URL}${token}`,
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
   };
   const promise = axios(config)
     .then((response) => response.data)
