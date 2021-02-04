@@ -3,6 +3,7 @@ const URL = "https://weblogin.muninqn.gov.ar/api/getUserByToken/";
 const APPID = "30"; //TODO: FIX el APPID es 41, fue modificado para testing
 
 module.exports.validarToken = async function (token){
+  let usuario;
   var config = {
     method: "get",
     url:
@@ -13,7 +14,11 @@ module.exports.validarToken = async function (token){
     .catch(function (error) {
       throw new Error(error);
     });
-  let usuario = await promise;
+    try {
+      usuario = await promise;
+    } catch (error) {
+      
+    }
   let perfil = usuario.apps.find((app) => app.id == APPID);
   usuario.perfil = perfil.userProfiles;
   return usuario;

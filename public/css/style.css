@@ -90,9 +90,10 @@
 			background-color: rgba(0,0,0,0.3);
 	}
 		.user_img{
-			height: 70px;
-			width: 70px;
-			border:1.5px solid #f5f6fa;
+			    width: 81%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 6%;
 		
 		}
 		.user_img_msg{
@@ -103,8 +104,11 @@
 		}
 	.img_cont{
 			position: relative;
-			height: 70px;
-			width: 70px;
+    height: 70px;
+    width: 70px;
+    background: #1DB3E8;
+    border-radius: 50%!important;
+    border: 3px white solid;
 	}
 	.img_cont_msg{
 			height: 40px;
@@ -223,3 +227,73 @@
 		margin-bottom: 15px !important;
 	}
 	}
+
+/* EMOJIS */
+img.emoji {
+   height: 1em;
+   width: 1em;
+   margin: 0 .05em 0 .1em;
+   vertical-align: -0.1em;
+}
+
+/*MODIFICACIONES NATI*/
+.card-header{
+	background: #026BB2!important;
+}
+.card{
+	background: #EFF8FD!important;
+	border: 0px!important;
+}
+.card-footer{
+	    background: #B3DFF0!important;
+}
+.list-group-item-dark{
+	background: #20B2E8!important;
+}
+.active{
+	background: transparent!important;
+}
+.list-group-item-dark.list-group-item-action.active, .active.chat{
+	background: #026BB2!important;
+    border-color: #026BB2!important;
+}
+.list-group-item-dark , .chat{
+    background: #20B2E8!important;
+}
+.list-group-item:first-child{
+	margin-top: 15px;
+}
+.search{
+	    border-radius: 13px 0 0 13px !important;
+    background: white!important;
+    border: 2px #20B2E8 solid !important;
+    color: white !important;
+}
+.card-header nav{
+	margin-top: 10px;
+}
+.nav-tabs .nav-link{
+	border: 0px!important;
+    border-top-right-radius: 12px!important;
+    border-top-left-radius: 0px!important;
+    color: #20B2E8!important;
+    background: white!important;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+	color: white!important;
+    background: #20B2E8!important;
+}
+.tab-pane .card-footer{
+	background: transparent!important;
+}
+.attach_btn{
+	border-radius: 15px 0 0 15px !important;
+    background-color: white!important;
+    border: 2px solid #20B2E8 !important;
+    color: #026BB2 !important;
+}
+ .type_msg, .send_btn{
+    background-color: white!important;
+    border: 2px solid #20B2E8 !important;
+    color: #026BB2 !important;
+}

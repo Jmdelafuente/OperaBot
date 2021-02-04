@@ -40,6 +40,11 @@ class Operador {
     this.socket = null;
     // this.db = new db("../operaBOT.db");
   }
+
+  desconectar(){
+    this.online = false;
+  }
+
   /**
    * Método para recuperar un operador dado un filtro o conjunto de igualdades a cumplir
    *
@@ -133,14 +138,14 @@ class Operador {
           "operadores",
           ["ultimoAcceso"],
           [hoy],
-          [["id", operadorGuardado.id]]
+          [["operadorId", operadorGuardado.id]]
         );
         // TODO: actualizar estado interno
         this.idwappersona = operadorGuardado.wapPersonaId;
         this.email = operadorGuardado.email;
         this.razonSocial = operadorGuardado.razonSocial;
         this.cuit = operadorGuardado.cuit;
-        this.id = operadorGuardado.id;
+        this.id = operadorGuardado.operadorId;
         this.online = true;
         this.autoasignacion = true;
         this.perfil = usuario.perfil;

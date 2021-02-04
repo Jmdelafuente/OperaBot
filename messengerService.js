@@ -51,6 +51,15 @@ function getChatById(id) {
   // return JSON.stringify(chatsList);
 }
 
+// * INIT
+// Get all chats
+Chat.getAll().then(
+  (lista) => {
+    chatsList = lista;
+  },
+  (error) => {
+    console.log(error);
+  });
 
 module.exports.nuevoMensaje = nuevoMensaje;
 module.exports.enviarMensaje = enviarMensaje;

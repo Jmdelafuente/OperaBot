@@ -25,7 +25,7 @@ Windows 7 and later are supported.
 Clone the repo, enter the folder and run
 
 ```bash
-git clone https://gitlab.com/jmdelafuente/_node_operabot.git
+git clone https://github.com/jmdelafuente/_node_operabot.git
 cd _node_operabot
 npm install
 node index.js
@@ -36,16 +36,16 @@ node index.js
 
 ## 💻 Technologies
 
-- [Node](https://nodejs.org/en/)
-- [Express](https://expressjs.com/)
-- [SocketIO](https://socket.io/)
-- [SQLite](https://sqlite.org)
+- [Node](https://nodejs.org/en/)    -  Backend
+- [Express](https://expressjs.com/) - Serverless / REST API
+- [SocketIO](https://socket.io/)    - Comm with Frontend
+- [SQLite](https://sqlite.org)      - DB
 
 ## FAQ
 
 - **Is this app built with NodeJS?**
 
-  Yes, it's built with [NodeJS](https://nodejs.org/en/). Please see the [Technologies](#technologies) section for more info.
+  Yes, it's built with [NodeJS](https://nodejs.org/en/) on backend and SocketIO for frontend communication. Please see the [Technologies](#technologies) section for more info.
 
 - **What boilerplate did you use?**
 
@@ -53,7 +53,7 @@ node index.js
 
 - **..but why? This doesn't exists already?**
 
-  This solution is already provided by some companies but, I'm Argentinian and U$S and Euros are too expensive to pay for it. So, here is my free solution if you nedeed (as my employee need it!).
+  This solution is already provided by some companies but, I'm Argentinian and U$S and Euros are too expensive to pay for it. So, here is my free solution if you need it (as my employer needed it!).
 
 ## 📃 Legal
 
