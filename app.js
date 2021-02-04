@@ -26,3 +26,5 @@ app.use(function (req, res, next) {
 
 // Websokets (usa la configuracion previa de socket io)
 var websocket = require('./websocket.js');
+// API REST para recibir webhooks de los servicios de mensajeria
+var websocket = require('./api.js');
