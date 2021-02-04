@@ -132,7 +132,7 @@ $(function () {
       $(li).addClass("active");
       // TODO: Recuperar mensajes y los dibujarlos
       // Borramos la lista de mensajes
-      $("mensajes").html("");
+      $("#mensajes").html("");
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", id);
       // Enviamos el 'visto' al servidor
