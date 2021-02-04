@@ -78,6 +78,23 @@ async function altaOperador(id, canal) {
     return true;
   }
 }
+
+function reconectarOperador(id, canal){
+  // * Recuperar y actualizar socket del operador
+  let operador = operators[operators_channels[id]];
+  operador.socket = canal;
+  
+  // * Recuperar listados de chats
+  // Enviar chats asignados
+  lista_asig = recuperarChatsOperador(operador.id);
+  if (lista_asig.length > 0) {
+    socket.recibirLista(operador.socket, lista_asig, true);
+  }
+
+  // Enviar todos los chats
+  socket.recibirLista(operador.socket, messenger.chatsList(), false);
+}
+
 /**
  *  Recupera todos los chats asignados a un operador dado el id del mismo.
  *
@@ -216,4 +233,5 @@ module.exports.recibirMensaje = recibirMensaje;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.confirmarVisto = confirmarVisto;
 module.exports.getAllMessages = getAllMessages;
+module.exports.reconectarOperador = reconectarOperador;
 module.exports.operators = operators;
