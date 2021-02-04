@@ -1,16 +1,10 @@
-const sqlite3 = require("sqlite3");
-const Promise = require("bluebird");
-// const dbPath = "./operaBOT.db";
+const db = require("better-sqlite3");
+const dbPath = "./operaBOT.db";
 
 class OperaDB {
   constructor() {
     this.lastError = "";
-    this.db = new sqlite3.Database("operaBOT.db", (err) => {
-      if (err) {
-        console.log("Could not connect to database", err);
-        this.lastError = err;
-      }
-    });
+    this.db = new db(dbPath);
   }
   /**
    * Funcion Insertar en la base de datos
@@ -31,20 +25,16 @@ class OperaDB {
     });
     query = query.slice(0, -2);
     values = values.slice(0, -2);
+    let stmt = this.db.prepare(`INSERT INTO ${tabla}(${query}) VALUES(${values})`);
     return new Promise((resolve, reject) => {
-      this.db.run(
-        `INSERT INTO ${tabla}(${query}) VALUES(${values})`,
-        valores,
-        function (error) {
-          if (error) {
-            objeto.lastError = error;
-            console.log(error);
-            reject({ id: -1 });
-          } else {
-            resolve({ id: this.lastID });
-          }
-        }
-      );
+      try{
+        const info = stmt.run(valores);
+        resolve({ id: info.lastInsertRowid });
+      }catch (e){
+        objeto.lastError = error;
+        console.log(error);
+        reject({ id: -1 });
+      }
     });
   }
   /**
@@ -65,19 +55,16 @@ class OperaDB {
       placeholder.push(v);
     });
     where += "TRUE";
+    let stmt = this.db.prepare(`SELECT ${campos} FROM ${tabla} where ${where}`);
     return new Promise((resolve, reject) => {
-      this.db.all(
-        `SELECT ${campos} FROM ${tabla} where ${where}`,
-        placeholder,
-        (error, rows) => {
-          if (error) {
-            objeto.lastError = error;
-            reject(error);
-          } else {
-            resolve(rows);
-          }
-        }
-      );
+      try {
+        const rows = stmt.all(placeholder);
+        resolve(rows);
+      } catch (e) {
+        objeto.lastError = error;
+        console.log(error);
+        reject(error);
+      }
     });
   }
 
@@ -88,19 +75,16 @@ class OperaDB {
       where += `${e}=?`;
       valores.push(v);
     });
+    let stmt = this.db.prepare(`DELETE FROM ${tabla} where ${where}`);
     return new Promise((resolve, reject) => {
-      this.db.run(
-        `DELETE FROM ${tabla} where ${where}`,
-        valores,
-        (error, rows) => {
-          if (error) {
-            this.lastError = error;
-            reject(error);
-          } else {
-            resolve(rows);
-          }
-        }
-      );
+      try {
+        const rows = stmt.run(valores);
+        resolve(rows);
+      } catch (e) {
+        objeto.lastError = error;
+        console.log(error);
+        reject(error);
+      }
     });
   }
 
@@ -127,19 +111,16 @@ class OperaDB {
       values.push(v);
     });
     query = query.slice(0, -2);
+    let stmt = this.db.prepare(`UPDATE ${tabla} SET ${query} WHERE ${where}`);
     return new Promise((resolve, reject) => {
-      this.db.run(
-        `UPDATE ${tabla} SET ${query} WHERE ${where}`,
-        valores,
-        function (error) {
-          if (error) {
-            objeto.lastError = error;
-            reject(0);
-          } else {
-            resolve(this.changes);
-          }
-        }
-      );
+      try {
+        const info = stmt.run(valores);
+        resolve(info.changes);
+      } catch (e) {
+        objeto.lastError = error;
+        console.log(error);
+        reject(error);
+      }
     });
   }
 
