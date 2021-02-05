@@ -11,11 +11,19 @@ const FB_PREFIX = "fa";
 const FB_SERVER = "http://localhost";
 const FB_URL = `${FB_SERVER}:${FB_PORT}/${FB_PREFIX}`;
 
+// Page Server / Burbuja de chat
+const PS_PORT = 3003;
+const PS_PREFIX = 'ps';
+const PS_SERVER = 'http://localhost';
+const PS_URL = `${PS_SERVER}:${PS_PORT}/${PS_PREFIX}`;
+
 // formateo automatico para los imports
-// const URLs = { W: WA_URL, F: FB_URL };
-const URLs = { W: WA_URL};
+// const URLs = { W: WA_URL, F: FB_URL, P: PS_URL};
+const URLs = { W: WA_URL, P: PS_URL};
+const PREFIXes = {W: WA_PREFIX, P: PS_PREFIX};
 
 module.exports.URLs = URLs;
+module.exports.PREFIXes = PREFIXes;
 
 module.exports.bodyParser = function (origen, destino, mensaje, tipo = "text") {
   let body;
