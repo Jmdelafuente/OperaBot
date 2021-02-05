@@ -1,5 +1,5 @@
 // import { URLs, bodyParser } from "../configs/services";
-const services = require("../configs/services");
+const services = require("../configs/servicesConfig");
 const axios = require("axios").default;
 const estado = require("./Estado"); // estado.js exporta las clases 'Abierto' y 'Cerrado'
 
@@ -26,7 +26,14 @@ class Chat {
    * @param {*} lastmessage contenido del ultmo mensaje (para que exista un chat, al menos un mensaje hubo)
    * @memberof Chat
    */
-  constructor(id, origen, name, timestamp, pendingmessage = 0, lastmessage='') {
+  constructor(
+    id,
+    origen,
+    name,
+    timestamp,
+    pendingmessage = 0,
+    lastmessage = ""
+  ) {
     this.id = id;
     this.origin = origen;
     this.name = name;
@@ -36,10 +43,10 @@ class Chat {
     this.state = new estado.Abierto(this.id);
   }
 
-  static async getAll(){
+  static async getAll() {
     let res = {};
     let promises = [];
-    let urls = Object.values(services.URLs).map((url)=>(url+"/list"));
+    let urls = Object.values(services.URLs).map((url) => url + "/list");
     for (let i = 0; i < urls.length; i++) {
       promises.push(axios.get(urls[i]));
     }
@@ -80,7 +87,7 @@ class Chat {
   async enviarMensaje(cont) {
     let res;
     await axios
-      .post(services.URLs[this.origin]+"/sendMessage", {
+      .post(services.URLs[this.origin] + "/sendMessage", {
         body: services.bodyParser(this.origin, this.id, cont),
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +106,26 @@ class Chat {
     return res;
   }
 
-  async getAllMessages(includeMe){
+  async enviarEstado(cont) {
+    let res;
+    await axios
+      .post(services.URLs[this.origin] + "/sendStatus", {
+        body: services.bodyParser(this.origin, this.id, cont),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        res = response.data;
+        //? Actualizamos el estado interno del chat
+      })
+      .catch(function (error) {
+        res = new Error(error);
+      });
+    return res;
+  }
+
+  async getAllMessages(includeMe) {
     let res;
     let b = JSON.stringify({
       id: this.id,
@@ -108,17 +134,17 @@ class Chat {
     const sendRequest = async () => {
       try {
         await axios
-        .post(services.URLs[this.origin] + "/getAllMessages", {
-          body: b,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
-          res = response.data;
-          console.log(response.data);
-        });
-        } catch (err) {
+          .post(services.URLs[this.origin] + "/getAllMessages", {
+            body: b,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            res = response.data;
+            console.log(response.data);
+          });
+      } catch (err) {
         // Handle Error Here
         console.error(err);
       }
@@ -130,25 +156,24 @@ class Chat {
     return res;
   }
 
-  changeState (state) {
+  changeState(state) {
     this.state = state;
   }
 
   // funcionalidad para modificar el estado del chat
-  asignacion () {
+  asignacion() {
     this.state.asignacion();
   }
-  
+
   // funcionalidad para modificar el estado del chat
-  resolucionOk () {
+  resolucionOk() {
     this.state.resolucionOk();
   }
-  
+
   // funcionalidad para modificar el estado del chat
-  resolucionFallida () {
+  resolucionFallida() {
     this.state.resolucionFallida();
   }
-  
 }
 
 module.exports = Chat;

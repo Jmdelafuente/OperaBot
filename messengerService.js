@@ -1,5 +1,5 @@
 var Chat = require("./models/Chat");
-var op = require("./operators");
+var op = require("./operatorsService");
 var chatsList = {};
 
 async function nuevalistaChats(lista, origen) {
@@ -36,6 +36,12 @@ async function enviarMensaje(id, cont) {
   return res;
 }
 
+async function enviarEstado(id, cont) {
+  var chat = chatsList[id];
+  let res = await chat.enviarEstado(cont);
+  return res;
+}
+
 async function getMensajesChat(id){
   
 }
@@ -63,6 +69,7 @@ Chat.getAll().then(
 
 module.exports.nuevoMensaje = nuevoMensaje;
 module.exports.enviarMensaje = enviarMensaje;
+module.exports.enviarEstado = enviarEstado;
 module.exports.nuevalistaChats = nuevalistaChats;
 module.exports.chatsList = getListaChats;
 module.exports.getChatById = getChatById;

@@ -11,7 +11,7 @@ var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
 // Operator's logic
-var op = require("./operators.js");
+var op = require("./operatorsService.js");
 const { resolve } = require("path");
 
 // * CONFIGURACION DE FRONT-END * //
@@ -98,6 +98,11 @@ io.on("connection", function (socket) {
   socket.on("send_op_seen", function(chat){
     op.confirmarVisto(chat, socket.user);
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
+  });
+
+  socket.on("writing", function(id){
+    op.escribiendo(id, socket.user);
+    console.log(`WebSocket -> writing: ${socket.toString()}`);
   });
 
 });
