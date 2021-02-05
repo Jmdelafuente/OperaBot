@@ -37,7 +37,7 @@ class Estado {
 class Cerrado extends Estado {
 
   constructor(chat) {
-    super(1, 'Cerrado', 'asdf',chat);
+    super(1, 'Cerrado', 'Representa la finalización del problema por el cual se comunico el ciudadano (sea con una resolución correcta o incorrecta)',chat);
   }
   
   asignacion () {
@@ -62,7 +62,7 @@ class Cerrado extends Estado {
 class Abierto extends Estado{
 
   constructor(chat) {
-    super(1, 'Abierto', 'asdf', chat);
+    super(1, 'Abierto', 'Representa una comunicación abierta con el ciudadano, aún sin resolver', chat);
   }
   
   asignacion () {
