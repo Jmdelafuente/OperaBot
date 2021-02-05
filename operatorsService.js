@@ -1,13 +1,15 @@
 var Queue = require("better-queue");
-// var Chat = require("./models/Chat");
-var socket = require("./websocket");
+
 const Asignacion = require("./models/Asignacion");
 const Operador = require("./models/Operador");
+const socket = require("./websocket");
+const status = require('./configs/statusConfig');
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
 var operators_channels = {}; // * channelID -> OperatorID
 var chat_unassig = [];
+
 var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
   if (Object.keys(operators).length === 0) {
@@ -215,6 +217,12 @@ async function confirmarVisto(chatId,channelId){
   // TODO: faltaria enviar el visto a la mensajeria
 }
 
+async function escribiendo(chatID, channelID){
+  let operador = operators[operators_channels[channelID]];
+  messenger.enviarEstado(chatID,status.WRITING_MESSAGE(operador.razonSocial));
+  console.log(`Operador -> escribiendo: ${operador}`);
+}
+
 // * Init
 // Load static/stable asignations
 Asignacion.getAll()
@@ -234,4 +242,5 @@ module.exports.enviarMensaje = enviarMensaje;
 module.exports.confirmarVisto = confirmarVisto;
 module.exports.getAllMessages = getAllMessages;
 module.exports.reconectarOperador = reconectarOperador;
+module.exports.escribiendo = escribiendo;
 module.exports.operators = operators;
