@@ -1,6 +1,6 @@
 const axios = require("axios").default;
 const https = require("https");
-const URL = "http://weblogin.muninqn.gov.ar/api/getUserByToken/";
+const URL = "https://weblogin.muninqn.gov.ar/api/getUserByToken/";
 const APPID = "30"; //TODO: FIX el APPID es 41, fue modificado para testing
 
 module.exports.validarToken = async function (token){
@@ -23,7 +23,9 @@ module.exports.validarToken = async function (token){
       
     }
   let perfil = usuario.apps.find((app) => app.id == APPID);
-  usuario.perfil = perfil.userProfiles;
+  // usuario.perfil = perfil.userProfiles; //TODO: descomentar antes de produccion
+  usuario.perfil = 1;
+  usuario.wappersonaid = usuario.datosPersonales.referenciaID;
   return usuario;
 };
 
