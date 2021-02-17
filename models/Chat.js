@@ -74,9 +74,10 @@ class Chat {
                     chat_temp.pendingmessage,
                     undefined
                   );
+                  console.log(res);
                 });
-                i += 1;
               }
+              i += 1;
             });
           }),
           (error) => {
@@ -90,6 +91,7 @@ class Chat {
       }
     };
     await sendGetRequest();
+    console.log(res);
     return res;
   }
 
