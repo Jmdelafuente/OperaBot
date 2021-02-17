@@ -1,6 +1,7 @@
 const ms = require('./messengerService');
 const services = require('./configs/servicesConfig');
 const axios = require("axios").default;
+const blueprints = require("./configs/messagesConfig");
 
 for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   // * Recibimos nuevo mensaje de un messenger service
@@ -80,24 +81,12 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   });
 }
 
-// // * Recibimos la lista de chats de un messenger service
-//   app.post(`/api/pa/echo`, jsonParser, (req, res) => {
-//     console.log(req.body);
-//     // var data = {
-//     //     id: req.body.id,
-//     //     mensaje: `Respuesta del operador ${req.body.mensaje}`};
-//     // console.log(data);
-//     axios
-//       .post("http://b62f8f6b5b75.ngrok.io/ps/sendMessage", req.body)
-//       .then((response) => {
-//         console.log(`Respuesta de cliente: ${response.status}`);
-//         res.sendStatus(200);
-//       })
-//       .catch(function (error) {
-//         console.log(`${error}`);
-//         res.sendStatus(500);
-//       });
-//   });
+
+  // * Desconectamos un usuario
+  app.get(`/api/client/blueprints`, jsonParser, (req, res) => {
+    // TODO authenticate origin
+    res.send(JSON.stringify(blueprints.blueprints));
+  });
 
 // app.get("/", function (req, res) {
 //   res.sendFile(path.join(__dirname + "/index.html"));

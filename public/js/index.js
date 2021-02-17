@@ -1,5 +1,6 @@
-const socket = io("localhost:3001");
-
+const SURL = "localhost";
+const socket = io(SURL+":3001");
+var blueprints={};
 var conn = false;
 var chatListAll = [];
 var chatListAsign = [];
@@ -7,6 +8,31 @@ var activeTab;
 var limit = false;
 $(function () {
   // * FUNCIONES AUXILIARES * //
+  /**
+   *  Clearable input: draw an X when input has value to reset (like search input)
+   */
+  Array.prototype.forEach.call(
+    document.querySelectorAll(".clearable-input"),
+    function (el) {
+      var input = el.querySelector("input");
+
+      conditionallyHideClearIcon();
+      input.addEventListener("input", conditionallyHideClearIcon);
+      el.querySelector("[data-clear-input]").addEventListener(
+        "click",
+        function (e) {
+          input.value = "";
+          conditionallyHideClearIcon();
+        }
+      );
+
+      function conditionallyHideClearIcon(e) {
+        var target = (e && e.target) || input;
+        target.nextElementSibling.style.display = target.value ? "block" : "none";
+      }
+    }
+  );
+
   /**
    * Escape an ID for being HTML and JQuery compatible.
    * This allow to use it with JQuery even if it has specials symbols
@@ -90,7 +116,7 @@ $(function () {
       hora.className = "msg_time";
       // hora.innerText = t;
       // * Distintos parser segun contenido: canvas, twemoji,...
-      console.log(type);
+      // console.log(type);
       switch (type) {
         case "message":
         case "chat": // * Emoji o chat
@@ -115,7 +141,7 @@ $(function () {
           link.appendChild(canvas);
           break;
         case "sticker": // ! Sticker
-        case "ptt": //! AUDIO
+        case "ptt":     //! AUDIO
         default:
           msj.innerHTML = "Tipo de mensaje no soportado";
           break;
@@ -273,6 +299,24 @@ $(function () {
   });
 
   $(document).ready(function () {
+    // Get all blueprints
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    
+    fetch(
+      `http://c2facd60d143.ngrok.io/api/client/blueprints`,
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => blueprints = JSON.parse(result))
+      .catch((error) => console.log("error", error));
+
     $('a[data-toggle="tab"]').on("click", function (e) {
       localStorage.setItem("activeTab", $(e.target).attr("href"));
     });
@@ -293,6 +337,11 @@ $(function () {
             limit = false;
           }, 10000);
         }
+      }else{
+          socket.emit("stop-writing", $("#idChat").val());
+      }
+      if(e.key == '/'){
+        autocomplete(document.getElementById("m"), blueprints);
       }
     });
   });
