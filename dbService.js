@@ -27,10 +27,10 @@ class OperaDB {
     values = values.slice(0, -2);
     let stmt = this.db.prepare(`INSERT INTO ${tabla}(${query}) VALUES(${values})`);
     return new Promise((resolve, reject) => {
-      try{
+      try {
         const info = stmt.run(valores);
         resolve({ id: info.lastInsertRowid });
-      }catch (e){
+      } catch (error) {
         objeto.lastError = error;
         console.log(error);
         reject({ id: -1 });
@@ -44,23 +44,39 @@ class OperaDB {
    * @param {*} tabla nombre de la tabla a la cual hacerle select
    * @param {[*]} campos arreglo con los nombres de los campos a devolver de la tabla donde se cumplan los filtros
    * @param {[*]} filtros arreglo del tipo [clave,valor] para filtrar la busqueda
+   * @param {[*]} orderby arreglo con los nombres de los campos por los cuales se debe ordenar el resulado de la busqueda
+   * @param {[*]} order tipo de orden 'ASC' p 'DESC'
+   * @param {[*]} limit cantidad de elementos a recuperar
    * @memberof OperaDB
    */
-  buscar(tabla, campos, filtros) {
+  buscar(tabla, campos, filtros, orderby=false, order='DESC', limit = 0){
     var where = "";
     var placeholder = [];
     var objeto = this;
+    var order_element = "";
+    let stmt;
     filtros.forEach(([e, v]) => {
       where += `${e}=? AND `;
       placeholder.push(v);
     });
     where += "TRUE";
-    let stmt = this.db.prepare(`SELECT ${campos} FROM ${tabla} where ${where}`);
+    if(!orderby){
+      stmt = this.db.prepare(`SELECT ${campos} FROM ${tabla} where ${where}`);
+    }else{
+      orderby.forEach(([e]) => {
+        order_element += `${e}, `;
+      });
+      order_element = order_element.slice(0, -2);
+      stmt = this.db.prepare(`SELECT ${campos} FROM ${tabla} where ${where} order by ${order_element} ${order}`);
+      if(limit){
+        stmt += ` limit ${limit}`;
+      }
+    }
     return new Promise((resolve, reject) => {
       try {
         const rows = stmt.all(placeholder);
         resolve(rows);
-      } catch (e) {
+      } catch (error) {
         objeto.lastError = error;
         console.log(error);
         reject(error);
@@ -80,7 +96,7 @@ class OperaDB {
       try {
         const rows = stmt.run(valores);
         resolve(rows);
-      } catch (e) {
+      } catch (error) {
         objeto.lastError = error;
         console.log(error);
         reject(error);
@@ -103,20 +119,25 @@ class OperaDB {
     var values = [];
     var where = "";
     var objeto = this;
+
     campos.forEach((element) => {
       query += `${element} = ?, `;
     });
     filtros.forEach(([e, v]) => {
       where += `${e} = ?`;
-      values.push(v);
+      valores.push(v);
     });
     query = query.slice(0, -2);
-    let stmt = this.db.prepare(`UPDATE ${tabla} SET ${query} WHERE ${where}`);
+    let q = `UPDATE ${tabla} SET ${query} WHERE ${where}`;
+    let stmt = this.db.prepare(q);
     return new Promise((resolve, reject) => {
       try {
         const info = stmt.run(valores);
         resolve(info.changes);
-      } catch (e) {
+      } catch (error) {
+        console.error(
+          `Query: '${q}', values: '${valores}', filtros: '${filtros}'`
+        );
         objeto.lastError = error;
         console.log(error);
         reject(error);
