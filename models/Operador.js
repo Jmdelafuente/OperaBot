@@ -99,7 +99,7 @@ class Operador {
     var res = false;
     var operadorGuardado = {};
     let usuario = await weblogin.validarToken(token);
-    let hoy = new Date().toISOString();
+    let hoy = new Date().toISOString().replace(/T/, " ").replace(/\..+/, "");
     let esValido = false;
     // TODO: verificar si el usuario existe
     if (usuario.perfil) {
@@ -107,7 +107,7 @@ class Operador {
       let promise = this.db.buscar(
         "operadores",
         ["operadorId", "email", "cuit", "razonSocial", "wapPersonaId"],
-        [["email", usuario.userName]]
+        [["wapPersonaId", usuario.wappersonaid]]
       );
       let op = await promise;
       if (op.length != 0) {
@@ -138,9 +138,9 @@ class Operador {
           "operadores",
           ["ultimoAcceso"],
           [hoy],
-          [["operadorId", operadorGuardado.id]]
+          [["operadorId", operadorGuardado.operadorId]]
         );
-        // TODO: actualizar estado interno
+        // * actualizar estado interno
         this.idwappersona = operadorGuardado.wapPersonaId;
         this.email = operadorGuardado.email;
         this.razonSocial = operadorGuardado.razonSocial;
