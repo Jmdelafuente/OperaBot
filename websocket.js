@@ -43,7 +43,7 @@ io.on("connection", function (socket) {
   socket.on("new_operator", function (msg) {
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
-      var s = sessions[msg.SESSIONKEY];
+      let s = sessions[msg.SESSIONKEY];
       delete sockets[s.id];
       socket.user = msg.SESSIONKEY;
       sessions[msg.SESSIONKEY] = socket;
@@ -73,12 +73,13 @@ io.on("connection", function (socket) {
       setTimeout(function () {
         let s = sockets[socket.id];
         if (typeof s !== "undefined") {
-          if (!sessions[s.user]) {
+          if (sessions[s.user] != s) {
+            //console.log(`Baja operador ${s.user}`);
             op.bajaOperador(s.user);
-            delete sockets[socket.id];
           }
+          delete sockets[socket.id];
         }
-      }, 10000);
+      }, 100000);
     }
     // console.log(`Disconnect ${socket.id} ${causa}`);
   });
@@ -105,6 +106,21 @@ io.on("connection", function (socket) {
     console.log(`WebSocket -> writing: ${socket.toString()}`);
   });
 
+  socket.on("more-messages", function(chatID){
+    console.log(`WebSocket -> more-messages: ${chatID}`);
+    op.getMoreMessages(chatID).then(
+      op.getAllMessages(chatID, socket.user).then(
+        (lista) => {
+          mensajesByChat(chatID, lista, socket);
+        },
+        (error) => {
+          //  TODO: registrar el error
+          console.log(error);
+        }
+      )
+    );
+  });
+
 });
 
 // * FUNCIONES * //
@@ -112,13 +128,23 @@ io.on("connection", function (socket) {
 // Functions define for export and modularization
 const enviarMensaje = function (id, contenido) {};
 
-const recibirMensaje = function (operador, id, contenido) {
+const recibirMensaje = function (id, contenido, tipo) {
   var mensaje = {};
   mensaje.id = id;
   mensaje.contenido = contenido;
+  mensaje.tipo = tipo;
   io.emit("recive_op_message", mensaje);
   return true;
 };
+
+// const recibirImagen = function (id, contenido, type) {
+//   var mensaje = {};
+//   mensaje.id = id;
+//   mensaje.contenido = contenido;
+//   mensaje.type = type;
+//   io.emit("recive_op_message", mensaje);
+//   return true;
+// };
 
 async function asignarMensaje(socket, id, contenido, nombre) {
   var mensaje = {};
@@ -138,11 +164,15 @@ async function asignarMensaje(socket, id, contenido, nombre) {
   });
 }
 
-const mensajesByChat = function(id, listamensajes, socket) {
+const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let msg = {};
   msg.id = id;
   msg.lista = listamensajes;
-  socket.emit("getAllMessagesByChat", msg);
+  if(append){
+    socket.emit("getMoreMessagesByChat", msg);
+  }else{
+    socket.emit("getAllMessagesByChat", msg);
+  }
 };
 
 const recibirLista = function (operador, lista, asignado) {
@@ -155,6 +185,7 @@ const recibirLista = function (operador, lista, asignado) {
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
+// module.exports.recibirImagen = recibirImagen;
 module.exports.asignarMensaje = asignarMensaje;
 module.exports.recibirMensajesByChat = mensajesByChat;
 module.exports.recibirLista = recibirLista;
