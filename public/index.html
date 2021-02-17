@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/font-awesome5-5-all.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/unreadmessages.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
   <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 </head>
@@ -33,68 +34,16 @@
         <!-- Pestanas de la barra lateral -->
         <div class="tab-content" id="nav-tabContent">
           <!-- Todos los chats -->
-          <div class="tab-pane fade show active" id="nav-todos" role="tabpanel" aria-labelledby="nav-todos-tab">
+          <div class="tab-pane fade show active" data-href="#nav-todos" id="nav-todos" role="tabpanel" aria-labelledby="nav-todos-tab">
             <div class="contacts list-group" id="listaContactos">
-                <!-- <li class="active list-group-item list-group-item-action flex-column align-items-start active list-group-item-dark">
-                  <div class="d-flex bd-highlight">
-                    <div class="img_cont">
-                      <img src="user-profile.png" class="rounded-circle user_img">
-                      <span class="online_icon"></span>
-                    </div>
-                    <div class="user_info">
-                      <span>Usuario 1</span>
-                      <p>Online</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action flex-column align-items-start list-group-item-dark">
-                  <div class="d-flex bd-highlight">
-                    <div class="img_cont">
-                      <img
-                        src="user-profile.png"
-                        class="rounded-circle user_img">
-                      <span class="online_icon offline"></span>
-                    </div>
-                    <div class="user_info">
-                      <span>Usuario 2</span>
-                      <p>Conversaci&oacute;n cerrada</p>
-                    </div>
-                  </div>
-                </li> -->
-
+                
             </div>
           </div>
           <!-- Chats asignados -->
-          <div class="tab-pane fade" id="nav-asignados" role="tabpanel" aria-labelledby="nav-asignados-tab">
-            <div class="card-body contacts_body">
-              <ui class="contacts" id="listaContactosAsignados">
-                <!-- <li class="active chat">
-                  <div class="d-flex bd-highlight">
-                    <div class="img_cont">
-                      <img src="user-profile.png" class="rounded-circle user_img">
-                      <span class="online_icon"></span>
-                    </div>
-                    <div class="user_info">
-                      <span>Usuario 3</span>
-                      <p>Online</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="chat">
-                  <div class="d-flex bd-highlight">
-                    <div class="img_cont">
-                      <img src="user-profile.png" class="rounded-circle user_img">
-                      <span class="online_icon offline"></span>
-                    </div>
-                    <div class="user_info">
-                      <span>Usuario 4</span>
-                      <p>Conversaci&oacute;n cerrada</p>
-                    </div>
-                  </div>
-                </li> -->
-              </ui>
+          <div class="tab-pane fade" data-href="#nav-asignados" id="nav-asignados" role="tabpanel" aria-labelledby="nav-asignados-tab">
+            <div class="contacts list-group" id="listaContactosAsignados">
+              
             </div>
-            <div class="card-footer"></div>
           </div>
         </div>
       </div>
@@ -109,7 +58,7 @@
             </div>
             <div class="user_info" id="usuarioActivo">
               <span id="nombreActivo">Chat con Usuario 1</span>
-              <p id="informacionActivo">1767 Mensajes</p>
+              <p id="informacionActivo"><i class="fab fa-2x fa-whatsapp" id='logo-origen'></i></p>
             </div>
             <div class="video_cam">
               <span><i class="fas fa-window-close"></i></span>
@@ -126,7 +75,8 @@
             </ul>
           </div>
         </div>
-        <div id="mensajes" class="card-body msg_card_body">
+        <!-- <div class="mx-auto" id='mensajes-anteriores'>Cargar mas mensajes</div> -->
+        <div id="mensajes" class="card-body msg_card_body h-50">
           
         </div>
         <div class="card-footer">
