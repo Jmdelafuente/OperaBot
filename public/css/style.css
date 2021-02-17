@@ -1,3 +1,5 @@
+	p, li, ul, .msg_cotainer, .msg_cotainer_send{    font-family: "Hind", Sans-serif!important; font-weight: 400!important;}
+a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 700!important;}
 	body,html{
       height: 100%;
       width: 100%;
@@ -85,9 +87,27 @@
 			width: 100% !important;
 			padding: 5px 10px;
 			margin-bottom: 15px !important;
+			background: #026BB2;
+			    height: 95px;
 		}
 	.active{
-			background-color: rgba(0,0,0,0.3);
+			background: white!important;
+	}
+	.list-group{
+		    padding-top: 5%;
+		        height: 550px;
+		        overflow: scroll;
+	}
+	.contacts li .img_cont{
+		    height: 100%;
+    width: 20%;
+       padding: 2%;
+	}
+	.contacts li .img_cont .user_img{
+		width: 100%;
+	}
+	#listaContactos{
+		background: #EFF8FD;
 	}
 		.user_img{
 			    width: 81%;
@@ -109,6 +129,7 @@
     background: #1DB3E8;
     border-radius: 50%!important;
     border: 3px white solid;
+    
 	}
 	.img_cont_msg{
 			height: 40px;
@@ -133,7 +154,7 @@
 		margin-left: 15px;
 	}
 	.user_info span{
-		font-size: 20px;
+		font-size: 18px;
 		color: white;
 	}
 	.user_info p{
@@ -152,21 +173,24 @@
 	}
 	.msg_cotainer{
 		margin-top: auto;
-		margin-bottom: auto;
-		margin-left: 10px;
-		border-radius: 25px;
-		background-color: #82ccdd;
-		padding: 10px;
-		position: relative;
-	}
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: white;
+    padding: 10px;
+    position: relative;
+    border: 2px solid #20B2E8;
+    color: #353535;	}
 	.msg_cotainer_send{
 		margin-top: auto;
 		margin-bottom: auto;
 		margin-right: 10px;
 		border-radius: 25px;
-		background-color: #78e08f;
+		background-color: white;
 		padding: 10px;
 		position: relative;
+		border: 2px solid #20B2E8;
+    color: #353535;
 	}
 	.msg_time{
 		position: absolute;
@@ -250,15 +274,15 @@ img.emoji {
 .list-group-item-dark{
 	background: #20B2E8!important;
 }
-.active{
-	background: transparent!important;
+.contacts li.active{
+	background:#20B2E8!important;
 }
 .list-group-item-dark.list-group-item-action.active, .active.chat{
 	background: #026BB2!important;
     border-color: #026BB2!important;
 }
 .list-group-item-dark , .chat{
-    background: #20B2E8!important;
+
 }
 .list-group-item:first-child{
 	margin-top: 15px;
@@ -296,4 +320,8 @@ img.emoji {
     background-color: white!important;
     border: 2px solid #20B2E8 !important;
     color: #026BB2 !important;
+}
+#mensajes{
+	overflow: scroll;
+    height: 400px!important;
 }
