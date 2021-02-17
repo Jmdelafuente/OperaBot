@@ -71,7 +71,10 @@ async function enviarMensaje(id, cont) {
 
 async function enviarEstado(id, cont) {
   var chat = chatsList[id];
-  let res = await chat.enviarEstado(cont);
+  let res = false;
+  if(chat){
+    res = await chat.enviarEstado(cont);
+  }
   return res;
 }
 
@@ -91,7 +94,7 @@ function getChatById(id) {
 }
 
 async function disconnect(id,timestamp){
-
+  // TODO: aviso de cliente desconectado
 }
 
 // * INIT
