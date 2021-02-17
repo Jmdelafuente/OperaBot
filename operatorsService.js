@@ -71,7 +71,7 @@ async function altaOperador(id, canal) {
     }
     // TODO: recuperar chats asignados/asignar chats y enviar
     lista_asig = recuperarChatsOperador(operador.id);
-    if(lista_asig.length > 0){
+    if (Object.keys(lista_asig).length > 0) {
       socket.recibirLista(canal, lista_asig, true);
     }
     
@@ -109,12 +109,12 @@ function recuperarChatsOperador(id){
     [],
     ...Object.entries(chat_asig)
       .filter(([k, v]) => v.operadorId == id)
-      .map(([k, v]) => ([k]))
+      .map(([k,v]) => ({[k]:v}))
   );
-  asigns.forEach((chatId) => {
+  for (const [chatId, value] of Object.entries(asigns)) {
     let chat = messenger.getChatById(chatId);
     chats[chatId]=chat;
-  });
+  }
   return chats;
 }
 
@@ -156,16 +156,13 @@ async function bajaOperador(id) {
  * @param {Numbers} id del remitente (propio del servicio de mensajeria)
  * @param {String} cont contenido del mensaje
  */
-async function recibirMensaje(id, cont) {
+async function recibirMensaje(id, cont, tipo) {
   // Check if chat is already assigned
-  if (chat_asig[id]) {
-    // Push notification to operator
-    socket.recibirMensaje(chat_asig[id].operadorId, id, cont);
-  } else {
+  if (!chat_asig[id]) {
     // Se asigna el chat
     chat = messenger.getChatById(id);
     newAsign
-      .push({id:id, cont: cont, nombre:chat.name })
+      .push({ id: id, cont: cont, nombre: chat.name })
       .on("finish", function (res) {
         return true;
       })
@@ -174,7 +171,38 @@ async function recibirMensaje(id, cont) {
         // ? evaluar que hacer en este caso
         return new Error("No se puedo asignar el chat");
       });
-  }
+    }
+  // Push notification to operator
+  socket.recibirMensaje(id, cont, tipo);
+}
+
+/**
+ * Funcion que captura la recepcion de una imagen a traves
+ * de los servicios de mensajeria y la envia a un operador
+ * (asignando el chat de ser necesario)
+ *
+ * @param {Numbers} id del remitente (propio del servicio de mensajeria)
+ * @param {String} cont contenido del mensaje
+ */
+async function recibirImagen(id, cont, type) {
+  // Check if chat is already assigned
+  if (!chat_asig[id]) {
+    // Se asigna el chat
+    chat = messenger.getChatById(id);
+    newAsign
+      .push({ id: id, cont: cont, nombre: chat.name })
+      .on("finish", function (res) {
+        return true;
+      })
+      .on("failed", function (err) {
+        // Exception, I hope never see this
+        // ? evaluar que hacer en este caso
+        return new Error("No se puedo asignar el chat");
+      });
+    }
+  
+  // Push notification to operator
+  socket.recibirMensaje(id, cont, type);
 }
 
 async function getAllMessages(id,user){
@@ -184,6 +212,10 @@ async function getAllMessages(id,user){
   return lista_mensajes;
 }
 
+async function getMoreMessages(id){
+  chat = messenger.getChatById(id);
+  await chat.getMoreMessages(true);
+}
 
 /**
  * Recupera todos los mensajes de un chat.
@@ -228,6 +260,7 @@ async function escribiendo(chatID, channelID){
 Asignacion.getAll()
   .then((stable_assig)=>{
     stable_assig.forEach((asig) => {
+      // TODO: check operador online y reasignar si no
       chat_asig[asig.chatId] = asig;
     });
   })
@@ -238,9 +271,11 @@ Asignacion.getAll()
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
 module.exports.recibirMensaje = recibirMensaje;
+module.exports.recibirImagen = recibirImagen;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.confirmarVisto = confirmarVisto;
 module.exports.getAllMessages = getAllMessages;
 module.exports.reconectarOperador = reconectarOperador;
 module.exports.escribiendo = escribiendo;
+module.exports.getMoreMessages = getMoreMessages;
 module.exports.operators = operators;
