@@ -2,7 +2,7 @@
 const services = require("../configs/servicesConfig");
 const axios = require("axios").default;
 const estado = require("./Estado"); // estado.js exporta las clases 'Abierto' y 'Cerrado'
-
+const OperaDB = require("../dbService");
 /**
  *
  *
@@ -41,6 +41,7 @@ class Chat {
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
     this.state = new estado.Abierto(this.id);
+    this.db = new OperaDB();
   }
 
   static async getAll() {
@@ -50,33 +51,41 @@ class Chat {
     for (let i = 0; i < urls.length; i++) {
       promises.push(axios.get(urls[i]));
     }
+    
+
     const sendGetRequest = async () => {
       try {
-        await axios.all(promises).then(
+        await Promise.allSettled(promises).then(
           axios.spread((...responses) => {
             let i = 0;
             responses.forEach((response) => {
-              let chat_temp;
-              response.data.forEach((chat) => {
-                chat_temp = services.chatParser(
-                  Object.keys(services.URLs)[i],
-                  chat
-                );
-                res[chat_temp.id] = new Chat(
-                  chat_temp.id,
-                  chat_temp.origin,
-                  chat_temp.name,
-                  chat_temp.timestamp,
-                  chat_temp.pendingmessage,
-                  undefined
-                );
-              });
-              i += 1;
+              if (response.value !== undefined) {
+                let chat_temp;
+                response.value.data.forEach((chat) => {
+                  chat_temp = services.chatParser(
+                    Object.keys(services.URLs)[i],
+                    chat
+                  );
+                  res[chat_temp.id] = new Chat(
+                    chat_temp.id,
+                    chat_temp.origin,
+                    chat_temp.name,
+                    chat_temp.timestamp,
+                    chat_temp.pendingmessage,
+                    undefined
+                  );
+                });
+                i += 1;
+              }
             });
-          })
+          }),
+          (error) => {
+            // TODO: Fallo un servicio de mensajeria, reportar
+            console.error(error);
+          }
         );
       } catch (err) {
-        // Handle Error Here
+        // TODO: Handle Error Here
         console.error(err);
       }
     };
@@ -87,7 +96,7 @@ class Chat {
   async enviarMensaje(cont) {
     let res;
     await axios
-      .post(services.URLs[this.origin] + "/sendMessage", {
+      .post(services.URLs[this.origin] + "/sendmessage", {
         body: services.bodyParser(this.origin, this.id, cont),
         headers: {
           "Content-Type": "application/json",
@@ -109,16 +118,22 @@ class Chat {
   async enviarEstado(cont) {
     let res;
     await axios
-      .post(services.URLs[this.origin] + "/sendStatus", {
-        body: services.bodyParser(this.origin, this.id, cont),
+      .post(services.URLs[this.origin] + "/sendstatus", {
+        body: {'id':this.id, 'text': cont},
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((response) => {
-        res = response.data;
+      .then(
+        (response) => {
+          res = response.data;
+          console.log(res);
         //? Actualizamos el estado interno del chat
-      })
+        },(err) => {
+          // TODO: volver a emitir?
+          console.log(err);
+        }
+      )
       .catch(function (error) {
         res = new Error(error);
       });
@@ -127,22 +142,23 @@ class Chat {
 
   async getAllMessages(includeMe) {
     let res;
-    let b = JSON.stringify({
-      id: this.id,
-      includeMe: includeMe,
-    });
+    let b = services.getMessagesParser(this.origin, this.id, includeMe);
+    // let b = JSON.stringify({
+    //   id: this.id,
+    //   includeMe: includeMe,
+    // });
     const sendRequest = async () => {
       try {
         await axios
-          .post(services.URLs[this.origin] + "/getAllMessages", {
+          .post(services.URLs[this.origin] + "/getallmessages", {
             body: b,
             headers: {
               "Content-Type": "application/json",
             },
           })
           .then((response) => {
-            res = response.data;
-            console.log(response.data);
+            console.log(response);
+            res = services.messagesParser(this.origin,response.data);
           });
       } catch (err) {
         // Handle Error Here
@@ -154,6 +170,35 @@ class Chat {
       return a.timestamp - b.timestamp;
     });
     return res;
+  }
+
+  async getMoreMessages() {
+    let res;
+    let b = JSON.stringify({
+      id: this.id,
+    });
+    const sendRequest = async () => {
+      try {
+        await axios
+          .post(services.URLs[this.origin] + "/getmoremessages", {
+            body: b,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            res = response.data;
+          });
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+    };
+    await sendRequest();
+    // res = res.sort(function (a, b) {
+    //   return a.timestamp - b.timestamp;
+    // });
+    // return res;
   }
 
   changeState(state) {
