@@ -3,7 +3,7 @@ var Queue = require("better-queue");
 const Asignacion = require("./models/Asignacion");
 const Operador = require("./models/Operador");
 const socket = require("./websocket");
-const status = require('./configs/statusConfig');
+const status = require("./configs/statusConfig");
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
@@ -16,7 +16,7 @@ var newAsign = new Queue(async function (input, cb) {
     // No hay operadores online
     // TODO: chequear la hora de trabajo y esperar
     chat_unassig.push(input);
-    cb('fail', null);
+    cb("fail", null);
   } else {
     // FIXME: a modo de prueba, tomamos uno 'aleatorio'
     let op = random_item(operators);
@@ -46,12 +46,11 @@ function random_item(items) {
   return items[keys[random]];
 }
 
-
 /**
  * Notificar el alta de un operador
  * cuando un operador se conecta a la plataforma, se registra
  * el id del operador y el id del canal de comunicación del mismo
- * 
+ *
  * @param {Number} id TOKEN del operador nuevo
  * @param {*} canal socket o websocket de comunicacion con el operador
  */
@@ -59,12 +58,12 @@ async function altaOperador(id, canal) {
   // Validar el SESSIONKEY y recuperar el operador
   var operador = new Operador();
   let esValido = operador.validar(id);
-  if(!await esValido){
+  if (!(await esValido)) {
     // TODO: no es un token valido, salir
     return false;
-  }else{
+  } else {
     // Check si el operador ya existe
-    if (!operators[operador.id]){
+    if (!operators[operador.id]) {
       operador.socket = canal;
       operators[operador.id] = operador;
       operators_channels[canal.user] = operador.id;
@@ -74,18 +73,18 @@ async function altaOperador(id, canal) {
     if (Object.keys(lista_asig).length > 0) {
       socket.recibirLista(canal, lista_asig, true);
     }
-    
+
     // TODO: enviar todos los chats
     socket.recibirLista(canal, messenger.chatsList(), false);
     return true;
   }
 }
 
-function reconectarOperador(id, canal){
+function reconectarOperador(id, canal) {
   // * Recuperar y actualizar socket del operador
   let operador = operators[operators_channels[id]];
   operador.socket = canal;
-  
+
   // * Recuperar listados de chats
   // Enviar chats asignados
   lista_asig = recuperarChatsOperador(operador.id);
@@ -103,50 +102,52 @@ function reconectarOperador(id, canal){
  * @param {Numbers} id ID del operador que se requiren recuperar sus chats
  * @returns {Chat[]}  Lista de chats
  */
-function recuperarChatsOperador(id){
+function recuperarChatsOperador(id) {
   let chats = {};
   let asigns = Object.assign(
     [],
     ...Object.entries(chat_asig)
       .filter(([k, v]) => v.operadorId == id)
-      .map(([k,v]) => ({[k]:v}))
+      .map(([k, v]) => ({ [k]: v }))
   );
   for (const [chatId, value] of Object.entries(asigns)) {
     let chat = messenger.getChatById(chatId);
-    chats[chatId]=chat;
+    chats[chatId] = chat;
   }
   return chats;
 }
 
 async function bajaOperador(id) {
-    var baja = false;
-    var operador = new Operador();
-    operador.validar(id);
-    delete operators[operador.id];
-    console.log('Baja operador '+id);
-    //  Antes de dar de baja un operador, esperamos un tiempo prudencial
-    //  -4min- tal vez sea sólo una ligera desconexión.
-    setTimeout(
-        id=>{
-          // Si no se volvio a conectar, le doy la desconexion logica
-          if (!operators[operador.id]) {
-            // TODO: Reasignar chats que no hayan sido respondidos por el operador
-            // Buscar chats asignados a ese operador
-            var assigned_chats = recuperarChatsOperador(operador.id);
-            // Solicitar reasignacion
-            for (const [chat, op] of Object.entries(assigned_chats)) {
-              newAsign
-                .push({ id: chat.id, cont: chat.cont, nombre: chat.nombre })
-                .on("failed", (err) => {
-                  // The last one op
-                  // ? como guardamos los chats sin asignacion
-                });
-            }
-            baja = true;
-          }
-        }, 240000, id
-    );
-    return baja;
+  var baja = false;
+  var operador = new Operador();
+  operador.validar(id);
+  delete operators[operador.id];
+  console.log("Baja operador " + id);
+  //  Antes de dar de baja un operador, esperamos un tiempo prudencial
+  //  -4min- tal vez sea sólo una ligera desconexión.
+  setTimeout(
+    (id) => {
+      // Si no se volvio a conectar, le doy la desconexion logica
+      if (!operators[operador.id]) {
+        // TODO: Reasignar chats que no hayan sido respondidos por el operador
+        // Buscar chats asignados a ese operador
+        var assigned_chats = recuperarChatsOperador(operador.id);
+        // Solicitar reasignacion
+        for (const [chat, op] of Object.entries(assigned_chats)) {
+          newAsign
+            .push({ id: chat.id, cont: chat.cont, nombre: chat.nombre })
+            .on("failed", (err) => {
+              // The last one op
+              // ? como guardamos los chats sin asignacion
+            });
+        }
+        baja = true;
+      }
+    },
+    240000,
+    id
+  );
+  return baja;
 }
 /**
  * Funcion que captura la recepcion de un mensaje a traves
@@ -171,7 +172,7 @@ async function recibirMensaje(id, cont, tipo) {
         // ? evaluar que hacer en este caso
         return new Error("No se puedo asignar el chat");
       });
-    }
+  }
   // Push notification to operator
   socket.recibirMensaje(id, cont, tipo);
 }
@@ -199,20 +200,20 @@ async function recibirImagen(id, cont, type) {
         // ? evaluar que hacer en este caso
         return new Error("No se puedo asignar el chat");
       });
-    }
-  
+  }
+
   // Push notification to operator
   socket.recibirMensaje(id, cont, type);
 }
 
-async function getAllMessages(id,user){
+async function getAllMessages(id, user) {
   operador = operators_channels[user];
   chat = messenger.getChatById(id);
   let lista_mensajes = await chat.getAllMessages(true);
   return lista_mensajes;
 }
 
-async function getMoreMessages(id){
+async function getMoreMessages(id) {
   chat = messenger.getChatById(id);
   await chat.getMoreMessages(true);
 }
@@ -222,9 +223,7 @@ async function getMoreMessages(id){
  * Puede recurrir a la cache/DB o pedirle al servicio de mensajeria los mensajes
  * @param {*} chatId del cual quieren recuperarse los mensajes
  */
-async function mensajesChat(chatId){
-  
-}
+async function mensajesChat(chatId) {}
 
 /**
  * Envia el contenido cont redactado por un operador al remitente id
@@ -235,10 +234,10 @@ async function mensajesChat(chatId){
  * @param {String} cont contenido del mensaje
  */
 async function enviarMensaje(id, cont) {
-  messenger.enviarMensaje(id,cont);
+  messenger.enviarMensaje(id, cont);
 }
 
-async function confirmarVisto(chatId,channelId){
+async function confirmarVisto(chatId, channelId) {
   // let operador = operators[operadorId];
   // Al abrir el mensaje, la asignacion pasa a ser estable (no se busca nuevo operador para el chat)
   let asignacion = new Asignacion(chatId, operators_channels[channelId]);
@@ -249,36 +248,48 @@ async function confirmarVisto(chatId,channelId){
   // TODO: faltaria enviar el visto a la mensajeria
 }
 
-async function escribiendo(chatID, channelID, isWriting = true){
+async function escribiendo(chatID, channelID, isWriting = true) {
   let operador = operators[operators_channels[channelID]];
-  if(isWriting){
-    messenger.enviarEstado(chatID,status.WRITING_MESSAGE(operador.razonSocial));
-  }else{
-    messenger.enviarEstado(chatID,status.STOP_WRITING_MESSAGE(operador.razonSocial));
+  if (isWriting) {
+    messenger.enviarEstado(
+      chatID,
+      status.WRITING_MESSAGE(operador.razonSocial)
+    );
+  } else {
+    messenger.enviarEstado(
+      chatID,
+      status.STOP_WRITING_MESSAGE(operador.razonSocial)
+    );
   }
+}
+
+async function closeChat(chatID) {
+  messenger.closeChat(chatID);
+  // TODO: analiticas de operador con chat cerrado
 }
 
 // * Init
 // Load static/stable asignations
 Asignacion.getAll()
-  .then((stable_assig)=>{
+  .then((stable_assig) => {
     stable_assig.forEach((asig) => {
       // TODO: check operador online y reasignar si no
       chat_asig[asig.chatId] = asig;
     });
   })
-  .catch((error)=>{
+  .catch((error) => {
     console.log(`Error leyendo Asignaciones en DB :${error}`);
   });
 
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
+module.exports.confirmarVisto = confirmarVisto;
+module.exports.closeChat = closeChat;
+module.exports.enviarMensaje = enviarMensaje;
+module.exports.escribiendo = escribiendo;
+module.exports.getAllMessages = getAllMessages;
+module.exports.getMoreMessages = getMoreMessages;
 module.exports.recibirMensaje = recibirMensaje;
 module.exports.recibirImagen = recibirImagen;
-module.exports.enviarMensaje = enviarMensaje;
-module.exports.confirmarVisto = confirmarVisto;
-module.exports.getAllMessages = getAllMessages;
 module.exports.reconectarOperador = reconectarOperador;
-module.exports.escribiendo = escribiendo;
-module.exports.getMoreMessages = getMoreMessages;
 module.exports.operators = operators;

@@ -344,12 +344,19 @@ $(function () {
         autocomplete(document.getElementById("m"), blueprints);
       }
     });
+    $("#cerrarChat").on("click",function (e){
+      closeChat();
+    });
   });
 
   // * FIN FUNCIONES DEL DOM * //
 
   // * EVENTOS WEBSOCKET * //
-
+  function closeChat() {
+    let chat_activo = $("#idChat").val();
+    socket.emit("close_chat", chat_activo);
+    // TODO: estetica de chat cerrado
+  }
   socket.on("connect", function () {
     console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);

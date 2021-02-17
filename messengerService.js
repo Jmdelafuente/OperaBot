@@ -2,7 +2,7 @@ var Chat = require("./models/Chat");
 var op = require("./operatorsService");
 var chatsList = {};
 /**
- * !DEPRECATED 
+ * !DEPRECATED
  * Recibe una lista de chats de un servicio de mensajeria y genera los objetos correspondientes
  * @param {*} lista
  * @param {*} origen
@@ -49,7 +49,14 @@ async function nuevoMensaje(
   op.recibirMensaje(id, cont, tipo);
 }
 
-async function nuevaImagen(id, cont, origen, t, nombre = "anonimo", type = "image") {
+async function nuevaImagen(
+  id,
+  cont,
+  origen,
+  t,
+  nombre = "anonimo",
+  type = "image"
+) {
   // Check if chat exists
   if (chatsList[id]) {
     chatsList[id].timestamp = t;
@@ -72,28 +79,34 @@ async function enviarMensaje(id, cont) {
 async function enviarEstado(id, cont) {
   var chat = chatsList[id];
   let res = false;
-  if(chat){
+  if (chat) {
     res = await chat.enviarEstado(cont);
   }
   return res;
 }
 
-async function getMensajesChat(id){
-  
+async function closeChat(id) {
+  var chat = chatsList[id];
+  let res = false;
+  if (chat) {
+    res = await chat.resolucionOk();
+  }
+  return res;
 }
+
+async function getMensajesChat(id) {}
 
 function getListaChats() {
   return chatsList;
   // return JSON.stringify(chatsList);
 }
 
-
 function getChatById(id) {
   return chatsList[id];
   // return JSON.stringify(chatsList);
 }
 
-async function disconnect(id,timestamp){
+async function disconnect(id, timestamp) {
   // TODO: aviso de cliente desconectado
 }
 
@@ -105,13 +118,15 @@ Chat.getAll().then(
   },
   (error) => {
     console.log(error);
-  });
+  }
+);
 
-module.exports.nuevoMensaje = nuevoMensaje;
-module.exports.nuevaImagen = nuevaImagen;
+module.exports.chatsList = getListaChats;
+module.exports.closeChat = closeChat;
+module.exports.disconnect = disconnect;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.enviarEstado = enviarEstado;
-module.exports.nuevalistaChats = nuevalistaChats;
-module.exports.chatsList = getListaChats;
 module.exports.getChatById = getChatById;
-module.exports.disconnect = disconnect;
+module.exports.nuevaImagen = nuevaImagen;
+module.exports.nuevalistaChats = nuevalistaChats;
+module.exports.nuevoMensaje = nuevoMensaje;

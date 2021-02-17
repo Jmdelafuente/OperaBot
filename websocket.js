@@ -110,6 +110,10 @@ io.on("connection", function (socket) {
     op.escribiendo(id, socket.user, false);
   });
 
+  socket.on("close_chat", function(id){
+    op.closeChat(id);
+  });
+
   socket.on("more-messages", function(chatID){
     console.log(`WebSocket -> more-messages: ${chatID}`);
     op.getMoreMessages(chatID).then(
