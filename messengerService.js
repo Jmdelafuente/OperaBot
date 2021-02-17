@@ -1,12 +1,24 @@
 var Chat = require("./models/Chat");
 var op = require("./operatorsService");
 var chatsList = {};
-
+/**
+ * !DEPRECATED 
+ * Recibe una lista de chats de un servicio de mensajeria y genera los objetos correspondientes
+ * @param {*} lista
+ * @param {*} origen
+ */
 async function nuevalistaChats(lista, origen) {
   for (var c of lista) {
     var newChat;
-    if (origen == "W") {
-      newChat = new Chat(c.id, "W", c.t, c.unreadCount, c.contact.pushname);
+    switch (origen) {
+      case "W":
+        newChat = new Chat(c.id, "W", c.t, c.unreadCount, c.contact.pushname);
+        break;
+      case "P":
+        newChat = new Chat(c.id, "P", c.timestamp, 0, c.name);
+        break;
+      default:
+        break;
     }
     chatsList[newChat.id] = newChat;
   }
@@ -16,7 +28,14 @@ async function nuevalistaChats(lista, origen) {
   });
 }
 
-async function nuevoMensaje(id, cont, origen, t, nombre) {
+async function nuevoMensaje(
+  id,
+  cont,
+  origen,
+  t,
+  nombre = "anonimo",
+  tipo = "chat"
+) {
   // Check if chat exists
   if (chatsList[id]) {
     chatsList[id].timestamp = t;
@@ -27,7 +46,21 @@ async function nuevoMensaje(id, cont, origen, t, nombre) {
     chatsList[id] = chat;
   }
   // Notify new message
-  op.recibirMensaje(id, cont);
+  op.recibirMensaje(id, cont, tipo);
+}
+
+async function nuevaImagen(id, cont, origen, t, nombre = "anonimo", type = "image") {
+  // Check if chat exists
+  if (chatsList[id]) {
+    chatsList[id].timestamp = t;
+    chatsList[id].name = nombre; //puede haber cambiado de nombre la persona
+    chatsList[id].pendingmessage++;
+  } else {
+    var chat = new Chat(id, origen, nombre, t, 1, cont);
+    chatsList[id] = chat;
+  }
+  // Notify new message
+  op.recibirImagen(id, cont, type);
 }
 
 async function enviarMensaje(id, cont) {
@@ -57,6 +90,10 @@ function getChatById(id) {
   // return JSON.stringify(chatsList);
 }
 
+async function disconnect(id,timestamp){
+
+}
+
 // * INIT
 // Get all chats
 Chat.getAll().then(
@@ -68,8 +105,10 @@ Chat.getAll().then(
   });
 
 module.exports.nuevoMensaje = nuevoMensaje;
+module.exports.nuevaImagen = nuevaImagen;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.enviarEstado = enviarEstado;
 module.exports.nuevalistaChats = nuevalistaChats;
 module.exports.chatsList = getListaChats;
 module.exports.getChatById = getChatById;
+module.exports.disconnect = disconnect;
