@@ -1,15 +1,15 @@
 const socket = io("localhost:3001");
 
 var conn = false;
-var chatListAll = [];
-var chatListAsign = [];
-var activeTab;
-var limit = false;
 $(function () {
   // * FUNCIONES AUXILIARES * //
+
+  $("#action_menu_btn").click(function () {
+    $(".action_menu").toggle();
+  });
   /**
-   * Escape an ID for being HTML and JQuery compatible.
-   * This allow to use it with JQuery even if it has specials symbols
+   * Escape an ID for being HTML and Jquery compatible. This allow to use it with JQuery
+   *
    * @param {String} myid ID for being transform
    * @returns string. The ID already escaped
    */
@@ -17,7 +17,7 @@ $(function () {
     return "#" + myid.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1");
   }
   /**
-   * Retrive GETs paramemeters from URL and retrive it as an associative array
+   * Retrive GETs paramemetres from URL and retrive it as an associative array
    *
    * @returns array with GET parameters
    */
@@ -36,35 +36,11 @@ $(function () {
     return params;
   }
 
-
   var params = getSearchParameters();
 
   // * FIN FUNCIONES AUXILIARES * //
 
   // * FUNCIONES DEL DOM * //
-
-  function unreadMessages(chatid,unread=""){
-    if(document.getElementById("unread_"+chatid)){
-      readMessages(chatid);
-    }
-    let circle = document.createElement("mark");
-    let avatar = document.getElementById("avatar_" + chatid);
-    circle.className = "swing";
-    circle.innerText = unread;
-    circle.id = "unread_" + chatid;
-    avatar.parentNode.appendChild(circle);
-  }
-
-  function readMessages(chatid){
-    let circle = document.getElementById("unread_"+chatid);
-    if(circle){
-      document.getElementById("avatar_" + chatid).parentNode.removeChild(circle);
-    }
-  }
-
-  $("#action_menu_btn").click(function () {
-    $(".action_menu").toggle();
-  });
 
   /**
    * Dibuja en el DOM un mensaje de texto
@@ -73,97 +49,34 @@ $(function () {
    * @param {*} tipo 'E' para los mensajes enviados, 'R' para los mensajes recibidos
    * @param {*} t Timestamp o marca de tiempo del mensaje
    */
-  function addMessage(cont, tipo, t, type) {
-    if(cont){
-      var ex = document.createElement("div");
-      var msj = document.createElement("div");
-      var hora = document.createElement("span");
-      var div = document.getElementById("mensajes");
-      if (tipo == "R") {
-        ex.className = "d-flex justify-content-start mb-4";
-        msj.className = "msg_cotainer";
-      } else {
-        ex.className = "d-flex justify-content-end mb-4";
-        msj.className = "msg_cotainer_send";
-      }
-      hora.className = "msg_time";
-      // hora.innerText = t;
-      // * Distintos parser segun contenido: canvas, twemoji,...
-      console.log(type);
-      switch (type) {
-        case "message":
-        case "chat": // * Emoji o chat
-          msj.innerHTML = twemoji.parse(cont);
-          break;
-        case "image": // * Foto
-          let link = document.createElement('a');
-          let canvas = document.createElement("canvas");
-          let ctx = canvas.getContext("2d");
-          let image = new Image();
-          image.onload = function () {
-            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-          };
-          image.src = cont.contenido;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.addEventListener("click", function () {
-            var url_base64jp = cont.contenido;
-            link.href = url_base64jp;
-          });
-          msj.appendChild(link);
-          link.appendChild(canvas);
-          break;
-        case "sticker": // ! Sticker
-        case "ptt": //! AUDIO
-        default:
-          msj.innerHTML = "Tipo de mensaje no soportado";
-          break;
-      }
-      div.appendChild(ex);
-      ex.appendChild(msj);
-      msj.appendChild(hora);
-      div.scrollTop = div.scrollHeight;
-      var time;
+  function addMessage(cont, tipo, t) {
+    var ex = document.createElement("div");
+    var msj = document.createElement("div");
+    var hora = document.createElement("span");
+    if (tipo == "R") {
+      ex.className = "d-flex justify-content-start mb-4";
+      msj.className = "msg_cotainer";
+    } else {
+      ex.className = "d-flex justify-content-end mb-4";
+      msj.className = "msg_cotainer_send";
+    }
+    hora.className = "msg_time";
+    hora.innerText = t;
+    msj.innerHTML = twemoji.parse(cont);
+    document.getElementById("mensajes").appendChild(ex);
+    ex.appendChild(msj);
+    msj.appendChild(hora);
+    setTimeout(function () {
+      let time;
       if (t == "Ahora") {
-        setTimeout(function () {
-          time = new Date();
-          hora.innerText =
-            time.getHours().toString() +
-            ":" +
-            (time.getMinutes() - 1).toString();
-        }, 59 * 1000);
+        time = new Date();
       } else {
         time = new Date(t);
-        let s = "";
-        let today = new Date();
-
-        let hours = (
-          (time.getHours() < 10 ? "0" : "") + time.getHours()
-        ).toString();
-        let min = (
-          (time.getMinutes() < 10 ? "0" : "") + time.getMinutes()
-        ).toString();
-        if (
-          time.getMonth() == today.getMonth() &&
-          time.getDate() == today.getDate()
-        ) {
-          s = s.concat(hours, ":", min);
-        } else {
-          let month = (
-            (time.getMonth() + 1 < 10 ? "0" : "") +
-            (time.getMonth() + 1)
-          ).toString();
-          let day = (
-            (time.getDate() < 10 ? "0" : "") + time.getDate()
-          ).toString();
-          s = s.concat(day, "/", month, "  ", hours, ":", min);
-        }
-
-        hora.innerText = s;
       }
-    }
+      hora.innerText =
+        time.getHours().toString() + ":" + (time.getMinutes() - 1).toString();
+    }, 59 * 1000);
   }
-
   /**
    * Dibuja en el DOM un chat en particular.
    * Pudiendo dibujarse en la lista de todos los contactos o sólo en los asignados
@@ -186,33 +99,26 @@ $(function () {
     img.className = "img_cont";
     avatar.src = "user-profile.png";
     avatar.className = "rounded-circle user_img";
-    avatar.id = "avatar_" + id;
     info.className = "user_info";
     nombre.innerText = nom;
     estatus.innerText = "Online";
     if (asign) {
-      document
-        .getElementById("listaContactosAsignados")
-        .appendChild(li);
-      chatListAsign.push(id);
-    }else{
-      document.getElementById("listaContactos").appendChild(li);
-      chatListAll.push(id);
+      document.getElementById("listaContactosAsignados").appendChild(li);
     }
+    document.getElementById("listaContactos").appendChild(li);
     li.appendChild(ex);
     ex.appendChild(img);
     img.appendChild(avatar);
     ex.appendChild(info);
     info.appendChild(nombre);
     info.appendChild(estatus);
-    li.onclick = function (event) {
-      event.preventDefault();
+    li.onclick = function () {
       changeChat(id);
     };
   }
 
   function changeChat(id) {
-    if ($("#idChat").val() != id) {
+    if($("#idChat").val() != id){
       // Actualizamos el destinatario
       $("#idChat").val(id);
       // Dibujar mensajes, avatar y nombre
@@ -224,76 +130,30 @@ $(function () {
       // Marcamos el chat como activo
       $(".chat .active").removeClass("active");
       $(li).addClass("active");
+      // TODO: Recuperar mensajes y los dibujarlos
+      // Borramos la lista de mensajes
+      $("#mensajes").html("");
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", id);
-      // Borramos la lista de mensajes
-      $("#mensajes").html(`
-        <div class="d-flex justify-content-center">
-        <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        </div>`);
       // Enviamos el 'visto' al servidor
       socket.emit("send_op_seen", id);
-      // Recuperamos la lista de chats abiertos
-      $('div[data-href="' + activeTab + '"]').tab("show");
-      // Marcamos como leido el chat
-      readMessages(id);
-      return false;
     }
   }
 
   function newList(lista, asig) {
-    console.log(`newList: ${asig} - All: ${chatListAll} - Asign: ${chatListAsign}`);
     for (let c of Object.keys(lista)) {
-      if (asig) {
-        if (!chatListAsign.includes(c)) {
-          addChat(lista[c].name, lista[c].id, asig);
-        }
-      }
-      if (!chatListAll.includes(c)) {
-        addChat(lista[c].name, lista[c].id, asig);
-      }
+      addChat(lista[c].name, lista[c].id, asig);
     }
   }
 
-  $("form").submit(function (event) {
-    event.preventDefault();
+  $("form").submit(function () {
     var mensaje = {};
-    if ($("#m").val().length > 0) {
-      mensaje.id = $("#idChat").val();
-      mensaje.contenido = $("#m").val();
-      socket.emit("send_op_message", mensaje);
-      addMessage($("#m").val(), "E", "Ahora", 'chat');
-      $("#m").val("");
-      limit = false; // Se reanuda el evento de escribir
-    }
+    mensaje.id = $("#idChat").val();
+    mensaje.contenido = $("#m").val();
+    socket.emit("send_op_message", mensaje);
+    addMessage($("#m").val(), "E", "Ahora");
+    $("#m").val("");
     return false;
-  });
-
-  $(document).ready(function () {
-    $('a[data-toggle="tab"]').on("click", function (e) {
-      localStorage.setItem("activeTab", $(e.target).attr("href"));
-    });
-    activeTab = localStorage.getItem("activeTab");
-    if (activeTab) {
-      $('div[data-href="' + activeTab + '"]').tab("show");
-    }
-    $("#mensajes-anteriores").on("click", function () {
-      let id = $("#idChat").val();
-      socket.emit("more-messages", id);
-    });
-    $("#m").on("keydown", function (e) {
-      if (e.key.length == 1) {
-        if (!limit) {
-          socket.emit("writing", $("#idChat").val());
-          limit = true;
-          setTimeout(() => {
-            limit = false;
-          }, 10000);
-        }
-      }
-    });
   });
 
   // * FIN FUNCIONES DEL DOM * //
@@ -307,33 +167,16 @@ $(function () {
   });
   socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
-    console.log(listaChats);
     newList(listaChats.chats, listaChats.asignado);
   });
   socket.on("recive_op_message", function (msg) {
     console.log("Mensaje recibido: " + JSON.stringify(msg));
-    if (!chatListAll.includes(msg.id)) {
-      addChat(msg.name, msg.id, msg.asig);
-    }
-    if ($("#idChat").val() == msg.id) {
-      addMessage(msg.contenido, "R", "Ahora", msg.tipo);
-    }else{
-      unreadMessages(msg.id);
-    }
-  });
-  socket.on("recive_op_image", function (msg) {
-    console.log("Imagen recibida: " + JSON.stringify(msg));
-    if (!chatListAll.includes(msg.id)) {
-      addChat(msg.name, msg.id, msg.asig);
-    }
-    if ($("#idChat").val() == msg.id) {
-      addMessage(msg.contenido, "R", "Ahora", "image");
-    } else {
-      unreadMessages(msg.id);
-    }
+    addMessage(msg.contenido, "R", "Ahora");
+    window.scrollTo(0, document.body.scrollHeight);
   });
   socket.on("confirm_op_message", function (msg) {
     confirm(msg, "R", "Ahora");
+    window.scrollTo(0, document.body.scrollHeight);
   });
   socket.on("assign_op_message", function (msg, ack) {
     // Confirmamos la asignacion al servidor
@@ -345,12 +188,11 @@ $(function () {
     let lista = msg.lista;
     let chat_activo = $("#idChat").val();
     if (chat_activo == msg.id) {
-      $("#mensajes").html("");
       lista.forEach((message) => {
         if (message.user == "me") {
-          addMessage(message.contenido, "E", message.t, message.type);
+          addMessage(message.text, "E", message.t);
         } else {
-          addMessage(message.contenido, "R", message.t, message.type);
+          addMessage(message.text, "R", message.t);
         }
       });
     }
