@@ -249,10 +249,13 @@ async function confirmarVisto(chatId,channelId){
   // TODO: faltaria enviar el visto a la mensajeria
 }
 
-async function escribiendo(chatID, channelID){
+async function escribiendo(chatID, channelID, isWriting = true){
   let operador = operators[operators_channels[channelID]];
-  messenger.enviarEstado(chatID,status.WRITING_MESSAGE(operador.razonSocial));
-  console.log(`Operador -> escribiendo: ${operador}`);
+  if(isWriting){
+    messenger.enviarEstado(chatID,status.WRITING_MESSAGE(operador.razonSocial));
+  }else{
+    messenger.enviarEstado(chatID,status.STOP_WRITING_MESSAGE(operador.razonSocial));
+  }
 }
 
 // * Init

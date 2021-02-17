@@ -106,6 +106,10 @@ io.on("connection", function (socket) {
     console.log(`WebSocket -> writing: ${socket.toString()}`);
   });
 
+  socket.on("stop-writing", function (id) {
+    op.escribiendo(id, socket.user, false);
+  });
+
   socket.on("more-messages", function(chatID){
     console.log(`WebSocket -> more-messages: ${chatID}`);
     op.getMoreMessages(chatID).then(
