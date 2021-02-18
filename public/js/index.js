@@ -68,6 +68,12 @@ $(function () {
 
   // * FUNCIONES DEL DOM * //
 
+  /**
+   * Marca un chat como no leido, incorporando un elemento visual al mismo
+   *
+   * @param {string} chatid
+   * @param {string} [unread=""]
+   */
   function unreadMessages(chatid, unread = "") {
     if (document.getElementById("unread_" + chatid)) {
       readMessages(chatid);
@@ -80,6 +86,11 @@ $(function () {
     avatar.parentNode.appendChild(circle);
   }
 
+  /**
+   * Marca como leido el chat, eliminando la notificacion visual
+   *
+   * @param {String} chatid
+   */
   function readMessages(chatid) {
     let circle = document.getElementById("unread_" + chatid);
     if (circle) {
@@ -97,8 +108,8 @@ $(function () {
    * Dibuja en el DOM un mensaje de texto
    *
    * @param {String} cont Contenido del mensaje o texto a mostrar
-   * @param {*} tipo 'E' para los mensajes enviados, 'R' para los mensajes recibidos
-   * @param {*} t Timestamp o marca de tiempo del mensaje
+   * @param {String} tipo 'E' para los mensajes enviados, 'R' para los mensajes recibidos
+   * @param {Number} t Timestamp o marca de tiempo del mensaje
    */
   function addMessage(cont, tipo, t, type) {
     if (cont) {
@@ -237,6 +248,12 @@ $(function () {
     };
   }
 
+  /**
+   * Cambia el chat activo, modificando el nombre a mostrar, marcando como activo en la lista y el valor de chatid
+   * 
+   * @param {String} id ID de chat seleccionado
+   * @returns
+   */
   function changeChat(id) {
     if ($("#idChat").val() != id) {
       // Actualizamos el destinatario
@@ -310,7 +327,7 @@ $(function () {
       redirect: "follow",
     };
     
-    fetch(`http://d0b563db7671.ngrok.io/api/client/blueprints`, requestOptions)
+    fetch(`http://localhost:3000/api/client/blueprints`, requestOptions)
       .then((response) => response.text())
       .then((result) => (blueprints = JSON.parse(result)))
       .catch((error) => console.log("error", error));
@@ -345,6 +362,9 @@ $(function () {
     $("#cerrarChat").on("click",function (e){
       closeChat();
     });
+    $("#nav-asignados-tab").on("click",function(e){
+      getAsignados();
+    });
   });
 
   // * FIN FUNCIONES DEL DOM * //
@@ -354,6 +374,9 @@ $(function () {
     let chat_activo = $("#idChat").val();
     socket.emit("close_chat", chat_activo);
     // TODO: estetica de chat cerrado
+  }
+  function getAsignados(){
+    // socket.emit("",{});
   }
   socket.on("connect", function () {
     console.log(`conn: ${conn}, params: ${params}`);
