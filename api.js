@@ -3,6 +3,12 @@ const services = require('./configs/servicesConfig');
 const blueprints = require("./configs/messagesConfig");
 const config = require("./configs/apiConfig");
 
+/**
+ * Dado un request (express) valida si la IP origen es una direccion permitida.
+ * See: configs/apiConfig.js para mas detalle
+ * @param {*} req
+ * @returns true si el request es válido o false en caso contrario
+ */
 function validateIP(req){
   var ip =
     (req.headers["x-forwarded-for"] || "").split(",").pop().trim() ||
@@ -15,8 +21,7 @@ function validateIP(req){
 for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   // * Recibimos nuevo mensaje de un messenger service
   api.post(`/api/${prefix}/newmessage`, jsonParser, (req, res) => {
-    //console.log(req.body);
-    // TODO: authenticate origin
+    // TODO: authenticate origin: usar validateIP con req
     let data = JSON.parse(req.body.body);
     let type = data.type ? data.type : "chat";
     let name = data.name ? data.name : "anonimo";
@@ -40,7 +45,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
 
   // * Recibimos nueva imagen de un messenger service
   api.post(`/api/${prefix}/newimage`, jsonParser, (req, res) => {
-    // TODO: authenticate origin
+    // TODO: authenticate origin: usar validateIP con req
     let data = JSON.parse(req.body.body);
     console.log(data);
     ms.nuevaImagen(
@@ -62,7 +67,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
 
   // * Recibimos la lista de chats de un messenger service
   api.post(`/api/${prefix}/list`, jsonParser, (req, res) => {
-    // TODO: authenticate origin
+    // TODO: authenticate origin: usar validateIP con req
     ms.nuevalistaChats(req.body, `${key}`)
       .then(() => {
         res.sendStatus(200);
@@ -77,7 +82,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
 
   // * Desconectamos un usuario
   api.post(`/api/${prefix}/disconnect`, jsonParser, (req, res) => {
-    // TODO: authenticate origin
+    // TODO: authenticate origin: usar validateIP con req
     ms.disconnect(req.body, `${key}`)
       .then(() => {
         res.sendStatus(200);
@@ -96,6 +101,7 @@ api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
   res.send(JSON.stringify(blueprints.blueprints));
 });
 
+// Iniciar servidor de API/Webhooks
 const serverAPI = api.listen(api.get("port"), () => {
   console.log("server on port", api.get("port"));
 });

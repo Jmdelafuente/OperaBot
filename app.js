@@ -19,7 +19,7 @@ api.set('port', process.env.PORT || port);
 app.use(morgan("tiny"));
 api.use(morgan("tiny"));
 // Helmet for securing requests
-// app.use(helmet());
+// app.use(helmet()); // FIXME: en produccion revisar/configurar TLS
 api.use(helmet());
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -42,8 +42,8 @@ api.use(function (req, res, next) {
   next();
 });
 
-api.use(express.json({ limit: "50mb" }));
-api.use(express.urlencoded({ limit: "50mb", extended: true }));
+api.use(express.json({ limit: "20mb" }));
+api.use(express.urlencoded({ limit: "20mb", extended: true }));
 
 
 
@@ -52,7 +52,7 @@ var websocket = require('./websocket.js');
 // API REST para recibir webhooks de los servicios de mensajeria
 var apiService = require('./api.js');
 
-// Iniciar servidor
+// Iniciar servidor de Operadores
 const server = app.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
 });
