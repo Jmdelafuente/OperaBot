@@ -15,7 +15,13 @@ async function nuevalistaChats(lista, origen) {
         newChat = new Chat(c.id, "W", c.t, c.unreadCount, c.contact.pushname);
         break;
       case "P":
-        newChat = new Chat(c.id, "P", c.timestamp, 0, c.name);
+        newChat = new Chat(
+          c.id,
+          "P",
+          c.timestamp,
+          0,
+          c.name ? c.name : `Anonimo - ${c.id.substring(4)}`
+        );
         break;
       default:
         break;
@@ -33,7 +39,7 @@ async function nuevoMensaje(
   cont,
   origen,
   t,
-  nombre = "anonimo",
+  nombre = "Anonimo",
   tipo = "chat"
 ) {
   // Check if chat exists
