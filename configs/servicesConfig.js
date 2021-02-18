@@ -14,7 +14,7 @@ const FB_URL = `${FB_SERVER}:${FB_PORT}/${FB_PREFIX}`;
 // Page Server / Burbuja de chat
 const PS_PORT = 3004;
 const PS_PREFIX = 'ps';
-const PS_SERVER = "http://23b5daf530ae.ngrok.io";
+const PS_SERVER = "http://ca43c46a780e.ngrok.io";
 const PS_URL = `${PS_SERVER}/${PS_PREFIX}`;
 // const PS_URL = `${PS_SERVER}:${PS_PORT}/${PS_PREFIX}`;
 
@@ -54,7 +54,7 @@ module.exports.bodyParser = function (origen, destino, mensaje, tipo = "chat") {
       break;
     case "P":
       body = {
-        user: destino,
+        id: destino,
         text: mensaje
       };
       break;
@@ -86,7 +86,7 @@ module.exports.getMessagesParser = function (
       break;
     case "P":
       body = {
-        user: destino,
+        id: destino,
       };
       break;
     default:
@@ -162,7 +162,7 @@ module.exports.messageParser = function (origen, body) {
         contenido: contenido,
         timestamp: body.hora,
         type: body.type,
-        URL: url
+        URL: url,
       };
       break;
     default:
