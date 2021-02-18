@@ -1,5 +1,5 @@
 const SURL = "localhost";
-const socket = io(SURL+":3001");
+const socket = io(`${SURL}:3001`);
 var blueprints={};
 var conn = false;
 var chatListAll = [];
@@ -302,19 +302,16 @@ $(function () {
     // Get all blueprints
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    myHeaders.append("Origin", "weblogin");
     var requestOptions = {
       method: "GET",
       headers: myHeaders,
       redirect: "follow",
     };
     
-    fetch(
-      `http://c2facd60d143.ngrok.io/api/client/blueprints`,
-      requestOptions
-    )
+    fetch(`http://d0b563db7671.ngrok.io/api/client/blueprints`, requestOptions)
       .then((response) => response.text())
-      .then((result) => blueprints = JSON.parse(result))
+      .then((result) => (blueprints = JSON.parse(result)))
       .catch((error) => console.log("error", error));
 
     $('a[data-toggle="tab"]').on("click", function (e) {
