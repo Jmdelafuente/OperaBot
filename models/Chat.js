@@ -51,7 +51,6 @@ class Chat {
     for (let i = 0; i < urls.length; i++) {
       promises.push(axios.get(urls[i]));
     }
-    
 
     const sendGetRequest = async () => {
       try {
@@ -121,7 +120,7 @@ class Chat {
     let res;
     await axios
       .post(services.URLs[this.origin] + "/sendstatus", {
-        body: {'id':this.id, 'text': cont},
+        body: { id: this.id, text: cont },
         headers: {
           "Content-Type": "application/json",
         },
@@ -130,8 +129,9 @@ class Chat {
         (response) => {
           res = response.data;
           console.log(res);
-        //? Actualizamos el estado interno del chat
-        },(err) => {
+          //? Actualizamos el estado interno del chat
+        },
+        (err) => {
           // TODO: volver a emitir?
           console.log(err);
         }
@@ -160,7 +160,7 @@ class Chat {
           })
           .then((response) => {
             console.log(response);
-            res = services.messagesParser(this.origin,response.data);
+            res = services.messagesParser(this.origin, response.data);
           });
       } catch (err) {
         // Handle Error Here
