@@ -7,7 +7,7 @@ const config = require("./configs/apiConfig");
  * Dado un request (express) valida si la IP origen es una direccion permitida.
  * See: configs/apiConfig.js para mas detalle
  * @param {*} req
- * @returns true si el request es válido o false en caso contrario
+ * @returns {Boolean} true si el request es válido o false en caso contrario
  */
 function validateIP(req){
   var ip =
@@ -23,6 +23,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   api.post(`/api/${prefix}/newmessage`, jsonParser, (req, res) => {
     // TODO: authenticate origin: usar validateIP con req
     let data = JSON.parse(req.body.body);
+    console.log(data);
     let type = data.type ? data.type : "chat";
     let name = data.name ? data.name : "anonimo";
     ms.nuevoMensaje(
@@ -47,13 +48,13 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   api.post(`/api/${prefix}/newimage`, jsonParser, (req, res) => {
     // TODO: authenticate origin: usar validateIP con req
     let data = JSON.parse(req.body.body);
-    console.log(data);
+    let name = data.name ? data.name : "anonimo";
     ms.nuevaImagen(
       data.user,
       data.text,
       `${key}`,
       data.timestamp,
-      data.name
+      name
     ).then(
       (cb) => {
         res.sendStatus(200);
