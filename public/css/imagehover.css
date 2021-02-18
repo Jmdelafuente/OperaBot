@@ -1,0 +1,37 @@
+.imghover {
+  border-radius: 0px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.imghover{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.imghover:after {
+  content: '»';
+  font-size: 2em;
+  color: #fff;
+  position: absolute;
+  opacity: 0;  
+  top: 50%;
+  right: -25px;
+  transition: 0.5s;
+}
+
+.imghover:hover{
+  padding-right: 5px;
+  padding-left:  5px;
+}
+
+.imghover:hover:after {
+  opacity: 1;
+  right: 10px;
+}

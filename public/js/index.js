@@ -133,6 +133,7 @@ $(function () {
           image.src = cont.contenido;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
+          link.className = "imghover";
           link.addEventListener("click", function () {
             var url_base64jp = cont.contenido;
             link.href = url_base64jp;
