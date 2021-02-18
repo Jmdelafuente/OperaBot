@@ -12,7 +12,7 @@ class OperaDB {
    * @param {String} tabla nombre de la tabla donde insertar el valor
    * @param {[String]} campos listado de los campos de la tabla a insertar
    * @param {[*]} valores valores correspondientes con los campos listados
-   * @returns Si la insercion fue correcta el ID corresponiente, -1 en caso contrario y exporta el error.
+   * @returns {Number} Si la insercion fue correcta el ID corresponiente, -1 en caso contrario y exporta el error.
    * @memberof OperaDB
    */
   insertar(tabla, campos, valores) {
@@ -41,12 +41,13 @@ class OperaDB {
    * Funcion de busqueda parametrizada. Devuelve un select sobre ciertos campos
    * donde se cumplen las condiciones pedidas en el arreglo de filtros.
    *
-   * @param {*} tabla nombre de la tabla a la cual hacerle select
-   * @param {[*]} campos arreglo con los nombres de los campos a devolver de la tabla donde se cumplan los filtros
-   * @param {[*]} filtros arreglo del tipo [clave,valor] para filtrar la busqueda
-   * @param {[*]} orderby arreglo con los nombres de los campos por los cuales se debe ordenar el resulado de la busqueda
-   * @param {[*]} order tipo de orden 'ASC' p 'DESC'
-   * @param {[*]} limit cantidad de elementos a recuperar
+   * @param {String} tabla nombre de la tabla a la cual hacerle select
+   * @param {[String]} campos arreglo con los nombres de los campos a devolver de la tabla donde se cumplan los filtros
+   * @param {[[String,*]]} filtros arreglo del tipo [clave,valor] para filtrar la busqueda
+   * @param {[String]} orderby arreglo con los nombres de los campos por los cuales se debe ordenar el resulado de la busqueda
+   * @param {[String]} order tipo de orden 'ASC' o 'DESC'
+   * @param {[Number]} limit cantidad de elementos a recuperar
+   * @returns {Promise<[*]>} Filas coincidentes con los filtros aplicados
    * @memberof OperaDB
    */
   buscar(tabla, campos, filtros, orderby=false, order='DESC', limit = 0){
@@ -107,11 +108,11 @@ class OperaDB {
   /**
    * Función de actualización de datos en una tabla parametrizada. Realiza un UPDATE sobre los datos especificados utilizando el WHERE especificado
    *
-   * @param {*} tabla nombre de la tabla a la cual hacerle select
-   * @param {*} campos listado de los campos de la tabla a actualizar
-   * @param {*} valores valores correspondientes con los campos listados
-   * @param {*} filtros arreglo del tipo [clave,valor] para filtrar la actualización
-   * @returns Int Cantidad de filas actualizadas
+   * @param {String} tabla nombre de la tabla a la cual hacerle select
+   * @param {[String]} campos listado de los campos de la tabla a actualizar
+   * @param {[String]} valores valores correspondientes con los campos listados
+   * @param {[[String,*]]} filtros arreglo del tipo [clave,valor] para filtrar la actualización
+   * @returns {Promise<Number>} Cantidad de filas actualizadas
    * @memberof OperaDB
    */
   actualizar(tabla, campos, valores, filtros) {
