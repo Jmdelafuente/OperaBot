@@ -1,21 +1,31 @@
 const ms = require('./messengerService');
 const services = require('./configs/servicesConfig');
-const axios = require("axios").default;
 const blueprints = require("./configs/messagesConfig");
+const config = require("./configs/apiConfig");
+
+function validateIP(req){
+  var ip =
+    (req.headers["x-forwarded-for"] || "").split(",").pop().trim() ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress;
+  return config.VALID_IPS(ip);
+}
 
 for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   // * Recibimos nuevo mensaje de un messenger service
-  app.post(`/api/${prefix}/newmessage`, jsonParser, (req, res) => {
+  api.post(`/api/${prefix}/newmessage`, jsonParser, (req, res) => {
     //console.log(req.body);
-    // TODO authenticate origin
+    // TODO: authenticate origin
     let data = JSON.parse(req.body.body);
     let type = data.type ? data.type : "chat";
+    let name = data.name ? data.name : "anonimo";
     ms.nuevoMensaje(
       data.user,
       data.text,
       `${key}`,
       data.timestamp,
-      data.name,
+      name,
       type
     ).then(
       (cb) => {
@@ -29,8 +39,8 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   });
 
   // * Recibimos nueva imagen de un messenger service
-  app.post(`/api/${prefix}/newimage`, jsonParser, (req, res) => {
-    // TODO authenticate origin
+  api.post(`/api/${prefix}/newimage`, jsonParser, (req, res) => {
+    // TODO: authenticate origin
     let data = JSON.parse(req.body.body);
     console.log(data);
     ms.nuevaImagen(
@@ -51,8 +61,8 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   });
 
   // * Recibimos la lista de chats de un messenger service
-  app.post(`/api/${prefix}/list`, jsonParser, (req, res) => {
-    // TODO authenticate origin
+  api.post(`/api/${prefix}/list`, jsonParser, (req, res) => {
+    // TODO: authenticate origin
     ms.nuevalistaChats(req.body, `${key}`)
       .then(() => {
         res.sendStatus(200);
@@ -66,28 +76,26 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   });
 
   // * Desconectamos un usuario
-  app.post(`/api/${prefix}/disconnect`, jsonParser, (req, res) => {
-    // TODO authenticate origin
+  api.post(`/api/${prefix}/disconnect`, jsonParser, (req, res) => {
+    // TODO: authenticate origin
     ms.disconnect(req.body, `${key}`)
       .then(() => {
         res.sendStatus(200);
       })
       .catch(() => {
-        console.log(
-          `Error en pedido de desconecion con ${prefix} - ` + err
-        );
+        console.log(`Error en pedido de desconecion con ${prefix} - ` + err);
         res.sendStatus(500);
       });
   });
 }
 
 
-  // * Desconectamos un usuario
-  app.get(`/api/client/blueprints`, jsonParser, (req, res) => {
-    // TODO authenticate origin
-    res.send(JSON.stringify(blueprints.blueprints));
-  });
+// * Desconectamos un usuario
+api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
+  // TODO: authenticate origin
+  res.send(JSON.stringify(blueprints.blueprints));
+});
 
-// app.get("/", function (req, res) {
-//   res.sendFile(path.join(__dirname + "/index.html"));
-// });
+const serverAPI = api.listen(api.get("port"), () => {
+  console.log("server on port", api.get("port"));
+});
