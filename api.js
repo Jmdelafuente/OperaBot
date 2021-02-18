@@ -83,14 +83,14 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
         res.sendStatus(200);
       })
       .catch(() => {
-        console.log(`Error en pedido de desconecion con ${prefix} - ` + err);
+        console.log(`Error en pedido de desconexion con ${prefix} - ` + err);
         res.sendStatus(500);
       });
   });
 }
 
 
-// * Desconectamos un usuario
+// * Getter de plantillas de un operador
 api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
   // TODO: authenticate origin
   res.send(JSON.stringify(blueprints.blueprints));
