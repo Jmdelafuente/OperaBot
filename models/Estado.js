@@ -8,10 +8,10 @@
 class Estado {
   /**
    *Creates an instance of Estado.
-   * @param {*} id en la DB
-   * @param {*} nombre del estado, humano-legible
-   * @param {*} descripcion adicional si hiciera falta
-   * @param {*} chat id del chat cuyo estado se modifica
+   * @param {Number} id en la DB
+   * @param {String} nombre del estado, humano-legible
+   * @param {String} descripcion adicional si hiciera falta
+   * @param {String} chat id del chat cuyo estado se modifica
    * @memberof Estado
    * @abstract
    * @constructor
