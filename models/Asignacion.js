@@ -18,8 +18,8 @@ class Asignacion {
     await this.db
       .insertar(
         "asignaciones",
-        ["operadorId", "chatId"],
-        [this.operadorId, this.chatId]
+        ["operadorId", "chatId", "fechaAsignacion"],
+        [this.operadorId, this.chatId, Date.now()]
       )
       .then(
         (done) => {
