@@ -4,7 +4,12 @@ var appFront = express();
 var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").createServer(appFront);
-var io = require("socket.io")(http);
+var io = require("socket.io")(http, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 var path = require("path");
 var portFront = 3001;
 var sockets = {};
@@ -18,17 +23,17 @@ const { resolve } = require("path");
 
 // Front for websockets
 appFront.set("port", portFront);
-appFront.use(helmet());
+// appFront.use(helmet());
 appFront.use(express.static(path.join(__dirname, "public")));
 appFront.use(cors);
-appFront.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type,Accept"
-  );
-  next();
-});
+// appFront.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type,Accept"
+//   );
+//   next();
+// });
 appFront.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
