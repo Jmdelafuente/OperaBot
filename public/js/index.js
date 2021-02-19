@@ -6,6 +6,7 @@ var chatListAll = [];
 var chatListAsign = [];
 var activeTab;
 var limit = false;
+var datasession = sessionStorage.getItem('key');
 $(function () {
   // * FUNCIONES AUXILIARES * //
   /**
@@ -200,7 +201,7 @@ $(function () {
    * @param {String} id Identificador interno del chat para saber el destinatario
    * @param {Boolean} asign true si esta asignado a este operador, false en otro caso.
    */
-  function addChat(nom, id, asign) {
+  function addChat(nom, id, asign, origen) {
     var li = document.createElement("li");
     var ex = document.createElement("div");
     var img = document.createElement("div");
@@ -208,6 +209,7 @@ $(function () {
     var info = document.createElement("div");
     var nombre = document.createElement("span");
     var estatus = document.createElement("p");
+    
     // li.classList = "active";
     li.id = "usuario_" + id;
     ex.className = "d-flex bd-highlight";
@@ -218,6 +220,19 @@ $(function () {
     info.className = "user_info";
     nombre.innerText = nom;
     estatus.innerText = "Online";
+    var orig = document.createElement("i");
+    switch (origen) {
+      case "P":
+        orig.className = "fa fa-desktop origen";
+        break;
+      case "W":
+        orig.className = "fa fa-whatsapp origen";
+        break;  
+      
+      default:
+        break;
+    }
+
     if (asign) {
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
@@ -231,6 +246,7 @@ $(function () {
     ex.appendChild(info);
     info.appendChild(nombre);
     info.appendChild(estatus);
+    info.appendChild(orig);
     li.onclick = function (event) {
       event.preventDefault();
       changeChat(id);
@@ -259,6 +275,7 @@ $(function () {
         <span class="sr-only">Loading...</span>
         </div>
         </div>`);
+      sessionStorage.setItem('key', id);
       // Enviamos el 'visto' al servidor
       socket.emit("send_op_seen", id);
       // Recuperamos la lista de chats abiertos
@@ -276,12 +293,16 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
-          addChat(lista[c].name, lista[c].id, asig);
+          addChat(lista[c].name, lista[c].id, asig,lista[c].origin);
         }
       }
       if (!chatListAll.includes(c)) {
-        addChat(lista[c].name, lista[c].id, asig);
+        addChat(lista[c].name, lista[c].id, asig, lista[c].origin);
       }
+    }
+    if(sessionStorage!=''){
+      let idactual=sessionStorage.getItem('key');
+      changeChat(idactual);
     }
   }
 
@@ -309,8 +330,8 @@ $(function () {
       headers: myHeaders,
       redirect: "follow",
     };
-    
-    fetch(`http://d0b563db7671.ngrok.io/api/client/blueprints`, requestOptions)
+    //FIXME: que no se pida por api
+    fetch(`http://localhost:3000/api/client/blueprints`, requestOptions)
       .then((response) => response.text())
       .then((result) => (blueprints = JSON.parse(result)))
       .catch((error) => console.log("error", error));
@@ -353,6 +374,7 @@ $(function () {
   function closeChat() {
     let chat_activo = $("#idChat").val();
     socket.emit("close_chat", chat_activo);
+    sessionStorage.removeItem('key');
     // TODO: estetica de chat cerrado
   }
   socket.on("connect", function () {
@@ -368,7 +390,7 @@ $(function () {
   socket.on("recive_op_message", function (msg) {
     console.log("Mensaje recibido: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
-      addChat(msg.name, msg.id, msg.asig);
+      addChat(msg.nom, msg.id, msg.asig, msg.origen);
     }
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", "Ahora", msg.tipo);
