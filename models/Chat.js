@@ -2,7 +2,7 @@
 const services = require("../configs/servicesConfig");
 const axios = require("axios").default;
 const estado = require("./Estado"); // estado.js exporta las clases 'Abierto' y 'Cerrado'
-const OperaDB = require("../dbService");
+// const OperaDB = require("../dbService");
 /**
  *
  *
@@ -41,7 +41,7 @@ class Chat {
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
     this.state = new estado.Abierto(this.id);
-    this.db = new OperaDB();
+    // this.db = new OperaDB();
   }
 
   static async getAll() {
