@@ -6,6 +6,7 @@ let data = fs.readFileSync("./configs/plantilla.json");
 let plant = JSON.parse(data);
 
 function modificarplantilla(msg) {
+    //TODO: hacer que en el front haya boton para modificar las plantillas y botones de menu
     fs.writeFile('./configs/plantilla.json', msg, 'utf8', (err) => {
         if (err) throw err;
         console.log('se guardo el archivo');
@@ -20,3 +21,4 @@ for(const [key, prefix] of Object.entries(plant)){
 
 
 module.exports.blueprints = plantillas;
+//module.exports.modificar = modificarplantilla;

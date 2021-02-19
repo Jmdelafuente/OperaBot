@@ -11,6 +11,7 @@ var io = require("socket.io")(http, {
   },
 });
 var path = require("path");
+var plant = require("./configs/messagesConfig");
 var portFront = 3001;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
@@ -133,8 +134,19 @@ io.on("connection", function (socket) {
       )
     );
   });
+  
+  socket.on("send_plantilla", function (msg) {
+      socket.emit("send_plantilla",plant.blueprints);
+  });
 
+  
 });
+
+/* Getter de plantillas de un operador
+api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
+  res.send(JSON.stringify(blueprints.blueprints));
+});*/
+
 
 // * FUNCIONES * //
 

@@ -54,7 +54,7 @@
   "devDependencies": {
     "jshint": "^2.12.0",
     "mocha": "^8.2.1",
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.7",
     "pkg": "^4.4.9",
     "request": "^2.88.2"
   }
