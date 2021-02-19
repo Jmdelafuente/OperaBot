@@ -157,11 +157,12 @@ async function bajaOperador(id) {
  * @param {Numbers} id del remitente (propio del servicio de mensajeria)
  * @param {String} cont contenido del mensaje
  */
-async function recibirMensaje(id, cont, tipo) {
+async function recibirMensaje(id, cont, tipo,nombre,origen) {
   // Check if chat is already assigned
   if (!chat_asig[id]) {
     // Se asigna el chat
     chat = messenger.getChatById(id);
+    
     newAsign
       .push({ id: id, cont: cont, nombre: chat.name })
       .on("finish", function (res) {
@@ -174,7 +175,7 @@ async function recibirMensaje(id, cont, tipo) {
       });
   }
   // Push notification to operator
-  socket.recibirMensaje(id, cont, tipo);
+  socket.recibirMensaje(id, cont, tipo,nombre,origen);
 }
 
 /**
@@ -243,6 +244,9 @@ async function confirmarVisto(chatId, channelId) {
   let asignacion = new Asignacion(chatId, operators_channels[channelId]);
   await asignacion.guardar();
   var asignado = asignacion.asignacionEstable;
+  if(asignado){
+    chat_asig[chatId]=asignacion;
+  }
   console.log(`Operador -> confirmarVisto: ${asignado}`);
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
