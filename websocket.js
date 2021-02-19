@@ -24,7 +24,7 @@ const { resolve } = require("path");
 // Front for websockets
 appFront.set("port", portFront);
 // appFront.use(helmet());
-appFront.use(express.static(path.join(__dirname, "public")));
+// appFront.use(express.static(path.join(__dirname, "public")));
 appFront.use(cors);
 // appFront.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from

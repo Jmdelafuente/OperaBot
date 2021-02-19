@@ -1,4 +1,4 @@
-const SURL = "localhost";
+const SURL = "128.53.1.23";
 const socket = io(`${SURL}:3001`);
 var blueprints={};
 var conn = false;
