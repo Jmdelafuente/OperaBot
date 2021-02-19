@@ -136,11 +136,13 @@ io.on("connection", function (socket) {
 // Functions define for export and modularization
 const enviarMensaje = function (id, contenido) {};
 
-const recibirMensaje = function (id, contenido, tipo) {
+const recibirMensaje = function (id, contenido, tipo,nombre,origen) {
   var mensaje = {};
   mensaje.id = id;
   mensaje.contenido = contenido;
   mensaje.tipo = tipo;
+  mensaje.nom = nombre;
+  mensaje.origen = origen;
   io.emit("recive_op_message", mensaje);
   return true;
 };
