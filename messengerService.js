@@ -52,7 +52,7 @@ async function nuevoMensaje(
     chatsList[id] = chat;
   }
   // Notify new message
-  op.recibirMensaje(id, cont, tipo, nombre, origen);
+  op.recibirMensaje(id, cont, tipo, nombre,origen);
 }
 
 async function nuevaImagen(

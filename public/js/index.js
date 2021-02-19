@@ -342,17 +342,7 @@ $(function () {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Origin", "weblogin");
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-    //FIXME: que no se pida por api
-    fetch(`http://localhost:3000/api/client/blueprints`, requestOptions)
-      .then((response) => response.text())
-      .then((result) => (blueprints = JSON.parse(result)))
-      .catch((error) => console.log("error", error));
-
+    
     $('a[data-toggle="tab"]').on("click", function (e) {
       localStorage.setItem("activeTab", $(e.target).attr("href"));
     });
@@ -377,7 +367,7 @@ $(function () {
           socket.emit("stop-writing", $("#idChat").val());
       }
       if(e.key == '/'){
-        autocomplete(document.getElementById("m"), blueprints);
+        socket.emit("send_plantilla",'');
       }
     });
     $("#cerrarChat").on("click",function (e){
@@ -434,6 +424,10 @@ $(function () {
   });
   socket.on("confirm_op_message", function (msg) {
     confirm(msg, "R", "Ahora");
+  });
+  socket.on("send_plantilla", (msg) => {
+    blueprints = msg;
+    autocomplete(document.getElementById("m"), blueprints);
   });
   socket.on("assign_op_message", function (msg, ack) {
     // Confirmamos la asignacion al servidor

@@ -25,7 +25,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
     let data = JSON.parse(req.body.body);
     console.log(data);
     let type = data.type ? data.type : "chat";
-    let name = data.name ? data.name : "anonimo";
+    let name = data.name ? data.name : "Anonimo";
     ms.nuevoMensaje(
       data.user,
       data.text,
@@ -95,12 +95,6 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   });
 }
 
-
-// * Getter de plantillas de un operador
-api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
-  // TODO: authenticate origin
-  res.send(JSON.stringify(blueprints.blueprints));
-});
 
 // Iniciar servidor de API/Webhooks
 const serverAPI = api.listen(api.get("port"), () => {
