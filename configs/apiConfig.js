@@ -1,4 +1,4 @@
-const IPs = ["128.53.1.23"]; // TODO: agregar listado de ips validas
+const IPs = ["128.53.1.23", "127.0.0.1",":::1"]; // TODO: agregar listado de ips validas
 const allowedOrigins = ["weblogin"]; // TODO: agregar listado de origenes validos
 module.exports.VALID_IPS = (ip) => {return IPs.includes(ip);};
 module.exports.corsOrigin = function (origin, callback) {
