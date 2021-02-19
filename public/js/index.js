@@ -292,6 +292,7 @@ $(function () {
         <span class="sr-only">Loading...</span>
         </div>
         </div>`);
+      // se guarda en el sessionStorage del cliente, la id del civil  
       sessionStorage.setItem('key', id);
       // Enviamos el 'visto' al servidor
       socket.emit("send_op_seen", id);
@@ -317,7 +318,8 @@ $(function () {
         addChat(lista[c].name, lista[c].id, asig, lista[c].origin);
       }
     }
-    if(sessionStorage!=''){
+    // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
+    if(sessionStorage.getItem('key')!=''){
       let idactual=sessionStorage.getItem('key');
       changeChat(idactual);
     }
@@ -425,6 +427,7 @@ $(function () {
   socket.on("confirm_op_message", function (msg) {
     confirm(msg, "R", "Ahora");
   });
+  //  se muestran las plantillas en el chat
   socket.on("send_plantilla", (msg) => {
     blueprints = msg;
     autocomplete(document.getElementById("m"), blueprints);
