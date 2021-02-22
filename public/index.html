@@ -82,8 +82,10 @@
           <form action="" class="input-group">
             <input type="hidden" name="idChat" id="idChat" value="">
             <div class="input-group-append">
-              <input id="adjuntar" name="adjuntar" type="file" accept=".png, .jpg" class="btn adjuntar" onclick="this.value=null" hidden><i class="fas fa-paperclip"></i></input>
-              
+              <label for="adjuntar" class="btn adjuntar">
+                <input id="adjuntar" name="adjuntar" type="file" accept=".png, .jpg" class="btn adjuntar" onclick="this.value=null" hidden><i class="fas fa-paperclip"></i></input>
+         </label>
+
             </div>
             <div class="autocomplete form-control type_msg clearable-input">
               <input id="m" autocomplete="off" class="form-control border-0" placeholder="Mensaje..." />
