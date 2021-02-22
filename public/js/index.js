@@ -155,6 +155,11 @@ $(function () {
           break;
         case "sticker": // ! Sticker
         case "ptt":     //! AUDIO
+          let audio = document.createElement("audio");
+          audio.setAttribute('controls','');
+          audio.src = cont.contenido;
+          msj.appendChild(audio);
+          break;
         default:
           msj.innerHTML = "Tipo de mensaje no soportado";
           break;
