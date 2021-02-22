@@ -250,6 +250,10 @@ async function enviarMensaje(id, cont) {
   messenger.enviarMensaje(id, cont);
 }
 
+async function enviarArchivo(id,cont) {
+  messenger.enviarArchivo(id, cont); 
+}
+
 async function confirmarVisto(chatId, channelId) {
   // let operador = operators[operadorId];
   // Al abrir el mensaje, la asignacion pasa a ser estable (no se busca nuevo operador para el chat)
@@ -302,6 +306,7 @@ module.exports.bajaOperador = bajaOperador;
 module.exports.confirmarVisto = confirmarVisto;
 module.exports.closeChat = closeChat;
 module.exports.enviarMensaje = enviarMensaje;
+module.exports.enviarArchivo = enviarArchivo;
 module.exports.escribiendo = escribiendo;
 module.exports.getAllMessages = getAllMessages;
 module.exports.getMoreMessages = getMoreMessages;

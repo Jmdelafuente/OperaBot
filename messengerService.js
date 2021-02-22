@@ -82,6 +82,12 @@ async function enviarMensaje(id, cont) {
   return res;
 }
 
+async function enviarArchivo(id, cont) {
+  var chat = chatsList[id];
+  let res = await chat.enviarArchivo(cont);
+  return res;
+}
+
 async function enviarEstado(id, cont) {
   var chat = chatsList[id];
   let res = false;
@@ -132,6 +138,7 @@ module.exports.closeChat = closeChat;
 module.exports.disconnect = disconnect;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.enviarEstado = enviarEstado;
+module.exports.enviarArchivo = enviarArchivo;
 module.exports.getChatById = getChatById;
 module.exports.nuevaImagen = nuevaImagen;
 module.exports.nuevalistaChats = nuevalistaChats;

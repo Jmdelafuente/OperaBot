@@ -312,12 +312,15 @@ $(function () {
   document.querySelector('input[type="file"]').addEventListener('change', function () {
     if (this.files && this.files[0]) {
 
+      var iduser = sessionStorage.getItem('key');
       var img = document.createElement('img');
       img.src = URL.createObjectURL(this.files[0]); // set src to blob url
       let permitido = ((this.files[0].size / 1024) / 1024);//no puede pesar mas de 50mb
       var hora = Date.now();
       if (permitido <= 50) {
 
+
+        console.log(this.files[0].type);
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = img.width;
@@ -326,10 +329,13 @@ $(function () {
         iduser = sessionStorage.getItem('key');
         ctx.drawImage(img, 0, 0);
         toDataURL(img.src, function (imagen) {
-          console.log(imagen);
-          console.log(iduser);
           addMessage(imagen,'E',hora,"image");
-          //ios.emit('adjunto-imagen', pack);
+          
+          let pack ={
+              id: iduser,
+              contenido: imagen
+          };
+          socket.emit('adjunto-archivo', pack);
 
         });
       } else {
@@ -388,6 +394,7 @@ $(function () {
     }
     return false;
   });
+
 
   $(document).ready(function () {
     // Get all blueprints
