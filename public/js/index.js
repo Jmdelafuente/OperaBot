@@ -323,7 +323,7 @@ $(function () {
         toDataURL(img.src, function (imagen) {
 
           addMessage(imagen,'E',hora,'image');
-          ios.emit('adjunto-imagen', pack);
+          //ios.emit('adjunto-imagen', pack);
 
         });
       } else {
