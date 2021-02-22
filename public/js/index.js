@@ -1,4 +1,4 @@
-const SURL = "localhost";
+const SURL = "128.53.1.23";
 const socket = io(`${SURL}:3001`);
 var blueprints={};
 var conn = false;
@@ -237,7 +237,7 @@ $(function () {
         orig.className = "fa fa-desktop origen";
         break;
       case "W":
-        orig.className = "fa fa-whatsapp origen";
+        orig.className = "fab fa-whatsapp origen";
         break;  
       
       default:
