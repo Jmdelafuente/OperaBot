@@ -396,9 +396,9 @@ $(function () {
     myHeaders.append("Origin", "weblogin");
     
     $('a[data-toggle="tab"]').on("click", function (e) {
-      localStorage.setItem("activeTab", $(e.target).attr("href"));
+      sessionStorage.setItem("activeTab", $(e.target).attr("href"));
     });
-    activeTab = localStorage.getItem("activeTab");
+    activeTab = sessionStorage.getItem("activeTab");
     if (activeTab) {
       $('div[data-href="' + activeTab + '"]').tab("show");
     }
