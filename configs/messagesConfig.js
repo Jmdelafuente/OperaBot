@@ -5,6 +5,7 @@ var plantillas = {};
 let data = fs.readFileSync("./configs/plantilla.json");
 let plant = JSON.parse(data);
 
+
 function modificarplantilla(msg) {
     //TODO: hacer que en el front haya boton para modificar las plantillas y botones de menu
     fs.writeFile('./configs/plantilla.json', msg, 'utf8', (err) => {
@@ -14,7 +15,7 @@ function modificarplantilla(msg) {
 }
 
 
-
+// en plantillas se crean los mensajes predefinidos que esten en plantilla.json 
 for(const [key, prefix] of Object.entries(plant)){
          plantillas[`${key}`]=prefix;
 }
