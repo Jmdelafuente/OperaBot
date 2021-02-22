@@ -129,37 +129,17 @@ module.exports.messageParser = function (origen, body) {
   let contenido;
   switch (origen) {
     case "W":
-      contenido = body.text;
-      if (body.type == "image") {
-        // TODO: save image on disk and get URL
-        url = body.URL;
-        // body.text = "data:image/jpeg;base64," + body.text;
-        contenido = {
-          contenido: body.text,
-          url: url
-        };
-        console.log(contenido);
-      }
       message = {
         user: body.user,
-        contenido: contenido,
+        contenido: body.text,
         timestamp: body.timestamp,
         type: body.type,
       };
       break;
     case "P":
-      contenido = body.contenido;
-      if (body.type == "image") {
-        // TODO: save image on disk and get URL
-        url;
-        contenido = {
-          contenido: body.contenido,
-          url: url,
-        };
-      }
       message = {
         user: body.tipo_chat == 0 ? "another" : "me",
-        contenido: contenido,
+        contenido: body.contenido,
         timestamp: body.hora,
         type: body.type,
         URL: url,
