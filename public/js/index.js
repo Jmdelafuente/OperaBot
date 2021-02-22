@@ -237,7 +237,7 @@ $(function () {
         orig.className = "fa fa-desktop origen";
         break;
       case "W":
-        orig.className = "fa fa-whatsapp origen";
+        orig.className = "fab fa-whatsapp origen";
         break;  
       
       default:
