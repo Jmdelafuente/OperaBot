@@ -304,6 +304,36 @@ $(function () {
     }
   }
 
+  document.querySelector('input[type="file"]').addEventListener('change', function () {
+    if (this.files && this.files[0]) {
+
+      var img = document.createElement('img');
+      img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+      let permitido = ((this.files[0].size / 1024) / 1024);//no puede pesar mas de 50mb
+      var hora = Date.now();
+      if (permitido <= 50) {
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        img.crossOrigin = 'anonymous';
+        iduser = sessionStorage.getItem('key');
+        ctx.drawImage(img, 0, 0);
+        toDataURL(img.src, function (imagen) {
+
+          addMessage(imagen,'E',hora,'image');
+          ios.emit('adjunto-imagen', pack);
+          
+        });
+      } else {
+         let mensaje ="Imagen demasiado pesada";
+         addMessage(mensaje,'E',hora,'message');
+      }
+
+    }
+  });
+
   function newList(lista, asig) {
     console.log(
       `newList: ${asig} - All: ${chatListAll} - Asign: ${chatListAsign}`
