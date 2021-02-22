@@ -142,12 +142,12 @@ $(function () {
           image.onload = function () {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
           };
-          image.src = cont.contenido;
+          image.src = cont;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
           link.className = "imghover";
           link.addEventListener("click", function () {
-            var url_base64jp = cont.contenido;
+            var url_base64jp = cont;
             link.href = url_base64jp;
           });
           msj.appendChild(link);
@@ -157,7 +157,7 @@ $(function () {
         case "ptt":     //! AUDIO
           let audio = document.createElement("audio");
           audio.setAttribute('controls','');
-          audio.src = cont.contenido;
+          audio.src = cont;
           msj.appendChild(audio);
           break;
         default:
