@@ -134,6 +134,7 @@ $(function () {
         case "chat": // * Emoji o chat
           msj.innerHTML = twemoji.parse(cont);
           break;
+        case "sticker": // ! Sticker
         case "image": // * Foto
           let link = document.createElement("a");
           let canvas = document.createElement("canvas");
@@ -153,10 +154,9 @@ $(function () {
           msj.appendChild(link);
           link.appendChild(canvas);
           break;
-        case "sticker": // ! Sticker
-        case "ptt":     //! AUDIO
+        case "ptt": //! AUDIO
           let audio = document.createElement("audio");
-          audio.setAttribute('controls','');
+          audio.setAttribute("controls", "");
           audio.src = cont;
           msj.appendChild(audio);
           break;
@@ -403,9 +403,9 @@ $(function () {
     myHeaders.append("Origin", "weblogin");
     
     $('a[data-toggle="tab"]').on("click", function (e) {
-      localStorage.setItem("activeTab", $(e.target).attr("href"));
+      sessionStorage.setItem("activeTab", $(e.target).attr("href"));
     });
-    activeTab = localStorage.getItem("activeTab");
+    activeTab = sessionStorage.getItem("activeTab");
     if (activeTab) {
       $('div[data-href="' + activeTab + '"]').tab("show");
     }
