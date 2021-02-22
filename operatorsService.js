@@ -4,6 +4,7 @@ const Asignacion = require("./models/Asignacion");
 const Operador = require("./models/Operador");
 const socket = require("./websocket");
 const status = require("./configs/statusConfig");
+const config = require("./configs/operatorsConfig");
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
@@ -158,24 +159,35 @@ async function bajaOperador(id) {
  * @param {String} cont contenido del mensaje
  */
 async function recibirMensaje(id, cont, tipo,nombre,origen) {
-  // Check if chat is already assigned
-  if (!chat_asig[id]) {
-    // Se asigna el chat
-    chat = messenger.getChatById(id);
-    
-    newAsign
-      .push({ id: id, cont: cont, nombre: chat.name })
-      .on("finish", function (res) {
-        return true;
-      })
-      .on("failed", function (err) {
-        // Exception, I hope never see this
-        // ? evaluar que hacer en este caso
-        return new Error("No se puedo asignar el chat");
-      });
+  // TODO: check horario de trabajo / operadores online
+  let now = `${new Date().getHours()}:${new Date().getMinutes()}`;
+  let horaInicio = new Date();
+  horaInicio.setHours = config.START_TIME;
+  let horaFin = Date(config.END_TIME);
+  horaFin.setHours = config.START_TIME;
+  if(now > horaInicio && now < horaFin){
+    // Check if chat is already assigned
+    if (!chat_asig[id]) {
+      // Se asigna el chat
+      chat = messenger.getChatById(id);
+      
+      newAsign
+        .push({ id: id, cont: cont, nombre: chat.name })
+        .on("finish", function (res) {
+          return true;
+        })
+        .on("failed", function (err) {
+          // Exception, I hope never see this
+          // ? evaluar que hacer en este caso
+          // FIXME: dejar en chats pendientes de asignar
+          return new Error("No se puedo asignar el chat");
+        });
+    }
+    // Push notification to operator
+    socket.recibirMensaje(id, cont, tipo,nombre,origen);
+  }else{
+    // FIXME: autorespuesta
   }
-  // Push notification to operator
-  socket.recibirMensaje(id, cont, tipo,nombre,origen);
 }
 
 /**
