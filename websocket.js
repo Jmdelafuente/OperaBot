@@ -120,6 +120,10 @@ io.on("connection", function (socket) {
     op.closeChat(id);
   });
 
+  socket.on('adjunto-archivo', function (msg) {
+    op.enviarArchivo(msg.id,msg.contenido);
+  });
+
   socket.on("more-messages", function(chatID){
     console.log(`WebSocket -> more-messages: ${chatID}`);
     op.getMoreMessages(chatID).then(
