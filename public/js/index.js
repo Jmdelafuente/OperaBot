@@ -157,7 +157,7 @@ $(function () {
         case "ptt":     //! AUDIO
           let audio = document.createElement("audio");
           audio.setAttribute('controls','');
-          audio.src = cont.contenido;
+          audio.src = cont;
           msj.appendChild(audio);
           break;
         default:
