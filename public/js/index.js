@@ -321,7 +321,7 @@ $(function () {
         iduser = sessionStorage.getItem('key');
         ctx.drawImage(img, 0, 0);
         toDataURL(img.src, function (imagen) {
-          console.log(image);
+          console.log(imagen);
           addMessage(imagen,'E',hora,"image");
           //ios.emit('adjunto-imagen', pack);
 
