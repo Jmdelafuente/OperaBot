@@ -324,7 +324,7 @@ $(function () {
 
           addMessage(imagen,'E',hora,'image');
           ios.emit('adjunto-imagen', pack);
-          
+
         });
       } else {
          let mensaje ="Imagen demasiado pesada";
@@ -333,6 +333,20 @@ $(function () {
 
     }
   });
+  
+  function toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        callback(reader.result);
+      };
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
 
   function newList(lista, asig) {
     console.log(
