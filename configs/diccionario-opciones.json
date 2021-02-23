@@ -1,0 +1,98 @@
+[{
+    "nombre": "opcion0",
+    "opciones": [{
+        "nombre": "opcion01",
+        "informacion": "si podes meterle info, dale para adelante",
+        "valor": "opcion1 dentro de opcion0"
+    }, {
+        "nombre": "opcion02",
+        "valor": "opcion2 dentro de opcion0"
+    }, {
+        "nombre": "opcion03",
+        "valor": "opcion3 dentro de opcion0"
+    }, {
+        "nombre": "opcion04",
+        "valor": "opcion4 dentro de opcion0"
+    }, {
+        "nombre": "opcion05",
+        "valor": "opcion5 dentro de opcion0"
+    }, {
+        "nombre": "opcion06",
+        "valor": "opcion6 dentro de opcion0"
+    }, {
+        "nombre": "opcion07",
+        "valor": "opcion7 dentro de opcion0"
+    }, {
+        "nombre": "opcion08",
+        "valor": "opcion8 dentro de opcion0"
+    }, {
+        "nombre": "opcion09",
+        "valor": "opcion dentro de opcion0"
+    }],
+     "descripcion":"Esta es la descripcion de la opcion 0"
+}, {
+    "nombre": "opcion01",
+    "opciones": [{
+        "nombre": "opcion11",
+        "valor": "opcion1 dentro de opcion1"
+    }, {
+        "nombre": "respuesta12",
+        "valor": "opcion2 dentro de opcion1"
+    }, {
+        "nombre": "opcion13",
+        "valor": "opcion3 dentro de opcion1"
+    }, {
+        "nombre": "opcion14",
+        "valor": "opcion4 dentro de opcion1"
+    }, {
+        "nombre": "opcion15",
+        "valor": "opcion5 dentro de opcion1"
+    }, {
+        "nombre": "opcion16",
+        "valor": "opcion6 dentro de opcion1"
+    }, {
+        "nombre": "opcion17",
+        "valor": "opcion7 dentro de opcion1"
+    }, {
+        "nombre": "opcion18",
+        "valor": "opcion8 dentro de opcion1"
+    }, {
+        "nombre": "opcion19",
+        "valor": "opcion dentro de opcion1"
+    }],
+    "descripcion": "Esta es la descripcion de la opcion 01"
+}, {
+    "nombre": "respuesta12",
+    "opciones": "si la respuesta es tal"
+}, {
+    "nombre": "opcion02",
+    "opciones": [{
+        "nombre": "opcion21",
+        "valor": "opcion1 dentro de opcion2"
+    }, {
+        "nombre": "respuesta22",
+        "valor": "opcion2 dentro de opcion2"
+    }, {
+        "nombre": "opcion23",
+        "valor": "opcion3 dentro de opcion2"
+    }, {
+        "nombre": "opcion24",
+        "valor": "opcion4 dentro de opcion2"
+    }, {
+        "nombre": "opcion25",
+        "valor": "opcion5 dentro de opcion2"
+    }, {
+        "nombre": "opcion26",
+        "valor": "opcion6 dentro de opcion2"
+    }, {
+        "nombre": "opcion27",
+        "valor": "opcion7 dentro de opcion2"
+    }, {
+        "nombre": "opcion28",
+        "valor": "opcion8 dentro de opcion2"
+    }, {
+        "nombre": "opcion29",
+        "valor": "opcion dentro de opcion2"
+    }],
+    "descripcion": "Esta es la descripcion de la opcion 02"
+}]

@@ -124,6 +124,15 @@ io.on("connection", function (socket) {
     op.enviarArchivo(msg.id,msg.contenido);
   });
 
+  socket.on('obtener-opciones',function(msg){
+    let opciones = op.obteneropciones();
+    socket.emit('obtener-opciones',opciones);
+  });
+
+  socket.on('enviar-menu',function (msg) {
+    op.enviarMenu(msg.id,msg.contenido);
+  });
+
   socket.on("more-messages", function(chatID){
     console.log(`WebSocket -> more-messages: ${chatID}`);
     op.getMoreMessages(chatID).then(

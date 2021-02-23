@@ -1,4 +1,5 @@
-const SURL = "128.53.1.23";
+//const SURL = "128.53.1.23";
+const SURL = "localhost";
 const socket = io(`${SURL}:3001`);
 var blueprints={};
 var conn = false;
@@ -309,6 +310,14 @@ $(function () {
     }
   }
 
+   //En los 3 puntos, el operador puede enviar un menu especifico 
+   var menuOpciones = document.getElementById('menu-opciones');
+   menuOpciones.addEventListener('click', function (e) {
+         e.preventDefault();
+         socket.emit('obtener-opciones');
+   });
+        
+
   document.querySelector('input[type="file"]').addEventListener('change', function () {
     if (this.files && this.files[0]) {
 
@@ -509,6 +518,38 @@ $(function () {
       });
     }
   });
+
+   socket.on("obtener-opciones", function (msg) {
+     let divOpcion = document.getElementById('modal-body-opcion');
+     divOpcion.innerHTML = '';
+     iduser = sessionStorage.getItem('key');
+     let pack = {};
+     for (const [key, prefix] of Object.entries(msg)) {
+
+       let ulOpcion = document.createElement('ul');
+       let liopcion = document.createElement('li');
+       let liopcion2 = document.createElement('li');
+       liopcion.setAttribute('type', 'button');
+       liopcion.setAttribute('data-dismiss', 'modal')
+       liopcion2.setAttribute('type', 'button');
+       liopcion.innerText = `${msg[key].nombre}: ${msg[key].descripcion}`;
+       divOpcion.appendChild(ulOpcion);
+       ulOpcion.appendChild(liopcion);
+       ulOpcion.appendChild(liopcion2);
+       liopcion.addEventListener('click', function (e) {
+         e.preventDefault();
+         pack.id = iduser;
+         pack.contenido = msg[key].opciones;
+         if(msg[key].nombre.substring(0,9)!='respuesta'){
+           socket.emit('enviar-menu', pack);
+          }else{
+          pack.contenido = msg[key].opciones;
+          addMessage(msg[key].opciones,'E',Date.now(),'message');
+          socket.emit('send_op_message',pack);
+          }
+       });
+     }
+   });
   // * FIN EVENTOS WEBSOCKET * //
   // Fin onload
 });

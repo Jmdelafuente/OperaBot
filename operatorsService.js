@@ -5,6 +5,7 @@ const Operador = require("./models/Operador");
 const socket = require("./websocket");
 const status = require("./configs/statusConfig");
 const config = require("./configs/operatorsConfig");
+const opciones = require("./configs/opciones");
 var messenger = require("./messengerService");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
@@ -231,6 +232,22 @@ async function getMoreMessages(id) {
   await chat.getMoreMessages(true);
 }
 
+//Envia el contenido cont obtenido de las opciones para los menus
+function obteneropciones() {
+  let cont = opciones.obteneropciones();
+  return cont;
+}
+
+/**
+ * enviar el menu correspondiente al civil.
+ * @param {*} Id al cual quiere enviarse el menu
+ * @param {*} cont las opciones del chat
+ */
+function enviarMenu(id,cont) {
+  messenger.enviarMenu(id,cont);
+  
+}
+
 /**
  * Recupera todos los mensajes de un chat.
  * Puede recurrir a la cache/DB o pedirle al servicio de mensajeria los mensajes
@@ -314,3 +331,5 @@ module.exports.recibirMensaje = recibirMensaje;
 module.exports.recibirImagen = recibirImagen;
 module.exports.reconectarOperador = reconectarOperador;
 module.exports.operators = operators;
+module.exports.obteneropciones = obteneropciones;
+module.exports.enviarMenu = enviarMenu;
