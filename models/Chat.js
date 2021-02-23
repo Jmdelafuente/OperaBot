@@ -73,7 +73,6 @@ class Chat {
                     chat_temp.pendingmessage,
                     undefined
                   );
-                  console.log(res);
                 });
               }
               i += 1;
@@ -90,7 +89,6 @@ class Chat {
       }
     };
     await sendGetRequest();
-    console.log(res);
     return res;
   }
 
@@ -181,7 +179,6 @@ class Chat {
             },
           })
           .then((response) => {
-            console.log(response);
             res = services.messagesParser(this.origin, response.data);
           });
       } catch (err) {
@@ -193,6 +190,32 @@ class Chat {
     res = res.sort(function (a, b) {
       return a.timestamp - b.timestamp;
     });
+    return res;
+  }
+
+  async seen() {
+    let res;
+    await axios
+      .post(services.URLs[this.origin] + "/seen", {
+        body: { id: this.id, text:'' },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(
+        (response) => {
+          res = response.data;
+          this.pendingmessage = 0;
+          console.log(res);
+        },
+        (err) => {
+          // TODO: volver a emitir?
+          console.log(err);
+        }
+      )
+      .catch(function (error) {
+        res = new Error(error);
+      });
     return res;
   }
 
