@@ -102,7 +102,7 @@ io.on("connection", function (socket) {
     );
   });
 
-  socket.on("send_op_seen", function(chat){
+  socket.on("seen", function(chat){
     op.confirmarVisto(chat, socket.user);
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
