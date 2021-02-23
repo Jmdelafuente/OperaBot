@@ -161,17 +161,16 @@ async function bajaOperador(id) {
  */
 async function recibirMensaje(id, cont, tipo,nombre,origen) {
   // TODO: check horario de trabajo / operadores online
-  let now = `${new Date().getHours()}:${new Date().getMinutes()}`;
   let horaInicio = new Date();
   horaInicio.setHours = config.START_TIME;
   let horaFin = Date(config.END_TIME);
   horaFin.setHours = config.START_TIME;
-  if(now > horaInicio && now < horaFin){
+  if (new Date() > horaInicio && new Date() < horaFin) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
       // Se asigna el chat
       chat = messenger.getChatById(id);
-      
+
       newAsign
         .push({ id: id, cont: cont, nombre: chat.name })
         .on("finish", function (res) {
@@ -185,8 +184,8 @@ async function recibirMensaje(id, cont, tipo,nombre,origen) {
         });
     }
     // Push notification to operator
-    socket.recibirMensaje(id, cont, tipo,nombre,origen);
-  }else{
+    socket.recibirMensaje(id, cont, tipo, nombre, origen);
+  } else {
     // FIXME: autorespuesta
   }
 }
@@ -283,6 +282,8 @@ async function confirmarVisto(chatId, channelId) {
   console.log(`Operador -> confirmarVisto: ${asignado}`);
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
+  let chat = messenger.getChatById(chatId);
+  chat.seen();
 }
 
 async function escribiendo(chatID, channelID, isWriting = true) {

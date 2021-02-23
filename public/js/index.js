@@ -136,6 +136,13 @@ $(function () {
           msj.innerHTML = twemoji.parse(cont);
           break;
         case "sticker": // ! Sticker
+        case "ptt": //! AUDIO
+          let audio = document.createElement("audio");
+          audio.setAttribute("controls", "");
+          audio.src = cont;
+          msj.appendChild(audio);
+          break;
+        default:
         case "image": // * Foto
           let link = document.createElement("a");
           let canvas = document.createElement("canvas");
@@ -154,15 +161,6 @@ $(function () {
           });
           msj.appendChild(link);
           link.appendChild(canvas);
-          break;
-        case "ptt": //! AUDIO
-          let audio = document.createElement("audio");
-          audio.setAttribute("controls", "");
-          audio.src = cont;
-          msj.appendChild(audio);
-          break;
-        default:
-          msj.innerHTML = "Tipo de mensaje no soportado";
           break;
       }
       div.appendChild(ex);
@@ -301,7 +299,7 @@ $(function () {
       // se guarda en el sessionStorage del cliente, la id del civil  
       sessionStorage.setItem('key', id);
       // Enviamos el 'visto' al servidor
-      socket.emit("send_op_seen", id);
+      socket.emit("seen", id);
       // Recuperamos la lista de chats abiertos
       $('div[data-href="' + activeTab + '"]').tab("show");
       // Marcamos como leido el chat
