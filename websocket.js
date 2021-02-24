@@ -189,11 +189,12 @@ const recibirMensaje = function (chat, tipo, operador) {
 //   return true;
 // };
 
-async function asignarMensaje(socket, id, contenido, nombre) {
+async function asignarMensaje(socket, chat) {
   var mensaje = {};
-  mensaje.id = id;
-  mensaje.contenido = contenido;
-  mensaje.nom = nombre;
+  mensaje.id = chat.id;
+  mensaje.contenido = chat.lastmessage;
+  mensaje.nom = chat.name;
+  mensaje.origin = chat.origin
   return new Promise(resolve=>{
     socket.emit("assign_op_message", mensaje, (ack) => {
       if (ack) {

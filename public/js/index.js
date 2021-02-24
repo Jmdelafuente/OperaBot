@@ -218,6 +218,7 @@ $(function () {
    * @param {Boolean} asign true si esta asignado a este operador, false en otro caso.
    */
   function addChat(nom, id, asign, origen) {
+    if (!chatListAll.includes(id)) {    
     var li = document.createElement("li");
     var ex = document.createElement("div");
     var img = document.createElement("div");
@@ -249,13 +250,15 @@ $(function () {
         break;
     }
 
-    if (asign) {
+
+    if (asign && !chatListAsign.includes(id)) {
+      console.log(chatListAsign);
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
-    } else {
-      document.getElementById("listaContactos").appendChild(li);
-      chatListAll.push(id);
     }
+
+    document.getElementById("listaContactos").appendChild(li);
+    chatListAll.push(id);
     li.appendChild(ex);
     ex.appendChild(img);
     img.appendChild(avatar);
@@ -266,7 +269,8 @@ $(function () {
     li.onclick = function (event) {
       event.preventDefault();
       changeChat(id);
-    };
+      };
+    }
   }
 
   /**
@@ -472,9 +476,9 @@ $(function () {
     if(sessionStorage.getItem('operadorid') == msg.asign){
       esOperador = true;
     }
-      if (!chatListAll.includes(msg.id)) {
+      
         addChat(msg.nom, msg.id, esOperador, msg.origen);
-      }
+      
       if ($("#idChat").val() == msg.id) {
         addMessage(msg.contenido, "R", "Ahora", msg.tipo);
       } else {
@@ -509,7 +513,7 @@ $(function () {
     // Confirmamos la asignacion al servidor
     ack(true);
     // Generamos los elementos del DOM
-    addChat(msg.nom, msg.id, true);
+    addChat(msg.nom, msg.id, true, msg.origin);
   });
   socket.on("getAllMessagesByChat", function (msg) {
     let lista = msg.lista;

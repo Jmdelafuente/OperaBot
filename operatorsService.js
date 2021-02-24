@@ -24,10 +24,8 @@ var newAsign = new Queue(async function (input, cb) {
     let op = random_item(operators);
     let result = await socket.asignarMensaje(
       op.socket,
-      input.id,
-      input.cont,
-      input.nombre
-    );
+      input
+          );
     if (result) {
       // Save the new assignment
       let operadorID = operators_channels[op.socket.user];
@@ -175,8 +173,11 @@ async function recibirMensaje(chat, tipo) {
       //chat = messenger.getChatById(id);
       
       newAsign
-        .push({ id: chat.id, cont: chat.lastmessage, nombre: chat.name })
+        .push(chat)
         .on("finish", function (res) {
+          let operadorId = chat_asig[id].operadorId;
+          let operador = operators[operadorId];
+          socket.recibirMensaje(chat, tipo, operador.id);
           return true;
         })
         .on("failed", function (err) {
@@ -185,11 +186,12 @@ async function recibirMensaje(chat, tipo) {
           // FIXME: dejar en chats pendientes de asignar
           return new Error("No se puedo asignar el chat");
         });
-    }
+    }else{
     // Push notification to operator
     let operadorId = chat_asig[id].operadorId;
     let operador = operators[operadorId];
     socket.recibirMensaje(chat,tipo,operador.id);
+  }
   //} else {
     // FIXME: autorespuesta
   //}
@@ -227,7 +229,10 @@ async function recibirImagen(id, cont, type) {
 async function getAllMessages(id, user) {
   operador = operators_channels[user];
   chat = messenger.getChatById(id);
-  let lista_mensajes = await chat.getAllMessages(true);
+  let lista_mensajes = {};
+  if(chat!=undefined){
+   lista_mensajes = await chat.getAllMessages(true);
+  }
   return lista_mensajes;
 }
 
@@ -288,7 +293,9 @@ async function confirmarVisto(chatId, channelId) {
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
   let chat = messenger.getChatById(chatId);
-  chat.seen();
+  if(chat!=undefined){
+    chat.seen();
+  }
 }
 
 async function escribiendo(chatID, channelID, isWriting = true) {
