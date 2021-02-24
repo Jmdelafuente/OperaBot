@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/font-awesome5-5-all.css" />
+    <link rel="stylesheet" href="../css/adminstyle.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/unreadmessages.css" />
+    <link rel="stylesheet" href="../css/imagehover.css" />
+    <title>Administrador</title>
+  </head>
+  <body>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link active"
+          id="home-tab"
+          data-toggle="tab"
+          href="#home"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="chat-tab"
+          data-toggle="tab"
+          href="#chat"
+          role="tab"
+          aria-controls="chat"
+          aria-selected="false"
+          >Chats</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="opciones-tab"
+          data-toggle="tab"
+          href="#opciones"
+          role="tab"
+          aria-controls="opciones"
+          aria-selected="false"
+          >Opciones</a
+        >
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="home"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+      >
+      <div class="embed-responsive embed-responsive-1by1 iframe">
+        <iframe src="home.html" frameborder="0" allowfullscreen></iframe>
+      </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="chat"
+        role="tabpanel"
+        aria-labelledby="chat-tab"
+      >
+      <div class="embed-responsive embed-responsive-1by1 iframe">
+        <iframe src="../index.html" frameborder="0" allowfullscreen></iframe>
+      </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="opciones"
+        role="tabpanel"
+        aria-labelledby="opciones-tab"
+      >
+      <div class="embed-responsive embed-responsive-1by1 iframe">
+        <iframe src="opciones.html" frameborder="0" allowfullscreen></iframe>
+      </div>
+      </div>
+    </div>
+  </body>
+  <script src="../js/twemoji.min.js"></script>
+  <script src="../js/socket.io.js"></script>
+  <script src="../js/jquery-3.5.1.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/autocomplete.js"></script>
+  <!-- <script src="../js/index.js"></script> -->
+</html>
