@@ -47,12 +47,14 @@ async function nuevoMensaje(
     chatsList[id].timestamp = t;
     chatsList[id].name = nombre; //puede haber cambiado de nombre la persona
     chatsList[id].pendingmessage++;
+    chatsList[id].lastmessage = cont;
+    chat = chatsList[id];
   } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont);
     chatsList[id] = chat;
   }
   // Notify new message
-  op.recibirMensaje(id, cont, tipo, nombre,origen);
+  op.recibirMensaje(chat,tipo);
 }
 
 async function nuevaImagen(

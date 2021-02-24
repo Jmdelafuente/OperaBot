@@ -8,6 +8,7 @@ var chatListAsign = [];
 var activeTab;
 var limit = false;
 var datasession = sessionStorage.getItem('key');
+var dataoperador = sessionStorage.getItem('operadorid');
 $(function () {
   // * FUNCIONES AUXILIARES * //
   /**
@@ -466,15 +467,20 @@ $(function () {
     newList(listaChats.chats, listaChats.asignado);
   });
   socket.on("recive_op_message", function (msg) {
+    let esOperador=false;
     console.log("Mensaje recibido: " + JSON.stringify(msg));
-    if (!chatListAll.includes(msg.id)) {
-      addChat(msg.nom, msg.id, msg.asig, msg.origen);
+    if(sessionStorage.getItem('operadorid') == msg.asign){
+      esOperador = true;
     }
-    if ($("#idChat").val() == msg.id) {
-      addMessage(msg.contenido, "R", "Ahora", msg.tipo);
-    } else {
-      unreadMessages(msg.id);
-    }
+      if (!chatListAll.includes(msg.id)) {
+        addChat(msg.nom, msg.id, esOperador, msg.origen);
+      }
+      if ($("#idChat").val() == msg.id) {
+        addMessage(msg.contenido, "R", "Ahora", msg.tipo);
+      } else {
+        unreadMessages(msg.id);
+      }
+    
   });
   socket.on("recive_op_image", function (msg) {
     console.log("Imagen recibida: " + JSON.stringify(msg));
@@ -487,6 +493,10 @@ $(function () {
       unreadMessages(msg.id);
     }
   });
+  socket.on('operador_set_id',function (msg) {
+      sessionStorage.setItem('operadorid', msg);
+  });
+
   socket.on("confirm_op_message", function (msg) {
     confirm(msg, "R", "Ahora");
   });

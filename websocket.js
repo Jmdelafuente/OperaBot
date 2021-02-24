@@ -61,6 +61,7 @@ io.on("connection", function (socket) {
           if (valido) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
+            socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
           } else {
             // ! SALIR
@@ -166,13 +167,15 @@ api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
 // Functions define for export and modularization
 const enviarMensaje = function (id, contenido) {};
 
-const recibirMensaje = function (id, contenido, tipo,nombre,origen) {
+const recibirMensaje = function (chat, tipo, operador) {
   var mensaje = {};
-  mensaje.id = id;
-  mensaje.contenido = contenido;
+  mensaje.id = chat.id;
+  mensaje.contenido = chat.lastmessage;
   mensaje.tipo = tipo;
-  mensaje.nom = nombre;
-  mensaje.origen = origen;
+  mensaje.nom = chat.name;
+  mensaje.origen = chat.origin;
+  mensaje.state = chat.state;
+  mensaje.asign = operador;
   io.emit("recive_op_message", mensaje);
   return true;
 };

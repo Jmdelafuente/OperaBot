@@ -62,7 +62,7 @@ async function altaOperador(id, canal) {
   let esValido = operador.validar(id);
   if (!(await esValido)) {
     // TODO: no es un token valido, salir
-    return false;
+    return 0;
   } else {
     // Check si el operador ya existe
     if (!operators[operador.id]) {
@@ -78,7 +78,7 @@ async function altaOperador(id, canal) {
 
     // TODO: enviar todos los chats
     socket.recibirLista(canal, messenger.chatsList(), false);
-    return true;
+    return operador.id;
   }
 }
 
@@ -159,20 +159,23 @@ async function bajaOperador(id) {
  * @param {Numbers} id del remitente (propio del servicio de mensajeria)
  * @param {String} cont contenido del mensaje
  */
-async function recibirMensaje(id, cont, tipo,nombre,origen) {
+async function recibirMensaje(chat, tipo) {
   // TODO: check horario de trabajo / operadores online
   let horaInicio = new Date();
+  let id = chat.id;
   horaInicio.setHours = config.START_TIME;
   let horaFin = Date(config.END_TIME);
   horaFin.setHours = config.START_TIME;
-  if (new Date() > horaInicio && new Date() < horaFin) {
+  let horaActual = new Date(Date.now());
+  //FIXME: arreglar el if que no entra bien
+  //if (horaActual.getHours() > horaInicio && horaActual.getHours() < horaFin) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
       // Se asigna el chat
-      chat = messenger.getChatById(id);
-
+      //chat = messenger.getChatById(id);
+      
       newAsign
-        .push({ id: id, cont: cont, nombre: chat.name })
+        .push({ id: chat.id, cont: chat.lastmessage, nombre: chat.name })
         .on("finish", function (res) {
           return true;
         })
@@ -184,10 +187,12 @@ async function recibirMensaje(id, cont, tipo,nombre,origen) {
         });
     }
     // Push notification to operator
-    socket.recibirMensaje(id, cont, tipo, nombre, origen);
-  } else {
+    let operadorId = chat_asig[id].operadorId;
+    let operador = operators[operadorId];
+    socket.recibirMensaje(chat,tipo,operador.id);
+  //} else {
     // FIXME: autorespuesta
-  }
+  //}
 }
 
 /**
