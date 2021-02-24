@@ -325,9 +325,6 @@ $(function () {
       let permitido = ((this.files[0].size / 1024) / 1024);//no puede pesar mas de 50mb
       var hora = Date.now();
       if (permitido <= 50) {
-
-
-        console.log(this.files[0].type);
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = img.width;
@@ -336,17 +333,19 @@ $(function () {
         iduser = sessionStorage.getItem('key');
         ctx.drawImage(img, 0, 0);
         toDataURL(img.src, function (imagen) {
-          addMessage(imagen,'E',hora,"image");
+
           
           let pack ={
-              id: iduser,
-              contenido: imagen
+            id: iduser,
+            contenido: imagen
           };
           socket.emit('adjunto-archivo', pack);
+          addMessage(imagen,'E',hora,"image");
 
         });
       } else {
          let mensaje ="Imagen demasiado pesada";
+         socket.emit('send_op_message', mensaje);
          addMessage(mensaje,'E',hora,'message');
       }
 
@@ -382,7 +381,7 @@ $(function () {
       }
     }
     // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
-    if(sessionStorage.getItem('key')!=''){
+    if(sessionStorage.getItem('key')!='null'){
       let idactual=sessionStorage.getItem('key');
       changeChat(idactual);
     }
