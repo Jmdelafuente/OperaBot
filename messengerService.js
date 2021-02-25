@@ -126,8 +126,15 @@ function getChatById(id) {
   // return JSON.stringify(chatsList);
 }
 
-async function disconnect(id, timestamp) {
+async function disconnect(msg, timestamp) {
   // TODO: aviso de cliente desconectado
+  var text = JSON.parse(msg.body);
+  //var chat = chatsList[text.user];
+  
+  // * como le digo si quiere o no para mandar mail?
+  console.log(`estoy en disconnect ${text.historial}`);
+  //chat.resolucionOk();
+  op.desconexionCivil(text);
 }
 
 // * INIT

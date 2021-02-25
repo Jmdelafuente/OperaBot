@@ -153,6 +153,10 @@ io.on("connection", function (socket) {
       socket.emit("send_plantilla",plant.blueprints);
   });
 
+  socket.on("desconexion", function(msg){
+    socket.emit("email",);
+  });
+
   
 });
 
@@ -208,6 +212,18 @@ async function asignarMensaje(socket, chat) {
   });
 }
 
+async function quieremail(operador, idUser) {
+
+  //operador.emit("getAllMessagesByChat",{lista: msg.historial, id: msg.user});
+  
+
+   return new Promise(resolve => {
+     operador.emit("email", idUser, (respuesta) => {
+      resolve(respuesta);
+     });
+   });
+};
+
 const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let msg = {};
   msg.id = id;
@@ -233,3 +249,4 @@ module.exports.recibirMensaje = recibirMensaje;
 module.exports.asignarMensaje = asignarMensaje;
 module.exports.recibirMensajesByChat = mensajesByChat;
 module.exports.recibirLista = recibirLista;
+module.exports.quieremail = quieremail;

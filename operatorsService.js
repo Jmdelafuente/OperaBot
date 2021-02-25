@@ -110,8 +110,10 @@ function recuperarChatsOperador(id) {
       .filter(([k, v]) => v.operadorId == id)
       .map(([k, v]) => ({ [k]: v }))
   );
+ 
   for (const [chatId, value] of Object.entries(asigns)) {
     let chat = messenger.getChatById(chatId);
+    console.log(`estoy en recuperar chat ${chat}`);
     chats[chatId] = chat;
   }
   return chats;
@@ -318,6 +320,23 @@ async function closeChat(chatID) {
   // TODO: analiticas de operador con chat cerrado
 }
 
+async function desconexionCivil(msg){
+  //TODO: que sea algo visual (boton?), en page service, hacer json con todos los mensajes (hecha) y 
+  //TODO: preguntar al operador si los quiere, si dice si, mail, else, borrar
+  
+  let operador = chat_asig[msg.user].operadorId;
+  let socketOperador = operators[operador].socket;
+
+  //messenger.recuperarHistorial();
+  let quieremail = await socket.quieremail(socketOperador,msg.user);
+  if(quieremail){
+    //TODO: guardar historial en BD 
+    console.log("se guardo en BD");
+ }
+
+}
+
+
 // * Init
 // Load static/stable asignations
 Asignacion.getAll()
@@ -346,3 +365,4 @@ module.exports.reconectarOperador = reconectarOperador;
 module.exports.operators = operators;
 module.exports.obteneropciones = obteneropciones;
 module.exports.enviarMenu = enviarMenu;
+module.exports.desconexionCivil = desconexionCivil;

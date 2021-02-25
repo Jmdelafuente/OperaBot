@@ -171,7 +171,7 @@ $(function () {
       var time;
       if (t == "Ahora") {
         setTimeout(function () {
-          time = new Date();
+          time = new Date(Date.now());
           hora.innerText =
             time.getHours().toString() +
             ":" +
@@ -250,9 +250,7 @@ $(function () {
         break;
     }
 
-
     if (asign && !chatListAsign.includes(id)) {
-      console.log(chatListAsign);
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
     }
@@ -528,6 +526,50 @@ $(function () {
         }
       });
     }
+  });
+
+  socket.on("email", function(msg,respuesta){
+      var ex = document.createElement("div");
+      var msj = document.createElement("div");
+      var email = document.createElement("button");
+      var cancelar = document.createElement("button");
+      var div = document.getElementById("mensajes");
+      ex.className = "sticky-bottom";
+      email.className = "btn btn-primary ";
+      cancelar.className = "btn btn-warning";
+      msj.innerText = "Ciudadano cerro el chat";
+      email.innerText = "guardar";
+
+      email.addEventListener('click', function (e) {
+        e.preventDefault();
+        respuesta(true);
+
+      });
+
+      cancelar.innerText = "cerrar";
+
+      cancelar.addEventListener('click', function (e) {
+        e.preventDefault();
+        respuesta(false);        
+        //que borre el chat una vez se haga click
+      });
+
+      let chatActivo = sessionStorage.getItem('key');
+
+      if(chatActivo == msg){
+        div.appendChild(msj);
+        div.appendChild(ex);
+        ex.appendChild(email);
+        ex.appendChild(cancelar);
+        document.getElementById("m").setAttribute("disable", "");
+        document.getElementById("enviar").setAttribute("disable", "");
+      }else{
+        document.getElementById('usuario_' + msg).onclick((msg)=>{
+          msg.preventDefault();
+          console.log("SI");
+        });
+      }
+
   });
 
    socket.on("obtener-opciones", function (msg) {

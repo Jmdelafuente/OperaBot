@@ -73,7 +73,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
       .then(() => {
         res.sendStatus(200);
       })
-      .catch(() => {
+      .catch((err) => {
         console.log(
           `Error en pedido de lista de mensajes a ${prefix} - ` + err
         );
@@ -88,7 +88,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
       .then(() => {
         res.sendStatus(200);
       })
-      .catch(() => {
+      .catch((err) => {
         console.log(`Error en pedido de desconexion con ${prefix} - ` + err);
         res.sendStatus(500);
       });
