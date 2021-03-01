@@ -36,7 +36,7 @@ appFront.use(cors);
 //   next();
 // });
 appFront.get("/", function (req, res) {
-  res.sendFile(__dirname + "/public/admin/home.html");
+  res.sendFile(__dirname + "/index.html");
 });
 http.listen(portFront);
 
@@ -68,10 +68,8 @@ io.on("connection", function (socket) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
             op.operators[valido].perfil = 2;  
-            if (op.operators[valido].perfil == 2) {
-              appFront.get("/", function (req, res) {
-                res.sendFile(__dirname + "/public/admin/index.html");
-              });
+            if (op.operators[valido].perfil == 2){
+              console.log("no me estaria cargando la pagina");
             }
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
