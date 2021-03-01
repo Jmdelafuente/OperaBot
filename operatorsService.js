@@ -302,8 +302,9 @@ async function confirmarVisto(chatId, channelId) {
 
 async function escribiendo(chatID, channelID, isWriting = true) {
   let operador = operators[operators_channels[channelID]];
-  let index = ((operador.razonSocial).indexOf(",")) + 3;
-  let nombre = ((operador.razonSocial).subString(index));
+  let str = operador.razonSocial;
+  let index = str.indexOf(",") + 3;
+  let nombre = str.substring(index);
   if (isWriting) {
     messenger.enviarEstado(
       chatID,
