@@ -53,6 +53,12 @@ io.on("connection", function (socket) {
       delete sockets[s.id];
       socket.user = msg.SESSIONKEY;
       sessions[msg.SESSIONKEY] = socket;
+      console.log(`el perfil del operador es: ${op.operators[valido].perfil}`);
+      if(op.operators[msg.SESSIONKEY].perfil == 2){
+        appFront.get("/", function(req, res){
+          res.sendFile(__dirname + "/public/admin/index.html");
+        });
+      }
       op.reconectarOperador(msg.SESSIONKEY, socket);
     } else {
       socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
@@ -61,7 +67,14 @@ io.on("connection", function (socket) {
           if (valido) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
-            console.log(`el perfil del operador es: ${op.operators[valido].perfil}`);
+            console.log(`el perfil inicial es: ${op.operators[valido].perfil}`);
+            op.operators[valido].perfil = 2;  
+            console.log(`el perfil despues es: ${op.operators[valido].perfil}`);
+            if (op.operators[valido].perfil == 2) {
+              appFront.get("/", function (req, res) {
+                res.sendFile(__dirname + "/public/admin/index.html");
+              });
+            }
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
           } else {
