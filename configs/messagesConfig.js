@@ -22,4 +22,4 @@ for(const [key, prefix] of Object.entries(plant)){
 
 
 module.exports.blueprints = plantillas;
-//module.exports.modificar = modificarplantilla;
+module.exports.modificar = modificarplantilla;

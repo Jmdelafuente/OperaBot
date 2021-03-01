@@ -38,7 +38,7 @@ appFront.use(cors);
 appFront.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
-http.listen(portFront);
+
 
 // * EVENTOS * //
 
@@ -67,9 +67,7 @@ io.on("connection", function (socket) {
           if (valido) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
-            console.log(`el perfil inicial es: ${op.operators[valido].perfil}`);
             op.operators[valido].perfil = 2;  
-            console.log(`el perfil despues es: ${op.operators[valido].perfil}`);
             if (op.operators[valido].perfil == 2) {
               appFront.get("/", function (req, res) {
                 res.sendFile(__dirname + "/public/admin/index.html");
@@ -256,6 +254,8 @@ const recibirLista = function (operador, lista, asignado) {
   msg.asignado = asignado;
   operador.emit("send_op_list", msg);
 };
+
+http.listen(portFront);
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
