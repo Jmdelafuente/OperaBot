@@ -49,12 +49,14 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
     // TODO: authenticate origin: usar validateIP con req
     let data = JSON.parse(req.body.body);
     let name = data.name ? data.name : "anonimo";
+    let type = data.type ? data.type : "image";
     ms.nuevaImagen(
       data.user,
       data.text,
       `${key}`,
       data.timestamp,
-      name
+      name,
+      type
     ).then(
       (cb) => {
         res.sendStatus(200);
