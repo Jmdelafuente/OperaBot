@@ -61,6 +61,7 @@ io.on("connection", function (socket) {
           if (valido) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
+            console.log(`el perfil del operador es: ${op.operators[valido].perfil}`);
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
           } else {
