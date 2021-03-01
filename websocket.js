@@ -36,13 +36,7 @@ appFront.use(cors);
 //   next();
 // });
 appFront.get("/", function (req, res) {
-  let operador = sessions[req.query.SESSIONKEY];
-  if(operador.perfil != 2){
-    res.sendFile(__dirname + "/index.html");
-  }else{
-    console.log("entre como admin");
-    res.sendFile(__dirname + "/public/admin/index.html");
-  }
+  res.sendFile(__dirname + "/public/admin/index.html");
 });
 http.listen(portFront);
 
@@ -58,7 +52,7 @@ io.on("connection", function (socket) {
       let s = sessions[msg.SESSIONKEY];
       delete sockets[s.id];
       socket.user = msg.SESSIONKEY;
-      sessions[msg.SESSIONKEY] = socket;     
+      sessions[msg.SESSIONKEY] = socket;
       op.reconectarOperador(msg.SESSIONKEY, socket);
     } else {
       socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
@@ -67,7 +61,6 @@ io.on("connection", function (socket) {
           if (valido) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
-            op.operators[valido].perfil = 2;  
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
           } else {
