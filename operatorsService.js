@@ -302,15 +302,17 @@ async function confirmarVisto(chatId, channelId) {
 
 async function escribiendo(chatID, channelID, isWriting = true) {
   let operador = operators[operators_channels[channelID]];
+  let index = operador.razonSocial.indexOf(",");
+  let nombre = operador.razonSocial.subString(index + 3);
   if (isWriting) {
     messenger.enviarEstado(
       chatID,
-      status.WRITING_MESSAGE(operador.razonSocial)
+      status.WRITING_MESSAGE(nombre)
     );
   } else {
     messenger.enviarEstado(
       chatID,
-      status.STOP_WRITING_MESSAGE(operador.razonSocial)
+      status.STOP_WRITING_MESSAGE(nombre)
     );
   }
 }

@@ -1,98 +1,99 @@
 [{
-    "nombre": "opcion0",
+        "nombre": "Menu_Inicial",
+  "opciones":[{
+      "nombre": "Licencia de conducir",
+      "valor": "LICENCIA DE CONDUCIR"
+  },{
+      "nombre":"TRIBUTOS MUNICIPALES",
+      "valor": "TRIBUTOS MUNICIPALES"
+  },{
+      "nombre":"OTROS TEMAS",
+      "valor": "OTROS TEMAS"
+  }]
+},
+    {
+    "nombre": "Licencia de conducir",
     "opciones": [{
-        "nombre": "opcion01",
-        "informacion": "si podes meterle info, dale para adelante",
-        "valor": "opcion1 dentro de opcion0"
+        "nombre": "Requisitos",
+        "valor": "Requisitos"
     }, {
-        "nombre": "opcion02",
-        "valor": "opcion2 dentro de opcion0"
-    }, {
-        "nombre": "opcion03",
-        "valor": "opcion3 dentro de opcion0"
-    }, {
-        "nombre": "opcion04",
-        "valor": "opcion4 dentro de opcion0"
-    }, {
-        "nombre": "opcion05",
-        "valor": "opcion5 dentro de opcion0"
-    }, {
-        "nombre": "opcion06",
-        "valor": "opcion6 dentro de opcion0"
-    }, {
-        "nombre": "opcion07",
-        "valor": "opcion7 dentro de opcion0"
-    }, {
-        "nombre": "opcion08",
-        "valor": "opcion8 dentro de opcion0"
-    }, {
-        "nombre": "opcion09",
-        "valor": "opcion dentro de opcion0"
-    }],
-     "descripcion":"Esta es la descripcion de la opcion 0"
+        "nombre": "turnos",
+        "valor": "turnos"
+    }]
 }, {
-    "nombre": "opcion01",
+    "nombre": "Requisitos",
     "opciones": [{
-        "nombre": "opcion11",
-        "valor": "opcion1 dentro de opcion1"
+        "nombre": "Para renovar tu licencia:",
+        "valor": "Para renovar tu licencia:"
     }, {
-        "nombre": "respuesta12",
-        "valor": "opcion2 dentro de opcion1"
+        "nombre": "Para habilitar tu licencia:",
+        "valor": "Para habilitar tu licencia:"
     }, {
-        "nombre": "opcion13",
-        "valor": "opcion3 dentro de opcion1"
-    }, {
-        "nombre": "opcion14",
-        "valor": "opcion4 dentro de opcion1"
-    }, {
-        "nombre": "opcion15",
-        "valor": "opcion5 dentro de opcion1"
-    }, {
-        "nombre": "opcion16",
-        "valor": "opcion6 dentro de opcion1"
-    }, {
-        "nombre": "opcion17",
-        "valor": "opcion7 dentro de opcion1"
-    }, {
-        "nombre": "opcion18",
-        "valor": "opcion8 dentro de opcion1"
-    }, {
-        "nombre": "opcion19",
-        "valor": "opcion dentro de opcion1"
-    }],
-    "descripcion": "Esta es la descripcion de la opcion 01"
-}, {
-    "nombre": "respuesta12",
-    "opciones": "si la respuesta es tal"
-}, {
-    "nombre": "opcion02",
+        "nombre": "Hablá con nosotos",
+        "valor": "Hablá con nosotos"
+    }]
+},{
+    "nombre": "turnos",
     "opciones": [{
-        "nombre": "opcion21",
-        "valor": "opcion1 dentro de opcion2"
+        "nombre": "mañana",
+        "valor": "horario de la mañana"
     }, {
-        "nombre": "respuesta22",
-        "valor": "opcion2 dentro de opcion2"
+        "nombre": "tarde",
+        "valor": "horario de la tarde"
+    }]
+
+},{ "nombre":"Para habilitar tu licencia:",
+    "opciones" : [{
+        "nombre": "habilitar_Moto", "valor": "MOTO"
+    },{ "nombre": "habilitar_Auto", "valor": "AUTO"
+    },{ "nombre": "habilitar_CLASE_C", "valor": "CLASE C: PROFESIONALES"
+    },{ "nombre": "habilitar_CLASE_D","valor": "CLASE D:PROFESIONALES"
+    },{ "nombre": "habilitar_CLASE_E","valor": "CLASE E: PROFESIONALES"
+    }]
+
+}, {
+    "nombre": "Para renovar tu licencia:",
+    "opciones": [{
+        "nombre": "renovar_Moto",
+        "valor": "MOTO"
     }, {
-        "nombre": "opcion23",
-        "valor": "opcion3 dentro de opcion2"
+        "nombre": "renovar_Auto",
+        "valor": "AUTO"
     }, {
-        "nombre": "opcion24",
-        "valor": "opcion4 dentro de opcion2"
+        "nombre": "renovar_CLASE_C",
+        "valor": "CLASE C: PROFESIONALES"
     }, {
-        "nombre": "opcion25",
-        "valor": "opcion5 dentro de opcion2"
+        "nombre": "renovar_CLASE_D",
+        "valor": "CLASE D:PROFESIONALES"
     }, {
-        "nombre": "opcion26",
-        "valor": "opcion6 dentro de opcion2"
-    }, {
-        "nombre": "opcion27",
-        "valor": "opcion7 dentro de opcion2"
-    }, {
-        "nombre": "opcion28",
-        "valor": "opcion8 dentro de opcion2"
-    }, {
-        "nombre": "opcion29",
-        "valor": "opcion dentro de opcion2"
-    }],
-    "descripcion": "Esta es la descripcion de la opcion 02"
+        "nombre": "renovar_CLASE_E",
+        "valor": "CLASE E: PROFESIONALES"
+    }]
+
+},
+{
+    "nombre": "habilitar_Moto",
+    "opciones": [{
+        "nombre":"respuesta_mayor_18",
+        "valor":"Entre 18 y 59 años"
+    },{
+        "nombre": "respuesta_mayor_60",
+        "valor": "Entre 60 y 65 años"
+    },{
+        "nombre": "respuesta_mayor_65",
+        "valor": "Mayores de 65 años"
+    }]
+},
+{
+    "nombre":"respuesta_mayor_18",
+    "opciones": ["RENOVACIÓN 18 A 59 AÑOS: \n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) < a href = \"https://boletacenat.safit.com.ar\">click aqui</a> \n• DNI Original (último ejemplar siempre) \n• Original de la licencia anterior (hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI) \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma"]
+},
+{
+    "nombre": "respuesta_mayor_60",
+    "opciones": ["RENOVACION 60 a 65 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma"]
+},
+{
+    "nombre": "respuesta_mayor_65",
+    "opciones": ["RENOVACION DE 65 AÑOS EN ADELANTE:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico."]
+
 }]

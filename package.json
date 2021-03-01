@@ -38,6 +38,7 @@
   "homepage": "https://gitlab.com/jmdelafuente/operabot#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "axios-https-proxy-fix": "^0.17.1",
     "better-queue": "^3.8.10",
     "better-sqlite3": "^7.1.2",
     "bluebird": "^3.7.2",
