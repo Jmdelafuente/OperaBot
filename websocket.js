@@ -36,9 +36,9 @@ appFront.use(cors);
 //   next();
 // });
 appFront.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/public/admin/home.html");
 });
-
+http.listen(portFront);
 
 // * EVENTOS * //
 
@@ -254,8 +254,6 @@ const recibirLista = function (operador, lista, asignado) {
   msg.asignado = asignado;
   operador.emit("send_op_list", msg);
 };
-
-http.listen(portFront);
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;

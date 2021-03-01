@@ -9,7 +9,8 @@
   },{
       "nombre":"OTROS TEMAS",
       "valor": "OTROS TEMAS"
-  }]
+  }],
+  "descripcion": "menu inicial"
 },
     {
     "nombre": "Licencia de conducir",
@@ -19,7 +20,8 @@
     }, {
         "nombre": "turnos",
         "valor": "turnos"
-    }]
+    }],
+    "descripcion": "Menu principal de licencia de conducir"
 }, {
     "nombre": "Requisitos",
     "opciones": [{
@@ -31,7 +33,8 @@
     }, {
         "nombre": "Hablá con nosotos",
         "valor": "Hablá con nosotos"
-    }]
+    }],
+    "descripcion": "Menu para seleccionar si necesita renovar o habilitar la licencia"
 },{
     "nombre": "turnos",
     "opciones": [{
@@ -40,7 +43,8 @@
     }, {
         "nombre": "tarde",
         "valor": "horario de la tarde"
-    }]
+    }],
+    "descripcion": ""
 
 },{ "nombre":"Para habilitar tu licencia:",
     "opciones" : [{
@@ -49,7 +53,8 @@
     },{ "nombre": "habilitar_CLASE_C", "valor": "CLASE C: PROFESIONALES"
     },{ "nombre": "habilitar_CLASE_D","valor": "CLASE D:PROFESIONALES"
     },{ "nombre": "habilitar_CLASE_E","valor": "CLASE E: PROFESIONALES"
-    }]
+    }],
+    "descripcion": "Menu para seleccionar el tipo de licencia"
 
 }, {
     "nombre": "Para renovar tu licencia:",
