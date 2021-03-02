@@ -249,7 +249,7 @@ $(function () {
       default:
         break;
     }
-
+      console.log(`${chatListAsign}`);
     if (asign && !chatListAsign.includes(id)) {
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
@@ -264,10 +264,11 @@ $(function () {
     info.appendChild(nombre);
     info.appendChild(estatus);
     info.appendChild(orig);
-    li.onclick = function (event) {
+    li.addEventListener('click',function (event) {
       event.preventDefault();
       changeChat(id);
-      };
+    });
+    
     }
   }
 
