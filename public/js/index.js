@@ -566,10 +566,11 @@ $(function () {
         document.getElementById("m").setAttribute("disable", "");
         document.getElementById("enviar").setAttribute("disable", "");
       }else{
-        document.getElementById('usuario_' + msg).onclick((msg)=>{
+        document.getElementById('usuario_' + msg).addEventListener('click', function(msg){
           msg.preventDefault();
           console.log("SI");
-        });
+        })
+        
       }
 
   });
