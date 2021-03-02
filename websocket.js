@@ -3,7 +3,7 @@ const express = require("express");
 var appFront = express();
 var cors = require("cors");
 var helmet = require("helmet");
-var http = require("http").createServer(appFront);
+var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
   cors: {
     origin: "*",
