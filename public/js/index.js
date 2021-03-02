@@ -555,7 +555,6 @@ $(function () {
         respuesta(false);        
         //que borre el chat una vez se haga click
       });
-
       let chatActivo = sessionStorage.getItem('key');
 
       if(chatActivo == msg){
