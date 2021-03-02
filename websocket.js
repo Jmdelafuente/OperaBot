@@ -3,7 +3,7 @@ const express = require("express");
 var appFront = express();
 var cors = require("cors");
 var helmet = require("helmet");
-var http = require("http").Server(appFront);
+var http = require("http").createServer(appFront);
 var io = require("socket.io")(http, {
   cors: {
     origin: "*",
@@ -40,9 +40,8 @@ appFront.use(cors);
 appFront.use(express.static(path.join(__dirname, "public/admin")));
 
 appFront.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index");
+ res.sendFile(__dirname + "/index")
 });
-
 http.listen(portFront);
 
 // * EVENTOS * //
@@ -226,6 +225,7 @@ async function quieremail(operador, idUser) {
      operador.emit("email", idUser, (respuesta) => {
       resolve(respuesta);
      });
+     operador.closeChat(idUser);
    });
 };
 
