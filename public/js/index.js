@@ -304,6 +304,7 @@ $(function () {
       sessionStorage.setItem('key', id);
       // Enviamos el 'visto' al servidor
       socket.emit("seen", id);
+      //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
       // Recuperamos la lista de chats abiertos
       $('div[data-href="' + activeTab + '"]').tab("show");
       // Marcamos como leido el chat
