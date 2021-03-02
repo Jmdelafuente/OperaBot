@@ -35,8 +35,16 @@ appFront.use(cors);
 //   );
 //   next();
 // });
+
+
+
 appFront.get("/", function (req, res) {
-  res.sendFile(__dirname + "/public/admin/index.html");
+  let perfil = 2;
+  
+  if(perfil==2){
+    appFront.use(express.static(path.join(__dirname, "public/admin")));
+  }
+  res.sendFile(__dirname + "/index")
 });
 http.listen(portFront);
 
