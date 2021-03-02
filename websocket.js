@@ -225,7 +225,6 @@ async function quieremail(operador, idUser) {
      operador.emit("email", idUser, (respuesta) => {
       resolve(respuesta);
      });
-     operador.closeChat(idUser);
    });
 };
 
