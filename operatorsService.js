@@ -291,7 +291,7 @@ async function confirmarVisto(chatId, channelId) {
   if(asignado){
     chat_asig[chatId]=asignacion;
   }
-  console.log(`Operador -> confirmarVisto: ${asignado} y ${asignacion}`);
+  console.log(`Operador -> confirmarVisto: ${asignado} y ${asignacion.chatId} , ${asignacion.operadorId} , ${asignacion.asignacionEstable}`);
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
   let chat = messenger.getChatById(chatId);
