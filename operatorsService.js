@@ -173,7 +173,7 @@ async function recibirMensaje(chat, tipo) {
     if (!chat_asig[id]) {
       // Se asigna el chat
       //chat = messenger.getChatById(id);
-      
+      console.log(`dentro de !chat_asig`);
       newAsign
         .push(chat)
         .on("finish", function (res) {
@@ -291,7 +291,7 @@ async function confirmarVisto(chatId, channelId) {
   if(asignado){
     chat_asig[chatId]=asignacion;
   }
-  console.log(`Operador -> confirmarVisto: ${asignado}`);
+  console.log(`Operador -> confirmarVisto: ${asignado} y ${asignacion}`);
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
   let chat = messenger.getChatById(chatId);

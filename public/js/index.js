@@ -454,8 +454,12 @@ $(function () {
     let chat_activo = $("#idChat").val();
     socket.emit("close_chat", chat_activo);
     sessionStorage.removeItem('key');
+    /* parte grafica del borrado
     let div_chat = document.getElementById("usuario_" + chat_activo);
+    let div_mensajes = document.getElementById("mensajes");
+    div_mensajes.innerHTML="";
     div_chat.remove();
+    */
     // TODO: estetica de chat cerrado
   }
   function getAsignados(){

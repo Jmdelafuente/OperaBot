@@ -54,7 +54,6 @@ async function nuevoMensaje(
     chatsList[id] = chat;
   }
   // Notify new message
-  console.log(`chat en nuevo mensaje ${chatsList[id]}`);
   op.recibirMensaje(chat,tipo);
 }
 

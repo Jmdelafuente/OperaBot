@@ -23,7 +23,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   api.post(`/api/${prefix}/newmessage`, jsonParser, (req, res) => {
     // TODO: authenticate origin: usar validateIP con req
     let data = JSON.parse(req.body.body);
-    console.log(data);
+    //console.log(data);
     let type = data.type ? data.type : "chat";
     let name = data.name ? data.name : "Anonimo";
     ms.nuevoMensaje(
