@@ -37,15 +37,12 @@ appFront.use(cors);
 // });
 
 
+appFront.use(express.static(path.join(__dirname, "public/admin")));
 
 appFront.get("/", function (req, res) {
-  let perfil = 2;
-  
-  if(perfil==2){
-    appFront.use(express.static(path.join(__dirname, "public/admin")));
-  }
   res.sendFile(__dirname + "/index")
 });
+
 http.listen(portFront);
 
 // * EVENTOS * //
