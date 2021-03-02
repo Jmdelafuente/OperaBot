@@ -40,7 +40,7 @@ appFront.use(cors);
 appFront.use(express.static(path.join(__dirname, "public/admin")));
 
 appFront.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index")
+  res.sendFile(__dirname + "/index");
 });
 
 http.listen(portFront);
