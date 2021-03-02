@@ -22,7 +22,7 @@ api.use(morgan("tiny"));
 // app.use(helmet()); // FIXME: en produccion revisar/configurar TLS
 api.use(helmet());
 // static files
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Allowing requests from outside of the domain
 app.use(cors());

@@ -37,7 +37,7 @@ appFront.use(cors);
 // });
 
 
-appFront.use(express.static(path.join(__dirname, "public/admin")));
+appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/", function (req, res) {
  res.sendFile(__dirname + "/index")
