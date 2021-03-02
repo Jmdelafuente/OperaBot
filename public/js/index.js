@@ -452,10 +452,10 @@ $(function () {
   // * EVENTOS WEBSOCKET * //
   function closeChat() {
     let chat_activo = $("#idChat").val();
-    let chat_id_activo = chat_activo.substring(8);
-    console.log(`el chat id en close es ${chat_id_activo}`);
     socket.emit("close_chat", chat_activo);
     sessionStorage.removeItem('key');
+    let div_chat = document.getElementById("usuario_" + chat_activo);
+    div_chat.remove();
     // TODO: estetica de chat cerrado
   }
   function getAsignados(){
