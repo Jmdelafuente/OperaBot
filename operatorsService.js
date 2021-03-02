@@ -290,6 +290,7 @@ async function confirmarVisto(chatId, channelId) {
   var asignado = asignacion.asignacionEstable;
   if(asignado){
     chat_asig[chatId]=asignacion;
+    console.log(`dentro del asignado ${chat_asig[chatId].chatId}`);
   }
   console.log(`Operador -> confirmarVisto: ${asignado} y ${asignacion.chatId} , ${asignacion.operadorId} , ${asignacion.asignacionEstable}`);
   // TODO: analiticas?
