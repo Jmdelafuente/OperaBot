@@ -269,7 +269,7 @@ $(function () {
 
     console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
 
-    let clonediv = li.cloneNode();
+    let clonediv = li.cloneNode(true);
     document.getElementById("listaContactos").appendChild(clonediv);
     chatListAll.push(id);
     
