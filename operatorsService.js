@@ -28,13 +28,13 @@ var newAsign = new Queue(async function (input, cb) {
       op.socket,
       input
           );
-          console.log(`el result de asignar mensaje es ${result}`)
+          console.log(`el result de asignar mensaje es ${result.user}`)
     if (result) {
       // Save the new assignment
       let operadorID = operators_channels[op.socket.user];
       chat_asig[input.id] = new Asignacion(input.id, operadorID);
       result = true;
-      console.log(`chat asig  dentro del if del result tiene ${chat_asig}`);
+      console.log(`chat asig  dentro del if del result tiene ${chat_asig[input.id].operadorId} y la asignacionEstable es ${chat_asig[input.id].asignacionEstable}`);
       cb(null, result);
     } else {
       // ? TODO:
