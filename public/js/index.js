@@ -216,6 +216,7 @@ $(function () {
    * @param {String} nom Nombre a mostrar del contacto
    * @param {String} id Identificador interno del chat para saber el destinatario
    * @param {Boolean} asign true si esta asignado a este operador, false en otro caso.
+   * @param {char} origen "P" para saber si viene por message service o "W" si viene de wpp
    */
   function addChat(nom, id, asign, origen) {
     if (!chatListAll.includes(id)) {    
@@ -252,12 +253,15 @@ $(function () {
      }
 
 
-          console.log(`en addchat ahora tiene ${chatListAsign} y asign es ${asign} y lo tiene? ${!chatListAsign.includes(id)}`);
+    console.log(`en addchat ahora tiene ${chatListAsign} y asign es ${asign} y lo tiene? ${!chatListAsign.includes(id)}`);
           
     if (asign && !chatListAsign.includes(id)) {
       document.getElementById("listaContactosAsignados").appendChild(li);
-      li.appendChild(ex);
       chatListAsign.push(id);
+      li.appendChild(ex);
+      ex.appendChild(img);
+      img.appendChild(avatar);
+      console.log("porque no dibuja????");
     }
 
     console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
