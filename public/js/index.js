@@ -272,9 +272,11 @@ $(function () {
       let clonediv = li.cloneNode(true);
       document.getElementById("listaContactosAsignados").appendChild(clonediv);
       chatListAsign.push(id);
+      clonediv.addEventListener('click', function (event) {
+        event.preventDefault();
+        changeChat(id);
+      });
     }
-
-    console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
 
     }
   }
