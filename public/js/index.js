@@ -255,6 +255,17 @@ $(function () {
     if (asign && !chatListAsign.includes(id)) {
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
+      li.appendChild(ex);
+      ex.appendChild(img);
+      img.appendChild(avatar);
+      ex.appendChild(info);
+      info.appendChild(nombre);
+      info.appendChild(estatus);
+      info.appendChild(orig);
+      li.addEventListener('click', function (event) {
+        event.preventDefault();
+        changeChat(id);
+      });
     }
 
     console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
