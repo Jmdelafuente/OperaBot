@@ -15,20 +15,17 @@ var chat_unassig = [];
 var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
   if (Object.keys(operators).length === 0) {
-    console.log("dentro del === 0");
     // No hay operadores online
     // TODO: chequear la hora de trabajo y esperar
     chat_unassig.push(input);
     cb("fail", null);
   } else {
     // FIXME: a modo de prueba, tomamos uno 'aleatorio'
-    console.log("dentro del else de length");
     let op = random_item(operators);
     let result = await socket.asignarMensaje(
       op.socket,
       input
           );
-          console.log(`el result de asignar mensaje es ${result.user}`)
     if (result) {
       // Save the new assignment
       let operadorID = operators_channels[op.socket.user];

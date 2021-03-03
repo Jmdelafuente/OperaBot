@@ -249,7 +249,8 @@ $(function () {
       default:
         break;
     }
-      console.log(`${chatListAsign}`);
+
+      console.log(`en addchat ahora tiene ${chatListAsign} y asign es ${asign} y lo tiene? ${chatListAsign.includes(id)}`);
     if (asign && !chatListAsign.includes(id)) {
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
