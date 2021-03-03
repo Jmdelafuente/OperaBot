@@ -536,14 +536,16 @@ $(function () {
     let lista = msg.lista;
     let chat_activo = $("#idChat").val();
     if (chat_activo == msg.id) {
-      $("#mensajes").html("");
-      lista.forEach((message) => {
-        if (message.user == "me") {
-          addMessage(message.contenido, "E", message.t, message.type);
-        } else {
-          addMessage(message.contenido, "R", message.t, message.type);
-        }
-      });
+      if(lista){
+        $("#mensajes").html("");
+        lista.forEach((message) => {
+          if (message.user == "me") {
+            addMessage(message.contenido, "E", message.t, message.type);
+          } else {
+            addMessage(message.contenido, "R", message.t, message.type);
+          }
+        });
+      }
     }
   });
 
