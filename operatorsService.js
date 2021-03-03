@@ -89,6 +89,7 @@ function reconectarOperador(id, canal) {
   // * Recuperar listados de chats
   // Enviar chats asignados
   lista_asig = recuperarChatsOperador(operador.id);
+  console.log(`lista de asignados en reconectar operador ${JSON.stringify(lista_asign)}`);
   if (lista_asig.length > 0) {
     socket.recibirLista(operador.socket, lista_asig, true);
   }

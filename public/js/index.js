@@ -483,6 +483,7 @@ $(function () {
   });
   socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
+    console.log(JSON.stringify(listaChats));
     newList(listaChats.chats, listaChats.asignado);
   });
   socket.on("recive_op_message", function (msg) {
