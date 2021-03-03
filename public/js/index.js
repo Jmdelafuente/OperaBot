@@ -536,7 +536,7 @@ $(function () {
     let lista = msg.lista;
     let chat_activo = $("#idChat").val();
     if (chat_activo == msg.id) {
-      if(lista){
+      if(lista!=''){
         $("#mensajes").html("");
         lista.forEach((message) => {
           if (message.user == "me") {
