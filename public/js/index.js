@@ -258,7 +258,11 @@ $(function () {
     if (asign && !chatListAsign.includes(id)) {
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
+      li.appendChild(ex);
+      ex.appendChild(img);
       console.log("porque no dibuja????");
+      img.appendChild(avatar);
+      ex.appendChild(info);
     }
 
     console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
@@ -481,7 +485,6 @@ $(function () {
   });
   socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
-    console.log(listaChats);
     newList(listaChats.chats, listaChats.asignado);
   });
   socket.on("recive_op_message", function (msg) {
