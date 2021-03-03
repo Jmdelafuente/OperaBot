@@ -260,22 +260,19 @@ $(function () {
       chatListAsign.push(id);
       li.appendChild(ex);
       ex.appendChild(img);
-      console.log("porque no dibuja????");
       img.appendChild(avatar);
       ex.appendChild(info);
+      info.appendChild(nombre);
+      info.appendChild(estatus);
+      info.appendChild(orig);
     }
 
     console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
 
-    document.getElementById("listaContactos").appendChild(li);
+    let clonediv = li.cloneNode();
+    document.getElementById("listaContactos").appendChild(clonediv);
     chatListAll.push(id);
-    li.appendChild(ex);
-    ex.appendChild(img);
-    img.appendChild(avatar);
-    ex.appendChild(info);
-    info.appendChild(nombre);
-    info.appendChild(estatus);
-    info.appendChild(orig);
+    
     li.addEventListener('click',function (event) {
       event.preventDefault();
       changeChat(id);
