@@ -490,16 +490,16 @@ $(function () {
     if(sessionStorage.getItem("operadorid") == msg.asign){
       esOperador = true;
     }
-      
-    addChat(msg.nom, msg.id, esOperador, msg.origen);
-      
-      if ($("#idChat").val() == msg.id) {
-        addMessage(msg.contenido, "R", "Ahora", msg.tipo);
-      } else {
-        unreadMessages(msg.id);
-      }
+        
+    if ($("#idChat").val() == msg.id) {
+      addMessage(msg.contenido, "R", "Ahora", msg.tipo);
+    } else {
+      unreadMessages(msg.id);
+    }
     
+    addChat(msg.nom, msg.id, esOperador, msg.origen);
   });
+
   socket.on("recive_op_image", function (msg) {
     console.log("Imagen recibida: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
