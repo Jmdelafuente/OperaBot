@@ -240,7 +240,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
 };
 
 const recibirLista = function (operador, lista, asignado) {
-  console.log(`Propagando lista ${JSON.stringify(lista)}`);
+  console.log(`Propagando lista ${lista}`);
   let msg = {};
   msg.chats = lista;
   msg.asignado = asignado;
