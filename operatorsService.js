@@ -114,8 +114,11 @@ function recuperarChatsOperador(id) {
  
   for (const [chatId, value] of Object.entries(asigns)) {
     let chat = messenger.getChatById(chatId);
-    console.log(`estoy en recuperar chat ${chat}`);
-    chats[chatId] = chat;
+    console.log(`estoy en recuperar chat ${JSON.stringify(chat)}`);
+    if(chat!=undefined){
+      chats[chatId] = chat;
+    }
+      
   }
   return chats;
 }
