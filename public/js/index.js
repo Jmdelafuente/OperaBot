@@ -258,9 +258,6 @@ $(function () {
     if (asign && !chatListAsign.includes(id)) {
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
-      li.appendChild(ex);
-      ex.appendChild(img);
-      img.appendChild(avatar);
       console.log("porque no dibuja????");
     }
 
