@@ -252,12 +252,8 @@ $(function () {
       break;
      }
 
-
-    console.log(`en addchat ahora tiene ${chatListAsign} y asign es ${asign} y lo tiene? ${!chatListAsign.includes(id)}`);
-          
-    if (asign && !chatListAsign.includes(id)) {
-      document.getElementById("listaContactosAsignados").appendChild(li);
-      chatListAsign.push(id);
+      document.getElementById("listaContactos").appendChild(li);
+      chatListAll.push(id);
       li.appendChild(ex);
       ex.appendChild(img);
       img.appendChild(avatar);
@@ -265,19 +261,21 @@ $(function () {
       info.appendChild(nombre);
       info.appendChild(estatus);
       info.appendChild(orig);
+      li.addEventListener('click', function (event) {
+        event.preventDefault();
+        changeChat(id);
+      });
+
+
+    
+    if (asign && !chatListAsign.includes(id)) {
+      let clonediv = li.cloneNode(true);
+      document.getElementById("listaContactosAsignados").appendChild(clonediv);
+      chatListAsign.push(id);
     }
 
     console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
 
-    let clonediv = li.cloneNode(true);
-    document.getElementById("listaContactos").appendChild(clonediv);
-    chatListAll.push(id);
-    
-    li.addEventListener('click',function (event) {
-      event.preventDefault();
-      changeChat(id);
-    });
-    
     }
   }
 
