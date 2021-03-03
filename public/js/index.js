@@ -272,6 +272,7 @@ $(function () {
       let clonediv = li.cloneNode(true);
       document.getElementById("listaContactosAsignados").appendChild(clonediv);
       chatListAsign.push(id);
+      unreadMessages(id);
       clonediv.addEventListener('click', function (event) {
         event.preventDefault();
         changeChat(id);
@@ -490,16 +491,16 @@ $(function () {
     if(sessionStorage.getItem("operadorid") == msg.asign){
       esOperador = true;
     }
-        
-    if ($("#idChat").val() == msg.id) {
-      addMessage(msg.contenido, "R", "Ahora", msg.tipo);
-    } else {
-      unreadMessages(msg.id);
-    }
-    
+      
     addChat(msg.nom, msg.id, esOperador, msg.origen);
+      
+      if ($("#idChat").val() == msg.id) {
+        addMessage(msg.contenido, "R", "Ahora", msg.tipo);
+      } else {
+        unreadMessages(msg.id);
+      }
+    
   });
-
   socket.on("recive_op_image", function (msg) {
     console.log("Imagen recibida: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
