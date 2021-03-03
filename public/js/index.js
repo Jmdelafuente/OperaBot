@@ -254,7 +254,11 @@ $(function () {
 
           console.log(`en addchat ahora tiene ${chatListAsign} y asign es ${asign} y lo tiene? ${!chatListAsign.includes(id)}`);
           
-    
+    if (asign && !chatListAsign.includes(id)) {
+      document.getElementById("listaContactosAsignados").appendChild(li);
+      li.appendChild(ex);
+      chatListAsign.push(id);
+    }
 
     console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
 
@@ -271,18 +275,6 @@ $(function () {
       event.preventDefault();
       changeChat(id);
     });
-
-    if (asign && !chatListAsign.includes(id)) {
-        document.getElementById("listaContactosAsignados").appendChild(li);
-        chatListAsign.push(id);
-        li.appendChild(ex);
-        ex.appendChild(img);
-        img.appendChild(avatar);
-        ex.appendChild(info);
-        info.appendChild(nombre);
-        info.appendChild(estatus);
-        info.appendChild(orig);
-     }
     
     }
   }
