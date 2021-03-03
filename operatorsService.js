@@ -232,7 +232,7 @@ async function recibirImagen(id, cont, type) {
 async function getAllMessages(id, user) {
   operador = operators_channels[user];
   chat = messenger.getChatById(id);
-  let lista_mensajes;
+  let lista_mensajes = {};
   if(chat!=undefined){
    lista_mensajes = await chat.getAllMessages(true);
   }
