@@ -238,23 +238,26 @@ $(function () {
     nombre.innerText = nom;
     estatus.innerText = "Online";
     var orig = document.createElement("i");
-    switch (origen) {
+    
+    /*switch (origen) {
       case "P":
         orig.className = "fa fa-desktop origen";
         break;
-      case "W":
-        orig.className = "fab fa-whatsapp origen";
-        break;  
-      
-      default:
-        break;
-    }
-
-      console.log(`en addchat ahora tiene ${chatListAsign} y asign es ${asign} y lo tiene? ${chatListAsign.includes(id)}`);
+        case "W":
+          orig.className = "fab fa-whatsapp origen";
+          break;  
+          
+          default:
+            break;
+          }*/
+          console.log(`en addchat ahora tiene ${chatListAsign} y asign es ${asign} y lo tiene? ${!chatListAsign.includes(id)}`);
+          
     if (asign && !chatListAsign.includes(id)) {
       document.getElementById("listaContactosAsignados").appendChild(li);
       chatListAsign.push(id);
     }
+
+    console.log(`ahora en chat se deberia tener 1 solo al menos ${chatListAsign}`);
 
     document.getElementById("listaContactos").appendChild(li);
     chatListAll.push(id);
@@ -480,11 +483,11 @@ $(function () {
   socket.on("recive_op_message", function (msg) {
     let esOperador=false;
     console.log("Mensaje recibido: " + JSON.stringify(msg));
-    if(sessionStorage.getItem('operadorid') == msg.asign){
+    if(sessionStorage.getItem("operadorid") == msg.asign){
       esOperador = true;
     }
       
-        addChat(msg.nom, msg.id, esOperador, msg.origen);
+    addChat(msg.nom, msg.id, esOperador, msg.origen);
       
       if ($("#idChat").val() == msg.id) {
         addMessage(msg.contenido, "R", "Ahora", msg.tipo);
