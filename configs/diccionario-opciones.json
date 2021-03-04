@@ -1,5 +1,5 @@
 [{
-        "nombre": "Menu_Inicial",
+        "nombre": "Menu Inicial",
   "opciones":[{
       "nombre": "Licencia de conducir",
       "valor": "LICENCIA DE CONDUCIR"
@@ -48,59 +48,59 @@
 
 },{ "nombre":"Para habilitar tu licencia",
     "opciones" : [{
-        "nombre": "habilitar_Moto", "valor": "MOTO"
-    },{ "nombre": "habilitar_Auto", "valor": "AUTO"
-    },{ "nombre": "habilitar_CLASE_C", "valor": "CLASE C: PROFESIONALES"
-    },{ "nombre": "habilitar_CLASE_D","valor": "CLASE D:PROFESIONALES"
-    },{ "nombre": "habilitar_CLASE_E","valor": "CLASE E: PROFESIONALES"
+        "nombre": "habilitar Moto", "valor": "MOTO"
+    },{ "nombre": "habilitar Auto", "valor": "AUTO"
+    },{ "nombre": "habilitar CLASE C", "valor": "CLASE C: PROFESIONALES"
+    },{ "nombre": "habilitar CLASE D","valor": "CLASE D:PROFESIONALES"
+    },{ "nombre": "habilitar CLASE E","valor": "CLASE E: PROFESIONALES"
     }],
     "descripcion": "Menu para seleccionar el tipo de licencia a habilitar"
 
 }, {
     "nombre": "Para renovar tu licencia",
     "opciones": [{
-        "nombre": "renovar_Moto",
+        "nombre": "renovar Moto",
         "valor": "MOTO"
     }, {
-        "nombre": "renovar_Auto",
+        "nombre": "renovar Auto",
         "valor": "AUTO"
     }, {
-        "nombre": "renovar_CLASE_C",
+        "nombre": "renovar CLASE C",
         "valor": "CLASE C: PROFESIONALES"
     }, {
-        "nombre": "renovar_CLASE_D",
+        "nombre": "renovar CLASE D",
         "valor": "CLASE D:PROFESIONALES"
     }, {
-        "nombre": "renovar_CLASE_E",
+        "nombre": "renovar CLASE E",
         "valor": "CLASE E: PROFESIONALES"
     }],
     "descripcion": "Menu para seleccionar el tipo de licencia a renovar"
 
 },
 {
-    "nombre": "habilitar_Moto",
+    "nombre": "habilitar Moto",
     "opciones": [{
-        "nombre":"respuesta_mayor_18",
+        "nombre":"respuesta mayor 18",
         "valor":"Entre 18 y 59 años"
     },{
-        "nombre": "respuesta_mayor_60",
+        "nombre": "respuesta mayor 60",
         "valor": "Entre 60 y 65 años"
     },{
-        "nombre": "respuesta_mayor_65",
+        "nombre": "respuesta mayor 65",
         "valor": "Mayores de 65 años"
     }],
     "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
 },
 {
-    "nombre":"respuesta_mayor_18",
+    "nombre":"respuesta entre 18 y 59",
     "opciones": ["RENOVACIÓN 18 A 59 AÑOS: \n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) < a href = \"https://boletacenat.safit.com.ar\">click aqui</a> \n• DNI Original (último ejemplar siempre) \n• Original de la licencia anterior (hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI) \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma"]
 },
 {
-    "nombre": "respuesta_mayor_60",
+    "nombre": "respuesta entre 60 y 65",
     "opciones": ["RENOVACION 60 a 65 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma"]
 },
 {
-    "nombre": "respuesta_mayor_65",
+    "nombre": "respuesta mayor 65",
     "opciones": ["RENOVACION DE 65 AÑOS EN ADELANTE:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico."]
 
 }]
