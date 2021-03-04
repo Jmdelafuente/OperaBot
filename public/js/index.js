@@ -603,7 +603,7 @@ $(function () {
        liopcion.setAttribute('type', 'button');
        liopcion.setAttribute('data-dismiss', 'modal')
        liopcion.innerText = `${msg[key].nombre}`;
-       if(msg[key].descripcion!==""){
+       if(msg[key].descripcion){
          liopcion.innerText = `${msg[key].nombre}: ${msg[key].descripcion}`;
        }
        divOpcion.appendChild(ulOpcion);
