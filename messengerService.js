@@ -107,7 +107,7 @@ async function enviarMenu(id, cont) {
 
 async function closeChat(id) {
   var chat = chatsList[id];
-  console.log(`estoy en close chat ${chat.state}`);
+  console.log(`estoy en close chat ${chat.id}`);
   let res = false;
   if (chat) {
     res = await chat.resolucionOk();
