@@ -110,7 +110,7 @@ async function closeChat(id) {
   console.log(`estoy en close chat ${chat.state}`);
   let res = false;
   if (chat) {
-    res = await chat.resolucionOk();
+    res = await chat.state.resolucionOk();
     console.log(`dentro del if chat la reso es ${res} y chat ${chat.state}`);
   }
   return res;

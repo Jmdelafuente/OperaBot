@@ -272,7 +272,6 @@ $(function () {
       let clonediv = li.cloneNode(true);
       document.getElementById("listaContactosAsignados").appendChild(clonediv);
       chatListAsign.push(id);
-      unreadMessages(id);
       clonediv.addEventListener('click', function (event) {
         event.preventDefault();
         changeChat(id);
