@@ -1,4 +1,5 @@
 var Chat = require("./models/Chat");
+const { Cerrado } = require("./models/Estado");
 var op = require("./operatorsService");
 var chatsList = {};
 /**
@@ -110,7 +111,8 @@ async function closeChat(id) {
   console.log(`estoy en close chat ${chat.state}`);
   let res = false;
   if (chat) {
-    res = await chat.state.resolucionOk();
+    //res = await chat.resolucionOk();
+    chat.state = Cerrado;
     console.log(`dentro del if chat la reso es ${res} y chat ${chat.state}`);
   }
   return res;
