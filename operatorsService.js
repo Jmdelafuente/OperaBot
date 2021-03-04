@@ -327,6 +327,8 @@ async function escribiendo(chatID, channelID, isWriting = true) {
 
 async function closeChat(chatID) {
   messenger.closeChat(chatID);
+  delete chatListAll[chatID];
+  delete chat_asig[chatID];
   // TODO: analiticas de operador con chat cerrado
 }
 
