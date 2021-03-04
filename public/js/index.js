@@ -600,17 +600,14 @@ $(function () {
 
        let ulOpcion = document.createElement('ul');
        let liopcion = document.createElement('li');
-       let liopcion2 = document.createElement('li');
        liopcion.setAttribute('type', 'button');
        liopcion.setAttribute('data-dismiss', 'modal')
-       liopcion2.setAttribute('type', 'button');
        liopcion.innerText = `${msg[key].nombre}`;
-       if(msg[key].descripcion != undefined){
-         liopcion.innerText = `: ${msg[key].descripcion}`;
+       if(msg[key].descripcion!==""){
+         liopcion.innerText = `${msg[key].nombre}: ${msg[key].descripcion}`;
        }
        divOpcion.appendChild(ulOpcion);
        ulOpcion.appendChild(liopcion);
-       ulOpcion.appendChild(liopcion2);
        liopcion.addEventListener('click', function (e) {
          e.preventDefault();
          pack.id = iduser;
