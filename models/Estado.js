@@ -70,7 +70,7 @@ class Abierto extends Estado{
   }
   
   resolucionOk () {
-    chat.state = new Cerrado(chat);
+    chat.state = new Cerrado(chat.id);
     return true;
   }
 
