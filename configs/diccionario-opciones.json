@@ -44,9 +44,9 @@
         "nombre": "tarde",
         "valor": "horario de la tarde"
     }],
-    "descripcion": ""
+    "descripcion": "Listar los horarios de atención"
 
-},{ "nombre":"Para habilitar tu licencia:",
+},{ "nombre":"Para habilitar tu licencia",
     "opciones" : [{
         "nombre": "habilitar_Moto", "valor": "MOTO"
     },{ "nombre": "habilitar_Auto", "valor": "AUTO"
@@ -54,10 +54,10 @@
     },{ "nombre": "habilitar_CLASE_D","valor": "CLASE D:PROFESIONALES"
     },{ "nombre": "habilitar_CLASE_E","valor": "CLASE E: PROFESIONALES"
     }],
-    "descripcion": "Menu para seleccionar el tipo de licencia"
+    "descripcion": "Menu para seleccionar el tipo de licencia a habilitar"
 
 }, {
-    "nombre": "Para renovar tu licencia:",
+    "nombre": "Para renovar tu licencia",
     "opciones": [{
         "nombre": "renovar_Moto",
         "valor": "MOTO"
@@ -73,7 +73,8 @@
     }, {
         "nombre": "renovar_CLASE_E",
         "valor": "CLASE E: PROFESIONALES"
-    }]
+    }],
+    "descripcion": "Menu para seleccionar el tipo de licencia a renovar"
 
 },
 {
@@ -87,7 +88,8 @@
     },{
         "nombre": "respuesta_mayor_65",
         "valor": "Mayores de 65 años"
-    }]
+    }],
+    "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
 },
 {
     "nombre":"respuesta_mayor_18",
