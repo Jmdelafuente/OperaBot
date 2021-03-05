@@ -338,12 +338,12 @@ async function desconexionCivil(msg){
   let operador = chat_asig[msg.user].operadorId;
   let socketOperador = operators[operador].socket;
   let str = '';
-  console.log(msg);
-  console.log(JSON.stringify(msg));
   
   //messenger.recuperarHistorial();
   let quieremail = await socket.quieremail(socketOperador,msg.user,msg.chat);
   if(quieremail){
+    console.log(`dentro de quiere email ${msg}`);
+    console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
     //TODO: guardar historial en BD 
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
