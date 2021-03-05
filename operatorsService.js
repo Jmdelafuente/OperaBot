@@ -342,8 +342,10 @@ async function desconexionCivil(msg){
   let quieremail = await socket.quieremail(socketOperador,msg.user);
   if(quieremail){
     //TODO: guardar historial en BD 
-    console.log(`el text en disconnect tiene ${JSON.stringify(msg.historial)}`);
-    console.log(`el chat contiene lo siguiente ${msg.historial}`);
+    msg.historial.forEach(element => {
+      console.log(`el chat contiene lo siguiente ${element.contenido}`);
+      
+    });
  }
 
 }
