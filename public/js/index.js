@@ -589,7 +589,7 @@ $(function () {
         })
         
       }
-
+    div.scrollTop = div.scrollHeight;
   });
 
    socket.on("obtener-opciones", function (msg) {
