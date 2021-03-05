@@ -340,7 +340,7 @@ async function desconexionCivil(msg){
   let str = '';
   
   //messenger.recuperarHistorial();
-  let quieremail = await socket.quieremail(socketOperador,msg.user);
+  let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
     //TODO: guardar historial en BD 
     msg.historial.forEach(element => {

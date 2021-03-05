@@ -562,8 +562,7 @@ $(function () {
       email.addEventListener('click', function (e) {
         e.preventDefault();
         respuesta(true);
-        let id = sessionStorage.getItem('key');
-        console.log(`bueno el mail que ingreso es ${chatListAll[id].email}`);
+        console.log(`bueno el mail que ingreso es ${msg.chat.email}`);
         closeChat();
       });
 
@@ -577,7 +576,7 @@ $(function () {
       });
       let chatActivo = sessionStorage.getItem('key');
 
-      if(chatActivo == msg){
+      if(chatActivo == msg.idUser){
         div.appendChild(msj);
         div.appendChild(ex);
         ex.appendChild(email);
