@@ -1,5 +1,5 @@
 var Queue = require("better-queue");
-
+const nodemailer = require("nodemailer");
 const Asignacion = require("./models/Asignacion");
 const Operador = require("./models/Operador");
 const socket = require("./websocket");
@@ -337,7 +337,7 @@ async function desconexionCivil(msg){
   
   let operador = chat_asig[msg.user].operadorId;
   let socketOperador = operators[operador].socket;
-
+  let str = '';
   //messenger.recuperarHistorial();
   let quieremail = await socket.quieremail(socketOperador,msg.user);
   if(quieremail){
@@ -345,8 +345,33 @@ async function desconexionCivil(msg){
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
       console.log(`el chat contiene lo siguiente ${element.contenido}, enviado a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`);
-      
+      str += " " + element.contenido;
     });
+
+    "use strict";
+      // Generate test SMTP service account from ethereal.email
+      // Only needed if you don't have a real mail account for testing
+      let testAccount = await nodemailer.createTestAccount();
+
+      // create reusable transporter object using the default SMTP transport
+      let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: testAccount.user, // generated ethereal user
+          pass: testAccount.pass, // generated ethereal password
+        },
+      });
+
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        to: msg.email, // list of receivers
+        subject: "chat con operador", // Subject line
+        text: str // plain text body
+      });
+      str = '';
  }
 
 }
