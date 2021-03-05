@@ -343,6 +343,7 @@ async function desconexionCivil(msg){
   if(quieremail){
     //TODO: guardar historial en BD 
     console.log("se guardo en BD");
+    console.log(`el chat contiene lo siguiente ${msg.historial}`);
  }
 
 }

@@ -133,7 +133,7 @@ async function disconnect(msg, timestamp) {
   //var chat = chatsList[text.user];
   
   // * como le digo si quiere o no para mandar mail?
-  console.log(`estoy en disconnect ${text.historial}`);
+  console.log(`estoy en disconnect ${text.historial[1]}`);
   //chat.resolucionOk();
   op.desconexionCivil(text);
 }

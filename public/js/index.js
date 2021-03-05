@@ -562,7 +562,7 @@ $(function () {
       email.addEventListener('click', function (e) {
         e.preventDefault();
         respuesta(true);
-
+        closeChat();
       });
 
       cancelar.innerText = "cerrar";
@@ -571,6 +571,7 @@ $(function () {
         e.preventDefault();
         respuesta(false);        
         //que borre el chat una vez se haga click
+        closeChat();
       });
       let chatActivo = sessionStorage.getItem('key');
 
