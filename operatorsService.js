@@ -340,7 +340,7 @@ async function desconexionCivil(msg){
   let str = '';
   
   //messenger.recuperarHistorial();
-  let quieremail = await socket.quieremail(socketOperador,msg.user,msg.chat);
+  let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
     console.log(`dentro de quiere email ${msg}`);
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
@@ -369,7 +369,7 @@ async function desconexionCivil(msg){
       },
     });
 
-    console.log(msg.chat.email);
+    //console.log(msg.chat.email);
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: '"Fred Foo " <foo@example.com>', // sender address
