@@ -366,25 +366,36 @@ async function mandar(msg) {
   // Only needed if you don't have a real mail account for testing
   let testAccount = await nodemailer.createTestAccount();
 
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false, // true for 465, false for other ports
+  var smtpTransport = nodemailer.createTransport("SMTP", {
+    service: "gmail",
     auth: {
-      user: testAccount.user, // generated ethereal user
-      pass: testAccount.pass, // generated ethereal password
-    },
+      user: "example@gmail.com",
+      pass: "pass"
+    }
   });
 
-  //console.log(msg.chat.email);
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: '"Fred Foo " <foo@example.com>', // sender address
-    to: "f3d3x93@gmail.com", // list of receivers
-    subject: "chat con operador", // Subject line
-    text: "hola" // plain text body
+  const from = 'example<example@gmail.com>';
+  const to = 'f3d3x93@gmail.com';
+  const subject = 'example';
+  const text = 'example email';
+  const html = '<b>example email</b>';
+  var mailOption = {
+    from: from,
+    to: to,
+    subject: subject,
+    text: text,
+    html: html
+  }
+
+  smtpTransport.sendMail(mailOption, function (err, success) {
+    if (err) {
+      events.emit('error', err);
+    }
+    if (success) {
+      events.emit('success', success);
+    }
   });
+
 
   console.log("Message sent: %s", info.messageId);
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
