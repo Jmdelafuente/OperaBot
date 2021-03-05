@@ -562,7 +562,7 @@ $(function () {
       email.addEventListener('click', function (e) {
         e.preventDefault();
         respuesta(true);
-        let id = $("#idChat").val();
+        let id = sessionStorage.getItem('key');
         console.log(`bueno el mail que ingreso es ${chatListAll[id].email}`);
         closeChat();
       });
