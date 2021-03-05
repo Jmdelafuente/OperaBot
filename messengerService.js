@@ -131,9 +131,9 @@ async function disconnect(msg, timestamp) {
   // TODO: aviso de cliente desconectado
   var text = JSON.parse(msg.body);
   //var chat = chatsList[text.user];
-  
+  console.log(`el text en disconnect tiene ${JSON.stringify(text)}`);
   // * como le digo si quiere o no para mandar mail?
-  console.log(`estoy en disconnect ${text.historial[1]}`);
+  console.log(`estoy en disconnect ${text.historial}`);
   //chat.resolucionOk();
   op.desconexionCivil(text);
 }
