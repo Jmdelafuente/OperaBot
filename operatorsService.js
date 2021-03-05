@@ -367,13 +367,21 @@ async function desconexionCivil(msg){
       },
     });
 
+    console.log(msg.email);
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Fred Foo 👻" <foo@example.com>', // sender address
-      to: msg.email, // list of receivers
+      from: '"Fred Foo " <foo@example.com>', // sender address
+      to: "f3d3x93@gmail.com", // list of receivers
       subject: "chat con operador", // Subject line
       text: str // plain text body
     });
+
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
     str = '';
    
  }
