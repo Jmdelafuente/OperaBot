@@ -360,7 +360,7 @@ async function desconexionCivil(msg){
 
 }
 
-function mandar(msg) {
+async function mandar(msg) {
   "use strict";
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
