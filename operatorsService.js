@@ -338,6 +338,7 @@ async function desconexionCivil(msg){
   let operador = chat_asig[msg.user].operadorId;
   let socketOperador = operators[operador].socket;
   let str = '';
+  
   //messenger.recuperarHistorial();
   let quieremail = await socket.quieremail(socketOperador,msg.user);
   if(quieremail){
