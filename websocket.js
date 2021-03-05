@@ -19,6 +19,7 @@ var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion te
 // Operator's logic
 var op = require("./operatorsService.js");
 const { resolve } = require("path");
+const { chatsList } = require("./messengerService");
 
 // * CONFIGURACION DE FRONT-END * //
 
@@ -216,13 +217,15 @@ async function asignarMensaje(socket, chat) {
   });
 }
 
-async function quieremail(operador, idUser) {
+async function quieremail(operador, idUser, chat) {
 
   //operador.emit("getAllMessagesByChat",{lista: msg.historial, id: msg.user});
-  
+  pack = {};
+  pack.idUser = idUser;
+  pack.chat = chat;
 
    return new Promise(resolve => {
-     operador.emit("email", idUser, (respuesta) => {
+     operador.emit("email", pack, (respuesta) => {
       resolve(respuesta);
      });
    });
