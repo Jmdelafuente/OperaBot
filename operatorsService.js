@@ -343,7 +343,8 @@ async function desconexionCivil(msg){
   if(quieremail){
     //TODO: guardar historial en BD 
     msg.historial.forEach(element => {
-      console.log(`el chat contiene lo siguiente ${element.contenido}`);
+      var hora = new Date(element.hora);
+      console.log(`el chat contiene lo siguiente ${element.contenido}, enviado a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`);
       
     });
  }

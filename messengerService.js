@@ -132,7 +132,7 @@ async function disconnect(msg, timestamp) {
   var text = JSON.parse(msg.body);
   //var chat = chatsList[text.user];
   // * como le digo si quiere o no para mandar mail?
-  chat.resolucionOk();
+  //chat.resolucionOk();
   op.desconexionCivil(text);
 }
 
