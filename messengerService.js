@@ -40,7 +40,8 @@ async function nuevoMensaje(
   origen,
   t,
   nombre = "Anonimo",
-  tipo = "chat"
+  tipo = "chat",
+  email
 ) {
   // Check if chat exists
   if (chatsList[id]) {
@@ -48,9 +49,10 @@ async function nuevoMensaje(
     chatsList[id].name = nombre; //puede haber cambiado de nombre la persona
     chatsList[id].pendingmessage++;
     chatsList[id].lastmessage = cont;
+    chatsList[id].email = email;
     chat = chatsList[id];
   } else {
-    var chat = new Chat(id, origen, nombre, t, 1, cont);
+    var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
   }
   // Notify new message
@@ -63,15 +65,18 @@ async function nuevaImagen(
   origen,
   t,
   nombre = "anonimo",
-  type = "image"
+  type = "image",
+  email
 ) {
   // Check if chat exists
   if (chatsList[id]) {
     chatsList[id].timestamp = t;
     chatsList[id].name = nombre; //puede haber cambiado de nombre la persona
     chatsList[id].pendingmessage++;
+    chatsList[id].email = email;
+    
   } else {
-    var chat = new Chat(id, origen, nombre, t, 1, cont);
+    var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
   }
   // Notify new message

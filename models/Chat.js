@@ -24,6 +24,7 @@ class Chat {
    * @param {*} timestamp ultima marca de tiempo
    * @param {*} pendingmessage cantidad de mensajes sin leer
    * @param {*} lastmessage contenido del ultmo mensaje (para que exista un chat, al menos un mensaje hubo)
+   * @param {*} email contenido del email del usuario si es que lo ingreso
    * @memberof Chat
    */
   constructor(
@@ -32,7 +33,8 @@ class Chat {
     name,
     timestamp,
     pendingmessage = 0,
-    lastmessage = ""
+    lastmessage = "",
+    email
   ) {
     this.id = id;
     this.origin = origen;
@@ -40,6 +42,7 @@ class Chat {
     this.lastmessage = lastmessage;
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
+    this.email = email;
     this.state = new estado.Abierto(this.id);
     // this.db = new OperaDB();
   }
@@ -71,6 +74,7 @@ class Chat {
                     chat_temp.name,
                     chat_temp.timestamp,
                     chat_temp.pendingmessage,
+                    chat_temp.email,
                     undefined
                   );
                 });

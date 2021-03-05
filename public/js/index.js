@@ -557,15 +557,17 @@ $(function () {
       email.className = "btn btn-primary ";
       cancelar.className = "btn btn-warning";
       msj.innerText = "Ciudadano cerro el chat";
-      email.innerText = "guardar";
+      email.innerText = "Enviar charla por email";
 
       email.addEventListener('click', function (e) {
         e.preventDefault();
         respuesta(true);
+        let id = $("#idChat").val();
+        console.log(`bueno el mail que ingreso es ${chatListAll[id].email}`);
         closeChat();
       });
 
-      cancelar.innerText = "cerrar";
+      cancelar.innerText = "cerrar chat";
 
       cancelar.addEventListener('click', function (e) {
         e.preventDefault();

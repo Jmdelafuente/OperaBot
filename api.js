@@ -32,7 +32,8 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
       `${key}`,
       data.timestamp,
       name,
-      type
+      type,
+      data.email
     ).then(
       (cb) => {
         res.sendStatus(200);
@@ -56,7 +57,8 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
       `${key}`,
       data.timestamp,
       name,
-      type
+      type,
+      data.email
     ).then(
       (cb) => {
         res.sendStatus(200);
