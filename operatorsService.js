@@ -342,9 +342,8 @@ async function desconexionCivil(msg){
   let quieremail = await socket.quieremail(socketOperador,msg.user);
   if(quieremail){
     //TODO: guardar historial en BD 
-    console.log(`como viene el msg ${JSON.stringify(msg.historial)}`)
     msg.historial.forEach(element => {
-      var hora = new Date(element.hora);
+      var hora = new Date(parseInt.element.hora);
       console.log(`el chat contiene lo siguiente ${element.contenido}, enviado a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`);
       
     });
