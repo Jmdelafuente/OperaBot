@@ -562,7 +562,6 @@ $(function () {
       email.addEventListener('click', function (e) {
         e.preventDefault();
         respuesta(true);
-        console.log(`bueno el mail que ingreso es ${msg.chat.email}`);
         closeChat();
       });
 
