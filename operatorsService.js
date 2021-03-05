@@ -340,7 +340,7 @@ async function desconexionCivil(msg){
   let str = '';
   
   //messenger.recuperarHistorial();
-  let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
+  let quieremail = await socket.quieremail(socketOperador,msg.user,msg.chat);
   if(quieremail){
     //TODO: guardar historial en BD 
     msg.historial.forEach(element => {
@@ -367,7 +367,7 @@ async function desconexionCivil(msg){
       },
     });
 
-    console.log(msg.email);
+    console.log(msg.chat.email);
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: '"Fred Foo " <foo@example.com>', // sender address
