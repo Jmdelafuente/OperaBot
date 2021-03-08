@@ -343,7 +343,7 @@ async function desconexionCivil(msg){
   let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
-    
+    let img ='';
     //TODO: guardar historial en BD 
     var time = new Date(Date.now());
     var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -352,13 +352,17 @@ async function desconexionCivil(msg){
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
 
-      str += `\n` + element.contenido;
+      if(element.type=='chat'){
+        str += `\n` + element.contenido;
       if(element.tipo_chat == 0){
         str += ` enviado por usted `;
       }else{
         str += ` enviado por operador `;
       }
       str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`;
+    }else{
+      img = element.contenido;
+    }
     });
 
 
@@ -368,6 +372,7 @@ async function desconexionCivil(msg){
     pack.subject = 'Chat con el 147';
     pack.text = str;
     pack.type = msg.type;
+    pack.img = img;
     mandar(pack);
     str = '';
 
@@ -387,29 +392,20 @@ function mandar(msg) {
   });
 
  
-  if(msg.type == 'image'){
-    // setup email data with unicode symbols
-    var mailOptions = {
-      from: "no.responder.mnqn@gmail.com", // sender address
-      to: msg.email, // list of receivers
-      subject: msg.subject, // Subject line
-      attachments: [
-        { // Use a URL as an attachment
-          filename: 'your-testla.png',
-          path: 'https://media.gettyimages.com/photos/view-of-tesla-model-s-in-barcelona-spain-on-september-10-2018-picture-id1032050330?s=2048x2048'
-        }
-      ],
-    };    
-  }else{
-    // setup email data with unicode symbols
-    var mailOptions = {
-      from: "no.responder.mnqn@gmail.com", // sender address
-      to: msg.email, // list of receivers
-      subject: msg.subject, // Subject line
-      text: msg.text, // plain text body
-    };
-  }
 
+  // setup email data with unicode symbols
+  var mailOptions = {
+    from: "no.responder.mnqn@gmail.com", // sender address
+    to: msg.email, // list of receivers
+    subject: msg.subject, // Subject line
+    text: msg.text, // plain text body
+    attachments: [
+      {
+        filename: 'image.png',
+        content: msg.img
+      }
+    ]
+  };
 
   // send mail with defined transport object
   smtpTransport.sendMail(mailOptions, (error, info) => {
