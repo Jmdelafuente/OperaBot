@@ -585,6 +585,11 @@ $(function () {
       }else{
         document.getElementById('usuario_' + msg.idUser).addEventListener('click', function(msg){
           msg.preventDefault();
+          //esta parte es cuando no esta activo el chat, dejar cartel o algo
+          div.appendChild(msj);
+          div.appendChild(ex);
+          ex.appendChild(email);
+          ex.appendChild(cancelar);
           console.log("SI");
         })
         
