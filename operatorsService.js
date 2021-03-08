@@ -363,7 +363,7 @@ async function desconexionCivil(msg){
 
     console.log(str)
     var pack = {};
-    pack.email = msg.email;
+    pack.email = msg.email.email;
     pack.subject = 'Chat con el 147';
     pack.text = str;
     mandar(pack);
