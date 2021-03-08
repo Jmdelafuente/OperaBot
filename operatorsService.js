@@ -364,46 +364,32 @@ async function mandar(msg) {
   "use strict";
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
-  let testAccount = await nodemailer.createTestAccount();
+  //let testAccount = await nodemailer.createTestAccount();
 
   const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
+    host: "smtp.ethereal.email",
     port: 587,
     secure: false,
     auth: { 
-      user: 'percy.aufderhar66@ethereal.email',
-      pass: 'zgrxgFXdzTYBBAK3fJ'
+      user: "percy.aufderhar66@ethereal.email",
+      pass: "zgrxgFXdzTYBBAK3fJ"
     }
   });
 
-  const from = 'remitente';
-  const to = 'f3d3x93@gmail.com';
-  const subject = 'example';
-  const text = msg;
   var mailOption = {
-    from: from,
-    to: to,
-    subject: subject,
-    text: text,
-    html: html
+    from: 'remitente',
+    to: 'f3d3x93@gmail.com',
+    subject: 'example',
+    text: msg,
   }
 
-  transporter.sendMail(mailOption, function (err, success) {
+  transporter.sendMail(mailOption, (err, success) => {
     if (err) {
       console.log(`error ${err.message}`);
-    }
-    if (success) {
-      console.log(`se envio el mail`);
-      
+    }else{
+      console.log("se envio el mail")
     }
   });
-
-
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
 
 
