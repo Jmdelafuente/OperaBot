@@ -345,6 +345,8 @@ async function desconexionCivil(msg){
     console.log(`dentro de quiere email ${msg}`);
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
     //TODO: guardar historial en BD 
+    var time = new Date(Date.now());
+    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     str += `chat finalizado con el 147 el dia ${time.getDate().toString()} de ${meses[time.getMonth()]} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()} `
     str += `\n con el siguiente contenido \n`;
     msg.historial.forEach(element => {
@@ -359,9 +361,7 @@ async function desconexionCivil(msg){
       str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`;
     });
 
-    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-    var time = new Date(Date.now());
     console.log(str)
     var pack = {};
     pack.email = msg.email;
