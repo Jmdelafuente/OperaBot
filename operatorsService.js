@@ -342,7 +342,6 @@ async function desconexionCivil(msg){
   //messenger.recuperarHistorial();
   let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
-    console.log(`dentro de quiere email ${msg}`);
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
     //TODO: guardar historial en BD 
     var time = new Date(Date.now());
@@ -375,7 +374,7 @@ async function desconexionCivil(msg){
 
 }
 
-async function mandar(msg) {
+function mandar(msg) {
   // create reusable transporter object using the default SMTP transport
   var smtpTransport = nodemailer.createTransport({
     service: 'Gmail', // sets automatically Host, port and connection security settings
