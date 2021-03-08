@@ -350,19 +350,20 @@ async function desconexionCivil(msg){
 
       str += `\n` + element.contenido;
       if(element.tipo_chat == 0){
-        str += `enviado por usted `;
+        str += ` enviado por usted `;
       }else{
-        str += `enviado por operador `;
+        str += ` enviado por operador `;
       }
       str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`;
     });
-    
+
+    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
     var time = new Date(Date.now());
     console.log(str)
     var pack = {};
     pack.email = msg.email
-    pack.subject = `chat finalizado con el 147 el dia ${time.getDay().toString()} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()} `
+    pack.subject = `chat finalizado con el 147 el dia ${time.getDate().toString()} del mes ${meses[time.getMonth()]} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()} `
     pack.text = str
     mandar(pack);
     str = '';
