@@ -366,7 +366,7 @@ async function mandar(msg) {
     service: 'Gmail', // sets automatically Host, port and connection security settings
     auth: {
       user: "no.responder.mnqn@gmail.com",
-      pass: "walo45785"
+      pass: "noResponder@Code13:08"
     }
   });
 
