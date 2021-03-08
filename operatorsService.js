@@ -361,34 +361,33 @@ async function desconexionCivil(msg){
 }
 
 async function mandar(msg) {
-  "use strict";
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  //let testAccount = await nodemailer.createTestAccount();
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false,
-    auth: { 
-      user: "percy.aufderhar66@ethereal.email",
-      pass: "zgrxgFXdzTYBBAK3fJ"
+  // create reusable transporter object using the default SMTP transport
+  var smtpTransport = nodemailer.createTransport({
+    service: 'Gmail', // sets automatically Host, port and connection security settings
+    auth: {
+      user: "no.responder.mnqn@gmail.com",
+      pass: "walo45785"
     }
   });
 
-  var mailOption = {
-    from: 'remitente',
-    to: 'f3d3x93@gmail.com',
-    subject: 'example',
-    text: msg,
-  }
+ 
 
-  transporter.sendMail(mailOption, (err, success) => {
-    if (err) {
-      console.log(`error ${err.message}`);
-    }else{
-      console.log("se envio el mail")
+  // setup email data with unicode symbols
+  var mailOptions = {
+    from: "no.responder.mnqn@gmail.com", // sender address
+    to: "f3d3x93@gmail.com", // list of receivers
+    subject: "prueba", // Subject line
+    text: msg, // plain text body
+  };
+
+  // send mail with defined transport object
+  smtpTransport.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log('Error while sending mail: ' + error);
+    } else {
+      console.log('Message sent: %s', info.messageId);
     }
+    smtpTransport.close(); // shut down the connection pool, no more messages.
   });
 }
 
@@ -422,3 +421,34 @@ module.exports.operators = operators;
 module.exports.obteneropciones = obteneropciones;
 module.exports.enviarMenu = enviarMenu;
 module.exports.desconexionCivil = desconexionCivil;
+
+
+/** "use strict";
+  // Generate test SMTP service account from ethereal.email
+  // Only needed if you don't have a real mail account for testing
+  //let testAccount = await nodemailer.createTestAccount();
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "percy.aufderhar66@ethereal.email",
+      pass: "zgrxgFXdzTYBBAK3fJ"
+    }
+  });
+
+  var mailOption = {
+    from: 'remitente',
+    to: 'f3d3x93@gmail.com',
+    subject: 'example',
+    text: msg,
+  }
+
+  transporter.sendMail(mailOption, (err, success) => {
+    if (err) {
+      console.log(`error ${err.message}`);
+    }else{
+      console.log("se envio el mail")
+    }
+  }); */
