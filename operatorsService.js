@@ -367,6 +367,7 @@ async function desconexionCivil(msg){
     pack.email = (msg.email[0].email);
     pack.subject = 'Chat con el 147';
     pack.text = str;
+    pack.type = msg.type;
     mandar(pack);
     str = '';
 
@@ -386,14 +387,26 @@ function mandar(msg) {
   });
 
  
+  if(msg.type == 'image'){
+    // setup email data with unicode symbols
+    var mailOptions = {
+      from: "no.responder.mnqn@gmail.com", // sender address
+      to: msg.email, // list of receivers
+      subject: msg.subject, // Subject line
+      attachments: [{   // data uri as an attachment
+        path: msg.text
+      }]
+    };    
+  }else{
+    // setup email data with unicode symbols
+    var mailOptions = {
+      from: "no.responder.mnqn@gmail.com", // sender address
+      to: msg.email, // list of receivers
+      subject: msg.subject, // Subject line
+      text: msg.text, // plain text body
+    };
+  }
 
-  // setup email data with unicode symbols
-  var mailOptions = {
-    from: "no.responder.mnqn@gmail.com", // sender address
-    to: msg.email, // list of receivers
-    subject: msg.subject, // Subject line
-    text: msg.text, // plain text body
-  };
 
   // send mail with defined transport object
   smtpTransport.sendMail(mailOptions, (error, info) => {
