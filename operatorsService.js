@@ -343,6 +343,8 @@ async function desconexionCivil(msg){
   let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
+    console.log(`dentro del mail ${JSON.stringify(msg.email)}`);
+    
     //TODO: guardar historial en BD 
     var time = new Date(Date.now());
     var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -363,7 +365,7 @@ async function desconexionCivil(msg){
 
     console.log(str)
     var pack = {};
-    pack.email = msg.email.email;
+    pack.email = msg.email;
     pack.subject = 'Chat con el 147';
     pack.text = str;
     mandar(pack);
