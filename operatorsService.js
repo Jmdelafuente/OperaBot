@@ -366,19 +366,20 @@ async function mandar(msg) {
   // Only needed if you don't have a real mail account for testing
   let testAccount = await nodemailer.createTestAccount();
 
-  var smtpTransport = nodemailer.createTransport("SMTP", {
-    service: "gmail",
-    auth: {
-      user: "example@gmail.com",
-      pass: "pass"
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false,
+    auth: { 
+      user: 'percy.aufderhar66@ethereal.email',
+      pass: 'zgrxgFXdzTYBBAK3fJ'
     }
   });
 
-  const from = 'example<example@gmail.com>';
+  const from = 'remitente';
   const to = 'f3d3x93@gmail.com';
   const subject = 'example';
-  const text = 'example email';
-  const html = '<b>example email</b>';
+  const text = msg;
   var mailOption = {
     from: from,
     to: to,
@@ -387,12 +388,13 @@ async function mandar(msg) {
     html: html
   }
 
-  smtpTransport.sendMail(mailOption, function (err, success) {
+  transporter.sendMail(mailOption, function (err, success) {
     if (err) {
-      events.emit('error', err);
+      console.log(`error ${err.message}`);
     }
     if (success) {
-      events.emit('success', success);
+      console.log(`se envio el mail`);
+      
     }
   });
 
