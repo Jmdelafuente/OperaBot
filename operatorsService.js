@@ -343,7 +343,6 @@ async function desconexionCivil(msg){
   let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
-    console.log(`dentro del mail ${(msg.email[0].email)}`);
     
     //TODO: guardar historial en BD 
     var time = new Date(Date.now());
@@ -365,7 +364,7 @@ async function desconexionCivil(msg){
 
     console.log(str)
     var pack = {};
-    pack.email = msg.email;
+    pack.email = (msg.email[0].email);
     pack.subject = 'Chat con el 147';
     pack.text = str;
     mandar(pack);
