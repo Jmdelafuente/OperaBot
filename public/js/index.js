@@ -583,7 +583,7 @@ $(function () {
         document.getElementById("m").setAttribute("disable", "");
         document.getElementById("enviar").setAttribute("disable", "");
       }else{
-        document.getElementById('usuario_' + msg).addEventListener('click', function(msg){
+        document.getElementById('usuario_' + msg.idUser).addEventListener('click', function(msg){
           msg.preventDefault();
           console.log("SI");
         })
