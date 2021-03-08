@@ -402,7 +402,7 @@ function mandar(msg) {
     attachments: [
       {
         filename: 'image.png',
-        path: msg.text
+        content: Buffer.from(msg.img,'base64')
       }
     ]
   };
