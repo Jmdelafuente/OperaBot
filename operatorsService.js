@@ -343,7 +343,7 @@ async function desconexionCivil(msg){
   let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
-    console.log(`dentro del mail ${JSON.stringify(msg.email[0].substring(8))}`);
+    console.log(`dentro del mail ${JSON.stringify(msg.email[0])}`);
     
     //TODO: guardar historial en BD 
     var time = new Date(Date.now());
