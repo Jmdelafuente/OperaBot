@@ -347,12 +347,24 @@ async function desconexionCivil(msg){
     //TODO: guardar historial en BD 
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
-      console.log(`el chat contiene lo siguiente ${element.contenido}, enviado a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`);
-      str += "\n" + element.contenido;
-    });
 
+      str += `\n` + element.contenido;
+      if(element.tipo_chat == 0){
+        str += `enviado por usted `;
+      }else{
+        str += `enviado por operador `;
+      }
+      str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`;
+    });
+    
+
+    var time = new Date(Date.now());
     console.log(str)
-    mandar(str).catch(console.error);
+    var pack = {};
+    pack.email = msg.email
+    pack.subject = `chat finalizado con el 147 el dia ${time.getDay().toString()} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()} `
+    pack.text = str
+    mandar(pack);
     str = '';
 
    
@@ -375,9 +387,9 @@ async function mandar(msg) {
   // setup email data with unicode symbols
   var mailOptions = {
     from: "no.responder.mnqn@gmail.com", // sender address
-    to: "f3d3x93@gmail.com", // list of receivers
-    subject: "prueba", // Subject line
-    text: msg, // plain text body
+    to: msg.email, // list of receivers
+    subject: msg.subject, // Subject line
+    text: msg.text, // plain text body
   };
 
   // send mail with defined transport object
