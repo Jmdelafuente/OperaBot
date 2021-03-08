@@ -345,6 +345,8 @@ async function desconexionCivil(msg){
     console.log(`dentro de quiere email ${msg}`);
     console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
     //TODO: guardar historial en BD 
+    str += `chat finalizado con el 147 el dia ${time.getDate().toString()} de ${meses[time.getMonth()]} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()} `
+    str += `\n con el siguiente contenido \n`;
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
 
@@ -362,9 +364,9 @@ async function desconexionCivil(msg){
     var time = new Date(Date.now());
     console.log(str)
     var pack = {};
-    pack.email = msg.email
-    pack.subject = `chat finalizado con el 147 el dia ${time.getDate().toString()} del mes ${meses[time.getMonth()]} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()} `
-    pack.text = str
+    pack.email = msg.email;
+    pack.subject = 'Chat con el 147';
+    pack.text = str;
     mandar(pack);
     str = '';
 
