@@ -398,8 +398,12 @@ function mandar(msg) {
     from: "no.responder.mnqn@gmail.com", // sender address
     to: msg.email, // list of receivers
     subject: msg.subject, // Subject line
-    text: msg.text, // plain text body
+    text: "Para su comodidad se le adjuntara un archivo txt con el contenido de la conversación", // plain text body
     attachments: [
+      {   // utf-8 string as an attachment
+        filename: 'Conversación.txt',
+        content: msg.text
+      },
       {
         filename: 'image.png',
         path: msg.img
