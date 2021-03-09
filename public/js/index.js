@@ -586,8 +586,7 @@ $(function () {
         document.getElementById('usuario_' + msg.idUser).addEventListener('click', function(msg){
           msg.preventDefault();
           var element = document.getElementById("modal-email");
-          var modal = M.Modal.init(element, {});
-          modal.open();
+          element.open();
           //esta parte es cuando no esta activo el chat, dejar cartel o algo
           console.log("SI");
         });
