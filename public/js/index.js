@@ -627,6 +627,10 @@ $(function () {
        });
      }
    });
+
+   socket.on("redirect", function (msg) {
+     window.location.href = msg;
+   });
   // * FIN EVENTOS WEBSOCKET * //
   // Fin onload
 });

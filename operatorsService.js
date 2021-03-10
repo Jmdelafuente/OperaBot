@@ -364,21 +364,21 @@ async function desconexionCivil(msg){
     //TODO: guardar historial en BD 
     var time = new Date(Date.now());
     var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    str += `chat finalizado con el 147 el dia ${time.getDate().toString()} de ${meses[time.getMonth()]} del año ${time.getFullYear()} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()} `
-    str += `\n con el siguiente contenido \n`;
+    str += `<p>chat finalizado con el 147 el dia ${time.getDate().toString()} de ${meses[time.getMonth()]} del año ${time.getFullYear()} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()}</p> `
+    str += `<p> con el siguiente contenido </p>`;
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
 
       if(element.type=='chat'){
-        str += `\n` + element.contenido;
+        str += `<p>${element.contenido}`;
       if(element.tipo_chat == 0){
         str += ` enviado por usted `;
       }else{
         str += ` enviado por operador `;
       }
-      str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos`;
+      str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos </p>`;
     }else{
-      img = element.contenido;
+      str += `<img src=\"${element.contenido}\" alt=\"red dot\"`;
     }
     });
 
@@ -416,16 +416,7 @@ function mandar(msg) {
     to: msg.email, // list of receivers
     subject: msg.subject, // Subject line
     text: "Para su comodidad se le adjuntara un archivo txt con el contenido de la conversación", // plain text body
-    attachments: [
-      {   // utf-8 string as an attachment
-        filename: 'Conversación.txt',
-        content: msg.text
-      },
-      {
-        filename: 'image.png',
-        path: msg.img
-      }
-    ]
+    html: msg.text
   };
 
   // send mail with defined transport object

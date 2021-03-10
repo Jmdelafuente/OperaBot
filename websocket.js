@@ -41,7 +41,12 @@ appFront.use(cors);
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/", function (req, res) {
- res.sendFile(__dirname + "/index")
+  let perfil = 2;
+  if(perfil == 2){
+    socket.emit("redirect", "./admin/index.html");
+  }else{
+    res.sendFile(__dirname + "/index")
+  }
 });
 http.listen(portFront);
 
