@@ -41,12 +41,7 @@ appFront.use(cors);
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/", function (req, res) {
-  let perfil = 2;
-  if(perfil == 2){
-    socket.emit("redirect", "./admin/index.html");
-  }else{
-    res.sendFile(__dirname + "/index")
-  }
+ res.sendFile(__dirname + "/index")
 });
 http.listen(portFront);
 
@@ -73,6 +68,8 @@ io.on("connection", function (socket) {
             sockets[socket.id] = socket;
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
+            console.log("intento el redirect");
+            socket.emit("redirect", "./admin/index.html");
           } else {
             // ! SALIR
           }
