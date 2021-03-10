@@ -80,7 +80,7 @@ async function nuevaImagen(
     chatsList[id] = chat;
   }
   // Notify new message
-  op.recibirImagen(id, cont, type);
+  op.recibirImagen(chat,type);
 }
 
 async function enviarMensaje(id, cont) {

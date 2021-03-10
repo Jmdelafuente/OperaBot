@@ -213,25 +213,42 @@ async function recibirMensaje(chat, tipo) {
  * @param {Numbers} id del remitente (propio del servicio de mensajeria)
  * @param {String} cont contenido del mensaje
  */
-async function recibirImagen(id, cont, type) {
+
+async function recibirImagen(chat, tipo) {
+  // TODO: check horario de trabajo / operadores online
+  let horaInicio = new Date();
+  let id = chat.id;
+  horaInicio.setHours = config.START_TIME;
+  let horaFin = Date(config.END_TIME);
+  horaFin.setHours = config.START_TIME;
+  let horaActual = new Date(Date.now());
+  //FIXME: arreglar el if que no entra bien
+  //if (horaActual.getHours() > horaInicio && horaActual.getHours() < horaFin) {
   // Check if chat is already assigned
   if (!chat_asig[id]) {
     // Se asigna el chat
-    chat = messenger.getChatById(id);
+    //chat = messenger.getChatById(id);
+    console.log(`dentro de !chat_asig de imagen`);
     newAsign
-      .push({ id: id, cont: cont, nombre: chat.name })
+      .push(chat)
       .on("finish", function (res) {
+        let operadorId = chat_asig[id].operadorId;
+        let operador = operators[operadorId];
+        socket.recibirMensaje(chat, tipo, operador.id);
         return true;
       })
       .on("failed", function (err) {
         // Exception, I hope never see this
         // ? evaluar que hacer en este caso
+        // FIXME: dejar en chats pendientes de asignar
         return new Error("No se puedo asignar el chat");
       });
+  } else {
+    // Push notification to operator
+    let operadorId = chat_asig[id].operadorId;
+    let operador = operators[operadorId];
+    socket.recibirMensaje(chat, tipo, operador.id);
   }
-
-  // Push notification to operator
-  socket.recibirMensaje(id, cont, type);
 }
 
 async function getAllMessages(id, user) {
@@ -452,34 +469,3 @@ module.exports.operators = operators;
 module.exports.obteneropciones = obteneropciones;
 module.exports.enviarMenu = enviarMenu;
 module.exports.desconexionCivil = desconexionCivil;
-
-
-/** "use strict";
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  //let testAccount = await nodemailer.createTestAccount();
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false,
-    auth: {
-      user: "percy.aufderhar66@ethereal.email",
-      pass: "zgrxgFXdzTYBBAK3fJ"
-    }
-  });
-
-  var mailOption = {
-    from: 'remitente',
-    to: 'f3d3x93@gmail.com',
-    subject: 'example',
-    text: msg,
-  }
-
-  transporter.sendMail(mailOption, (err, success) => {
-    if (err) {
-      console.log(`error ${err.message}`);
-    }else{
-      console.log("se envio el mail")
-    }
-  }); */
