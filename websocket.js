@@ -68,9 +68,9 @@ io.on("connection", function (socket) {
             sockets[socket.id] = socket;
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
-            //if(perfil==3){
-            socket.emit("redirect", `/?SESSIONKEY=${msg.SESSIONKEY}/admin/index.html`);
-           // }
+            if(perfil==3){
+            socket.emit("redirect", `/admin/index.html`);
+            }
           } else {
             // ! SALIR
           }

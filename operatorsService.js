@@ -378,7 +378,7 @@ async function desconexionCivil(msg){
         str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos </p>`;
       }else{
       console.log(`dentro de contenido esta ${element.contenido}`);
-      str += `<img src=${element.contenido} alt='red dot'>`;
+      str += ` <img src=\"${element.contenido}\" alt='red dot'> `;
     }
     });
 
