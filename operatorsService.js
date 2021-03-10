@@ -368,17 +368,17 @@ async function desconexionCivil(msg){
     str += `<p> con el siguiente contenido </p>`;
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
-
       if(element.type=='chat'){
         str += `<p>${element.contenido}`;
-      if(element.tipo_chat == 0){
-        str += ` enviado por usted `;
+        if(element.tipo_chat == 0){
+          str += ` enviado por usted `;
+        }else{
+          str += ` enviado por operador `;
+        }
+        str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos </p>`;
       }else{
-        str += ` enviado por operador `;
-      }
-      str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos </p>`;
-    }else{
-      str += `<img src=\"${element.contenido}\" alt=\"red dot\">`;
+      console.log(element.contenido);
+      str += `<img src=${element.contenido} alt='red dot'>`;
     }
     });
 
