@@ -1,6 +1,6 @@
-const SURL = "128.53.1.23";
-//const SURL = "localhost";
-const socket = io(`${SURL}:3001`);
+//const SURL = "128.53.1.23";
+const SURL = "localhost";
+const socket = io(`${SURL}:2999`);
 var blueprints={};
 var conn = false;
 var chatListAll = [];
@@ -327,6 +327,14 @@ $(function () {
    menuOpciones.addEventListener('click', function (e) {
          e.preventDefault();
          socket.emit('obtener-opciones');
+        });
+        
+        
+        var cambioEmail = document.getElementById('cambiar_Email');
+        cambioEmail.addEventListener('click', function (e) {
+          e.preventDefault();
+          var iduser = sessionStorage.getItem('key');
+          socket.emit('cambiar_Email', iduser);
    });
         
 
@@ -629,7 +637,9 @@ $(function () {
    });
 
    socket.on("redirect", function (msg) {
-     window.location.href = msg;
+     let params = window.location.search;
+     console.log(params);
+     window.location.href = msg + params;
    });
   // * FIN EVENTOS WEBSOCKET * //
   // Fin onload

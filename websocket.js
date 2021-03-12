@@ -129,6 +129,10 @@ io.on("connection", function (socket) {
     op.closeChat(id);
   });
 
+  socket.on('cambiar_Email', function (msg) {
+    op.cambiar_Email(msg);
+  })
+
   socket.on('adjunto-archivo', function (msg) {
     op.enviarArchivo(msg.id,msg.contenido);
   });

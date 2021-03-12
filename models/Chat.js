@@ -118,6 +118,23 @@ class Chat {
     return res;
   }
 
+  async cambiar_Email(cont) {
+    let res;
+    await axios
+      .post(services.URLs[this.origin] + "/cambiar_Email", {
+        body: services.bodyParser(this.origin, this.id, cont),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+      })
+      .catch(function (error) {
+        res = new Error(error);
+      });
+    return res;
+  }
+
   async enviarArchivo(cont) {
     let res;
     await axios

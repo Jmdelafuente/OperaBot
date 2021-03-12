@@ -430,6 +430,9 @@ function mandar(msg) {
   });
 }
 
+async function cambiar_Email(chatId) {
+  messenger.cambiar_Email(chatId);
+}
 
 // * Init
 // Load static/stable asignations
@@ -447,6 +450,7 @@ Asignacion.getAll()
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
 module.exports.confirmarVisto = confirmarVisto;
+module.exports.cambiar_Email = cambiar_Email
 module.exports.closeChat = closeChat;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.enviarArchivo = enviarArchivo;
