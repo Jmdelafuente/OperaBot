@@ -11,7 +11,7 @@ var io = require("socket.io")(http, {
 });
 var path = require("path");
 var plant = require("../../configs/messagesConfig");
-var portFront = process.env.PORT || 3050;
+var portFront = process.env.PORT || 4002;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
@@ -42,7 +42,9 @@ app.set("port", portFront);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-http.listen(portFront);
+http.listen(app.get('port'), () => {
+    console.log('server on port', app.get('port'));
+});
 
 io.on("connection", function (socket) {
     
