@@ -7,6 +7,7 @@ const status = require("./configs/statusConfig");
 const config = require("./configs/operatorsConfig");
 const opciones = require("./configs/opciones");
 var messenger = require("./messengerService");
+var ms = require("./configs/messagesConfig");
 var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
 var operators_channels = {}; // * channelID -> OperatorID
@@ -272,6 +273,14 @@ function obteneropciones() {
   return cont;
 }
 
+function modificaropciones(msg) {
+  opciones.modificarOpciones(msg);
+}
+
+function modificarPlantilla(msg) {
+  ms.modificarPlantilla(msg);
+}
+
 /**
  * enviar el menu correspondiente al civil.
  * @param {*} Id al cual quiere enviarse el menu
@@ -434,6 +443,14 @@ async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
 }
 
+async function validar(token) {
+  let op = new Operador();
+  let res = -1;
+  if(op.validar(token)){
+    res = op.perfil;
+  }
+  return res;
+}
 // * Init
 // Load static/stable asignations
 Asignacion.getAll()
@@ -460,7 +477,10 @@ module.exports.getMoreMessages = getMoreMessages;
 module.exports.recibirMensaje = recibirMensaje;
 module.exports.recibirImagen = recibirImagen;
 module.exports.reconectarOperador = reconectarOperador;
+module.exports.modificarOpciones = modificaropciones;
+module.exports.modificarPlantilla = modificarPlantilla;
 module.exports.operators = operators;
 module.exports.obteneropciones = obteneropciones;
 module.exports.enviarMenu = enviarMenu;
 module.exports.desconexionCivil = desconexionCivil;
+module.exports.validar = validar;

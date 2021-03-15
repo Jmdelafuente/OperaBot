@@ -3,7 +3,7 @@ const express = require("express");
 var appFront = express();
 var cors = require("cors");
 var helmet = require("helmet");
-var http = require("http").createServer(appFront);
+var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
   cors: {
     origin: "*",
@@ -12,7 +12,7 @@ var io = require("socket.io")(http, {
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
-var portFront = 3001;
+var portFront = 2999;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
@@ -25,9 +25,9 @@ const { chatsList } = require("./messengerService");
 
 // Front for websockets
 appFront.set("port", portFront);
-// appFront.use(helmet());
-// appFront.use(express.static(path.join(__dirname, "public")));
-appFront.use(cors);
+//appFront.use(helmet());
+
+//appFront.use(cors);
 // appFront.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
 //   res.header(
@@ -37,11 +37,21 @@ appFront.use(cors);
 //   next();
 // });
 
-
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/", function (req, res) {
- res.sendFile(__dirname + "/index")
+  let param = req.query.SESSIONKEY;
+  let perfil = op.validar(param);
+  if(perfil != -1){
+    if(perfil == 3){
+      socket.emit("redirect", "public/admin/index.html")
+    }else{
+      socket.emit("redirect", "admin/index.html")
+      //res.sendFile(__dirname + "/index")
+    }
+  }else{
+    res.send(Error("Operador no valido"))
+  }
 });
 http.listen(portFront);
 
@@ -68,9 +78,8 @@ io.on("connection", function (socket) {
             sockets[socket.id] = socket;
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
-            if(perfil==3){
-            socket.emit("redirect", `/admin/index.html`);
-            }
+            //pasar aca la verificacion
+             socket.emit("redirect", "admin/index.html");
           } else {
             // ! SALIR
           }

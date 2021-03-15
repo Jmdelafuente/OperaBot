@@ -477,7 +477,8 @@ $(function () {
     let div_mensajes = document.getElementById("mensajes");
     div_mensajes.innerHTML="";
     div_chat.remove();
-    
+    let chatasig = document.getElementById("usuario_" + chat_activo);
+    chatasig.remove();
     // TODO: estetica de chat cerrado
   }
   function getAsignados(){
