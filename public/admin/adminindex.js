@@ -1,4 +1,5 @@
-const SURLe = "localhost";
+//const SURLe = "localhost";
+const SURLe = "128.53.1.23";
 const socketa = io(`${SURLe}:2999`);
 var blueprints = {};
 var conn = false;
