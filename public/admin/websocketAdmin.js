@@ -3,7 +3,7 @@ var app = express();
 var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").Server(app);
-var io = require("socket.io")(http, {
+var iois = require("socket.io")(http, {
     cors: {
         origin: "*",
         methods: ["GET", "POST"],
@@ -46,8 +46,8 @@ http.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
 });
 
-io.on("connection", function (socket) {
-    
+iois.on("connection", function (socket) {
+    console.log("user connect");
 socket.on("opciones_admin",function (msg) {
    let opcion = JSON.stringify(op.obteneropciones());
     if(opcion!=''){
