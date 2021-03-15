@@ -14,8 +14,8 @@ const FB_URL = `${FB_SERVER}:${FB_PORT}/${FB_PREFIX}`;
 // Page Server / Burbuja de chat
 const PS_PORT = 3004;
 const PS_PREFIX = 'ps';
-//const PS_SERVER = "http://localhost";
-const PS_URL = `${PS_SERVER}/${PS_PREFIX}`;
+const PS_SERVER = "http://localhost";
+//const PS_URL = `${PS_SERVER}/${PS_PREFIX}`;
  const PS_URL = `${PS_SERVER}:${PS_PORT}/${PS_PREFIX}`;
 
 // formateo automatico para los imports
