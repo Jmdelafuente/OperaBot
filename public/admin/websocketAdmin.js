@@ -28,10 +28,10 @@ const {
 
 // Front for websockets
 app.set("port", portFront);
-//appFront.use(helmet());
+//app.use(helmet());
 
-//appFront.use(cors);
-// appFront.use(function (req, res, next) {
+//app.use(cors);
+// app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
 //   res.header(
 //     "Access-Control-Allow-Headers",
@@ -56,8 +56,10 @@ app.get("/", function (req, res) {
         res.send(Error("Operador no valido"))
     }
 });
-http.listen(portFront);
 
+http.listen(app.get('port'), () => {
+    console.log('server on port', app.get('port'));
+});
 
 io.on("connection", function (socket) {
     
@@ -88,25 +90,3 @@ socket.on("plantilla_admin", function (msg) {
 
 
 }); 
-
-
-/*function formatearJSON(json) {
-    // Arreglo con los cambios del json
-    const array = JSON.parse(JSON.stringify(json)).map(function (element, index) {
-        // Obtengo la fecha a setear en el metadata > timestamp > value
-        const date = element.date;
-        //Remuevo la propiedad de la fecha donde estaba originalmente para posicionarla
-        // en un nuevo lugar posteriormente
-        delete element.date;
-        // Recorro las llaves del elemento actual de la iteracion del arreglo del json
-        for (var key in element) {
-            // Creo la nueva estructura
-            element[key] = isNaN(element[key]) ? element[key] : parseFloat(element[key]);
-            
-        }
-        return element;
-    });
-
-    return array;
-};*/
-

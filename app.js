@@ -50,8 +50,8 @@ api.use(express.urlencoded({ limit: "20mb", extended: true }));
 // Websokets (usa la configuracion previa de socket io)
 var websocket = require('./websocket.js');
 // API REST para recibir webhooks de los servicios de mensajeria
+var adminwebsocket = require('./public/admin/websocketAdmin.js');
 var apiService = require('./api.js');
-var adminwebsocket = require('./public/admin/websocketAdmin');
 // Iniciar servidor de Operadores
 /*const server = app.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
