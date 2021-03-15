@@ -46,7 +46,7 @@ appFront.get("/", function (req, res) {
     if(perfil == 3){
       res.sendFile(__dirname + "/admin/index.html");
     }else{
-      res.sendFile(__dirname + "/index.html");
+      res.sendFile(__dirname + "/admin/index.html");
     }
   }else{
     res.send(Error("Operador no valido"))
@@ -78,7 +78,7 @@ io.on("connection", function (socket) {
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
             //pasar aca la verificacion
-             socket.emit("redirect", "admin/index.html");
+             //socket.emit("redirect", "admin/index.html");
           } else {
             // ! SALIR
           }
