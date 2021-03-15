@@ -1,6 +1,6 @@
 //const SURLopciones = "localhost";
 const SURLopciones = "128.53.1.23";
-const socketopciones = io.connect(`${SURLopciones}:4002`);
+const socketopciones = io.connect(`${SURLopciones}:2999`);
 
 $(function () {
     // * FUNCIONES AUXILIARES * //
@@ -29,9 +29,7 @@ $(function () {
         }
     );
 
-    socketopciones.on("connect", function () {
-        
-    });
+    
 
     //* jquery para la parte del summernote que sirve para modificar el json de opciones
 
