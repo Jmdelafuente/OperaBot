@@ -1,4 +1,5 @@
-const SURLopciones = "localhost";
+//const SURLopciones = "localhost";
+const SURLopciones = "128.53.1.23";
 const socketopciones = io(`${SURLopciones}:4002`);
 var blueprints = {};
 var conn = false;
