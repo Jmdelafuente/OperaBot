@@ -177,29 +177,7 @@ io.on("connection", function (socket) {
     socket.emit("email",);
   });
 
-  socket.on("opciones_admin", function (msg) {
-    let opcion = JSON.stringify(op.obteneropciones());
-    let nuevasopciones = msg;
-    if (opcion.length != 0) {
-      nuevasopciones = opcion.substring(0, opcion.length - 1);
-      nuevasopciones += "\," + msg + "]";
-    }
-    console.log(nuevasopciones);
-    op.modificarOpciones(nuevasopciones);
-    socket.emit("alert", "Se modifico el menu");
-  });
-
-  socket.on("plantilla_admin", function (msg) {
-    let plantilla = JSON.stringify(plant.obtenerPlantillas());
-    let nuevasPlantillas = msg;
-    if (plantilla.length != 0) {
-      nuevasPlantillas = plantilla.substring(0, plantilla.length - 1);
-      nuevasPlantillas += "\," + msg + "]";
-    }
-
-    op.modificarPlantilla(nuevasPlantillas);
-    socket.emit("alert", "Se agrego la plantilla");
-  });
+  
   
 });
 
