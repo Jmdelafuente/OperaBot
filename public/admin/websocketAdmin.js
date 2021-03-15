@@ -66,7 +66,7 @@ socket.on("plantilla_admin", function (msg) {
     console.log(nuevasPlantillas);
     if (plantilla.length != 0) {
         nuevasPlantillas= plantilla.substring(0, plantilla.length - 1);
-        nuevasPlantillas += "\," + msg + "]";
+        nuevasPlantillas += "\," + msg + "}";
     } 
     console.log(nuevasPlantillas);
     op.modificarPlantilla(nuevasPlantillas);
