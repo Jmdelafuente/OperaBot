@@ -179,11 +179,10 @@ io.on("connection", function (socket) {
 
   socket.on("opciones_admin", function (msg) {
     let opcion = JSON.stringify(op.obteneropciones());
-    if (opcion != '') {
-      let nuevasopciones = opcion.substring(0, opcion.length - 1);
+    let nuevasopciones = msg;
+    if (opcion.length != 0) {
+      nuevasopciones = opcion.substring(0, opcion.length - 1);
       nuevasopciones += "\," + msg + "]";
-    } else {
-      nuevasopciones = msg;
     }
 
     op.modificarmenu(nuevasopciones);
@@ -193,8 +192,8 @@ io.on("connection", function (socket) {
   socket.on("plantilla_admin", function (msg) {
     let plantilla = JSON.stringify(plant.obtenerPlantillas());
     let nuevasPlantillas = msg;
-    if (plantilla != '') {
-      let nuevasPlantillas = plantilla.substring(0, plantilla.length - 1);
+    if (plantilla.length != 0) {
+      nuevasPlantillas = plantilla.substring(0, plantilla.length - 1);
       nuevasPlantillas += "\," + msg + "]";
     }
 
