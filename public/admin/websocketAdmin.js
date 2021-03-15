@@ -47,10 +47,9 @@ app.get("/", function (req, res) {
     let perfil = op.validar(param);
     if (perfil != -1) {
         if (perfil == 3) {
-            socket.emit("redirect", "public/admin/index.html")
+            res.sendFile(__dirname + "/admin/index.html");
         } else {
-            socket.emit("redirect", "admin/index.html")
-            //res.sendFile(__dirname + "/index")
+            res.sendFile(__dirname + "/index.html");
         }
     } else {
         res.send(Error("Operador no valido"))
