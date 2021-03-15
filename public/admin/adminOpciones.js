@@ -56,7 +56,7 @@ $(function () {
         event.preventDefault();
         if ($('#summernote').val().length > 0) {
             let mensaje = $($("#summernote").summernote("code")).text();   
-            mensaje = "\,{" + mensaje + "}";
+            mensaje = "{" + mensaje + "}";
             console.log(mensaje);
             socketopciones.emit("opciones_admin",mensaje);
             $("#summernote").summernote("code", "");
