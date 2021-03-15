@@ -184,7 +184,7 @@ io.on("connection", function (socket) {
       nuevasopciones = opcion.substring(0, opcion.length - 1);
       nuevasopciones += "\," + msg + "]";
     }
-
+    console.log(nuevasopciones);
     op.modificarOpciones(nuevasopciones);
     socket.emit("alert", "Se modifico el menu");
   });
