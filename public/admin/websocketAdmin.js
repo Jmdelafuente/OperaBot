@@ -23,7 +23,7 @@ const {
 const {
     chatsList
 } = require("../../messengerService");
-
+var ms = require("../../configs/messagesConfig");
 // * CONFIGURACION DE FRONT-END * //
 
 // Front for websockets
@@ -69,7 +69,7 @@ socket.on("plantilla_admin", function (msg) {
         nuevasPlantillas += "\," + msg + "}";
     } 
     console.log(nuevasPlantillas);
-    op.modificarPlantilla(JSON.parse(nuevasPlantillas));
+    ms.modificarPlantilla(JSON.parse(nuevasPlantillas));
     socket.emit("alert", "Se agrego la plantilla");
 });
 
