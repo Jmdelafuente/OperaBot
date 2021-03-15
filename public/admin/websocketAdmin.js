@@ -69,7 +69,7 @@ socket.on("plantilla_admin", function (msg) {
         nuevasPlantillas += "\," + msg + "}";
     } 
     console.log(nuevasPlantillas);
-    op.modificarPlantilla(nuevasPlantillas);
+    op.modificarPlantilla(JSON.parse(nuevasPlantillas));
     socket.emit("alert", "Se agrego la plantilla");
 });
 
