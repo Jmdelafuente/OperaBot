@@ -1,5 +1,5 @@
-//const SURLopciones = "localhost";
-const SURLopciones = "128.53.1.23";
+const SURLopciones = "localhost";
+//const SURLopciones = "128.53.1.23";
 const socketopciones = io(`${SURLopciones}:4002`);
 var datasession = sessionStorage.getItem('key');
 var dataoperador = sessionStorage.getItem('operadorid');
