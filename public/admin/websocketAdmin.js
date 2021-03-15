@@ -42,23 +42,7 @@ app.set("port", portFront);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", function (req, res) {
-    let param = req.query.SESSIONKEY;
-    let perfil = op.validar(param);
-    if (perfil != -1) {
-        if (perfil == 3) {
-            res.sendFile(__dirname + "/admin/index.html");
-        } else {
-            res.sendFile(__dirname + "index.html");
-        }
-    } else {
-        res.send(Error("Operador no valido"))
-    }
-});
-
-http.listen(app.get('port'), () => {
-    console.log('server on port', app.get('port'));
-});
+http.listen(portFront);
 
 io.on("connection", function (socket) {
     
