@@ -1,6 +1,6 @@
 //const SURLopciones = "localhost";
 const SURLopciones = "128.53.1.23";
-const socketopciones = io.connect(`${SURLopciones}:4002`);
+const socketopciones = io.connect("128.53.1.23:4002");
 var datasession = sessionStorage.getItem('key');
 var dataoperador = sessionStorage.getItem('operadorid');
 $(function () {
