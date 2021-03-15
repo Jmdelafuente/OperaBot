@@ -62,11 +62,13 @@ socket.on("opciones_admin",function (msg) {
 socket.on("plantilla_admin", function (msg) {
     let plantilla = JSON.stringify(plant.obtenerPlantillas());
     let nuevasPlantillas = msg;
+    console.log(plantilla);
+    console.log(nuevasPlantillas);
     if (plantilla.length != 0) {
         nuevasPlantillas= plantilla.substring(0, plantilla.length - 1);
         nuevasPlantillas += "\," + msg + "]";
     } 
-
+    console.log(nuevasPlantillas);
     op.modificarPlantilla(nuevasPlantillas);
     socket.emit("alert", "Se agrego la plantilla");
 });
