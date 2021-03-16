@@ -79,7 +79,6 @@ io.on("connection", function (socket) {
             socket.emit('operador_set_id',valido);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
             //pasar aca la verificacion
-            socket.emit("redirect", "admin/index.html");
           } else {
             // ! SALIR
           }
