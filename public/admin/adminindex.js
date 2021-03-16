@@ -1,5 +1,6 @@
 //const SURLe = "localhost";
-const SURLe = "128.53.1.23";
+//const SURLe = "128.53.1.23";
+const SURLe = "chat.muninqn.gov.ar";
 const socketa = io(`${SURLe}:2999`);
 var blueprints = {};
 var conn = false;
