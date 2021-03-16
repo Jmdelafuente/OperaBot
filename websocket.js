@@ -9,6 +9,7 @@ var io = require("socket.io")(http, {
     origin: "*",
     methods: ["GET", "POST"],
   },
+  allowEIO3:true
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
