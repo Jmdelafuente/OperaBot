@@ -335,6 +335,7 @@ $(function () {
           e.preventDefault();
           var iduser = sessionStorage.getItem('key');
           socket.emit('cambiar_Email', iduser);
+          addMessage("Se le envio al ciudadano la opcion de cambiar el email", 'E', hora, 'message');
    });
         
 
@@ -635,12 +636,6 @@ $(function () {
           }
        });
      }
-   });
-
-   socket.on("redirect", function (msg) {
-     let params = window.location.search;
-     console.log(params);
-     window.location.href = msg + params;
    });
   // * FIN EVENTOS WEBSOCKET * //
   // Fin onload
