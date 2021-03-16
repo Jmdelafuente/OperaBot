@@ -40,14 +40,13 @@ appFront.set("port", portFront);
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/operadores", function (req, res) {
-  console.log((path.join(__dirname, "public")));
   let param = req.query.SESSIONKEY;
   let perfil = op.validar(param);
   if(perfil != -1){
     if(perfil == 3){
-      res.sendFile(__dirname + "/public/admin/index.html");
+      res.sendFile(__dirname + "public/admin/index.html");
     }else{
-      res.sendFile(__dirname + "/public/index.html");
+      res.sendFile(__dirname + "public/index.html");
     }
   }else{
     res.send(Error("Operador no valido"))
