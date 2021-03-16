@@ -1,5 +1,6 @@
 //const SURLopciones = "localhost";
-const SURLopciones = "128.53.1.23";
+//const SURLopciones = "128.53.1.23";
+const SURLopciones = "https://chat.muninqn.gov.ar/operadores/";
 const socketopciones = io.connect(`${SURLopciones}:4002`);
 
 $(function () {
