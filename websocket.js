@@ -4,7 +4,7 @@ var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").Server(appFront);
-var ioop = require("socket.io")(http, {
+var io = require("socket.io")(http, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -57,7 +57,7 @@ http.listen(portFront);
 
 // * EVENTOS * //
 
-ioop.on("connection", function (socket) {
+io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
@@ -201,7 +201,7 @@ const recibirMensaje = function (chat, tipo, operador) {
   mensaje.origen = chat.origin;
   mensaje.state = chat.state;
   mensaje.asign = operador;
-  ioop.emit("recive_op_message", mensaje);
+  io.emit("recive_op_message", mensaje);
   return true;
 };
 
