@@ -40,7 +40,7 @@ appFront.set("port", portFront);
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/operadores", function (req, res) {
-  console.log(__dirname);
+  console.log(express.static(path.join(__dirname, "public")));
   let param = req.query.SESSIONKEY;
   let perfil = op.validar(param);
   if(perfil != -1){
