@@ -1,5 +1,7 @@
 var Chat = require("./models/Chat");
 var op = require("./operatorsService");
+var axios = require("axios").default;
+const services = require("./configs/servicesConfig");
 var chatsList = {};
 /**
  * !DEPRECATED
@@ -126,6 +128,25 @@ async function closeChat(id) {
   return res;
 }
 
+async function cambiar_opciones(msg) {
+  
+    let res;
+    await axios
+      .post(services.URLs[this.origin] + "/modificaropciones", {
+        body: services.bodyParser('P', 0, msg),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+      })
+      .catch(function (error) {
+        res = new Error(error);
+      });
+    return res;
+  }
+
+
 async function getMensajesChat(id) {}
 
 function getListaChats() {
@@ -165,6 +186,7 @@ module.exports.disconnect = disconnect;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.enviarEstado = enviarEstado;
 module.exports.enviarArchivo = enviarArchivo;
+module.exports.cambiar_opciones = cambiar_opciones;
 module.exports.getChatById = getChatById;
 module.exports.nuevaImagen = nuevaImagen;
 module.exports.nuevalistaChats = nuevalistaChats;

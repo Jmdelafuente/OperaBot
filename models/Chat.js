@@ -181,26 +181,22 @@ class Chat {
   }
 
 
-   async modificarMenu(cont) {
-    let res;
-    await axios
-      .post(services.URLs[this.origin] + "/modificarOpciones", {
-        body: services.bodyParser(this.origin, this.id, cont),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        res = response.data;
-        // Actualizamos el estado interno del chat
-        this.pendingmessage = 0;
-        this.lastmessage = cont;
-        this.timestamp = Date.now();
-      })
-      .catch(function (error) {
-        res = new Error(error);
-      });
-    return res;
+   async cambiar_opciones(cont) {
+
+     let res;
+     await axios
+       .post(services.URLs[this.origin] + "/modificaropciones", {
+         body: services.bodyParser('P', 0, cont),
+         headers: {
+           "Content-Type": "application/json",
+         },
+       })
+       .then((response) => {
+       })
+       .catch(function (error) {
+         res = new Error(error);
+       });
+     return res;
   }
 
   async enviarEstado(cont) {

@@ -11,6 +11,7 @@ function modificarPlantilla(msg) {
     fs.writeFile('./configs/plantilla.json', msg, 'utf8', (err) => {
         if (err) throw err;
         console.log('se guardo el archivo');
+        actualizar();
     });
 }
 
@@ -25,6 +26,12 @@ for(const [key, prefix] of Object.entries(plant)){
          plantillas[`${key}`]=prefix;
 }
 
+function actualizar(){
+    plant = JSON.parse(data);
+    for(const [key, prefix] of Object.entries(plant)){
+         plantillas[`${key}`]=prefix;
+}       
+}
 
 module.exports.blueprints = plantillas;
 module.exports.obtenerPlantillas = obtenerPlantillas;

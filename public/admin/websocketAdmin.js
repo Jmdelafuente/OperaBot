@@ -55,7 +55,7 @@ socket.on("opciones_admin",function (msg) {
         nuevasopciones = opcion.substring(0 , opcion.length-1);
         nuevasopciones += "\," + msg + "]";
     }
-    op.modificarmenu(nuevasopciones);
+    op.modificarOpciones(nuevasopciones);
     socket.emit("alert", "Se modifico el menu");
 });
 
@@ -69,7 +69,8 @@ socket.on("plantilla_admin", function (msg) {
         nuevasPlantillas += "\," + msg + "}";
     } 
     console.log(nuevasPlantillas);
-    ms.modificarPlantilla(JSON.parse(nuevasPlantillas));
+    op.modificarPlantilla(nuevasPlantillas);
+
     socket.emit("alert", "Se agrego la plantilla");
 });
 
