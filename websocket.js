@@ -47,7 +47,7 @@ appFront.get("/operadores", function (req, res) {
     if(perfil == 3){
       res.sendFile(__dirname + "/public/admin/index.html");
     }else{
-      res.sendFile(__dirname + "/public/index.html");
+      res.sendFile(__dirname + "/public/admin/index.html");
     }
   }else{
     res.send(Error("Operador no valido"))
