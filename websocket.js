@@ -37,7 +37,7 @@ appFront.set("port", portFront);
 //   next();
 // });
 
-appFront.use(express.static(path.join(__dirname, "public")));
+appFront.use(express.static(path.join(__dirname, "/public")));
 
 appFront.get("/operadores", function (req, res) {
   console.log(__dirname);
