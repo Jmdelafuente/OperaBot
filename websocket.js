@@ -26,7 +26,7 @@ const { chatsList } = require("./messengerService");
 
 // Front for websockets
 appFront.set("port", portFront);
-appFront.use(helmet());
+//appFront.use(helmet());
 
 /*appFront.use(cors);
  appFront.use(function (req, res, next) {
@@ -41,7 +41,7 @@ appFront.use(helmet());
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/operadores/", function (req, res) {
-  
+
   let param = req.query.SESSIONKEY;
   let perfil = op.validar(param);
   if(perfil != -1){
