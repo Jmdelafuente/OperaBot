@@ -5,11 +5,11 @@ var appFront = express();
 var helmet = require("helmet");
 var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
+  allowEIO3:true,
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-  },
-  allowEIO3:true
+  }
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
