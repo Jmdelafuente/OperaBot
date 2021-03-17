@@ -1,7 +1,7 @@
 // Imports from websockets
 const express = require("express");
 var appFront = express();
-//var cors = require("cors");
+var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
@@ -28,7 +28,7 @@ const { chatsList } = require("./messengerService");
 appFront.set("port", portFront);
 appFront.use(helmet());
 
-/*appFront.use(cors);
+appFront.use(cors);
  appFront.use(function (req, res, next) {
    res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
    res.header(
@@ -36,7 +36,7 @@ appFront.use(helmet());
      "Origin, X-Requested-With, Content-Type,Accept"
    );
    next();
- });*/
+ });
 
 appFront.use(express.static(path.join(__dirname, "public")));
 
