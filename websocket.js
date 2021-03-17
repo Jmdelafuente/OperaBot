@@ -5,7 +5,6 @@ var appFront = express();
 var helmet = require("helmet");
 var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
-  allowEIO3: true,
   cors:true,
   origins:['*']
 });

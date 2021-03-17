@@ -4,7 +4,6 @@ var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").Server(app);
 var iois = require("socket.io")(http, {
-    allowEIO3: true,
     cors: true,
     origins: ['*']
 });
