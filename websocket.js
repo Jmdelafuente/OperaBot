@@ -38,7 +38,7 @@ appFront.use(helmet());
    next();
  });*/
 
-appFront.use(express.static(path.join(__dirname, "public")));
+appFront.use(express.static(path.join(__dirname, "/public")));
 
 appFront.get("/operadores/", function (req, res) {
   
@@ -48,7 +48,7 @@ appFront.get("/operadores/", function (req, res) {
     if(perfil == 3){
       res.sendFile(__dirname + "/public/admin/index.html");
     }else{
-      res.sendFile(__dirname + "index.html");
+      res.sendFile(__dirname + "/index.html");
     }
   }else{
     res.send(Error("Operador no valido"))
