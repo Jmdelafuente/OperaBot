@@ -5,6 +5,10 @@ var helmet = require("helmet");
 var http = require("http").Server(app);
 var iois = require("socket.io")(http, {
     allowEIO3: true,
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+    },
 
 });
 var path = require("path");
@@ -26,17 +30,17 @@ var ms = require("../../configs/messagesConfig");
 
 // Front for websockets
 app.set("port", portFront);
-//app.use(helmet());
+app.use(helmet());
 
-//app.use(cors);
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type,Accept"
-//   );
-//   next();
-// });
+app.use(cors);
+ app.use(function (req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
+   res.header(
+     "Access-Control-Allow-Headers",
+     "Origin, X-Requested-With, Content-Type,Accept"
+   );
+   next();
+ });
 
 app.use(express.static(path.join(__dirname, "public")));
 
