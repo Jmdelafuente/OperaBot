@@ -2,12 +2,14 @@ const express = require("express");
 var app = express();
 var cors = require("cors");
 var helmet = require("helmet");
-var http = require("http").Server(app);
+var http = require("http").createServer(app);
 var iois = require("socket.io")(http, {
-    cors: true,
-    origins: ['*']
+    allowEIO3: true,
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+    },
 });
-
 var path = require("path");
 var plant = require("../../configs/messagesConfig");
 var portFront = process.env.PORT || 4002;

@@ -3,10 +3,13 @@ const express = require("express");
 var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
-var http = require("http").Server(appFront);
+var http = require("http").createServer(appFront);
 var io = require("socket.io")(http, {
-  cors:true,
-  origins:['*']
+  allowEIO3: true,
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  }
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
