@@ -1,7 +1,10 @@
 //const SURL = "128.53.1.23";
 const SURL = "chat.muninqn.gov.ar/operadores/";
+const socket = require("socket.io")({
+  allowEIO3: false
+});
 //const SURL = "localhost";a
-const socket = io(`${SURL}:2999`);
+//const socket = io(`${SURL}:2999`);
 var blueprints={};
 var conn = false;
 var chatListAll = [];
