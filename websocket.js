@@ -1,7 +1,7 @@
 // Imports from websockets
 const express = require("express");
 var appFront = express();
-//var cors = require("cors");
+var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
@@ -41,7 +41,7 @@ appFront.use(cors);
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/operadores/", function (req, res) {
-
+  
   let param = req.query.SESSIONKEY;
   let perfil = op.validar(param);
   if(perfil != -1){
