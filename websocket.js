@@ -26,9 +26,9 @@ const { chatsList } = require("./messengerService");
 
 // Front for websockets
 appFront.set("port", portFront);
-//appFront.use(helmet());
+appFront.use(helmet());
 
-/*appFront.use(cors);
+appFront.use(cors);
  appFront.use(function (req, res, next) {
    res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
    res.header(
@@ -36,7 +36,7 @@ appFront.set("port", portFront);
      "Origin, X-Requested-With, Content-Type,Accept"
    );
    next();
- });*/
+ });
 
 appFront.use(express.static(path.join(__dirname, "public")));
 
