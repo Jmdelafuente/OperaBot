@@ -5,12 +5,10 @@ var helmet = require("helmet");
 var http = require("http").Server(app);
 var iois = require("socket.io")(http, {
     allowEIO3: true,
-    cors: {
-        origin: "*",
-        methods: ["GET", "POST"],
-    },
-
+    cors: true,
+    origins: ['*']
 });
+
 var path = require("path");
 var plant = require("../../configs/messagesConfig");
 var portFront = process.env.PORT || 4002;
