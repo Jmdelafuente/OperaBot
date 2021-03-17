@@ -15,6 +15,7 @@ $(function () {
   /**
    *  Clearable input: draw an X when input has value to reset (like search input)
    */
+  console.log(io.protocol);
   Array.prototype.forEach.call(
     document.querySelectorAll(".clearable-input"),
     function (el) {
