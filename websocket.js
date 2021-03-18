@@ -63,6 +63,7 @@ io.on("connection", function (socket) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
   socket.on("new_operator", function (msg) {
+    console.log("entre en new_operator");
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
       let s = sessions[msg.SESSIONKEY];

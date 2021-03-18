@@ -30,7 +30,6 @@ $(function () {
           conditionallyHideClearIcon();
         }
       );
-        console.log("hola");
       function conditionallyHideClearIcon(e) {
         var target = (e && e.target) || input;
         target.nextElementSibling.style.display = target.value ? "block" : "none";
