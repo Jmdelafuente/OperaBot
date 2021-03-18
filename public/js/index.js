@@ -15,7 +15,7 @@ $(function () {
   /**
    *  Clearable input: draw an X when input has value to reset (like search input)
    */
-  console.log(io.protocol);
+ 
   Array.prototype.forEach.call(
     document.querySelectorAll(".clearable-input"),
     function (el) {
@@ -30,7 +30,7 @@ $(function () {
           conditionallyHideClearIcon();
         }
       );
-
+        console.log("hola");
       function conditionallyHideClearIcon(e) {
         var target = (e && e.target) || input;
         target.nextElementSibling.style.display = target.value ? "block" : "none";
@@ -487,7 +487,7 @@ $(function () {
   function getAsignados(){
     // socket.emit("",{});
   }
-  socket.on("connect", function () {
+  socket.on("connect",  () => {
     console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);
     conn = true;
