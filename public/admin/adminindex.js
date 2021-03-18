@@ -1,7 +1,7 @@
 //const SURLe = "localhost";
 //const SURLe = "128.53.1.23";
 const SURLe = "https://chat.muninqn.gov.ar/operadores/";
-const socketa = io(`${SURLe}`);
+const socketa = io.connect(`${SURLe}`, { 'forceNew': true });
 var blueprints = {};
 var conn = false;
 var chatListAll = [];
