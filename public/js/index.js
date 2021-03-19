@@ -491,6 +491,9 @@ $(function () {
     socket.emit("new_operator", params);
     conn = true;
   });
+  socket.on('error',function(err){
+    console.log(err)
+  });
   socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
     //console.log(JSON.stringify(listaChats));
