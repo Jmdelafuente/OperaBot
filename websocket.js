@@ -4,7 +4,7 @@ var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
 //const socket = require('socket.io-client')('chat.muninqn.gov.ar/operadores/', { path: '/operadores/socket.io' });
-var http = require("http").Server(appFront);
+var http = require("http").createServer(appFront);
 var io = require("socket.io")(http, {
   allowEIO3: true,
   cors: {
@@ -61,7 +61,7 @@ http.listen(portFront);
 
 // * EVENTOS * //
 
-
+io.of('/operadores/')
 io.on("connection", function (socket) {
   console.log("se conecto un operador");
   socket.on("send_op_message", function (msg) {
