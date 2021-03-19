@@ -59,6 +59,7 @@ http.listen(portFront);
 // * EVENTOS * //
 
 io.on("connection", function (socket) {
+  console.log("se conecto un operador");
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
