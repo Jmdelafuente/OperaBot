@@ -11,7 +11,7 @@ var io = require("socket.io")(http, {
     origin: "*",
     methods: ["GET", "POST"],
   },
-  path:'/operadores/socket.io'
+  path:'/socket.io'
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
