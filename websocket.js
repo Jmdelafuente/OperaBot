@@ -9,8 +9,7 @@ var io = require("socket.io")(http, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-  },
-  path:'/socket.io'
+  }
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
