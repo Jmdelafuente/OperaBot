@@ -10,7 +10,7 @@ var io = require("socket.io")(http, {
     origin: "*",
     methods: ["GET", "POST"],
   },
-  path:'/operadores/socket.io'
+  path:'/socket.io'
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
@@ -60,7 +60,7 @@ http.listen(portFront);
 
 // * EVENTOS * //
 
-
+io.of("/operadores/")
 io.on("connection", function (socket) {
   console.log("se conecto un operador");
   socket.on("send_op_message", function (msg) {
