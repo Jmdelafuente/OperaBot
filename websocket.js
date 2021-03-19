@@ -3,14 +3,15 @@ const express = require("express");
 var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
-const socket = require('socket.io-client')('chat.muninqn.gov.ar/operadores/', { path: '/operadores/socket.io' });
+//const socket = require('socket.io-client')('chat.muninqn.gov.ar/operadores/', { path: '/operadores/socket.io' });
 var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
   allowEIO3: true,
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-  }
+  },
+  path:'/operadores/socket.io'
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
@@ -61,7 +62,7 @@ http.listen(portFront);
 // * EVENTOS * //
 socket.on('connection',function (msg) {
   console.log("se conecto un operador");
-})
+});
 
 io.on("connection", function (socket) {
   console.log("se conecto un operador");
