@@ -4,15 +4,13 @@ var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").Server(appFront);
-/*var io = require("socket.io")(http, {
+var io = require("socket.io")(http, {
   allowEIO3: true,
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
   }
-});*/
-var io = require('socket.io').listen(2999);
-io.sockets.on('connection' , function (socket){console.log('a user connected')});
+});
 var path = require("path");
 var plant = require("./configs/messagesConfig");
 var portFront = 2999;
