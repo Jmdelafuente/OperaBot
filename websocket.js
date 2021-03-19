@@ -60,9 +60,7 @@ appFront.get("/operadores/", function (req, res) {
 http.listen(portFront);
 
 // * EVENTOS * //
-socket.on('connection',function (msg) {
-  console.log("se conecto un operador");
-});
+
 
 io.on("connection", function (socket) {
   console.log("se conecto un operador");
