@@ -63,7 +63,7 @@ http.listen(portFront);
 
 io.of('/operadores/')
 io.on("connection", function (socket) {
-  console.log("se conecto un operador");
+  console.log(`se conecto un operador con ${socket}`);
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
