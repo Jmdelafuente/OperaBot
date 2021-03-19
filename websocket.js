@@ -3,7 +3,6 @@ const express = require("express");
 var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
-//const socket = require('socket.io-client')('chat.muninqn.gov.ar/operadores/', { path: '/operadores/socket.io' });
 var http = require("http").createServer(appFront);
 var io = require("socket.io")(http, {
   allowEIO3: true,
@@ -11,7 +10,7 @@ var io = require("socket.io")(http, {
     origin: "*",
     methods: ["GET", "POST"],
   },
-  path:'/socket.io'
+  path:'/operadores/socket.io'
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");

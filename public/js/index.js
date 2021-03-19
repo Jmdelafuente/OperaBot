@@ -490,9 +490,9 @@ $(function () {
     console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);
     conn = true;
-   alert('Socket is connected.'); 
+
   });
- socket.on('disconnect', function () { alert('Socket is disconnected.'); })
+ 
   
  socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
