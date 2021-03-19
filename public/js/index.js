@@ -1,6 +1,6 @@
 //const SURL = "128.53.1.23";
-//const SURL = "chat.muninqn.gov.ar/operadores/";
-const SURL = "localhost";
+const SURL = "chat.muninqn.gov.ar/operadores/";
+//const SURL = "localhost";
 const socket = io(`${SURL}:2999`);
 var blueprints={}; 
 var conn = false;
