@@ -63,12 +63,12 @@ http.listen(portFront);
 
 io.of('/operadores/')
 io.on("connection", function (socket) {
-  console.log(`se conecto un operador con ${socket}`);
+  console.log("se conecto un operador");
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
   socket.on("new_operator", function (msg) {
-    console.log(`se conecto un operador con ${socket}`);
+    console.log("entre en new_operator");
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
       let s = sessions[msg.SESSIONKEY];
