@@ -3,6 +3,7 @@ const express = require("express");
 var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
+const socket = require('socket.io-client')('chat.muninqn.gov.ar/operadores/', { path: '/operadores/socket.io' });
 var http = require("http").Server(appFront);
 var io = require("socket.io")(http, {
   allowEIO3: true,
@@ -21,6 +22,7 @@ var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion te
 var op = require("./operatorsService.js");
 const { resolve } = require("path");
 const { chatsList } = require("./messengerService");
+const { connect } = require("http2");
 
 // * CONFIGURACION DE FRONT-END * //
 
@@ -57,6 +59,9 @@ appFront.get("/operadores/", function (req, res) {
 http.listen(portFront);
 
 // * EVENTOS * //
+socket.on('connection',function (msg) {
+  console.log("se conecto un operador");
+})
 
 io.on("connection", function (socket) {
   console.log("se conecto un operador");
