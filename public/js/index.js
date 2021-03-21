@@ -220,38 +220,38 @@ $(function () {
    * @param {char} origen "P" para saber si viene por message service o "W" si viene de wpp
    */
   function addChat(nom, id, asign, origen) {
-    if (!chatListAll.includes(id)) {    
-    var li = document.createElement("li");
-    var ex = document.createElement("div");
-    var img = document.createElement("div");
-    var avatar = document.createElement("img");
-    var info = document.createElement("div");
-    var nombre = document.createElement("span");
-    var estatus = document.createElement("p");
-    
-    // li.classList = "active";
-    li.id = "usuario_" + id;
-    ex.className = "d-flex bd-highlight";
-    img.className = "img_cont";
-    avatar.src = "user-profile.png";
-    avatar.className = "rounded-circle user_img";
-    avatar.id = "avatar_" + id;
-    info.className = "user_info";
-    nombre.innerText = nom;
-    estatus.innerText = "Online";
-    var orig = document.createElement("i");
-    
-    switch (origen) {
-      case "P":
-        orig.className = "fa fa-desktop origen";
-        break;
+    if (!chatListAll.includes(id)) {
+      var li = document.createElement("li");
+      var ex = document.createElement("div");
+      var img = document.createElement("div");
+      var avatar = document.createElement("img");
+      var info = document.createElement("div");
+      var nombre = document.createElement("span");
+      var estatus = document.createElement("p");
+
+      // li.classList = "active";
+      li.id = "usuario_" + id;
+      ex.className = "d-flex bd-highlight";
+      img.className = "img_cont";
+      avatar.src = "user-profile.png";
+      avatar.className = "rounded-circle user_img";
+      avatar.id = "avatar_" + id;
+      info.className = "user_info";
+      nombre.innerText = nom;
+      estatus.innerText = "Online";
+      var orig = document.createElement("i");
+
+      switch (origen) {
+        case "P":
+          orig.className = "fa fa-desktop origen";
+          break;
         case "W":
           orig.className = "fab fa-whatsapp origen";
-          break;  
-          
-          default:
-      break;
-     }
+          break;
+
+        default:
+          break;
+      }
 
       document.getElementById("listaContactos").appendChild(li);
       chatListAll.push(id);
@@ -268,16 +268,16 @@ $(function () {
       });
 
 
-    
-    if (asign && !chatListAsign.includes(id)) {
-      let clonediv = li.cloneNode(true);
-      document.getElementById("listaContactosAsignados").appendChild(clonediv);
-      chatListAsign.push(id);
-      clonediv.addEventListener('click', function (event) {
-        event.preventDefault();
-        changeChat(id);
-      });
-    }
+
+      if (asign && !chatListAsign.includes(id)) {
+        let clonediv = li.cloneNode(true);
+        document.getElementById("listaContactosAsignados").appendChild(clonediv);
+        chatListAsign.push(id);
+        clonediv.addEventListener('click', function (event) {
+          event.preventDefault();
+          changeChat(id);
+        });
+      }
 
     }
   }
@@ -323,22 +323,22 @@ $(function () {
     }
   }
 
-   //En los 3 puntos, el operador puede enviar un menu especifico 
-   var menuOpciones = document.getElementById('menu-opciones');
-   menuOpciones.addEventListener('click', function (e) {
-         e.preventDefault();
-         socket.emit('obtener-opciones');
-        });
-        
-        
-        var cambioEmail = document.getElementById('cambiar_Email');
-        cambioEmail.addEventListener('click', function (e) {
-          e.preventDefault();
-          var iduser = sessionStorage.getItem('key');
-          socket.emit('cambiar_Email', iduser);
-          addMessage("Se le envio al ciudadano la opcion de cambiar el email", 'E', hora, 'message');
-   });
-        
+  //En los 3 puntos, el operador puede enviar un menu especifico 
+  var menuOpciones = document.getElementById('menu-opciones');
+  menuOpciones.addEventListener('click', function (e) {
+    e.preventDefault();
+    socket.emit('obtener-opciones');
+  });
+
+
+  var cambioEmail = document.getElementById('cambiar_Email');
+  cambioEmail.addEventListener('click', function (e) {
+    e.preventDefault();
+    var iduser = sessionStorage.getItem('key');
+    socket.emit('cambiar_Email', iduser);
+    addMessage("Se le envio al ciudadano la opcion de cambiar el email", 'E', hora, 'message');
+  });
+
 
   document.querySelector('input[type="file"]').addEventListener('change', function () {
     if (this.files && this.files[0]) {
@@ -358,24 +358,24 @@ $(function () {
         ctx.drawImage(img, 0, 0);
         toDataURL(img.src, function (imagen) {
 
-          
-          let pack ={
+
+          let pack = {
             id: iduser,
             contenido: imagen
           };
           socket.emit('adjunto-archivo', pack);
-          addMessage(imagen,'E',hora,"image");
+          addMessage(imagen, 'E', hora, "image");
 
         });
       } else {
-         let mensaje ="Imagen demasiado pesada";
-         socket.emit('send_op_message', mensaje);
-         addMessage(mensaje,'E',hora,'message');
+        let mensaje = "Imagen demasiado pesada";
+        socket.emit('send_op_message', mensaje);
+        addMessage(mensaje, 'E', hora, 'message');
       }
 
     }
   });
-  
+
   function toDataURL(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -397,7 +397,7 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
-          addChat(lista[c].name, lista[c].id, asig,lista[c].origin);
+          addChat(lista[c].name, lista[c].id, asig, lista[c].origin);
         }
       }
       if (!chatListAll.includes(c)) {
@@ -405,8 +405,8 @@ $(function () {
       }
     }
     // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
-    if(sessionStorage.getItem('key')!='null'){
-      let idactual=sessionStorage.getItem('key');
+    if (sessionStorage.getItem('key') != 'null') {
+      let idactual = sessionStorage.getItem('key');
       changeChat(idactual);
     }
   }
@@ -431,7 +431,7 @@ $(function () {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Origin", "weblogin");
-    
+
     $('a[data-toggle="tab"]').on("click", function (e) {
       sessionStorage.setItem("activeTab", $(e.target).attr("href"));
     });
@@ -452,17 +452,17 @@ $(function () {
             limit = false;
           }, 10000);
         }
-      }else{
-          socket.emit("stop-writing", $("#idChat").val());
+      } else {
+        socket.emit("stop-writing", $("#idChat").val());
       }
-      if(e.key == '/'){
-        socket.emit("send_plantilla",'');
+      if (e.key == '/') {
+        socket.emit("send_plantilla", '');
       }
     });
-    $("#cerrarChat").on("click",function (e){
+    $("#cerrarChat").on("click", function (e) {
       closeChat();
     });
-    $("#nav-asignados-tab").on("click",function(e){
+    $("#nav-asignados-tab").on("click", function (e) {
       getAsignados();
     });
   });
@@ -474,16 +474,16 @@ $(function () {
     let chat_activo = $("#idChat").val();
     socket.emit("close_chat", chat_activo);
     sessionStorage.removeItem('key');
-     //parte grafica del borrado
+    //parte grafica del borrado
     let div_chat = document.getElementById("usuario_" + chat_activo);
     let div_mensajes = document.getElementById("mensajes");
-    div_mensajes.innerHTML="";
+    div_mensajes.innerHTML = "";
     div_chat.remove();
     let chatasig = document.getElementById("usuario_" + chat_activo);
     chatasig.remove();
     // TODO: estetica de chat cerrado
   }
-  function getAsignados(){
+  function getAsignados() {
     // socket.emit("",{});
   }
   socket.on("connect", function () {
@@ -491,26 +491,28 @@ $(function () {
     socket.emit("new_operator", params);
     conn = true;
   });
-  socket.on("send_op_list", function (listaChats) {
+ 
+  
+ socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
     //console.log(JSON.stringify(listaChats));
     newList(listaChats.chats, listaChats.asignado);
   });
   socket.on("recive_op_message", function (msg) {
-    let esOperador=false;
+    let esOperador = false;
     console.log("Mensaje recibido: " + JSON.stringify(msg));
-    if(sessionStorage.getItem("operadorid") == msg.asign){
+    if (sessionStorage.getItem("operadorid") == msg.asign) {
       esOperador = true;
     }
-      
+
     addChat(msg.nom, msg.id, esOperador, msg.origen);
-      
-      if ($("#idChat").val() == msg.id) {
-        addMessage(msg.contenido, "R", "Ahora", msg.tipo);
-      } else {
-        unreadMessages(msg.id);
-      }
-    
+
+    if ($("#idChat").val() == msg.id) {
+      addMessage(msg.contenido, "R", "Ahora", msg.tipo);
+    } else {
+      unreadMessages(msg.id);
+    }
+
   });
   socket.on("recive_op_image", function (msg) {
     console.log("Imagen recibida: " + JSON.stringify(msg));
@@ -523,8 +525,8 @@ $(function () {
       unreadMessages(msg.id);
     }
   });
-  socket.on('operador_set_id',function (msg) {
-      sessionStorage.setItem('operadorid', msg);
+  socket.on('operador_set_id', function (msg) {
+    sessionStorage.setItem('operadorid', msg);
   });
 
   socket.on("confirm_op_message", function (msg) {
@@ -545,7 +547,7 @@ $(function () {
     let lista = msg.lista;
     let chat_activo = $("#idChat").val();
     if (chat_activo == msg.id) {
-      if(lista!=''){
+      if (lista != '') {
         $("#mensajes").html("");
         lista.forEach((message) => {
           if (message.user == "me") {
@@ -558,86 +560,86 @@ $(function () {
     }
   });
 
-  socket.on("email", function(msg,respuesta){
-      var ex = document.createElement("div");
-      var msj = document.createElement("div");
-      var email = document.createElement("button");
-      var cancelar = document.createElement("button");
-      var div = document.getElementById("mensajes");
-      ex.className = "sticky-bottom";
-      email.className = "btn btn-primary ";
-      cancelar.className = "btn btn-warning";
-      msj.innerText = "Ciudadano cerro el chat";
-      email.innerText = "Enviar charla por email";
+  socket.on("email", function (msg, respuesta) {
+    var ex = document.createElement("div");
+    var msj = document.createElement("div");
+    var email = document.createElement("button");
+    var cancelar = document.createElement("button");
+    var div = document.getElementById("mensajes");
+    ex.className = "sticky-bottom";
+    email.className = "btn btn-primary ";
+    cancelar.className = "btn btn-warning";
+    msj.innerText = "Ciudadano cerro el chat";
+    email.innerText = "Enviar charla por email";
 
-      email.addEventListener('click', function (e) {
-        e.preventDefault();
-        respuesta(true);
-        closeChat();
+    email.addEventListener('click', function (e) {
+      e.preventDefault();
+      respuesta(true);
+      closeChat();
+    });
+
+    cancelar.innerText = "cerrar chat";
+
+    cancelar.addEventListener('click', function (e) {
+      e.preventDefault();
+      respuesta(false);
+      //que borre el chat una vez se haga click
+      closeChat();
+    });
+    let chatActivo = sessionStorage.getItem('key');
+
+    if (chatActivo == msg.idUser) {
+      div.appendChild(msj);
+      div.appendChild(ex);
+      ex.appendChild(email);
+      ex.appendChild(cancelar);
+      document.getElementById("m").setAttribute("disable", "");
+      document.getElementById("enviar").setAttribute("disable", "");
+    } else {
+      document.getElementById('usuario_' + msg.idUser).addEventListener('click', function (msg) {
+        msg.preventDefault();
+        var element = document.getElementById("modal-email");
+        element.open();
+        //esta parte es cuando no esta activo el chat, dejar cartel o algo
+        console.log("SI");
       });
 
-      cancelar.innerText = "cerrar chat";
-
-      cancelar.addEventListener('click', function (e) {
-        e.preventDefault();
-        respuesta(false);        
-        //que borre el chat una vez se haga click
-        closeChat();
-      });
-      let chatActivo = sessionStorage.getItem('key');
-
-      if(chatActivo == msg.idUser){
-        div.appendChild(msj);
-        div.appendChild(ex);
-        ex.appendChild(email);
-        ex.appendChild(cancelar);
-        document.getElementById("m").setAttribute("disable", "");
-        document.getElementById("enviar").setAttribute("disable", "");
-      }else{
-        document.getElementById('usuario_' + msg.idUser).addEventListener('click', function(msg){
-          msg.preventDefault();
-          var element = document.getElementById("modal-email");
-          element.open();
-          //esta parte es cuando no esta activo el chat, dejar cartel o algo
-          console.log("SI");
-        });
-        
-      }
+    }
     div.scrollTop = div.scrollHeight;
   });
 
-   socket.on("obtener-opciones", function (msg) {
-     let divOpcion = document.getElementById('modal-body-opcion');
-     divOpcion.innerHTML = '';
-     iduser = sessionStorage.getItem('key');
-     let pack = {};
-     for (const [key, prefix] of Object.entries(msg)) {
+  socket.on("obtener-opciones", function (msg) {
+    let divOpcion = document.getElementById('modal-body-opcion');
+    divOpcion.innerHTML = '';
+    iduser = sessionStorage.getItem('key');
+    let pack = {};
+    for (const [key, prefix] of Object.entries(msg)) {
 
-       let ulOpcion = document.createElement('ul');
-       let liopcion = document.createElement('li');
-       liopcion.setAttribute('type', 'button');
-       liopcion.setAttribute('data-dismiss', 'modal')
-       liopcion.innerText = `${msg[key].nombre}`;
-       if(msg[key].descripcion){
-         liopcion.innerText = `${msg[key].nombre}: ${msg[key].descripcion}`;
-       }
-       divOpcion.appendChild(ulOpcion);
-       ulOpcion.appendChild(liopcion);
-       liopcion.addEventListener('click', function (e) {
-         e.preventDefault();
-         pack.id = iduser;
-         pack.contenido = msg[key].opciones;
-         if(msg[key].nombre.substring(0,9)!='respuesta'){
-           socket.emit('enviar-menu', pack);
-           addMessage('Se envio el menu al ciudadano', 'E', Date.now(), 'message');
-          }else{
+      let ulOpcion = document.createElement('ul');
+      let liopcion = document.createElement('li');
+      liopcion.setAttribute('type', 'button');
+      liopcion.setAttribute('data-dismiss', 'modal')
+      liopcion.innerText = `${msg[key].nombre}`;
+      if (msg[key].descripcion) {
+        liopcion.innerText = `${msg[key].nombre}: ${msg[key].descripcion}`;
+      }
+      divOpcion.appendChild(ulOpcion);
+      ulOpcion.appendChild(liopcion);
+      liopcion.addEventListener('click', function (e) {
+        e.preventDefault();
+        pack.id = iduser;
+        pack.contenido = msg[key].opciones;
+        if (msg[key].nombre.substring(0, 9) != 'respuesta') {
+          socket.emit('enviar-menu', pack);
+          addMessage('Se envio el menu al ciudadano', 'E', Date.now(), 'message');
+        } else {
           pack.contenido = msg[key].opciones;
-          addMessage(msg[key].opciones,'E',Date.now(),'message');
-          socket.emit('send_op_message',pack);
-          }
-       });
-     }
-   });
+          addMessage(msg[key].opciones, 'E', Date.now(), 'message');
+          socket.emit('send_op_message', pack);
+        }
+      });
+    }
+  });
   // * FIN EVENTOS WEBSOCKET * //
   // Fin onload
 });

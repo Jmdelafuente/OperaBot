@@ -3,7 +3,7 @@ const express = require("express");
 var appFront = express();
 //var cors = require("cors");
 var helmet = require("helmet");
-var http = require("http").Server(appFront);
+var http = require("http").createServer(appFront);
 var io = require("socket.io")(http, {
   cors: {
     origin: "*",
@@ -21,6 +21,7 @@ var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion te
 var op = require("./operatorsService.js");
 const { resolve } = require("path");
 const { chatsList } = require("./messengerService");
+const { connect } = require("http2");
 
 // * CONFIGURACION DE FRONT-END * //
 
@@ -58,7 +59,9 @@ http.listen(portFront);
 
 // * EVENTOS * //
 
+io.of("/operadores/")
 io.on("connection", function (socket) {
+  console.log("se conecto un operador");
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
