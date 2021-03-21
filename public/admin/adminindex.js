@@ -1,4 +1,4 @@
-const SURLe = "http://localhost";
+//const SURLe = "http://localhost";
 //const SURLe = "128.53.1.23";
 const SURLe = "http://chat.muninqn.gov.ar/operadores/";
 const socketa = io(`${SURLe}`);
