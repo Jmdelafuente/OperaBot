@@ -1,7 +1,7 @@
 const SURL = "http://128.53.1.23";
 //const SURL = "http://chat.muninqn.gov.ar/operadores/";
 //const SURL = "localhost";
-const socket = io(`${SURL}:2999`);
+const socket = io.connect(`${SURL}:2999` , {'forceNew': true});
 var blueprints={};
 var conn = false;
 var chatListAll = [];
