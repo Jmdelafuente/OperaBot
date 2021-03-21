@@ -3,6 +3,7 @@
 const SURLopciones = "http://chat.muninqn.gov.ar/operadores/";
 const socketopciones = io(`${SURLopciones}`);
 
+
 $(function () {
     // * FUNCIONES AUXILIARES * //
     /**
