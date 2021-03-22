@@ -2,7 +2,7 @@
 const SURL = "https://chat.muninqn.gov.ar/operadores/";
 //const SURL = "http://localhost";
 
-const socket = io(`${SURL}` , {'forceNew': true, path:'/socket.io'});
+const socket = io(`${SURL}` , {'forceNew': true, path:'/operadores/js/socket.io'});
 var blueprints = {};
 var conn = false;
 var chatListAll = [];
