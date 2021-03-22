@@ -272,7 +272,7 @@ const recibirLista = function (operador, lista, asignado) {
 
 
 http.listen(portFront, function () {
-  console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
+  console.log('Express server listening on port %d in %s mode', portFront, app.get('env'));
 });
 
 module.exports.enviarMensaje = enviarMensaje;
