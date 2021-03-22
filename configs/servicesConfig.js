@@ -15,7 +15,6 @@ const FB_URL = `${FB_SERVER}:${FB_PORT}/${FB_PREFIX}`;
 const PS_PORT = 3004;
 const PS_PREFIX = 'ps';
 const PS_SERVER = "http://localhost";
-//const PS_SERVER = "https://chat.muninqn.gov.ar";
 
 const PS_URL = `${PS_SERVER}:${PS_PORT}/${PS_PREFIX}`;
 

@@ -5,11 +5,11 @@ var appFront = express();
 var helmet = require("helmet");
 var http = require("http").createServer(appFront);
 var io = require("socket.io")(http, {
-  allowEIO3: true,
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-  }
+  },
+  allowEIO3:true
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
@@ -42,14 +42,14 @@ appFront.use(helmet());
 appFront.use(express.static(path.join(__dirname, "public")));
 
 appFront.get("/operadores/", function (req, res) {
-  console.log(__dirname);
+ 
   let param = req.query.SESSIONKEY;
   let perfil = op.validar(param);
   if(perfil != -1){
     if(perfil == 3){
-      res.sendFile(__dirname + "//admin/index.html");
+      res.sendFile(__dirname + "public/admin/index.html");
     }else{
-      res.sendFile(__dirname + "/index.html");
+      res.sendFile(__dirname + "public/index.html");
     }
   }else{
     res.send(Error("Operador no valido"))
@@ -66,7 +66,6 @@ io.on("connection", function (socket) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
   socket.on("new_operator", function (msg) {
-    console.log("entre en new_operator");
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
       let s = sessions[msg.SESSIONKEY];
