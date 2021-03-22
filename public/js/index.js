@@ -487,7 +487,7 @@ $(function () {
   function getAsignados() {
     // socket.emit("",{});
   }
-  socket.on("connect", function () {
+  socket.on("connection", function () {
     console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);
     conn = true;

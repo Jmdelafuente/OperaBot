@@ -55,7 +55,7 @@ appFront.get("/operadores/", function (req, res) {
     res.send(Error("Operador no valido"))
   }
 });
-http.listen(portFront);
+
 
 // * EVENTOS * //
 
@@ -269,6 +269,11 @@ const recibirLista = function (operador, lista, asignado) {
   msg.asignado = asignado;
   operador.emit("send_op_list", msg);
 };
+
+
+http.listen(portFront, function () {
+  console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
+});
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
