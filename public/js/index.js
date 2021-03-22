@@ -2,7 +2,7 @@
 const SURL = "https://chat.muninqn.gov.ar/operadores/";
 //const SURL = "http://localhost";
 
-const socket = io(`${SURL}` , {path: '/operadores/socket.io'});
+const socket = io(`${SURL}` , {'forceNew': true});
 var blueprints = {};
 var conn = false;
 var chatListAll = [];
@@ -487,7 +487,7 @@ $(function () {
   function getAsignados() {
     // socket.emit("",{});
   }
-  socket.on("connection", function () {
+  socket.on("connect", function () {
     console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);
     conn = true;

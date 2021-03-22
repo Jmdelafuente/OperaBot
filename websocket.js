@@ -1,7 +1,7 @@
 // Imports from websockets
 const express = require("express");
 var appFront = express();
-var cors = require("cors");
+//var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").createServer(appFront);
 var io = require("socket.io")(http, {
@@ -9,10 +9,11 @@ var io = require("socket.io")(http, {
     origin: "*",
     methods: ["GET", "POST"],
   },
+  allowEIO3:true
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
-var portFront = 3001;
+var portFront = 2999;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
@@ -20,23 +21,23 @@ var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion te
 var op = require("./operatorsService.js");
 const { resolve } = require("path");
 const { chatsList } = require("./messengerService");
+const { connect } = require("http2");
 
 // * CONFIGURACION DE FRONT-END * //
 
 // Front for websockets
 appFront.set("port", portFront);
-// appFront.use(helmet());
-// appFront.use(express.static(path.join(__dirname, "public")));
-appFront.use(cors);
-// appFront.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type,Accept"
-//   );
-//   next();
-// });
+appFront.use(helmet());
 
+/*appFront.use(cors);
+ appFront.use(function (req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
+   res.header(
+     "Access-Control-Allow-Headers",
+     "Origin, X-Requested-With, Content-Type,Accept"
+   );
+   next();
+ });*/
 
 appFront.use(express.static(path.join(__dirname, "public")));
 
@@ -54,8 +55,9 @@ appFront.get("/operadores/", function (req, res) {
     res.send(Error("Operador no valido"))
   }
 });
-
-http.listen(appFront);
+http.listen(portFront, function () {
+  console.log("express server listening");
+});
 
 // * EVENTOS * //
 
@@ -269,8 +271,6 @@ const recibirLista = function (operador, lista, asignado) {
   msg.asignado = asignado;
   operador.emit("send_op_list", msg);
 };
-
-
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
