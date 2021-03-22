@@ -186,6 +186,7 @@ async function recibirMensaje(chat, tipo) {
         .on("finish", function (res) {
           let operadorId = chat_asig[id].operadorId;
           let operador = operators[operadorId];
+          console.log(`antes del socket despues de asign con ${socket}`);
           socket.recibirMensaje(chat, tipo, operador.id);
           return true;
         })
@@ -199,6 +200,7 @@ async function recibirMensaje(chat, tipo) {
     // Push notification to operator
     let operadorId = chat_asig[id].operadorId;
     let operador = operators[operadorId];
+      console.log(`antes del socket del ultimo con ${socket}`);
     socket.recibirMensaje(chat,tipo,operador.id);
   }
   //} else {
