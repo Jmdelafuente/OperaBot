@@ -186,7 +186,7 @@ async function recibirMensaje(chat, tipo) {
         .on("finish", function (res) {
           let operadorId = chat_asig[id].operadorId;
           let operador = operators[operadorId];
-          console.log(`antes del socket despues de asign con ${socket}`);
+          console.log(`antes del asign con ${chat.name}`);
           socket.recibirMensaje(chat, tipo, operador.id);
           return true;
         })
