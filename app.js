@@ -19,18 +19,18 @@ api.set('port', process.env.PORT || port);
 app.use(morgan("tiny"));
 api.use(morgan("tiny"));
 // Helmet for securing requests
-app.use(helmet()); // FIXME: en produccion revisar/configurar TLS
+// app.use(helmet()); // FIXME: en produccion revisar/configurar TLS
 api.use(helmet());
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Allowing requests from outside of the domain
-//app.use(cors());
-/*app.use(function (req, res, next) {
+app.use(cors());
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type,Accept");
   next();
-});*/
+});
 
 api.use(cors()); // FIXME: remove or comment this (34-42) in production
 api.use(function (req, res, next) {
@@ -50,8 +50,8 @@ api.use(express.urlencoded({ limit: "20mb", extended: true }));
 // Websokets (usa la configuracion previa de socket io)
 var websocket = require('./websocket.js');
 // API REST para recibir webhooks de los servicios de mensajeria
-var adminwebsocket = require('./public/admin/websocketAdmin.js');
 var apiService = require('./api.js');
+
 // Iniciar servidor de Operadores
 const server = app.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
