@@ -2,7 +2,7 @@ const SURL = "https://128.53.1.23/operadores/";
 //const SURL = "chat.muninqn.gov.ar/operadores/";
 //const SURL = "http://localhost";
 
-const socket = io(`${SURL}`);
+const socket = io(`${SURL}` , {path: '/socket.io/socket.io.js'});
 var blueprints = {};
 var conn = false;
 var chatListAll = [];
