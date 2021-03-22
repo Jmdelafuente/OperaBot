@@ -25,13 +25,13 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
     let data = JSON.parse(req.body.body);
     //console.log(data);
     let type = data.type ? data.type : "chat";
-    let name = data.name ? data.name : "Anonimo";
+    
     ms.nuevoMensaje(
       data.user,
       data.text,
       `${key}`,
       data.timestamp,
-      name,
+      data.name,
       type,
       data.email
     ).then(
@@ -49,14 +49,14 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   api.post(`/api/${prefix}/newimage`, jsonParser, (req, res) => {
     // TODO: authenticate origin: usar validateIP con req
     let data = JSON.parse(req.body.body);
-    let name = data.name ? data.name : "anonimo";
+  
     let type = data.type ? data.type : "image";
     ms.nuevaImagen(
       data.user,
       data.text,
       `${key}`,
       data.timestamp,
-      name,
+      data.name,
       type,
       data.email
     ).then(
