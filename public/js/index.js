@@ -1,5 +1,5 @@
 //const SURL = "https://128.53.1.23";
-const SURL = "chat.muninqn.gov.ar/operadores/";
+const SURL = "https://chat.muninqn.gov.ar/operadores/";
 //const SURL = "http://localhost";
 
 const socket = io(`${SURL}` , {path: '/socket.io'});
