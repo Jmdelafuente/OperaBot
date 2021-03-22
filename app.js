@@ -1,5 +1,5 @@
 port = 3000;
-//portClient = 2999;
+portClient = 2999;
 
 const cors = require("cors");
 const express = require('express');
@@ -9,20 +9,20 @@ const path = require('path');
 bodyParser = require("body-parser");
 jsonParser = bodyParser.json();
 
-//app = express();
+app = express();
 api = express();
-//app.set('port', process.env.PORT || portClient);
+app.set('port', process.env.PORT || portClient);
 api.set('port', process.env.PORT || port);
 
 
 // logging http requests
-//app.use(morgan("tiny"));
+app.use(morgan("tiny"));
 api.use(morgan("tiny"));
 // Helmet for securing requests
-// app.use(helmet()); // FIXME: en produccion revisar/configurar TLS
+app.use(helmet()); // FIXME: en produccion revisar/configurar TLS
 api.use(helmet());
 // static files
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Allowing requests from outside of the domain
 //app.use(cors());
@@ -53,6 +53,6 @@ var websocket = require('./websocket.js');
 var adminwebsocket = require('./public/admin/websocketAdmin.js');
 var apiService = require('./api.js');
 // Iniciar servidor de Operadores
-/*const server = app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
-});*/
+});

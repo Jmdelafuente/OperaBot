@@ -13,7 +13,7 @@ var io = require("socket.io")(http, {
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
-var portFront = 2999;
+var portFront = 3001;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
@@ -40,6 +40,7 @@ appFront.use(helmet());
  });*/
 
 appFront.use(express.static(path.join(__dirname, "public")));
+http.listen(appFront);
 
 appFront.get("/operadores/", function (req, res) {
  
@@ -271,9 +272,6 @@ const recibirLista = function (operador, lista, asignado) {
 };
 
 
-http.listen(portFront, function () {
-  console.log('Express server listening on port %d in %s mode', portFront, app.get('env'));
-});
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
