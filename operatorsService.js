@@ -371,7 +371,7 @@ async function desconexionCivil(msg){
   //messenger.recuperarHistorial();
   let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
   if(quieremail){
-    console.log(`dentro de quiere email ${JSON.stringify(msg)}`);
+
     let img ='';
     //TODO: guardar historial en BD 
     var time = new Date(Date.now());
@@ -389,13 +389,10 @@ async function desconexionCivil(msg){
         }
         str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos </p>`;
       }else{
-      console.log(`dentro de contenido esta ${element.contenido}`);
       str += `  `;
     }
     });
 
-
-    console.log(str)
     var pack = {};
     pack.email = (msg.email[0].email);
     pack.subject = 'Chat con el 147';
