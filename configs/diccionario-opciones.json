@@ -2,23 +2,23 @@
         "nombre": "Menu Inicial",
         "opciones": [{
             "nombre": "Licencia de conducir",
-            "valor": "LICENCIA DE CONDUCIR"
+            "valor": "Licencia de conducir"
         }, {
             "nombre": "Tributos municipales",
-            "valor": "TRIBUTOS MUNICIPALES"
+            "valor": "Tributos municipales"
         }, {
-            "nombre": "habla con nosotros",
-            "valor": "HABLÁ CON NOSOTROS"
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
         }],
         "descripcion": "menu inicial"
     }, {
-        "nombre": "habla con nosotros",
+        "nombre": "Habla con nosotros",
         "opciones": [{
-            "nombre": "respuesta Whatsapp",
-            "valor": "A TRAVES DE WHATSAPP"
+            "nombre": "Whatsapp",
+            "valor": "A traves de whatsapp"
         }, {
             "nombre": "respuesta burbuja",
-            "valor": "A TRAVES DEL CHAT"
+            "valor": "A traves del chat"
         }],
         "descripcion": "Se da a elejir el medio por el cual quieren comunicarse"
     },
@@ -29,8 +29,11 @@
             "valor": "Requisitos"
         }, {
             "nombre": "turnos licencia",
-            "valor": "turnos",
+            "valor": "Turnos",
             "informacion": "Para sacar un turno para renovación o habilitación de tu licencia de conducir, debés registrarte en nuestra web a través del siguiente link: https://weblogin.muninqn.gov.ar/ Luego en el ícono de Licencia de Conducir vas a poder elegir el día, la hora y la delegación que quieras.Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Hablá con nosotros” "
+        }, {
+            "nombre": "Menu Inicial",
+            "valor": "Volver"
         }],
         "descripcion": "Menu principal de licencia de conducir"
     }, {
@@ -43,7 +46,10 @@
             "valor": "Para habilitar tu licencia"
         }, {
             "nombre": "Habla con nosotros",
-            "valor": "HABLÁ CON NOSOTROS"
+            "valor": "Chatea con nosotros"
+        }, {
+            "nombre": "Licencia de conducir",
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar si necesita renovar o habilitar la licencia"
     }, {
@@ -54,6 +60,12 @@
         }, {
             "nombre": "tarde",
             "valor": "horario de la tarde"
+        }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
+            "nombre": "Licencia de conducir",
+            "valor": "Volver"
         }],
         "descripcion": "Listar los horarios de atención"
 
@@ -66,6 +78,17 @@
             "nombre": "habilitar Auto",
             "valor": "AUTO"
         }, {
+            "nombre": "Profesionales",
+            "valor": "Profesionales"
+        }, {
+            "nombre": "Requisitos",
+            "valor": "Volver"
+        }],
+        "descripcion": "Menu para seleccionar el tipo de licencia a habilitar"
+
+    }, {
+        "nombre":"Profesionales",
+        "opciones": [{
             "nombre": "habilitar CLASE C",
             "valor": "CLASE C: PROFESIONALES"
         }, {
@@ -74,9 +97,13 @@
         }, {
             "nombre": "habilitar CLASE E",
             "valor": "CLASE E: PROFESIONALES"
-        }],
-        "descripcion": "Menu para seleccionar el tipo de licencia a habilitar"
-
+        }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
+            "nombre": "Requisitos",
+            "valor": "Volver"
+        }]
     }, {
         "nombre": "Para renovar tu licencia",
         "opciones": [{
@@ -95,8 +122,11 @@
             "nombre": "renovar CLASE E",
             "valor": "CLASE E: PROFESIONALES"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Requisitos",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el tipo de licencia a renovar"
 
@@ -113,8 +143,11 @@
             "nombre": "respuesta renovar moto mayor 65",
             "valor": "Mayores de 65 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para renovar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     },
@@ -131,11 +164,17 @@
         "opciones": ["RENOVACION DE 65 AÑOS EN ADELANTE:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico."]
 
     }, {
-        "nombre": "respuesta Whatsapp",
-        "opciones": []
+        "nombre": "Whatsapp",
+        "opciones": [{
+            "nombre": "Menu Inicial",
+            "valor": "Volver"
+        }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }]
     }, {
         "nombre": "respuesta burbuja",
-        "opciones": ["Por favor ingrese su nombre y su direccion de email"]
+        "opciones": []
     }, {
         "nombre": "renovar Auto",
         "opciones": [{
@@ -148,8 +187,11 @@
             "nombre": "respuesta renovar auto mayor 65",
             "valor": "Mayores de 65 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para renovar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -173,8 +215,11 @@
             "nombre": "respuesta renovar clase c mayor 65",
             "valor": "Mayores de 65 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para renovar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -198,8 +243,11 @@
             "nombre": "respuesta renovar clase d mayor 65",
             "valor": "Mayores de 65 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para renovar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -223,8 +271,11 @@
             "nombre": "respuesta renovar clase e mayor 65",
             "valor": "Mayores de 65 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para renovar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -248,8 +299,11 @@
             "nombre": "respuesta habilitar moto mayor 60",
             "valor": "Mayor de 60"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para habilitar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -273,8 +327,11 @@
             "nombre": "respuesta habilitar auto mayor 60",
             "valor": "Mayor de 60"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para habilitar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     },
@@ -296,8 +353,11 @@
             "nombre": "respuesta habilitar clase c mayor 60",
             "valor": "Mayor de 60 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para habilitar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -315,8 +375,11 @@
             "nombre": "respuesta habilitar clase d mayor 60",
             "valor": "Mayor de 60 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para habilitar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -334,8 +397,11 @@
             "nombre": "respuesta habilitar clase e mayor 60",
             "valor": "Mayor de 60 años"
         }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
             "nombre": "Para habilitar tu licencia",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }],
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
@@ -347,70 +413,70 @@
     }, {
         "nombre": "turnos licencia",
         "opciones": [{
-            "nombre": "habla con nosotros",
-            "valor": "HABLÁ CON NOSOTROS"
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
         }, {
             "nombre": "Licencia de conducir",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }]
     }, {
         "nombre": "Tributos municipales",
         "opciones": [{
             "nombre": "Obtencion de recibos",
-            "valor": "OBTENCIÓN DE RECIBOS",
+            "valor": "Obtencion de recibos",
             "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Hablá con nosotros\""
 
         }, {
             "nombre": "Metodos de pago",
-            "valor": "METODOS DE PAGO",
+            "valor": "Metodos de pago",
             "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Hablá con nosotros\""
         }, {
             "nombre": "Menu Inicial",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }]
 
     }, {
         "nombre": "Obtencion de recibos",
         "opciones": [{
-            "nombre": "habla con nosotros",
-            "valor": "HABLÁ CON NOSOTROS"
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
         }, {
             "nombre": "Tributos municipales",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }]
     }, {
         "nombre": "Metodos de pago",
         "opciones": [{
             "nombre": "pago online",
-            "valor": "METODO ONLINE",
+            "valor": "Metodo online",
             "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Hablá con nosotros\""
 
         }, {
             "nombre": "Lugares de pago",
-            "valor": "FORMAS DE PAGO",
+            "valor": "Formas de pago",
             "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Hablá con nosotros\""
-        }, {
+        },{
             "nombre": "Tributos municipales",
-            "valor": "VOLVER"
+            "valor":"Volver"
         }]
 
     }, {
         "nombre": "Lugares de pago",
         "opciones": [{
-            "nombre": "habla con nosotros",
-            "valor": "HABLÁ CON NOSOTROS"
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
         }, {
             "nombre": "Metodos de pago",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }]
     }, {
         "nombre": "pago online",
         "opciones": [{
-            "nombre": "habla con nosotros",
-            "valor": "HABLÁ CON NOSOTROS"
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
         }, {
             "nombre": "Metodos de pago",
-            "valor": "VOLVER"
+            "valor": "Volver"
         }]
     }
 ]

@@ -198,7 +198,6 @@ api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
 const enviarMensaje = function (id, contenido) {};
 
 const recibirMensaje = function (chat, tipo, operador) {
-  console.log(`nombre = ${chat.name}`);
   var mensaje = {};
   mensaje.id = chat.id;
   mensaje.contenido = chat.lastmessage;
