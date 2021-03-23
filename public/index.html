@@ -31,6 +31,8 @@
                   aria-controls="nav-todos" aria-selected="true">Todos</a>
                 <a class="nav-item nav-link" id="nav-asignados-tab" data-toggle="tab" href="#nav-asignados" role="tab"
                   aria-controls="nav-asignados" aria-selected="false">Asignados</a>
+                  <a class="nav-item nav-link" id="nav-no-leidos-tab" data-toggle="tab" href="#nav-no-leidos" role="tab"
+                  aria-controls="nav-asignados" aria-selected="false">No Leidos</a>
               </div>
           </div>
           <!-- Pestanas de la barra lateral -->
@@ -45,6 +47,13 @@
             <!-- Chats asignados -->
             <div class="tab-pane fade " data-href="#nav-asignados" id="nav-asignados" role="tabpanel"
               aria-labelledby="nav-asignados-tab">
+              <div class="contacts list-group" id="listaContactosAsignados">
+              </div>
+            </div>
+
+             <!-- Chats No leidos -->
+            <div class="tab-pane fade " data-href="#nav-no-leidos" id="nav-no-leidos" role="tabpanel"
+              aria-labelledby="nav-no-leidos-tab">
               <div class="contacts list-group" id="listaContactosAsignados">
               </div>
             </div>
