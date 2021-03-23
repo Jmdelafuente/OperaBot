@@ -112,6 +112,7 @@ $(function () {
    * @param {String} cont Contenido del mensaje o texto a mostrar
    * @param {String} tipo 'E' para los mensajes enviados, 'R' para los mensajes recibidos
    * @param {Number} t Timestamp o marca de tiempo del mensaje
+   * @param {String} type Para saber de que tipo es el contenido del mensaje.
    */
   function addMessage(cont, tipo, t, type) {
     if (cont) {
@@ -328,7 +329,7 @@ $(function () {
     socket.emit('obtener-opciones');
   });
 
-
+  //Permite al operador enviarle la opcion al ciudadano para cambiar su email en caso que sea solicitado
   var cambioEmail = document.getElementById('cambiar_Email');
   cambioEmail.addEventListener('click', function (e) {
     e.preventDefault();
