@@ -162,7 +162,6 @@ $(function () {
           });
           msj.appendChild(link);
           link.appendChild(canvas);
-          location.reload();
           break;
       }
       div.appendChild(ex);
