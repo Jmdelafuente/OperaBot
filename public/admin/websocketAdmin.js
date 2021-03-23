@@ -4,11 +4,12 @@ var cors = require("cors");
 var helmet = require("helmet");
 var http = require("http").Server(app);
 var iois = require("socket.io")(http, {
-    allowEIO3: true,
+    
     cors: {
         origin: "*",
         methods: ["GET", "POST"],
     },
+
 });
 var path = require("path");
 var plant = require("../../configs/messagesConfig");
@@ -42,20 +43,6 @@ app.set("port", portFront);
 // });
 
 app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/operadores/admin/", function (req, res) {
-    let param = req.query.SESSIONKEY;
-    let perfil = op.validar(param);
-    if (perfil != -1) {
-        if (perfil == 3) {
-            res.sendFile(__dirname + "/index.html");
-        } else {
-            res.sendFile(__dirname + "/index.html");
-        }
-    } else {
-        res.send(Error("Operador no valido"))
-    }
-});
 
 http.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
