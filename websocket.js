@@ -267,8 +267,12 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
 const recibirLista = function (operador, lista, asignado) {
   console.log(`Propagando lista ${JSON.stringify(lista)}`);
   let msg = {};
+  console.log(`la lista es ${lista}`);
+  console.log(`la asignado es ${asignado}`);
   msg.chats = lista.sort(compare);
   msg.asignado = asignado.sort(compare);
+  console.log(`la lista ordenada es ${msg.lista}`);
+  console.log(`la asignado ordenado es es ${msg.asignado}`);
   operador.emit("send_op_list", msg);
 };
 
