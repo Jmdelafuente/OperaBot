@@ -32,7 +32,7 @@ async function nuevalistaChats(lista, origen) {
   }
   // Ordenamos de mas reciente a menos reciente
   chatsList.sort(function (a, b) {
-    return a.timestamp - b.timestamp;
+    return b.timestamp - a.timestamp;
   });
 }
 
