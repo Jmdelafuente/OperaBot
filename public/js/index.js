@@ -175,9 +175,10 @@ $(function () {
             break;
       }
       
-      var time = new Date(t);
+      var tiempo = parseInt(t);
+      var time = new Date(tiempo);
       let s = "";
-      let today = new Date();
+      let today = new Date(Date.now());
 
       let hours = time.getHours().toString();
       let min = (
@@ -194,7 +195,7 @@ $(function () {
           s += day + "/" + month + "  " + hours + ":" + min;
         }
 
-        hora.innerText = s;
+      hora.innerText = s;
       div.appendChild(ex);
       ex.appendChild(msj);
       msj.appendChild(hora);
