@@ -167,8 +167,6 @@ $(function () {
           var link = document.createElement('a');
           let pdf = document.createElement('div');
           pdf.innerText = "haga click para ver el PDF";
-          divActual.appendChild(contenedor);
-          contenedor.appendChild(pdf);
           pdf.addEventListener('click', function (e) {
             let pdfWindow = window.open("")
             pdfWindow.document.write(`<iframe width='100%' height='100%' src='${cont}'></iframe>`
