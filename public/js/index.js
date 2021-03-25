@@ -185,7 +185,7 @@ $(function () {
           hora.innerText = time.getHours().toString() + ":" + ((time.getMinutes() < 10 ? "0" : "") + time.getMinutes()).toString();
         });
       } else {
-        time = new Date(t);
+        time = new Date(parseInt(t)); 
         let s = "";
         let today = new Date();
 
@@ -512,7 +512,7 @@ $(function () {
     addChat(msg.nom, msg.id, esOperador, msg.origen);
 
     if ($("#idChat").val() == msg.id) {
-      addMessage(msg.contenido, "R", "Ahora", msg.tipo);
+      addMessage(msg.contenido, "R", msg.timestamp, msg.tipo);
     } else {
       unreadMessages(msg.id);
     }
@@ -524,7 +524,7 @@ $(function () {
       addChat(msg.name, msg.id, msg.asig);
     }
     if ($("#idChat").val() == msg.id) {
-      addMessage(msg.contenido, "R", "Ahora", "image");
+      addMessage(msg.contenido, "R", msg.timestamp, "image");
     } else {
       unreadMessages(msg.id);
     }

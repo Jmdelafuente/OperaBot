@@ -202,6 +202,7 @@ const recibirMensaje = function (chat, tipo, operador) {
   mensaje.id = chat.id;
   mensaje.contenido = chat.lastmessage;
   mensaje.tipo = tipo;
+  mensaje.hora = chat.timestamp;
   mensaje.nom = chat.name;
   mensaje.origen = chat.origin;
   mensaje.state = chat.state;
