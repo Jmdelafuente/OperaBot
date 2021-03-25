@@ -166,12 +166,10 @@ $(function () {
           case "pdf":
           var link = document.createElement('a');
           let pdf = document.createElement('div');
-          pdf.innerText = "haga click para ver el PDF";
-          pdf.addEventListener('click', function (e) {
-            let pdfWindow = window.open("")
-            pdfWindow.document.write(`<iframe width='100%' height='100%' src='${cont}'></iframe>`
-            );
-          });
+          link.setAttribute('download','pdf');
+          link.setAttribute('href',cont);
+          link.setAttribute('title','Descarga de PDF');
+          pdf.innerText = "haga click para descargar el PDF";
           msj.appendChild(link);
           link.appendChild(pdf);
             break;
