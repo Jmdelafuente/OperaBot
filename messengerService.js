@@ -75,8 +75,9 @@ async function nuevaImagen(
     chatsList[id].timestamp = t;
     chatsList[id].name = nombre; //puede haber cambiado de nombre la persona
     chatsList[id].pendingmessage++;
+    chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
-    
+    chat = chatsList[id];    
   } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
