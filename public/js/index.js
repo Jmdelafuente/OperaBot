@@ -145,7 +145,7 @@ $(function () {
           break;
         default:
         case "image": // * Foto
-          let link = document.createElement("a");
+          var link = document.createElement("a");
           let canvas = document.createElement("canvas");
           let ctx = canvas.getContext("2d");
           let image = new Image();
@@ -164,7 +164,7 @@ $(function () {
           link.appendChild(canvas);
           break;
           case "pdf":
-          let link = document.createElement('a');
+          var link = document.createElement('a');
           let pdf = document.createElement('div');
           pdf.innerText = "haga click para ver el PDF";
           divActual.appendChild(contenedor);
