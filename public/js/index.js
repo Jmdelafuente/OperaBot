@@ -555,9 +555,9 @@ $(function () {
         $("#mensajes").html("");
         lista.forEach((message) => {
           if (message.user == "me") {
-            addMessage(message.contenido, "E", message.t, message.type);
+            addMessage(message.contenido, "E", message.timestamp, message.type);
           } else {
-            addMessage(message.contenido, "R", message.t, message.type);
+            addMessage(message.contenido, "R", message.timestamp, message.type);
           }
         });
       }
