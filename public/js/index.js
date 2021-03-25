@@ -174,36 +174,45 @@ $(function () {
           link.appendChild(pdf);
             break;
       }
-      
-      var tiempo = parseInt(t);
-      var time = new Date(tiempo);
-      let s = "";
-      let today = new Date(Date.now());
+      div.appendChild(ex);
+      ex.appendChild(msj);
+      msj.appendChild(hora);
+      div.scrollTop = div.scrollHeight;
+      var time;
+      if (t == "Ahora") {
+        setTimeout(function () {
+          time = new Date(Date.now());
+          hora.innerText = time.getHours().toString() + ":" + ((time.getMinutes() < 10 ? "0" : "") + time.getMinutes()).toString();
+        });
+      } else {
+        time = new Date(t);
+        let s = "";
+        let today = new Date();
 
-      let hours = time.getHours().toString();
-      let min = (
+        let hours = time.getHours().toString();
+        let min = (
           (time.getMinutes() < 10 ? "0" : "") + time.getMinutes()
         ).toString();
         if (
           time.getMonth() == today.getMonth() &&
           time.getDate() == today.getDate()
         ) {
-          s += hours + ":" + min;
+          s = s.concat(hours, ":", min);
         } else {
-          let month = (time.getMonth() + 1).toString();
-          let day = time.getDate().toString();
-          s += day + "/" + month + "  " + hours + ":" + min;
+          let month = (
+            (time.getMonth() + 1 < 10 ? "0" : "") +
+            (time.getMonth() + 1)
+          ).toString();
+          let day = (
+            (time.getDate() < 10 ? "0" : "") + time.getDate()
+          ).toString();
+          s = s.concat(day, "/", month, "  ", hours, ":", min);
         }
 
-      hora.innerText = s;
-      div.appendChild(ex);
-      ex.appendChild(msj);
-      msj.appendChild(hora);
-      div.scrollTop = div.scrollHeight;
-
-      
+        hora.innerText = s;
     }
   }
+}
 
   /**
    * Dibuja en el DOM un chat en particular.
