@@ -157,8 +157,8 @@ $(function () {
           link.rel = "noopener noreferrer";
           link.className = "imghover";
           link.addEventListener("click", function () {
-            var url_base64jp = cont;
-            link.href = url_base64jp;
+            var w = window.open("");
+            w.document.write(image.outerHTML);
           });
           msj.appendChild(link);
           link.appendChild(canvas);

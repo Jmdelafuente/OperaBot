@@ -15,10 +15,10 @@
         "nombre": "Habla con nosotros",
         "opciones": [{
             "nombre": "Whatsapp",
-            "valor": "A traves de whatsapp"
+            "valor": "A través de whatsapp"
         }, {
             "nombre": "respuesta burbuja",
-            "valor": "A traves del chat"
+            "valor": "A través del chat"
         }],
         "descripcion": "Se da a elejir el medio por el cual quieren comunicarse"
     },
@@ -30,7 +30,7 @@
         }, {
             "nombre": "turnos licencia",
             "valor": "Turnos",
-            "informacion": "Para sacar un turno para renovación o habilitación de tu licencia de conducir, debés registrarte en nuestra web a través del siguiente link: https://weblogin.muninqn.gov.ar/ Luego en el ícono de Licencia de Conducir vas a poder elegir el día, la hora y la delegación que quieras.Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Hablá con nosotros” "
+            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
         }, {
             "nombre": "Menu Inicial",
             "valor": "Volver"
@@ -56,10 +56,10 @@
         "nombre": "turnos",
         "opciones": [{
             "nombre": "mañana",
-            "valor": "horario de la mañana"
+            "valor": "Horario de la mañana"
         }, {
             "nombre": "tarde",
-            "valor": "horario de la tarde"
+            "valor": "Horario de la tarde"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -73,10 +73,10 @@
         "nombre": "Para habilitar tu licencia",
         "opciones": [{
             "nombre": "habilitar Moto",
-            "valor": "MOTO"
+            "valor": "Moto"
         }, {
             "nombre": "habilitar Auto",
-            "valor": "AUTO"
+            "valor": "Auto"
         }, {
             "nombre": "Profesionales",
             "valor": "Profesionales"
@@ -90,13 +90,13 @@
         "nombre":"Profesionales",
         "opciones": [{
             "nombre": "habilitar CLASE C",
-            "valor": "CLASE C: PROFESIONALES"
+            "valor": "Clase C: Profesionales"
         }, {
             "nombre": "habilitar CLASE D",
-            "valor": "CLASE D:PROFESIONALES"
+            "valor": "Clase D: Profesionales"
         }, {
             "nombre": "habilitar CLASE E",
-            "valor": "CLASE E: PROFESIONALES"
+            "valor": "Clase E: Profesionales"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -108,19 +108,14 @@
         "nombre": "Para renovar tu licencia",
         "opciones": [{
             "nombre": "renovar Moto",
-            "valor": "MOTO"
+            "valor": "Moto"
         }, {
             "nombre": "renovar Auto",
-            "valor": "AUTO"
+            "valor": "Auto"
         }, {
-            "nombre": "renovar CLASE C",
-            "valor": "CLASE C: PROFESIONALES"
-        }, {
-            "nombre": "renovar CLASE D",
-            "valor": "CLASE D:PROFESIONALES"
-        }, {
-            "nombre": "renovar CLASE E",
-            "valor": "CLASE E: PROFESIONALES"
+            "nombre": "renovar Profesionales",
+            "valor": "Profesionales"
+        }, 
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -130,6 +125,25 @@
         }],
         "descripcion": "Menu para seleccionar el tipo de licencia a renovar"
 
+    },
+    {
+        "nombre":"renovar Profesionales",
+        "opciones": [{
+            "nombre": "renovar CLASE C",
+            "valor": "Clase C: Profesionales"
+        }, {
+            "nombre": "renovar CLASE D",
+            "valor": "Clase D: Profesionales"
+        }, {
+            "nombre": "renovar CLASE E",
+            "valor": "Clase E: Profesionales"
+        }, {
+            "nombre": "Habla con nosotros",
+            "valor": "Chatea con nosotros"
+        }, {
+            "nombre": "Requisitos",
+            "valor": "Volver"
+        }]
     },
     {
         "nombre": "renovar Moto",
@@ -153,15 +167,15 @@
     },
     {
         "nombre": "respuesta renovar moto entre 18 y 59",
-        "opciones": ["RENOVACIÓN 18 A 59 AÑOS: \n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar\n• DNI Original (último ejemplar siempre) \n• Original de la licencia anterior (hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI) \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma"]
+        "opciones": ["Renovación 18 A 59 años: \n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar\n• DNI Original (último ejemplar siempre) \n• Original de la licencia anterior (hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI) \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma"]
     },
     {
         "nombre": "respuesta renovar moto entre 60 y 65",
-        "opciones": ["RENOVACION 60 a 65 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma"]
+        "opciones": ["Renovación 60 a 65 años:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma"]
     },
     {
         "nombre": "respuesta renovar moto mayor 65",
-        "opciones": ["RENOVACION DE 65 AÑOS EN ADELANTE:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico."]
+        "opciones": ["Renovación DE 65 años EN ADELANTE:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico."]
 
     }, {
         "nombre": "Whatsapp",
@@ -196,13 +210,13 @@
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
         "nombre": "respuesta renovar auto entre 21 a 59",
-        "opciones": ["RENOVACIÓN 21 A 59 AÑOS:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico."]
+        "opciones": ["\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico."]
     }, {
         "nombre": "respuesta renovar auto entre 60 a 65",
-        "opciones": ["RENOVACION 60 a 65 AÑOS:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma."]
+        "opciones": ["\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma."]
     }, {
         "nombre": "respuesta renovar auto mayor 65",
-        "opciones": ["RENOVACION DE 65 AÑOS EN ADELANTE:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado de legalidad(en caso de que sea de otro municipio)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma, Electrocardiograma con certificado de aptitud para conducir.\n•Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"]
+        "opciones": ["\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado de legalidad(en caso de que sea de otro municipio)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma, Electrocardiograma con certificado de aptitud para conducir.\n•Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"]
     }, {
         "nombre": "renovar CLASE C",
         "opciones": [{
@@ -252,13 +266,13 @@
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
         "nombre": "respuesta renovar clase d entre 21 a 59",
-        "opciones": ["RENOVACIÓN 21 A 59 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico "]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico "]
     }, {
         "nombre": "respuesta renovar clase d entre 60 y 65",
-        "opciones": ["RENOVACION 60 a 65 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n•Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n•Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"]
     }, {
         "nombre": "respuesta renovar clase d mayor 65",
-        "opciones": ["RENOVACION DE 65 AÑOS EN ADELANTE:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n• Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n• Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"]
     }, {
         "nombre": "renovar CLASE E",
         "opciones": [{
@@ -280,13 +294,13 @@
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
         "nombre": "respuesta renovar clase e entre 21 a 59",
-        "opciones": ["RENOVACIÓN 21 A 59 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico"]
     }, {
         "nombre": "respuesta renovar clase e entre 60 y 65",
-        "opciones": ["RENOVACIÓN 60 a 65 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"]
     }, {
         "nombre": "respuesta renovar clase e mayor 65",
-        "opciones": ["RENOVACION DE 65 AÑOS EN ADELANTE:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"]
     }, {
         "nombre": "habilitar Moto",
         "opciones": [{
@@ -311,10 +325,10 @@
         "opciones": ["Importante, se habilitan solo hasta 150cc de cilindrada.\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción.(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "respuesta habilitar moto entre 18 y 59",
-        "opciones": ["HABILITACIÓN 18 A 59 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "respuesta habilitar moto mayor 60",
-        "opciones": ["HABILITACIÓN 60 AÑOS EN ADELANTE:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "habilitar Auto",
         "opciones": [{
@@ -337,13 +351,13 @@
     },
     {
         "nombre": "respuesta habilitar auto con 17",
-        "opciones": ["HABILITACIÓN 17 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "respuesta habilitar auto entre 18 y 59",
-        "opciones": ["HABILITACIÓN 18 A 59 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "respuesta habilitar auto mayor 60",
-        "opciones": ["HABILITACIÓN 60 AÑOS EN ADELANTE:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "habilitar CLASE C",
         "opciones": [{
@@ -362,10 +376,10 @@
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
         "nombre": "respuesta habilitar clase c entre 21 y 59",
-        "opciones": ["HABILITACIÓN 21 A 59 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de licencia de conducir categoría B vigente, con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de licencia de conducir categoría B vigente, con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "respuesta habilitar clase c mayor 60",
-        "opciones": ["HABILITACIÓN 60 EN ADELANTE:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "habilitar CLASE D",
         "opciones": [{
@@ -384,10 +398,10 @@
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
         "nombre": "respuesta habilitar clase d entre 21 y 59",
-        "opciones": ["HABILITACIÓN 21 A 59 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "respuesta habilitar clase d mayor 60",
-        "opciones": ["HABILITACIÓN 60 AÑOS EN ADELANTE:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"]
     }, {
         "nombre": "habilitar CLASE E",
         "opciones": [{
@@ -406,10 +420,10 @@
         "descripcion": "Menu para seleccionar el rango de edad del ciudadano"
     }, {
         "nombre": "respuesta habilitar clase e entre 21 y 59",
-        "opciones": ["HABILITACIÓN 21 A 59 AÑOS:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."]
     }, {
         "nombre": "respuesta habilitar clase e mayor 60",
-        "opciones": ["HABILITACIÓN 60 AÑOS EN ADELANTE:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podés acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."]
+        "opciones": ["\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podés acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."]
     }, {
         "nombre": "turnos licencia",
         "opciones": [{
@@ -423,7 +437,7 @@
         "nombre": "Tributos municipales",
         "opciones": [{
             "nombre": "Obtencion de recibos",
-            "valor": "Obtencion de recibos",
+            "valor": "Obtención de recibos",
             "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Hablá con nosotros\""
 
         }, {
@@ -449,12 +463,12 @@
         "opciones": [{
             "nombre": "pago online",
             "valor": "Metodo online",
-            "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Hablá con nosotros\""
+            "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Chatea con nosotros\""
 
         }, {
             "nombre": "Lugares de pago",
             "valor": "Formas de pago",
-            "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Hablá con nosotros\""
+            "informacion": "Si tenes algun incoveniente podes comunicarte con nosotros en el boton de \"Chatea con nosotros\""
         },{
             "nombre": "Tributos municipales",
             "valor":"Volver"
