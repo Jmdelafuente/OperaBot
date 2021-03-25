@@ -267,10 +267,21 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
 const recibirLista = function (operador, lista, asignado) {
   console.log(`Propagando lista ${JSON.stringify(lista)}`);
   let msg = {};
-  msg.chats = lista;
-  msg.asignado = asignado;
+  msg.chats = lista.sort(compare);
+  msg.asignado = asignado.sort(compare);
   operador.emit("send_op_list", msg);
 };
+
+function compare(a, b) {
+  if (a.timestamp < b.timestamp) {
+    return -1;
+  }
+  if (b.timestamp < a.timestamp) {
+    return 1;
+  }
+  // a debe ser igual b
+  return 0;
+}
 
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.recibirMensaje = recibirMensaje;
