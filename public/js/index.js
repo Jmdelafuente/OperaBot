@@ -179,7 +179,7 @@ $(function () {
       msj.appendChild(hora);
       div.scrollTop = div.scrollHeight;
       var time;
-      if (t == "Ahora") {
+      if (t == "Ahora" || t == undefined) {
         setTimeout(function () {
           time = new Date(Date.now());
           hora.innerText = time.getHours().toString() + ":" + ((time.getMinutes() < 10 ? "0" : "") + time.getMinutes()).toString();
