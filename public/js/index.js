@@ -579,6 +579,7 @@ $(function () {
     email.addEventListener('click', function (e) {
       e.preventDefault();
       respuesta(true);
+      $('#modal-email').modal('hide');
       closeChat();
     });
 
@@ -587,7 +588,7 @@ $(function () {
     cancelar.addEventListener('click', function (e) {
       e.preventDefault();
       respuesta(false);
-      //que borre el chat una vez se haga click
+      $('#modal-email').modal('hide');
       closeChat();
     });
     let chatActivo = sessionStorage.getItem('key');
@@ -607,6 +608,12 @@ $(function () {
         modalBody.appendChild(email);
         modalBody.appendChild(cancelar);
         $('#modal-email').modal('show');
+        iv.appendChild(msj);
+        div.appendChild(ex);
+        ex.appendChild(email);
+        ex.appendChild(cancelar);
+        document.getElementById("m").setAttribute("disable", "");
+        document.getElementById("enviar").setAttribute("disable", "");
       });
 
     }
