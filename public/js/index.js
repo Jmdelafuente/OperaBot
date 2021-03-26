@@ -603,18 +603,18 @@ $(function () {
     } else {
       document.getElementById('usuario_' + msg.idUser).addEventListener('click', function (msg) {
         msg.preventDefault();
-        var modalBody = document.getElementById("modal-body-email");
+        //var modalBody = document.getElementById("modal-body-email");
         //esta parte es cuando no esta activo el chat, dejar cartel o algo
-        modalBody.appendChild(email);
-        modalBody.appendChild(cancelar);
-        $('#modal-email').modal('show');
-        iv.appendChild(msj);
+        //modalBody.appendChild(email);
+        //modalBody.appendChild(cancelar);
+        //$('#modal-email').modal('show');
+        div.appendChild(msj);
         div.appendChild(ex);
         ex.appendChild(email);
         ex.appendChild(cancelar);
         document.getElementById("m").setAttribute("disable", "");
         document.getElementById("enviar").setAttribute("disable", "");
-        modalBody.remove();
+        //modalBody.remove();
       });
 
     }
