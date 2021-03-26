@@ -338,10 +338,9 @@ $(function () {
   var cambioEmail = document.getElementById('cambiar_Email');
   cambioEmail.addEventListener('click', function (e) {
     e.preventDefault();
-    var hora = new Date(Date.now());
     var iduser = sessionStorage.getItem('key');
     socket.emit('cambiar_Email', iduser);
-    addMessage("Se le envio al ciudadano la opcion de cambiar el email", 'E', hora, 'message');
+    addMessage("Se le envio al ciudadano la opcion de cambiar el email", 'E', Date.now(), 'message');
   });
 
 
