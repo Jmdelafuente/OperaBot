@@ -614,6 +614,7 @@ $(function () {
         ex.appendChild(cancelar);
         document.getElementById("m").setAttribute("disable", "");
         document.getElementById("enviar").setAttribute("disable", "");
+        modalBody.remove();
       });
 
     }
