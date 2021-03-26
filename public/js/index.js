@@ -571,8 +571,8 @@ $(function () {
     var cancelar = document.createElement("button");
     var div = document.getElementById("mensajes");
     ex.className = "sticky-bottom";
-    email.className = "btn btn-primary ";
-    cancelar.className = "btn btn-warning";
+    email.className = "btn btn-primary boton-enviar-email";
+    cancelar.className = "btn btn-warning boton-cerrar-email";
     msj.innerText = "Ciudadano cerro el chat";
     email.innerText = "Enviar charla por email";
 
