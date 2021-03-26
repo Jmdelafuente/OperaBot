@@ -603,8 +603,8 @@ $(function () {
       document.getElementById('usuario_' + msg.idUser).addEventListener('click', function (msg) {
         msg.preventDefault();
         var element = document.getElementById("modal-email");
-        element.open();
         //esta parte es cuando no esta activo el chat, dejar cartel o algo
+        $('#modal-email').modal('show');
         console.log("SI");
       });
 
