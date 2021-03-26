@@ -580,6 +580,7 @@ $(function () {
       e.preventDefault();
       respuesta(true);
       closeChat();
+      $('#modal-email').modal('hide');
     });
 
     cancelar.innerText = "cerrar chat";
@@ -589,6 +590,7 @@ $(function () {
       respuesta(false);
       //que borre el chat una vez se haga click
       closeChat();
+      $('#modal-email').modal('hide');
     });
     let chatActivo = sessionStorage.getItem('key');
 
