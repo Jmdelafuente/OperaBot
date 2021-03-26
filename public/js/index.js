@@ -361,8 +361,6 @@ $(function () {
         iduser = sessionStorage.getItem('key');
         ctx.drawImage(img, 0, 0);
         toDataURL(img.src, function (imagen) {
-
-
           let pack = {
             id: iduser,
             contenido: imagen
@@ -372,7 +370,7 @@ $(function () {
 
         });
       } else {
-        let mensaje = "Imagen demasiado pesada";
+        let mensaje = "Archivo demasiado pesada";
         socket.emit('send_op_message', mensaje);
         addMessage(mensaje, 'E', hora, 'message');
       }
@@ -603,18 +601,12 @@ $(function () {
     } else {
       document.getElementById('usuario_' + msg.idUser).addEventListener('click', function (msg) {
         msg.preventDefault();
-        //var modalBody = document.getElementById("modal-body-email");
+        var modalBody = document.getElementById("modal-body-email");
         //esta parte es cuando no esta activo el chat, dejar cartel o algo
-        //modalBody.appendChild(email);
-        //modalBody.appendChild(cancelar);
-        //$('#modal-email').modal('show');
-        div.appendChild(msj);
-        div.appendChild(ex);
-        ex.appendChild(email);
-        ex.appendChild(cancelar);
-        document.getElementById("m").setAttribute("disable", "");
-        document.getElementById("enviar").setAttribute("disable", "");
-        //modalBody.remove();
+        modalBody.appendChild(email);
+        modalBody.appendChild(cancelar);
+        $('#modal-email').modal('show');
+        modalBody.remove();
       });
 
     }
