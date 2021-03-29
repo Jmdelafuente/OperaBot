@@ -138,12 +138,12 @@ $(function () {
           break;
         case "sticker": // ! Sticker
         var ctx = canvas.getContext("2d");
-        let image = new Image();
-          image.onload = function () {
-            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        let imagen = new Image();
+          imagen.onload = function () {
+            ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
           };
-        image.src = cont;
-        msj.appendChild(image);
+        imagen.src = cont;
+        msj.appendChild(imagen);
         break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
