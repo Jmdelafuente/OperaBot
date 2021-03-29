@@ -141,7 +141,7 @@ $(function () {
         var ctx = canvas.getContext("2d");
         let imagen = new Image();
           imagen.onload = function () {
-            ctx.drawImage(imagen, 0, 0, (canvas.width) * 0.25, (canvas.height) * 0.25);
+            ctx.drawImage(imagen, 0, 0, (canvas.width)/2 , (canvas.height)/2);
           };
         imagen.src = cont;
         msj.appendChild(imagen);
