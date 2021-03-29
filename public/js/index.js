@@ -137,9 +137,13 @@ $(function () {
           msj.innerHTML = twemoji.parse(cont);
           break;
         case "sticker": // ! Sticker
-        let sticker = document.createElement('img');
-        sticker.src = cont;
-        msj.appendChild(sticker);
+        var ctx = canvas.getContext("2d");
+        let image = new Image();
+          image.onload = function () {
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+          };
+        image.src = cont;
+        msj.appendChild(image);
         break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
@@ -151,8 +155,8 @@ $(function () {
           break;
         case "image": // * Foto
           var link = document.createElement("a");
-          let canvas = document.createElement("canvas");
-          let ctx = canvas.getContext("2d");
+          var canvas = document.createElement("canvas");
+          var ctx = canvas.getContext("2d");
           let image = new Image();
           image.onload = function () {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
