@@ -137,14 +137,18 @@ $(function () {
           msj.innerHTML = twemoji.parse(cont);
           break;
         case "sticker": // ! Sticker
-        var canvas = document.createElement("canvas");
-        var ctx = canvas.getContext("2d");
-        let imagen = new Image();
-          imagen.onload = function () {
-            ctx.drawImage(imagen, 0, 0, (canvas.width)/2 , (canvas.height)/2);
-          };
-        imagen.src = cont;
-        msj.appendChild(imagen);
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          img.crossOrigin = 'anonymous';
+          iduser = sessionStorage.getItem('key');
+          ctx.drawImage(img, 0, 0);
+          toDataURL(cont, function (imagen) {  
+              pack.type = 'image';
+              socket.emit('adjunto-archivo', pack);
+              addMessage(imagen, 'E', hora, "image");
+          });
         break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
