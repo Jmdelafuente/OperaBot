@@ -137,6 +137,7 @@ $(function () {
           msj.innerHTML = twemoji.parse(cont);
           break;
         case "sticker": // ! Sticker
+        var canvas = document.createElement("canvas");
         var ctx = canvas.getContext("2d");
         let imagen = new Image();
           imagen.onload = function () {
