@@ -141,7 +141,6 @@ $(function () {
           var ctx = canvas.getContext('2d');
           canvas.width = msj.width;
           canvas.height = msj.height;
-          img.crossOrigin = 'anonymous';
           iduser = sessionStorage.getItem('key');
           ctx.drawImage(img, 0, 0);
           toDataURL(cont, function (imagen) {  
