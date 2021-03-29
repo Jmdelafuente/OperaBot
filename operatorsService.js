@@ -313,7 +313,7 @@ async function enviarMensaje(id, cont) {
   messenger.enviarMensaje(id, cont);
 }
 
-async function enviarArchivo(id,cont) {
+async function enviarArchivo(id,cont,type) {
   messenger.enviarArchivo(id, cont,type); 
 }
 
