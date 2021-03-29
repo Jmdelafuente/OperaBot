@@ -83,6 +83,11 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
       });
   });
 
+  api.post(`/api/${prefix}/wamessage`, jsonParser, (req, res) => {
+    res.send("hola");
+    res.sendStatus(200);
+  });
+
   // * Desconectamos un usuario
   api.post(`/api/${prefix}/disconnect`, jsonParser, (req, res) => {
     // TODO: authenticate origin: usar validateIP con req
