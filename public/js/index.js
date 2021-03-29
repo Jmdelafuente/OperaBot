@@ -137,6 +137,7 @@ $(function () {
           msj.innerHTML = twemoji.parse(cont);
           break;
         case "sticker": // ! Sticker
+        break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
           audio.setAttribute("controls", "");
@@ -144,6 +145,7 @@ $(function () {
           msj.appendChild(audio);
           break;
         default:
+          break;
         case "image": // * Foto
           var link = document.createElement("a");
           let canvas = document.createElement("canvas");
@@ -351,6 +353,7 @@ $(function () {
       var img = document.createElement('img');
       img.src = URL.createObjectURL(this.files[0]); // set src to blob url
       let permitido = ((this.files[0].size / 1024) / 1024);//no puede pesar mas de 50mb
+      var mime = this.files[0].type;
       var hora = Date.now();
       if (permitido <= 50) {
         const canvas = document.createElement('canvas');
@@ -365,8 +368,17 @@ $(function () {
             id: iduser,
             contenido: imagen
           };
+
+
+        if (mime.substring(0, 5) == 'image') {
+          pack.type = 'image';
           socket.emit('adjunto-archivo', pack);
           addMessage(imagen, 'E', hora, "image");
+          } else if (mime == 'application/pdf'){
+          pack.type = 'pdf';
+          socket.emit('adjunto-archivo', pack);
+          addMessage(imagen, 'E', hora, "pdf");
+          }
 
         });
       } else {

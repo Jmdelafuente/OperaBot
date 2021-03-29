@@ -98,9 +98,9 @@ async function cambiar_Email(id) {
   return res;
 }
 
-async function enviarArchivo(id, cont) {
+async function enviarArchivo(id, cont,type) {
   var chat = chatsList[id];
-  let res = await chat.enviarArchivo(cont);
+  let res = await chat.enviarArchivo(cont,type);
   return res;
 }
 

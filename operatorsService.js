@@ -314,7 +314,7 @@ async function enviarMensaje(id, cont) {
 }
 
 async function enviarArchivo(id,cont) {
-  messenger.enviarArchivo(id, cont); 
+  messenger.enviarArchivo(id, cont,type); 
 }
 
 async function confirmarVisto(chatId, channelId) {

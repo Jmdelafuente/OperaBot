@@ -55,7 +55,8 @@ module.exports.bodyParser = function (origen, destino, mensaje, tipo = "chat") {
     case "P":
       body = {
         id: destino,
-        text: mensaje
+        text: mensaje,
+        type: tipo
       };
       break;
     default:

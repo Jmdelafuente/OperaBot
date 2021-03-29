@@ -147,7 +147,7 @@ io.on("connection", function (socket) {
   })
 
   socket.on('adjunto-archivo', function (msg) {
-    op.enviarArchivo(msg.id,msg.contenido);
+    op.enviarArchivo(msg.id,msg.contenido,msg.type);
   });
 
   socket.on('obtener-opciones',function(msg){

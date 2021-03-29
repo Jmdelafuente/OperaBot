@@ -135,11 +135,11 @@ class Chat {
     return res;
   }
 
-  async enviarArchivo(cont) {
+  async enviarArchivo(cont,type) {
     let res;
     await axios
       .post(services.URLs[this.origin] + "/newfiles", {
-        body: services.bodyParser(this.origin, this.id, cont),
+        body: services.bodyParser(this.origin, this.id, cont,type),
         headers: {
           "Content-Type": "application/json",
         },
