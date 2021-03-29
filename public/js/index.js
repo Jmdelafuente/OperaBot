@@ -137,7 +137,9 @@ $(function () {
           msj.innerHTML = twemoji.parse(cont);
           break;
         case "sticker": // ! Sticker
-        console.log(cont);
+        let sticker = document.createElement('img');
+        sticker.src = cont;
+        msj.appendChild(sticker);
         break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
