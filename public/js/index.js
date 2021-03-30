@@ -518,7 +518,7 @@ $(function () {
         </div>
         </div>`);
       // se guarda en el sessionStorage del cliente, la id del civil  
-      sessionStorage.setItem('key', id);
+      sessionStorage.setItem('key', chat_activo);
       // Enviamos el 'visto' al servidor
 
       //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
