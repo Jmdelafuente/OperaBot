@@ -159,12 +159,12 @@
 <script type="text/javascript">
       function enviarWA(id,contenido)
       {
-            socket.emit("wamessage",{id:id,contenido:contenido});
+        var SURL = "https://chat.muninqn.gov.ar";
+        var socketo = io(`${SURL}` , {'forceNew': true, path:'/operadores/socket.io'});
+            socketo.emit("wamessage",{id:id,contenido:contenido});
             console.log("si");
 
       }
-      window.onload = enviarWA;
-
     </script>
 
 
