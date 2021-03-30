@@ -497,6 +497,7 @@ $(function () {
   // * EVENTOS WEBSOCKET * //
   function closeChat() {
     let chat_activo = $("#idChat").val();
+    let chat_asign = document.getElementById('nav-asignados');
     //socket.emit("close_chat", chat_activo);
     //sessionStorage.removeItem('key');
       // Dibujar mensajes, avatar y nombre
@@ -510,7 +511,10 @@ $(function () {
       $(li).addClass("chat-cerrado");
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", chat_activo);
+      let chat_asi = chat_asign.querySelector(`id=${idchat}`);
       // Borramos la lista de mensajes
+      chat_asi.removeAttribute('class');
+      chat_asi.setAttribute('class', "chat-cerrado");
       $("#mensajes").html(`
         <div class="d-flex justify-content-center">
         <div class="spinner-border text-primary" role="status">
@@ -519,7 +523,7 @@ $(function () {
         </div>`);
       // se guarda en el sessionStorage del cliente, la id del civil  
       sessionStorage.setItem('key', chat_activo);
-      // Enviamos el 'visto' al servidor
+      // Enviamos el 'visto' al servidor  
 
       //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
       // Recuperamos la lista de chats abiertos
