@@ -316,7 +316,7 @@ $(function () {
       // Actualizamos el nombre
       $("#nombreActivo").html("Chat con " + nom);
       // Marcamos el chat como activo
-      if (  li.className != "chat-cerrado"){        
+      if (li.className != "chat-cerrado"){        
         $(".chat .active-chat").removeClass("active-chat");
         $(li).addClass("active-chat");
         // Pedimos los mensajes del chat
@@ -334,6 +334,14 @@ $(function () {
         socket.emit("seen", id);
         //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
         // Recuperamos la lista de chats abiertos
+        $('div[data-href="' + activeTab + '"]').tab("show");
+        // Marcamos como leido el chat
+        readMessages(id);
+        return false;
+      }else{
+        $(li).addClass("active-chat");
+        // Pedimos los mensajes del chat
+        socket.emit("all_messages_chat", id);
         $('div[data-href="' + activeTab + '"]').tab("show");
         // Marcamos como leido el chat
         readMessages(id);
