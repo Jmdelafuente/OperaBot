@@ -142,12 +142,11 @@ $(function () {
           canvas.width = msj.width;
           canvas.height = msj.height;
           iduser = sessionStorage.getItem('key');
-          ctx.drawImage(img, 0, 0);
-          toDataURL(cont, function (imagen) {  
-              pack.type = 'image';
-              socket.emit('adjunto-archivo', pack);
-              addMessage(imagen, 'E', hora, "image");
-          });
+          let image = new Image();
+          image.onload = function () {
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+          };
+          image.src = cont;
         break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
