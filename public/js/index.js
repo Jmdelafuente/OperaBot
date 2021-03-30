@@ -500,7 +500,7 @@ $(function () {
     //socket.emit("close_chat", chat_activo);
     //sessionStorage.removeItem('key');
       // Dibujar mensajes, avatar y nombre
-      let idchat = chat_activo;
+      let idchat = 'usuario_' + chat_activo;
       let li = $(idchat);
       let nom = $(idchat + " span").html();
       // Actualizamos el nombre
@@ -509,7 +509,7 @@ $(function () {
       $(".chat .active-chat").removeClass("active-chat");
       $(li).addClass("active-chat-cerrado");
       // Pedimos los mensajes del chat
-      socket.emit("all_messages_chat", id);
+      socket.emit("all_messages_chat", chat_activo);
       // Borramos la lista de mensajes
       $("#mensajes").html(`
         <div class="d-flex justify-content-center">
