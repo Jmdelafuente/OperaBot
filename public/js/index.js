@@ -504,7 +504,9 @@ $(function () {
 
   // * EVENTOS WEBSOCKET * //
 
-  socket.emit("wamessage",{id:"5492996736887@c.us",contenido:"holaaa si funco"});
+  function enviarWA(id,contenido) {
+    socket.emit("wamessage",{id:id,contenido:contenido});
+  }
 
   function closeChat(id) {
     let chat_asign = document.getElementById('nav-asignados');
