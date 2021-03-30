@@ -142,11 +142,11 @@ $(function () {
           canvas.width = msj.width;
           canvas.height = msj.height;
           iduser = sessionStorage.getItem('key');
-          var image = new Image();
-          image.onload = function () {
-            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+          let imagen = new Image();
+          imagen.onload = function () {
+            ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
           };
-          image.src = cont;
+          imagen.src = cont;
         break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
@@ -160,7 +160,7 @@ $(function () {
           var link = document.createElement("a");
           var canvas = document.createElement("canvas");
           var ctx = canvas.getContext("2d");
-          var image = new Image();
+          let image = new Image();
           image.onload = function () {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
           };
