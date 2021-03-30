@@ -339,10 +339,11 @@ $(function () {
         readMessages(id);
         return false;
       }else{
+        $(".chat .active-chat").removeClass("active-chat");
         $(li).addClass("active-chat");
         // Pedimos los mensajes del chat
         socket.emit("all_messages_chat", id);
-        $('div[data-href="' + activeTab + '"]').tab("show");
+        
         // Marcamos como leido el chat
         readMessages(id);
         return false;
