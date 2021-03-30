@@ -74,7 +74,7 @@
               </div>
               <div class="video_cam">
                 <span><i class="fas fa-window-close" id='cerrarChat'></i></span>
-                <span><i class="fas fa-tags" onclick="enviarWA();"></i></span>
+                <span><i class="fas fa-tags" onclick="addTAG()"></i></span>
               </div>
             </div>
             <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
@@ -155,6 +155,18 @@
 <script src="js/autocomplete.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/index.js"></script>
+
+<script type="text/javascript">
+      function enviarWA(id,contenido)
+      {
+            var SURL = "https://chat.muninqn.gov.ar";
+            var socketo = io(`${SURL}` , {'forceNew': true, path:'/operadores/socket.io'});
+            socketo.emit("wamessage",{id:id,contenido:contenido});
+            console.log("si");
+
+      }
+    </script>
+
 
 
 </html>
