@@ -142,7 +142,7 @@ $(function () {
           canvas.width = msj.width;
           canvas.height = msj.height;
           iduser = sessionStorage.getItem('key');
-          let image = new Image();
+          var image = new Image();
           image.onload = function () {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
           };
@@ -160,7 +160,7 @@ $(function () {
           var link = document.createElement("a");
           var canvas = document.createElement("canvas");
           var ctx = canvas.getContext("2d");
-          let image = new Image();
+          var image = new Image();
           image.onload = function () {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
           };
