@@ -500,8 +500,8 @@ $(function () {
     let chat_asign = document.getElementById('nav-asignados');
     //socket.emit("close_chat", chat_activo);
     //sessionStorage.removeItem('key');
-      // Dibujar mensajes, avatar y nombre
-      let idchat = 'usuario_' + id;
+    $("#idChat").val(id);
+      let idchat = jq("usuario_" + id);
       let li = $(idchat);
       let nom = $(idchat + " span").html();
       // Actualizamos el nombre
