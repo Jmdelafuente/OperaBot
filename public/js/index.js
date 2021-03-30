@@ -507,7 +507,7 @@ $(function () {
       $("#nombreActivo").html("Chat con " + nom);
       // Marcamos el chat como activo
       $(".chat .active-chat").removeClass("active-chat");
-      $(li).addClass("active-chat-cerrado");
+      $(li).addClass("chat-cerrado");
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", chat_activo);
       // Borramos la lista de mensajes

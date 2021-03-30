@@ -281,7 +281,7 @@ img.emoji {
 	background: #026BB2!important;
     border-color: #026BB2!important;
 }
-.contacts li.active-chat-cerrado {
+.contacts li.chat-cerrado {
 	background: #c7c3c396 !important;
 }
 .list-group-item-dark , .chat{
@@ -380,4 +380,10 @@ img.emoji {
   /*when navigating through the items using the arrow keys:*/
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+
+.fa.fa-desktop,
+.fab.fa-whatsapp {
+	color: white;
+	font-size: 22px;
 }
