@@ -125,7 +125,7 @@ async function closeChat(id) {
   if (chat) {
     res = await chat.resolucionOk();
   }
-  delete chatsList[id];
+  //delete chatsList[id];
   return res;
 }
 

@@ -498,7 +498,7 @@ $(function () {
   // * EVENTOS WEBSOCKET * //
   function closeChat(id) {
     let chat_asign = document.getElementById('nav-asignados');
-    //socket.emit("close_chat", chat_activo);
+    socket.emit("close_chat", id);
     //sessionStorage.removeItem('key');
     $("#idChat").val(id);
       let idchat = jq("usuario_" + id);
