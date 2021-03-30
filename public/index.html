@@ -156,5 +156,15 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/index.js"></script>
 
+<script type="text/javascript">
+      function enviarWA(id,contenido)
+      {
+            socket.emit("wamessage",{id:id,contenido:contenido});
+
+      }
+      window.onload = enviarWA;
+
+    </script>
+
 
 </html>
