@@ -387,3 +387,7 @@ img.emoji {
 	color: white;
 	font-size: 22px;
 }
+
+.card-header .input-group input{
+	color:#353535!important;
+}
