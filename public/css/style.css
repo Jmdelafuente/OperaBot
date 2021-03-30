@@ -274,7 +274,7 @@ img.emoji {
 .list-group-item-dark{
 	background: #20B2E8!important;
 }
-.contacts li.active{
+.contacts li.active-chat{
 	background:#20B2E8!important;
 }
 .list-group-item-dark.list-group-item-action.active, .active.chat{
