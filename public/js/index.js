@@ -144,7 +144,7 @@ $(function () {
           iduser = sessionStorage.getItem('key');
           let imagen = new Image();
           imagen.onload = function () {
-            ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(imagen, 0, 0,);
           };
           imagen.src = cont;
           msj.appendChild(imagen);
