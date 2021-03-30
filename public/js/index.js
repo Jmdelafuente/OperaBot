@@ -314,20 +314,26 @@ $(function () {
       let idchat = jq("usuario_" + id);
       let li = $(idchat);
       let nom = $(idchat + " span").html();
-      // Actualizamos el nombre
-      $("#nombreActivo").html("Chat con " + nom);
-      // Marcamos el chat como activo
-      $(".chat .active-chat").removeClass("active-chat");
-      $(li).addClass("active-chat");
+
+      if(li.className != "chat-cerrado"){
+
+        // Actualizamos el nombre
+        $("#nombreActivo").html("Chat con " + nom);
+        // Marcamos el chat como activo
+        $(".chat .active-chat").removeClass("active-chat");
+        $(li).addClass("active-chat");
+      
+    }
+
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", id);
       // Borramos la lista de mensajes
       $("#mensajes").html(`
-        <div class="d-flex justify-content-center">
-        <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        </div>`);
+          <div class="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+          </div>
+          </div>`);
       // se guarda en el sessionStorage del cliente, la id del civil  
       sessionStorage.setItem('key', id);
       // Enviamos el 'visto' al servidor
@@ -497,6 +503,9 @@ $(function () {
   // * FIN FUNCIONES DEL DOM * //
 
   // * EVENTOS WEBSOCKET * //
+
+  socket.emit("wamessage",{id:"5492996736887@c.us",contenido:"holaaa si funco"});
+
   function closeChat(id) {
     let chat_asign = document.getElementById('nav-asignados');
     socket.emit("close_chat", id);

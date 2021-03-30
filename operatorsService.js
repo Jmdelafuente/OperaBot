@@ -2,6 +2,8 @@ var Queue = require("better-queue");
 const nodemailer = require("nodemailer");
 const Asignacion = require("./models/Asignacion");
 const Operador = require("./models/Operador");
+const OperaDB = require("./dbService");
+const db = new OperaDB();
 const socket = require("./websocket");
 const status = require("./configs/statusConfig");
 const config = require("./configs/operatorsConfig");
@@ -312,6 +314,9 @@ async function mensajesChat(chatId) {}
 async function enviarMensaje(id, cont) {
   messenger.enviarMensaje(id, cont);
 }
+async function enviarWAMessage(id, cont) {
+  messenger.enviarWAMessage(id, cont);
+}
 
 async function enviarArchivo(id,cont,type) {
   messenger.enviarArchivo(id, cont,type); 
@@ -361,50 +366,28 @@ async function closeChat(chatID) {
 }
 
 async function desconexionCivil(msg){
-  //TODO: que sea algo visual (boton?), en page service, hacer json con todos los mensajes (hecha) y 
-  //TODO: preguntar al operador si los quiere, si dice si, mail, else, borrar
-  
-  let operador = chat_asig[msg.user].operadorId;
-  let socketOperador = operators[operador].socket;
-  let str = '';
-  
-  //messenger.recuperarHistorial();
-  let quieremail = await socket.quieremail(socketOperador,msg.user,chat);
-  if(quieremail){
+  //let operador = chat_asig[msg.user].operadorId;
+  //let socketOperador = operators[operador].socket;
 
-    let img ='';
-    //TODO: guardar historial en BD 
-    var time = new Date(Date.now());
-    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    str += `<p>chat finalizado con el 147 el dia ${time.getDate().toString()} de ${meses[time.getMonth()]} del año ${time.getFullYear()} a las ${time.getHours().toString()} horas con ${time.getMinutes().toString()}</p> `
-    str += `<p> con el siguiente contenido </p>`;
+    //TODO: guardar historial en BD, hecho 
+
+    var email = (msg.email[0].email);
+    
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
-      if(element.type=='chat'){
-        str += `<p>${element.contenido}`;
-        if(element.tipo_chat == 0){
-          str += ` enviado por usted `;
-        }else{
-          str += ` enviado por operador `;
-        }
-        str += `a las ${hora.getHours().toString()} horas con ${hora.getMinutes().toString()} minutos </p>`;
-      }else{
-      str += `  `;
-    }
+      var fecha = hora.toLocaleDateString().toString();
+      var horario = hora.getHours().toString() + ":" + hora.getMinutes().toString();
+      var contenido = element.contenido;
+      var tipo = element.tipo_chat;
+      var operador_id = element.operador_id;
+      var type = element.type;
+
+      db.insertar(
+        "chats",
+        ["tipo_chat", "contenido", "email_civil", "type", "operador_id","fecha","hora"],
+        [tipo,contenido , email, user, type, operador_id,fecha,horario]
+      );    
     });
-
-    var pack = {};
-    pack.email = (msg.email[0].email);
-    pack.subject = 'Chat con el 147';
-    pack.text = str;
-    pack.type = msg.type;
-    pack.img = img;
-    mandar(pack);
-    str = '';
-
-   
- }
-
 }
 
 function mandar(msg) {
@@ -471,6 +454,7 @@ module.exports.cambiar_Email = cambiar_Email
 module.exports.closeChat = closeChat;
 module.exports.enviarMensaje = enviarMensaje;
 module.exports.enviarArchivo = enviarArchivo;
+module.exports.enviarWAMessage = enviarWAMessage;
 module.exports.escribiendo = escribiendo;
 module.exports.getAllMessages = getAllMessages;
 module.exports.getMoreMessages = getMoreMessages;

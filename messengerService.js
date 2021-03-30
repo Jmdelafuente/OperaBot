@@ -92,6 +92,12 @@ async function enviarMensaje(id, cont) {
   return res;
 }
 
+async function enviarWAMessage(id, cont) {
+  var chat = chatsList[id];
+  let res = await chat.enviarWAMessage(cont);
+  return res;
+}
+
 async function cambiar_Email(id) {
   var chat = chatsList[id];
   let res = await chat.cambiar_Email(id);
@@ -193,3 +199,4 @@ module.exports.nuevaImagen = nuevaImagen;
 module.exports.nuevalistaChats = nuevalistaChats;
 module.exports.nuevoMensaje = nuevoMensaje;
 module.exports.enviarMenu = enviarMenu;
+module.exports.enviarWAMessage = enviarWAMessage;

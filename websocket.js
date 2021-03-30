@@ -66,6 +66,9 @@ io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido);
   });
+  socket.on("wamessage", function (msg) {
+    op.enviarWAMessage(msg.id,msg.contenido);
+  });
   socket.on("new_operator", function (msg) {
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
