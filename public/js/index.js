@@ -316,7 +316,7 @@ $(function () {
       // Actualizamos el nombre
       $("#nombreActivo").html("Chat con " + nom);
       // Marcamos el chat como activo
-      $(".chat .active").removeClass("active");
+      //$(".chat .active").removeClass("active");
       $(li).addClass("active");
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", id);
