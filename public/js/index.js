@@ -307,6 +307,7 @@ $(function () {
    */
   function changeChat(id) {
     if ($("#idChat").val() != id) {
+      activeTab = sessionStorage.getItem("activeTab");
       // Actualizamos el destinatario
       $("#idChat").val(id);
       // Dibujar mensajes, avatar y nombre
