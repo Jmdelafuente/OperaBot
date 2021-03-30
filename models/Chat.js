@@ -225,28 +225,6 @@ class Chat {
     return res;
   }
 
-  async enviarWAMessage(cont) {
-    let res;
-    await axios
-      .post("http://localhost:3003/wa/sendmessage", {
-        body: services.bodyParser("W", this.id, cont),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        res = response.data;
-        // Actualizamos el estado interno del chat
-        this.pendingmessage = 0;
-        this.lastmessage = cont;
-        this.timestamp = Date.now();
-      })
-      .catch(function (error) {
-        res = new Error(error);
-      });
-    return res;
-  }
-
   async getAllMessages(includeMe) {
     let res;
     let b = services.getMessagesParser(this.origin, this.id, includeMe);
