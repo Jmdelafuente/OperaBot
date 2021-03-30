@@ -139,13 +139,15 @@ $(function () {
         case "sticker": // ! Sticker
           var canvas = document.createElement('canvas');
           var ctx = canvas.getContext('2d');
-
+          canvas.width = msj.width;
+          canvas.height = msj.height;
           iduser = sessionStorage.getItem('key');
           let imagen = new Image();
           imagen.onload = function () {
             ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
           };
           imagen.src = cont;
+          msj.appendChild(imagen);
         break;
         case "ptt": //! AUDIO
           let audio = document.createElement("audio");
