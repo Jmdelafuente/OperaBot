@@ -93,9 +93,22 @@ async function enviarMensaje(id, cont) {
 }
 
 async function enviarWAMessage(id, cont) {
-  var chat = chatsList[id];
-  let res = await chat.enviarWAMessage(cont);
-  return res;
+
+  let res;
+  await axios
+    .post("http://localhost:3003/wa/sendmessage", {
+      body: services.bodyParser('W', id, cont),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+    })
+    .catch(function (error) {
+      res = new Error(error);
+    });
+  return res;  
+
 }
 
 async function cambiar_Email(id) {
