@@ -139,8 +139,7 @@ $(function () {
         case "sticker": // ! Sticker
           var canvas = document.createElement('canvas');
           var ctx = canvas.getContext('2d');
-          canvas.width = msj.width;
-          canvas.height = msj.height;
+
           iduser = sessionStorage.getItem('key');
           let imagen = new Image();
           imagen.onload = function () {
