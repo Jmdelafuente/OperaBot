@@ -497,15 +497,34 @@ $(function () {
   // * EVENTOS WEBSOCKET * //
   function closeChat() {
     let chat_activo = $("#idChat").val();
-    socket.emit("close_chat", chat_activo);
-    sessionStorage.removeItem('key');
-    //parte grafica del borrado
-    let div_chat = document.getElementById("usuario_" + chat_activo);
-    let div_mensajes = document.getElementById("mensajes");
-    div_mensajes.innerHTML = "";
-    div_chat.remove();
-    let chatasig = document.getElementById("usuario_" + chat_activo);
-    chatasig.remove();
+    //socket.emit("close_chat", chat_activo);
+    //sessionStorage.removeItem('key');
+      // Dibujar mensajes, avatar y nombre
+      let idchat = chat_activo;
+      let li = $(idchat);
+      let nom = $(idchat + " span").html();
+      // Actualizamos el nombre
+      $("#nombreActivo").html("Chat con " + nom);
+      // Marcamos el chat como activo
+      $(".chat .active-chat").removeClass("active-chat");
+      $(li).addClass("active-chat-cerrado");
+      // Pedimos los mensajes del chat
+      socket.emit("all_messages_chat", id);
+      // Borramos la lista de mensajes
+      $("#mensajes").html(`
+        <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+        </div>
+        </div>`);
+      // se guarda en el sessionStorage del cliente, la id del civil  
+      sessionStorage.setItem('key', id);
+      // Enviamos el 'visto' al servidor
+
+      //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
+      // Recuperamos la lista de chats abiertos
+      $('div[data-href="' + activeTab + '"]').tab("show");
+
     // TODO: estetica de chat cerrado
   }
   function getAsignados() {

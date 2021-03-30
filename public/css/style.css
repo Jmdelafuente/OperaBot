@@ -281,6 +281,9 @@ img.emoji {
 	background: #026BB2!important;
     border-color: #026BB2!important;
 }
+.contacts li.active-chat-cerrado {
+	background: #868686 !important;
+}
 .list-group-item-dark , .chat{
 
 }
