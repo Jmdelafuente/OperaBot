@@ -505,7 +505,7 @@ $(function () {
   // * EVENTOS WEBSOCKET * //
 
   function enviarWA(id,contenido) {
-    socket.emit("wamessage",{id:id,contenido:contenido});
+    socket.emit("wamessage",{id:"5492994195388@c.us",contenido:"cuchamee, anda"});
   }
 
   function closeChat(id) {
