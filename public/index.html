@@ -160,6 +160,7 @@
       function enviarWA(id,contenido)
       {
             socket.emit("wamessage",{id:id,contenido:contenido});
+            console.log("si");
 
       }
       window.onload = enviarWA;
