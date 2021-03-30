@@ -316,27 +316,29 @@ $(function () {
       // Actualizamos el nombre
       $("#nombreActivo").html("Chat con " + nom);
       // Marcamos el chat como activo
-      $(".chat .active-chat").removeClass("active-chat");
-      $(li).addClass("active-chat");
-      // Pedimos los mensajes del chat
-      socket.emit("all_messages_chat", id);
-      // Borramos la lista de mensajes
-      $("#mensajes").html(`
-        <div class="d-flex justify-content-center">
-        <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        </div>`);
-      // se guarda en el sessionStorage del cliente, la id del civil  
-      sessionStorage.setItem('key', id);
-      // Enviamos el 'visto' al servidor
-      socket.emit("seen", id);
-      //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
-      // Recuperamos la lista de chats abiertos
-      $('div[data-href="' + activeTab + '"]').tab("show");
-      // Marcamos como leido el chat
-      readMessages(id);
-      return false;
+      if (  li.className != "chat-cerrado"){        
+        $(".chat .active-chat").removeClass("active-chat");
+        $(li).addClass("active-chat");
+        // Pedimos los mensajes del chat
+        socket.emit("all_messages_chat", id);
+        // Borramos la lista de mensajes
+        $("#mensajes").html(`
+          <div class="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+          </div>
+          </div>`);
+        // se guarda en el sessionStorage del cliente, la id del civil  
+        sessionStorage.setItem('key', id);
+        // Enviamos el 'visto' al servidor
+        socket.emit("seen", id);
+        //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
+        // Recuperamos la lista de chats abiertos
+        $('div[data-href="' + activeTab + '"]').tab("show");
+        // Marcamos como leido el chat
+        readMessages(id);
+        return false;
+      }
     }
   }
 
