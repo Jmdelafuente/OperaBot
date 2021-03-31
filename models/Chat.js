@@ -43,7 +43,7 @@ class Chat {
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
     this.email = email;
-    this.state = new estado.Abierto(this.id);
+    this.state = new estado.Abierto(this);
     // this.db = new OperaDB();
   }
 

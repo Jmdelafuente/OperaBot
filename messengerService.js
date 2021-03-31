@@ -141,6 +141,7 @@ async function enviarMenu(id, cont) {
 async function closeChat(id) {
   var chat = chatsList[id];
   let res = false;
+  console.log(`chat en MS es ${chat}`);
   if (chat) {
     res = await chat.resolucionOk();
   }
