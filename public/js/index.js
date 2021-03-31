@@ -429,11 +429,11 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
-          addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state);
+          addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre);
         }
       }
       if (!chatListAll.includes(c)) {
-        addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state);
+        addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre);
       }
     }
     // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
