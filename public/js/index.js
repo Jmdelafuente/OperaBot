@@ -321,8 +321,8 @@ $(function () {
       $("#nombreActivo").html("Chat con " + nom);
       // Marcamos el chat como activo
       $(".chat .active-chat").removeClass("active-chat");
-
-      if(li.className != "chat-cerrado"){
+      console.log(`nombre class: ${li.className}`);
+      if (li.className != "chat-cerrado"){
         $(li).addClass("active-chat");
         // Enviamos el 'visto' al servidor
         socket.emit("seen", id);
