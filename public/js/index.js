@@ -317,15 +317,17 @@ $(function () {
       let idchat = jq("usuario_" + id);
       let li = $(idchat);
       let nom = $(idchat + " span").html();
+      // Actualizamos el nombre
+      $("#nombreActivo").html("Chat con " + nom);
+      // Marcamos el chat como activo
 
-      if(li.className != "chat-cerrado"){
+      if(estado != "Cerrado"){
 
-        // Actualizamos el nombre
-        $("#nombreActivo").html("Chat con " + nom);
-        // Marcamos el chat como activo
         $(".chat .active-chat").removeClass("active-chat");
         $(li).addClass("active-chat");
-      
+        
+        // Enviamos el 'visto' al servidor
+        socket.emit("seen", id);
       }
 
       // Pedimos los mensajes del chat
@@ -339,8 +341,6 @@ $(function () {
           </div>`);
       // se guarda en el sessionStorage del cliente, la id del civil  
       sessionStorage.setItem('key', id);
-      // Enviamos el 'visto' al servidor
-      socket.emit("seen", id);
       //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
       // Recuperamos la lista de chats abiertos
       $('div[data-href="' + activeTab + '"]').tab("show");
