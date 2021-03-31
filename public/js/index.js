@@ -703,7 +703,7 @@ $(function () {
     }
   });
 
-  setInterval(function () {location.reload(); }, 5000);
+  //setInterval(function () {location.reload(); }, 5000);
 
   // * FIN EVENTOS WEBSOCKET * //
   // Fin onload
