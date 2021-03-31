@@ -320,16 +320,14 @@ $(function () {
       // Actualizamos el nombre
       $("#nombreActivo").html("Chat con " + nom);
       // Marcamos el chat como activo
+      $(".chat .active-chat").removeClass("active-chat");
 
-      if(estado != "Cerrado"){
-
-        $(".chat .active-chat").removeClass("active-chat");
+      if(li.className != "chat-cerrado"){
         $(li).addClass("active-chat");
-        
         // Enviamos el 'visto' al servidor
         socket.emit("seen", id);
       }
-
+      
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", id);
       // Borramos la lista de mensajes
