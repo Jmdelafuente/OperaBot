@@ -236,7 +236,7 @@ $(function () {
    * @param {Boolean} asign true si esta asignado a este operador, false en otro caso.
    * @param {char} origen "P" para saber si viene por message service o "W" si viene de wpp
    */
-  function addChat(nom, id, asign, origen) {
+  function addChat(nom, id, asign, origen,estado) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -245,7 +245,7 @@ $(function () {
       var info = document.createElement("div");
       var nombre = document.createElement("span");
       var estatus = document.createElement("p");
-
+      console.log(`estado: ${estado}`)
       // li.classList = "active";
       li.id = "usuario_" + id;
       ex.className = "d-flex bd-highlight";
@@ -281,7 +281,7 @@ $(function () {
       info.appendChild(orig);
       li.addEventListener('click', function (event) {
         event.preventDefault();
-        changeChat(id);
+        changeChat(id,estado);
       });
 
 
@@ -292,7 +292,7 @@ $(function () {
         chatListAsign.push(id);
         clonediv.addEventListener('click', function (event) {
           event.preventDefault();
-          changeChat(id);
+          changeChat(id,estado);
         });
       }
 
@@ -305,7 +305,7 @@ $(function () {
    * @param {String} id ID de chat seleccionado
    * @returns
    */
-  function changeChat(id) {
+  function changeChat(id,estado) {
     if ($("#idChat").val() != id) {
       activeTab = sessionStorage.getItem("activeTab");
       // Actualizamos el destinatario
@@ -323,7 +323,7 @@ $(function () {
         $(".chat .active-chat").removeClass("active-chat");
         $(li).addClass("active-chat");
       
-    }
+      }
 
       // Pedimos los mensajes del chat
       socket.emit("all_messages_chat", id);
@@ -429,11 +429,11 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
-          addChat(lista[c].name, lista[c].id, asig, lista[c].origin);
+          addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state);
         }
       }
       if (!chatListAll.includes(c)) {
-        addChat(lista[c].name, lista[c].id, asig, lista[c].origin);
+        addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state);
       }
     }
     // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
@@ -505,7 +505,7 @@ $(function () {
   // * EVENTOS WEBSOCKET * //
 
   function enviarWA(id,contenido) {
-    socket.emit("wamessage",{id:"5492994195388@c.us",contenido:"cuchamee, anda"});
+    socket.emit("wamessage",{id:`${id}@c.us`,contenido:contenido});
   }
 
   function closeChat(id) {
