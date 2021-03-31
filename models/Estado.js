@@ -41,15 +41,15 @@ class Cerrado extends Estado {
   }
   
   asignacion () {
-    this.chat.state = new Abierto(this.chat);
+    chat.state = new Abierto(chat.id);
   }
   
   resolucionOk () {
-    this.chat.state = new Cerrado(this.chat);
+    chat.state = new Cerrado(chat.id);
   }
 
   resolucionFallida () {
-    this.chat.state = new Cerrado(this.chat); 
+    chat.state = new Cerrado(chat.id); 
   }
 
 }
@@ -66,16 +66,15 @@ class Abierto extends Estado{
   }
   
   asignacion () {
-    this.chat.state = new Abierto(this.chat);
+    chat.state = new Abierto(chat.id);
   }
   
   resolucionOk () {
-    console.log(`que es chat: ${this.chat}  y id ${chat.id}`);
-    chat.state = new Cerrado(this.chat);
+    chat.state = new Cerrado(chat.id);
   }
 
   resolucionFallida () {
-    this.chat.state = new Abierto(this.chat);
+    chat.state = new Abierto(chat.id);
   }
 }
 
