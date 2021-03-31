@@ -70,6 +70,7 @@ class Abierto extends Estado{
   }
   
   resolucionOk () {
+    console.log(`que es chat: ${this.chat}  y id ${this.chat.id}`);
     this.chat.state = new Cerrado(this.chat.id);
   }
 
