@@ -70,7 +70,7 @@ class Abierto extends Estado{
   }
   
   resolucionOk () {
-    this.chat.state = new Cerrado(this.chat);
+    this.chat.state = new Cerrado(this.chat.id);
   }
 
   resolucionFallida () {
