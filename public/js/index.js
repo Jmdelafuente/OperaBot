@@ -245,7 +245,6 @@ $(function () {
       var info = document.createElement("div");
       var nombre = document.createElement("span");
       var estatus = document.createElement("p");
-      console.log(`estado: ${estado}`)
       // li.classList = "active";
       li.id = "usuario_" + id;
       ex.className = "d-flex bd-highlight";
@@ -257,6 +256,10 @@ $(function () {
       nombre.innerText = nom;
       estatus.innerText = "Online";
       var orig = document.createElement("i");
+
+      if(estado=='Cerrado'){
+        li.className="chat-cerrado";
+      }
 
       switch (origen) {
         case "P":
