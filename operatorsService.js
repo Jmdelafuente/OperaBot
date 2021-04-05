@@ -367,7 +367,7 @@ async function closeChat(chatID) {
 
 async function recuperarChatEmail(email) {
   let historial_chat;
-  db.buscar(
+  await db.buscar(
     "chats",
     ["tipo_chat", "contenido", "email_civil", "type","operador_id","fecha","hora"],
     [["email_civil", email]]
@@ -375,6 +375,7 @@ async function recuperarChatEmail(email) {
     (chats) => {
       console.log(`cuando vemoos que los chats se encuentran ${chats}`);
       historial_chat = chats;
+      console.log(`despues de asignar ${historial_chat}`);
     },
     (error) => {
       console.error(error);
