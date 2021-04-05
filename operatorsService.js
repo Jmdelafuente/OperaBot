@@ -386,7 +386,7 @@ async function desconexionCivil(msg){
 
     //TODO: guardar historial en BD, hecho 
 
-    var email = (msg.email[0].email);
+    var email = msg.email;
     
     msg.historial.forEach(element => {
       var hora = new Date(parseInt(element.hora));
