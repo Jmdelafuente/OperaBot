@@ -374,7 +374,7 @@ async function recuperarChatEmail(email) {
   ).then(
     (chats) => {
       console.log(`cuando vemoos que los chats se encuentran ${chats}`);
-      historial_chat = chats.data;
+      historial_chat = chats;
     },
     (error) => {
       console.error(error);
