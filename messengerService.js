@@ -117,7 +117,7 @@ async function recuperarChatEmail(idUser,email) {
   let historial = await op.recuperarChatEmail(email);
 
   await axios
-    .post(services.URLs["P"] + "/recuperChatEmail", {
+    .post("http://localhost:3004/ps/recuperChatEmail", {
       body: services.bodyParser('P', idUser, historial),
       headers: {
         "Content-Type": "application/json",
