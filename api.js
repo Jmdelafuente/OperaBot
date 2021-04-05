@@ -95,8 +95,21 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
         res.sendStatus(500);
       });
   });
-}
 
+  
+  api.post(`/api/${prefix}/recuperarChatEmail`, jsonParser, (req, res) => {
+    let data = JSON.parse(req.body.body);
+    ms.recuperarChatEmail(data.user,data.email)
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(`Error en pedido de desconexion con ${prefix} - ` + err);
+        res.sendStatus(500);
+      });
+  });
+
+}
 
 // Iniciar servidor de API/Webhooks
 const serverAPI = api.listen(api.get("port"), () => {

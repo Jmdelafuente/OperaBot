@@ -113,6 +113,23 @@ async function enviarWAMessage(id, cont) {
 
 }
 
+async function recuperarChatEmail(idUser,email) {
+  let historial = await op.recuperarChatEmail(email);
+
+  await axios
+    .post(services.URLs["P"] + "/recuperChatEmail", {
+      body: services.bodyParser('P', idUser, historial),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+    })
+    .catch(function (error) {
+      res = new Error(error);
+    });
+}
+
 async function cambiar_Email(id) {
   var chat = chatsList[id];
   let res = await chat.cambiar_Email(id);
@@ -216,3 +233,4 @@ module.exports.nuevalistaChats = nuevalistaChats;
 module.exports.nuevoMensaje = nuevoMensaje;
 module.exports.enviarMenu = enviarMenu;
 module.exports.enviarWAMessage = enviarWAMessage;
+module.exports.recuperarChatEmail = recuperarChatEmail;

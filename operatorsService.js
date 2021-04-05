@@ -365,6 +365,21 @@ async function closeChat(chatID) {
   // TODO: analiticas de operador con chat cerrado
 }
 
+async function recuperarChatEmail(email) {
+  db.buscar(
+    "chats",
+    ["tipo_chat", "contenido", "email_civil", "type","operador_id","fecha","hora"],
+    [["email_civil", email]]
+  ).then(
+    (chats) => {
+      return chats;
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
+}
+
 async function desconexionCivil(msg){
   //let operador = chat_asig[msg.user].operadorId;
   //let socketOperador = operators[operador].socket;
@@ -468,3 +483,4 @@ module.exports.obteneropciones = obteneropciones;
 module.exports.enviarMenu = enviarMenu;
 module.exports.desconexionCivil = desconexionCivil;
 module.exports.validar = validar;
+module.exports.recuperarChatEmail=recuperarChatEmail;
