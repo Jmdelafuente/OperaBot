@@ -366,7 +366,7 @@ async function closeChat(chatID) {
 }
 
 async function recuperarChatEmail(email) {
-
+  var historial;
   db.buscar(
     "chats",
     ["tipo_chat", "contenido", "email_civil", "type","operador_id","fecha","hora"],
@@ -374,13 +374,14 @@ async function recuperarChatEmail(email) {
   ).then(
     (chats) => {
       console.log(`cuando vemoos que los chats se encuentran ${chats}`);
+      historial = chats;
     },
     (error) => {
       console.error(error);
     }
   );
 
-  return chats;
+  return historial;
 }
 
 async function desconexionCivil(msg){
