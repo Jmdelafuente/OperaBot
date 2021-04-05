@@ -400,7 +400,7 @@ async function desconexionCivil(msg){
       db.insertar(
         "chats",
         ["tipo_chat", "contenido", "email_civil", "type", "operador_id","fecha","hora"],
-        [tipo,contenido , email, msg.user, type, operador_id,fecha,horario]
+        [tipo,contenido , email, type, operador_id,fecha,horario]
       );    
     });
 }
