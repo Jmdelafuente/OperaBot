@@ -373,15 +373,13 @@ async function recuperarChatEmail(email) {
     [["email_civil", email]]
   ).then(
     (chats) => {
-      console.log(`cuando vemoos que los chats se encuentran ${chats}`);
       historial_chat = chats;
-      console.log(`despues de asignar ${historial_chat}`);
     },
     (error) => {
       console.error(error);
     }
   );
-    console.log(`antes de irme de recuperar en OP ${historial_chat}`);
+
   return historial_chat;
 }
 

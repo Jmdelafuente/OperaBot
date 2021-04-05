@@ -99,7 +99,6 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   
   api.post(`/api/${prefix}/recuperarChatEmail`, jsonParser, (req, res) => {
     let data = JSON.parse(req.body.body);
-    console.log(`datos a recuperar ${data.user} y ${data.email}`);
     ms.recuperarChatEmail(data.user,data.email)
       .then(() => {
         res.sendStatus(200);
