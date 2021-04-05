@@ -116,7 +116,7 @@ async function enviarWAMessage(id, cont) {
 async function recuperarChatEmail(idUser,email) {
   let historial = await op.recuperarChatEmail(email);
   console.log(`historal de chat ${historial}`);
-  axios
+  await axios
     .post("http://localhost:3004/ps/recuperarChatEmail", {
       body: services.bodyParser('P', idUser, historial),
       headers: {

@@ -366,12 +366,14 @@ async function closeChat(chatID) {
 }
 
 async function recuperarChatEmail(email) {
+
   db.buscar(
     "chats",
     ["tipo_chat", "contenido", "email_civil", "type","operador_id","fecha","hora"],
     [["email_civil", email]]
   ).then(
     (chats) => {
+      console.log(`cuando vemoos que los chats se encuentran ${chats}`);
       return chats;
     },
     (error) => {
