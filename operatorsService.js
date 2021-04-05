@@ -374,12 +374,13 @@ async function recuperarChatEmail(email) {
   ).then(
     (chats) => {
       console.log(`cuando vemoos que los chats se encuentran ${chats}`);
-      return chats;
     },
     (error) => {
       console.error(error);
     }
   );
+
+  return chats;
 }
 
 async function desconexionCivil(msg){
