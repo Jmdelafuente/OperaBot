@@ -263,12 +263,10 @@ async function quieremail(operador, idUser, chat) {
    });
 };
 
-const mensajesByChat = function(id, mensaje, socket, append=false) {
+const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let msg = {};
   msg.id = id;
-  msg.lista = mensaje.chats;
-  msg.name = mensaje.name;
-  msg.email = mensaje.email;
+  msg.lista = listamensajes;
   if(append){
     socket.emit("getMoreMessagesByChat", msg);
   }else{
