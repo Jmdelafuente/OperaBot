@@ -261,7 +261,7 @@ $(function () {
       if(estado=='Cerrado'){
         li.className="chat-cerrado";
       }else{
-        li.className="active-chat";
+        li.removeAttribute('class',"chat-cerrado");
       }
 
       switch (origen) {
