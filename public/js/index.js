@@ -456,7 +456,7 @@ $(function () {
     if ($("#m").val().length > 0) {
       mensaje.id = $("#idChat").val();
       mensaje.contenido = $("#m").val();
-      mensaje.operadorid = sessionStorage.getItem("operadorid");
+      mensaje.operadorid = params.SESSIONKEY;
       socket.emit("send_op_message", mensaje);
     }
     return false;
