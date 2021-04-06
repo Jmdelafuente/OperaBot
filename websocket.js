@@ -76,7 +76,9 @@ io.on("connection", function (socket) {
       delete sockets[s.id];
       socket.user = msg.SESSIONKEY;
       sessions[msg.SESSIONKEY] = socket;
-      op.reconectarOperador(msg.SESSIONKEY, socket);
+      var operator = op.reconectarOperador(msg.SESSIONKEY, socket);
+      socket.emit('operador_set_id', operator.id);
+      socket.emit('operador_set_nombre', operator.razonSocial);
     } else {
       socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
       op.altaOperador(msg.SESSIONKEY, socket).then(
