@@ -325,8 +325,21 @@ async function enviarArchivo(id,cont,type) {
 }
 
 async function obtenerNombre(operadorId) {
-   let operador = operators[operadorId];
-  return operador.razonSocial;
+    let razonOperador = "";
+    db.buscar(
+        "operadores",
+        ["razonSocial"],
+        [["operadorId", operadorId]]
+      ).then(
+        (nombre) => {
+          razonOperador = nombre;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+   
+  return razonOperador;
 }
 
 async function confirmarVisto(chatId, channelId) {
