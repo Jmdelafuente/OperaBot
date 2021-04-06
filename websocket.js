@@ -142,14 +142,7 @@ io.on("connection", function (socket) {
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
 
-  socket.on("writing", function(id){
-    op.escribiendo(id, socket.user);
-    console.log(`WebSocket -> writing: ${socket.toString()}`);
-  });
 
-  socket.on("stop-writing", function (id) {
-    op.escribiendo(id, socket.user, false);
-  });
 
   socket.on("close_chat", function(id){
     op.closeChat(id);
