@@ -221,9 +221,13 @@ $(function () {
           ).toString();
           s = s.concat(day, "/", month, "  ", hours, ":", min);
         }
-
-        var nombreOp = sessionStorage.getItem('nombreOperador');
-        hora.innerText = s + " " + nombreOp;
+        
+        if(tipo == "E"){
+          var nombreOp = sessionStorage.getItem('nombreOperador');
+          hora.innerText = s + " " + nombreOp;
+        }else{
+          hora.innerText = s;
+        }
     }
   }
 }
@@ -592,7 +596,8 @@ $(function () {
     sessionStorage.setItem('operadorid', msg);
   });
   socket.on('operador_set_nombre', function (msg) {
-    sessionStorage.setItem('nombreOperador',msg);
+    var nombre = msg.split(",");
+    sessionStorage.setItem('nombreOperador',nombre);
   });
 
   socket.on("confirm_op_message", function (msg) {
