@@ -124,9 +124,11 @@ async function recuperarChatEmail(idUser,email) {
       },
     })
     .then((response) => {
+       console.log(`statusCode: ${response.statusCode}`);
+        console.log(response);
     })
     .catch(function (error) {
-      res = new Error(error);
+      console.error(error);
     });
 }
 

@@ -236,7 +236,7 @@ $(function () {
    * @param {Boolean} asign true si esta asignado a este operador, false en otro caso.
    * @param {char} origen "P" para saber si viene por message service o "W" si viene de wpp
    */
-  function addChat(nom, id, asign, origen,estado) {
+  function addChat(nom, id, asign, origen,estado,email) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -247,6 +247,7 @@ $(function () {
       var estatus = document.createElement("p");
       // li.classList = "active";
       li.id = "usuario_" + id;
+      li.setAttribute("value", email);
       ex.className = "d-flex bd-highlight";
       img.className = "img_cont";
       avatar.src = "user-profile.png";
@@ -429,11 +430,11 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
-          addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre);
+          addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre,lista[c].email);
         }
       }
       if (!chatListAll.includes(c)) {
-        addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre);
+        addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre, lista[c].email);
       }
     }
     // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
@@ -564,7 +565,7 @@ $(function () {
       esOperador = true;
     }
 
-    addChat(msg.nom, msg.id, esOperador, msg.origen);
+    addChat(msg.nom, msg.id, esOperador, msg.origen,msg.email);
 
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, msg.tipo);
@@ -576,7 +577,7 @@ $(function () {
   socket.on("recive_op_image", function (msg) {
     console.log("Imagen recibida: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
-      addChat(msg.name, msg.id, msg.asig);
+      addChat(msg.name, msg.id, msg.asig,msg.origen,msg.email);
     }
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, "image");
@@ -600,7 +601,7 @@ $(function () {
     // Confirmamos la asignacion al servidor
     ack(true);
     // Generamos los elementos del DOM
-    addChat(msg.nom, msg.id, true, msg.origin);
+    addChat(msg.nom, msg.id, true, msg.origin,msg.email);
   });
   socket.on("getAllMessagesByChat", function (msg) {
     let lista = msg.lista;
@@ -670,6 +671,27 @@ $(function () {
     div.scrollTop = div.scrollHeight;
   });
 
+
+    $(document).ready(function () {
+      $("#buscar").on("keyup", function () {
+        var input, filter, ul, li, i, txtValue;
+        input = document.getElementById('buscar');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("listaContactos");
+        li = ul.getElementsByTagName('li');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+          txtValue = li[i].value;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      });
+    });
+
   socket.on("obtener-opciones", function (msg) {
     let divOpcion = document.getElementById('modal-body-opcion');
     divOpcion.innerHTML = '';
@@ -704,6 +726,15 @@ $(function () {
   });
 
   //setInterval(function () {location.reload(); }, 5000);
+
+  /*$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});*/
 
   // * FIN EVENTOS WEBSOCKET * //
   // Fin onload
