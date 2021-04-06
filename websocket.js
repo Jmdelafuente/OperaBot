@@ -143,6 +143,7 @@ io.on("connection", function (socket) {
 
   socket.on("close_chat", function(id){
     op.closeChat(id);
+    recibirLista;
   });
 
   socket.on('cambiar_Email', function (msg) {
@@ -212,7 +213,7 @@ const recibirMensaje = function (chat, tipo, operador) {
   mensaje.state = chat.state;
   mensaje.asign = operador;
   io.emit("recive_op_message", mensaje);
-  recibirLista;
+  
   return true;
 };
 
