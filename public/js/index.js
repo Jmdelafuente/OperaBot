@@ -278,7 +278,7 @@ $(function () {
 
       document.getElementById("listaContactos").appendChild(li);
       chatListAll.push(id);
-      li.appendChild(ex);
+      li.prepend(ex);
       ex.appendChild(img);
       img.appendChild(avatar);
       ex.appendChild(info);
