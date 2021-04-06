@@ -680,17 +680,22 @@ $(function () {
         ul = document.getElementById("listaContactos");
         li = ul.getElementsByTagName('li');
         // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-          var txtValue = li[i].getAttribute("value");
-          console.log(li[i]);
-          if(txtValue!=0){
-            if (filter.indexOf(txtValue) > -1) {
-              li[i].style.display = "";
-            } else {
-              li[i].style.display = "none";
+        if(filter.length==0){
+          for (i = 0; i < li.length; i++) {
+            var txtValue = li[i].getAttribute("value");
+            if(txtValue!=0){
+              if (filter.indexOf(txtValue) > -1) {
+                li[i].style.display = "";
+              } else {
+                li[i].style.display = "none";
+              }
             }
           }
+        }else{
+          for(i=0; i < li.length; i++){
+          li[i].style.display = "";
         }
+      }
       });
     });
 
