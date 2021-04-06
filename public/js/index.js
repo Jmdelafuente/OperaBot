@@ -325,7 +325,6 @@ $(function () {
       // Marcamos el chat como activo
       $(".chat .active-chat").removeClass("active-chat");
       if (estado != "Cerrado"){
-        $(li).removeClass("chat-cerrado");
         $(li).addClass("active-chat");
         // Enviamos el 'visto' al servidor
         socket.emit("seen", id);
