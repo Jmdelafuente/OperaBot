@@ -222,7 +222,8 @@ $(function () {
           s = s.concat(day, "/", month, "  ", hours, ":", min);
         }
 
-        hora.innerText = s;
+        var nombreOp = sessionStorage.getItem('nombreOperador');
+        hora.innerText = s + " " + nombreOp;
     }
   }
 }
@@ -588,7 +589,8 @@ $(function () {
     }
   });
   socket.on('operador_set_id', function (msg) {
-    sessionStorage.setItem('operadorid', msg);
+    sessionStorage.setItem('operadorid', msg.id);
+    sessionStorage.setItem('nombreOperador',msg.nombre);
   });
 
   socket.on("confirm_op_message", function (msg) {

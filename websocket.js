@@ -81,10 +81,14 @@ io.on("connection", function (socket) {
       socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
       op.altaOperador(msg.SESSIONKEY, socket).then(
         (valido) => {
-          if (valido) {
+          if (valido.id) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
-            socket.emit('operador_set_id',valido);
+            var pack = {
+              id: valido.id,
+              nombre: valido.razonSocial
+            }
+            socket.emit('operador_set_id',pack);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
             //pasar aca la verificacion
           } else {

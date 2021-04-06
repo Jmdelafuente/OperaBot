@@ -81,7 +81,7 @@ async function altaOperador(id, canal) {
 
     // TODO: enviar todos los chats
     socket.recibirLista(canal, messenger.chatsList(), false);
-    return operador.id;
+    return operador;
   }
 }
 
