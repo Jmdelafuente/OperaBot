@@ -683,10 +683,12 @@ $(function () {
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < li.length; i++) {
           txtValue = li[i].value;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-          } else {
-            li[i].style.display = "none";
+          if(txtValue!=0){
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
           }
         }
       });
