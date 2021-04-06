@@ -114,7 +114,7 @@ $(function () {
    * @param {Number} t Timestamp o marca de tiempo del mensaje
    * @param {String} type Para saber de que tipo es el contenido del mensaje.
    */
-  function addMessage(cont, tipo, t, type) {
+  function addMessage(cont, tipo, t, type,operadorid) {
     if (cont) {
       var ex = document.createElement("div");
       var msj = document.createElement("div");
@@ -223,9 +223,7 @@ $(function () {
         }
         
         if(tipo == "E"){
-          var nombreOp = sessionStorage.getItem('nombreOperador');
-          var nombre = nombreOp.split(",");
-          hora.innerText = s + " " + nombre[1];
+          hora.innerText = s + " " + operadorid;
         }else{
           hora.innerText = s;
         }
@@ -458,10 +456,8 @@ $(function () {
     if ($("#m").val().length > 0) {
       mensaje.id = $("#idChat").val();
       mensaje.contenido = $("#m").val();
+      mensaje.operadorid = sessionStorage.getItem("operadorid");
       socket.emit("send_op_message", mensaje);
-      addMessage($("#m").val(), "E", "Ahora", "chat");
-      $("#m").val("");
-      limit = false; // Se reanuda el evento de escribir
     }
     return false;
   });
@@ -596,10 +592,7 @@ $(function () {
   socket.on('operador_set_id', function (msg) {
     sessionStorage.setItem('operadorid', msg);
   });
-  socket.on('operador_set_nombre', function (msg) {
-    var nombre = msg.split(",");
-    sessionStorage.setItem('nombreOperador',nombre);
-  });
+
 
   socket.on("confirm_op_message", function (msg) {
     confirm(msg, "R", "Ahora");
@@ -608,6 +601,11 @@ $(function () {
   socket.on("send_plantilla", (msg) => {
     blueprints = msg;
     autocomplete(document.getElementById("m"), blueprints);
+  });
+  socket.on("dibujar_mensaje", (msg) =>{
+    addMessage(msg.contenido, "E", "Ahora", "chat",msg.operadorid);
+    $("#m").val("");
+    limit = false; // Se reanuda el evento de escribir
   });
   socket.on("assign_op_message", function (msg, ack) {
     // Confirmamos la asignacion al servidor

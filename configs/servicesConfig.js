@@ -36,7 +36,7 @@ module.exports.PREFIXes = PREFIXes;
  * @param {*} mensaje Contenido del mensaje a envíar
  * @param {*} tipo Tipo de mensaje a enviar
  */
-module.exports.bodyParser = function (origen, destino, mensaje, tipo = "chat") {
+module.exports.bodyParser = function (origen, destino, mensaje, operadorid, tipo = "chat") {
   let body;
   switch (origen) {
     case "W":
@@ -56,7 +56,8 @@ module.exports.bodyParser = function (origen, destino, mensaje, tipo = "chat") {
       body = {
         id: destino,
         text: mensaje,
-        type: tipo
+        type: tipo,
+        operadorid: operadorid
       };
       break;
     default:

@@ -93,9 +93,9 @@ async function nuevaImagen(
   op.recibirImagen(chat,type);
 }
 
-async function enviarMensaje(id, cont) {
+async function enviarMensaje(id, cont,operadorid) {
   var chat = chatsList[id];
-  let res = await chat.enviarMensaje(cont);
+  let res = await chat.enviarMensaje(cont,operadorid);
   return res;
 }
 

@@ -313,8 +313,8 @@ async function mensajesChat(chatId) {}
  * @param {Number} id del desintatario (propio del servicio de mensajeria)
  * @param {String} cont contenido del mensaje
  */
-async function enviarMensaje(id, cont) {
-  messenger.enviarMensaje(id, cont);
+async function enviarMensaje(id, cont,operadorid) {
+  messenger.enviarMensaje(id, cont,operadorid);
 }
 async function enviarWAMessage(id, cont) {
   messenger.enviarWAMessage(id, cont);
@@ -322,6 +322,11 @@ async function enviarWAMessage(id, cont) {
 
 async function enviarArchivo(id,cont,type) {
   messenger.enviarArchivo(id, cont,type); 
+}
+
+async function obtenerNombre(operadorId) {
+   let operador = operators[operadorId];
+  return operador.razonSocial;
 }
 
 async function confirmarVisto(chatId, channelId) {
@@ -489,3 +494,4 @@ module.exports.enviarMenu = enviarMenu;
 module.exports.desconexionCivil = desconexionCivil;
 module.exports.validar = validar;
 module.exports.recuperarChatEmail=recuperarChatEmail;
+module.exports.obtenerNombre = obtenerNombre;

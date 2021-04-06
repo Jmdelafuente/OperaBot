@@ -64,7 +64,13 @@ http.listen(portFront, function () {
 
 io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
-    op.enviarMensaje(msg.id, msg.contenido);
+    op.enviarMensaje(msg.id, msg.contenido,msg.operadorid);
+    var nombre = op.obtenerNombre(msg.operadorid);
+    var pack = {
+      contenido: msg.contenido,
+      nombre: nombre
+    }
+    socket.emit("dibujar_mensaje",pack);
   });
   socket.on("wamessage", function (msg) {
     op.enviarWAMessage(msg.id,msg.contenido);

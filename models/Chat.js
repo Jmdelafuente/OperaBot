@@ -96,11 +96,11 @@ class Chat {
     return res;
   }
 
-  async enviarMensaje(cont) {
+  async enviarMensaje(cont,operadorid) {
     let res;
     await axios
       .post(services.URLs[this.origin] + "/sendmessage", {
-        body: services.bodyParser(this.origin, this.id, cont),
+        body: services.bodyParser(this.origin, this.id, cont,operadorid),
         headers: {
           "Content-Type": "application/json",
         },
