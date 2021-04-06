@@ -681,7 +681,7 @@ $(function () {
         li = ul.getElementsByTagName('li');
         var idprueba = "usuario_6462d9f7-66b3-481b-ac4e-094e6630ae7f";
         var prueba = document.getElementById(idprueba);
-        var text = prueba.value;
+        var text = prueba.getAttribute("value");
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < li.length; i++) {
           var txtValue = li[i].value;
