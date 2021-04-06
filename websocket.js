@@ -84,11 +84,8 @@ io.on("connection", function (socket) {
           if (valido.id) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
-            var pack = {
-              id: valido.id,
-              nombre: valido.razonSocial
-            }
-            socket.emit('operador_set_id',pack);
+            socket.emit('operador_set_id',valido.id);
+            socket.emit('operador_set_nombre',valido.razonSocial);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
             //pasar aca la verificacion
           } else {

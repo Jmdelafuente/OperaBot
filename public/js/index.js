@@ -589,8 +589,10 @@ $(function () {
     }
   });
   socket.on('operador_set_id', function (msg) {
-    sessionStorage.setItem('operadorid', msg.id);
-    sessionStorage.setItem('nombreOperador',msg.nombre);
+    sessionStorage.setItem('operadorid', msg);
+  });
+  socket.on('operador_set_nombre', function (msg) {
+    sessionStorage.setItem('nombreOperador',msg);
   });
 
   socket.on("confirm_op_message", function (msg) {
