@@ -684,7 +684,7 @@ $(function () {
           for (i = 0; i < li.length; i++) {
             var txtValue = li[i].getAttribute("value");
             if(txtValue!=0){
-              if (filter.indexOf(txtValue) > -1) {
+              if (txtValue.indexOf(filter) > -1) {
                 li[i].style.display = "";
               } else {
                 li[i].style.display = "none";
