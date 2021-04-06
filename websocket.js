@@ -212,6 +212,7 @@ const recibirMensaje = function (chat, tipo, operador) {
   mensaje.state = chat.state;
   mensaje.asign = operador;
   io.emit("recive_op_message", mensaje);
+  recibirLista;
   return true;
 };
 
@@ -262,10 +263,12 @@ async function quieremail(operador, idUser, chat) {
    });
 };
 
-const mensajesByChat = function(id, listamensajes, socket, append=false) {
+const mensajesByChat = function(id, mensaje, socket, append=false) {
   let msg = {};
   msg.id = id;
-  msg.lista = listamensajes;
+  msg.lista = mensaje.chats;
+  msg.name = mensaje.name;
+  msg.email = mensaje.email;
   if(append){
     socket.emit("getMoreMessagesByChat", msg);
   }else{
