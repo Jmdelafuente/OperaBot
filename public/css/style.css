@@ -192,13 +192,6 @@ a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 7
 		border: 2px solid #20B2E8;
     color: #353535;
 	}
-	.msg_time {
-		position: absolute;
-		left: 0;
-		bottom: -18px;
-		color: #20B2E8;
-		font-size: 10px;
-	}
 	.msg_time_send{
 		position: absolute;
 		right:0;
@@ -390,4 +383,23 @@ img.emoji {
 
 .card-header .input-group input{
 	color:#353535!important;
+}
+
+
+.msg_cotainer_send .msg_time {
+	position: absolute;
+	right: 0;
+	bottom: -18px;
+	color: #20B2E8;
+	font-size: 10px;
+	width: 310px;
+	text-align: right;
+}
+
+.msg_cotainer .msg_time {
+	position: absolute;
+	left: 0;
+	bottom: -18px;
+	color: #20B2E8;
+	font-size: 10px;
 }
