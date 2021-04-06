@@ -679,15 +679,12 @@ $(function () {
         filter = input.value;
         ul = document.getElementById("listaContactos");
         li = ul.getElementsByTagName('li');
-        var idprueba = "usuario_6462d9f7-66b3-481b-ac4e-094e6630ae7f";
-        var prueba = document.getElementById(idprueba);
-        var text = prueba.getAttribute("value");
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < li.length; i++) {
-          var txtValue = li[i].value;
+          var txtValue = li[i].getAttribute("value");
           console.log(li[i]);
           if(txtValue!=0){
-            if (filter.indexOf(text) > -1) {
+            if (filter.indexOf(txtValue) > -1) {
               li[i].style.display = "";
             } else {
               li[i].style.display = "none";
