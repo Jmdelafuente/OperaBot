@@ -577,7 +577,7 @@ $(function () {
   socket.on("recive_op_image", function (msg) {
     console.log("Imagen recibida: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
-      addChat(msg.name, msg.id, msg.asig,msg.origen,msg.email);
+      addChat(msg.nom, msg.id, msg.asig,msg.origen,msg.email);
     }
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, "image");
