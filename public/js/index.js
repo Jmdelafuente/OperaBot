@@ -224,7 +224,8 @@ $(function () {
         
         if(tipo == "E"){
           var nombreOp = sessionStorage.getItem('nombreOperador');
-          hora.innerText = s + " " + nombreOp;
+          var nombre = nombreOp.split(",");
+          hora.innerText = s + " " + nombre[1];
         }else{
           hora.innerText = s;
         }
