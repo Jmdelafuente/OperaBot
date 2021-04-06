@@ -681,7 +681,7 @@ $(function () {
         filter = input.value;
         ul = document.getElementById("listaContactos");
         li = ul.getElementsByTagName('li');
-        // Loop through all list items, and hide those who don't match the search query
+
         if(filter.length!=0){
           for (i = 0; i < li.length; i++) {
             var txtValue = li[i].getAttribute("value");

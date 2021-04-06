@@ -143,7 +143,6 @@ io.on("connection", function (socket) {
 
   socket.on("close_chat", function(id){
     op.closeChat(id);
-    recibirLista;
   });
 
   socket.on('cambiar_Email', function (msg) {
