@@ -676,16 +676,18 @@ $(function () {
       $("#buscar").on("keyup", function () {
         var input, filter, ul, li, i, txtValue;
         input = document.getElementById('buscar');
-        filter = input.value.toUpperCase();
+        filter = input.value;
         ul = document.getElementById("listaContactos");
         li = ul.getElementsByTagName('li');
-
+        var idprueba = "usuario_6462d9f7-66b3-481b-ac4e-094e6630ae7f";
+        var prueba = document.getElementById(idprueba);
+        var text = prueba.value;
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < li.length; i++) {
-          txtValue = li[i].value;
+          var txtValue = li[i].value;
           console.log(li[i]);
           if(txtValue!=0){
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            if (filter.indexOf(text) > -1) {
               li[i].style.display = "";
             } else {
               li[i].style.display = "none";
