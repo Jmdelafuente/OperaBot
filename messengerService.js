@@ -52,8 +52,13 @@ async function nuevoMensaje(
     chatsList[id].pendingmessage++;
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
-    chat = chatsList[id];
-    res = await chat.asignacion();
+    var chat = chatsList[id];
+    let res = false;
+    console.log(`chat en MS es ${chat}`);
+    if (chat) {
+      res = await chat.asignacion();
+    }
+    res = chat.asignacion();
   } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
@@ -67,7 +72,7 @@ async function nuevaImagen(
   cont,
   origen,
   t,
-  nombre = "anonimo",
+  nombre = "Anonimo",
   type = "image",
   email
 ) {
