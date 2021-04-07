@@ -299,10 +299,10 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
         //  TODO: registrar el error
         console.log(error);
       }
-    )
-  }
+      )
+    }
   });
-
+  
   msg.lista = listamensajes;
 
   if(append){
