@@ -292,6 +292,8 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
       (nombre) => {
         let split = nombre.split(",");
         element.operador_id = split[1]
+        console.log(split[1]);
+        console.log(element.operador_id);
       },
       (error) => {
         //  TODO: registrar el error
