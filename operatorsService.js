@@ -333,7 +333,7 @@ async function obtenerNombre(operadorId) {
   ).then(
     (nombre) => {
       razonOperador = nombre;
-      console.log(`el nombre es ${JSON.stringify(razonOperador)}`);
+      console.log(`el nombre es ${razonOperador.razonSocial}`);
     },
     (error) => {
       console.error(error);
