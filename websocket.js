@@ -286,8 +286,8 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let promises = [];
   msg.id = id;
   
-  if(element.operador_id){
   listamensajes.forEach((element) => {
+    if(element.operador_id != undefined){
     promises.push(
     op.obtenerNombre(element.operador_id).then(
       (nombre) => {
@@ -301,8 +301,8 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
       }
       )
     );
+    }
   });
-}
   Promise.allSettled(promises).then((cb) => {
     console.log(`estoy despues del foreach ${listamensajes[4].operador_id}`);
     msg.lista = listamensajes;
