@@ -291,7 +291,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
     op.obtenerNombre(element.operador_id).then(
       (nombre) => {
         let split = nombre.split(",");
-        listamensajes.operador_id = split[1]
+        element.operador_id = split[1]
       },
       (error) => {
         //  TODO: registrar el error
