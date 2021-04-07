@@ -286,6 +286,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
   msg.id = id;
   
   listamensajes.forEach((element) => {
+    if(element.operador_id != undefined){
     op.obtenerNombre(element.operador_id).then(
       (nombre) => {
         let split = nombre.split(",");
@@ -296,7 +297,9 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
         console.log(error);
       }
     )
+  }
   });
+
   msg.lista = listamensajes;
 
   if(append){
