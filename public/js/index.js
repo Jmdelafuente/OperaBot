@@ -91,7 +91,7 @@ $(function () {
   /**
    * Marca como leido el chat, eliminando la notificacion visual
    *
-   * @param {String} chatid
+   * @param {String} chatid id que identifica al chat
    */
   function readMessages(chatid) {
     let circle = document.getElementById("unread_" + chatid);
@@ -113,8 +113,9 @@ $(function () {
    * @param {String} tipo 'E' para los mensajes enviados, 'R' para los mensajes recibidos
    * @param {Number} t Timestamp o marca de tiempo del mensaje
    * @param {String} type Para saber de que tipo es el contenido del mensaje.
+   * @param {String} nombreOperador nombre del operador que responde el mensaje 
    */
-  function addMessage(cont, tipo, t, type,operadorid) {
+  function addMessage(cont, tipo, t, type,nombreOperador) {
     if (cont) {
       var ex = document.createElement("div");
       var msj = document.createElement("div");
@@ -197,7 +198,7 @@ $(function () {
           time = new Date(Date.now());
           var tiempo = time.getHours().toString() + ":" + ((time.getMinutes() < 10 ? "0" : "") + time.getMinutes()).toString();
           if(tipo=='E'){
-            hora.innerText = tiempo + " " + operadorid; 
+            hora.innerText = tiempo + " " + nombreOperador; 
           }else{
             hora.innerText = tiempo;
           }
@@ -228,7 +229,7 @@ $(function () {
         }
         
         if(tipo == "E"){
-          hora.innerText = s + " " + operadorid;
+          hora.innerText = s + " " + nombreOperador;
         }else{
           hora.innerText = s;
         }
@@ -244,6 +245,8 @@ $(function () {
    * @param {String} id Identificador interno del chat para saber el destinatario
    * @param {Boolean} asign true si esta asignado a este operador, false en otro caso.
    * @param {char} origen "P" para saber si viene por message service o "W" si viene de wpp
+   * @param {String} estado el estado representa si esta abierto o cerrado un chat
+   * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
   function addChat(nom, id, asign, origen,estado,email) {
     if (!chatListAll.includes(id)) {
@@ -318,6 +321,7 @@ $(function () {
    * Cambia el chat activo, modificando el nombre a mostrar, marcando como activo en la lista y el valor de chatid
    * 
    * @param {String} id ID de chat seleccionado
+   * @param {String} estado indica que un chat se encuentra cerrado o abierto
    * @returns
    */
   function changeChat(id,estado) {
@@ -375,7 +379,7 @@ $(function () {
     addMessage("Se le envio al ciudadano la opcion de cambiar el email", 'E', Date.now(), 'message');
   });
 
-
+  //Funcion que permite subir y enviar archivos (imagenes y pdf) al ciudadano
   document.querySelector('input[type="file"]').addEventListener('change', function () {
     if (this.files && this.files[0]) {
 
@@ -420,7 +424,7 @@ $(function () {
 
     }
   });
-
+ //devuelve el BASE64 del archivo 
   function toDataURL(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -435,6 +439,7 @@ $(function () {
     xhr.send();
   }
 
+  // se obtienen los chats, los asignados y los que no
   function newList(lista, asig) {
     console.log(
       `newList: ${asig} - All: ${chatListAll} - Asign: ${chatListAsign}`
@@ -456,6 +461,7 @@ $(function () {
     }
   }
 
+  //se envia el mensaje que este escrito en el input #m
   $("form").submit(function (event) {
     event.preventDefault();
     var mensaje = {};
@@ -637,6 +643,7 @@ $(function () {
     }
   });
 
+  //! Deprecada funcionalidad para saber si se envia el email o no 
   socket.on("email", function (msg, respuesta) {
     var ex = document.createElement("div");
     var msj = document.createElement("div");
@@ -688,7 +695,7 @@ $(function () {
     div.scrollTop = div.scrollHeight;
   });
 
-
+    // funcionalidad para buscar un chat en base a su email
     $(document).ready(function () {
       $("#buscar").on("keyup", function () {
         var input, filter, ul, li, i, txtValue;
@@ -716,6 +723,7 @@ $(function () {
       });
     });
 
+    // funcionalidad de obtener todo el menu disponible y seleccionar algun sub-menu para enviar al ciudadano
   socket.on("obtener-opciones", function (msg) {
     let divOpcion = document.getElementById('modal-body-opcion');
     divOpcion.innerHTML = '';

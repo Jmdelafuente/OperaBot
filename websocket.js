@@ -92,7 +92,6 @@ io.on("connection", function (socket) {
       sessions[msg.SESSIONKEY] = socket;
       var operator = op.reconectarOperador(msg.SESSIONKEY, socket);
       socket.emit('operador_set_id', operator.id);
-      socket.emit('operador_set_nombre', operator.razonSocial);
     } else {
       socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
       op.altaOperador(msg.SESSIONKEY, socket).then(
@@ -101,9 +100,7 @@ io.on("connection", function (socket) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
             socket.emit('operador_set_id',valido.id);
-            socket.emit('operador_set_nombre',valido.razonSocial);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
-            //pasar aca la verificacion
           } else {
             // ! SALIR
           }
@@ -132,6 +129,7 @@ io.on("connection", function (socket) {
     // console.log(`Disconnect ${socket.id} ${causa}`);
   });
 
+  // se obtienen todos los mensajes de un chat especifico que viene por parametro su id
   socket.on("all_messages_chat", function(id){
     op.getAllMessages(id, socket.user).then(
       (lista) => {
@@ -144,6 +142,7 @@ io.on("connection", function (socket) {
     );
   });
 
+  
   socket.on("seen", function(chat){
     op.confirmarVisto(chat, socket.user);
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
@@ -268,8 +267,6 @@ async function asignarMensaje(socket, chat) {
 }
 
 async function quieremail(operador, idUser, chat) {
-
-  //operador.emit("getAllMessagesByChat",{lista: msg.historial, id: msg.user});
   pack = {};
   pack.idUser = idUser;
   pack.chat = chat;
@@ -281,11 +278,16 @@ async function quieremail(operador, idUser, chat) {
    });
 };
 
+//se obtiene el nombre de que operador contesto cada mensaje, esta informacion en conjunto
+// con los mensajes de todo el chat son emitidos para ser dibujados
 const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let msg = {};
   let promises = [];
   msg.id = id;
   
+  /*se utiliza una lista de promesas ya obtenerNombre es una promesa,
+    se pushea todas las promesas dentro de promises, una vez que se cumplan
+    todas las promesas, entonces se sigue el curso del codigo */
   listamensajes.forEach((element) => {
     if(element.operador_id != undefined){
     promises.push(
