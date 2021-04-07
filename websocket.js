@@ -65,7 +65,7 @@ http.listen(portFront, function () {
 io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido,msg.operadorid);
-    var nombre = op.obtenerNombre(msg.operadorid);
+    var nombre = await op.obtenerNombre(msg.operadorid);
     console.log(`nombre de op ${nombre}`);
     var pack = {
       contenido: msg.contenido,
@@ -141,7 +141,15 @@ io.on("connection", function (socket) {
     op.confirmarVisto(chat, socket.user);
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
+ 
+  // socket.on("writing", function (id) {
+  //   op.escribiendo(id, socket.user);
+  //   console.log(`WebSocket -> writing: ${socket.toString()}`);
+  // });
 
+  // socket.on("stop-writing", function (id) {
+  //   op.escribiendo(id, socket.user, false);
+  // });
 
 
   socket.on("close_chat", function(id){
