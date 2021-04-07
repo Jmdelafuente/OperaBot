@@ -144,6 +144,7 @@ module.exports.messageParser = function (origen, body) {
         contenido: body.contenido,
         timestamp: body.hora,
         type: body.type,
+        operador_id: body.operador_id,
         URL: url,
       };
       break;
