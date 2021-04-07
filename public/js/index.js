@@ -603,7 +603,7 @@ $(function () {
     autocomplete(document.getElementById("m"), blueprints);
   });
   socket.on("dibujar_mensaje", (msg) =>{
-    addMessage(msg.contenido, "E", "Ahora", "chat",msg.operadorid);
+    addMessage(msg.contenido, "E", "Ahora", "chat",msg.nombre);
     $("#m").val("");
     limit = false; // Se reanuda el evento de escribir
   });

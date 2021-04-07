@@ -65,8 +65,8 @@ http.listen(portFront, function () {
 io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido,msg.operadorid);
-    var nombre =  op.obtenerNombre(10);
-    console.log(`nombre de op ${nombre}`);
+    op.obtenerNombre(10).then((nombre) => { console.log(`nombre de op ${nombre}`);});
+    
     var pack = {
       contenido: msg.contenido,
       nombre: nombre
