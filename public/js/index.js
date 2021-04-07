@@ -195,7 +195,12 @@ $(function () {
       if (t == "Ahora" || t == undefined) {
         setTimeout(function () {
           time = new Date(Date.now());
-          hora.innerText = time.getHours().toString() + ":" + ((time.getMinutes() < 10 ? "0" : "") + time.getMinutes()).toString() + " " + operadorid;
+          var tiempo = time.getHours().toString() + ":" + ((time.getMinutes() < 10 ? "0" : "") + time.getMinutes()).toString();
+          if(tipo=='E'){
+            hora.innerText = tiempo + " " + operadorid; 
+          }else{
+            hora.innerText = tiempo;
+          }
         });
       } else {
         time = new Date(parseInt(t)); 
@@ -391,7 +396,8 @@ $(function () {
         toDataURL(img.src, function (imagen) {
           let pack = {
             id: iduser,
-            contenido: imagen
+            contenido: imagen,
+            operadorid: sessionStorage.getItem("operadorid")
           };
 
 
@@ -621,7 +627,7 @@ $(function () {
         $("#mensajes").html("");
         lista.forEach((message) => {
           if (message.user == "me") {
-            
+
             addMessage(message.contenido, "E", message.timestamp, message.type, message.operador_id);
           } else {
             addMessage(message.contenido, "R", message.timestamp, message.type);
