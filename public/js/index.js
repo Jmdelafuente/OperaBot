@@ -621,7 +621,7 @@ $(function () {
         $("#mensajes").html("");
         lista.forEach((message) => {
           if (message.user == "me") {
-            addMessage(message.contenido, "E", message.timestamp, message.type);
+            addMessage(message.contenido, "E", message.timestamp, message.type, message.operador_id);
           } else {
             addMessage(message.contenido, "R", message.timestamp, message.type);
           }
