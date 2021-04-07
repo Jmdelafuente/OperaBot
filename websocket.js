@@ -285,7 +285,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let msg = {};
   msg.id = id;
   
-  listamensajes.forEach(element => {
+  listamensajes.forEach((element) => {
     op.obtenerNombre(element.operador_id).then(
       (nombre) => {
         let split = nombre.split(",");
