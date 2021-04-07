@@ -326,7 +326,7 @@ async function enviarArchivo(id,cont,type) {
 
 async function obtenerNombre(operadorId) {
     let razonOperador = "";   
-  db.buscar(
+    await db.buscar(
     "operadores",
     ["razonSocial"],
     [["operadorId", operadorId]]
