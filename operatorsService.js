@@ -325,11 +325,21 @@ async function enviarArchivo(id,cont,type) {
 }
 
 async function obtenerNombre(operadorId) {
-    let razonOperador = "";
-    let operador = operators[operadorId];
-    let operador2= Operador.recuperar([["operadorId" , operadorId]]);
-    console.log(`el operador1 es ${operador} y el operador 2 es ${operador2}`);
-   
+    let razonOperador = "";   
+  db.buscar(
+    "operadores",
+    ["razonSocial"],
+    [["operadorId", operadorId]]
+  ).then(
+    (nombre) => {
+      razonOperador = nombre.razonSocial;
+      console.log(`el nombre es ${razonOperador}`);
+    },
+    (error) => {
+      console.error(error);
+    }
+    );
+    console.log(`el nombre afuera de buscar es ${razonOperador}`);
   return razonOperador;
 }
 
