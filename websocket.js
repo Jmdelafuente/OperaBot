@@ -281,14 +281,14 @@ async function quieremail(operador, idUser, chat) {
    });
 };
 
-const mensajesByChat = function(id, listamensajes, socket, append=false) {
+const mensajesByChat =async function(id, listamensajes, socket, append=false) {
   let msg = {};
   msg.id = id;
   
   listamensajes.forEach((element) => {
     if(element.operador_id != undefined){
       console.log(element.operador_id);
-    op.obtenerNombre(element.operador_id).then(
+    await op.obtenerNombre(element.operador_id).then(
       (nombre) => {
         let split = nombre.split(",");
         element.operador_id = split[1]
