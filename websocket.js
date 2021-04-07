@@ -149,14 +149,14 @@ io.on("connection", function (socket) {
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
  
-  //  socket.on("writing", function (id) {
-  //    op.escribiendo(id, socket.user);
-  //    console.log(`WebSocket -> writing: ${socket.toString()}`);
-  //  });
+   socket.on("writing", function (id) {
+     op.escribiendo(id, socket.user);
+     console.log(`WebSocket -> writing: ${socket.toString()}`);
+   });
 
-  //  socket.on("stop-writing", function (id) {
-  //    op.escribiendo(id, socket.user, false);
-  //  });
+   socket.on("stop-writing", function (id) {
+     op.escribiendo(id, socket.user, false);
+   });
 
 
   socket.on("close_chat", function(id){
@@ -284,8 +284,21 @@ async function quieremail(operador, idUser, chat) {
 const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let msg = {};
   msg.id = id;
-  console.log(`che la lista en realidad es todo esto ${listamensajes.operador_id}`);
+  
+  listamensajes.forEach(element => {
+    op.obtenerNombre(element.operador_id).then(
+      (nombre) => {
+        let split = nombre.split(",");
+        listamensajes.operador_id = split[1]
+      },
+      (error) => {
+        //  TODO: registrar el error
+        console.log(error);
+      }
+    )
+  });
   msg.lista = listamensajes;
+
   if(append){
     socket.emit("getMoreMessagesByChat", msg);
   }else{
