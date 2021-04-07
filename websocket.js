@@ -65,7 +65,7 @@ http.listen(portFront, function () {
 io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido,msg.operadorid);
-    op.obtenerNombre(10).then(
+    op.obtenerNombre(msg.operadorid).then(
       (nombre) => {
         let split = nombre.split(",");
         var pack = {
