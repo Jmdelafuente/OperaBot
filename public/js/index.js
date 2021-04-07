@@ -605,7 +605,7 @@ $(function () {
   socket.on("dibujar_mensaje", (msg) =>{
     addMessage(msg.contenido, "E", "Ahora", "chat",msg.nombre);
     $("#m").val("");
-    limit = false; // Se reanuda el evento de escribir
+    limit = false; // Se reanuda el evento de escribir 
   });
   socket.on("assign_op_message", function (msg, ack) {
     // Confirmamos la asignacion al servidor
