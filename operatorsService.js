@@ -331,10 +331,9 @@ async function obtenerNombre(operadorId) {
     ["razonSocial"],
     [["operadorId", operadorId]]
   ).then(
-    (nombre) => {
-      var opera = nombre;
-      razonOperador = opera[0].razonSocial;
-      console.log(`el nombre es ${razonOperador[0].razonSocial}`);
+    (operador) => {
+      razonOperador = operador[0].razonSocial;
+      console.log(`el nombre es ${razonOperador}`);
     },
     (error) => {
       console.error(error);
