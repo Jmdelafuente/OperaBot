@@ -286,6 +286,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
   msg.id = id;
   
   listamensajes.forEach((element) => {
+    console.log(element);
     if(element.operador_id != undefined){
     op.obtenerNombre(element.operador_id).then(
       (nombre) => {
