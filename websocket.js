@@ -67,10 +67,10 @@ io.on("connection", function (socket) {
     op.enviarMensaje(msg.id, msg.contenido,msg.operadorid);
     op.obtenerNombre(10).then(
       (nombre) => {
-        console.log(`nombre de op ${nombre}`)
+        let split = nombre.split(",");
         var pack = {
           contenido: msg.contenido,
-          nombre: nombre
+          nombre: split[1]
         }
         socket.emit("dibujar_mensaje", pack);
       },
