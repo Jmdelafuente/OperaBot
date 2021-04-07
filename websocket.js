@@ -284,7 +284,7 @@ async function quieremail(operador, idUser, chat) {
 const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let msg = {};
   msg.id = id;
-  console.log(`che la lista en realidad es todo esto ${listamensajes[1].contenido}`);
+  console.log(`che la lista en realidad es todo esto ${listamensajes.operador_id}`);
   msg.lista = listamensajes;
   if(append){
     socket.emit("getMoreMessagesByChat", msg);
