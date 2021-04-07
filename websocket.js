@@ -68,17 +68,17 @@ io.on("connection", function (socket) {
     op.obtenerNombre(10).then(
       (nombre) => {
         console.log(`nombre de op ${nombre}`)
+        var pack = {
+          contenido: msg.contenido,
+          nombre: nombre
+        }
+        socket.emit("dibujar_mensaje", pack);
       },
       (error) => {
         //  TODO: registrar el error
         console.log(error);
       }
     )
-    var pack = {
-      contenido: msg.contenido,
-      nombre: nombre
-    }
-    socket.emit("dibujar_mensaje",pack);
   });
   socket.on("wamessage", function (msg) {
     op.enviarWAMessage(msg.id,msg.contenido);
