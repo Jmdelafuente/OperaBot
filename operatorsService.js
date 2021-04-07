@@ -333,13 +333,11 @@ async function obtenerNombre(operadorId) {
   ).then(
     (operador) => {
       razonOperador = operador[0].razonSocial;
-      console.log(`el nombre es ${razonOperador}`);
     },
     (error) => {
       console.error(error);
     }
     );
-    console.log(`el nombre afuera de buscar es ${razonOperador}`);
   return razonOperador;
 }
 
