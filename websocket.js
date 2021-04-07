@@ -65,8 +65,15 @@ http.listen(portFront, function () {
 io.on("connection", function (socket) {
   socket.on("send_op_message", function (msg) {
     op.enviarMensaje(msg.id, msg.contenido,msg.operadorid);
-    op.obtenerNombre(10).then((nombre) => { console.log(`nombre de op ${nombre}`);});
-    
+    op.obtenerNombre(10).then(
+      (nombre) => {
+        console.log(`nombre de op ${nombre}`)
+      },
+      (error) => {
+        //  TODO: registrar el error
+        console.log(error);
+      }
+    )
     var pack = {
       contenido: msg.contenido,
       nombre: nombre
