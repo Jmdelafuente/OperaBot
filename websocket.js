@@ -293,7 +293,6 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
       (nombre) => {
         let split = nombre.split(",");
         element.operador_id = split[1]
-        console.log(element.operador_id);
       },
       (error) => {
         //  TODO: registrar el error
@@ -304,7 +303,6 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
     }
   });
   Promise.allSettled(promises).then((cb) => {
-    console.log(`estoy despues del foreach ${listamensajes[4].operador_id}`);
     msg.lista = listamensajes;
   
     if(append){
