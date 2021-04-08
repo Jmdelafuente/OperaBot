@@ -706,9 +706,11 @@ $(function () {
 
         if(filter.length!=0){
           for (i = 0; i < li.length; i++) {
-            var txtValue = li[i].getAttribute("value");
-            if(txtValue!=0){
-              if (txtValue.indexOf(filter) > -1) {
+            var emailValue = li[i].getAttribute("value");
+            var telefonoValue = li[i].getAttribute("id");
+
+            if(emailValue!=0 || telefonoValue != 0){
+              if (emailValue.indexOf(filter) > -1 || telefonoValue.indexOf(filter) > -1) {
                 li[i].style.display = "";
               } else {
                 li[i].style.display = "none";
@@ -723,6 +725,7 @@ $(function () {
       });
     });
 
+ 
     // funcionalidad de obtener todo el menu disponible y seleccionar algun sub-menu para enviar al ciudadano
   socket.on("obtener-opciones", function (msg) {
     let divOpcion = document.getElementById('modal-body-opcion');

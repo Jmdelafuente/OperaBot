@@ -136,7 +136,6 @@ module.exports.messageParser = function (origen, body) {
         contenido: body.text,
         timestamp: body.timestamp,
         type: body.type,
-        operador_id: undefined
       };
       break;
     case "P":
