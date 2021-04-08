@@ -492,6 +492,8 @@ $(function () {
       let id = $("#idChat").val();
       socket.emit("more-messages", id);
     });
+
+
     $("#m").on("keydown", function (e) {
       if (e.key.length == 1) {
         if (!limit) {
@@ -508,6 +510,7 @@ $(function () {
         socket.emit("send_plantilla", '');
       }
     });
+    
     $("#cerrarChat").on("click", function (e) {
       let id = $("#idChat").val();
       closeChat(id);
