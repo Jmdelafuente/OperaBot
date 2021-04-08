@@ -343,7 +343,8 @@ $(function () {
       }else{
         icono = "fab fa-whatsapp origen";
       }
-      $("#informacionActivo").addClass(icono);
+      $("#logo-origen").removeClass("fab fa-2x fa-whatsapp");
+      $("#logo-origen").addClass(icono);
       if (estado != "Cerrado"){
         $(li).addClass("active-chat");
         // Enviamos el 'visto' al servidor
