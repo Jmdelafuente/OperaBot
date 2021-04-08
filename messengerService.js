@@ -118,6 +118,8 @@ async function enviarWAMessage(id, cont) {
 
 }
 
+//Se envia a page Server el chat correspondiente al email para que tengan todo el historial
+//de conversaciones anteriores (si es que existieron)
 async function recuperarChatEmail(idUser,email) {
   let historial = await op.recuperarChatEmail(email);
   console.log(`historal de chat ${historial}`);

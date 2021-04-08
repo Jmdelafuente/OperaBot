@@ -122,7 +122,6 @@ function recuperarChatsOperador(id) {
   for (const [chatId, value] of Object.entries(asigns)) {
     let chat = messenger.getChatById(chatId);
     if(chat!=undefined){
-      console.log(`estoy en recuperar chat ${JSON.stringify(chat)}`);
       chats[chatId] = chat;
     }
       
@@ -258,6 +257,12 @@ async function recibirImagen(chat, tipo) {
   }
 }
 
+/**
+ * 
+ * @param {*} id identifica al chat 
+ * @param {*} user socket del operador para buscarlo
+ */
+
 async function getAllMessages(id, user) {
   operador = operators_channels[user];
   chat = messenger.getChatById(id);
@@ -360,6 +365,8 @@ async function confirmarVisto(chatId, channelId) {
   }
 }
 
+//Le envia la información del estado al chat para poder saber
+//si un operador esta escribiendo o no e informarle al ciudadano
 async function escribiendo(chatID, channelID, isWriting = true) {
   let operador = operators[operators_channels[channelID]];
   let str = operador.razonSocial;
@@ -384,6 +391,8 @@ async function closeChat(chatID) {
   // TODO: analiticas de operador con chat cerrado
 }
 
+//Se recupera todo el historal en base al email
+//Para que el chat exista en la BD el ciudadano debio haber cerrado el chat anteriormente
 async function recuperarChatEmail(email) {
   let historial_chat;
   await db.buscar(
@@ -428,9 +437,8 @@ async function desconexionCivil(msg){
 }
 
 function mandar(msg) {
-  // create reusable transporter object using the default SMTP transport
   var smtpTransport = nodemailer.createTransport({
-    service: 'Gmail', // sets automatically Host, port and connection security settings
+    service: 'Gmail', 
     auth: {
       user: "no.responder.mnqn@gmail.com",
       pass: "noResponder@Code13:08"
@@ -439,29 +447,30 @@ function mandar(msg) {
 
  
 
-  // setup email data with unicode symbols
+  
   var mailOptions = {
-    from: "no.responder.mnqn@gmail.com", // sender address
-    to: msg.email, // list of receivers
-    subject: msg.subject, // Subject line
+    from: "no.responder.mnqn@gmail.com", 
+    to: msg.email, 
+    subject: msg.subject, 
     text: "Para su comodidad se le adjuntara un archivo txt con el contenido de la conversación", // plain text body
     html: msg.text
   };
 
-  // send mail with defined transport object
+
   smtpTransport.sendMail(mailOptions, (error, info) => {
     if (error) {
       return console.log('Error while sending mail: ' + error);
     } else {
       console.log('Message sent: %s', info.messageId);
     }
-    smtpTransport.close(); // shut down the connection pool, no more messages.
+    smtpTransport.close(); 
   });
 }
 
 async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
 }
+
 
 async function validar(token) {
   let op = new Operador();
