@@ -339,11 +339,12 @@ $(function () {
       $(".chat .active-chat").removeClass("active-chat");
       // Ponemos icono si es de W o P depende el origen
       if(origen=="P"){
+        $("#logo-origen").removeClass("fab fa-2x fa-whatsapp");
         icono = "fa fa-desktop origen";
       }else{
+        $("#logo-origen").removeClass("fa fa-desktop origen");
         icono = "fab fa-2x fa-whatsapp";
       }
-      $("#logo-origen").removeClass("fab fa-2x fa-whatsapp");
       $("#logo-origen").addClass(icono);
       if (estado != "Cerrado"){
         $(li).addClass("active-chat");
