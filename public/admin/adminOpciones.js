@@ -41,7 +41,7 @@ $(function () {
             tabsize: 2,
             height: 250,
             hint: {
-                words: ['nombre": "nombre"', "opciones:[]", 'valor":', 'informacion":', 'descripcion":' , "descripcion:", 'estructura de un menu => "nombre" o "respuesta nombre": Nombre que representa la opcion o la respuesta,\n "opciones": [ "nombre": "submenu" que sera el que indique otro submenu o si es una respuesta final, el nombre debe comenzar con "respuesta" ("respuesta nombresubmenu"),\n "valor": "NOMBRE" QUE APARECE EN EL BOTON, siempre en mayuscula: ], informacion: un pequeño mensaje si es necesario para el ciudadano descripcion: Sirve para que el operador pueda saber una descripcion del menu}", "aclaraciones: cada elemento viene de a pares que son separados por comas y deben escribirse entre comillas dobles, excepto los dos puntos (:) y las comas => "elemento 1":"nombre elemento 1" , "elemento 2":"nombre elemento 2" . Dentro de opciones:[] deben escribirse dentro de los corchetes cada submenu entre llaves separadas por "coma" es decir {nombre: submenu 1, valor: valor 1} , {nombre: submenu 1, valor: valor 2}. La informacion no es obligatoria solo si sirve para describir que hace el boton si no es muy explicativo su nombre.', 'ejemplo => "nombre": "menu 1" , "opciones": [{"nombre": "respuesta submenu 1" , "valor": "SUBMENU 1"} , {"nombre": "submenu 2" , "valor": "SUBMENU 2"}]', 'respuesta => "nombre": "respuesta submenu 1" , "opciones": ["Esto solo es el texto de la respuesta"]', 'plantilla => "plantilla":"mensaje predeterminado"'],
+                words: ['nombre": "nombre"', "opciones:[]", 'valor":', 'informacion":', 'descripcion":' , "descripcion:", 'estructura de un menu => "nombre" o "respuesta nombre": Nombre que representa la opcion o la respuesta,\n "opciones": [ "nombre": "submenu" que sera el que indique otro submenu o si es una respuesta final, el nombre debe comenzar con "respuesta" ("respuesta nombresubmenu"),\n "valor": "NOMBRE" QUE APARECE EN EL BOTON, siempre en mayuscula: ], informacion: un pequeño mensaje si es necesario para el ciudadano descripcion: Sirve para que el operador pueda saber una descripcion del menu}','aclaraciones: cada elemento viene de a pares que son separados por comas y deben escribirse entre comillas dobles, excepto los dos puntos (:) y las comas => "elemento 1":"nombre elemento 1" , "elemento 2":"nombre elemento 2" . Dentro de opciones:[] deben escribirse dentro de los corchetes cada submenu entre llaves separadas por "coma" es decir {nombre: submenu 1, valor: valor 1} , {nombre: submenu 1, valor: valor 2}. La informacion no es obligatoria solo si sirve para describir que hace el boton si no es muy explicativo su nombre', 'ejemplo => "nombre": "menu 1" , "opciones": [{"nombre": "respuesta submenu 1" , "valor": "SUBMENU 1"} , {"nombre": "submenu 2" , "valor": "SUBMENU 2"}]', 'respuesta => "nombre": "respuesta submenu 1" , "opciones": ["Esto solo es el texto de la respuesta"]', 'plantilla => "plantilla":"mensaje predeterminado"'],
                 match: /\b(\w{1,})$/,
                 search: function (keyword, callback) {
                     callback($.grep(this.words, function (item) {
@@ -59,7 +59,6 @@ $(function () {
         if ($('#summernote').val().length > 0) {
             let mensaje = $($("#summernote").summernote("code")).text();   
             mensaje = "{" + mensaje + "}";
-            console.log(mensaje);
             socketopciones.emit("opciones_admin",mensaje);
             $("#summernote").summernote("code", "");
          }
@@ -69,10 +68,16 @@ $(function () {
         event.preventDefault();
         if ($('#summernote').val().length > 0) {
             let mensaje = $($("#summernote").summernote("code")).text();   
-            console.log(mensaje);
             socketopciones.emit("plantilla_admin",mensaje);
             $("#summernote").summernote("code","");
          }
+    });
+
+
+    $('.obtener-menu').click(function (event) {
+        event.preventDefault();
+        
+        
     });
 
 //fede termina la parte del summernote
