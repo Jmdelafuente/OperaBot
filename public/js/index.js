@@ -299,7 +299,7 @@ $(function () {
       info.appendChild(orig);
       li.addEventListener('click', function (event) {
         event.preventDefault();
-        changeChat(id,estado);
+        changeChat(id,estado,origen);
       });
 
 
@@ -310,7 +310,7 @@ $(function () {
         chatListAsign.push(id);
         clonediv.addEventListener('click', function (event) {
           event.preventDefault();
-          changeChat(id,estado);
+          changeChat(id,estado,origen);
         });
       }
 
@@ -324,7 +324,7 @@ $(function () {
    * @param {String} estado indica que un chat se encuentra cerrado o abierto
    * @returns
    */
-  function changeChat(id,estado) {
+  function changeChat(id,estado,origen) {
     if ($("#idChat").val() != id) {
       activeTab = sessionStorage.getItem("activeTab");
       // Actualizamos el destinatario
@@ -337,6 +337,13 @@ $(function () {
       $("#nombreActivo").html("Chat con " + nom);
       // Marcamos el chat como activo
       $(".chat .active-chat").removeClass("active-chat");
+      // Ponemos icono si es de W o P depende el origen
+      if(origen=="P"){
+        icono = "fa fa-desktop origen";
+      }else{
+        icono = "fab fa-whatsapp origen";
+      }
+      $("#informacionActivo").addClass(icono);
       if (estado != "Cerrado"){
         $(li).addClass("active-chat");
         // Enviamos el 'visto' al servidor
@@ -510,7 +517,7 @@ $(function () {
         socket.emit("send_plantilla", '');
       }
     });
-    
+
     $("#cerrarChat").on("click", function (e) {
       let id = $("#idChat").val();
       closeChat(id);
