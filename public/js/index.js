@@ -762,7 +762,7 @@ $(function () {
         pack.contenido = msg[key].opciones;
         if (msg[key].nombre.substring(0, 9) != 'respuesta') {
           socket.emit('enviar-menu', pack);
-          addMessage('Se envio el menu al ciudadano', 'E', Date.now(), 'message');
+          addMessage('Se envio el menú al ciudadano', 'E', Date.now(), 'message');
         } else {
           pack.contenido = msg[key].opciones;
           addMessage(msg[key].opciones, 'E', Date.now(), 'message');
