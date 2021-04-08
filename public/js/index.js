@@ -341,7 +341,7 @@ $(function () {
       if(origen=="P"){
         icono = "fa fa-desktop origen";
       }else{
-        icono = "fab fa-whatsapp origen";
+        icono = "fab fa-2x fa-whatsapp";
       }
       $("#logo-origen").removeClass("fab fa-2x fa-whatsapp");
       $("#logo-origen").addClass(icono);
