@@ -291,9 +291,9 @@ $(function () {
           break;
       }
 
-      /*if(tags){
+      if(tags!=""){
         dibujarEtiquetas(tags);
-      }*/
+      }
 
       document.getElementById("listaContactos").appendChild(li);
       chatListAll.push(id);
@@ -393,8 +393,7 @@ $(function () {
     msg.preventDefault();
 
     //TODO: mover a operadores muy seguramente
-    var tags = [{ nombre: "etiqueta 1", color: "badge-primary" }, { nombre: "etiqueta 2", color: "badge-secondary" }, { nombre: "etiqueta 3", color: "badge-success" }, { nombre: "etiqueta 4", color: "badge-danger" }, { nombre: "etiqueta 5", color: "badge-warning" }, { nombre: "etiqueta 6", color: "badge-info" }, {
-      nombre: "etiqueta 7", color: "badge-light"}, {nombre:"etiqueta 8", color:"badge-dark"}];
+    var tags = [{ nombre: "SUBE", color: "badge-primary" }, { nombre: "GESTIÓN TRIBUTARIA", color: "badge-secondary" }, { nombre: "LICENCIA DE CONDUCIR", color: "badge-success" }, { nombre: "LIMPIEZA URBANA", color: "badge-danger" }, { nombre: "JUZGADOS DE FALTAS", color: "badge-warning" }, { nombre: "TIERRAS", color: "badge-info" }, { nombre: "TRANSPORTE", color: "badge-light" }, { nombre: "ARBOLADO URBANO", color: "badge-dark" }, { nombre: "BIENESTAR ANIMAL", color: "badge_bienestar" }, { nombre: "COMERCIO", color: "badge_comercio" }, { nombre: "CAPACITACIÓN Y EMPLEO", color: "badge_empleo" }, { nombre:"RECLAMO", color:"badge_reclamo"}];
     //cada etiqueta es tratada para darle su color y funcionalidad
     socket.emit("dibujar_etiquetas", tags);
     $('#modal-etiquetas').modal('show');
@@ -405,7 +404,7 @@ $(function () {
   });
 
   //funcion que dibuja las etiquetas
-  socket.on("dibujarEtiquetas", function(tags) {
+  socket.on("dibujar_etiquetas", function(tags) {
     var modalBody = document.getElementById("modal-body-etiquetas");
     tags.forEach(element => {
       var span = document.createElement('span');
