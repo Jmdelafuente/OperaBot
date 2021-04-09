@@ -393,12 +393,11 @@ $(function () {
       var span = document.createElement('span');
       span.className = `badge badge-pill ${colores[Math.floor(Math.random() * ((colores.length - 1) + 1))]}`;
       span.innerText = element;
+      var clone_tag = span.cloneNode(true);
       
       span.addEventListener('click',function (event) {
         event.preventDefault();
         var tag = document.getElementById("user_tags");
-        var clone_tag = span.cloneNode(true);
-        clone_tag.removeEventListener('click', makeBackgroundYellow, false);
         $(".chat .active-chat .user_tags").appendChild(clone_tag);
       });
       modalBody.appendChild(span);
