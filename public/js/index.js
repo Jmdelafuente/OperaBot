@@ -608,6 +608,7 @@ $(function () {
  
   socket.on("dibujar_etiquetas", function (tags) {
     var modalBody = document.getElementById("modal-body-etiquetas");
+    if(tags != ""){
     tags.forEach(element => {
       var span = document.createElement('span');
       span.setAttribute("id", element);
@@ -641,6 +642,7 @@ $(function () {
       });
       modalBody.appendChild(span);
     });
+  }
   });
 
   
