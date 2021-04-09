@@ -86,7 +86,7 @@ async function nuevaImagen(
     chat = chatsList[id];
     res = await chat.asignacion();
     } else {
-    var chat = new Chat(id, origen, nombre, t, 1, cont, email);
+    var chat = new Chat(id, origen, nombre, t, 1, cont, email,[]);
     chatsList[id] = chat;
   }
   // Notify new message
