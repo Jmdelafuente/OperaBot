@@ -386,7 +386,7 @@ $(function () {
   document.getElementById('etiquetas').addEventListener('click', function (msg) {
     msg.preventDefault();
     var modalBody = document.getElementById("modal-body-etiquetas");
-    $('#modal-etiquetas').empty();
+
     var tags = ["etiqueta 1", "etiqueta 2", "etiqueta 3", "etiqueta 4", "etiqueta 5", "etiqueta 6"];
     var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
     tags.forEach(element => {
@@ -410,6 +410,7 @@ $(function () {
       event.preventDefault();
       
       $('#modal-etiquetas').modal('hide');
+      $('#modal-etiquetas').empty();
     });
     modalBody.appendChild(cerrar);
     $('#modal-etiquetas').modal('show');
