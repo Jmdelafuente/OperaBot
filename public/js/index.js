@@ -386,6 +386,7 @@ $(function () {
   document.getElementById('etiquetas').addEventListener('click', function (msg) {
     msg.preventDefault();
     var modalBody = document.getElementById("modal-body-etiquetas");
+    $('#modal-etiquetas').empty();
     var tags = ["etiqueta 1", "etiqueta 2", "etiqueta 3", "etiqueta 4", "etiqueta 5", "etiqueta 6"];
     var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
     tags.forEach(element => {
@@ -412,6 +413,7 @@ $(function () {
     });
     modalBody.appendChild(cerrar);
     $('#modal-etiquetas').modal('show');
+
   });
 
   //Permite al operador enviarle la opcion al ciudadano para cambiar su email en caso que sea solicitado
