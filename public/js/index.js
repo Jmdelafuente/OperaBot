@@ -615,7 +615,6 @@ $(function () {
       span.className = `badge badge-pill ${element.color}`;
       span.innerText = element.nombre;
       var clone_tag = span.cloneNode(true);
-      i = i + 1;
       var tag = {
         nombre: element.nombre,
         color: element.color
