@@ -291,9 +291,9 @@ $(function () {
           break;
       }
 
-      if(tags){
+      /*if(tags){
         dibujarEtiquetas(tags);
-      }
+      }*/
 
       document.getElementById("listaContactos").appendChild(li);
       chatListAll.push(id);
