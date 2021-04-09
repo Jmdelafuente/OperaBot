@@ -389,17 +389,18 @@ $(function () {
     var tags = ["etiqueta 1", "etiqueta 2", "etiqueta 3", "etiqueta 4", "etiqueta 5", "etiqueta 6"];
     var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
     tags.forEach(element => {
-      modalBody.appendChild(email);
       var span = document.createElement('span');
       span.className = `badge badge-pill ${colores[Math.random() * (colores.length - 1) + 1]}`;
       span.innerText = element;
-
+      
       span.addEventListener('click',function (event) {
+        event.preventDefault();
         var tag = document.getElementById("user_tags");
         var clone_tag = span.cloneNode(true);
         clone_tag.removeEventListener('click');
         $(".chat .active-chat .user_tags").appendChild(clone_tag);
       });
+      modalBody.appendChild(span);
     });
     var cerrar = document.createElement('button');
     cerrar.innerText = "cerrar";
