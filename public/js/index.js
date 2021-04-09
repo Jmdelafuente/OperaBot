@@ -391,14 +391,22 @@ $(function () {
     var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
     tags.forEach(element => {
       var span = document.createElement('span');
+      span.setAttribute("id", element);
       span.className = `badge badge-pill ${colores[i]}`;
       span.innerText = element;
       var clone_tag = span.cloneNode(true);
       i= i + 1;
       span.addEventListener('click',function (event) {
         event.preventDefault();
-        var tag = document.getElementById("user_tags");
+        var close_etiqueta = document.createElement('i');
+        close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");  
+        close_etiqueta.addEventListener('click',function (event) {
+          event.preventDefault();
+          close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
+        });
+        clone_tag.appendChild(close_etiqueta);
         $(".chat .active-chat .user_tags").append(clone_tag);
+        $(`#${element}`).remove();
       });
       modalBody.appendChild(span);
     });
