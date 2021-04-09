@@ -386,15 +386,15 @@ $(function () {
   document.getElementById('etiquetas').addEventListener('click', function (msg) {
     msg.preventDefault();
     var modalBody = document.getElementById("modal-body-etiquetas");
-
-    var tags = ["etiqueta 1", "etiqueta 2", "etiqueta 3", "etiqueta 4", "etiqueta 5", "etiqueta 6"];
+    var i= 0;
+    var tags = ["etiqueta 1", "etiqueta 2", "etiqueta 3", "etiqueta 4", "etiqueta 5", "etiqueta 6", "etiqueta 7", "etiqueta 8"];
     var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
     tags.forEach(element => {
       var span = document.createElement('span');
-      span.className = `badge badge-pill ${colores[Math.floor(Math.random() * ((colores.length - 1) + 1))]}`;
+      span.className = `badge badge-pill ${colores[i]}`;
       span.innerText = element;
       var clone_tag = span.cloneNode(true);
-      
+      i= i + 1;
       span.addEventListener('click',function (event) {
         event.preventDefault();
         var tag = document.getElementById("user_tags");
@@ -409,11 +409,13 @@ $(function () {
       event.preventDefault();
       
       $('#modal-etiquetas').modal('hide');
-      $('#modal-body-etiquetas').empty();
     });
     modalBody.appendChild(cerrar);
     $('#modal-etiquetas').modal('show');
-
+  });
+  
+  $("#modal-etiquetas").on("hidden.bs.modal", function () {
+    $('#modal-body-etiquetas').empty();    
   });
 
   //Permite al operador enviarle la opcion al ciudadano para cambiar su email en caso que sea solicitado
