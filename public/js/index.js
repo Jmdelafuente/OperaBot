@@ -608,7 +608,7 @@ $(function () {
  
   socket.on("dibujar_etiquetas", function (tags) {
     var modalBody = document.getElementById("modal-body-etiquetas");
-    if(tags != ""){
+    if (Object.keys(tags).length !== 0){
     tags.forEach(element => {
       var span = document.createElement('span');
       span.setAttribute("id", element);
