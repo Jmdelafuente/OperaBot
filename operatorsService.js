@@ -305,10 +305,12 @@ function enviarMenu(id,cont) {
 
 async function add_tag(id, tag) {
   messenger.add_tag(id, tag);
+  console.log(`id blabla ${id} y tag ${tag}`);
 }
 
 async function delete_tag(id, tag) {
   messenger.delete_tag(id, tag.nombre);
+  console.log(`id blabla ${id} y tag ${tag}`);
 }
 
 /**

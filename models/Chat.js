@@ -315,7 +315,9 @@ class Chat {
 
   // funcionalidad para modificar los tags del chat
   insertarTag(tag){
+    console.log(`id blabla ${tags} y tag ${tag}`);
     this.tags.push(tag);
+    console.log(`insertado blabla ${tags} y tag ${tag}`);
   }
 
   eliminarTag(tag){
