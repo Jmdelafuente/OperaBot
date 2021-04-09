@@ -390,7 +390,7 @@ $(function () {
     var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
     tags.forEach(element => {
       var span = document.createElement('span');
-      span.className = `badge badge-pill ${colores[Math.random() * (colores.length - 1) + 1]}`;
+      span.className = `badge badge-pill ${colores[Math.floor(Math.random() * ((colores.length - 1) + 1))]}`;
       span.innerText = element;
       
       span.addEventListener('click',function (event) {
@@ -404,6 +404,7 @@ $(function () {
     });
     var cerrar = document.createElement('button');
     cerrar.innerText = "cerrar";
+    cerrar.className = "btn btn-warning";
     cerrar.addEventListener('click', function (event) {
       event.preventDefault();
       
