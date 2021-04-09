@@ -292,7 +292,7 @@ $(function () {
       }
 
       if(tags!=""){
-        dibujarEtiquetas(tags);
+        socket.emit("dibujar_etiquetas",tags);
       }
 
       document.getElementById("listaContactos").appendChild(li);
