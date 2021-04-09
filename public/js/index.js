@@ -404,43 +404,7 @@ $(function () {
   });
 
   //funcion que dibuja las etiquetas
-  socket.on("dibujar_etiquetas", function(tags) {
-    var modalBody = document.getElementById("modal-body-etiquetas");
-    tags.forEach(element => {
-      var span = document.createElement('span');
-      span.setAttribute("id", element);
-      span.className = `badge badge-pill ${element.color}`;
-      span.innerText = element.nombre;
-      var clone_tag = span.cloneNode(true);
-      i = i + 1;
-      var tag = {
-        nombre: element.nombre,
-        color: element.color
-      }
-      var idChat = sessionStorage.getItem('key');
-      var package = {
-        id: idChat,
-        tag: tag
-      }
-      //se le agrega una "X" a la etiqueta por si se selecciono erroneamente y se le agrega la funcion de "quitar etiqueta"
-      span.addEventListener('click', function (event) {
-        event.preventDefault();
-        var close_etiqueta = document.createElement('i');
-        close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
-        close_etiqueta.addEventListener('click', function (event) {
-          event.preventDefault();
-          close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
-          socket.emit("delete_tag",package);
-        });
-        clone_tag.appendChild(close_etiqueta);
-        socket.emit("add_tag",package);
-        $(".chat .active-chat .user_tags").append(clone_tag);
-        $(`#${element.nombre}`).remove();
-      });
-      modalBody.appendChild(span);
-    });
-  });
-
+  
   //Permite al operador enviarle la opcion al ciudadano para cambiar su email en caso que sea solicitado
   var cambioEmail = document.getElementById('cambiar_Email');
   cambioEmail.addEventListener('click', function (e) {
@@ -642,6 +606,43 @@ $(function () {
     conn = true;
   });
  
+  socket.on("dibujar_etiquetas", function (tags) {
+    var modalBody = document.getElementById("modal-body-etiquetas");
+    tags.forEach(element => {
+      var span = document.createElement('span');
+      span.setAttribute("id", element);
+      span.className = `badge badge-pill ${element.color}`;
+      span.innerText = element.nombre;
+      var clone_tag = span.cloneNode(true);
+      i = i + 1;
+      var tag = {
+        nombre: element.nombre,
+        color: element.color
+      }
+      var idChat = sessionStorage.getItem('key');
+      var package = {
+        id: idChat,
+        tag: tag
+      }
+      //se le agrega una "X" a la etiqueta por si se selecciono erroneamente y se le agrega la funcion de "quitar etiqueta"
+      span.addEventListener('click', function (event) {
+        event.preventDefault();
+        var close_etiqueta = document.createElement('i');
+        close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
+        close_etiqueta.addEventListener('click', function (event) {
+          event.preventDefault();
+          close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
+          socket.emit("delete_tag", package);
+        });
+        clone_tag.appendChild(close_etiqueta);
+        socket.emit("add_tag", package);
+        $(".chat .active-chat .user_tags").append(clone_tag);
+        $(`#${element.nombre}`).remove();
+      });
+      modalBody.appendChild(span);
+    });
+  });
+
   
  socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
