@@ -398,7 +398,7 @@ $(function () {
         event.preventDefault();
         var tag = document.getElementById("user_tags");
         var clone_tag = span.cloneNode(true);
-        clone_tag.removeEventListener('click');
+        clone_tag.removeEventListener('click', makeBackgroundYellow, false);
         $(".chat .active-chat .user_tags").appendChild(clone_tag);
       });
       modalBody.appendChild(span);
@@ -410,7 +410,7 @@ $(function () {
       event.preventDefault();
       
       $('#modal-etiquetas').modal('hide');
-      $('#modal-etiquetas').empty();
+      $('#modal-body-etiquetas').empty();
     });
     modalBody.appendChild(cerrar);
     $('#modal-etiquetas').modal('show');
