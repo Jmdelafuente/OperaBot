@@ -396,7 +396,7 @@ $(function () {
     var tags = [{ nombre: "etiqueta 1", color: "badge-primary" }, { nombre: "etiqueta 2", color: "badge-secondary" }, { nombre: "etiqueta 3", color: "badge-success" }, { nombre: "etiqueta 4", color: "badge-danger" }, { nombre: "etiqueta 5", color: "badge-warning" }, { nombre: "etiqueta 6", color: "badge-info" }, {
       nombre: "etiqueta 7", color: "badge-light"}, {nombre:"etiqueta 8", color:"badge-dark"}];
     //cada etiqueta es tratada para darle su color y funcionalidad
-    dibujarEtiquetas(tags);
+    socket.emit("dibujar_etiquetas", tags);
     $('#modal-etiquetas').modal('show');
   });
   
@@ -405,7 +405,7 @@ $(function () {
   });
 
   //funcion que dibuja las etiquetas
-  function dibujarEtiquetas(tags) {
+  socket.on("dibujarEtiquetas", function(tags) {
     var modalBody = document.getElementById("modal-body-etiquetas");
     tags.forEach(element => {
       var span = document.createElement('span');
@@ -440,7 +440,7 @@ $(function () {
       });
       modalBody.appendChild(span);
     });
-  }
+  });
 
   //Permite al operador enviarle la opcion al ciudadano para cambiar su email en caso que sea solicitado
   var cambioEmail = document.getElementById('cambiar_Email');

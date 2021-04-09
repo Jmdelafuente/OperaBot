@@ -157,6 +157,9 @@ io.on("connection", function (socket) {
      op.escribiendo(id, socket.user, false);
    });
 
+  socket.on("dibujar_etiquetas",function (msg) {
+    
+  });
 
   socket.on("close_chat", function(id){
     op.closeChat(id);
