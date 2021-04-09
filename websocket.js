@@ -175,6 +175,14 @@ io.on("connection", function (socket) {
     socket.emit('obtener-opciones',opciones);
   });
 
+  socket.on("add_tag", function (msg) {
+   op.add_tag(msg.id, msg.tag);
+  });
+
+  socket.on("delete_tag", function (msg) {
+    op.delete_tag(msg.id, msg.tag);
+  });
+
   socket.on('enviar-menu',function (msg) {
     op.enviarMenu(msg.id,msg.contenido);
   });

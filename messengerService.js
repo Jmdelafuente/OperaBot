@@ -160,6 +160,25 @@ async function enviarEstado(id, cont) {
   return res;
 }
 
+async function add_tag(id, tag) {
+  var chat = chatsList[id];
+  let res = false;
+  if (chat) {
+    res = await chat.insertarTag(tag);
+  }
+  return res;
+}
+
+async function delete_tag(id, tag) {
+  var chat = chatsList[id];
+  let res = false;
+  if (chat) {
+    res = await chat.eliminarTag(tag);
+  }
+  return res;
+
+}
+
 async function enviarMenu(id, cont) {
   var chat = chatsList[id];
   let res = await chat.enviarMenu(cont);
@@ -243,3 +262,5 @@ module.exports.nuevoMensaje = nuevoMensaje;
 module.exports.enviarMenu = enviarMenu;
 module.exports.enviarWAMessage = enviarWAMessage;
 module.exports.recuperarChatEmail = recuperarChatEmail;
+module.exports.add_tag = add_tag;
+module.exports.delete_tag = delete_tag;

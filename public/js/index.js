@@ -248,7 +248,7 @@ $(function () {
    * @param {String} estado el estado representa si esta abierto o cerrado un chat
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
-  function addChat(nom, id, asign, origen,estado,email) {
+  function addChat(nom, id, asign, origen,estado,email,tags) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -289,6 +289,10 @@ $(function () {
 
         default:
           break;
+      }
+
+      if(tags){
+        dibujarEtiquetas(tags);
       }
 
       document.getElementById("listaContactos").appendChild(li);
@@ -349,6 +353,7 @@ $(function () {
         $("#logo-origen").removeClass("fa fa-desktop origen");
         icono = "fab fa-2x fa-whatsapp";
       }
+
       $("#logo-origen").addClass(icono);
       if (estado != "Cerrado"){
         $(li).addClass("active-chat");
@@ -383,48 +388,59 @@ $(function () {
     socket.emit('obtener-opciones');
   });
 
+  //funcionalidad de etiquetas
   document.getElementById('etiquetas').addEventListener('click', function (msg) {
     msg.preventDefault();
-    var modalBody = document.getElementById("modal-body-etiquetas");
-    var i= 0;
-    var tags = ["etiqueta 1", "etiqueta 2", "etiqueta 3", "etiqueta 4", "etiqueta 5", "etiqueta 6", "etiqueta 7", "etiqueta 8"];
-    var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
-    tags.forEach(element => {
-      var span = document.createElement('span');
-      span.setAttribute("id", element);
-      span.className = `badge badge-pill ${colores[i]}`;
-      span.innerText = element;
-      var clone_tag = span.cloneNode(true);
-      i= i + 1;
-      span.addEventListener('click',function (event) {
-        event.preventDefault();
-        var close_etiqueta = document.createElement('i');
-        close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");  
-        close_etiqueta.addEventListener('click',function (event) {
-          event.preventDefault();
-          close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
-        });
-        clone_tag.appendChild(close_etiqueta);
-        $(".chat .active-chat .user_tags").append(clone_tag);
-        $(`#${element}`).remove();
-      });
-      modalBody.appendChild(span);
-    });
-    var cerrar = document.createElement('button');
-    cerrar.innerText = "cerrar";
-    cerrar.className = "btn btn-warning";
-    cerrar.addEventListener('click', function (event) {
-      event.preventDefault();
-      
-      $('#modal-etiquetas').modal('hide');
-    });
-    modalBody.appendChild(cerrar);
+
+    //TODO: mover a operadores muy seguramente
+    var tags = [{ nombre: "etiqueta 1", color: "badge-primary" }, { nombre: "etiqueta 2", color: "badge-secondary" }, { nombre: "etiqueta 3", color: "badge-success" }, { nombre: "etiqueta 4", color: "badge-danger" }, { nombre: "etiqueta 5", color: "badge-warning" }, { nombre: "etiqueta 6", color: "badge-info" }, {
+      nombre: "etiqueta 7", color: "badge-light"}, {nombre:"etiqueta 8", color:"badge-dark"}];
+    //cada etiqueta es tratada para darle su color y funcionalidad
+    dibujarEtiquetas(tags);
     $('#modal-etiquetas').modal('show');
   });
   
   $("#modal-etiquetas").on("hidden.bs.modal", function () {
     $('#modal-body-etiquetas').empty();    
   });
+
+  //funcion que dibuja las etiquetas
+  function dibujarEtiquetas(tags) {
+    var modalBody = document.getElementById("modal-body-etiquetas");
+    tags.forEach(element => {
+      var span = document.createElement('span');
+      span.setAttribute("id", element);
+      span.className = `badge badge-pill ${element.color}`;
+      span.innerText = element.nombre;
+      var clone_tag = span.cloneNode(true);
+      i = i + 1;
+      var tag = {
+        nombre: element.nombre,
+        color: element.color
+      }
+      var idChat = sessionStorage.getItem('key');
+      var package = {
+        id: idChat,
+        tag: tag
+      }
+      //se le agrega una "X" a la etiqueta por si se selecciono erroneamente y se le agrega la funcion de "quitar etiqueta"
+      span.addEventListener('click', function (event) {
+        event.preventDefault();
+        var close_etiqueta = document.createElement('i');
+        close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
+        close_etiqueta.addEventListener('click', function (event) {
+          event.preventDefault();
+          close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
+          socket.emit("delete_tag",package);
+        });
+        clone_tag.appendChild(close_etiqueta);
+        socket.emit("add_tag",package);
+        $(".chat .active-chat .user_tags").append(clone_tag);
+        $(`#${element.nombre}`).remove();
+      });
+      modalBody.appendChild(span);
+    });
+  }
 
   //Permite al operador enviarle la opcion al ciudadano para cambiar su email en caso que sea solicitado
   var cambioEmail = document.getElementById('cambiar_Email');
@@ -503,11 +519,11 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
-          addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre,lista[c].email);
+          addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre,lista[c].email, lista[c].tags);
         }
       }
       if (!chatListAll.includes(c)) {
-        addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre, lista[c].email);
+        addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre, lista[c].email,lista[c].tags);
       }
     }
     // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo

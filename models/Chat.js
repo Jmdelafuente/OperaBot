@@ -24,7 +24,8 @@ class Chat {
    * @param {*} timestamp ultima marca de tiempo
    * @param {*} pendingmessage cantidad de mensajes sin leer
    * @param {*} lastmessage contenido del ultmo mensaje (para que exista un chat, al menos un mensaje hubo)
-   * @param {*} email contenido del email del usuario si es que lo ingreso
+   * @param {*} email email del usuario si es que lo ingreso
+   * @param {{*}} tags contiene los tags que colocan los operadores de la forma {nombre:"nombre",color:"color"}
    * @memberof Chat
    */
   constructor(
@@ -43,6 +44,7 @@ class Chat {
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
     this.email = email;
+    this.tags = [];
     this.state = new estado.Abierto(this.id);
     // this.db = new OperaDB();
   }
@@ -309,6 +311,20 @@ class Chat {
     //   return a.timestamp - b.timestamp;
     // });
     // return res;
+  }
+
+  // funcionalidad para modificar los tags del chat
+  insertarTag(tag){
+    this.tags.push(tag);
+  }
+
+  eliminarTag(tag){
+    var i = 0;
+    this.tags.forEach(element => {
+      if(element.nombre == tag);
+      this.tags.splice(i,1);
+    });
+    i = i+1;
   }
 
   changeState(state) {

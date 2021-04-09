@@ -303,6 +303,14 @@ function enviarMenu(id,cont) {
   
 }
 
+async function add_tag(id, tag) {
+  messenger.add_tag(id, tag);
+}
+
+async function delete_tag(id, tag) {
+  messenger.delete_tag(id, tag.nombre);
+}
+
 /**
  * Recupera todos los mensajes de un chat.
  * Puede recurrir a la cache/DB o pedirle al servicio de mensajeria los mensajes
@@ -516,3 +524,5 @@ module.exports.desconexionCivil = desconexionCivil;
 module.exports.validar = validar;
 module.exports.recuperarChatEmail=recuperarChatEmail;
 module.exports.obtenerNombre = obtenerNombre;
+module.exports.add_tag = add_tag;
+module.exports.delete_tag = delete_tag;

@@ -152,6 +152,7 @@ a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 7
 		margin-top: auto;
 		margin-bottom: auto;
 		margin-left: 15px;
+		margin-right: 15px;
 	}
 	.user_info span{
 		font-size: 18px;
