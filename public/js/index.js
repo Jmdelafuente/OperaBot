@@ -398,7 +398,7 @@ $(function () {
       span.addEventListener('click',function (event) {
         event.preventDefault();
         var tag = document.getElementById("user_tags");
-        $(".chat .active-chat .user_tags").appendChild(clone_tag);
+        $(".chat .active-chat .user_tags").append(clone_tag);
       });
       modalBody.appendChild(span);
     });
