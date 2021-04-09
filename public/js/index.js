@@ -255,6 +255,7 @@ $(function () {
       var img = document.createElement("div");
       var avatar = document.createElement("img");
       var info = document.createElement("div");
+      var tags = document.createElement("div");
       var nombre = document.createElement("span");
       var estatus = document.createElement("p");
       // li.classList = "active";
@@ -266,6 +267,8 @@ $(function () {
       avatar.className = "rounded-circle user_img";
       avatar.id = "avatar_" + id;
       info.className = "user_info";
+      tags.className = "user_tags";
+      tags.setAttribute("id", "user_tags");
       nombre.innerText = nom;
       estatus.innerText = "Online";
       var orig = document.createElement("i");
@@ -294,6 +297,7 @@ $(function () {
       ex.appendChild(img);
       img.appendChild(avatar);
       ex.appendChild(info);
+      ex.appendChild(tags);
       info.appendChild(nombre);
       info.appendChild(estatus);
       info.appendChild(orig);
@@ -377,6 +381,35 @@ $(function () {
   menuOpciones.addEventListener('click', function (e) {
     e.preventDefault();
     socket.emit('obtener-opciones');
+  });
+
+  document.getElementById('etiquetas').addEventListener('click', function (msg) {
+    msg.preventDefault();
+    var modalBody = document.getElementById("modal-body-etiquetas");
+    var tags = ["etiqueta 1", "etiqueta 2", "etiqueta 3", "etiqueta 4", "etiqueta 5", "etiqueta 6"];
+    var colores = ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"];
+    tags.forEach(element => {
+      modalBody.appendChild(email);
+      var span = document.createElement('span');
+      span.className = `badge badge-pill ${colores[Math.random() * (colores.length - 1) + 1]}`;
+      span.innerText = element;
+
+      span.addEventListener('click',function (event) {
+        var tag = document.getElementById("user_tags");
+        var clone_tag = span.cloneNode(true);
+        clone_tag.removeEventListener('click');
+        $(".chat .active-chat .user_tags").appendChild(clone_tag);
+      });
+    });
+    var cerrar = document.createElement('button');
+    cerrar.innerText = "cerrar";
+    cerrar.addEventListener('click', function (event) {
+      event.preventDefault();
+      
+      $('#modal-etiquetas').modal('hide');
+    });
+    modalBody.appendChild(cerrar);
+    $('#modal-etiquetas').modal('show');
   });
 
   //Permite al operador enviarle la opcion al ciudadano para cambiar su email en caso que sea solicitado
