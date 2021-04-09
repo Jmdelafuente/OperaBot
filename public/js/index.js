@@ -291,7 +291,7 @@ $(function () {
           break;
       }
 
-      if (Object.keys(sip).length !== 0){
+      if (Object.keys(tags).length !== 0){
         socket.emit("dibujar_etiquetas",tags);
       }
 
