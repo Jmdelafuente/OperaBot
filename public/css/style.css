@@ -88,7 +88,8 @@ a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 7
 			padding: 5px 10px;
 			margin-bottom: 15px !important;
 			background: #026BB2;
-			    height: 95px;
+			height: 95px;
+			display: block;
 		}
 	.active{
 			background: white!important;
@@ -100,8 +101,10 @@ a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 7
 	}
 	.contacts li .img_cont{
 		    height: 100%;
-    width: 20%;
-       padding: 2%;
+		    width: 15%;
+		    padding: 2%;
+		    display: block;
+		    float: left;
 	}
 	.contacts li .img_cont .user_img{
 		width: 100%;
@@ -124,12 +127,11 @@ a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 7
 		}
 	.img_cont{
 			position: relative;
-    height: 70px;
-    width: 70px;
-    background: #1DB3E8;
-    border-radius: 50%!important;
-    border: 3px white solid;
-    
+			height: 70px;
+			width: 70px;
+			background: #1DB3E8;
+			border-radius: 50%!important;
+			border: 2px white solid;
 	}
 	.img_cont_msg{
 			height: 40px;
@@ -152,15 +154,18 @@ a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 7
 		margin-top: auto;
 		margin-bottom: auto;
 		margin-left: 15px;
-		margin-right: 15px;
+		width: 44%;
+		float: left;
 	}
 	.user_info span{
-		font-size: 18px;
+		font-size: 16px;
 		color: white;
+		line-height: 0;
 	}
 	.user_info p{
 	font-size: 10px;
 	color: rgba(255,255,255,0.6);
+	margin-bottom: 2px;
 	}
 	.video_cam{
 		margin-left: 50px;
@@ -463,11 +468,13 @@ img.emoji {
 
 #user_tags .badge .etiqueta {
 	display: block;
-	width: 80%;
+	width: 65%;
 	float: left;
 	margin-bottom: 0px;
 	padding: 1%;
 	text-align: left;
+	font-size: 10px;
+	white-space: break-spaces;
 }
 
 #user_tags .badge .close_etiqueta {
@@ -500,5 +507,7 @@ img.emoji {
 }
 
 #user_tags {
-	width: 50%;
+	width: 36%;
+	float: right;
 }
+#listaContactos .d-flex.bd-highlight{display: block!important;}
