@@ -666,8 +666,8 @@ $(function () {
           socket.emit("delete_tag", package);
         });
         socket.emit("add_tag", package);
+        clone_tag.appendChild(close_etiqueta);
         $(".chat .active-chat .user_tags").append(clone_tag);
-        span.appendChild(close_etiqueta);
       });
       modalBody.appendChild(span);
     });
