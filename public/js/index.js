@@ -292,7 +292,21 @@ $(function () {
       }
 
       if (Object.keys(tags).length !== 0){
-        socket.emit("dibujar_etiquetas",tags);
+        tags.forEach((element)=>{
+          var span = document.createElement('span');
+          span.setAttribute("id", element.nombre);
+          span.className = `badge badge-pill ${element.color}`;
+          span.innerText = element.nombre;
+          var close_etiqueta = document.createElement('i');
+          close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
+            close_etiqueta.addEventListener('click', function (event) {
+              event.preventDefault();
+              close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
+              socket.emit("delete_tag", package);
+            });
+            span.appendChild(close_etiqueta);
+            tags.append(span);
+        });
       }
 
       document.getElementById("listaContactos").appendChild(li);
@@ -611,7 +625,7 @@ $(function () {
     if (Object.keys(tags).length !== 0){
     tags.forEach(element => {
       var span = document.createElement('span');
-      span.setAttribute("id", element);
+      span.setAttribute("id", element.nombre);
       span.className = `badge badge-pill ${element.color}`;
       span.innerText = element.nombre;
       var clone_tag = span.cloneNode(true);
