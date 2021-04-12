@@ -248,7 +248,7 @@ $(function () {
    * @param {String} estado el estado representa si esta abierto o cerrado un chat
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
-  function addChat(nom, id, asign, origen,estado,email,tags) {
+  function addChat(nom, id, asign, origen,estado,email,tags_guardados) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -291,9 +291,9 @@ $(function () {
           break;
       }
 
-      if (Object.keys(tags).length !== 0){
-        console.log(tags)
-        tags.forEach((element)=>{
+      if (Object.keys(tags_guardados).length !== 0){
+        console.log(tags_guardados)
+        tags_guardados.forEach((element)=>{
           var span = document.createElement('span');
           span.setAttribute("id", element.nombre);
           span.className = `badge badge-pill ${element.color}`;
