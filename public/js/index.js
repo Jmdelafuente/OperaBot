@@ -421,7 +421,7 @@ $(function () {
     msg.preventDefault();
 
     //TODO: mover a operadores muy seguramente
-    var tags = [{ nombre: "SUBE", color: "badge_sube" }, { nombre: "GESTIÓN TRIBUTARIA", color: "badge_gestion_tributaria" }, { nombre: "LICENCIA DE CONDUCIR", color: "badge_licencia" }, { nombre: "LIMPIEZA URBANA", color: "badge_limpieza" }, { nombre: "JUZGADOS DE FALTAS", color: "badge_juzgado" }, { nombre: "TIERRAS", color: "badge_tierras" }, { nombre: "TRANSPORTE", color: "badge_transporte" }, { nombre: "ARBOLADO URBANO", color: "badge_arbolado" }, { nombre: "BIENESTAR ANIMAL", color: "badge_bienestar" }, { nombre: "COMERCIO", color: "badge_comercio" }, { nombre: "CAPACITACIÓN Y EMPLEO", color: "badge_empleo" }, { nombre:"RECLAMO", color:"badge_reclamo"}];
+    var tags = [{ nombre: "Sube", color: "badge_sube" }, { nombre: "Gestión Tributaria", color: "badge_gestion_tributaria" }, { nombre: "Licencia de Conducir", color: "badge_licencia" }, { nombre: "Limpieza Urbana", color: "badge_limpieza" }, { nombre: "Juzgados de Faltas", color: "badge_juzgado" }, { nombre: "Tierras", color: "badge_tierras" }, { nombre: "Transporte", color: "badge_transporte" }, { nombre: "Arbolado Urbano", color: "badge_arbolado" }, { nombre: "Bienestar Animal", color: "badge_bienestar" }, { nombre: "Comercio", color: "badge_comercio" }, { nombre: "Capacitación y Empleo", color: "badge_empleo" }, { nombre:"Reclamo", color:"badge_reclamo"}];
     //cada etiqueta es tratada para darle su color y funcionalidad
     socket.emit("dibujar_etiquetas", tags);
     $('#modal-etiquetas').modal('show');
