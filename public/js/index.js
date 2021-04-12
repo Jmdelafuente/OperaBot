@@ -295,9 +295,12 @@ $(function () {
         console.log(tags_guardados)
         tags_guardados.forEach((element)=>{
           var span = document.createElement('span');
+          var p = document.createElement('p');
+          p.className = "etiqueta";
           span.setAttribute("id", element.nombre);
           span.className = `badge badge-pill ${element.color}`;
-          span.innerText = element.nombre;
+          p.innerText = element.nombre;
+          span.appendChild(p);
           var tag = {
             nombre: element.nombre,
             color: element.color
