@@ -667,10 +667,9 @@ $(function () {
           close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
           socket.emit("delete_tag", package);
         });
-        clone_tag.appendChild(close_etiqueta);
         socket.emit("add_tag", package);
         $(".chat .active-chat .user_tags").append(clone_tag);
-        $(`#${element.nombre}`).remove();
+        clone_tag.appendChild(close_etiqueta);
       });
       modalBody.appendChild(span);
     });
