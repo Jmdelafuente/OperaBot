@@ -801,10 +801,10 @@ $(function () {
     div.scrollTop = div.scrollHeight;
   });
 
-    // funcionalidad para buscar un chat en base a su email
+    // funcionalidad para buscar un chat en base a su email o telefono
     $(document).ready(function () {
       $("#buscar").on("keyup", function () {
-        var input, filter, ul, li, i, txtValue;
+        var input, filter, ul, li, i;
         input = document.getElementById('buscar');
         filter = input.value;
         ul = document.getElementById("listaContactos");
