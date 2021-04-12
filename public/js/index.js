@@ -292,6 +292,7 @@ $(function () {
       }
 
       if (Object.keys(tags).length !== 0){
+        console.log(tags)
         tags.forEach((element)=>{
           var span = document.createElement('span');
           span.setAttribute("id", element.nombre);
