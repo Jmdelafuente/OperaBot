@@ -667,7 +667,7 @@ $(function () {
         });
         socket.emit("add_tag", package);
         $(".chat .active-chat .user_tags").append(clone_tag);
-        clone_tag.appendChild(close_etiqueta);
+        span.appendChild(close_etiqueta);
       });
       modalBody.appendChild(span);
     });
