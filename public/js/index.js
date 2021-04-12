@@ -497,6 +497,7 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
+          console.log(lista[c].tags);
           addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre,lista[c].email, lista[c].tags);
         }
       }
