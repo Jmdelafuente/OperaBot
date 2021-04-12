@@ -121,6 +121,7 @@ class Chat {
     return res;
   }
 
+  //funcionalidad para enviar al civil la posibilidad de cambiar el email a traves de un axios
   async cambiar_Email(cont) {
     let res;
     await axios
@@ -202,6 +203,7 @@ class Chat {
      return res;
   }
 
+  //funcionalidad para enviar al civil el estado a traves de un axios
   async enviarEstado(cont) {
     let res;
     await axios
@@ -228,6 +230,7 @@ class Chat {
     return res;
   }
 
+  //funcionalidad para solicitarle al civil todos sus mensajes a traves de un axios
   async getAllMessages(includeMe) {
     let res;
     let b = services.getMessagesParser(this.origin, this.id, includeMe);
@@ -259,6 +262,8 @@ class Chat {
     return res;
   }
 
+  //TODO: no implementada
+  //funcionalidad para informarle al civil que vimos el mensaje a traves de un axios
   async seen() {
     let res;
     await axios
@@ -314,7 +319,7 @@ class Chat {
     // return res;
   }
 
-  // funcionalidad para modificar los tags del chat
+  // funcionalidad para insertar y eliminar los tags del chat
   insertarTag(tag){
     this.tags.push(tag);
   }

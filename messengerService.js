@@ -160,6 +160,7 @@ async function enviarEstado(id, cont) {
   return res;
 }
 
+//funcionalidad para añadir tag de un chat
 async function add_tag(id, tag) {
   var chat = chatsList[id];
   let res = false;
@@ -169,7 +170,7 @@ async function add_tag(id, tag) {
   }
   return res;
 }
-
+//funcionalidad para eliminar tag de un chat
 async function delete_tag(id, tag) {
   var chat = chatsList[id];
   let res = false;
@@ -198,6 +199,7 @@ async function closeChat(id) {
   return res;
 }
 
+//TODO: parte del administrador, cuando modifique el menú que se envie a burbuja el nuevo menú 
 async function cambiar_opciones(msg) {
   
     let res;
