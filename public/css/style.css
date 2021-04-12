@@ -498,3 +498,7 @@ img.emoji {
 	padding-top: 2%;
 	padding-bottom: 2%;
 }
+
+#user_tags {
+	width: 50%;
+}
