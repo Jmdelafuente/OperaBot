@@ -292,7 +292,6 @@ $(function () {
       }
 
       if (Object.keys(tags_guardados).length !== 0){
-        console.log(tags_guardados)
         tags_guardados.forEach((element)=>{
           var span = document.createElement('span');
           var p = document.createElement('p');
@@ -511,7 +510,6 @@ $(function () {
     for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
-          console.log(lista[c].tags);
           addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre,lista[c].email, lista[c].tags);
         }
       }
