@@ -643,7 +643,7 @@ $(function () {
       p.className = "etiqueta";
       span.setAttribute("id", element.nombre);
       span.className = `badge badge-pill ${element.color}`;
-      p.innerText = element.nombre;
+      p.innerText = element.nombre + "  ";
       span.appendChild(p);
       var clone_tag = span.cloneNode(true);
       var tag = {
