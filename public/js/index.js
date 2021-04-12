@@ -298,6 +298,15 @@ $(function () {
           span.setAttribute("id", element.nombre);
           span.className = `badge badge-pill ${element.color}`;
           span.innerText = element.nombre;
+          var tag = {
+            nombre: element.nombre,
+            color: element.color
+          }
+          var idChat = sessionStorage.getItem('key');
+          var package = {
+            id: idChat,
+            tag: tag
+          }
           var close_etiqueta = document.createElement('i');
           close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
             close_etiqueta.addEventListener('click', function (event) {
@@ -309,6 +318,8 @@ $(function () {
             tags.append(span);
         });
       }
+
+      
 
       document.getElementById("listaContactos").appendChild(li);
       chatListAll.push(id);

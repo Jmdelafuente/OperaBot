@@ -404,3 +404,23 @@ img.emoji {
 	color: #20B2E8;
 	font-size: 10px;
 }
+
+.badge_bienestar {
+	color: #212529;
+	background-color: #41ff07;
+}
+
+.badge_comercio {
+	color: #212529;
+	background-color: #08edf5;
+}
+
+.badge_empleo {
+	color: #212529;
+	background-color: #1808f5;
+}
+
+.badge_reclamo {
+	color: #212529;
+	background-color: #ed08f5;
+}
