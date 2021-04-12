@@ -406,21 +406,95 @@ img.emoji {
 }
 
 .badge_bienestar {
-	color: #212529;
+	color: #3C3C3B;
 	background-color: #41ff07;
 }
 
 .badge_comercio {
-	color: #212529;
+	color: #3C3C3B;
 	background-color: #08edf5;
 }
 
 .badge_empleo {
-	color: #212529;
+	color: white;
 	background-color: #1808f5;
 }
 
 .badge_reclamo {
-	color: #212529;
+	color: white;
 	background-color: #ed08f5;
+}
+
+.badge_transporte {
+	color: #3C3C3B;
+	background-color: #fffb00;
+}
+
+.badge_gestion_tributaria {
+	color: white;
+	background-color: #6e00ff;
+}
+.badge_sube {
+	color: #3C3C3B;
+	background-color:#007bff;
+}
+.badge_licencia {
+	color: white;
+	background-color:#28a745;
+}
+.badge_limpieza {
+	color: white;
+	background-color:#dc3545;
+}
+.badge_juzgado {
+	color: #3C3C3B;
+	background-color:#ffc107;
+}
+.badge_tierras {
+	color: white;
+	background-color:#17a2b8;
+}
+.badge_arbolado {
+	color: white;
+	background-color:#343a40;
+}
+
+
+
+#user_tags .badge .etiqueta {
+	display: block;
+	width: 80%;
+	float: left;
+	margin-bottom: 0px;
+	padding: 1%;
+	text-align: left;
+}
+
+#user_tags .badge .close_etiqueta {
+	display: block;
+	width: 15%;
+	float: right;
+	margin-left: 5%;
+}
+
+#user_tags .badge {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-top: 1%;
+}
+
+.modal-body-etiquetas .badge {
+	width: 46%;
+	display: block;
+	float: left;
+	margin-bottom: 1%;
+	margin-left: 2%;
+	margin-top: 2%;
+}
+
+.modal-body-etiquetas .badge .etiqueta {
+	margin: 0px;
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
