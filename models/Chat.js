@@ -322,9 +322,11 @@ class Chat {
   eliminarTag(tag){
     var i = 0;
     this.tags.forEach(element => {
-      if(element.nombre == tag);
+      if(element.nombre == tag){
       this.tags.splice(i,1);
-      i = i+1;
+      }else{
+        i = i+1;
+      }
     });
   }
 
