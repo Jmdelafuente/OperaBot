@@ -688,8 +688,20 @@ $(function () {
   //  se muestran las plantillas en el chat
   socket.on("send_plantilla", (msg) => {
     blueprints = msg;
-    autocomplete(document.getElementById("m"), blueprints);
+    if(blueprints.includes("¬")){
+      let split = blueprints.split("¬");
+      split[1] = "fede";
+      let string = split[0] + link + split[2];
+      console.log(string);
+      autocomplete(document.getElementById("m"), string);
+    }else{
+      autocomplete(document.getElementById("m"), blueprints);
+    }
   });
+  socket.on("dibujar_nombre_plantilla", (msg) =>{
+
+  });
+
   socket.on("dibujar_mensaje", (msg) =>{
     addMessage(msg.contenido, "E", "Ahora", "chat",msg.nombre);
     $("#m").val("");

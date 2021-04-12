@@ -45,7 +45,7 @@ class Chat {
     this.pendingmessage = pendingmessage;
     this.timestamp = timestamp;
     this.email = email;
-    this.tags = tags;
+    this.tags = [];
     this.state = new estado.Abierto(this.id);
     // this.db = new OperaDB();
   }
@@ -316,9 +316,9 @@ class Chat {
 
   // funcionalidad para modificar los tags del chat
   insertarTag(tag){
-    console.log(`id blabla ${tags} y tag ${tag}`);
+    console.log(`id blabla ${this.tags} y tag ${tag}`);
     this.tags.push(tag);
-    console.log(`insertado blabla ${tags} y tag ${tag}`);
+    console.log(`insertado blabla ${this.tags} y tag ${tag}`);
   }
 
   eliminarTag(tag){
