@@ -164,7 +164,6 @@ async function enviarEstado(id, cont) {
 async function add_tag(id, tag) {
   var chat = chatsList[id];
   let res = false;
-  console.log(`id blabla ${id} y tag ${tag}`);
   if (chat) {
     res = await chat.insertarTag(tag);
   }
@@ -174,7 +173,6 @@ async function add_tag(id, tag) {
 async function delete_tag(id, tag) {
   var chat = chatsList[id];
   let res = false;
-  console.log(`id blabla ${id} y tag ${tag}`);
   if (chat) {
     res = await chat.eliminarTag(tag);
   }

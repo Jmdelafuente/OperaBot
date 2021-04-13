@@ -302,7 +302,7 @@ function enviarMenu(id,cont) {
   messenger.enviarMenu(id,cont);
   
 }
-
+//funcionalidad de los tags
 async function add_tag(id, tag) {
   messenger.add_tag(id, tag);
 }
