@@ -220,15 +220,7 @@ async function cambiar_opciones(msg) {
 async function getMensajesChat(id) {}
 
 function getListaChats() {
-  Chat.getAll().then(
-    (lista) => {
-      console.log(`esto se hace al init o que onda? ${lista}`);
-      chatsList = lista;
-    },
-    (error) => {
-      console.log(error);
-    }
-  );
+  console.log(chatsList[0]);
   return chatsList;
   // return JSON.stringify(chatsList);
 }
