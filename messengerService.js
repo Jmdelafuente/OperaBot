@@ -242,6 +242,7 @@ async function disconnect(msg, timestamp) {
 // Get all chats
 Chat.getAll().then(
   (lista) => {
+    console.log(`esto se hace al init o que onda? ${lista}`);
     chatsList = lista;
   },
   (error) => {
