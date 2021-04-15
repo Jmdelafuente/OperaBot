@@ -2,6 +2,7 @@ const express = require("express");
 var app = express();
 var cors = require("cors");
 var helmet = require("helmet");
+var menu = require("../../configs/opciones");
 var http = require("http").Server(app);
 var iois = require("socket.io")(http, {
     
@@ -50,6 +51,21 @@ http.listen(app.get('port'), () => {
 
 iois.on("connection", function (socket) {
     console.log("user connect");
+
+socket.on("obtener-menu", function (msg) {
+   let opciones = op.obteneropciones();
+   console.log(opciones);
+   socket.emit("selector-menu", opciones); 
+});
+
+socket.on("sub-menu", function (msg) {
+    let opcion = menu.filtrarOpciones(msg);
+    var pack = {};
+    pack.nombre = opcion.nombre;
+    pack.opciones = opcion.opciones;
+    socket.emit("sub-menu",pack);
+})
+
 socket.on("opciones_admin",function (msg) {
     let opcion = JSON.stringify(op.obteneropciones());
     let nuevasopciones = msg;
