@@ -4,21 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<link href="../css/summernote-bs4.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="../css/font-awesome5-5-all.css" />
     <link rel="stylesheet" href="../css/adminstyle.css" />
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/unreadmessages.css" />
     <link rel="stylesheet" href="../css/imagehover.css" />
+    <h1>Opciones</h1>
     
   </head>
 <body>
-    <h1>Opciones</h1>
-    <form method="" >
-      <!--<textarea id="summernote" name="editordata"></textarea>-->
-      <button id="enviar-opciones" type="submit" class="enviar-opciones btn btn-primary" >Enviar Opciones</button>
-      <button id="enviar-plantilla" type="submit" class="enviar-plantilla btn btn-primary" >Enviar Plantilla</button>
-      <button id="obtener-menu" type="submit" class="obtener-menu btn btn-primary" >Obtener Menu</button>
+    <div id="div-menu" class="form-group" style="display: none;">
+      <label for="sel1">Seleccione el menú que quiera editar:</label>
+      <select class="form-control" id="selector-menu">
+      </select>
+    </div>  
+
+    <form id="opciones-iniciales" method="" >
+      <button id="editar-plantilla" type="submit" class="editar-plantilla btn btn-primary" >Editar Plantilla</button>
+      <button id="crear-plantilla" type="submit" class="crear-plantilla btn btn-primary" >Crear Plantilla</button>
+      <button id="editar-menu" type="submit" class="editar-menu btn btn-primary" >Editar Menú</button>
+      <button id="crear-menu" type="submit" class="crear-menu btn btn-primary" >Crear Menú</button>
       
       
     </form>
@@ -31,8 +36,6 @@
  <script src="../js/jquery-3.5.1.min.js"></script>
  <script src="../js/bootstrap.bundle.min.js"></script>
  <script src="../js/autocomplete.js"></script>
-  <!--<script src="../js/summernote-bs4.min.js"></script>
-  <script src="../js/popper.min.js"></script>-->
  <script src="../admin/adminOpciones.js"></script>
  
 
