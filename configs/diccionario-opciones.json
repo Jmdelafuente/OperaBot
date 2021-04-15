@@ -30,7 +30,7 @@
         }, {
             "nombre": "turnos licencia",
             "valor": "Turnos",
-            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
         }, {
             "nombre": "Menu Inicial",
             "valor": "Volver"
@@ -132,15 +132,15 @@
         "opciones": [{
             "nombre": "renovar moto entre 18 y 59",
             "valor": "Entre 18 y 59 años",
-            "informacion": "REQUISITOS PARA RENOVACIÓN 18 A 59 AÑOS - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar\n• DNI Original (último ejemplar siempre) \n• Original de la licencia anterior (hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI) \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma"
+            "informacion": "REQUISITOS PARA RENOVACIÓN 18 A 59 AÑOS - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar¬ \n• DNI Original (último ejemplar siempre) \n• Original de la licencia anterior (hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI) \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma"
         }, {
             "nombre": "renovar moto entre 60 y 65",
             "valor": "Entre 60 y 65 años",
-            "informacion": "REQUISITOS PARA RENOVACION 60 a 65 AÑOS - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma"
+            "informacion": "REQUISITOS PARA RENOVACION 60 a 65 AÑOS - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma"
         }, {
             "nombre": "renovar moto mayor 65",
             "valor": "Mayores de 65 años",
-            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE - MOTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico."
+            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE - MOTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico."
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -155,7 +155,7 @@
         "opciones": [{
             "nombre": "turnos licencia",
             "valor": "Turnos",
-            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -169,7 +169,7 @@
         "opciones": [{
             "nombre": "turnos licencia",
             "valor": "Turnos",
-            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -183,7 +183,7 @@
         "opciones": [{
             "nombre": "turnos licencia",
             "valor": "Turnos",
-            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -209,15 +209,15 @@
         "opciones": [{
             "nombre": "renovar auto entre 21 a 59",
             "valor": "Entre 21 y 59 años",
-            "informacion": "REQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS - AUTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico."
+            "informacion": "REQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS - AUTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico."
         }, {
             "nombre": "renovar auto entre 60 y 65",
             "valor": "Entre 60 y 65 años",
-            "informacion": "REQUISITOS PARA RENOVACION 60 a 65 AÑOS -AUTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma."
+            "informacion": "REQUISITOS PARA RENOVACION 60 a 65 AÑOS -AUTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma."
         }, {
             "nombre": "renovar auto mayor 65",
             "valor": "Mayores de 65 años",
-            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE - AUTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado de legalidad(en caso de que sea de otro municipio)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma, Electrocardiograma con certificado de aptitud para conducir.\n•Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
+            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE - AUTO:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado de legalidad(en caso de que sea de otro municipio)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma, Electrocardiograma con certificado de aptitud para conducir.\n•Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -231,7 +231,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -244,7 +244,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -257,7 +257,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -270,15 +270,15 @@
         "opciones": [{
             "nombre": "renovar clase c entre 21 a 59",
             "valor": "Entre 21 y 59 años",
-            "informacion": "Se debe tener al menos un (1) año de antigüedad en clase B\nREQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada (con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico"
+            "informacion": "Se debe tener al menos un (1) año de antigüedad en clase B\nREQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada (con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico"
         }, {
             "nombre": "renovar clase c entre 60 y 65",
             "valor": "Entre 60 y 65 años",
-            "informacion": "Se debe tener al menos un (1) año de antigüedad en clase B\nREQUISITOS PARA RENOVACION 60 a 65 AÑOS – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"
+            "informacion": "Se debe tener al menos un (1) año de antigüedad en clase B\nREQUISITOS PARA RENOVACION 60 a 65 AÑOS – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"
         }, {
             "nombre": "renovar clase c mayor 65",
             "valor": "Mayores de 65 años",
-            "informacion": "Se debe tener al menos un (1) año de antigüedad en clase B\nREQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
+            "informacion": "Se debe tener al menos un (1) año de antigüedad en clase B\nREQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -292,7 +292,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -305,7 +305,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -318,7 +318,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -331,15 +331,15 @@
         "opciones": [{
             "nombre": "renovar clase d entre 21 a 59",
             "valor": "Entre 21 y 59 años",
-            "informacion": "REQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico "
+            "informacion": "REQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) ¬http://www.dnrec.jus.gov.ar¬ \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico "
         }, {
             "nombre": "renovar clase d entre 60 y 65",
             "valor": "Entre 60 y 65 años",
-            "informacion": "REQUISITOS PARA RENOVACION 60 a 65 AÑOS - PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n•Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"
+            "informacion": "REQUISITOS PARA RENOVACION 60 a 65 AÑOS - PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) ¬http://www.dnrec.jus.gov.ar¬ \n•Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"
         }, {
             "nombre": "renovar clase d mayor 65",
             "valor": "Mayores de 65 años",
-            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n• Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
+            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) ¬http://www.dnrec.jus.gov.ar¬ \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n• Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -353,7 +353,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -366,7 +366,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -379,7 +379,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -392,15 +392,15 @@
         "opciones": [{
             "nombre": "renovar clase e entre 21 a 59",
             "valor": "Entre 21 y 59 años",
-            "informacion": "REQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico"
+            "informacion": "REQUISITOS PARA RENOVACIÓN 21 A 59 AÑOS – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico"
         }, {
             "nombre": "renovar clase e entre 60 y 65",
             "valor": "Entre 60 y 65 años",
-            "informacion": "REQUISITOS PARA RENOVACIÓN 60 a 65 AÑOS – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"
+            "informacion": "REQUISITOS PARA RENOVACIÓN 60 a 65 AÑOS – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico"
         }, {
             "nombre": "renovar clase e mayor 65",
             "valor": "Mayores de 65 años",
-            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
+            "informacion": "REQUISITOS PARA RENOVACION DE 65 AÑOS EN ADELANTE – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -414,7 +414,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -427,7 +427,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -440,7 +440,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -453,15 +453,15 @@
         "opciones": [{
             "nombre": "habilitar moto con 17",
             "valor": "17 años",
-            "informacion": "Importante, se habilitan solo hasta 150cc de cilindrada.\nREQUISITOS PARA HABILITACIÓN 17 AÑOS - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción.(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "Importante, se habilitan solo hasta 150cc de cilindrada.\nREQUISITOS PARA HABILITACIÓN 17 AÑOS - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción.(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "habilitar moto entre 18 y 59",
             "valor": "Entre 18 y 59 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 18 A 59 AÑOS – MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 18 A 59 AÑOS – MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "habilitar moto mayor 60",
             "valor": "Mayor de 60 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE - MOTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -475,7 +475,7 @@
         "opciones": [{
             "nombre": "turnos licencia",
             "valor": "Turnos",
-            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -488,7 +488,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -501,7 +501,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -514,15 +514,15 @@
         "opciones": [{
             "nombre": "habilitar auto con 17",
             "valor": "17 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 17 AÑOS - AUTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n•DNI Original(último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 17 AÑOS - AUTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n•DNI Original(último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "habilitar auto entre 18 y 59",
             "valor": "Entre 18 y 59 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 18 A 59 AÑOS - AUTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 18 A 59 AÑOS - AUTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "habilitar auto mayor 60",
             "valor": "Mayor de 60 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE - AUTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE - AUTO:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -537,7 +537,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -550,7 +550,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -563,7 +563,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -576,11 +576,11 @@
         "opciones": [{
             "nombre": "habilitar clase c entre 21 y 59",
             "valor": "Entre 21 y 59 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 21 A 59 AÑOS – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de licencia de conducir categoría B vigente, con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 21 A 59 AÑOS – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de licencia de conducir categoría B vigente, con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "habilitar clase c mayor 60",
             "valor": "Mayor de 60 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 60 EN ADELANTE – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 60 EN ADELANTE – PROFESIONAL C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -594,7 +594,7 @@
         "opciones": [{
             "nombre": "turnos licencia",
             "valor": "Turnos",
-            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+            "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -607,7 +607,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -620,11 +620,11 @@
         "opciones": [{
             "nombre": "habilitar clase d entre 21 y 59",
             "valor": "Entre 21 y 59 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 21 A 59 AÑOS – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 21 A 59 AÑOS – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) ¬http://www.dnrec.jus.gov.ar¬ \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "habilitar clase d mayor 60",
             "valor": "Mayor de 60 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
+            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE – PROFESIONAL D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -638,7 +638,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -651,7 +651,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -664,11 +664,11 @@
         "opciones": [{
             "nombre": "habilitar clase e entre 21 y 59",
             "valor": "Entre 21 y 59 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 21 A 59 AÑOS – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."
+            "informacion": "REQUISITOS PARA HABILITACIÓN 21 A 59 AÑOS – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."
         }, {
             "nombre": "habilitar clase e mayor 60",
             "valor": "Mayor de 60 años",
-            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/\n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podés acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."
+            "informacion": "REQUISITOS PARA HABILITACIÓN 60 AÑOS EN ADELANTE – PROFESIONAL E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) ¬https://boletacenat.safit.com.ar/¬ \n• DNI Original(último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podés acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado."
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -682,7 +682,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -695,7 +695,7 @@
         "opciones": [{
                 "nombre": "turnos licencia",
                 "valor": "Turnos",
-                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
+                "informacion": "Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: ¬https://weblogin.muninqn.gov.ar/¬ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” "
             }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -743,7 +743,7 @@
         "opciones": [{
             "nombre": "Sin clave",
             "valor": "IMPRIMÍ TUS RECIBOS",
-            "informacion": "Para obtener las boletas de tus tributos municipales, debés ingresar a www.neuquencapital.gov.ar, hacer click en el botón de la impresora en el costado izquierdo. SIN CLAVE: podrás descargar las boletas del semestre en curso.\nElegís el tributo que deseas abonar, ingresás los datos solicitados y trasladá el tilde hacia el final.\nSi querés que te la enviemos por acá o por mail, te solicito que nos envíes el tributo que necesitás(dominio, nomenclatura catastral, número de licencia comercial, etc) y un correo electrónico."
+            "informacion": "Para obtener las boletas de tus tributos municipales, debés ingresar a ¬https://www.neuquencapital.gov.ar¬ , hacer click en el botón de la impresora en el costado izquierdo. SIN CLAVE: podrás descargar las boletas del semestre en curso.\nElegís el tributo que deseas abonar, ingresás los datos solicitados y trasladá el tilde hacia el final.\nSi querés que te la enviemos por acá o por mail, te solicito que nos envíes el tributo que necesitás(dominio, nomenclatura catastral, número de licencia comercial, etc) y un correo electrónico."
         }, {
             "nombre": "Con clave",
             "valor": "CONOCÉ TU SITUACIÓN TRIBUTARIA",
