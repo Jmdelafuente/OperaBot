@@ -156,15 +156,5 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/index.js"></script>
 
-<script type="text/javascript">
-      function enviarWA(id,contenido)
-      {
-            var SURL = "https://chat.muninqn.gov.ar";
-            var socketo = io(`${SURL}` , {'forceNew': true, path:'/operadores/socket.io'});
-            socketo.emit("wamessage",{id:id,contenido:contenido});
-      }
-    </script>
-
-
 
 </html>

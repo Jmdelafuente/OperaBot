@@ -343,3 +343,14 @@ module.exports.asignarMensaje = asignarMensaje;
 module.exports.recibirMensajesByChat = mensajesByChat;
 module.exports.recibirLista = recibirLista;
 module.exports.quieremail = quieremail;
+
+
+/*<script type="text/javascript">
+      function enviarWA(id,contenido)
+      {
+            var SURL = "https://chat.muninqn.gov.ar";
+            var socketo = io(`${SURL}` , {'forceNew': true, path:'/operadores/socket.io'});
+            socketo.emit("wamessage",{id:id,contenido:contenido});
+      }
+    </script>
+*/
