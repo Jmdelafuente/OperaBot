@@ -220,7 +220,7 @@ async function cambiar_opciones(msg) {
 async function getMensajesChat(id) {}
 
 function getListaChats() {
-  console.log(chatsList[0]);
+  
   return chatsList;
   // return JSON.stringify(chatsList);
 }
