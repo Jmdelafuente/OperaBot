@@ -45,7 +45,7 @@ app.set("port", portFront);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/operadores/admin/", function (req, res) {
+app.get("/", function (req, res) {
     console.log(__dirname);
     console.log(path.join(__dirname, "public"));
     console.log("entre al get");
