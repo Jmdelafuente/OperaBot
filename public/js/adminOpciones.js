@@ -54,7 +54,6 @@ $(function () {
 
     const socketopciones = io("https://chat.muninqn.gov.ar/operadores/admin/");
 
-console.log(socketopciones.id); // undefined
 
 socketopciones.on("connect", () => {
   console.log(socketopciones.id); // "G5p5..."
