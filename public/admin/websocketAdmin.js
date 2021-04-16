@@ -45,7 +45,7 @@ app.set("port", portFront);
 
 app.use(express.static(path.join(__dirname, "../")));
 
-app.get("/", function (req, res) {
+app.get("/operadores/admin/", function (req, res) {
     console.log(__dirname);
     console.log(path.join(__dirname, "public"));
     console.log("entre al get");
@@ -55,7 +55,7 @@ app.get("/", function (req, res) {
     if(perfil == 3){
       res.sendFile(__dirname + "/index.html");
     }else{
-      res.sendFile(__dirname + "/admin/index.html");
+      res.sendFile(__dirname + "/index.html");
     }
   }else{
     res.send(Error("Operador no valido"))
