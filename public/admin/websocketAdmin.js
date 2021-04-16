@@ -45,6 +45,21 @@ app.set("port", portFront);
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/operadores/admin/", function (req, res) {
+  console.log("entre al get");
+  let param = req.query.SESSIONKEY;
+  let perfil = op.validar(param);
+  if(perfil != -1){
+    if(perfil == 3){
+      res.sendFile(__dirname + "public/admin/index.html");
+    }else{
+      res.sendFile(__dirname + "index.html");
+    }
+  }else{
+    res.send(Error("Operador no valido"))
+  }
+});
+
 http.listen(app.get('port'), () => {
     console.log('server on port', app.get('port'));
 });
