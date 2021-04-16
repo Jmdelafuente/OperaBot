@@ -31,7 +31,7 @@ $(function () {
         }
     );
 
-    
+    console.log(windows.location);
 
     //* jquery para la parte del summernote que sirve para modificar el json de opciones
 
@@ -54,6 +54,7 @@ $(function () {
 
   socketopciones.on("connect", function (msg) {
     console.log("me conecto");
+
 
 });
 
