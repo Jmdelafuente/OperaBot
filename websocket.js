@@ -299,6 +299,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
   /*se utiliza una lista de promesas ya obtenerNombre es una promesa,
     se pushea todas las promesas dentro de promises, una vez que se cumplan
     todas las promesas, entonces se sigue el curso del codigo */
+  if (Object.keys(listamensajes).length != 0){
   listamensajes.forEach((element) => {
     if(element.operador_id != undefined){
     promises.push(
@@ -325,6 +326,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
     }
     
   });
+}
 };
 
 const recibirLista = function (operador, lista, asignado) {
