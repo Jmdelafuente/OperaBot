@@ -51,7 +51,7 @@ app.get("/operadores/admin/", function (req, res) {
   let perfil = op.validar(param);
   if(perfil != -1){
     if(perfil == 3){
-      res.sendFile(__dirname + "public/admin/index.html");
+      res.sendFile(__dirname + "../index.html");
     }else{
       res.sendFile(__dirname + "/index.html");
     }
