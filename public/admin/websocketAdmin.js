@@ -43,7 +43,7 @@ app.set("port", portFront);
 //   next();
 // });
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../")));
 
 app.get("/", function (req, res) {
     console.log(__dirname);
