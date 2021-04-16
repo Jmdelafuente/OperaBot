@@ -43,7 +43,7 @@ app.set("port", portFront);
 //   next();
 // });
 
-app.use(express.static(path.join(__dirname, "../../public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
     console.log(__dirname);
@@ -53,7 +53,7 @@ app.get("/", function (req, res) {
   let perfil = op.validar(param);
   if(perfil != -1){
     if(perfil == 3){
-      res.sendFile(__dirname + "../index.html");
+      res.sendFile(__dirname + "/index.html");
     }else{
       res.sendFile(__dirname + "public/admin/index.html");
     }
