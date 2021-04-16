@@ -74,6 +74,6 @@ $(function () {
     iframe_chat.setAttribute('src', `../index.html?${window.location.search.substr(1)}`);
     
     var iframe_opcion = document.getElementById("frame_opciones");
-    iframe_opcion.setAttribute('src', `../opciones.html?${window.location.search.substr(1)}`);
+    iframe_opcion.setAttribute('src', `opciones.html?${window.location.search.substr(1)}`);
  
 });
