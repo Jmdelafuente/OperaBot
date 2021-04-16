@@ -46,7 +46,9 @@ app.set("port", portFront);
 app.use(express.static(path.join(__dirname, "../../public")));
 
 app.get("/operadores/admin/", function (req, res) {
-  console.log("entre al get");
+    console.log(__dirname);
+    console.log(path.join(__dirname, "public"));
+    console.log("entre al get");
   let param = req.query.SESSIONKEY;
   let perfil = op.validar(param);
   if(perfil != -1){
