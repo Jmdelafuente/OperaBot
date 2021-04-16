@@ -43,7 +43,7 @@ app.set("port", portFront);
 //   next();
 // });
 
-app.use(express.static(path.join(__dirname, "../../public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/operadores/admin/", function (req, res) {
     console.log(__dirname);
