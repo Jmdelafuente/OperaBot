@@ -145,9 +145,9 @@ async function cambiar_Email(id) {
   return res;
 }
 
-async function enviarArchivo(id, cont,type) {
+async function enviarArchivo(id, cont, type, operadorid) {
   var chat = chatsList[id];
-  let res = await chat.enviarArchivo(cont,type);
+  let res = await chat.enviarArchivo(cont, type, operadorid);
   return res;
 }
 

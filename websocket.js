@@ -170,7 +170,7 @@ io.on("connection", function (socket) {
   })
 
   socket.on('adjunto-archivo', function (msg) {
-    op.enviarArchivo(msg.id,msg.contenido,msg.type);
+    op.enviarArchivo(msg.id, msg.contenido, msg.type, msg.operadorid);
   });
 
   socket.on('obtener-opciones',function(msg){
@@ -296,7 +296,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
   let promises = [];
   msg.id = id;
   
-  /*se utiliza una lista de promesas ya obtenerNombre es una promesa,
+  /*se utiliza una lista de promesas ya que obtenerNombre es una promesa,
     se pushea todas las promesas dentro de promises, una vez que se cumplan
     todas las promesas, entonces se sigue el curso del codigo */
   if (Object.keys(listamensajes).length != 0){

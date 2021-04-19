@@ -1,7 +1,7 @@
 //const SURLopciones = "http://localhost";
 //const SURLopciones = "128.53.1.23";
-//const SURLopciones = "https://chat.muninqn.gov.ar/operadores/admin/";
-//const socketopciones = io(`${SURLopciones}`);
+const SURLopciones = "https://chat.muninqn.gov.ar/operadores/admin/";
+const socketopciones = io(`${SURLopciones}`);
 
 
 $(function () {
@@ -31,11 +31,7 @@ $(function () {
         }
     );
 
-    
-
-    //* jquery para la parte del summernote que sirve para modificar el json de opciones
-
-   
+      
     $('.crear-menu').click(function (event) {
         event.preventDefault();
         alert("Funcionalidad en desarrollo");        
@@ -52,11 +48,8 @@ $(function () {
 
 //fede termina la parte del summernote
 
-    const socketopciones = io("https://chat.muninqn.gov.ar/operadores/admin/");
-
-
 socketopciones.on("connect", () => {
-  console.log(socketopciones.id); // "G5p5..."
+  console.log(socketopciones.id); 
 });
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];

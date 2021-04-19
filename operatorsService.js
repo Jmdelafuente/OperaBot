@@ -333,8 +333,8 @@ async function enviarWAMessage(id, cont) {
   messenger.enviarWAMessage(id, cont);
 }
 
-async function enviarArchivo(id,cont,type) {
-  messenger.enviarArchivo(id, cont,type); 
+async function enviarArchivo(id, cont, type, operadorid) {
+  messenger.enviarArchivo(id, cont, type, operadorid); 
 }
 
 async function obtenerNombre(operadorId) {

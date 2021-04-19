@@ -472,10 +472,12 @@ $(function () {
 
         if (mime.substring(0, 5) == 'image') {
           pack.type = 'image';
+          pack.operadorid = sessionStorage.getItem("operadorid");
           socket.emit('adjunto-archivo', pack);
           addMessage(imagen, 'E', hora, "image");
           } else if (mime == 'application/pdf'){
           pack.type = 'pdf';
+          pack.operadorid = sessionStorage.getItem("operadorid");
           socket.emit('adjunto-archivo', pack);
           addMessage(imagen, 'E', hora, "pdf");
           }
