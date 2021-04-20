@@ -268,7 +268,7 @@ class Chat {
     let res;
     await axios
       .post(services.URLs[this.origin] + "/seen", {
-        body: { id: this.id, text:'' },
+        body: { id: this.id, text:'Visto' },
         headers: {
           "Content-Type": "application/json",
         },
