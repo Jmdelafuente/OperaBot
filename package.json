@@ -1,6 +1,6 @@
 {
   "name": "operabot",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A simple API for unify multiples chat sources into an unique manager.",
   "main": "index.js",
   "scripts": {
