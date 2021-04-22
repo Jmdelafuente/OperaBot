@@ -511,7 +511,7 @@ $(function () {
     console.log(
       `newList: ${asig} - All: ${chatListAll} - Asign: ${chatListAsign}`
     );
-    if (Object.keys(lista).length > 1){
+    if (Object.keys(lista).length > 0){
       var items = Object.keys(lista).map(function (key) {
         return [key, lista[key]];
       });
@@ -531,7 +531,7 @@ $(function () {
       }
     });
     }
-    // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
+        // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
     if (sessionStorage.getItem('key') != 'null') {
       let idactual = sessionStorage.getItem('key');
       changeChat(idactual);
