@@ -100,7 +100,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   api.post(`/api/${prefix}/recuperarChatEmail`, jsonParser, (req, res) => {
     let data = JSON.parse(req.body.body);
     ms.recuperarChatEmail(data.user,data.email)
-      .then(() => {
+      .then((cb) => {
         res.sendStatus(200);
       })
       .catch((err) => {
