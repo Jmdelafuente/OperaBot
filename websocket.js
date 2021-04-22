@@ -257,7 +257,7 @@ async function asignarMensaje(socket, chat) {
   var mensaje = {};
   mensaje.id = chat.id;
   mensaje.contenido = chat.lastmessage;
-  mensaje.tipo = tipo;
+  mensaje.tipo = chat.type;
   mensaje.hora = chat.timestamp;
   mensaje.nom = chat.name;
   mensaje.email = chat.email;
