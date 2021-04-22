@@ -518,11 +518,21 @@ $(function () {
       });
 
       items.sort(function (first, second) {
-        return first[1].timestamp - second[1].timestamp;
+        return second[1].timestamp - first[1].timestamp;
       });
     }
-    console.log(`la lista ordenada es ${lista}`);
-    for (let c of Object.keys(lista)) {
+    console.log(`la lista ordenada es ${items}`);
+    items.forEach(element => {
+      if (asig) {
+        if (!chatListAsign.includes(c)) {
+          addChat(element.name, element.id, asig, element.origin, element.state.nombre, element.email, element.tags);
+        }
+      }
+      if (!chatListAll.includes(c)) {
+        addChat(element.name, element.id, asig, element.origin, element.state.nombre, element.email, element.tags);
+      }
+    });
+    /*for (let c of Object.keys(lista)) {
       if (asig) {
         if (!chatListAsign.includes(c)) {
           addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre,lista[c].email, lista[c].tags);
@@ -531,7 +541,7 @@ $(function () {
       if (!chatListAll.includes(c)) {
         addChat(lista[c].name, lista[c].id, asig, lista[c].origin,lista[c].state.nombre, lista[c].email,lista[c].tags);
       }
-    }
+    }*/
     // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
     if (sessionStorage.getItem('key') != 'null') {
       let idactual = sessionStorage.getItem('key');
