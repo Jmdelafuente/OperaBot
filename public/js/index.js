@@ -524,11 +524,11 @@ $(function () {
     console.log(`la lista ordenada es ${items}`);
     items.forEach(element => {
       if (asig) {
-        if (!chatListAsign.includes(c)) {
+        if (!chatListAsign.includes(element[0])) {
           addChat(element.name, element.id, asig, element.origin, element.state.nombre, element.email, element.tags);
         }
       }
-      if (!chatListAll.includes(c)) {
+      if (!chatListAll.includes(element[0])) {
         addChat(element.name, element.id, asig, element.origin, element.state.nombre, element.email, element.tags);
       }
     });
