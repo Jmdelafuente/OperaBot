@@ -525,11 +525,11 @@ $(function () {
     items.forEach(element => {
       if (asig) {
         if (!chatListAsign.includes(element[0])) {
-          addChat(element.name, element.id, asig, element.origin, element.state.nombre, element.email, element.tags);
+          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].state.nombre, element[1].email, element[1].tags);
         }
       }
       if (!chatListAll.includes(element[0])) {
-        addChat(element.name, element.id, asig, element.origin, element.state.nombre, element.email, element.tags);
+        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].state.nombre, element[1].email, element[1].tags);
       }
     });
     /*for (let c of Object.keys(lista)) {
