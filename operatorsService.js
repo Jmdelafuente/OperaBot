@@ -369,7 +369,7 @@ async function confirmarVisto(chatId, channelId) {
   // TODO: faltaria enviar el visto a la mensajeria
   let chat = messenger.getChatById(chatId);
   if(chat!=undefined){
-    chat.seen();
+    //chat.seen();
   }
 }
 
