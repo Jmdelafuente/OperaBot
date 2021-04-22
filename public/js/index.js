@@ -513,7 +513,13 @@ $(function () {
     );
     console.log(`la lista es ${lista}`);
     if (Object.keys(lista).length > 1){
-      lista.sort(function (a , b) {return b.timestamp - a.timestamp});
+      var items = Object.keys(lista).map(function (key) {
+        return [key, lista[key]];
+      });
+
+      items.sort(function (first, second) {
+        return first[1].timestamp - second[1].timestamp;
+      });
     }
     console.log(`la lista ordenada es ${lista}`);
     for (let c of Object.keys(lista)) {
