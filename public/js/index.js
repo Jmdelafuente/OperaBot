@@ -512,7 +512,7 @@ $(function () {
       `newList: ${asig} - All: ${chatListAll} - Asign: ${chatListAsign}`
     );
     console.log(`la lista es ${lista}`);
-    lista.sort(function (a , b) {return b.timestamp - a.timestamp});
+    //lista.sort(function (a , b) {return b.timestamp - a.timestamp});
     console.log(`la lista ordenada es ${lista}`);
     for (let c of Object.keys(lista)) {
       if (asig) {
