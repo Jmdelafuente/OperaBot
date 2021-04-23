@@ -240,7 +240,6 @@ const recibirMensaje = function (chat, tipo, operador) {
   mensaje.email = chat.email;
   mensaje.origen = chat.origin;
   mensaje.state = chat.state;
-  mensaje.leido = chat.leido;
   mensaje.asign = operador;
   io.emit("recive_op_message", mensaje);
   
@@ -266,7 +265,6 @@ async function asignarMensaje(socket, chat) {
   mensaje.email = chat.email;
   mensaje.origen = chat.origin;
   mensaje.state = chat.state;
-  mensaje.leido = chat.leido;
   mensaje.asign = operador;
   return new Promise(resolve=>{
     socket.emit("assign_op_message", mensaje, (ack) => {

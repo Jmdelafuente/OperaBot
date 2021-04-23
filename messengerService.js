@@ -269,4 +269,3 @@ module.exports.enviarWAMessage = enviarWAMessage;
 module.exports.recuperarChatEmail = recuperarChatEmail;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
-module.exports.leido = leido;

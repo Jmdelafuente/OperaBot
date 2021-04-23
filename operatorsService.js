@@ -525,4 +525,3 @@ module.exports.recuperarChatEmail=recuperarChatEmail;
 module.exports.obtenerNombre = obtenerNombre;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
-module.exports.leido = leido;
