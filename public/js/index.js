@@ -250,7 +250,7 @@ $(function () {
    * @param {String} estado el estado representa si esta abierto o cerrado un chat
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
-  function addChat(nom, id, asign, origen,estado = "Abierto",email,tags_guardados = []) {
+  function addChat(nom, id, asign, origen, email, estado = "Abierto",tags_guardados = []) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -523,11 +523,11 @@ $(function () {
     items.forEach(element => {
       if (asig) {
         if (!chatListAsign.includes(element[0])) {
-          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].state.nombre, element[1].email, element[1].tags);
+          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].state.nombre, element[1].tags);
         }
       }
       if (!chatListAll.includes(element[0])) {
-        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].state.nombre, element[1].email, element[1].tags);
+        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].state.nombre, element[1].tags);
       }
     });
     }
@@ -743,7 +743,7 @@ $(function () {
     // Confirmamos la asignacion al servidor
     ack(true);
     // Generamos los elementos del DOM
-    addChat(msg.nom, msg.id, true, msg.origin,msg.email);
+    addChat(msg.nom, msg.id, true, msg.origen,msg.email);
   });
   socket.on("getAllMessagesByChat", function (msg) {
     let lista = msg.lista;
