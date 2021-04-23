@@ -250,7 +250,7 @@ $(function () {
    * @param {String} estado el estado representa si esta abierto o cerrado un chat
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
-  function addChat(nom, id, asign, origen, email, leido,estado = "Abierto",tags_guardados = []) {
+  function addChat(nom, id, asign, origen, email, leido=true,estado = "Abierto",tags_guardados = []) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
