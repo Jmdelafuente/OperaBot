@@ -205,9 +205,7 @@ io.on("connection", function (socket) {
     );
   });
   
-  socket.on("leido", function (msg) {
-    op.leido(msg.id,msg.leido);
-  });
+
 
   socket.on("send_plantilla", function (msg) {
       socket.emit("send_plantilla",plant.blueprints);

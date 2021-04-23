@@ -43,8 +43,7 @@ async function nuevoMensaje(
   t,
   nombre = "Anonimo",
   tipo = "chat",
-  email,
-  leido = false
+  email
 ) {
   // Check if chat exists
   if (chatsList[id]) {
@@ -53,7 +52,6 @@ async function nuevoMensaje(
     chatsList[id].pendingmessage++;
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
-    chatsList[id].leido = leido;
     var chat = chatsList[id];
      let res = false;
      console.log(`chat en MS es ${chat}`);
@@ -62,7 +60,7 @@ async function nuevoMensaje(
      }
      res = chat.asignacion();
   } else {
-    var chat = new Chat(id, origen, nombre, t, 1, cont, email,false);
+    var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
   }
   // Notify new message
@@ -76,8 +74,7 @@ async function nuevaImagen(
   t,
   nombre = "Anonimo",
   type = "image",
-  email,
-  leido = false
+  email
 ) {
   // Check if chat exists
   if (chatsList[id]) {
@@ -86,11 +83,10 @@ async function nuevaImagen(
     chatsList[id].pendingmessage++;
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
-    chatsList[id].leido = leido;
     chat = chatsList[id];
     res = await chat.asignacion();
     } else {
-    var chat = new Chat(id, origen, nombre, t, 1, cont, email,false);
+    var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
   }
   // Notify new message
@@ -184,11 +180,6 @@ async function delete_tag(id, tag) {
 
 }
 
-async function leido(id,leido) {
-  var chat = chatsList[id];
-  let res = await chat.leido(leido);
-  return res; 
-}
 
 async function enviarMenu(id, cont) {
   var chat = chatsList[id];

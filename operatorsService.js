@@ -293,9 +293,6 @@ function modificarPlantilla(msg) {
   ms.modificarPlantilla(msg);
 }
 
-function leido(id,leido) {
-  ms.leido(id,leido);
-}
 
 /**
  * enviar el menu correspondiente al civil.
