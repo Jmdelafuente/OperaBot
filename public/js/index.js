@@ -733,7 +733,7 @@ $(function () {
     var lista = document.getElementById("listaContactos"); 
     var lista_asig = document.getElementById("listaContactosAsignados");
     var li_chat = document.getElementById(`usuario_${msg}`);
-    var li_asig = document.querySelector('#listaContactosAsignados').getElementById(`usuario_${msg}`);
+    var li_asig = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
     lista.prepend(li_chat);
     lista_asig.prepend(li_asig);
   });
