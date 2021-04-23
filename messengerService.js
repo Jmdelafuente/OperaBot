@@ -45,6 +45,7 @@ async function nuevoMensaje(
   tipo = "chat",
   email
 ) {
+  var nuevo = false;
   // Check if chat exists
   if (chatsList[id]) {
     chatsList[id].timestamp = t;
@@ -62,9 +63,10 @@ async function nuevoMensaje(
   } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
+    nuevo = true;
   }
   // Notify new message
-  op.recibirMensaje(chat,tipo);
+  op.recibirMensaje(chat,tipo,nuevo);
 }
 
 async function nuevaImagen(

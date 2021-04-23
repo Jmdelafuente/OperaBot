@@ -40,9 +40,9 @@ class Chat {
     this.id = id;
     this.origin = origen;
     this.name = name;
+    this.timestamp = timestamp;
     this.lastmessage = lastmessage;
     this.pendingmessage = pendingmessage;
-    this.timestamp = timestamp;
     this.email = email;
     this.tags = [];
     this.state = new estado.Abierto(this.id);

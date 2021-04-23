@@ -345,7 +345,7 @@ $(function () {
 
       if (asign && !chatListAsign.includes(id) && estado!="Cerrado") {
         let clonediv = li.cloneNode(true);
-        document.getElementById("listaContactosAsignados").appendChild(clonediv);
+        document.getElementById("listaContactosAsignados").prepend(clonediv);
         chatListAsign.push(id);
         clonediv.addEventListener('click', function (event) {
           event.preventDefault();
@@ -728,6 +728,12 @@ $(function () {
     sessionStorage.setItem('operadorid', msg);
   });
 
+  socket.on("redibujar", function (msg){
+    var lista = document.getElementById("listaContactos");  
+    var li_chat = document.getElementById(`usuario_${msg}`);
+    lista.prepend(li_chat);
+
+  });
 
   socket.on("confirm_op_message", function (msg) {
     confirm(msg, "R", "Ahora");

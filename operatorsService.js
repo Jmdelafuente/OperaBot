@@ -169,7 +169,7 @@ async function bajaOperador(id) {
  * @param {Numbers} id del remitente (propio del servicio de mensajeria)
  * @param {String} cont contenido del mensaje
  */
-async function recibirMensaje(chat, tipo) {
+async function recibirMensaje(chat, tipo,nuevo) {
   // TODO: check horario de trabajo / operadores online
   let horaInicio = new Date();
   let id = chat.id;
@@ -190,7 +190,7 @@ async function recibirMensaje(chat, tipo) {
           let operadorId = chat_asig[id].operadorId;
           let operador = operators[operadorId];
           console.log(`antes del asign con ${chat.name}`);
-          socket.recibirMensaje(chat, tipo, operador.id);
+          socket.recibirMensaje(chat, tipo, operador.id,nuevo);
           return true;
         })
         .on("failed", function (err) {
@@ -204,7 +204,7 @@ async function recibirMensaje(chat, tipo) {
     let operadorId = chat_asig[id].operadorId;
     let operador = operators[operadorId];
       console.log(`antes del socket del ultimo con ${socket}`);
-    socket.recibirMensaje(chat,tipo,operador.id);
+    socket.recibirMensaje(chat,tipo,operador.id,nuevo);
   }
   //} else {
     // FIXME: autorespuesta

@@ -230,7 +230,7 @@ api.get(`/api/client/blueprints`, jsonParser, (req, res) => {
 // Functions define for export and modularization
 const enviarMensaje = function (id, contenido) {};
 
-const recibirMensaje = function (chat, tipo, operador) {
+const recibirMensaje = function (chat, tipo, operador,nuevo) {
   var mensaje = {};
   mensaje.id = chat.id;
   mensaje.contenido = chat.lastmessage;
@@ -242,7 +242,9 @@ const recibirMensaje = function (chat, tipo, operador) {
   mensaje.state = chat.state;
   mensaje.asign = operador;
   io.emit("recive_op_message", mensaje);
-  
+  if(!nuevo){
+    io.emit("redibujar",chat.id);
+  }
   return true;
 };
 
