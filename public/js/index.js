@@ -341,11 +341,11 @@ $(function () {
         changeChat(id,estado,origen);
       });
       let clonediv = li.cloneNode(true);
-      li.setAttribute("value","todos");
+      li.setAttribute("class","todos");
       
       
       if (asign && !chatListAsign.includes(id) && estado!="Cerrado") {
-        clonediv.setAttribute("value","asig");
+        clonediv.setAttribute("class","asig");
         document.getElementById("listaContactosAsignados").prepend(clonediv);
         chatListAsign.push(id);
         clonediv.addEventListener('click', function (event) {
@@ -733,11 +733,9 @@ $(function () {
     var lista = document.getElementById("listaContactos"); 
     var lista_asig = document.getElementById("listaContactosAsignados");
     var li_chat = document.getElementById(`usuario_${msg}`);
-    //var li_asig = lista_asig
+    var li_asig = document.querySelector('#listaContactosAsignados').getElementById(`usuario_${msg}`);
     lista.prepend(li_chat);
-    
-    //lista_asig.prepend(node_clone);
-
+    lista_asig.prepend(li_asig);
   });
 
   socket.on("confirm_op_message", function (msg) {
