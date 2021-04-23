@@ -729,9 +729,12 @@ $(function () {
   });
 
   socket.on("redibujar", function (msg){
-    var lista = document.getElementById("listaContactos");  
+    var lista = document.getElementById("listaContactos"); 
+    var lista_asig = document.getElementById("listaContactosAsignados");
     var li_chat = document.getElementById(`usuario_${msg}`);
     lista.prepend(li_chat);
+    var node_clone = cloneNode(li_chat);
+    lista_asig.prepend(node_clone);
 
   });
 
