@@ -519,7 +519,7 @@ $(function () {
       });
 
       items.sort(function (first, second) {
-        return second[1].timestamp - first[1].timestamp;
+        return first[1].timestamp - second[1].timestamp;
       });
     
     items.forEach(element => {
