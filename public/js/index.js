@@ -250,7 +250,7 @@ $(function () {
    * @param {String} estado el estado representa si esta abierto o cerrado un chat
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
-  function addChat(nom, id, asign, origen, email, estado = "Abierto",tags_guardados = []) {
+  function addChat(nom, id, asign, origen, email, leido,estado = "Abierto",tags_guardados = []) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -291,6 +291,10 @@ $(function () {
 
         default:
           break;
+      }
+
+      if(!leido){
+        unreadMessages(id);
       }
 
       if (Object.keys(tags_guardados).length !== 0){
@@ -407,6 +411,10 @@ $(function () {
       $('div[data-href="' + activeTab + '"]').tab("show");
       // Marcamos como leido el chat
       readMessages(id);
+      var visto = {};
+      visto.id = id;
+      visto.leido = true;
+      socket.emit("leido", visto);
       return false;
     }
   }
@@ -523,11 +531,11 @@ $(function () {
     items.forEach(element => {
       if (asig) {
         if (!chatListAsign.includes(element[0])) {
-          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].state.nombre, element[1].tags);
+          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email,element[1].leido, element[1].state.nombre, element[1].tags);
         }
       }
       if (!chatListAll.includes(element[0])) {
-        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].state.nombre, element[1].tags);
+        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido ,element[1].state.nombre, element[1].tags);
       }
     });
     }
@@ -701,7 +709,7 @@ $(function () {
       esOperador = true;
     }
 
-    addChat(msg.nom, msg.id, esOperador, msg.origen,msg.email);
+    addChat(msg.nom, msg.id, esOperador, msg.origen,msg.email, msg.leido);
 
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, msg.tipo);
@@ -710,10 +718,11 @@ $(function () {
     }
 
   });
+  //TODO: borrar
   socket.on("recive_op_image", function (msg) {
     console.log("Imagen recibida: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
-      addChat(msg.nom, msg.id, msg.asig,msg.origen,msg.email);
+      addChat(msg.nom, msg.id, msg.asig,msg.origen,msg.email,msg.leido);
     }
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, "image");
@@ -743,7 +752,7 @@ $(function () {
     // Confirmamos la asignacion al servidor
     ack(true);
     // Generamos los elementos del DOM
-    addChat(msg.nom, msg.id, true, msg.origen,msg.email);
+    addChat(msg.nom, msg.id, true, msg.origen,msg.email,msg.leido);
   });
   socket.on("getAllMessagesByChat", function (msg) {
     let lista = msg.lista;

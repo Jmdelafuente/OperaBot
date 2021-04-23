@@ -293,6 +293,10 @@ function modificarPlantilla(msg) {
   ms.modificarPlantilla(msg);
 }
 
+function leido(id,leido) {
+  ms.leido(id,leido);
+}
+
 /**
  * enviar el menu correspondiente al civil.
  * @param {*} Id al cual quiere enviarse el menu
@@ -524,3 +528,4 @@ module.exports.recuperarChatEmail=recuperarChatEmail;
 module.exports.obtenerNombre = obtenerNombre;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
+module.exports.leido = leido;

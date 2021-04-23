@@ -35,7 +35,8 @@ class Chat {
     timestamp,
     pendingmessage = 0,
     lastmessage = "",
-    email
+    email,
+    leido
   ) {
     this.id = id;
     this.origin = origen;
@@ -45,6 +46,7 @@ class Chat {
     this.timestamp = timestamp;
     this.email = email;
     this.tags = [];
+    this.leido = leido;
     this.state = new estado.Abierto(this.id);
     // this.db = new OperaDB();
   }
@@ -332,6 +334,10 @@ class Chat {
         i = i+1;
       }
     });
+  }
+
+  leido(leido){
+    this.leido = leido;
   }
 
   changeState(state) {
