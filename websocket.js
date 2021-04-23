@@ -265,7 +265,6 @@ async function asignarMensaje(socket, chat) {
   mensaje.email = chat.email;
   mensaje.origen = chat.origin;
   mensaje.state = chat.state;
-  mensaje.asign = operador;
   return new Promise(resolve=>{
     socket.emit("assign_op_message", mensaje, (ack) => {
       if (ack) {
