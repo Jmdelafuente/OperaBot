@@ -293,9 +293,6 @@ $(function () {
           break;
       }
 
-      if(!leido){
-        unreadMessages(id);
-      }
 
       if (Object.keys(tags_guardados).length !== 0){
         tags_guardados.forEach((element)=>{
@@ -325,6 +322,10 @@ $(function () {
             span.appendChild(close_etiqueta);
             tags.append(span);
         });
+
+        if (!leido) {
+          unreadMessages(id);
+        }
       }
 
       
