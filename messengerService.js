@@ -53,12 +53,12 @@ async function nuevoMensaje(
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
     var chat = chatsList[id];
-    let res = false;
-    console.log(`chat en MS es ${chat}`);
-    if (chat) {
-      res = await chat.asignacion();
-    }
-    res = chat.asignacion();
+    // let res = false;
+    // console.log(`chat en MS es ${chat}`);
+    // if (chat) {
+    //   res = await chat.asignacion();
+    // }
+    // res = chat.asignacion();
   } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
@@ -86,7 +86,7 @@ async function nuevaImagen(
     chat = chatsList[id];
     res = await chat.asignacion();
     } else {
-    var chat = new Chat(id, origen, nombre, t, 1, cont, email,[]);
+    var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
   }
   // Notify new message

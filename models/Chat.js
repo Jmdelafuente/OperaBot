@@ -35,8 +35,7 @@ class Chat {
     timestamp,
     pendingmessage = 0,
     lastmessage = "",
-    email,
-    tags = []
+    email
   ) {
     this.id = id;
     this.origin = origen;
