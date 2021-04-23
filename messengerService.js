@@ -46,6 +46,7 @@ async function nuevoMensaje(
   email
 ) {
   var nuevo = false;
+  let res = false;
   // Check if chat exists
   if (chatsList[id]) {
     chatsList[id].timestamp = t;
@@ -54,7 +55,6 @@ async function nuevoMensaje(
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
     var chat = chatsList[id];
-     let res = false;
      console.log(`chat en MS es ${chat}`);
      if (chat) {
        res = await chat.asignacion();
@@ -64,6 +64,7 @@ async function nuevoMensaje(
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
     nuevo = true;
+    res = true;
   }
   // Notify new message
   op.recibirMensaje(chat,tipo,nuevo);
