@@ -326,7 +326,7 @@ $(function () {
 
       
 
-      document.getElementById("listaContactos").appendChild(li);
+      document.getElementById("listaContactos").prepend(li);
       chatListAll.push(id);
       li.prepend(ex);
       ex.appendChild(img);
