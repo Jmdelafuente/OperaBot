@@ -67,6 +67,7 @@ async function nuevoMensaje(
   }
   // Notify new message
   op.recibirMensaje(chat,tipo,nuevo);
+  return res;
 }
 
 async function nuevaImagen(
@@ -93,6 +94,7 @@ async function nuevaImagen(
   }
   // Notify new message
   op.recibirImagen(chat,type);
+  return res;
 }
 
 async function enviarMensaje(id, cont,operadorid) {
