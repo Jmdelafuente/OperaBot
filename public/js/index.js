@@ -89,8 +89,10 @@ $(function () {
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
     var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
-    let circle_clone = circle.cloneNode(true);
-    avatar_asig.parentNode.appendChild(circle_clone);
+    if(avatar_asig){
+      let circle_clone = circle.cloneNode(true);
+      avatar_asig.parentNode.appendChild(circle_clone);
+    }
   }
 
   /**
