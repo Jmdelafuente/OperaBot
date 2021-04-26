@@ -110,7 +110,7 @@ $(function () {
         
       }
     if(circle_asig){
-      document.querySelector(`#listaContactosAsignados li[img=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
+      document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
      }
 }
 
