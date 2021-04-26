@@ -389,6 +389,8 @@ $(function () {
       $("#logo-origen").addClass(icono);
       if (estado != "Cerrado"){
         $(li).addClass("active-chat");
+        var li_asig = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
+        $(li_asig).addClass("active-chat");
         // Enviamos el 'visto' al servidor
         socket.emit("seen", id);
       }
