@@ -100,7 +100,7 @@ $(function () {
    */
   function readMessages(chatid) {
     let circle = document.getElementById("unread_" + chatid);
-    var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${id}]`);
+    var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${chatid}]`);
     if (circle) {
       document
         .getElementById("avatar_" + chatid)
