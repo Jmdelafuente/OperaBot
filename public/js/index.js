@@ -88,6 +88,9 @@ $(function () {
     circle.innerText = unread;
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
+    var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
+    let circle_clone = circle.cloneNode(true);
+    avatar_asig.parentNode.appendChild(circle_clone);
   }
 
   /**
@@ -97,10 +100,13 @@ $(function () {
    */
   function readMessages(chatid) {
     let circle = document.getElementById("unread_" + chatid);
+    var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${id}]`);
     if (circle) {
       document
         .getElementById("avatar_" + chatid)
         .parentNode.removeChild(circle);
+      document.querySelector(`#listaContactosAsignados li[img=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
+
     }
   }
 
