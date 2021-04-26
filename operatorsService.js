@@ -171,14 +171,14 @@ async function bajaOperador(id) {
  */
 async function recibirMensaje(chat, tipo,nuevo) {
   // TODO: check horario de trabajo / operadores online
-  //let horaInicio = new Date();
+  let horaInicio = new Date();
   let id = chat.id;
-  //horaInicio.setHours(8);
-  //let horaFin = Date();
-  //horaFin.setHours(20);
+  horaInicio.setHours(8);
+  let horaFin = new Date();
+  horaFin.setHours(20);
   let horaActual = new Date(Date.now());
   //FIXME: arreglar el if que no entra bien
-  //if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() < horaFin.getHours()) {
+  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() < horaFin.getHours()) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
       // Se asigna el chat
@@ -206,10 +206,10 @@ async function recibirMensaje(chat, tipo,nuevo) {
       console.log(`antes del socket del ultimo con ${socket}`);
     socket.recibirMensaje(chat,tipo,operador.id,nuevo);
   }
-  //} else {
-    // FIXME: autorespuesta
-    //messenger.enviarMensaje(id, config.AUTOMESSAGE, 0); 
-  //}
+  } else {
+     //FIXME: autorespuesta
+    messenger.enviarMensaje(id, config.AUTOMESSAGE, 0); 
+  }
 }
 
 /**
