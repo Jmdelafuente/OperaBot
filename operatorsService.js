@@ -173,12 +173,12 @@ async function recibirMensaje(chat, tipo,nuevo) {
   // TODO: check horario de trabajo / operadores online
   let horaInicio = new Date();
   let id = chat.id;
-  horaInicio.setHours = config.START_TIME;
-  let horaFin = Date(config.END_TIME);
-  horaFin.setHours = config.START_TIME;
+  horaInicio.setHours(parseInt(config.START_TIME));
+  let horaFin = Date();
+  horaFin.setHours(parseInt(config.END_TIME));
   let horaActual = new Date(Date.now());
   //FIXME: arreglar el if que no entra bien
-  //if (horaActual.getHours() > horaInicio && horaActual.getHours() < horaFin) {
+  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() < horaFin.getHours()) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
       // Se asigna el chat
@@ -206,9 +206,10 @@ async function recibirMensaje(chat, tipo,nuevo) {
       console.log(`antes del socket del ultimo con ${socket}`);
     socket.recibirMensaje(chat,tipo,operador.id,nuevo);
   }
-  //} else {
+  } else {
     // FIXME: autorespuesta
-  //}
+    messenger.enviarMensaje(id, config.AUTOMESSAGE, 0); 
+  }
 }
 
 /**
