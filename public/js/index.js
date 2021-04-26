@@ -107,10 +107,12 @@ $(function () {
       document
         .getElementById("avatar_" + chatid)
         .parentNode.removeChild(circle);
+        
+      }
+    if(circle_asig){
       document.querySelector(`#listaContactosAsignados li[img=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
-
-    }
-  }
+     }
+}
 
   $("#action_menu_btn").click(function () {
     $(".action_menu").toggle();
