@@ -420,7 +420,8 @@ $(function () {
       // Recuperamos la lista de chats abiertos
       $('div[data-href="' + activeTab + '"]').tab("show");
       // Marcamos como leido el chat
-      readMessages(id);
+      //readMessages(id);
+      socket.emit("quitar-leido", id);
 
       return false;
     }
@@ -739,6 +740,10 @@ $(function () {
   });
   socket.on('operador_set_id', function (msg) {
     sessionStorage.setItem('operadorid', msg);
+  });
+
+  socket.on("quitar-leido", function (msg) {
+    readMessages(msg);
   });
 
   socket.on("redibujar", function (msg){

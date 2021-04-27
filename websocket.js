@@ -147,6 +147,10 @@ io.on("connection", function (socket) {
     op.confirmarVisto(chat, socket.user);
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
+
+  socket.on("quitar-leido", function (id) {
+    io.emit("quitar-leido",id);
+  });
  
    socket.on("writing", function (id) {
      op.escribiendo(id, socket.user);
