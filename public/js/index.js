@@ -285,11 +285,6 @@ $(function () {
       estatus.innerText = "Online";
       var orig = document.createElement("i");
 
-      if(estado=='Cerrado'){
-        li.className="chat-cerrado";
-      }else{
-        li.removeAttribute('class',"chat-cerrado");
-      }
 
       switch (origen) {
         case "P":
@@ -364,6 +359,12 @@ $(function () {
         });
       }
 
+      if (estado != 'Cerrado') {
+        li.removeAttribute('class', "chat-cerrado");
+      } else {
+        li.setAttribute("class", "chat-cerrado");
+      }
+
       if(!leido){
         unreadMessages(id);
       }
@@ -381,11 +382,14 @@ $(function () {
   function changeChat(id,estado,origen) {
     if ($("#idChat").val() != id) {
       activeTab = sessionStorage.getItem("activeTab");
+      let li_asign = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
+
       // Actualizamos el destinatario
       $("#idChat").val(id);
       // Dibujar mensajes, avatar y nombre
       let idchat = jq("usuario_" + id);
-      let li = $(idchat);
+      let li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
+
       let nom = $(idchat + " span").html();
       // Actualizamos el nombre
       $("#nombreActivo").html("Chat con " + nom);
@@ -403,10 +407,11 @@ $(function () {
       $("#logo-origen").addClass(icono);
       if (estado != "Cerrado"){
         $(li).addClass("active-chat");
-        var li_asig = document.querySelector(`#listaContactosAsignados li[id=usuario_${id}]`);
-        $(li_asig).addClass("active-chat");
+        $(li_asign).addClass("active-chat");
         // Enviamos el 'visto' al servidor
         socket.emit("seen", id);
+      }else{
+        $(li).addClass("chat-cerrado");
       }
       
       // Pedimos los mensajes del chat
