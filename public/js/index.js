@@ -329,15 +329,7 @@ $(function () {
         });
       }
 
-      if (estado != 'Cerrado') {
-        li.removeAttribute('class', "chat-cerrado");
-        li.setAttribute("class", "chat-abierto");
-      } else {
-        li.removeAttribute("class", "chat-abierto")
-        li.setAttribute("class", "chat-cerrado");
-      }
-
-      
+     
 
       document.getElementById("listaContactos").prepend(li);
       chatListAll.push(id);
@@ -354,8 +346,17 @@ $(function () {
         changeChat(id,estado,origen);
       });
       let clonediv = li.cloneNode(true);
-      li.setAttribute("class","todos");
       
+      
+      if (estado != 'Cerrado') {
+        li.removeAttribute('class', "chat-cerrado");
+        li.setAttribute("class", "chat-abierto todos");
+      } else {
+        li.removeAttribute("class", "chat-abierto")
+        li.setAttribute("class", "chat-cerrado");
+      }
+
+
       
       if (asign && !chatListAsign.includes(id) && estado!="Cerrado") {
         clonediv.setAttribute("class","asig");
