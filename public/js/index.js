@@ -554,11 +554,11 @@ $(function () {
     items.forEach(element => {
       if (asig) {
         if (!chatListAsign.includes(element[0])) {
-          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].state.nombre, element[1].tags);
+          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].estado, element[1].tags);
         }
       }
       if (!chatListAll.includes(element[0])) {
-        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].state.nombre, element[1].tags);
+        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].estado, element[1].tags);
       }
     });
     }

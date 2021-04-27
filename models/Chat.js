@@ -47,6 +47,7 @@ class Chat {
     this.email = email;
     this.tags = [];
     this.leido = false;
+    this.estado = "Abierto";
     this.state = new estado.Abierto(this.id);
     // this.db = new OperaDB();
   }
