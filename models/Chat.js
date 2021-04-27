@@ -342,6 +342,14 @@ class Chat {
     this.leido = leido;
   }
 
+  chat_cerrado(estado){
+    this.estado = estado;
+  }
+
+  chat_abierto(estado){
+    this.estado = estado;
+  }
+
   changeState(state) {
     this.state = state;
   }

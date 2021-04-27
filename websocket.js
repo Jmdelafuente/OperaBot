@@ -168,6 +168,7 @@ io.on("connection", function (socket) {
 
   socket.on("close_chat", function(id){
     op.closeChat(id);
+    io.emit("chat-cerrado",id);
   });
 
   socket.on('cambiar_Email', function (msg) {

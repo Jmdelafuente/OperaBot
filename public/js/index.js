@@ -638,38 +638,7 @@ $(function () {
   }
 
   function closeChat(id) {
-    let chat_asign = document.getElementById('nav-asignados');
     socket.emit("close_chat", id);
-    //sessionStorage.removeItem('key');
-    $("#idChat").val(id);
-      let idchat = jq("usuario_" + id);
-      let li = $(idchat);
-      let nom = $(idchat + " span").html();
-      // Actualizamos el nombre
-      $("#nombreActivo").html("Chat con " + nom);
-      // Marcamos el chat como activo
-      $(".chat .active-chat").removeClass("active-chat");
-      $(li).addClass("chat-cerrado");
-      // Pedimos los mensajes del chat
-      socket.emit("all_messages_chat", id);
-     
-      // Borramos la lista de mensajes
-     
-      $("#mensajes").html(`
-        <div class="d-flex justify-content-center">
-        <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        </div>`);
-      // se guarda en el sessionStorage del cliente, la id del civil  
-      sessionStorage.setItem('key', id);
-      // Enviamos el 'visto' al servidor  
-
-      //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
-      // Recuperamos la lista de chats abiertos
-      $('div[data-href="' + activeTab + '"]').tab("show");
-
-    // TODO: estetica de chat cerrado
   }
   function getAsignados() {
     // socket.emit("",{});
@@ -762,6 +731,12 @@ $(function () {
     readMessages(msg);
   });
 
+  socket.on("chat-cerrado", function (id) {
+    var li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
+    li.removeAttribute("class");
+    li.setAttribute("class","todos");
+  });
+
   socket.on("redibujar", function (msg){
     var lista = document.getElementById("listaContactos"); 
     var lista_asig = document.getElementById("listaContactosAsignados");
@@ -809,7 +784,7 @@ $(function () {
   });
 
   //! Deprecada funcionalidad para saber si se envia el email o no 
-  socket.on("email", function (msg, respuesta) {
+ /* socket.on("email", function (msg, respuesta) {
     var ex = document.createElement("div");
     var msj = document.createElement("div");
     var email = document.createElement("button");
@@ -858,7 +833,7 @@ $(function () {
 
     }
     div.scrollTop = div.scrollHeight;
-  });
+  });*/
 
     // funcionalidad para buscar un chat en base a su email o telefono
     $(document).ready(function () {

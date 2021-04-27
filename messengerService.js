@@ -55,8 +55,8 @@ async function nuevoMensaje(
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
     chatsList[id].leido = false;
-    chatsList[id].estado = "Abierto";
     var chat = chatsList[id];
+    chat.chat_abierto("Abierto");
      console.log(`chat en MS es ${chat}`);
      if (chat) {
        res = await chat.asignacion();
@@ -89,8 +89,8 @@ async function nuevaImagen(
     chatsList[id].pendingmessage++;
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
-    chatsList[id].estado = "Abierto";
     chat = chatsList[id];
+    chat.chat_abierto("Abierto");
     if (chat) {
       res = await chat.asignacion();
     }
@@ -211,10 +211,10 @@ async function enviarMenu(id, cont) {
 async function closeChat(id) {
   var chat = chatsList[id];
   let res = false;
+  chat.chat_cerrado("Cerrado");
   console.log(`chat en MS de closeChat es ${chat}`);
   if (chat) {
     res = await chat.resolucionOk();
-    chat.estado = "Cerrado";
   }
   //delete chatsList[id];
   return res;
