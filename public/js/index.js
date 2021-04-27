@@ -382,7 +382,7 @@ $(function () {
   function changeChat(id,estado,origen) {
     if ($("#idChat").val() != id) {
       activeTab = sessionStorage.getItem("activeTab");
-      let li_asign = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
+      let li_asign = document.querySelector(`#listaContactosAsignados img[id=avatar_${id}]`);
 
       // Actualizamos el destinatario
       $("#idChat").val(id);
