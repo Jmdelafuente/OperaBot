@@ -727,7 +727,7 @@ $(function () {
       esOperador = true;
     }
 
-    addChat(msg.nom, msg.id, esOperador, msg.origen,msg.email);
+    addChat(msg.nom, msg.id, esOperador, msg.origen,msg.email,false,"Abierto");
 
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, msg.tipo);
