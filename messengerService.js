@@ -60,6 +60,7 @@ async function nuevoMensaje(
      if (chat) {
        res = await chat.asignacion();
      }
+     res = await chat.asignacion();
   } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
