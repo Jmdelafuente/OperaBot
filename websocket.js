@@ -148,8 +148,9 @@ io.on("connection", function (socket) {
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
 
-  socket.on("quitar-leido", function (id) {
-    io.emit("quitar-leido",id);
+  socket.on("quitar-leido", function (msg) {
+    io.emit("quitar-leido",msg.id);
+    op.chat_leido(msg.id,msg.leido);
   });
  
    socket.on("writing", function (id) {

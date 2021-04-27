@@ -26,6 +26,7 @@ class Chat {
    * @param {*} lastmessage contenido del ultmo mensaje (para que exista un chat, al menos un mensaje hubo)
    * @param {*} email email del usuario si es que lo ingreso
    * @param {{*}} tags contiene los tags que colocan los operadores de la forma {nombre:"nombre",color:"color"}
+   * @param {*} leido indica si el chat fue abierto o no, para dejar la notificacion visual (punto rojo) 
    * @memberof Chat
    */
   constructor(
@@ -45,6 +46,7 @@ class Chat {
     this.pendingmessage = pendingmessage;
     this.email = email;
     this.tags = [];
+    this.leido = false;
     this.state = new estado.Abierto(this.id);
     // this.db = new OperaDB();
   }
@@ -334,6 +336,10 @@ class Chat {
     });
   }
 
+
+  chat_leido(leido){
+    this.leido = leido;
+  }
 
   changeState(state) {
     this.state = state;

@@ -319,6 +319,10 @@ async function delete_tag(id, tag) {
   messenger.delete_tag(id, tag.nombre);
 }
 
+async function chat_leido(id,leido) {
+  messenger.chat_leido(id,leido);
+}
+
 /**
  * Recupera todos los mensajes de un chat.
  * Puede recurrir a la cache/DB o pedirle al servicio de mensajeria los mensajes
@@ -532,3 +536,4 @@ module.exports.recuperarChatEmail=recuperarChatEmail;
 module.exports.obtenerNombre = obtenerNombre;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
+module.exports.chat_leido = chat_leido;

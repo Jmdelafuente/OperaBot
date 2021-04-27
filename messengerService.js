@@ -54,6 +54,7 @@ async function nuevoMensaje(
     chatsList[id].pendingmessage++;
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
+    chatsList[id].leido = false;
     var chat = chatsList[id];
      console.log(`chat en MS es ${chat}`);
      if (chat) {
@@ -87,7 +88,9 @@ async function nuevaImagen(
     chatsList[id].lastmessage = cont;
     chatsList[id].email = email;
     chat = chatsList[id];
-    res = await chat.asignacion();
+    if (chat) {
+      res = await chat.asignacion();
+    }
     } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
@@ -160,6 +163,15 @@ async function enviarEstado(id, cont) {
   let res = false;
   if (chat) {
     res = await chat.enviarEstado(cont);
+  }
+  return res;
+}
+
+async function chat_leido(id,leido) {
+  var chat = chatsList[id];
+  let res = false;
+  if(chat){
+    res = await chat.chat_leido(leido);
   }
   return res;
 }
@@ -273,3 +285,4 @@ module.exports.enviarWAMessage = enviarWAMessage;
 module.exports.recuperarChatEmail = recuperarChatEmail;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
+module.exports.chat_leido = chat_leido;

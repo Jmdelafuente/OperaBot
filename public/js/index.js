@@ -260,7 +260,7 @@ $(function () {
    * @param {String} estado el estado representa si esta abierto o cerrado un chat
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
-  function addChat(nom, id, asign, origen, email,estado = "Abierto",tags_guardados = []) {
+  function addChat(nom, id, asign, origen, email,leido= false, estado = "Abierto",tags_guardados = []) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -364,6 +364,10 @@ $(function () {
         });
       }
 
+      if(!leido){
+        unreadMessages(id);
+      }
+
     }
   }
 
@@ -421,7 +425,8 @@ $(function () {
       $('div[data-href="' + activeTab + '"]').tab("show");
       // Marcamos como leido el chat
       //readMessages(id);
-      socket.emit("quitar-leido", id);
+      var envio = {id: id, leido: true};
+      socket.emit("quitar-leido", envio);
 
       return false;
     }
@@ -539,11 +544,11 @@ $(function () {
     items.forEach(element => {
       if (asig) {
         if (!chatListAsign.includes(element[0])) {
-          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].state.nombre, element[1].tags);
+          addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].state.nombre, element[1].tags);
         }
       }
       if (!chatListAll.includes(element[0])) {
-        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].state.nombre, element[1].tags);
+        addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].state.nombre, element[1].tags);
       }
     });
     }
