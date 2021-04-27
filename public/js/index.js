@@ -361,7 +361,9 @@ $(function () {
 
       if (estado != 'Cerrado') {
         li.removeAttribute('class', "chat-cerrado");
+        li.setAttribute("class", "chat-abierto");
       } else {
+        li.removeAttribute("class", "chat-abierto")
         li.setAttribute("class", "chat-cerrado");
       }
 
