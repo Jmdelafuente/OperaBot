@@ -163,7 +163,7 @@ io.on("connection", function (socket) {
    });
 
   socket.on("dibujar_etiquetas",function (msg) {
-    socket.emit("dibujar_etiquetas",msg);
+    io.emit("dibujar_etiquetas",msg);
   });
 
   socket.on("close_chat", function(id){

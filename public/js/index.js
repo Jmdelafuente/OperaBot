@@ -457,7 +457,9 @@ $(function () {
     //TODO: mover a operadores muy seguramente
     var tags = [{ nombre: "Sube", color: "badge_sube" }, { nombre: "Gestión Tributaria", color: "badge_gestion_tributaria" }, { nombre: "Licencia de Conducir", color: "badge_licencia" }, { nombre: "Limpieza Urbana", color: "badge_limpieza" }, { nombre: "Juzgados de Faltas", color: "badge_juzgado" }, { nombre: "Tierras", color: "badge_tierras" }, { nombre: "Transporte", color: "badge_transporte" }, { nombre: "Arbolado Urbano", color: "badge_arbolado" }, { nombre: "Bienestar Animal", color: "badge_bienestar" }, { nombre: "Comercio", color: "badge_comercio" }, { nombre: "Capacitación y Empleo", color: "badge_empleo" }, { nombre:"Reclamo", color:"badge_reclamo"}];
     //cada etiqueta es tratada para darle su color y funcionalidad
-    socket.emit("dibujar_etiquetas", tags);
+    var id_activo = sessionStorage.getItem("key");
+    var envio = {tags:tags , id:id_activo};
+    socket.emit("dibujar_etiquetas", envio);
     $('#modal-etiquetas').modal('show');
   });
   
@@ -649,10 +651,10 @@ $(function () {
     conn = true;
   });
  
-  socket.on("dibujar_etiquetas", function (tags) {
+  socket.on("dibujar_etiquetas", function (msg) {
     var modalBody = document.getElementById("modal-body-etiquetas");
-    if (Object.keys(tags).length !== 0){
-    tags.forEach(element => {
+    if (Object.keys(msg.tags).length !== 0){
+    msg.tags.forEach(element => {
       var span = document.createElement('span');
       var p = document.createElement('p');
       p.className = "etiqueta";
@@ -665,9 +667,8 @@ $(function () {
         nombre: element.nombre,
         color: element.color
       }
-      var idChat = sessionStorage.getItem('key');
       var package = {
-        id: idChat,
+        id: msg.id,
         tag: tag
       }
       //se le agrega una "X" a la etiqueta por si se selecciono erroneamente y se le agrega la funcion de "quitar etiqueta"
@@ -682,7 +683,8 @@ $(function () {
         });
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
-        $(".chat .active-chat .user_tags").append(clone_tag);
+        document.querySelector(`#listaContactosAsignados li[id=usuario_${msg.id}]`).append(clone_tag);
+        document.querySelector(`#listaContactos li[id=usuario_${msg.id}]`).append(clone_tag);       
       });
       modalBody.appendChild(span);
     });
@@ -733,8 +735,7 @@ $(function () {
 
   socket.on("chat-cerrado", function (id) {
     var li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
-    li.removeAttribute("class");
-    li.setAttribute("class","todos");
+    li.setAttribute("class","todos chat-cerrado");
   });
 
   socket.on("redibujar", function (msg){
