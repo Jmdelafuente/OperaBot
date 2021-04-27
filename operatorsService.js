@@ -221,7 +221,7 @@ async function recibirMensaje(chat, tipo,nuevo) {
  * @param {String} cont contenido del mensaje
  */
 
-async function recibirImagen(chat, tipo) {
+async function recibirImagen(chat, tipo, nuevo) {
   // TODO: check horario de trabajo / operadores online
   let horaInicio = new Date();
   let id = chat.id;

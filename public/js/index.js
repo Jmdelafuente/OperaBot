@@ -329,6 +329,14 @@ $(function () {
         });
       }
 
+      if (estado != 'Cerrado') {
+        li.removeAttribute('class', "chat-cerrado");
+        li.setAttribute("class", "chat-abierto");
+      } else {
+        li.removeAttribute("class", "chat-abierto")
+        li.setAttribute("class", "chat-cerrado");
+      }
+
       
 
       document.getElementById("listaContactos").prepend(li);
@@ -359,13 +367,7 @@ $(function () {
         });
       }
 
-      if (estado != 'Cerrado') {
-        li.removeAttribute('class', "chat-cerrado");
-        li.setAttribute("class", "chat-abierto");
-      } else {
-        li.removeAttribute("class", "chat-abierto")
-        li.setAttribute("class", "chat-cerrado");
-      }
+      
 
       if(!leido){
         unreadMessages(id);
@@ -408,6 +410,7 @@ $(function () {
 
       $("#logo-origen").addClass(icono);
       if (estado != "Cerrado"){
+        $(li).removeClass("chat-cerrado");
         $(li).addClass("active-chat");
         $(li_asign).addClass("active-chat");
         // Enviamos el 'visto' al servidor
@@ -784,7 +787,7 @@ $(function () {
     // Confirmamos la asignacion al servidor
     ack(true);
     // Generamos los elementos del DOM
-    addChat(msg.nom, msg.id, true, msg.origen,msg.email);
+    addChat(msg.nom, msg.id, true, msg.origen,msg.email,false,"Abierto");
   });
   socket.on("getAllMessagesByChat", function (msg) {
     let lista = msg.lista;

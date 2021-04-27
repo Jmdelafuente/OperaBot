@@ -80,6 +80,7 @@ async function nuevaImagen(
   type = "image",
   email
 ) {
+  var nuevo = false;
   // Check if chat exists
   if (chatsList[id]) {
     chatsList[id].timestamp = t;
@@ -94,9 +95,11 @@ async function nuevaImagen(
     } else {
     var chat = new Chat(id, origen, nombre, t, 1, cont, email);
     chatsList[id] = chat;
+    nuevo = true;
+    res = true;
   }
   // Notify new message
-  op.recibirImagen(chat,type);
+  op.recibirImagen(chat,type,nuevo);
   return res;
 }
 
