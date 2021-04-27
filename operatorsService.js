@@ -173,9 +173,9 @@ async function recibirMensaje(chat, tipo,nuevo) {
   // TODO: check horario de trabajo / operadores online
   let horaInicio = new Date();
   let id = chat.id;
-  horaInicio.setHours(8);
+  horaInicio.setHours(parseInt(config.START_TIME));
   let horaFin = new Date();
-  horaFin.setHours(20);
+  horaFin.setHours(parseInt(config.END_TIME));
   let horaActual = new Date(Date.now());
   //FIXME: arreglar el if que no entra bien
   if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() < horaFin.getHours()) {
@@ -225,36 +225,42 @@ async function recibirImagen(chat, tipo) {
   // TODO: check horario de trabajo / operadores online
   let horaInicio = new Date();
   let id = chat.id;
-  horaInicio.setHours = config.START_TIME;
-  let horaFin = Date(config.END_TIME);
-  horaFin.setHours = config.START_TIME;
+  horaInicio.setHours(parseInt(config.START_TIME));
+  let horaFin = new Date();
+  horaFin.setHours(parseInt(config.END_TIME));
   let horaActual = new Date(Date.now());
   //FIXME: arreglar el if que no entra bien
-  //if (horaActual.getHours() > horaInicio && horaActual.getHours() < horaFin) {
-  // Check if chat is already assigned
-  if (!chat_asig[id]) {
-    // Se asigna el chat
-    //chat = messenger.getChatById(id);
-    console.log(`dentro de !chat_asig de imagen`);
-    newAsign
-      .push(chat)
-      .on("finish", function (res) {
-        let operadorId = chat_asig[id].operadorId;
-        let operador = operators[operadorId];
-        socket.recibirMensaje(chat, tipo, operador.id);
-        return true;
-      })
-      .on("failed", function (err) {
-        // Exception, I hope never see this
-        // ? evaluar que hacer en este caso
-        // FIXME: dejar en chats pendientes de asignar
-        return new Error("No se puedo asignar el chat");
-      });
+  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() < horaFin.getHours()) {
+    // Check if chat is already assigned
+    if (!chat_asig[id]) {
+      // Se asigna el chat
+      //chat = messenger.getChatById(id);
+      console.log(`dentro de !chat_asig de imagen`);
+      newAsign
+        .push(chat)
+        .on("finish", function (res) {
+          let operadorId = chat_asig[id].operadorId;
+          let operador = operators[operadorId];
+          console.log(`antes del asign con ${chat.name} de imagen`);
+          socket.recibirMensaje(chat, tipo, operador.id, nuevo);
+          return true;
+        })
+        .on("failed", function (err) {
+          // Exception, I hope never see this
+          // ? evaluar que hacer en este caso
+          // FIXME: dejar en chats pendientes de asignar
+          return new Error("No se puedo asignar el chat");
+        });
+    } else {
+      // Push notification to operator
+      let operadorId = chat_asig[id].operadorId;
+      let operador = operators[operadorId];
+      console.log(`antes del socket del ultimo imagen con ${socket}`);
+      socket.recibirMensaje(chat, tipo, operador.id, nuevo);
+    }
   } else {
-    // Push notification to operator
-    let operadorId = chat_asig[id].operadorId;
-    let operador = operators[operadorId];
-    socket.recibirMensaje(chat, tipo, operador.id);
+    //FIXME: autorespuesta
+    messenger.enviarMensaje(id, config.AUTOMESSAGE, 0);
   }
 }
 
