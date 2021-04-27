@@ -387,7 +387,7 @@ $(function () {
   function changeChat(id,estado,origen) {
     if ($("#idChat").val() != id) {
       activeTab = sessionStorage.getItem("activeTab");
-      let li_asign = document.querySelector(`#listaContactosAsignados img[id=avatar_${id}]`);
+      let li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${id}]`);
 
       // Actualizamos el destinatario
       $("#idChat").val(id);
@@ -410,6 +410,7 @@ $(function () {
       }
 
       $("#logo-origen").addClass(icono);
+      
       if (estado != "Cerrado"){
         $(li).removeClass("chat-cerrado");
         $(li).addClass("active-chat");
@@ -685,7 +686,7 @@ $(function () {
         clone_tag.appendChild(close_etiqueta);
         document.querySelector(`#listaContactosAsignados li[id=usuario_${msg.id}]`).append(clone_tag);
         document.querySelector(`#listaContactos li[id=usuario_${msg.id}]`).append(clone_tag);       
-      });
+      }); 
       modalBody.appendChild(span);
     });
   }
