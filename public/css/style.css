@@ -302,11 +302,11 @@ img.emoji {
 	border: 0px!important;
     border-top-right-radius: 12px!important;
     border-top-left-radius: 0px!important;
-    color: white!important;
-    background: #a1c44f!important;
+    color: #20b2e8!important;
+    background: white!important;
 }
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
-	color: #20B2E8!important;
+	color: #a1c44f!important;
     background: white!important;
 }
 .tab-pane .card-footer{
