@@ -678,7 +678,7 @@ $(function () {
     if (sessionStorage.getItem("operadorid") == msg.id_op) {
       esOperador = true;
     }
-    var li = document.getElementById(msg.id);
+    var li = document.getElementById(`usuario_${msg.id}`);
 
     var li_asign = li.cloneNode(true);
     var contenedor_asign = document.getElementById("listaContactosAsignados");
