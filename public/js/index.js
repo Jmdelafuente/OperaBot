@@ -421,6 +421,25 @@ $(function () {
           socket.emit("seen", id, (ack) => {
             if (ack) {
               // El chat fue correctamente asignado
+              // Pedimos los mensajes del chat
+              socket.emit("all_messages_chat", id);
+              // Borramos la lista de mensajes
+              $("#mensajes").html(`
+          <div class="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+          </div>
+          </div>`);
+              // se guarda en el sessionStorage del cliente, la id del civil  
+              sessionStorage.setItem('key', id);
+              //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
+              // Recuperamos la lista de chats abiertos
+              $('div[data-href="' + activeTab + '"]').tab("show");
+              // Marcamos como leido el chat
+              //readMessages(id);
+              var envio = { id: id, leido: true };
+              socket.emit("quitar-leido", envio);
+
               resolve(true);
             } else {
               // El chat no fue asignado
@@ -432,25 +451,7 @@ $(function () {
         $(li).addClass("chat-cerrado");
       }
       
-      // Pedimos los mensajes del chat
-      socket.emit("all_messages_chat", id);
-      // Borramos la lista de mensajes
-      $("#mensajes").html(`
-          <div class="d-flex justify-content-center">
-          <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-          </div>
-          </div>`);
-      // se guarda en el sessionStorage del cliente, la id del civil  
-      sessionStorage.setItem('key', id);
-      //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
-      // Recuperamos la lista de chats abiertos
-      $('div[data-href="' + activeTab + '"]').tab("show");
-      // Marcamos como leido el chat
-      //readMessages(id);
-      var envio = {id: id, leido: true};
-      socket.emit("quitar-leido", envio);
-
+      
       return false;
     }
   }
