@@ -421,6 +421,7 @@ $(function () {
           socket.emit("seen", id, (ack) => {
             if (ack) {
               // El chat fue correctamente asignado
+              socket.emit("all_messages_chat", id);
               resolve(true);
             } else {
               // El chat no fue asignado
@@ -670,7 +671,7 @@ $(function () {
   });
 
   socket.on("dibujar_asign", function (msg) {
-    
+
   });
  
   socket.on("dibujar_etiquetas", function (msg) {

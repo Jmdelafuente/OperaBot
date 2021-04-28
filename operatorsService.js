@@ -379,7 +379,7 @@ async function confirmarVisto(chatId, channelId) {
       console.log(`puedo obtener socket? ${operators[id].socket.id}`);
       var socket_cambiar = operators[id].socket;
       socket.cambiar_asignado(socket_cambiar, chatId);
-      return true;
+    
     }
   }
   let asignacion = new Asignacion(chatId, operators_channels[channelId]);
@@ -396,6 +396,7 @@ async function confirmarVisto(chatId, channelId) {
   if(chat!=undefined){
     //chat.seen();
   }
+  return true;
 }
 
 //Le envia la información del estado al chat para poder saber
