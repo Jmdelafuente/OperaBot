@@ -674,11 +674,12 @@ $(function () {
 
   socket.on("dibujar_asign", function (msg) {
     let esOperador = false;
-    
+    console.log(`entre a dibujar_asign`);
     if (sessionStorage.getItem("operadorid") == msg.id_op) {
       esOperador = true;
     }
-    var li = document.querySelector(`#listaContactos li[id=usuario_${msg.id}]`);
+    var li = document.getElementById(msg.id);
+
     var li_asign = li.cloneNode(true);
     var contenedor_asign = document.getElementById("listaContactosAsignados");
     contenedor_asign.prepend(li_asign);    

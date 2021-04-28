@@ -275,6 +275,7 @@ async function reasignar(nuevo_op,chat,op_id) {
   mensaje.origen = chat.origin;
   mensaje.state = chat.state;
   mensaje.op_id = op_id
+  console.log(`entre a reasignar ${nuevo_op}, ${chat} y ${op_id}`);
   io.to(nuevo_op).emit("dibujar_asign",mensaje);
 }
 
