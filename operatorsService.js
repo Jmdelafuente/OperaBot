@@ -376,6 +376,7 @@ async function confirmarVisto(chatId, channelId) {
     if (chat_asig[chatId].operadorId != operators_channels[channelId]){
       console.log("este chat no era tuyo, pero te lo vas a robar");
       var id = chat_asig[chatId].operadorId;
+      console.log(`puedo obtener socket? ${operators[id].socket.id}`);
     }
   }
   let asignacion = new Asignacion(chatId, operators_channels[channelId]);
