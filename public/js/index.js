@@ -425,11 +425,11 @@ $(function () {
               socket.emit("all_messages_chat", id);
               // Borramos la lista de mensajes
               $("#mensajes").html(`
-          <div class="d-flex justify-content-center">
-          <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-          </div>
-          </div>`);
+              <div class="d-flex justify-content-center">
+              <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+              </div>
+              </div>`);
               // se guarda en el sessionStorage del cliente, la id del civil  
               sessionStorage.setItem('key', id);
               //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
