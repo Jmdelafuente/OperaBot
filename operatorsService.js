@@ -378,7 +378,7 @@ async function confirmarVisto(chatId, channelId) {
       socket.cambiar_asignado(socket_cambiar, chatId);
       var id_operador = operators_channels[channelId]
       var nuevo_op = operators[id_operador].socket.id;
-      var chat_asign = messenger.obtenerChat(chatId);
+      var chat_asign = await messenger.obtenerChat(chatId);
       socket.reasignar(nuevo_op,chat_asign,id_operador);
       console.log("termine todo en confirmar");
     }
