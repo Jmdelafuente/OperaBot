@@ -289,6 +289,7 @@ async function asignarMensaje(socket, chat) {
 
 async function cambiar_asignado(canalOperador, chatid) {
   io.to(canalOperador).emit("borrar-asign", chatid);
+  console.log("entre a cambiar");
 }
 
 async function quieremail(operador, idUser, chat) {
