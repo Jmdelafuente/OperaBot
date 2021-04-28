@@ -874,7 +874,6 @@ $(function () {
     let divPlantilla = document.getElementById('modal-body-plantillas');
     divPlantilla.innerHTML = '';
     iduser = sessionStorage.getItem('key');
-    let pack = {};
     for (const [key, prefix] of Object.entries(msg)) {
 
       let ulPlantilla = document.createElement('ul');
@@ -885,8 +884,8 @@ $(function () {
       if (msg[key].descripcion) {
         liPlantilla.innerText = `${key}: ${prefix}`;
       }
-      divPlantilla.appendChild(ulOpcion);
-      ulPlantilla.appendChild(liopcion);
+      divPlantilla.appendChild(ulPlantilla);
+      ulPlantilla.appendChild(liPlantilla);
       liPlantilla.addEventListener('click', function (e) {
         e.preventDefault();
         $("#m").val(prefix);
