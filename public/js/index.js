@@ -754,10 +754,7 @@ $(function () {
   //  se muestran las plantillas en el chat
   socket.on("send_plantilla", (msg) => {
     blueprints = msg;
-    $('#m').on('keydown', function () {
-      $(this).autocomplete(document.getElementById("m"), blueprints);
-    });
-   //autocomplete(document.getElementById("m"), blueprints);
+    autocomplete(document.getElementById("m"), blueprints);
   });
   socket.on("dibujar_mensaje", (msg) =>{
     addMessage(msg.contenido, "E", "Ahora", "chat",msg.nombre);
