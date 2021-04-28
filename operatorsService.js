@@ -377,7 +377,7 @@ async function confirmarVisto(chatId, channelId) {
       console.log("este chat no era tuyo, pero te lo vas a robar");
       var id = chat_asig[chatId].operadorId;
       console.log(`puedo obtener socket? ${operators[id].socket.id}`);
-      var socket_cambiar = operators[id].socket.id;
+      var socket_cambiar = operators[id].socket;
       socket.cambiar_asignado(socket_cambiar, chatId);
       return true;
     }
