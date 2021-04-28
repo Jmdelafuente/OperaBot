@@ -678,14 +678,10 @@ $(function () {
     if (sessionStorage.getItem("operadorid") == msg.id_op) {
       esOperador = true;
     }
-
-    addChat(msg.nom, msg.id, esOperador, msg.origen, msg.email, false, "Abierto");
-
-    if ($("#idChat").val() == msg.id) {
-      addMessage(msg.contenido, "R", msg.timestamp, msg.tipo);
-    } else {
-      unreadMessages(msg.id);
-    }
+    var li = document.querySelector(`#listaContactos li[id=usuario_${msg.id}]`);
+    var li_asign = li.cloneNode(true);
+    var contenedor_asign = document.getElementById("listaContactosAsignados");
+    contenedor_asign.prepend(li_asign);    
   });
  
   socket.on("dibujar_etiquetas", function (msg) {
