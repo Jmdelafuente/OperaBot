@@ -618,7 +618,7 @@ $(function () {
       } else {
         socket.emit("stop-writing", $("#idChat").val());
       }
-      if (e.key == '/') {
+      if (e.key == '/' || e.key == KEYCODE_NUMPAD_DIVIDE || e.key == KEYCODE_SLASH) {
         socket.emit("send_plantilla", '');
       }
     });
