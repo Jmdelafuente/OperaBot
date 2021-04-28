@@ -89,7 +89,7 @@ $(function () {
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
     var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
-    if(avatar_asig){
+    if (avatar_asig && chatListAsign.includes(chatid)){
       let circle_clone = circle.cloneNode(true);
       avatar_asig.parentNode.appendChild(circle_clone);
     }
@@ -754,7 +754,10 @@ $(function () {
   //  se muestran las plantillas en el chat
   socket.on("send_plantilla", (msg) => {
     blueprints = msg;
-   autocomplete(document.getElementById("m"), blueprints);
+    $('#m').on('keydown', function () {
+      $(this).autocomplete(document.getElementById("m"), blueprints);
+    });
+   //autocomplete(document.getElementById("m"), blueprints);
   });
   socket.on("dibujar_mensaje", (msg) =>{
     addMessage(msg.contenido, "E", "Ahora", "chat",msg.nombre);
