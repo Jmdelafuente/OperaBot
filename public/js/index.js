@@ -416,7 +416,18 @@ $(function () {
         $(li).addClass("active-chat");
         $(li_asign).addClass("active-chat");
         // Enviamos el 'visto' al servidor
-        socket.emit("seen", id);
+        //socket.emit("seen", id);
+        return new Promise(resolve => {
+          socket.emit("seen", id, (ack) => {
+            if (ack) {
+              // El chat fue correctamente asignado
+              resolve(true);
+            } else {
+              // El chat no fue asignado
+              resolve(false);
+            }
+          });
+        });
       }else{
         $(li).addClass("chat-cerrado");
       }
@@ -651,6 +662,15 @@ $(function () {
     console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);
     conn = true;
+  });
+
+  socket.on("borrar_asign", function (msg) {
+   var li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg.id}]`);
+    li_asign.parentNode.removeChild(li_asign);
+  });
+
+  socket.on("dibujar_asign", function (msg) {
+    
   });
  
   socket.on("dibujar_etiquetas", function (msg) {

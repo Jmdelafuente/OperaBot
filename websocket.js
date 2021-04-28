@@ -143,8 +143,9 @@ io.on("connection", function (socket) {
   });
 
   
-  socket.on("seen", function(chat){
-    op.confirmarVisto(chat, socket.user);
+  socket.on("seen", function(chat, ack){
+    var resp = op.confirmarVisto(chat, socket.user);
+    ack(resp);
     console.log(`WebSocket -> send_op_seen: ${socket.toString()}`);
   });
 
@@ -286,6 +287,10 @@ async function asignarMensaje(socket, chat) {
   });
 }
 
+async function cambiar_asignado(canalOperador, chatid) {
+  canalOperador.emit("borrar-asign", chatid);
+}
+
 async function quieremail(operador, idUser, chat) {
   pack = {};
   pack.idUser = idUser;
@@ -354,6 +359,7 @@ module.exports.asignarMensaje = asignarMensaje;
 module.exports.recibirMensajesByChat = mensajesByChat;
 module.exports.recibirLista = recibirLista;
 module.exports.quieremail = quieremail;
+module.exports.cambiar_asignado = cambiar_asignado;
 
 
 /*<script type="text/javascript">
