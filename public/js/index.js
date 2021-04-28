@@ -619,6 +619,7 @@ $(function () {
         socket.emit("stop-writing", $("#idChat").val());
       }
       if (e.key == '/' || e.key == KEYCODE_NUMPAD_DIVIDE || e.key == KEYCODE_SLASH) {
+        alert(e.key);
         socket.emit("send_plantilla", '');
       }
     });
