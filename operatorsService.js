@@ -370,16 +370,16 @@ async function obtenerNombre(operadorId) {
 async function confirmarVisto(chatId, channelId) {
   // let operador = operators[operadorId];
   // Al abrir el mensaje, la asignacion pasa a ser estable (no se busca nuevo operador para el chat)
-  console.log(`puedo obtener socket? ${operators[10].socket.id}`);
   if(chat_asig[chatId]){
     console.log(`en confirmar visto, antes de asignacion nueva ${chat_asig[chatId].operadorId} y ${chat_asig[chatId].chatId}`);
     if (chat_asig[chatId].operadorId != operators_channels[channelId]){
-      console.log("este chat no era tuyo, pero te lo vas a robar");
       var id = chat_asig[chatId].operadorId;
-      console.log(`puedo obtener socket? ${operators[id].socket.id}`);
       var socket_cambiar = operators[id].socket.id;
       socket.cambiar_asignado(socket_cambiar, chatId);
-    
+      var id_operador = operators_channels[channelId]
+      var nuevo_op = operators[id_operador].socket.id;
+      var chat_asign = messenger.obtenerChat(chatId);
+      socket.reasignar(nuevo_op,chat_asign,id_operador);
     }
   }
   let asignacion = new Asignacion(chatId, operators_channels[channelId]);

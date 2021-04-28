@@ -201,6 +201,13 @@ async function delete_tag(id, tag) {
 
 }
 
+async function obtenerChat(chatid) {
+  var chat = chatsList[chatid];
+  if(chat){
+    return chat;
+  }
+}
+
 
 async function enviarMenu(id, cont) {
   var chat = chatsList[id];
@@ -292,3 +299,4 @@ module.exports.recuperarChatEmail = recuperarChatEmail;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
+module.exports.obtenerChat = obtenerChat;

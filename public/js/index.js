@@ -667,12 +667,25 @@ $(function () {
 
   socket.on("borrar_asign", function (msg) {
    var li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
-    li_asign.parentNode.removeChild(li_asign);
-    console.log("SIIIII");
+   if(li_asign){
+     li_asign.parentNode.removeChild(li_asign);
+   }
   });
 
   socket.on("dibujar_asign", function (msg) {
+    let esOperador = false;
+    
+    if (sessionStorage.getItem("operadorid") == msg.id_op) {
+      esOperador = true;
+    }
 
+    addChat(msg.nom, msg.id, esOperador, msg.origen, msg.email, false, "Abierto");
+
+    if ($("#idChat").val() == msg.id) {
+      addMessage(msg.contenido, "R", msg.timestamp, msg.tipo);
+    } else {
+      unreadMessages(msg.id);
+    }
   });
  
   socket.on("dibujar_etiquetas", function (msg) {

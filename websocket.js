@@ -264,6 +264,20 @@ const recibirMensaje = function (chat, tipo, operador,nuevo) {
 //   return true;
 // };
 
+async function reasignar(nuevo_op,chat,op_id) {
+  var mensaje= {};
+  mensaje.id = chat.id;
+  mensaje.contenido = chat.lastmessage;
+  mensaje.tipo = chat.type;
+  mensaje.hora = chat.timestamp;
+  mensaje.nom = chat.name;
+  mensaje.email = chat.email;
+  mensaje.origen = chat.origin;
+  mensaje.state = chat.state;
+  mensaje.op_id = op_id
+  io.to(nuevo_op).emit("dibujar_asign",mensaje);
+}
+
 async function asignarMensaje(socket, chat) {
   var mensaje = {};
   mensaje.id = chat.id;
@@ -361,7 +375,7 @@ module.exports.recibirMensajesByChat = mensajesByChat;
 module.exports.recibirLista = recibirLista;
 module.exports.quieremail = quieremail;
 module.exports.cambiar_asignado = cambiar_asignado;
-
+module.exports.reasignar = reasignar;
 
 /*<script type="text/javascript">
       function enviarWA(id,contenido)
