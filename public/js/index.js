@@ -445,10 +445,10 @@ $(function () {
   }
 
   //En los 3 puntos, el operador puede enviar un menu especifico 
-  var menuOpciones = document.getElementById('menu-opciones');
-  menuOpciones.addEventListener('click', function (e) {
+  var menuPlantillas = document.getElementById('menu-plantillas');
+  menuPlantillas.addEventListener('click', function (e) {
     e.preventDefault();
-    socket.emit('obtener-opciones');
+    socket.emit('obtener-plantillas');
   });
 
   //funcionalidad de etiquetas
@@ -870,35 +870,26 @@ $(function () {
 
  
     // funcionalidad de obtener todo el menu disponible y seleccionar algun sub-menu para enviar al ciudadano
-  socket.on("obtener-opciones", function (msg) {
-    let divOpcion = document.getElementById('modal-body-opcion');
-    divOpcion.innerHTML = '';
+  socket.on("obtener-plantillas", function (msg) {
+    let divPlantilla = document.getElementById('modal-body-plantillas');
+    divPlantilla.innerHTML = '';
     iduser = sessionStorage.getItem('key');
     let pack = {};
     for (const [key, prefix] of Object.entries(msg)) {
 
-      let ulOpcion = document.createElement('ul');
-      let liopcion = document.createElement('li');
-      liopcion.setAttribute('type', 'button');
-      liopcion.setAttribute('data-dismiss', 'modal')
-      liopcion.innerText = `${msg[key].nombre}`;
+      let ulPlantilla = document.createElement('ul');
+      let liPlantilla = document.createElement('li');
+      liPlantilla.setAttribute('type', 'button');
+      liPlantilla.setAttribute('data-dismiss', 'modal')
+      liPlantilla.innerText = `${key}`;
       if (msg[key].descripcion) {
-        liopcion.innerText = `${msg[key].nombre}: ${msg[key].descripcion}`;
+        liPlantilla.innerText = `${key}: ${prefix}`;
       }
-      divOpcion.appendChild(ulOpcion);
-      ulOpcion.appendChild(liopcion);
-      liopcion.addEventListener('click', function (e) {
+      divPlantilla.appendChild(ulOpcion);
+      ulPlantilla.appendChild(liopcion);
+      liPlantilla.addEventListener('click', function (e) {
         e.preventDefault();
-        pack.id = iduser;
-        pack.contenido = msg[key].opciones;
-        if (msg[key].nombre.substring(0, 9) != 'respuesta') {
-          socket.emit('enviar-menu', pack);
-          addMessage('Se envio el menú al ciudadano', 'E', Date.now(), 'message');
-        } else {
-          pack.contenido = msg[key].opciones;
-          addMessage(msg[key].opciones, 'E', Date.now(), 'message');
-          socket.emit('send_op_message', pack);
-        }
+        $("#m").val(prefix);
       });
     }
   });

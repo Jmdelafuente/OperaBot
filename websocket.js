@@ -179,9 +179,9 @@ io.on("connection", function (socket) {
     op.enviarArchivo(msg.id, msg.contenido, msg.type, msg.operadorid);
   });
 
-  socket.on('obtener-opciones',function(msg){
-    let opciones = op.obteneropciones();
-    socket.emit('obtener-opciones',opciones);
+  socket.on('obtener-plantillas',function(msg){
+    let plantillas = op.obtenerplantillas();
+    socket.emit('obtener-plantillas',plantillas);
   });
 
   socket.on("add_tag", function (msg) {

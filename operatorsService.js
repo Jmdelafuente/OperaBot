@@ -287,8 +287,8 @@ async function getMoreMessages(id) {
 }
 
 //Envia el contenido cont obtenido de las opciones para los menus
-function obteneropciones() {
-  let cont = opciones.obteneropciones();
+function obtenerplantillas() {
+  let cont = ms.obtenerPlantillas();
   return cont;
 }
 
@@ -529,7 +529,7 @@ module.exports.reconectarOperador = reconectarOperador;
 module.exports.modificarOpciones = modificaropciones;
 module.exports.modificarPlantilla = modificarPlantilla;
 module.exports.operators = operators;
-module.exports.obteneropciones = obteneropciones;
+module.exports.obtenerplantillas = obtenerplantillas;
 module.exports.enviarMenu = enviarMenu;
 module.exports.desconexionCivil = desconexionCivil;
 module.exports.validar = validar;
