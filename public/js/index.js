@@ -618,8 +618,8 @@ $(function () {
       } else {
         socket.emit("stop-writing", $("#idChat").val());
       }
-      if (e.key == '/' || e.key == KEYCODE_NUMPAD_DIVIDE || e.key == KEYCODE_SLASH) {
-        alert(e.key);
+      if (e.key == '/' || e.key == 154 || e.key == 76) {
+        
         socket.emit("send_plantilla", '');
       }
     });
