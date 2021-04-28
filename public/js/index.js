@@ -666,7 +666,7 @@ $(function () {
   });
 
   socket.on("borrar_asign", function (msg) {
-   var li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg.id}]`);
+   var li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
     li_asign.parentNode.removeChild(li_asign);
     console.log("SIIIII");
   });
