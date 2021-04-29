@@ -88,13 +88,13 @@ $(function () {
     circle.innerText = unread;
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
-    //if(chatListAsign.includes(chatid)){
-    //  var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
-    //  if (avatar_asig ){
-    //    let circle_clone = circle.cloneNode(true);
-    //    avatar_asig.parentNode.appendChild(circle_clone);
-    //  }
-    //}
+    if(chatListAsign.includes(chatid)){
+      var avatar_asig = document.querySelector(`#listaContactosAsignados img[id="avatar_${chatid}"]`);
+      if (avatar_asig ){
+        let circle_clone = circle.cloneNode(true);
+        avatar_asig.parentNode.appendChild(circle_clone);
+      }
+    }
   }
 
   /**
@@ -110,12 +110,12 @@ $(function () {
       .parentNode.removeChild(circle);
       
     }
-    //if(chatListAll.includes(chatid)){
-    //  var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${chatid}]`);
-    //  if(circle_asig){
-    //    document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
-    //  }
-    //}
+    if(chatListAll.includes(chatid)){
+      var circle_asig = document.querySelector(`#listaContactosAsignados mark["id=unread_${chatid}"]`);
+      if(circle_asig){
+        document.querySelector(`#listaContactosAsignados img["id=avatar_${chatid}"]`).parentNode.removeChild(circle_asig);
+      }
+    }
 }
 
   $("#action_menu_btn").click(function () {
@@ -396,8 +396,8 @@ $(function () {
       $("#idChat").val(id);
       // Dibujar mensajes, avatar y nombre
       let idchat = jq("usuario_" + id);
-      let li = $(idchat);
-      //let li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
+      //let li = $(idchat);
+      let li = document.querySelector(`#listaContactos li["id=usuario_${id}"]`);
 
       let nom = $(idchat + " span").html();
       // Actualizamos el nombre
@@ -419,8 +419,8 @@ $(function () {
         $(li).removeClass("chat-cerrado");
         $(li).addClass("active-chat");
         if(chatListAsign.includes(id)){
-        //let li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${id}]`);
-        //$(li_asign).addClass("active-chat");
+        let li_asign = document.querySelector(`#listaContactosAsignados li["id=usuario_${id}"]`);
+        $(li_asign).addClass("active-chat");
         }
         // Enviamos el 'visto' al servidor
         //socket.emit("seen", id);
@@ -673,10 +673,10 @@ $(function () {
   });
 
   socket.on("borrar_asign", function (msg) {
-   //var li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
-   //if(li_asign){
-    // li_asign.parentNode.removeChild(li_asign);
-   //}
+   var li_asign = document.querySelector(`#listaContactosAsignados li["id=usuario_${msg}"]`);
+   if(li_asign){
+     li_asign.parentNode.removeChild(li_asign);
+   }
   });
 
   socket.on("dibujar_asign", function (msg) {
@@ -723,8 +723,8 @@ $(function () {
         });
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
-        document.querySelector(`#listaContactosAsignados li[id=usuario_${msg.id}]`).append(clone_tag);
-        document.querySelector(`#listaContactos li[id=usuario_${msg.id}]`).append(clone_tag);       
+        document.querySelector(`#listaContactosAsignados li["id=usuario_${msg.id}"]`).append(clone_tag);
+        document.querySelector(`#listaContactos li["id=usuario_${msg.id}"]`).append(clone_tag);       
       }); 
       modalBody.appendChild(span);
     });
@@ -774,8 +774,8 @@ $(function () {
   });
 
   socket.on("chat-cerrado", function (id) {
-    //var li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
-    var li = document.getElementById(`usuario_${msg}`);
+    var li = document.querySelector(`#listaContactos li["id=usuario_${id}"]`);
+    //var li = document.getElementById(`usuario_${msg}`);
     li.setAttribute("class","todos chat-cerrado");
   });
 
@@ -783,9 +783,9 @@ $(function () {
     var lista = document.getElementById("listaContactos"); 
     var lista_asig = document.getElementById("listaContactosAsignados");
     var li_chat = document.getElementById(`usuario_${msg}`);
-    //var li_asig = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
+    var li_asig = document.querySelector(`#listaContactosAsignados li["id=usuario_${msg}"]`);
     lista.prepend(li_chat);
-    //lista_asig.prepend(li_asig);
+    lista_asig.prepend(li_asig);
   });
 
   socket.on("confirm_op_message", function (msg) {
