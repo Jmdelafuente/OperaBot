@@ -775,7 +775,8 @@ $(function () {
   });
 
   socket.on("chat-cerrado", function (id) {
-    var li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
+    //var li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
+    var li = document.getElementById(`usuario_${msg}`);
     li.setAttribute("class","todos chat-cerrado");
   });
 
@@ -783,9 +784,9 @@ $(function () {
     var lista = document.getElementById("listaContactos"); 
     var lista_asig = document.getElementById("listaContactosAsignados");
     var li_chat = document.getElementById(`usuario_${msg}`);
-    var li_asig = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
+    //var li_asig = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
     lista.prepend(li_chat);
-    lista_asig.prepend(li_asig);
+    //lista_asig.prepend(li_asig);
   });
 
   socket.on("confirm_op_message", function (msg) {
