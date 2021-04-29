@@ -88,13 +88,13 @@ $(function () {
     circle.innerText = unread;
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
-    if(chatListAsign.includes(chatid)){
-      var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
-      if (avatar_asig ){
-        let circle_clone = circle.cloneNode(true);
-        avatar_asig.parentNode.appendChild(circle_clone);
-      }
-    }
+    //if(chatListAsign.includes(chatid)){
+    //  var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
+    //  if (avatar_asig ){
+    //    let circle_clone = circle.cloneNode(true);
+    //    avatar_asig.parentNode.appendChild(circle_clone);
+    //  }
+    //}
   }
 
   /**
@@ -110,12 +110,12 @@ $(function () {
       .parentNode.removeChild(circle);
       
     }
-    if(chatListAll.includes(chatid)){
-      var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${chatid}]`);
-      if(circle_asig){
-        document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
-      }
-    }
+    //if(chatListAll.includes(chatid)){
+    //  var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${chatid}]`);
+    //  if(circle_asig){
+    //    document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
+    //  }
+    //}
 }
 
   $("#action_menu_btn").click(function () {
