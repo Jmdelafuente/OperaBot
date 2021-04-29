@@ -673,10 +673,10 @@ $(function () {
   });
 
   socket.on("borrar_asign", function (msg) {
-   var li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
-   if(li_asign){
-     li_asign.parentNode.removeChild(li_asign);
-   }
+   //var li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${msg}]`);
+   //if(li_asign){
+    // li_asign.parentNode.removeChild(li_asign);
+   //}
   });
 
   socket.on("dibujar_asign", function (msg) {
