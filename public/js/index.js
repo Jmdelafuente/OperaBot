@@ -88,10 +88,12 @@ $(function () {
     circle.innerText = unread;
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
-    var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
-    if (avatar_asig && chatListAsign.includes(chatid)){
-      let circle_clone = circle.cloneNode(true);
-      avatar_asig.parentNode.appendChild(circle_clone);
+    if(chatListAsign.includes(chatid)){
+      var avatar_asig = document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`);
+      if (avatar_asig ){
+        let circle_clone = circle.cloneNode(true);
+        avatar_asig.parentNode.appendChild(circle_clone);
+      }
     }
   }
 
@@ -387,7 +389,6 @@ $(function () {
   function changeChat(id,estado,origen) {
     if ($("#idChat").val() != id) {
       activeTab = sessionStorage.getItem("activeTab");
-      let li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${id}]`);
 
       // Actualizamos el destinatario
       $("#idChat").val(id);
@@ -414,7 +415,10 @@ $(function () {
       if (estado != "Cerrado"){
         $(li).removeClass("chat-cerrado");
         $(li).addClass("active-chat");
-        $(li_asign).addClass("active-chat");
+        if(chatListAsign.includes(id)){
+          let li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${id}]`);
+          $(li_asign).addClass("active-chat");
+        }
         // Enviamos el 'visto' al servidor
         //socket.emit("seen", id);
         return new Promise(resolve => {
