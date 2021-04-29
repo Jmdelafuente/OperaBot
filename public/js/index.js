@@ -104,16 +104,18 @@ $(function () {
    */
   function readMessages(chatid) {
     let circle = document.getElementById("unread_" + chatid);
-    var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${chatid}]`);
     if (circle) {
       document
-        .getElementById("avatar_" + chatid)
-        .parentNode.removeChild(circle);
-        
+      .getElementById("avatar_" + chatid)
+      .parentNode.removeChild(circle);
+      
+    }
+    if(chatListAll.includes(chatid)){
+      var circle_asig = document.querySelector(`#listaContactosAsignados mark[id=unread_${chatid}]`);
+      if(circle_asig){
+        document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
       }
-    if(circle_asig){
-      document.querySelector(`#listaContactosAsignados img[id=avatar_${chatid}]`).parentNode.removeChild(circle_asig);
-     }
+    }
 }
 
   $("#action_menu_btn").click(function () {
@@ -417,8 +419,8 @@ $(function () {
         $(li).removeClass("chat-cerrado");
         $(li).addClass("active-chat");
         if(chatListAsign.includes(id)){
-          let li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${id}]`);
-          $(li_asign).addClass("active-chat");
+        //let li_asign = document.querySelector(`#listaContactosAsignados li[id=usuario_${id}]`);
+        //$(li_asign).addClass("active-chat");
         }
         // Enviamos el 'visto' al servidor
         //socket.emit("seen", id);
