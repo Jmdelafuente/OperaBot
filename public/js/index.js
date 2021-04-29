@@ -681,7 +681,6 @@ $(function () {
 
   socket.on("dibujar_asign", function (msg) {
     let esOperador = false;
-    console.log(`entre a dibujar_asign`);
     if (sessionStorage.getItem("operadorid") == msg.id_op) {
       esOperador = true;
     }
@@ -740,7 +739,7 @@ $(function () {
   });
   socket.on("recive_op_message", function (msg) {
     let esOperador = false;
-    console.log("Mensaje recibido: " + JSON.stringify(msg));
+    //console.log("Mensaje recibido: " + JSON.stringify(msg));
     if (sessionStorage.getItem("operadorid") == msg.asign) {
       esOperador = true;
     }
@@ -756,7 +755,7 @@ $(function () {
   });
   //TODO: borrar
   socket.on("recive_op_image", function (msg) {
-    console.log("Imagen recibida: " + JSON.stringify(msg));
+    //console.log("Imagen recibida: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
       addChat(msg.nom, msg.id, msg.asig,msg.origen,msg.email);
     }
