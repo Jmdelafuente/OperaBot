@@ -394,7 +394,8 @@ $(function () {
       $("#idChat").val(id);
       // Dibujar mensajes, avatar y nombre
       let idchat = jq("usuario_" + id);
-      let li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
+      let li = $(idchat);
+      //let li = document.querySelector(`#listaContactos li[id=usuario_${id}]`);
 
       let nom = $(idchat + " span").html();
       // Actualizamos el nombre
