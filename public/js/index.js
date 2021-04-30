@@ -813,14 +813,16 @@ $(function () {
     if (chat_activo == msg.id) {
       if (lista != '') {
         $("#mensajes").html("");
-        lista.forEach((message) => {
-          if (message.user == "me") {
-
+        for (let i = 0; i < 20; i++) {
+          const element = array[i];
+          if (message.user == "me") {  
             addMessage(message.contenido, "E", message.timestamp, message.type, message.operador_id);
           } else {
             addMessage(message.contenido, "R", message.timestamp, message.type);
           }
-        });
+        }
+        //lista.forEach((message) => {
+        //});
       }
     }
   });
