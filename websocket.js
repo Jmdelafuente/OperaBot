@@ -336,7 +336,8 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
     op.obtenerNombre(element.operador_id).then(
       (nombre) => {
         let split = nombre.split(",");
-        element.operador_id = split[1]
+        element.operador_id = split[1];
+        console.log(`la hora del mensaje es: ${element.timestamp}`);
       },
       (error) => {
         //  TODO: registrar el error

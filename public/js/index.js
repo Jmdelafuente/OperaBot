@@ -775,8 +775,12 @@ $(function () {
 
   socket.on("chat-cerrado", function (id) {
     var li = document.querySelector(`#listaContactos li[id="usuario_${id}"]`);
+    let li_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"]`);
     //var li = document.getElementById(`usuario_${msg}`);
     li.setAttribute("class","todos chat-cerrado");
+    if(li_asign){
+      li_asign.setAttribute("class", "asign chat-cerrado");
+    }
   });
 
   socket.on("redibujar", function (msg){
