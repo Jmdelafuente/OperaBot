@@ -255,8 +255,24 @@ function getListaChats() {
   // return JSON.stringify(chatsList);
 }
 
-function getChatById(id) {
-  return chatsList[id];
+async function getChatById(id) {
+  await axios
+    .post(`${url}api/ps/obtenerDatos`, {
+      body: JSON.stringify(id),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      console.log(`statusCode: ${res.statusCode}`);
+      console.log(res);
+      chatsList[id].name = res.nombre;
+      chatsList[id].email =res.email;
+      return chatsList[id];
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   // return JSON.stringify(chatsList);
 }
 

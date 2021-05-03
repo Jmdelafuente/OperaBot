@@ -270,7 +270,7 @@ class Chat {
     let res;
     await axios
       .post(services.URLs[this.origin] + "/seen", {
-        body: { id: this.id, text:'Visto' },
+        body: { id: this.id, text:'leido' },
         headers: {
           "Content-Type": "application/json",
         },
@@ -340,6 +340,7 @@ class Chat {
 
   chat_leido(leido){
     this.leido = leido;
+    return true;
   }
 
   chat_cerrado(estado){
