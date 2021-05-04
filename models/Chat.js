@@ -343,7 +343,7 @@ class Chat {
     return true;
   }
 
-  chat_cerrado(estado){
+  async chat_cerrado(estado){
     this.estado = estado;
     await axios
       .post(services.URLs[this.origin] + "/closeChat", {
