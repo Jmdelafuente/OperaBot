@@ -259,7 +259,7 @@ async function getChatById(id) {
   var rta = false;
   await axios
     .post(services.URLs[this.origin] + "/obtenerDatos", {
-      body: services.bodyParser('P', 0, msg),
+      body: services.bodyParser('P', id, "obtengo datos"),
       headers: {
         "Content-Type": "application/json",
       },
