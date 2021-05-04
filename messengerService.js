@@ -266,7 +266,11 @@ async function getChatById(id) {
     })
     .then((res) => {
       console.log(`respuesta de chatById ${res}`);
-      chatsList[id].name = res.nombre;
+      if(res.nombre !=''){
+        chatsList[id].name = res.nombre;
+      }else{
+        chatsList[id].name = "Anomimo";
+      }
       chatsList[id].email =res.email;
       if(res.leido == 'leido'){
         rta = true;
