@@ -258,30 +258,30 @@ function getListaChats() {
 async function getChatById(id) {
   var rta = false;
   await axios
-    .post(`${url}api/ps/obtenerDatos`, {
-      body: JSON.stringify(id),
+    .post(services.URLs[this.origin] + "/obtenerDatos", {
+      body: services.bodyParser('P', 0, msg),
       headers: {
         "Content-Type": "application/json",
       },
     })
     .then((res) => {
       console.log(`respuesta de chatById ${res}`);
-      if(res.nombre !=''){
+      if (res.nombre != '') {
         chatsList[id].name = res.nombre;
-      }else{
+      } else {
         chatsList[id].name = "Anomimo";
       }
-      chatsList[id].email =res.email;
-      if(res.leido == 'leido'){
+      chatsList[id].email = res.email;
+      if (res.leido == 'leido') {
         rta = true;
       }
-      chatsList[id].leido =rta;
-      chatsList[id].estado =res.estado;
-      
+      chatsList[id].leido = rta;
+      chatsList[id].estado = res.estado;
+
       return chatsList[id];
     })
-    .catch((error) => {
-      console.error(error);
+    .catch(function (error) {
+      res = new Error(error);
     });
   // return JSON.stringify(chatsList);
 }
