@@ -422,6 +422,9 @@ $(function () {
         let li_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"]`);
         $(li_asign).addClass("active-chat");
         }
+      } else {
+        $(li).addClass("chat-cerrado");
+      }
         // Enviamos el 'visto' al servidor
         //socket.emit("seen", id);
         return new Promise(resolve => {
@@ -454,13 +457,11 @@ $(function () {
             }
           });
         });
-      }else{
-        $(li).addClass("chat-cerrado");
+     
+      
+      
       }
-      
-      
       return false;
-    }
   }
 
   //En los 3 puntos, el operador puede enviar un menu especifico 

@@ -345,6 +345,27 @@ class Chat {
 
   chat_cerrado(estado){
     this.estado = estado;
+    await axios
+      .post(services.URLs[this.origin] + "/closeChat", {
+        body: { id: this.id, text: estado },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(
+        (response) => {
+          res = response.data;
+          console.log(res);
+          //? Actualizamos el estado interno del chat
+        },
+        (err) => {
+          // TODO: volver a emitir?
+          console.log(err);
+        }
+      )
+      .catch(function (error) {
+        res = new Error(error);
+      });
   }
 
   chat_abierto(estado){

@@ -256,6 +256,7 @@ function getListaChats() {
 }
 
 async function getChatById(id) {
+  var rta = false;
   await axios
     .post(`${url}api/ps/obtenerDatos`, {
       body: JSON.stringify(id),
@@ -264,10 +265,15 @@ async function getChatById(id) {
       },
     })
     .then((res) => {
-      console.log(`statusCode: ${res.statusCode}`);
-      console.log(res);
+      console.log(`respuesta de chatById ${res}`);
       chatsList[id].name = res.nombre;
       chatsList[id].email =res.email;
+      if(res.leido == 'leido'){
+        rta = true;
+      }
+      chatsList[id].leido =rta;
+      chatsList[id].estado =res.estado;
+      
       return chatsList[id];
     })
     .catch((error) => {
