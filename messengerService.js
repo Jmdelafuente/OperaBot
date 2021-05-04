@@ -257,6 +257,8 @@ function getListaChats() {
 
 async function getChatById(id) {
   var rta = false;
+   
+  console.log(`estoy en chatById`);
   await axios
     .post(services.URLs[this.origin] + "/obtenerDatos", {
       body: services.bodyParser('P', id, "obtengo datos"),
@@ -277,12 +279,13 @@ async function getChatById(id) {
       }
       chatsList[id].leido = rta;
       chatsList[id].estado = res.estado;
-
-      return chatsList[id];
+      return chat_actual;
     })
     .catch(function (error) {
       res = new Error(error);
     });
+
+ 
   // return JSON.stringify(chatsList);
 }
 
