@@ -3,6 +3,7 @@ const SURL = "128.53.80.105";
 const socket = io(`${SURL}`, { 'forceNew': true, path: '/operadores/socket.io' });
 //const SURL = "https://chat.muninqn.gov.ar";
 //const socket = io(`${SURL}` , {'forceNew': true, path:'/operadores/socket.io'});
+
 var blueprints = {};
 var conn = false;
 var chatListAll = [];
