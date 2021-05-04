@@ -1,6 +1,6 @@
 // * Configure los puertos, prefijos y servidores para los servicios de chats. No olvide agregar el servicio al URLs
 // Whatsapp
-const WA_PORT = 3003;
+const WA_PORT = 6003;
 const WA_PREFIX = "wa";
 const WA_SERVER = "http://localhost";
 const WA_URL = `${WA_SERVER}:${WA_PORT}/${WA_PREFIX}`;
@@ -12,7 +12,7 @@ const FB_SERVER = "http://localhost";
 const FB_URL = `${FB_SERVER}:${FB_PORT}/${FB_PREFIX}`;
 
 // Page Server / Burbuja de chat
-const PS_PORT = 3004;
+const PS_PORT = 5002;
 const PS_PREFIX = 'ps';
 const PS_SERVER = "http://localhost";
 
