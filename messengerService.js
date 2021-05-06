@@ -263,6 +263,7 @@ async function getChatByIdConDatos(id) {
 
   let chat = chatsList[id];
   if (chatsList[id]){
+    console.log(`estoy en chatById`);
     await axios
       .post(services.URLs['P'] + "/obtenerDatos", {
         body: services.bodyParser('P', id, "obtengo datos"),
@@ -272,7 +273,15 @@ async function getChatByIdConDatos(id) {
       })
       .then((res) => {
         var body = res.data;
+<<<<<<< HEAD
 
+=======
+        console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
+        console.log(`espero que traiga bien los res.email ${body.email}`);
+        console.log(`espero que traiga bien los res.estado ${body.estado}`);
+        console.log(`espero que traiga bien los res.leido ${body.leido}`);
+        
+>>>>>>> 03365d75c8a2c23382ee1ed5c54ef9ee6ce13f7c
         if (res.nombre != '') {
           chat.name = body.nombre;
         } else {
