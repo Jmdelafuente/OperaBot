@@ -128,6 +128,7 @@ async function recuperarChatsOperador(id) {
     }
       
   }
+  console.log(`antes de irse de recuperarChats ${chats}`);
   return chats;
 }
 
