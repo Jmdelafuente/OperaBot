@@ -121,7 +121,7 @@ async function recuperarChatsOperador(id) {
   );
  
   for (const [chatId, value] of Object.entries(asigns)) {
-    let chat = await messenger.getChatById("41ead7d0-57de-4575-879c-95b928cc6911");
+    let chat = await messenger.getChatByIdConDatos(chatId);
     console.log(`sali del chatbyid ${chat}`);
     if(chat!=undefined){
       chats[chatId] = chat;
