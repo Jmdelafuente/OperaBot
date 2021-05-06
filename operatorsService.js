@@ -395,6 +395,7 @@ async function confirmarVisto(chatId, channelId) {
   // TODO: analiticas?
   // TODO: faltaria enviar el visto a la mensajeria
   let chat = messenger.getChatById(chatId);
+  console.log(`el chat antes de seen es? ${chat}`);
   if(chat!=undefined){
     chat.seen();
   }
