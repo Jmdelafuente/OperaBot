@@ -250,42 +250,40 @@ async function cambiar_opciones(msg) {
 async function getMensajesChat(id) {}
 
 function getListaChats() {
-  
   return chatsList;
   // return JSON.stringify(chatsList);
 }
 
 async function getChatById(id) {
   var rta = false;
-   
-  console.log(`estoy en chatById`);
-  await axios
-    .post(services.URLs[this.origin] + "/obtenerDatos", {
-      body: services.bodyParser('P', id, "obtengo datos"),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    .then((res) => {
-      console.log(`respuesta de chatById ${res}`);
-      if (res.nombre != '') {
-        chatsList[id].name = res.nombre;
-      } else {
-        chatsList[id].name = "Anomimo";
-      }
-      chatsList[id].email = res.email;
-      if (res.leido == 'leido') {
-        rta = true;
-      }
-      chatsList[id].leido = rta;
-      chatsList[id].estado = res.estado;
-      return chat_actual;
-    })
-    .catch(function (error) {
-      res = new Error(error);
-    });
-
- 
+  if (chatsList[id]){
+    console.log(`estoy en chatById`);
+    await axios
+      .post(services.URLs['P'] + "/obtenerDatos", {
+        body: services.bodyParser('P', id, "obtengo datos"),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(`respuesta de chatById ${res}`);
+        if (res.nombre != '') {
+          chatsList[id].name = res.nombre;
+        } else {
+          chatsList[id].name = "Anomimo";
+        }
+        chatsList[id].email = res.email;
+        if (res.leido == 'leido') {
+          rta = true;
+        }
+        chatsList[id].leido = rta;
+        chatsList[id].estado = res.estado;
+        return chatsList[id];
+      })
+      .catch(function (error) {
+        res = new Error(error);
+      });
+  } 
   // return JSON.stringify(chatsList);
 }
 
