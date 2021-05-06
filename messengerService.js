@@ -271,6 +271,10 @@ async function getChatByIdConDatos(id) {
       })
       .then((res) => {
         
+        console.log(`espero que traiga bien los res.nombre ${res.nombre}`);
+        console.log(`espero que traiga bien los res.email ${res.email}`);
+        console.log(`espero que traiga bien los res.estado ${res.estado}`);
+        console.log(`espero que traiga bien los res.leido ${ress.leido}`);
         
         if (res.nombre != '') {
           chatsList[id].name = res.nombre;
