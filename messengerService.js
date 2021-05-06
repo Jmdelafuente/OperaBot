@@ -260,6 +260,7 @@ function getChatById(id) {
 
 async function getChatByIdConDatos(id) {
   var rta = false;
+  let chat = chatsList[id];
   if (chatsList[id]){
     console.log(`estoy en chatById`);
     await axios
@@ -270,30 +271,30 @@ async function getChatByIdConDatos(id) {
         },
       })
       .then((res) => {
-        
-        console.log(`espero que traiga bien los res.nombre ${res.nombre}`);
-        console.log(`espero que traiga bien los res.email ${res.email}`);
-        console.log(`espero que traiga bien los res.estado ${res.estado}`);
-        console.log(`espero que traiga bien los res.leido ${ress.leido}`);
+        var body = res.data;
+        console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
+        console.log(`espero que traiga bien los res.email ${body.email}`);
+        console.log(`espero que traiga bien los res.estado ${body.estado}`);
+        console.log(`espero que traiga bien los res.leido ${body.leido}`);
         
         if (res.nombre != '') {
-          chatsList[id].name = res.nombre;
+          chat.name = body.nombre;
         } else {
-          chatsList[id].name = "Anomimo";
+          chat.name = "Anomimo";
         }
-        chatsList[id].email = res.email;
+        chat.email = body.email;
         if (res.leido == 'leido') {
           rta = true;
         }
-        chatsList[id].leido = rta;
-        chatsList[id].estado = res.estado;
-        return chatsList[id];
+        chat.leido = rta;
+        chat.estado = body.estado;
       })
       .catch(function (error) {
         res = new Error(error);
       });
   } 
-  // return JSON.stringify(chatsList);
+    return chat;
+    // return JSON.stringify(chatsList);
 }
 
 async function disconnect(msg, timestamp) {
