@@ -270,19 +270,23 @@ async function getChatByIdConDatos(id) {
         },
       })
       .then((res) => {
-        console.log(`respuesta de chatById ${JSON.stringify(res)}`);
-        var resp = JSON.stringify(res);
+        console.log(`respuesta de chatById ${res}`);
+        console.log(`respuesta de chatById ${res.nombre}`);
+        console.log(`respuesta de chatById ${res.email}`);
+        console.log(`respuesta de chatById ${res.leido}`);
+        console.log(`respuesta de chatById ${res.estado}`);
+        
         if (res.nombre != '') {
-          chatsList[id].name = resp.nombre;
+          chatsList[id].name = res.nombre;
         } else {
           chatsList[id].name = "Anomimo";
         }
-        chatsList[id].email = resp.email;
+        chatsList[id].email = res.email;
         if (res.leido == 'leido') {
           rta = true;
         }
         chatsList[id].leido = rta;
-        chatsList[id].estado = resp.estado;
+        chatsList[id].estado = res.estado;
         return chatsList[id];
       })
       .catch(function (error) {
