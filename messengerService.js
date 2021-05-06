@@ -256,6 +256,7 @@ function getListaChats() {
 
 async function getChatById(id) {
   var rta = false;
+<<<<<<< HEAD
   if(chatsList[id]){ 
   console.log(`estoy en chatById`);
   await axios
@@ -286,6 +287,36 @@ async function getChatById(id) {
     });
 
  }
+=======
+  if (chatsList[id]){
+    console.log(`estoy en chatById`);
+    await axios
+      .post(services.URLs['P'] + "/obtenerDatos", {
+        body: services.bodyParser('P', id, "obtengo datos"),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(`respuesta de chatById ${res}`);
+        if (res.nombre != '') {
+          chatsList[id].name = res.nombre;
+        } else {
+          chatsList[id].name = "Anomimo";
+        }
+        chatsList[id].email = res.email;
+        if (res.leido == 'leido') {
+          rta = true;
+        }
+        chatsList[id].leido = rta;
+        chatsList[id].estado = res.estado;
+        return chatsList[id];
+      })
+      .catch(function (error) {
+        res = new Error(error);
+      });
+  } 
+>>>>>>> 34f1abd7298c4bc8f298aee99114610c3027b008
   // return JSON.stringify(chatsList);
 }
 
