@@ -258,10 +258,12 @@ function getChatById(id) {
   return chatsList[id];
 }
 
+
+
 async function getChatByIdConDatos(id) {
   var rta = false;
   let chat = chatsList[id];
-  if (chatsList[id]){
+  if (chatsList[id] && chatsList[id].origin == "P"){
     console.log(`estoy en chatById`);
     await axios
       .post(services.URLs['P'] + "/obtenerDatos", {
@@ -292,6 +294,8 @@ async function getChatByIdConDatos(id) {
       .catch(function (error) {
         res = new Error(error);
       });
+  }else{
+    chat = chatsList[id];
   } 
     return chat;
     // return JSON.stringify(chatsList);
