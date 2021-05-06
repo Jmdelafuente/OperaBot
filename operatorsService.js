@@ -94,7 +94,7 @@ function reconectarOperador(id, canal) {
   // * Recuperar listados de chats
   // Enviar chats asignados
   lista_asig = recuperarChatsOperador(operador.id);
-
+  messenger.getChatByIdConDatos("4c38797c-be90-4508-9ab5-190e4b20d861");
   if (Object.keys(lista_asig).length > 0) {
     socket.recibirLista(operador.socket, lista_asig, true);
   }
