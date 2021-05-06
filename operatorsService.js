@@ -74,7 +74,6 @@ async function altaOperador(id, canal) {
     }
     // TODO: recuperar chats asignados/asignar chats y enviar
     var lista_asig = recuperarChatsOperador(operador.id);
-    messenger.getChatByIdConDatos("137cba5f-8c1a-4701-9150-d20e15a0e6a3");
     if (Object.keys(lista_asig).length > 0) {
       socket.recibirLista(canal, lista_asig, true);
     }
@@ -94,7 +93,7 @@ function reconectarOperador(id, canal) {
   // * Recuperar listados de chats
   // Enviar chats asignados
   lista_asig = recuperarChatsOperador(operador.id);
-  messenger.getChatByIdConDatos("137cba5f-8c1a-4701-9150-d20e15a0e6a3");
+  
   if (Object.keys(lista_asig).length > 0) {
     socket.recibirLista(operador.socket, lista_asig, true);
   }
@@ -121,7 +120,7 @@ async function recuperarChatsOperador(id) {
   );
  
   for (const [chatId, value] of Object.entries(asigns)) {
-    let chat = await messenger.getChatById(chatId);
+    let chat = await messenger.getChatByIdConDatos(chatId);
    // console.log(`sali del chatbyid ${chat}`);
     if(chat!=undefined){
       chats[chatId] = chat;
