@@ -250,17 +250,16 @@ async function cambiar_opciones(msg) {
 async function getMensajesChat(id) {}
 
 function getListaChats() {
-  
   return chatsList;
   // return JSON.stringify(chatsList);
 }
 
 async function getChatById(id) {
   var rta = false;
-   
+  if(chatsList[id]){ 
   console.log(`estoy en chatById`);
   await axios
-    .post(services.URLs[this.origin] + "/obtenerDatos", {
+    .post(services.URLs['P'] + "/obtenerDatos", {
       body: services.bodyParser('P', id, "obtengo datos"),
       headers: {
         "Content-Type": "application/json",
@@ -279,13 +278,14 @@ async function getChatById(id) {
       }
       chatsList[id].leido = rta;
       chatsList[id].estado = res.estado;
-      return chat_actual;
+      console.log(`que onda con el chat ${chatsList[id]}`);
+      return chatsList[id];
     })
     .catch(function (error) {
       res = new Error(error);
     });
 
- 
+ }
   // return JSON.stringify(chatsList);
 }
 
