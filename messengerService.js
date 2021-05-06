@@ -271,18 +271,19 @@ async function getChatByIdConDatos(id) {
         },
       })
       .then((res) => {
-        console.log(`respuesta de chatById ${res}`);
+        console.log(`respuesta de chatById ${JSON.stringify(res)}`);
+        var resp = JSON.stringify(res);
         if (res.nombre != '') {
-          chatsList[id].name = res.nombre;
+          chatsList[id].name = resp.nombre;
         } else {
           chatsList[id].name = "Anomimo";
         }
-        chatsList[id].email = res.email;
+        chatsList[id].email = resp.email;
         if (res.leido == 'leido') {
           rta = true;
         }
         chatsList[id].leido = rta;
-        chatsList[id].estado = res.estado;
+        chatsList[id].estado = resp.estado;
         return chatsList[id];
       })
       .catch(function (error) {
@@ -332,3 +333,7 @@ module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
 module.exports.obtenerChat = obtenerChat;
+<<<<<<< HEAD
+=======
+module.exports.getChatByIdConDatos = getChatByIdConDatos;
+>>>>>>> 3a2d48d9ac1425d4c9f74a0666111451e4efc09b
