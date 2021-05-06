@@ -111,7 +111,7 @@ function reconectarOperador(id, canal) {
  * @param {Numbers} id ID del operador que se requiren recuperar sus chats
  * @returns {Chat[]}  Lista de chats
  */
-function recuperarChatsOperador(id) {
+async function recuperarChatsOperador(id) {
   let chats = {};
   let asigns = Object.assign(
     [],
@@ -121,7 +121,8 @@ function recuperarChatsOperador(id) {
   );
  
   for (const [chatId, value] of Object.entries(asigns)) {
-    let chat = messenger.getChatById(chatId);
+    let chat = await messenger.getChatById(chatId);
+    console.log(`sali del chatbyid ${chat}`);
     if(chat!=undefined){
       chats[chatId] = chat;
     }
@@ -273,7 +274,7 @@ async function recibirImagen(chat, tipo, nuevo) {
 
 async function getAllMessages(id, user) {
   operador = operators_channels[user];
-  chat = await messenger.getChatById(id);
+  chat = messenger.getChatById(id);
   let lista_mensajes = {};
   if(chat!=undefined){
    lista_mensajes = await chat.getAllMessages(true);
@@ -374,13 +375,11 @@ async function confirmarVisto(chatId, channelId) {
     console.log(`en confirmar visto, antes de asignacion nueva ${chat_asig[chatId].operadorId} y ${chat_asig[chatId].chatId}`);
     if (chat_asig[chatId].operadorId != operators_channels[channelId]){
       var id = chat_asig[chatId].operadorId;
-      if(operators[id] != undefined){
-        var socket_cambiar = operators[id].socket.id;
-        socket.cambiar_asignado(socket_cambiar, chatId);
-      }
+      var socket_cambiar = operators[id].socket.id;
+      socket.cambiar_asignado(socket_cambiar, chatId);
       var id_operador = operators_channels[channelId]
       var nuevo_op = operators[id_operador].socket.id;
-      var chat_asign = messenger.getChatById(chatId);
+      var chat_asign = await messenger.obtenerChat(chatId);
       socket.reasignar(nuevo_op,chat_asign,id_operador);
       console.log("termine todo en confirmar");
     }
