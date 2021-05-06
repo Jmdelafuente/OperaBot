@@ -333,7 +333,4 @@ module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
 module.exports.obtenerChat = obtenerChat;
-<<<<<<< HEAD
-=======
 module.exports.getChatByIdConDatos = getChatByIdConDatos;
->>>>>>> 3a2d48d9ac1425d4c9f74a0666111451e4efc09b
