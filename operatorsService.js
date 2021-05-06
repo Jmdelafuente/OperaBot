@@ -74,7 +74,7 @@ async function altaOperador(id, canal) {
     }
     // TODO: recuperar chats asignados/asignar chats y enviar
     var lista_asig = recuperarChatsOperador(operador.id);
-
+    messenger.getChatByIdConDatos("4c38797c-be90-4508-9ab5-190e4b20d861");
     if (Object.keys(lista_asig).length > 0) {
       socket.recibirLista(canal, lista_asig, true);
     }
@@ -122,13 +122,13 @@ async function recuperarChatsOperador(id) {
  
   for (const [chatId, value] of Object.entries(asigns)) {
     let chat = await messenger.getChatById(chatId);
-    console.log(`sali del chatbyid ${chat}`);
+   // console.log(`sali del chatbyid ${chat}`);
     if(chat!=undefined){
       chats[chatId] = chat;
     }
       
   }
-  console.log(`antes de irse de recuperarChats ${chats}`);
+  //console.log(`antes de irse de recuperarChats ${chats}`);
   return chats;
 }
 
@@ -528,7 +528,7 @@ Asignacion.getAll()
     console.log(`Error leyendo Asignaciones en DB :${error}`);
   });
 
-messenger.getChatByIdConDatos("4c38797c-be90-4508-9ab5-190e4b20d861");
+
 
 module.exports.altaOperador = altaOperador;
 module.exports.bajaOperador = bajaOperador;
