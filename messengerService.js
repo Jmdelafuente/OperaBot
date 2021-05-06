@@ -254,7 +254,11 @@ function getListaChats() {
   // return JSON.stringify(chatsList);
 }
 
-async function getChatById(id) {
+function getChatById(id) {
+  return chatsList[id];
+}
+
+async function getChatByIdConDatos(id) {
   var rta = false;
 
   if(chatsList[id]){
