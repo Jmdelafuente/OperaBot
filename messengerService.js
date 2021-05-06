@@ -260,13 +260,10 @@ function getChatById(id) {
 
 async function getChatByIdConDatos(id) {
   var rta = false;
-<<<<<<< HEAD
 
-  if(chatsList[id]){
-=======
   let chat = chatsList[id];
   if (chatsList[id]){
->>>>>>> 84718039e5f24fde0ee330127c35c6b9133fb43b
+
     console.log(`estoy en chatById`);
     await axios
       .post(services.URLs['P'] + "/obtenerDatos", {
@@ -281,7 +278,7 @@ async function getChatByIdConDatos(id) {
         console.log(`espero que traiga bien los res.email ${body.email}`);
         console.log(`espero que traiga bien los res.estado ${body.estado}`);
         console.log(`espero que traiga bien los res.leido ${body.leido}`);
-        
+
         if (res.nombre != '') {
           chat.name = body.nombre;
         } else {
@@ -297,14 +294,10 @@ async function getChatByIdConDatos(id) {
       .catch(function (error) {
         res = new Error(error);
       });
-<<<<<<< HEAD
+
   }
-  // return JSON.stringify(chatsList);
-=======
-  } 
     return chat;
     // return JSON.stringify(chatsList);
->>>>>>> 84718039e5f24fde0ee330127c35c6b9133fb43b
 }
 
 async function disconnect(msg, timestamp) {
