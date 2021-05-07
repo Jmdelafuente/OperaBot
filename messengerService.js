@@ -258,7 +258,46 @@ function getChatById(id) {
   return chatsList[id];
 }
 
+async function getListaChatsConDatos() {
+  
+  chatsList.forEach(element => {
+    if(element.origin == "P"){
 
+      await axios
+        .post(services.URLs['P'] + "/obtenerDatos", {
+          body: services.bodyParser('P', element.id, "obtengo datos"),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          var body = res.data;
+          console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
+          console.log(`espero que traiga bien los res.email ${body.email}`);
+          console.log(`espero que traiga bien los res.estado ${body.estado}`);
+          console.log(`espero que traiga bien los res.leido ${body.leido}`);
+
+          if (res.nombre != '') {
+            element.name = body.nombre;
+          } else {
+            element.name = "Anomimo";
+          }
+          element.email = body.email;
+          if (res.leido == 'leido') {
+            rta = true;
+          }
+          element.leido = rta;
+          element.estado = body.estado;
+        })
+        .catch(function (error) {
+          res = new Error(error);
+        });
+    }
+
+  });
+
+  return chatList;
+}
 
 async function getChatByIdConDatos(id) {
   var rta = false;
@@ -274,10 +313,7 @@ async function getChatByIdConDatos(id) {
       })
       .then((res) => {
         var body = res.data;
-        console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
-        console.log(`espero que traiga bien los res.email ${body.email}`);
-        console.log(`espero que traiga bien los res.estado ${body.estado}`);
-        console.log(`espero que traiga bien los res.leido ${body.leido}`);
+      
         
         if (res.nombre != '') {
           chat.name = body.nombre;
@@ -342,3 +378,4 @@ module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
 module.exports.obtenerChat = obtenerChat;
 module.exports.getChatByIdConDatos = getChatByIdConDatos;
+module.exports.getListaChatsConDatos = getListaChatsConDatos;

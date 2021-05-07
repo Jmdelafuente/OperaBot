@@ -187,16 +187,16 @@ a, h1, h2, h3, h4, h5{ font-family: "Hind", Sans-serif!important; font-weight: 7
     position: relative;
     border: 2px solid #20B2E8;
     color: #353535;	}
-	.msg_cotainer_send{
+	.msg_cotainer_send {
 		margin-top: auto;
 		margin-bottom: auto;
 		margin-right: 10px;
 		border-radius: 25px;
-		background-color: white;
+		background-color: #026BB2 !important;
 		padding: 10px;
 		position: relative;
 		border: 2px solid #20B2E8;
-    color: #353535;
+		color: white;
 	}
 	.msg_time_send{
 		position: absolute;
