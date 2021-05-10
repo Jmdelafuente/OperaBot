@@ -260,7 +260,8 @@ function getChatById(id) {
 
 async function getListaChatsConDatos() {
   
- await chatsList.forEach(async (element) => {
+  for(i = 0; i < Object.keys(chatsList).length;i++){  
+    var element = chatsList[i];
     if(element.origin == "P"){
 
       await axios
@@ -294,7 +295,7 @@ async function getListaChatsConDatos() {
         });
     }
 
-  });
+  }
 
   return chatList;
 }
