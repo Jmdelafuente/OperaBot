@@ -259,8 +259,8 @@ function getChatById(id) {
 }
 
 async function getListaChatsConDatos() {
-  
-  chatsList.forEach(element => {
+
+  chatsList.forEach(async (element) => {
     if(element.origin == "P"){
 
       await axios
@@ -314,17 +314,8 @@ async function getChatByIdConDatos(id) {
       })
       .then((res) => {
         var body = res.data;
-<<<<<<< HEAD
 
-        console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
-        console.log(`espero que traiga bien los res.email ${body.email}`);
-        console.log(`espero que traiga bien los res.estado ${body.estado}`);
-        console.log(`espero que traiga bien los res.leido ${body.leido}`);
 
-=======
-      
-        
->>>>>>> 5913bf49fa1a5ee02405f54bd752d778c9f248c9
         if (res.nombre != '') {
           chat.name = body.nombre;
         } else {
@@ -389,7 +380,4 @@ module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
 module.exports.obtenerChat = obtenerChat;
 module.exports.getChatByIdConDatos = getChatByIdConDatos;
-<<<<<<< HEAD
-=======
 module.exports.getListaChatsConDatos = getListaChatsConDatos;
->>>>>>> 5913bf49fa1a5ee02405f54bd752d778c9f248c9
