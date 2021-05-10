@@ -261,6 +261,11 @@ function getChatById(id) {
 async function getListaChatsConDatos() {
  let promises = [];
 
+<<<<<<< HEAD
+=======
+  let promises = [];
+  
+>>>>>>> 820d59c0958a8dac966ca187ac95ddc3714b191c
     let keys = [];
     for (let key in chatsList) {
       keys.push(key);
@@ -304,6 +309,10 @@ async function getListaChatsConDatos() {
 
 return chatsList;
     });
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 820d59c0958a8dac966ca187ac95ddc3714b191c
 }
 
 async function getChatByIdConDatos(id) {
