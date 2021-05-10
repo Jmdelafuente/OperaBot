@@ -267,45 +267,38 @@ async function getListaChatsConDatos() {
       keys.push(key);
     }
 
-    keys.forEach((element) => {
-      promises.push(
-        axios
-          .post(services.URLs['P'] + "/obtenerDatos", {
-            body: services.bodyParser('P', element, "obtengo datos"),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((res) => {
-            var body = res.data;
-            console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
-            console.log(`espero que traiga bien los res.email ${body.email}`);
-            console.log(`espero que traiga bien los res.estado ${body.estado}`);
-            console.log(`espero que traiga bien los res.leido ${body.leido}`);
+    const registers = await Promise.all(keys.map(key => axios.post(services.URLs['P'] + "/obtenerDatos", {
+    body: services.bodyParser('P', key, "obtengo datos"),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      var body = res.data;
+      console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
+      console.log(`espero que traiga bien los res.email ${body.email}`);
+      console.log(`espero que traiga bien los res.estado ${body.estado}`);
+      console.log(`espero que traiga bien los res.leido ${body.leido}`);
 
-            let chat = chatsList[element];
+      let chat = chatsList[key];
 
-            if (body.nombre != '') {
-              chat.name = body.nombre;
-            } else {
-              chat.name = "Anomimo";
-            }
-            chat.email = body.email;
-            if (body.leido == 'leido') {
-              rta = true;
-            }
-            chat.leido = rta;
-            chat.estado = body.estado;
-          })
-          .catch(function (error) {
-            res = new Error(error);
-          })
-      )
-    });
-    Promise.allSettled(promises).then((cb) => {
-      return chatList;
-    });
-  
+      if (body.nombre != '') {
+        chat.name = body.nombre;
+      } else {
+        chat.name = "Anomimo";
+      }
+      chat.email = body.email;
+      if (body.leido == 'leido') {
+        rta = true;
+      }
+      chat.leido = rta;
+      chat.estado = body.estado;
+    })
+    .catch(function (error) {
+      res = new Error(error);
+    })));
+
+    return chatsList;
 }
 
 async function getChatByIdConDatos(id) {
