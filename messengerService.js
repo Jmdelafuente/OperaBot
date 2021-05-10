@@ -259,6 +259,7 @@ function getChatById(id) {
 }
 
 async function getListaChatsConDatos() {
+<<<<<<< HEAD
   console.log(`la lista de chats es ${chatsList}`);
   for(var [chatId, value] of Object.entries(chatsList)){
     var element = value;
@@ -299,6 +300,55 @@ async function getListaChatsConDatos() {
   }
 	console.log(chatList);
   return chatList;
+=======
+
+  let promises = [];
+  if (chatsList !== "undefined") {
+    let keys = [];
+    for (let key in chatsList) {
+      keys.push(key);
+    }
+
+    keys.forEach((element) => {
+      promises.push(
+        axios
+          .post(services.URLs['P'] + "/obtenerDatos", {
+            body: services.bodyParser('P', element, "obtengo datos"),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            var body = res.data;
+            console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
+            console.log(`espero que traiga bien los res.email ${body.email}`);
+            console.log(`espero que traiga bien los res.estado ${body.estado}`);
+            console.log(`espero que traiga bien los res.leido ${body.leido}`);
+
+            let chat = chatsList[element];
+
+            if (body.nombre != '') {
+              chat.name = body.nombre;
+            } else {
+              chat.name = "Anomimo";
+            }
+            chat.email = body.email;
+            if (body.leido == 'leido') {
+              rta = true;
+            }
+            chat.leido = rta;
+            chat.estado = body.estado;
+          })
+          .catch(function (error) {
+            res = new Error(error);
+          })
+      )
+    });
+    Promise.allSettled(promises).then((cb) => {
+      return chatList;
+    });
+  }
+>>>>>>> d73f5aff1b72a17dc2d39287fa4829312fb6b00d
 }
 
 async function getChatByIdConDatos(id) {
