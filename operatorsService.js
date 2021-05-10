@@ -100,7 +100,7 @@ function reconectarOperador(id, canal) {
 
   // Enviar todos los chats
   console.log(`estando en operatorsService como lo traigo ${JSON.stringify(messenger.getListaChatsConDatos())}`);
-  socket.recibirLista(operador.socket, messenger.getListaChatsConDatos(), false);
+  socket.recibirLista(operador.socket, await messenger.getListaChatsConDatos(), false);
 
   return operador;
 }

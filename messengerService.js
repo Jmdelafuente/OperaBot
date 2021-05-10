@@ -261,7 +261,7 @@ function getChatById(id) {
 async function getListaChatsConDatos() {
 
   let promises = [];
-  if (chatsList !== "undefined") {
+  
     let keys = [];
     for (let key in chatsList) {
       keys.push(key);
@@ -305,7 +305,7 @@ async function getListaChatsConDatos() {
     Promise.allSettled(promises).then((cb) => {
       return chatList;
     });
-  }
+  
 }
 
 async function getChatByIdConDatos(id) {
