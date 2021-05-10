@@ -296,14 +296,10 @@ async function getChatByIdConDatos(id) {
       .catch(function (error) {
         res = new Error(error);
       });
-<<<<<<< HEAD
 
-  }
-=======
   }else{
     chat = chatsList[id];
-  } 
->>>>>>> e0361a4ce7da284f6ebbd34f07ab119f28760b3f
+  }
     return chat;
     // return JSON.stringify(chatsList);
 }
