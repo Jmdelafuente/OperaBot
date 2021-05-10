@@ -99,7 +99,7 @@ function reconectarOperador(id, canal) {
   }
 
   // Enviar todos los chats
-  socket.recibirLista(operador.socket, messenger.chatsList(), false);
+  socket.recibirLista(operador.socket, messenger.getListaChatsConDatos(), false);
 
   return operador;
 }

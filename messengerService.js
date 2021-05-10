@@ -260,7 +260,7 @@ function getChatById(id) {
 
 async function getListaChatsConDatos() {
   
-  chatsList.forEach(element => {
+ await chatsList.forEach(async (element) => {
     if(element.origin == "P"){
 
       await axios
