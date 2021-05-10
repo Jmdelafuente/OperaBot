@@ -259,13 +259,9 @@ function getChatById(id) {
 }
 
 async function getListaChatsConDatos() {
-<<<<<<< HEAD
-
-  chatsList.forEach(async (element) => {
-=======
-  
+	console.log(`la lista de chats es ${chatsList}`);
  await chatsList.forEach(async (element) => {
->>>>>>> c602a6bbd7b55dc482e7b7083808c9a1bea79bbc
+
     if(element.origin == "P"){
 
       await axios
