@@ -259,59 +259,16 @@ function getChatById(id) {
 }
 
 async function getListaChatsConDatos() {
-<<<<<<< HEAD
-  console.log(`la lista de chats es ${chatsList}`);
-  for(var [chatId, value] of Object.entries(chatsList)){
-    var element = value;
-	console.log(`que tiene chatsList ${value}`);
-	console.log(`que tiene element ${chatId}`);
+ let promises = [];
 
-    if(value.origin == "P"){
-      await axios
-        .post(services.URLs['P'] + "/obtenerDatos", {
-          body: services.bodyParser('P', element.id, "obtengo datos"),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          var body = res.data;
-          console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
-          console.log(`espero que traiga bien los res.email ${body.email}`);
-          console.log(`espero que traiga bien los res.estado ${body.estado}`);
-          console.log(`espero que traiga bien los res.leido ${body.leido}`);
-
-          if (body.nombre != '') {
-            value.name = body.nombre;
-          } else {
-            value.name = "Anomimo";
-          }
-          value.email = body.email;
-          if (body.leido == 'leido') {
-            rta = true;
-          }
-          value.leido = rta;
-          value.estado = body.estado;
-        })
-        .catch(function (error) {
-          res = new Error(error);
-        });
-    }
-  }
-	console.log(chatList);
-  return chatList;
-=======
-
-  let promises = [];
-  if (chatsList !== "undefined") {
     let keys = [];
     for (let key in chatsList) {
       keys.push(key);
     }
 
-    keys.forEach((element) => {
+    keys.forEach(async (element) => {
       promises.push(
-        axios
+       await axios
           .post(services.URLs['P'] + "/obtenerDatos", {
             body: services.bodyParser('P', element, "obtengo datos"),
             headers: {
@@ -326,7 +283,6 @@ async function getListaChatsConDatos() {
             console.log(`espero que traiga bien los res.leido ${body.leido}`);
 
             let chat = chatsList[element];
-
             if (body.nombre != '') {
               chat.name = body.nombre;
             } else {
@@ -345,10 +301,9 @@ async function getListaChatsConDatos() {
       )
     });
     Promise.allSettled(promises).then((cb) => {
-      return chatList;
+
+return chatsList;
     });
-  }
->>>>>>> d73f5aff1b72a17dc2d39287fa4829312fb6b00d
 }
 
 async function getChatByIdConDatos(id) {

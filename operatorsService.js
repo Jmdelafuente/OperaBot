@@ -79,12 +79,12 @@ async function altaOperador(id, canal) {
     }
 
     // TODO: enviar todos los chats
-    socket.recibirLista(canal, messenger.chatsList(), false);
+    socket.recibirLista(canal, messenger.chatsListaConDatos(), false);
     return operador;
   }
 }
 
-function reconectarOperador(id, canal) {
+async function reconectarOperador(id, canal) {
   // * Recuperar y actualizar socket del operador
   let operador = operators[operators_channels[id]];
   console.log(`operador reconect: ${operador}`);
