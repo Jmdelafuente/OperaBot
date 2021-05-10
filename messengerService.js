@@ -266,6 +266,7 @@ async function getListaChatsConDatos() {
       keys.push(key);
     }
 
+<<<<<<< HEAD
     keys.forEach(async (element) => {
       promises.push(
        await axios
@@ -304,6 +305,40 @@ async function getListaChatsConDatos() {
 
 return chatsList;
     });
+=======
+    const registers = await Promise.all(keys.map(key => axios.post(services.URLs['P'] + "/obtenerDatos", {
+    body: services.bodyParser('P', key, "obtengo datos"),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      var body = res.data;
+      console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
+      console.log(`espero que traiga bien los res.email ${body.email}`);
+      console.log(`espero que traiga bien los res.estado ${body.estado}`);
+      console.log(`espero que traiga bien los res.leido ${body.leido}`);
+
+      let chat = chatsList[key];
+
+      if (body.nombre != '') {
+        chat.name = body.nombre;
+      } else {
+        chat.name = "Anomimo";
+      }
+      chat.email = body.email;
+      if (body.leido == 'leido') {
+        rta = true;
+      }
+      chat.leido = rta;
+      chat.estado = body.estado;
+    })
+    .catch(function (error) {
+      res = new Error(error);
+    })));
+
+    return chatsList;
+>>>>>>> 0f77008ae41508b5153cdf16dc2b63612948647e
 }
 
 async function getChatByIdConDatos(id) {
