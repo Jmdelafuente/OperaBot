@@ -259,9 +259,15 @@ function getChatById(id) {
 }
 
 async function getListaChatsConDatos() {
+<<<<<<< HEAD
 	console.log(`la lista de chats es ${chatsList}`);
  await chatsList.forEach(async (element) => {
 
+=======
+  
+  for(i = 0; i < Object.keys(chatsList).length;i++){  
+    var element = chatsList[i];
+>>>>>>> e04afa7b22f5ded47a23ce0a261143b81dc0a91e
     if(element.origin == "P"){
 
       await axios
@@ -295,7 +301,7 @@ async function getListaChatsConDatos() {
         });
     }
 
-  });
+  }
 
   return chatList;
 }
