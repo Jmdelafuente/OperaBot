@@ -258,6 +258,23 @@ function getChatById(id) {
   return chatsList[id];
 }
 
+function obtenerTodosLosChats(){
+  await axios
+    .post(services.URLs['P'] + "/obtenerTodosLosChats", {
+      body: services.bodyParser('P', 0, "obtengo datos"),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      var body = res.data;
+      console.log(`llego algo copado ${JSON.stringify(body)}`);
+    })
+    .catch(function (error) {
+      res = new Error(error);
+    });
+}
+
 async function getListaChatsConDatos() {
   let promises = [];
 
@@ -265,7 +282,7 @@ async function getListaChatsConDatos() {
     for (let key in chatsList) {
       keys.push(key);
     }
-
+    //espero a que se cumplan todas las promesas
     const registers = await Promise.all(keys.map(key => axios.post(services.URLs['P'] + "/obtenerDatos", {
     body: services.bodyParser('P', key, "obtengo datos"),
     headers: {
@@ -383,3 +400,7 @@ module.exports.chat_leido = chat_leido;
 module.exports.obtenerChat = obtenerChat;
 module.exports.getChatByIdConDatos = getChatByIdConDatos;
 module.exports.getListaChatsConDatos = getListaChatsConDatos;
+<<<<<<< HEAD
+=======
+module.exports.obtenerTodosLosChats = obtenerTodosLosChats;
+>>>>>>> 288b54b6c544a659de5f2b246e43005f515e9738

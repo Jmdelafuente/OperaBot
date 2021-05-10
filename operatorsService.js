@@ -77,7 +77,7 @@ async function altaOperador(id, canal) {
     if (Object.keys(lista_asig).length > 0) {
       socket.recibirLista(canal, lista_asig, true);
     }
-
+    messenger.obtenerTodosLosChats();
     // TODO: enviar todos los chats
     socket.recibirLista(canal, messenger.getListaChatsConDatos(), false);
     return operador;
@@ -97,9 +97,8 @@ async function reconectarOperador(id, canal) {
   if (Object.keys(lista_asig).length > 0) {
     socket.recibirLista(operador.socket, lista_asig, true);
   }
-
+  messenger.obtenerTodosLosChats();
   // Enviar todos los chats
-  console.log(`estando en operatorsService como lo traigo ${JSON.stringify(messenger.getListaChatsConDatos())}`);
   socket.recibirLista(operador.socket, await messenger.getListaChatsConDatos(), false);
 
   return operador;
