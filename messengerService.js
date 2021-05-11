@@ -271,7 +271,7 @@ async function obtenerTodosLosChats(){
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
       body.forEach(element => {
-        idsTotales = element.uuid;
+        idsTotales.push(element.uuid); 
       });
       console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
     })
