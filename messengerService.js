@@ -259,7 +259,7 @@ function getChatById(id) {
 }
 
 async function obtenerTodosLosChats(){
-  let idsTotales = {};
+  let idsTotales = [];
   await axios
     .post(services.URLs['P'] + "/obtenerTodosLosChats", {
       body: services.bodyParser('P', 0, "obtengo datos"),
@@ -271,13 +271,15 @@ async function obtenerTodosLosChats(){
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
       await Promise.all(body.map(async (uuid) => {
-        idsTotales = uuid;
+        idsTotales.push(uuid);
       }));
       console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
     })
     .catch(function (error) {
       res = new Error(error);
     });
+
+    return idsTotales;
 }
 
 async function getListaChatsConDatos(idsTotales) {
