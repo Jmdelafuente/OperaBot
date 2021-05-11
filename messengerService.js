@@ -259,6 +259,7 @@ function getChatById(id) {
 }
 
 async function obtenerTodosLosChats(){
+  let idsTotales = {};
   await axios
     .post(services.URLs['P'] + "/obtenerTodosLosChats", {
       body: services.bodyParser('P', 0, "obtengo datos"),
@@ -269,7 +270,9 @@ async function obtenerTodosLosChats(){
     .then((res) => {
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
-      var idsTotales = body.uuid;
+      body.forEach(element => {
+        idsTotales = element.uuid;
+      });
       console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
     })
     .catch(function (error) {
