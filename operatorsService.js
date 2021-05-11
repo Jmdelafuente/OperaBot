@@ -79,11 +79,7 @@ async function altaOperador(id, canal) {
     }
     var ids = await messenger.obtenerTodosLosChats();
     // TODO: enviar todos los chats
-<<<<<<< HEAD
-    socket.recibirLista(canal, messenger.getListaChatsConDatos(), false);
-=======
     socket.recibirLista(canal,await messenger.getListaChatsConDatos(ids), false);
->>>>>>> 632767e978ff7627cae77c08ec0c44f0ea51ccf5
     return operador;
   }
 }
