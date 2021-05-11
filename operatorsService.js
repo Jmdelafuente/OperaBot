@@ -79,7 +79,8 @@ async function altaOperador(id, canal) {
     }
     var ids = await messenger.obtenerTodosLosChats();
     // TODO: enviar todos los chats
-    socket.recibirLista(canal,await messenger.getListaChatsConDatos(ids), false);
+    let lista = await messenger.getListaChatsConDatos(ids);
+    socket.recibirLista(operador.socket, lista, false);
     return operador;
   }
 }
@@ -99,7 +100,8 @@ function reconectarOperador(id, canal) {
   }
   var ids = await messenger.obtenerTodosLosChats();
   // Enviar todos los chats
-  socket.recibirLista(operador.socket, await messenger.getListaChatsConDatos(ids), false);
+  let lista = await messenger.getListaChatsConDatos(ids);
+  socket.recibirLista(operador.socket, lista , false);
 
   return operador;
 }
