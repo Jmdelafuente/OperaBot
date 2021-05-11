@@ -285,8 +285,8 @@ async function obtenerTodosLosChats(){
 async function getListaChatsConDatos(idsTotales) {
 
     let keys = [];
-    for (let key in idsTotales) {
-      keys.push(key);
+  for (const [key, prefix] of Object.entries(idsTotales)) {
+      keys.push(prefix);
     }
     //espero a que se cumplan todas las promesas
     const registers = await Promise.all(keys.map(key => axios.post(services.URLs['P'] + "/obtenerDatos", {
