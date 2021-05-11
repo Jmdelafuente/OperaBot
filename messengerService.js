@@ -269,25 +269,15 @@ async function obtenerTodosLosChats(){
     .then((res) => {
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
-<<<<<<< HEAD
-	console.log(`y mas copado todavia ${(body.uuid)}`);
-      chatsList = body.uuid;
-=======
       var idsTotales = body.uuid;
       console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
->>>>>>> 632767e978ff7627cae77c08ec0c44f0ea51ccf5
     })
     .catch(function (error) {
       res = new Error(error);
     });
 }
 
-<<<<<<< HEAD
-async function getListaChatsConDatos() {
-  let promises = [];
-=======
 async function getListaChatsConDatos(idsTotales) {
->>>>>>> 632767e978ff7627cae77c08ec0c44f0ea51ccf5
 
     let keys = [];
     for (let key in idsTotales) {
