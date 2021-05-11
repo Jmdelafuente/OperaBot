@@ -258,7 +258,7 @@ function getChatById(id) {
   return chatsList[id];
 }
 
-function obtenerTodosLosChats(){
+async function obtenerTodosLosChats(){
   await axios
     .post(services.URLs['P'] + "/obtenerTodosLosChats", {
       body: services.bodyParser('P', 0, "obtengo datos"),
@@ -269,6 +269,8 @@ function obtenerTodosLosChats(){
     .then((res) => {
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
+	console.log(`y mas copado todavia ${(body.uuid)}`);
+      chatsList = body.uuid;
     })
     .catch(function (error) {
       res = new Error(error);
@@ -400,7 +402,5 @@ module.exports.chat_leido = chat_leido;
 module.exports.obtenerChat = obtenerChat;
 module.exports.getChatByIdConDatos = getChatByIdConDatos;
 module.exports.getListaChatsConDatos = getListaChatsConDatos;
-<<<<<<< HEAD
-=======
 module.exports.obtenerTodosLosChats = obtenerTodosLosChats;
->>>>>>> 288b54b6c544a659de5f2b246e43005f515e9738
+
