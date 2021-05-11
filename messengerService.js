@@ -270,9 +270,9 @@ async function obtenerTodosLosChats(){
     .then((res) => {
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
-      body.forEach(element => {
-        idsTotales.push(element.uuid); 
-      });
+      await Promise.all(body.map(async (uuid) => {
+        idsTotales = uuid;
+      }));
       console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
     })
     .catch(function (error) {
