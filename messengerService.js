@@ -267,18 +267,12 @@ async function obtenerTodosLosChats(){
         "Content-Type": "application/json",
       },
     })
-    .then((res) => {
+    .then(async (res) => {
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
-<<<<<<< HEAD
-      body.forEach((element) => {
-        idsTotales.push(element.uuid);
-      });
-=======
       await Promise.all(body.map(async (uuid) => {
-        idsTotales = uuid;
+        idsTotales.push(uuid);
       }));
->>>>>>> aade3c00614e51332823dbb6d7445d5241d84118
       console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
     })
     .catch(function (error) {
