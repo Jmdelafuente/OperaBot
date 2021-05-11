@@ -269,19 +269,28 @@ async function obtenerTodosLosChats(){
     .then((res) => {
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
+<<<<<<< HEAD
 	console.log(`y mas copado todavia ${(body.uuid)}`);
       chatsList = body.uuid;
+=======
+      var idsTotales = body.uuid;
+      console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
+>>>>>>> 632767e978ff7627cae77c08ec0c44f0ea51ccf5
     })
     .catch(function (error) {
       res = new Error(error);
     });
 }
 
+<<<<<<< HEAD
 async function getListaChatsConDatos() {
   let promises = [];
+=======
+async function getListaChatsConDatos(idsTotales) {
+>>>>>>> 632767e978ff7627cae77c08ec0c44f0ea51ccf5
 
     let keys = [];
-    for (let key in chatsList) {
+    for (let key in idsTotales) {
       keys.push(key);
     }
     //espero a que se cumplan todas las promesas
@@ -297,20 +306,31 @@ async function getListaChatsConDatos() {
       console.log(`espero que traiga bien los res.email ${body.email}`);
       console.log(`espero que traiga bien los res.estado ${body.estado}`);
       console.log(`espero que traiga bien los res.leido ${body.leido}`);
+      console.log(`espero que traiga bien los res.hora ${body.hora}`);
+      console.log(`espero que traiga bien los res.tags ${body.tags}`);
 
-      let chat = chatsList[key];
-
-      if (body.nombre != '') {
-        chat.name = body.nombre;
-      } else {
-        chat.name = "Anomimo";
+      if(chatsList[key]){
+        let chat = chatsList[key];
+  
+        if (body.nombre != '') {
+          chat.name = body.nombre;
+        } else {
+          chat.name = "Anomimo";
+        }
+        chat.email = body.email;
+        if (body.leido == 'leido') {
+          rta = true;
+        }
+        chat.leido = rta;
+        chat.estado = body.estado;
+        chat.origin = body.origin;
+        chat.timestamp = body.hora;
+        chat.tags = body.tags;
+      }else{
+        var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, email);
+        
+        chatsList[key] = chat;
       }
-      chat.email = body.email;
-      if (body.leido == 'leido') {
-        rta = true;
-      }
-      chat.leido = rta;
-      chat.estado = body.estado;
     })
     .catch(function (error) {
       res = new Error(error);
