@@ -267,11 +267,11 @@ async function obtenerTodosLosChats(){
         "Content-Type": "application/json",
       },
     })
-    .then((res) => {
+    .then(async (res) => {
       var body = res.data;
       console.log(`llego algo copado ${JSON.stringify(body)}`);
-      await Promise.all(body.map(async (uuid) => {
-        idsTotales.push(uuid);
+      await Promise.all(body.map(async (body) => {
+        idsTotales.push(body.uuid);
       }));
       console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
     })
@@ -279,7 +279,8 @@ async function obtenerTodosLosChats(){
       res = new Error(error);
     });
 
-    return idsTotales;
+ return idsTotales;
+
 }
 
 async function getListaChatsConDatos(idsTotales) {
@@ -332,10 +333,12 @@ async function getListaChatsConDatos(idsTotales) {
     })));
 
     return chatsList;
+
 }
 
 async function getChatByIdConDatos(id) {
   var rta = false;
+
   let chat = chatsList[id];
   if (chatsList[id] && chatsList[id].origin == "P"){
     console.log(`estoy en chatById`);
@@ -348,8 +351,8 @@ async function getChatByIdConDatos(id) {
       })
       .then((res) => {
         var body = res.data;
-      
-        
+
+
         if (res.nombre != '') {
           chat.name = body.nombre;
         } else {
@@ -365,9 +368,10 @@ async function getChatByIdConDatos(id) {
       .catch(function (error) {
         res = new Error(error);
       });
+
   }else{
     chat = chatsList[id];
-  } 
+  }
     return chat;
     // return JSON.stringify(chatsList);
 }
@@ -415,3 +419,4 @@ module.exports.obtenerChat = obtenerChat;
 module.exports.getChatByIdConDatos = getChatByIdConDatos;
 module.exports.getListaChatsConDatos = getListaChatsConDatos;
 module.exports.obtenerTodosLosChats = obtenerTodosLosChats;
+
