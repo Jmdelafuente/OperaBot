@@ -83,14 +83,14 @@ io.on("connection", function (socket) {
   socket.on("wamessage", function (msg) {
     op.enviarWAMessage(msg.id,msg.contenido);
   });
-  socket.on("new_operator", function (msg) {
+  socket.on("new_operator",async function (msg) {
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
       let s = sessions[msg.SESSIONKEY];
       delete sockets[s.id];
       socket.user = msg.SESSIONKEY;
       sessions[msg.SESSIONKEY] = socket;
-      var operator = op.reconectarOperador(msg.SESSIONKEY, socket);
+      var operator = await op.reconectarOperador(msg.SESSIONKEY, socket);
       socket.emit('operador_set_id', operator.id);
     } else {
       socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
