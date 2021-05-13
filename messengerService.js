@@ -273,7 +273,7 @@ async function obtenerTodosLosChats(){
       await Promise.all(body.map(async (body) => {
         idsTotales.push(body.uuid);
       }));
-      console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)}`);
+      console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)} :D`);
     })
     .catch(function (error) {
       res = new Error(error);

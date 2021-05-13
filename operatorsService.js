@@ -267,7 +267,6 @@ async function recibirImagen(chat, tipo, nuevo) {
     messenger.enviarMensaje(id, config.AUTOMESSAGE, 0);
   }
 }
-
 /**
  * 
  * @param {*} id identifica al chat 
