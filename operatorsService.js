@@ -88,7 +88,7 @@ async function altaOperador(id, canal) {
 function reconectarOperador(id, canal) {
   // * Recuperar y actualizar socket del operador
   let operador = operators[operators_channels[id]];
-  console.log(`operador reconect: ${operador}`);
+  console.log(`operador reconect: ${operador}, socket ${operador.socket}, id ${operador.id}`);
   operador.socket = canal;
 
   // * Recuperar listados de chats
