@@ -269,16 +269,16 @@ async function obtenerTodosLosChats(){
     })
     .then(async (res) => {
       var body = res.data;
-      console.log(`llego algo copado ${JSON.stringify(body)}`);
+      //console.log(`llego algo copado ${JSON.stringify(body)}`);
       await Promise.all(body.map(async (body) => {
         idsTotales.push(body.uuid);
       }));
-      console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)} :D`);
+      //console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)} :D`);
     })
     .catch(function (error) {
       res = new Error(error);
     });
-
+  console.log(`antes de irme todos los ids son? ${idsTotales}`);
  return idsTotales;
 
 }

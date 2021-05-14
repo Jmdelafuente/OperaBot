@@ -369,7 +369,7 @@ $(function () {
           changeChat(id,estado,origen);
         });
       }
-      console.log(leido);
+      
       if (!leido) {
         unreadMessages(id);
       }
@@ -730,8 +730,7 @@ $(function () {
   
  socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
-    console.log(JSON.stringify(listaChats));
-    console.log(listaChats.chats);
+    //console.log(JSON.stringify(listaChats));
     newList(listaChats.chats, listaChats.asignado);
   });
   socket.on("recive_op_message", function (msg) {

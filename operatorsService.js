@@ -103,6 +103,7 @@ async function reconectarOperador(id, canal) {
     socket.recibirLista(operador.socket, lista_asig, true);
   }
   var ids = await messenger.obtenerTodosLosChats();
+  console.log(`antes de ir a todos los datos los ids son ${ids}`);
   // Enviar todos los chats
   let lista = await messenger.getListaChatsConDatos(ids);
   console.log(`lista de todos ${JSON.stringify(lista)}`);
