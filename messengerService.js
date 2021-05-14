@@ -270,7 +270,7 @@ async function obtenerTodosLosChats(){
     .then(async (res) => {
       var body = res.data;
       //console.log(`llego algo copado ${JSON.stringify(body)}`);
-      await Promise.all(body.map(async (body) => {
+        await Promise.all(body.map(async (body) => {
         idsTotales.push(body.uuid);
       }));
       //console.log(`y lo tomo de forma mas copada ${JSON.stringify(idsTotales)} :D`);
@@ -284,11 +284,12 @@ async function obtenerTodosLosChats(){
 }
 
 async function getListaChatsConDatos(idsTotales) {
-
+    console.log(`entro a getListaChatsConDatos ${idsTotales}`);
     let keys = [];
   for (const [key, prefix] of Object.entries(idsTotales)) {
       keys.push(prefix);
     }
+    console.log(`y keys tiene ${keys}`);
     //espero a que se cumplan todas las promesas
     const registers = await Promise.all(keys.map(key => axios.post(services.URLs['P'] + "/obtenerDatos", {
     body: services.bodyParser('P', key, "obtengo datos"),
@@ -317,6 +318,7 @@ async function getListaChatsConDatos(idsTotales) {
         chat.timestamp = body.hora;
         chat.tags = body.tags;
       }else{
+        console.log('nunca entro no?');
         var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, email);
         
         chatsList[key] = chat;
@@ -325,7 +327,7 @@ async function getListaChatsConDatos(idsTotales) {
     .catch(function (error) {
       res = new Error(error);
     })));
-
+    
     return chatsList;
 
 }
