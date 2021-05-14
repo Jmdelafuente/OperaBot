@@ -94,8 +94,9 @@ async function reconectarOperador(id, canal) {
   // * Recuperar listados de chats
   // Enviar chats asignados
   lista_asig = recuperarChatsOperador(operador.id);
-  
+  console.log(`longitud ${Object.keys(lista_asig).length} y que tiene asig? ${JSON.stringify(lista_asig)}`);
   if (Object.keys(lista_asig).length > 0) {
+    console.log("entre al if de asignados");
     socket.recibirLista(operador.socket, lista_asig, true);
   }
   var ids = await messenger.obtenerTodosLosChats();
