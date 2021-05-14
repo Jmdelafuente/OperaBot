@@ -298,12 +298,6 @@ async function getListaChatsConDatos(idsTotales) {
   })
     .then((res) => {
       var body = res.data;
-      console.log(`espero que traiga bien los res.nombre ${body.nombre}`);
-      console.log(`espero que traiga bien los res.email ${body.email}`);
-      console.log(`espero que traiga bien los res.estado ${body.estado}`);
-      console.log(`espero que traiga bien los res.leido ${body.leido}`);
-      console.log(`espero que traiga bien los res.hora ${body.hora}`);
-      console.log(`espero que traiga bien los res.tags ${body.tags}`);
 
       if(chatsList[key]){
         let chat = chatsList[key];

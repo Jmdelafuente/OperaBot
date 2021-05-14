@@ -123,13 +123,13 @@ async function recuperarChatsOperador(id) {
  
   for (const [chatId, value] of Object.entries(asigns)) {
     let chat = await messenger.getChatByIdConDatos(chatId);
-   // console.log(`sali del chatbyid ${chat}`);
+    console.log(`sali del chatbyid ${chat}`);
     if(chat!=undefined){
       chats[chatId] = chat;
     }
       
   }
-  //console.log(`antes de irse de recuperarChats ${chats}`);
+  console.log(`antes de irse de recuperarChats ${chats}`);
   return chats;
 }
 
