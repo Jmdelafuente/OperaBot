@@ -278,18 +278,17 @@ async function obtenerTodosLosChats(){
     .catch(function (error) {
       res = new Error(error);
     });
-  console.log(`antes de irme todos los ids son? ${idsTotales}`);
  return idsTotales;
 
 }
 
 async function getListaChatsConDatos(idsTotales) {
-    console.log(`entro a getListaChatsConDatos ${idsTotales}`);
+    
     let keys = [];
   for (const [key, prefix] of Object.entries(idsTotales)) {
       keys.push(prefix);
     }
-    console.log(`y keys tiene ${keys}`);
+    
     //espero a que se cumplan todas las promesas
     const registers = await Promise.all(keys.map(key => axios.post(services.URLs['P'] + "/obtenerDatos", {
     body: services.bodyParser('P', key, "obtengo datos"),
@@ -318,20 +317,15 @@ async function getListaChatsConDatos(idsTotales) {
         chat.timestamp = body.hora;
         chat.tags = body.tags;
       }else{
-        console.log('nunca entro no?');
-        console.log(`veamos la creacion: ${key}, ${body.origin},${body.nombre},${body.cont},${body.email}`);
         var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, body.email);
-        console.log(`chat ${chat} y key ${key}`);
+        
         chatsList[key] = chat;
       }
     })
     .catch(function (error) {
       res = new Error(error);
     })));
-
-    console.log(registers);
-    console.log(`porque si ${JSON.stringify(chatsList)}`);
-    
+   
     return chatsList;
 
 }
