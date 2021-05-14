@@ -93,7 +93,7 @@ async function reconectarOperador(id, canal) {
 
   // * Recuperar listados de chats
   // Enviar chats asignados
-  lista_asig = recuperarChatsOperador(operador.id);
+  lista_asig = await recuperarChatsOperador(operador.id);
   console.log(`longitud ${Object.keys(lista_asig).length} y que tiene asig? ${JSON.stringify(lista_asig)}`);
   if (Object.keys(lista_asig).length > 0) {
     console.log("entre al if de asignados");
@@ -130,7 +130,7 @@ async function recuperarChatsOperador(id) {
     }
       
   }
-  console.log(`antes de irse de recuperarChats ${chats}`);
+  console.log(`antes de irse de recuperarChats ${JSON.stringify(chats)}`);
   return chats;
 }
 
