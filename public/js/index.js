@@ -266,7 +266,7 @@ $(function () {
    * @param {String} estado el estado representa si esta abierto o cerrado un chat
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
-  function addChat(nom, id, asign, origen, email,leido= false, estado = "Abierto",tags_guardados = []) {
+  function addChat(nom, id, asign, origen, email,leido , estado = "Abierto",tags_guardados = []) {
     if (!chatListAll.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
@@ -335,8 +335,6 @@ $(function () {
         });
       }
 
-     
-
       document.getElementById("listaContactos").prepend(li);
       chatListAll.push(id);
       li.prepend(ex);
@@ -361,8 +359,6 @@ $(function () {
         li.removeAttribute("class", "chat-abierto")
         li.setAttribute("class", "chat-cerrado");
       }
-
-
       
       if (asign && !chatListAsign.includes(id) && estado!="Cerrado") {
         clonediv.setAttribute("class","asig");
@@ -373,13 +369,10 @@ $(function () {
           changeChat(id,estado,origen);
         });
       }
-
-      
-
-      if(!leido){
+      console.log(leido);
+      if (!leido) {
         unreadMessages(id);
       }
-
     }
   }
 
@@ -760,7 +753,7 @@ $(function () {
   socket.on("recive_op_image", function (msg) {
     //console.log("Imagen recibida: " + JSON.stringify(msg));
     if (!chatListAll.includes(msg.id)) {
-      addChat(msg.nom, msg.id, msg.asig,msg.origen,msg.email);
+      addChat(msg.nom, msg.id, msg.asig,msg.origen,msg.email,false,"Abierto");
     }
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, "image");
