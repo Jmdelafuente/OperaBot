@@ -320,13 +320,16 @@ async function getListaChatsConDatos(idsTotales) {
       }else{
         console.log('nunca entro no?');
         var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, email);
-        
+        console.log(`chat ${chat} y key ${key}`);
         chatsList[key] = chat;
       }
     })
     .catch(function (error) {
       res = new Error(error);
     })));
+
+    console.log(registers);
+    console.log(`porque si ${JSON.stringify(chatsList)}`);
     
     return chatsList;
 
