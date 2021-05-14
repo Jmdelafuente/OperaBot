@@ -319,8 +319,9 @@ async function getListaChatsConDatos(idsTotales) {
         chat.tags = body.tags;
       }else{
         console.log('nunca entro no?');
+        console.log(`veamos la creacion: ${key}, ${body.origin},${body.nombre},${body.cont},${body.email}`);
+        var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, body.email);
         console.log(`chat ${chat} y key ${key}`);
-        var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, email);
         chatsList[key] = chat;
       }
     })
