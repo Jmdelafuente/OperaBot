@@ -347,13 +347,13 @@ async function getChatByIdConDatos(id) {
         var body = res.data;
 
 
-        if (res.nombre != '') {
+        if (body.nombre != '') {
           chat.name = body.nombre;
         } else {
           chat.name = "Anomimo";
         }
         chat.email = body.email;
-        if (res.leido == 'leido') {
+        if (body.leido == 'leido') {
           rta = true;
         }
         chat.leido = rta;
