@@ -617,6 +617,16 @@ $(function () {
     if (activeTab) {
       $('div[data-href="' + activeTab + '"]').tab("show");
     }
+    window.onscroll = function () {
+
+      var body = document.body; //IE 'quirks'
+      var document = document.documentElement; //IE with doctype
+      document = (document.clientHeight) ? document : body;
+
+      if (document.scrollTop == 0) {
+        alert("top");
+      }
+    };
     $("#mensajes-anteriores").on("click", function () {
       let id = $("#idChat").val();
       socket.emit("more-messages", id);
@@ -723,7 +733,7 @@ $(function () {
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
         document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"]`).append(clone_tag);
-        document.querySelector(`#listaContactos li[id="usuario_${msg.id}"]`).append(clone_tag);       
+        document.querySelector(`#listaContactos li[id="usuario_${msg.id}"]`).append(clone_tag); 
       }); 
       modalBody.appendChild(span);
     });
