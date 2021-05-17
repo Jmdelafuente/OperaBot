@@ -617,16 +617,18 @@ $(function () {
     if (activeTab) {
       $('div[data-href="' + activeTab + '"]').tab("show");
     }
-    window.onscroll = function () {
+    var scroll_mensajes = document.getElementById("mensajes");
+  
+    scroll_mensajes.onscroll = function() {
 
-      var body = document.body; //IE 'quirks'
-      var document = document.documentElement; //IE with doctype
-      document = (document.clientHeight) ? document : body;
+    var body = scroll_mensajes.body; //IE 'quirks'
+    var document = scroll_mensajes.documentElement; //IE with doctype
+    document = (document.clientHeight) ? document : body;
 
-      if (document.scrollTop == 0) {
+    if (document.scrollTop == 0) {
         alert("top");
-      }
-    };
+    }        
+};
     $("#mensajes-anteriores").on("click", function () {
       let id = $("#idChat").val();
       socket.emit("more-messages", id);
