@@ -620,7 +620,8 @@ $(function () {
     $("#mensajes").on("scroll", function (msg) {
       var scrollPos = $(this).scrollTop();
       if(scrollPos == 0){
-        alert("Arriba");
+        let id = $("#idChat").val();
+        socket.emit("more-messages", id);
       }
     })
     $("#mensajes-anteriores").on("click", function () {
