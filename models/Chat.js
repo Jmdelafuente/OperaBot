@@ -344,6 +344,7 @@ class Chat {
 
   async eliminarTag(tag){
     let res;
+    console.log(`en eliminar tag voy con ${this.id} y ${tag.nombre}`);
     try {
       await axios
         .post(services.URLs[this.origin] + "/eliminarTag", {

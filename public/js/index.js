@@ -327,7 +327,9 @@ $(function () {
           close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
             close_etiqueta.addEventListener('click', function (event) {
               event.preventDefault();
+              let li_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"] div[class="user_tag"] span[id="${element.nombre}"`);
               close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
+              close_etiqueta.removeChild(li_asign);
               socket.emit("delete_tag", package);
             });
             span.appendChild(close_etiqueta);
