@@ -190,7 +190,6 @@ io.on("connection", function (socket) {
   });
 
   socket.on("delete_tag", function (msg) {
-    console.log("me meti en delete");
     op.delete_tag(msg.id, msg.tag);
   });
 
@@ -368,6 +367,11 @@ const recibirLista = function (operador, lista, asignado) {
   msg.asignado = asignado;
   operador.emit("send_op_list", msg);
 };
+
+setInterval(function () {
+  op.carga();  
+}
+, 10000);
 
 
 module.exports.enviarMensaje = enviarMensaje;
