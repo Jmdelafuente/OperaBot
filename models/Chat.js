@@ -324,6 +324,7 @@ class Chat {
   // funcionalidad para insertar y eliminar los tags del chat
   async insertarTag(tag){
     //this.tags.push(tag);
+    let res;
     try {
       await axios
         .post(services.URLs[this.origin] + "/insertarTag", {
@@ -342,6 +343,7 @@ class Chat {
   }
 
   async eliminarTag(tag){
+    let res;
     try {
       await axios
         .post(services.URLs[this.origin] + "/eliminarTag", {
