@@ -73,20 +73,18 @@ async function altaOperador(id, canal) {
       operators[operador.id] = operador;
       operators_channels[canal.user] = operador.id;
     }
-    
-    ids = await messenger.obtenerTodosLosChats();
-    // TODO: enviar todos los chats
-    let lista = await messenger.getListaChatsConDatos(ids);
-
-    socket.recibirLista(operador.socket, lista, false);
-
     // TODO: recuperar chats asignados/asignar chats y enviar
     var lista_asig = await recuperarChatsOperador(operador.id);
     if (Object.keys(lista_asig).length > 0) {
 
       socket.recibirLista(canal, lista_asig, true);
     }
+    ids = await messenger.obtenerTodosLosChats();
+    // TODO: enviar todos los chats
+    let lista = await messenger.getListaChatsConDatos(ids);
 
+
+    socket.recibirLista(operador.socket, lista, false);
     return operador;
   }
 }
@@ -97,6 +95,12 @@ async function reconectarOperador(id, canal) {
   console.log(`operador reconect: ${operador}, socket ${operador.socket}, id ${operador.id}`);
   operador.socket = canal;
 
+  // * Recuperar listados de chats
+  // Enviar chats asignados
+  lista_asig = await recuperarChatsOperador(operador.id);
+  if (Object.keys(lista_asig).length > 0) {
+    socket.recibirLista(operador.socket, lista_asig, true);
+  }
   ids = await messenger.obtenerTodosLosChats();
 
   // Enviar todos los chats
@@ -104,13 +108,6 @@ async function reconectarOperador(id, canal) {
   
   socket.recibirLista(operador.socket, lista , false);
 
-  // * Recuperar listados de chats
-  // Enviar chats asignados
-  lista_asig = await recuperarChatsOperador(operador.id);
-  if (Object.keys(lista_asig).length > 0) {
-    socket.recibirLista(operador.socket, lista_asig, true);
-  }
-  
   return operador;
 }
 
