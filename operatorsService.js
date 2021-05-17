@@ -14,6 +14,7 @@ var chat_asig = {}; // * Diccionario 'chatID' ->  Asignacion
 var operators = {}; // * Todos los operadores disponbles
 var operators_channels = {}; // * channelID -> OperatorID
 var chat_unassig = [];
+var ids;
 
 var newAsign = new Queue(async function (input, cb) {
   // Pick an op and try to assign it
@@ -78,7 +79,7 @@ async function altaOperador(id, canal) {
 
       socket.recibirLista(canal, lista_asig, true);
     }
-    var ids = await messenger.obtenerTodosLosChats();
+    ids = await messenger.obtenerTodosLosChats();
     // TODO: enviar todos los chats
     let lista = await messenger.getListaChatsConDatos(ids);
 
@@ -100,7 +101,7 @@ async function reconectarOperador(id, canal) {
   if (Object.keys(lista_asig).length > 0) {
     socket.recibirLista(operador.socket, lista_asig, true);
   }
-  var ids = await messenger.obtenerTodosLosChats();
+  ids = await messenger.obtenerTodosLosChats();
 
   // Enviar todos los chats
   let lista = await messenger.getListaChatsConDatos(ids);
@@ -322,7 +323,6 @@ async function add_tag(id, tag) {
 }
 
 async function delete_tag(id, tag) {
-  console.log("me meti en operadorservices delete");
   messenger.delete_tag(id, tag.nombre);
 }
 
@@ -512,6 +512,12 @@ function mandar(msg) {
 async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
 }
+
+setInterval(async function () {
+  console.log("estoy haciendo setInterval");
+  let lista = await messenger.getListaChatsConDatos(ids);
+  socket.recibirLista(operador.socket, lista, false);
+}, 10000);
 
 
 async function validar(token) {
