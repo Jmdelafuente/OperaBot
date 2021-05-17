@@ -341,7 +341,7 @@ class Chat {
     }
   }
 
-  eliminarTag(tag){
+  async eliminarTag(tag){
     try {
       await axios
         .post(services.URLs[this.origin] + "/eliminarTag", {
