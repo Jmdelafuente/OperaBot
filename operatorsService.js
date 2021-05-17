@@ -323,6 +323,7 @@ async function add_tag(id, tag) {
 }
 
 async function delete_tag(id, tag) {
+  console.log("estoy en delete de operadores");
   messenger.delete_tag(id, tag.nombre);
 }
 
