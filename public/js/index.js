@@ -563,16 +563,8 @@ $(function () {
     console.log(
       `newList: ${asig} - All: ${chatListAll} - Asign: ${chatListAsign}`
     );
-    if (Object.keys(lista).length > 0){
-      var items = Object.keys(lista).map(function (key) {
-        return [key, lista[key]];
-      });
-
-      items.sort(function (first, second) {
-        return first[1].timestamp - second[1].timestamp;
-      });
-    
-    items.forEach(element => {
+        
+    lista.forEach(element => {
       if (asig) {
         if (!chatListAsign.includes(element[0])) {
           addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].estado, element[1].tags);
@@ -582,7 +574,7 @@ $(function () {
         addChat(element[1].name, element[1].id, asig, element[1].origin, element[1].email, element[1].leido, element[1].estado, element[1].tags);
       }
     });
-    }
+    
         // si existe en la sessionStorage un valor, entonces se muestra el ultimo chat activo
     if (sessionStorage.getItem('key') != 'null') {
       let idactual = sessionStorage.getItem('key');
