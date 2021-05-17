@@ -83,13 +83,6 @@ io.on("connection", function (socket) {
   socket.on("wamessage", function (msg) {
     op.enviarWAMessage(msg.id,msg.contenido);
   });
-
-  setInterval(function () {
-    op.carga(socket);
-  }
-    , 10000);
-
-    
   socket.on("new_operator",async function (msg) {
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
@@ -160,6 +153,11 @@ io.on("connection", function (socket) {
     io.emit("quitar-leido",msg.id);
     op.chat_leido(msg.id,msg.leido);
   });
+
+  setInterval(function () {
+    op.carga(socket);
+  }, 30000);
+
  
    socket.on("writing", function (id) {
      op.escribiendo(id, socket.user);
