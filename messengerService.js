@@ -359,6 +359,9 @@ async function getChatByIdConDatos(id) {
         }
         chat.leido = rta;
         chat.estado = body.estado;
+        chat.origin = body.origin;
+        chat.timestamp = body.hora;
+        chat.tags = body.tags;
       })
       .catch(function (error) {
         res = new Error(error);
