@@ -315,7 +315,9 @@ async function getListaChatsConDatos(idsTotales) {
         chat.estado = body.estado;
         chat.origin = body.origin;
         chat.timestamp = body.hora;
-        chat.tags = body.tags;
+        if(body.tags!=''){
+          chat.tags = body.tags;
+        }
       }else{
         var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, body.email);
         

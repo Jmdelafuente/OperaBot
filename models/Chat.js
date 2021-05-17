@@ -322,7 +322,7 @@ class Chat {
   }
 
   // funcionalidad para insertar y eliminar los tags del chat
-  insertarTag(tag){
+  async insertarTag(tag){
     this.tags.push(tag);
     try {
       await axios
