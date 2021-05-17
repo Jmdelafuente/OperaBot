@@ -324,6 +324,21 @@ class Chat {
   // funcionalidad para insertar y eliminar los tags del chat
   insertarTag(tag){
     this.tags.push(tag);
+    try {
+      await axios
+        .post(services.URLs[this.origin] + "/insertarTag", {
+          body: {id: this.id,tag: tag},
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          res = response.data;
+        });
+    } catch (err) {
+      // Handle Error Here
+      console.error(err);
+    }
   }
 
   eliminarTag(tag){
