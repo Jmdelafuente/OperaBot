@@ -194,6 +194,7 @@ async function add_tag(id, tag) {
 async function delete_tag(id, tag) {
   var chat = chatsList[id];
   let res = false;
+  console.log("estoy en delete ms");
   if (chat) {
     res = await chat.eliminarTag(tag);
   }
@@ -370,24 +371,6 @@ async function getChatByIdConDatos(id) {
     // return JSON.stringify(chatsList);
 }
 
-async function obtenerTags(msg) {
-await axios
-  .post(services.URLs['P'] + "/obtenerTags", {
-    body: services.bodyParser('P', msg.id, "obtengo Tag"),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  .then(async (res) => {
-    var body = res.data;
-    console.log(`llego algo copado ${JSON.stringify(body)}`);
-    chatsList[msg.id].tags = body;
-  })  
-  .catch(function (error) {
-    res = new Error(error);
-  });
-}
-
 async function disconnect(msg, timestamp) {
   // TODO: aviso de cliente desconectado
   var text = JSON.parse(msg.body);
@@ -431,4 +414,4 @@ module.exports.obtenerChat = obtenerChat;
 module.exports.getChatByIdConDatos = getChatByIdConDatos;
 module.exports.getListaChatsConDatos = getListaChatsConDatos;
 module.exports.obtenerTodosLosChats = obtenerTodosLosChats;
-module.exports.obtenerTags = obtenerTags;
+
