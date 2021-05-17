@@ -154,11 +154,6 @@ io.on("connection", function (socket) {
     op.chat_leido(msg.id,msg.leido);
   });
 
-  setInterval(function () {
-    op.carga(socket);
-  }, 30000);
-
- 
    socket.on("writing", function (id) {
      op.escribiendo(id, socket.user);
      console.log(`WebSocket -> writing: ${socket.toString()}`);

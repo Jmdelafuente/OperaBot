@@ -719,6 +719,7 @@ $(function () {
           close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
           socket.emit("delete_tag", package);
         });
+        span.setAttribute('stylo',"display: none");
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
         document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"]`).append(clone_tag);
