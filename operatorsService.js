@@ -83,16 +83,8 @@ async function altaOperador(id, canal) {
     // TODO: enviar todos los chats
     let lista = await messenger.getListaChatsConDatos(ids);
 
-    if (Object.keys(lista).length > 0) {
-      var items = Object.keys(lista).map(function (key) {
-        return [key, lista[key]];
-      });
 
-      items.sort(function (first, second) {
-        return first[1].timestamp - second[1].timestamp;
-      });
-      socket.recibirLista(operador.socket, items, false);
-    }
+    socket.recibirLista(operador.socket, lista, false);
     return operador;
   }
 }
@@ -114,16 +106,8 @@ async function reconectarOperador(id, canal) {
   // Enviar todos los chats
   let lista = await messenger.getListaChatsConDatos(ids);
   
-  if (Object.keys(lista).length > 0) {
-    var items = Object.keys(lista).map(function (key) {
-      return [key, lista[key]];
-    });
+  socket.recibirLista(operador.socket, lista , false);
 
-    items.sort(function (first, second) {
-      return first[1].timestamp - second[1].timestamp;
-    });
-  socket.recibirLista(operador.socket, items , false);
-  }
   return operador;
 }
 
@@ -339,7 +323,6 @@ async function add_tag(id, tag) {
 }
 
 async function delete_tag(id, tag) {
-  console.log("estoy en delete de operadores");
   messenger.delete_tag(id, tag.nombre);
 }
 
