@@ -115,8 +115,17 @@ async function reconectarOperador(id, canal) {
   // Enviar todos los chats
   let lista = await messenger.getListaChatsConDatos(ids);
   
-  socket.recibirLista(operador.socket, lista , false);
+  if (Object.keys(lista).length > 0) {
+    var items = Object.keys(lista).map(function (key) {
+      return [key, lista[key]];
+    });
 
+    items.sort(function (first, second) {
+      return first[1].timestamp - second[1].timestamp;
+    });
+
+    socket.recibirLista(operador.socket, items, false);
+  }
   return operador;
 }
 
