@@ -327,7 +327,7 @@ class Chat {
     try {
       await axios
         .post(services.URLs[this.origin] + "/insertarTag", {
-          body: {id: this.id,tag: tag},
+          body: {id: this.id,tag: tag.nombre, color: tag.color},
           headers: {
             "Content-Type": "application/json",
           },
@@ -345,7 +345,7 @@ class Chat {
     try {
       await axios
         .post(services.URLs[this.origin] + "/eliminarTag", {
-          body: { id: this.id, tag: tag },
+          body: { id: this.id, tag: tag.nombre },
           headers: {
             "Content-Type": "application/json",
           },
