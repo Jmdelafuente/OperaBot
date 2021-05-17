@@ -83,6 +83,13 @@ io.on("connection", function (socket) {
   socket.on("wamessage", function (msg) {
     op.enviarWAMessage(msg.id,msg.contenido);
   });
+
+  setInterval(function () {
+    op.carga(socket);
+  }
+    , 10000);
+
+    
   socket.on("new_operator",async function (msg) {
     // TODO: validar con weblogin el token/sessionkey
     if (sessions[msg.SESSIONKEY]) {
@@ -368,10 +375,7 @@ const recibirLista = function (operador, lista, asignado) {
   operador.emit("send_op_list", msg);
 };
 
-setInterval(function () {
-  op.carga();  
-}
-, 10000);
+
 
 
 module.exports.enviarMensaje = enviarMensaje;

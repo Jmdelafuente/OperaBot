@@ -513,10 +513,10 @@ async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
 }
 
-async function carga() {
+async function carga(canal) {
   console.log("estoy haciendo setInterval");
   let lista = await messenger.getListaChatsConDatos(ids);
-  socket.recibirLista(operador.socket, lista, false);
+  socket.recibirLista(canal, lista, false);
 };
 
 
