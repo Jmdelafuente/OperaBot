@@ -122,7 +122,7 @@ async function reconectarOperador(id, canal) {
     items.sort(function (first, second) {
       return first[1].timestamp - second[1].timestamp;
     });
-  socket.recibirLista(operador.socket, lista , false);
+  socket.recibirLista(operador.socket, items , false);
   }
   return operador;
 }
