@@ -329,7 +329,7 @@ $(function () {
               event.preventDefault();
               let li_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"] div[class="user_tag"] span[id="${element.nombre}"`);
               close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
-              close_etiqueta.removeChild(li_asign);
+              close_etiqueta.parentNode.parentNode.removeChild(li_asign);
               socket.emit("delete_tag", package);
             });
             span.appendChild(close_etiqueta);

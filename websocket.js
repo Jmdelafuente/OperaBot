@@ -190,6 +190,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("delete_tag", function (msg) {
+    console.log("me meti en delete");
     op.delete_tag(msg.id, msg.tag);
   });
 
