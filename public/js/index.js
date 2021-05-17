@@ -267,7 +267,7 @@ $(function () {
    * @param {String} email el email del ciudadano que sirve para buscar su chat
    */
   function addChat(nom, id, asign, origen, email,leido , estado = "Abierto",tags_guardados = []) {
-    if (!chatListAll.includes(id)) {
+    if (!chatListAsign.includes(id)) {
       var li = document.createElement("li");
       var ex = document.createElement("div");
       var img = document.createElement("div");
