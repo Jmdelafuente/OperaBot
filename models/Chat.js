@@ -323,7 +323,7 @@ class Chat {
 
   // funcionalidad para insertar y eliminar los tags del chat
   async insertarTag(tag){
-    this.tags.push(tag);
+    //this.tags.push(tag);
     try {
       await axios
         .post(services.URLs[this.origin] + "/insertarTag", {
@@ -342,14 +342,21 @@ class Chat {
   }
 
   eliminarTag(tag){
-    var i = 0;
-    this.tags.forEach(element => {
-      if(element.nombre == tag){
-      this.tags.splice(i,1);
-      }else{
-        i = i+1;
-      }
-    });
+    try {
+      await axios
+        .post(services.URLs[this.origin] + "/eliminarTag", {
+          body: { id: this.id, tag: tag },
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          res = response.data;
+        });
+    } catch (err) {
+      // Handle Error Here
+      console.error(err);
+    }
   }
 
 
