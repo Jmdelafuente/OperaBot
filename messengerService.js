@@ -194,6 +194,7 @@ async function add_tag(id, tag) {
 async function delete_tag(id, tag) {
   var chat = chatsList[id];
   let res = false;
+  console.log(`que tengo en delete_tag ${tag}`);
   if (chat) {
     res = await chat.eliminarTag(tag);
   }
@@ -315,9 +316,7 @@ async function getListaChatsConDatos(idsTotales) {
         chat.estado = body.estado;
         chat.origin = body.origin;
         chat.timestamp = body.hora;
-        if(body.tags!=''){
-          chat.tags = body.tags;
-        }
+        chat.tags = body.tags;
       }else{
         var chat = new Chat(key, body.origin, body.nombre, body.hora, 1, body.cont, body.email);
         
