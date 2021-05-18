@@ -420,9 +420,6 @@ $(function () {
         let li_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"]`);
         $(li_asign).addClass("active-chat");
         }
-      } else {
-        $(li).addClass("chat-cerrado");
-      }
         // Enviamos el 'visto' al servidor
         //socket.emit("seen", id);
         return new Promise(resolve => {
@@ -455,9 +452,24 @@ $(function () {
             }
           });
         });
-     
-      
-      
+      } else {
+        $(li).addClass("chat-cerrado");
+        socket.emit("all_messages_chat", id);
+        $("#mensajes").html(`
+              <div class="d-flex justify-content-center">
+              <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+              </div>
+              </div>`);
+        // se guarda en el sessionStorage del cliente, la id del civil  
+        sessionStorage.setItem('key', id);
+        //tendria que llamar otra vez a dibujar para que se entere que todo salio bien
+        // Recuperamos la lista de chats abiertos
+        $('div[data-href="' + activeTab + '"]').tab("show");
+              // Marcamos como leido el chat
+              //readMessages(id);
+      }
+             
       }
       return false;
   }
