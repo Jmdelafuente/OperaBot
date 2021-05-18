@@ -338,7 +338,7 @@ $(function () {
         });
       }
 
-      document.getElementById("listaContactos").prepend(li);
+      document.getElementById("listaContactos").append(li);
       chatListAll.push(id);
       li.prepend(ex);
       ex.appendChild(img);
