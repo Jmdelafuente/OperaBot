@@ -926,11 +926,11 @@ $(function () {
             }
           }
           for (i = 0; i < li_asign.length; i++) {
-            var emailValue = li_asign[i].getAttribute("value");
-            var telefonoValue = li_asign[i].getAttribute("id");
+            var emailValue_asign = li_asign[i].getAttribute("value");
+            var telefonoValue_asign = li_asign[i].getAttribute("id");
 
-            if (emailValue != 0 || telefonoValue != 0) {
-              if (emailValue.indexOf(filter) > -1 || telefonoValue.indexOf(filter) > -1) {
+            if (emailValue_asign != 0 || telefonoValue_asign != 0) {
+              if (emailValue_asign.indexOf(filter) > -1 || telefonoValue_asign.indexOf(filter) > -1) {
                 li_asign[i].style.display = "";
               } else {
                 li_asign[i].style.display = "none";
