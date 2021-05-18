@@ -732,7 +732,8 @@ $(function () {
         span.setAttribute('style',"display: none");
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
-        document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag);
+        var clone_tag_asign = clone_tag.cloneNode(true);
+        document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag_asign);
         document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag); 
       }); 
       modalBody.appendChild(span);
