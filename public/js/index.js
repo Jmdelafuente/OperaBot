@@ -305,26 +305,8 @@ $(function () {
       }
 
 
-      document.getElementById("listaContactos").prepend(li);
-      chatListAll.push(id);
-      li.prepend(ex);
-      ex.appendChild(img);
-      img.appendChild(avatar);
-      ex.appendChild(info);
-      ex.appendChild(tags);
-      info.appendChild(nombre);
-      info.appendChild(estatus);
-      info.appendChild(orig);
-      li.addEventListener('click', function (event) {
-        event.preventDefault();
-        changeChat(id,estado,origen);
-      });
-      let clonediv = li.cloneNode(true);
-      
-      
-
-      if (Object.keys(tags_guardados).length !== 0) {
-        tags_guardados.forEach((element) => {
+      if (Object.keys(tags_guardados).length !== 0){
+        tags_guardados.forEach((element)=>{
           var span = document.createElement('span');
           var p = document.createElement('p');
           p.className = "etiqueta";
@@ -343,19 +325,38 @@ $(function () {
           }
           var close_etiqueta = document.createElement('i');
           close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
-          close_etiqueta.addEventListener('click', function (event) {
-            event.preventDefault();
-            var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
-            var nodo = document.querySelector(`#listaContactos li[id="usuario_${id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
-            nodo_asign.parentNode.removeChild(nodo_asign);
-            nodo.parentNode.removeChild(nodo);
-            socket.emit("delete_tag", package);
-          });
-          let close_etiqueta_asign = close_etiqueta.cloneNode(true);
-          span.appendChild(close_etiqueta);
+            close_etiqueta.addEventListener('click', function (event) {
+              event.preventDefault();
+              var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
+              var nodo = document.querySelector(`#listaContactos li[id="usuario_${id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
+              nodo_asign.parentNode.removeChild(nodo_asign);
+              nodo.parentNode.removeChild(nodo);
+              socket.emit("delete_tag", package);
+            });
+            let close_etiqueta_asign = close_etiqueta.cloneNode(true);
+            span.appendChild(close_etiqueta);
+            span_asign.appendChild(close_etiqueta_asign);
+            tags.append(span);
         });
       }
 
+      document.getElementById("listaContactos").prepend(li);
+      chatListAll.push(id);
+      li.prepend(ex);
+      ex.appendChild(img);
+      img.appendChild(avatar);
+      ex.appendChild(info);
+      ex.appendChild(tags);
+      info.appendChild(nombre);
+      info.appendChild(estatus);
+      info.appendChild(orig);
+      li.addEventListener('click', function (event) {
+        event.preventDefault();
+        changeChat(id,estado,origen);
+      });
+      let clonediv = li.cloneNode(true);
+      
+      
       if (estado != 'Cerrado') {
         li.removeAttribute('class', "chat-cerrado");
         li.setAttribute("class", "chat-abierto todos");
@@ -686,6 +687,7 @@ $(function () {
    }
   });
 
+
   socket.on("dibujar_asign", function (msg) {
     let esOperador = false;
     if (sessionStorage.getItem("operadorid") == msg.id_op) {
@@ -693,7 +695,8 @@ $(function () {
     }
     var li = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"]`).cloneNode(true);
     var li_asign = li.cloneNode(true);
-    document.querySelector(`#listaContactosAsignados `).prepend(li_asign);   
+    document.querySelector(`#listaContactosAsignados `).prepend(li_asign);
+
   });
  
   socket.on("dibujar_etiquetas", function (msg) {
