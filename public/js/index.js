@@ -737,15 +737,21 @@ $(function () {
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
         clone_tag_asign.appendChild(close_etiqueta_asign);
-        document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag_asign);
-        document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag); 
+        var pack = {};
+        pack.id = msg.id;
+        pack.nodo = clone_tag;
+        pack.nodo_asign = clone_tag_asign;
+        socket.emit("dibujar_tags",pack); 
       }); 
       modalBody.appendChild(span);
     });
   }
   });
 
-  
+  socket.on("dibujar_tags", function (msg) {
+    document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(msg.nodo_asign);
+    document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(msg.nodo_asign);
+  });
  socket.on("send_op_list", function (listaChats) {
     // let listaChats = JSON.parse(msg);
     //console.log(JSON.stringify(listaChats));

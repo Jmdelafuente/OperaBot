@@ -164,12 +164,16 @@ io.on("connection", function (socket) {
    });
 
   socket.on("dibujar_etiquetas",function (msg) {
-    io.emit("dibujar_etiquetas",msg);
+    socket.emit("dibujar_etiquetas",msg);
   });
 
   socket.on("close_chat", function(id){
     op.closeChat(id);
     io.emit("chat-cerrado",id);
+  });
+
+  socket.on("dibujar_tags", function (msg) {
+    io.emit("dibujar_tags",msg);
   });
 
   socket.on('cambiar_Email', function (msg) {
