@@ -352,8 +352,8 @@ $(function () {
             socket.emit("delete_tag", package);
           });
           let close_etiqueta_asign = close_etiqueta.cloneNode(true);
-          document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag_asign);
-          document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag);
+          document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"] div[id="user_tags"]`).append(clone_tag_asign);
+          document.querySelector(`#listaContactos li[id="usuario_${id}"] div[id="user_tags"]`).append(clone_tag);
         });
       }
 
