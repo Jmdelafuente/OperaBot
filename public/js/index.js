@@ -333,9 +333,7 @@ $(function () {
               nodo.parentNode.removeChild(nodo);
               socket.emit("delete_tag", package);
             });
-            let close_etiqueta_asign = close_etiqueta.cloneNode(true);
             span.appendChild(close_etiqueta);
-            span_asign.appendChild(close_etiqueta_asign);
             tags.append(span);
         });
       }
