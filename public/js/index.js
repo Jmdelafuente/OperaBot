@@ -771,7 +771,6 @@ $(function () {
   });
 
   socket.on("dibujar_tags", function (msg) {
-    console.log(`entre a dibujar cliente ${msg}`);
     var span = document.createElement('span');
     var p = document.createElement('p');
     p.className = "etiqueta";
@@ -779,20 +778,19 @@ $(function () {
     span.className = `badge badge-pill ${msg.color}`;
     p.innerText = msg.nombre;
     span.appendChild(p);
-    
+    var tag = {
+      nombre: element.nombre,
+      color: element.color
+    }
+    var package = {
+      id: msg.id,
+      tag: tag
+    }
     //se le agrega una "X" a la etiqueta por si se selecciono erroneamente y se le agrega la funcion de "quitar etiqueta"
       var close_etiqueta = document.createElement('i');
       close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
       close_etiqueta.addEventListener('click', function (event) {
         event.preventDefault();
-        var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${msg.nombre}"] `);
-        var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${msg.nombre}"] `);
-        if(nodo_asign){
-          nodo_asign.parentNode.removeChild(nodo_asign);
-        }
-        if(nodo){
-          nodo.parentNode.removeChild(nodo);
-        }
         socket.emit("delete_tag", package);
       });
       var close_etiqueta_asign = close_etiqueta.cloneNode(true);
@@ -809,6 +807,17 @@ $(function () {
       nodo.append(span);
     }
  
+});
+
+socket.on("borrar_tags", function (msg) {
+  var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${msg.nombre}"] `);
+  var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${msg.nombre}"] `);
+  if (nodo_asign) {
+    nodo_asign.parentNode.removeChild(nodo_asign);
+  }
+  if (nodo) {
+    nodo.parentNode.removeChild(nodo);
+  }
 });
 
 

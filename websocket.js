@@ -195,9 +195,13 @@ io.on("connection", function (socket) {
   });
 
   socket.on("delete_tag", function (msg) {
-    console.log("estoy en delete_tag");
     op.delete_tag(msg.id, msg.tag);
+    var pack = {};
+    pack.id = msg.id;
+    pack.nombre = msg.tag.nombre;
+    io.emit("borrar_tags",pack);
   });
+
 
   socket.on('enviar-menu',function (msg) {
     op.enviarMenu(msg.id,msg.contenido);
