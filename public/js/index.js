@@ -314,7 +314,6 @@ $(function () {
           span.className = `badge badge-pill ${element.color}`;
           p.innerText = element.nombre;
           span.appendChild(p);
-          let span_asign = span.cloneNode(true);
           var tag = {
             nombre: element.nombre,
             color: element.color
@@ -334,11 +333,8 @@ $(function () {
               nodo.parentNode.removeChild(nodo);
               socket.emit("delete_tag", package);
             });
-            let close_etiqueta_asign = close_etiqueta.cloneNode(true);
             span.appendChild(close_etiqueta);
-            span_asign.appendChild(close_etiqueta_asign);
-            document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"] div[id="user_tags"]`).append(span_asign);
-            document.querySelector(`#listaContactos li[id="usuario_${id}"] div[id="user_tags"]`).append(span);
+            tags.append(span);
         });
       }
 
