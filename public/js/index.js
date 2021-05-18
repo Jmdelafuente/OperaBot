@@ -904,11 +904,13 @@ $(function () {
     // funcionalidad para buscar un chat en base a su email o telefono
     $(document).ready(function () {
       $("#buscar").on("keyup", function () {
-        var input, filter, ul, li, i;
+        var input, filter, ul, li, i, ul_asign, li_asign;
         input = document.getElementById('buscar');
         filter = input.value;
         ul = document.getElementById("listaContactos");
         li = ul.getElementsByTagName('li');
+        ul_asign = document.getElementById("listaContactosAsignados");
+        li_asign = ul_asign.getElementsByTagName('li');
 
         if(filter.length!=0){
           for (i = 0; i < li.length; i++) {
@@ -923,9 +925,25 @@ $(function () {
               }
             }
           }
+          for (i = 0; i < li_asign.length; i++) {
+            var emailValue = li_asign[i].getAttribute("value");
+            var telefonoValue = li_asign[i].getAttribute("id");
+
+            if (emailValue != 0 || telefonoValue != 0) {
+              if (emailValue.indexOf(filter) > -1 || telefonoValue.indexOf(filter) > -1) {
+                li_asign[i].style.display = "";
+              } else {
+                li_asign[i].style.display = "none";
+              }
+            }
+          }
+
         }else{
           for(i=0; i < li.length; i++){
           li[i].style.display = "";
+        }
+          for(i=0; i < li_asign.length; i++){
+          li_asign[i].style.display = "";
         }
       }
       });
