@@ -90,7 +90,7 @@ $(function () {
     circle.innerText = unread;
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
-    if(chatListAsign.includes(chatid) && asign){
+    if(asign){
       var avatar_asig = document.querySelector(`#listaContactosAsignados img[id="avatar_${chatid}"]`);
       if (avatar_asig ){
         let circle_clone = circle.cloneNode(true);
@@ -817,11 +817,13 @@ $(function () {
 
   socket.on("redibujar", function (msg){
     var lista = document.getElementById("listaContactos"); 
-    var lista_asig = document.getElementById("listaContactosAsignados");
-    var li_chat = document.getElementById(`usuario_${msg}`);
-    var li_asig = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg}"]`);
+    var li_chat = document.getElementById(`usuario_${msg.id}`);
     lista.prepend(li_chat);
+    if (sessionStorage.getItem("operadorid") == msg.asign){
+    var lista_asig = document.getElementById("listaContactosAsignados");
+    var li_asig = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"]`);
     lista_asig.prepend(li_asig);
+    }
   });
 
   socket.on("confirm_op_message", function (msg) {

@@ -255,7 +255,7 @@ const recibirMensaje = function (chat, tipo, operador,nuevo) {
   mensaje.asign = operador;
   io.emit("recive_op_message", mensaje);
   if(!nuevo){
-    io.emit("redibujar",chat.id);
+    io.emit("redibujar", mensaje);
   }
   return true;
 };
