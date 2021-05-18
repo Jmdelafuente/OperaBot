@@ -13,7 +13,7 @@ var io = require("socket.io")(http, {
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
-var portFront = 6001;
+var portFront = 2999;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
@@ -347,7 +347,7 @@ const mensajesByChat = function(id, listamensajes, socket, append=false) {
       (nombre) => {
         let split = nombre.split(",");
         element.operador_id = split[1];
-        console.log(`la hora del mensaje es: ${element.timestamp}`);
+        //console.log(`la hora del mensaje es: ${element.timestamp}`);
       },
       (error) => {
         //  TODO: registrar el error

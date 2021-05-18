@@ -1,4 +1,4 @@
-port = 6000;
+port = 3000;
 //portClient = 2999;
 
 const cors = require("cors");
@@ -32,7 +32,7 @@ api.use(helmet());
   next();
 });*/
 
-api.use(cors()); // FIXME: remove or comment this (34-42) in production
+/*api.use(cors()); // FIXME: remove or comment this (35-43) in production
 api.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // FIXME: update to match the domain you will make the request from
   res.header(
@@ -40,7 +40,7 @@ api.use(function (req, res, next) {
     "Origin, X-Requested-With, Content-Type,Accept"
   );
   next();
-});
+});*/
 
 api.use(express.json({ limit: "20mb" }));
 api.use(express.urlencoded({ limit: "20mb", extended: true }));

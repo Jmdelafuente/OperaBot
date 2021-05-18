@@ -136,7 +136,7 @@ async function recuperarChatEmail(idUser,email) {
   let historial = await op.recuperarChatEmail(email);
   console.log(`historal de chat ${historial}`);
   await axios
-    .post("http://localhost:5002/ps/recuperarChatEmail", {
+    .post("http://localhost:3004/ps/recuperarChatEmail", {
       body: services.bodyParser('P', idUser, historial),
       headers: {
         "Content-Type": "application/json",
@@ -336,7 +336,7 @@ async function getChatByIdConDatos(id) {
 
   let chat = chatsList[id];
   if (chatsList[id] && chatsList[id].origin == "P"){
-    console.log(`estoy en chatById`);
+
     await axios
       .post(services.URLs['P'] + "/obtenerDatos", {
         body: services.bodyParser('P', id, "obtengo datos"),
