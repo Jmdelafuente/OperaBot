@@ -306,9 +306,40 @@ $(function () {
 
 
       if (Object.keys(tags_guardados).length !== 0){
-        var id_activo = sessionStorage.getItem("key");
-        var envio = { tags: tags_guardados, id: id_activo };
-        socket.emit("dibujar_etiquetas", envio);
+        tags_guardados.forEach((element)=>{
+          var span = document.createElement('span');
+          var p = document.createElement('p');
+          p.className = "etiqueta";
+          span.setAttribute("id", element.nombre);
+          span.className = `badge badge-pill ${element.color}`;
+          p.innerText = element.nombre;
+          span.appendChild(p);
+          let span_asign = span.cloneNode(true);
+          var tag = {
+            nombre: element.nombre,
+            color: element.color
+          }
+          var idChat = sessionStorage.getItem('key');
+          var package = {
+            id: idChat,
+            tag: tag
+          }
+          var close_etiqueta = document.createElement('i');
+          close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
+            close_etiqueta.addEventListener('click', function (event) {
+              event.preventDefault();
+              var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
+              var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
+              nodo_asign.parentNode.removeChild(nodo_asign);
+              nodo.parentNode.removeChild(nodo);
+              socket.emit("delete_tag", package);
+            });
+            let close_etiqueta_asign = close_etiqueta.cloneNode(true);
+            span.appendChild(close_etiqueta);
+            span_asign.appendChild(close_etiqueta_asign);
+            document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(span_asign);
+            document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(span);
+        });
       }
 
       document.getElementById("listaContactos").prepend(li);
@@ -706,9 +737,10 @@ $(function () {
           socket.emit("delete_tag", package);
         });
         span.setAttribute('style',"display: none");
+        let close_etiqueta_asign = close_etiqueta.cloneNode(true);
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
-        clone_tag_asign.appendChild(close_etiqueta);
+        clone_tag_asign.appendChild(close_etiqueta_asign);
         document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag_asign);
         document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag); 
       }); 
