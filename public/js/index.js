@@ -781,8 +781,6 @@ $(function () {
     span.appendChild(p);
     
     //se le agrega una "X" a la etiqueta por si se selecciono erroneamente y se le agrega la funcion de "quitar etiqueta"
-    span.addEventListener('click', function (event) {
-      event.preventDefault();
       var close_etiqueta = document.createElement('i');
       close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
       close_etiqueta.addEventListener('click', function (event) {
@@ -801,7 +799,7 @@ $(function () {
     
     document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag);
     document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(span);
-  });
+ 
 });
 
 
