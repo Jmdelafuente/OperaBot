@@ -757,8 +757,8 @@ $(function () {
         socket.emit("add_tag", package);
         clone_tag.appendChild(close_etiqueta);
         clone_tag_asign.appendChild(close_etiqueta_asign);
-        document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag_asign);
-        document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag);
+        //document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag_asign);
+        //document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`).append(clone_tag);
         var pack = {};
         pack.id = msg.id;
         pack.nombre = element.nombre;
