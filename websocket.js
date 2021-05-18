@@ -173,6 +173,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("dibujar_tags", function (msg) {
+    console.log(`estoy en dibujar tags con ${msg}`);
     io.emit("dibujar_tags",msg);
   });
 

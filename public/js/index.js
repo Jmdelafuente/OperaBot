@@ -763,6 +763,7 @@ $(function () {
   });
 
   socket.on("dibujar_tags", function (msg) {
+    console.log(`entre a dibujar cliente ${msg}`);
     var span = document.createElement('span');
     var p = document.createElement('p');
     p.className = "etiqueta";
