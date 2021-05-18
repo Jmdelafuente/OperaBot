@@ -799,7 +799,7 @@ $(function () {
       clone_tag.appendChild(close_etiqueta_asign);
 
     var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`);
-    var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`)
+    var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`);
     if (nodo_asign) {
       nodo_asign.append(clone_tag);
     }
