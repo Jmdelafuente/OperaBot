@@ -329,8 +329,12 @@ $(function () {
               event.preventDefault();
               var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
               var nodo = document.querySelector(`#listaContactos li[id="usuario_${id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
-              nodo_asign.parentNode.removeChild(nodo_asign);
-              nodo.parentNode.removeChild(nodo);
+              if (nodo_asign) {
+                nodo_asign.parentNode.removeChild(nodo_asign);
+              }
+              if (nodo) {
+                nodo.parentNode.removeChild(nodo);
+              }
               socket.emit("delete_tag", package);
             });
             span.appendChild(close_etiqueta);
@@ -738,8 +742,12 @@ $(function () {
           event.preventDefault();
           var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
           var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${element.nombre}"] `); 
-          nodo_asign.parentNode.removeChild(nodo_asign);
-          nodo.parentNode.removeChild(nodo);
+          if (nodo_asign) {
+            nodo_asign.parentNode.removeChild(nodo_asign);
+          }
+          if (nodo) {
+            nodo.parentNode.removeChild(nodo);
+          }
           socket.emit("delete_tag", package);
         });
         var clone_tag = span.cloneNode(true);
@@ -781,8 +789,12 @@ $(function () {
         event.preventDefault();
         var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${msg.nombre}"] `);
         var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${msg.nombre}"] `);
-        nodo_asign.parentNode.removeChild(nodo_asign);
-        nodo.parentNode.removeChild(nodo);
+        if(nodo_asign){
+          nodo_asign.parentNode.removeChild(nodo_asign);
+        }
+        if(nodo){
+          nodo.parentNode.removeChild(nodo);
+        }
         socket.emit("delete_tag", package);
       });
       var clone_tag = span.cloneNode(true);
