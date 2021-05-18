@@ -795,8 +795,11 @@ $(function () {
         }
         socket.emit("delete_tag", package);
       });
+      var close_etiqueta_asign = close_etiqueta.cloneNode(true);
       var clone_tag = span.cloneNode(true);
-    
+      span.appendChild(close_etiqueta);
+      clone_tag.appendChild(close_etiqueta_asign);
+
     var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"]`);
     var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"]`)
     if (nodo_asign) {
