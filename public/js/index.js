@@ -779,8 +779,8 @@ $(function () {
     p.innerText = msg.nombre;
     span.appendChild(p);
     var tag = {
-      nombre: element.nombre,
-      color: element.color
+      nombre: msg.nombre,
+      color: msg.color
     }
     var package = {
       id: msg.id,
