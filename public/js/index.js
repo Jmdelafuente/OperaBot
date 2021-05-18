@@ -80,7 +80,7 @@ $(function () {
    * @param {string} chatid
    * @param {string} [unread=""]
    */
-  function unreadMessages(chatid, unread = "") {
+  function unreadMessages(chatid, asign,unread = "") {
     if (document.getElementById("unread_" + chatid)) {
       readMessages(chatid);
     }
@@ -90,7 +90,7 @@ $(function () {
     circle.innerText = unread;
     circle.id = "unread_" + chatid;
     avatar.parentNode.appendChild(circle);
-    if(chatListAsign.includes(chatid)){
+    if(chatListAsign.includes(chatid) && asign){
       var avatar_asig = document.querySelector(`#listaContactosAsignados img[id="avatar_${chatid}"]`);
       if (avatar_asig ){
         let circle_clone = circle.cloneNode(true);
@@ -374,7 +374,7 @@ $(function () {
       }
       
       if (!leido) {
-        unreadMessages(id);
+        unreadMessages(id, asign);
       }
     }
   }
@@ -781,7 +781,7 @@ $(function () {
     if ($("#idChat").val() == msg.id) {
       addMessage(msg.contenido, "R", msg.timestamp, msg.tipo);
     } else {
-      unreadMessages(msg.id);
+      unreadMessages(msg.id, esOperador);
     }
 
   });
