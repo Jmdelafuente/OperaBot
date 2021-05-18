@@ -723,7 +723,10 @@ $(function () {
         close_etiqueta.setAttribute('class', "fas fa-times close_etiqueta");
         close_etiqueta.addEventListener('click', function (event) {
           event.preventDefault();
-          close_etiqueta.parentNode.parentNode.removeChild(close_etiqueta.parentNode);
+          var nodo_asign = document.querySelector(`#listaContactosAsignados li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${element.nombre}"] `);
+          var nodo = document.querySelector(`#listaContactos li[id="usuario_${msg.id}"] div[id="user_tags"] span[id="${element.nombre}"] `); 
+          nodo_asign.parentNode.removeChild(nodo_asign);
+          nodo.parentNode.removeChild(nodo);
           socket.emit("delete_tag", package);
         });
         span.setAttribute('style',"display: none");
