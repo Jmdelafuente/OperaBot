@@ -69,6 +69,7 @@ async function altaOperador(id, canal) {
   } else {
     // Check si el operador ya existe
     if (!operators[operador.id]) {
+      console.log(`entre a checkear ${canal} y opid ${operador.id}`);
       operador.socket = canal;
       operators[operador.id] = operador;
       operators_channels[canal.user] = operador.id;
