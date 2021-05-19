@@ -185,8 +185,10 @@ async function recibirMensaje(chat, tipo,nuevo) {
   let horaFin = new Date();
   horaFin.setHours(parseInt(config.END_TIME));
   let horaActual = new Date(Date.now());
+  console.log(`horas inicial = ${horaInicio} hora fin = ${horaFin} y hora actual ${horaActual}`);
+  console.log(horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() <= horaFin.getHours());
   //FIXME: arreglar el if que no entra bien
-  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() > horaFin.getHours()) {
+  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() <= horaFin.getHours()) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
       // Se asigna el chat
