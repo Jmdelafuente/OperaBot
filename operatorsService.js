@@ -83,7 +83,7 @@ async function altaOperador(id, canal) {
     // TODO: enviar todos los chats
     let lista = await messenger.getListaChatsConDatos(ids);
 
-
+    console.log(`operadores ${operador} y socket ${operador.socket}`);
     socket.recibirLista(operador.socket, lista, false);
     return operador;
   }
