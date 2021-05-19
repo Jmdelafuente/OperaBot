@@ -358,6 +358,7 @@ async function enviarArchivo(id, cont, type, operadorid) {
 
 async function obtenerNombre(operadorId) {
     let razonOperador = "";   
+    console.log(`llego con id ${operadorId}`);
     await db.buscar(
     "operadores",
     ["razonSocial"],
