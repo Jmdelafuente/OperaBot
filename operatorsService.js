@@ -186,7 +186,7 @@ async function recibirMensaje(chat, tipo,nuevo) {
   horaFin.setHours(parseInt(config.END_TIME));
   let horaActual = new Date(Date.now());
   //FIXME: arreglar el if que no entra bien
-  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() > horaFin.getHours()) {
+  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() < horaFin.getHours()) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
       // Se asigna el chat
@@ -358,6 +358,7 @@ async function enviarArchivo(id, cont, type, operadorid) {
 
 async function obtenerNombre(operadorId) {
     let razonOperador = "";   
+    if(operadorId != 0){
     await db.buscar(
     "operadores",
     ["razonSocial"],
@@ -370,6 +371,7 @@ async function obtenerNombre(operadorId) {
       console.error(error);
     }
     );
+  }
   return razonOperador;
 }
 
