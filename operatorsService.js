@@ -358,7 +358,7 @@ async function enviarArchivo(id, cont, type, operadorid) {
 
 async function obtenerNombre(operadorId) {
     let razonOperador = "";   
-    console.log(`llego con id ${operadorId}`);
+    if(operadorId != 0){
     await db.buscar(
     "operadores",
     ["razonSocial"],
@@ -371,6 +371,7 @@ async function obtenerNombre(operadorId) {
       console.error(error);
     }
     );
+  }
   return razonOperador;
 }
 
