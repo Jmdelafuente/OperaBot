@@ -388,7 +388,7 @@ async function confirmarVisto(chatId, channelId) {
     console.log(`en confirmar visto, antes de asignacion nueva ${chat_asig[chatId].operadorId} y ${chat_asig[chatId].chatId}`);
     if (chat_asig[chatId].operadorId != operators_channels[channelId]){
       var id = chat_asig[chatId].operadorId;
-      if (operators[id].socket.id != undefined){
+      if (operators[id].socket != undefined){
       var socket_cambiar = operators[id].socket.id;
       socket.cambiar_asignado(socket_cambiar, chatId);
     }
