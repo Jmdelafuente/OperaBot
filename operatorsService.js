@@ -74,7 +74,6 @@ async function altaOperador(id, canal) {
       operators[operador.id] = operador;
       operators_channels[canal.user] = operador.id;
     }
-          operador.socket = canal;
 
     // TODO: recuperar chats asignados/asignar chats y enviar
     var lista_asig = await recuperarChatsOperador(operador.id);
@@ -94,9 +93,11 @@ async function altaOperador(id, canal) {
 
 async function reconectarOperador(id, canal) {
   // * Recuperar y actualizar socket del operador
+  console.log(`estoy podrido de esto ${id} y ${canal}`);
   let operador = operators[operators_channels[id]];
-  console.log(`operador reconect: ${operador}, socket ${operador.socket}, id ${operador.id}`);
+  console.log(`operador reconect: ${operador} e id ${operador.id}`);
   operador.socket = canal;
+  console.log(`operador reconect socket ${operador.socket}`);
 
   // * Recuperar listados de chats
   // Enviar chats asignados
@@ -188,9 +189,9 @@ async function recibirMensaje(chat, tipo,nuevo) {
   let horaFin = new Date();
   horaFin.setHours(parseInt(config.END_TIME));
   let horaActual = new Date(Date.now());
-  console.log(`horas inicial = ${horaInicio} hora fin = ${horaFin} y hora actual ${horaActual}`);
-  console.log(horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() <= horaFin.getHours());
-  //FIXME: arreglar el if que no entra bien
+  //console.log(`horas inicial = ${horaInicio} hora fin = ${horaFin} y hora actual ${horaActual}`);
+  //console.log(horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() <= horaFin.getHours());
+  
   if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() <= horaFin.getHours()) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
