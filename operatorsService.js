@@ -74,6 +74,7 @@ async function altaOperador(id, canal) {
       operators[operador.id] = operador;
       operators_channels[canal.user] = operador.id;
     }
+      operador.socket = canal;
 
     // TODO: recuperar chats asignados/asignar chats y enviar
     var lista_asig = await recuperarChatsOperador(operador.id);
@@ -385,11 +386,10 @@ async function confirmarVisto(chatId, channelId) {
   // let operador = operators[operadorId];
   // Al abrir el mensaje, la asignacion pasa a ser estable (no se busca nuevo operador para el chat)
   if(chat_asig[chatId]){
-    console.log(`en confirmar visto, antes de asignacion nueva ${chat_asig[chatId].operadorId} y ${chat_asig[chatId].chatId}`);
+    //console.log(`en confirmar visto, antes de asignacion nueva ${chat_asig[chatId].operadorId} y ${chat_asig[chatId].chatId}`);
     if (chat_asig[chatId].operadorId != operators_channels[channelId]){
       var id = chat_asig[chatId].operadorId;
-      console.log(`me tiene podrido el chat, traigo id: ${id} que tengo en ${operators[id]}`)
-      if (operators[id].socket.id != undefined){
+      if (operators[id] != undefined){
       var socket_cambiar = operators[id].socket.id;
       socket.cambiar_asignado(socket_cambiar, chatId);
     }
