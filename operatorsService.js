@@ -75,6 +75,8 @@ async function altaOperador(id, canal) {
       operators_channels[canal.user] = operador.id;
     }
       operador.socket = canal;
+      operators[operador.id] = operador;
+      operators_channels[canal.user] = operador.id;
 
     // TODO: recuperar chats asignados/asignar chats y enviar
     var lista_asig = await recuperarChatsOperador(operador.id);
