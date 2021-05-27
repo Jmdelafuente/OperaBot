@@ -102,8 +102,7 @@ io.on("connection", function (socket) {
             socket.emit('operador_set_id',valido.id);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
           } else {
-            console.log("no tenes un id valido");
-            socket.emit("redirect","");
+           desconectar(socket);
           }
         },
         (error) => {
@@ -330,6 +329,10 @@ async function quieremail(operador, idUser, chat) {
    });
 };
 
+async function desconectar(socket) {
+   console.log("no tenes un id valido");
+   socket.emit("redirect", "");
+};
 //se obtiene el nombre de que operador contesto cada mensaje, esta informacion en conjunto
 // con los mensajes de todo el chat son emitidos para ser dibujados
 const mensajesByChat = function(id, listamensajes, socket, append=false) {

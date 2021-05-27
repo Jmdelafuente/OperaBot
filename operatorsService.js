@@ -70,14 +70,11 @@ async function altaOperador(id, canal) {
     // Check si el operador ya existe
     if (!operators[operador.id]) {
       console.log(`entre a checkear ${canal} y opid ${operador.id}`);
+      socket.desconectar(operador.socket);
       operador.socket = canal;
       operators[operador.id] = operador;
       operators_channels[canal.user] = operador.id;
     }
-
-
-    
-
     // TODO: recuperar chats asignados/asignar chats y enviar
     var lista_asig = await recuperarChatsOperador(operador.id);
     if (Object.keys(lista_asig).length > 0) {

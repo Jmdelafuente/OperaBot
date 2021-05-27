@@ -1021,7 +1021,7 @@ socket.on("borrar_tags", function (msg) {
     });
 
     socket.on("redirect",function (msg) {
-      window.location.replace("http://weblogin.muninqn.gov.ar/");
+      window.location.replace("https://www.neuquencapital.gov.ar/");
     });
 
  
