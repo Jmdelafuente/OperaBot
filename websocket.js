@@ -96,7 +96,7 @@ io.on("connection", function (socket) {
       socket.user = msg.SESSIONKEY; // TODO: Cambiar por nombre de usuario cuando este la conexion con WL
       op.altaOperador(msg.SESSIONKEY, socket).then(
         (valido) => {
-          if (valido.id) {
+          if (valido && valido.id) {
             sessions[msg.SESSIONKEY] = socket;
             sockets[socket.id] = socket;
             socket.emit('operador_set_id',valido.id);
