@@ -1020,6 +1020,10 @@ socket.on("borrar_tags", function (msg) {
       });
     });
 
+    socket.on("redirect",function (msg) {
+      window.location.replace("http://weblogin.muninqn.gov.ar/");
+    });
+
  
     // funcionalidad de obtener todo el menu disponible y seleccionar algun sub-menu para enviar al ciudadano
   socket.on("obtener-plantillas", function (msg) {

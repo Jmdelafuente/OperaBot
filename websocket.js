@@ -102,7 +102,8 @@ io.on("connection", function (socket) {
             socket.emit('operador_set_id',valido.id);
             console.log(`Nuevo operador ${msg.SESSIONKEY}`);
           } else {
-            // ! SALIR
+            console.log("no tenes un id valido");
+            socket.emit("redirect","");
           }
         },
         (error) => {

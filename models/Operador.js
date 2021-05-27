@@ -104,6 +104,9 @@ class Operador {
     // TODO: verificar si el usuario existe
     if (usuario.perfil) {
       esValido = true;
+      if(usuario.perfil > 0){
+        usuario.perfil = 1; //TODO: Cuando se requiera hacer admin, recordar que no sea siempre 1
+      }
       let promise = this.db.buscar(
         "operadores",
         ["operadorId", "email", "cuit", "razonSocial", "wapPersonaId"],
