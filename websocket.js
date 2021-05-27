@@ -394,6 +394,7 @@ module.exports.recibirLista = recibirLista;
 module.exports.quieremail = quieremail;
 module.exports.cambiar_asignado = cambiar_asignado;
 module.exports.reasignar = reasignar;
+module.exports.desconectar = desconectar;
 
 /*<script type="text/javascript">
       function enviarWA(id,contenido)
