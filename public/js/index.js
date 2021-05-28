@@ -981,7 +981,7 @@ socket.on("borrar_tags", function (msg) {
   $("#listaContactos").scroll(function () {
     var elem = document.getElementById("listaContactos");
 
-    if (elem.scrollTop + 533 == elem.scrollHeight) {
+    if (elem.scrollTop == elem.scrollHeight) {
       $("#listaContactos li").slice(mincount, maxcount).fadeIn(1200);
       mincount = mincount + 20;
       maxcount = maxcount + 20;
