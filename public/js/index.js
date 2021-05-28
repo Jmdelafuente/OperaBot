@@ -980,7 +980,7 @@ socket.on("borrar_tags", function (msg) {
 
   $("#listaContactos").scroll(function () {
     var elem = document.getElementById("listaContactos");
-    if (elem.scrollTop == elem.scrollHeight + 550) {
+    if (elem.scrollTop >= elem.scrollHeight - 550) {
       $("#listaContactos li").slice(mincount, maxcount).fadeIn(1200);
       mincount = mincount + 20;
       maxcount = maxcount + 20;
