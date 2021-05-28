@@ -972,6 +972,21 @@ socket.on("borrar_tags", function (msg) {
     div.scrollTop = div.scrollHeight;
   });*/
 
+  $("#listaContactos li").slice(20).hide();
+  var mincount = 20;
+  var maxcount = 40;
+
+
+  $("#listaContactos").scroll(function () {
+    if ($(this).scrollTop() + $(this).height() >= $(document).height() - 400) {
+      $("#listaContactos li").slice(mincount, maxcount).fadeIn(1200);
+
+      mincount = mincount + 20;
+      maxcount = maxcount + 20;
+
+    }
+  });
+
     // funcionalidad para buscar un chat en base a su email o telefono
     $(document).ready(function () {
       $("#buscar").on("keyup", function () {
