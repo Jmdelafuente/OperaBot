@@ -972,13 +972,16 @@ socket.on("borrar_tags", function (msg) {
     div.scrollTop = div.scrollHeight;
   });*/
 
+  $(document).ready(function () {
   $("#listaContactos li").slice(20).hide();
+  
+  });
+  
   var mincount = 20;
   var maxcount = 40;
 
-
   $("#listaContactos").scroll(function () {
-    if ($(this).scrollTop() + $(this).height() >= $(document).height() - 400) {
+    if ($(this).scrollTop() == $(this).height()) {
       $("#listaContactos li").slice(mincount, maxcount).fadeIn(1200);
 
       mincount = mincount + 20;
