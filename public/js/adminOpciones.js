@@ -32,13 +32,14 @@ $(function () {
     );
 
       
-    $('.crear-menu').click(function (event) {
+    $('#crear-menu').click(function (event) {
         event.preventDefault();
         alert("Funcionalidad en desarrollo");        
     })
     
-    $('.editar-menu').click(function (event) {
+    $('#editar-menu').click(function (event) {
         event.preventDefault();
+        console.log("tocaste para editar");
         socketopciones.emit("obtener-menu");
         let select = document.getElementById("div-menu");
         select.removeAttribute("style");
@@ -50,7 +51,6 @@ $(function () {
 
 socketopciones.on("connect", () => {
     console.log("que?");
-  console.log(socketopciones.id); 
 });
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
