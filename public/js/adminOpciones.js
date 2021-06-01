@@ -87,13 +87,13 @@ socketopciones.on("connect", () => {
         //$("#selector-menu").empty();
         msg.opciones.forEach(element => {
             if(element.valor){
-                string = "titulo del boton: " + element.valor;
+                string = "<b>titulo del boton: </b>" + element.valor + "<br></br>";
             }
             if(element.nombre){
-                string = string + "\n" + "tiene submenu: " + element.valor + "\n";
+                string = string + "<b>tiene submenu: </b>" + element.valor + "<br></br>";
 
             }
-            text.innerText = string;
+            text.innerHTML = string;
         });
 
     })
