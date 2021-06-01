@@ -69,8 +69,8 @@ http.listen(app.get('port'), () => {
 iois.on("connection", function (socket) {
     console.log("user connect");
 
-socket.on("obtener-menu", function (msg) {
-   let opciones = op.obteneropciones();
+socket.on("obtener-menu",async function (msg) {
+   let opciones = await op.obteneropciones();
    console.log(opciones);
    socket.emit("selector-menu", opciones); 
 });
