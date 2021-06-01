@@ -81,11 +81,18 @@ socketopciones.on("connect", () => {
 
     socketopciones.on("sub-menu",function (msg) {
         console.log(msg);
+        var string="";
         let div = document.getElementById("selector-menu");
         let text = document.getElementById("editor");
         //$("#selector-menu").empty();
         msg.opciones.forEach(element => {
-            var string = element.nombre + " " + element.valor;
+            if(element.valor){
+                string = "titulo del boton: " + element.valor;
+            }
+            if(element.nombre){
+                string = string + "\n" + "tiene submenu: " + element.valor + "\n";
+
+            }
             text.innerText = string;
         });
 
