@@ -14,7 +14,7 @@ var iois = require("socket.io")(http, {
 });
 var path = require("path");
 var plant = require("../../configs/messagesConfig");
-var portFront = process.env.PORT || 4002;
+var portFront = 4002;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 

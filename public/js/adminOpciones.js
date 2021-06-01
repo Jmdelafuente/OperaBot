@@ -1,7 +1,7 @@
 //const SURLopciones = "http://localhost";
-//const SURLopciones = "128.53.1.23";
-const SURLopciones = "https://chat.muninqn.gov.ar/operadores/admin/";
-const socketopciones = io(`${SURLopciones}`);
+const SURLopciones = "128.53.80.105";
+//const SURLopciones = "https://chat.muninqn.gov.ar/operadores/admin/";
+const socketopciones = io(`${SURLopciones}`, {'forceNew': true, path: '/operadores/socket.io'});
 
 
 $(function () {
@@ -49,6 +49,7 @@ $(function () {
 //fede termina la parte del summernote
 
 socketopciones.on("connect", () => {
+    console.log("que?");
   console.log(socketopciones.id); 
 });
     socketopciones.on("selector-menu",function (msg) {
