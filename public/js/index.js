@@ -689,7 +689,7 @@ $(function () {
     // socket.emit("",{});
   }
   socket.on("connect", function () {
-    console.log(`conn: ${conn}, params: ${params}`);
+    //console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);
     conn = true;
   });

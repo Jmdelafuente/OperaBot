@@ -50,10 +50,11 @@ $(function () {
 //fede termina la parte del summernote
 
 socketopciones.on("connect", () => {
-    console.log("que?");
+    
 });
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
+        console.log(msg);
         let div = document.getElementById("selector-menu");
         let enviar = document.createElement('button');
         enviar.setAttribute("class", "btn btn-primary");
