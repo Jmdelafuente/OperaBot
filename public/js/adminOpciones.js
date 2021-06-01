@@ -59,8 +59,9 @@ socketopciones.on("connect", () => {
         let enviar = document.createElement('button');
         enviar.setAttribute("class", "btn btn-primary");
         let container= document.getElementById("div-menu");
-        let text = document.createElement('textarea');
-        text.setAttribute("id","editor")
+        let text = document.createElement('input');
+        text.setAttribute("id","editor");
+        text.setAttribute("contenteditable", true);
         for (const [key, prefix] of Object.entries(msg)) {
             var opcion = document.createElement('option');
             opcion.innerText = msg[key].nombre;
@@ -90,7 +91,7 @@ socketopciones.on("connect", () => {
                 string = "<b>titulo del boton: </b>" + element.valor + "<br></br>";
             }
             if(element.nombre){
-                string = string + "<b>tiene submenu: </b>" + element.valor + "<br></br>";
+                string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
 
             }
             text.innerHTML = string;
