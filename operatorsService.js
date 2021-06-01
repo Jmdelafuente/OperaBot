@@ -517,6 +517,10 @@ function mandar(msg) {
   });
 }
 
+async function obteneropciones(msg) {
+  return opciones.obteneropciones();
+}
+
 async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
 }
@@ -570,3 +574,4 @@ module.exports.obtenerNombre = obtenerNombre;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
+module.exports.obteneropciones = obteneropciones;
