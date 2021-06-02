@@ -96,13 +96,13 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += "<b>titulo del boton: </b>" + element.valor + "<button id=\"editar\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
+                string += "<b>titulo del boton: </b>" + element.valor + "<button id=\"editar-titulo\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
             }
             if (element.nombre != undefined) {
-                string += "<b>tiene submenu: </b>" + element.nombre + "<button id=\"editar\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
+                string += "<b>tiene submenu: </b>" + element.nombre + "<button id=\"editar-nombre\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
             }
             if (element.informacion != undefined) {
-                string += "<b>informacion: </b>" + element.informacion + "<button id=\"editar\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
+                string += "<b>informacion: </b>" + element.informacion + "<button id=\"editar-informacion\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
             }
          });
          }
@@ -111,10 +111,20 @@ socketopciones.on("connect", () => {
          }
         text.innerHTML = string;
 
-        var editar = document.getElementById("editar");
+        var editar = document.getElementById("editar-titulo");
         editar.addEventListener("click",function (msg) {
-           msg.preventDefault();
-           alert(editar.value); 
+           msg.preventDefault(text.textContent);
+           alert(editar) 
+        });
+        var editar = document.getElementById("editar-nombre");
+        editar.addEventListener("click", function (msg) {
+            msg.preventDefault(text.textContent);
+            alert(editar)
+        });
+        var editar = document.getElementById("editar-informacion");
+        editar.addEventListener("click", function (msg) {
+            msg.preventDefault(text.textContent);
+            alert(editar)
         });
     })
 });
