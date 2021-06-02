@@ -86,7 +86,7 @@ socketopciones.on("connect", () => {
     })
 
     socketopciones.on("sub-menu",function (msg) {
-        console.log(`estoy en sub-menu ${JSON.stringify(msg)}`);
+        console.log(`estoy en sub-menu ${msg.nombre} y ${msg.informacion} y ${msg.opciones}`);
         var string="";
         let div = document.getElementById("selector-menu");
         let text = document.getElementById("editor");
