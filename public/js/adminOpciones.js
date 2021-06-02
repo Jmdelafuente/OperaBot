@@ -84,6 +84,12 @@ socketopciones.on("connect", () => {
             event.preventDefault();
             socketopciones.emit("sub-menu",div.value);
         });
+
+         var envio = document.getElementById("editor");
+         envio.addEventListener('click', function (e) {
+             e.preventDefault();
+             alert("funciona¡");
+         })
     })
 
     socketopciones.on("sub-menu",function (msg) {
@@ -114,9 +120,5 @@ socketopciones.on("connect", () => {
         
     });
 
-    var envio = document.getElementById("editor");
-    envio.addEventListener('click',function (e) {
-        e.preventDefault();
-        alert("funciona¡");
-    })
+   
 });
