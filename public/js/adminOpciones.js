@@ -97,19 +97,19 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea>` + element.valor + `</textarea> <button id=\"editar-${element.valor}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea style = height:225px; width: 50%;>` + element.valor + `</textarea> <button id=\"editar-${element.valor}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.nombre != undefined) {
-                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea>` + element.nombre + `</textarea> <button id = \"editar-${element.nombre}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea style = height:225px; width: 50%;>` + element.nombre + `</textarea> <button id = \"editar-${element.nombre}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.informacion != undefined) {
-                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b> <textarea>` + element.informacion + `</textarea> <button id=\"editar-${element.informacion}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"informacion_${element.valor}\"><b>informacion: </b> <textarea style = height:225px; width: 50%;>` + element.informacion + `</textarea> <button id=\"editar-${element.informacion}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             i++;
          });
          }
          if (menu[msg].descripcion!=undefined) {
-             string += "<b>Descripcion: </b>" + menu[msg].descripcion;
+             string += `</div id=descripcion_${element.valor}><b>Descripcion: </b>` + menu[msg].descripcion + `<button id=\"editar-${menu[msg].descripcion}\" class=\"btn btn-primary\">Editar</button></div>`;
          }
         text.innerHTML = string;        
         
