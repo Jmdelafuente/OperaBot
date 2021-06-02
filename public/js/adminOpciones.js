@@ -80,8 +80,7 @@ socketopciones.on("connect", () => {
         div.addEventListener('change',function (event) {
             event.preventDefault();
             console.log(`obtengo el value del div, ${div.value}`);
-            console.log(`menu con el value, ${JSON.stringify(menu[div.value])}`);
-            socketopciones.emit("sub-menu",menu[div.value]);
+            socketopciones.emit("sub-menu",JSON.stringify(menu[div.value]));
         });
     })
 
