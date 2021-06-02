@@ -53,6 +53,7 @@ socketopciones.on("connect", () => {
     
 });
     socketopciones.on("selector-menu",function (msg) {
+        let opciones = [];
         console.log(`estoy en selector ${msg}`);
         let div = document.getElementById("selector-menu");
         let enviar = document.createElement('button');
@@ -68,7 +69,8 @@ socketopciones.on("connect", () => {
             var pack = {};
             pack.informacion = prefix.informacion;
             pack.nombre = prefix.nombre
-            pack.opciones = prefix.opciones
+            opciones = prefix.opciones;
+            pack.opciones = opciones;
             menu[key] = pack;
 
             div.appendChild(opcion);
