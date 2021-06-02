@@ -76,11 +76,11 @@ socket.on("obtener-menu",async function (msg) {
 });
 
 socket.on("sub-menu", function (msg) {
-    let opcion = menu.filtrarOpciones(msg);
-    var pack = {};
-    pack.nombre = opcion.nombre;
-    pack.opciones = opcion.opciones;
-    socket.emit("sub-menu",pack);
+    //let opcion = menu.filtrarOpciones(msg);
+    //var pack = {};
+    //pack.nombre = opcion.nombre;
+    //pack.opciones = opcion.opciones;
+    socket.emit("sub-menu",msg);
 })
 
 socket.on("opciones_admin",function (msg) {
