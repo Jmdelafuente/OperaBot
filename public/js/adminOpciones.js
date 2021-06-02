@@ -64,12 +64,12 @@ socketopciones.on("connect", () => {
             console.log(`key ${key} y prefix ${JSON.stringify(prefix)}`);
             var opcion = document.createElement('option');
             opcion.innerText = prefix.nombre;
-            opcion.value = msg[key];
+            opcion.value = key;
             var pack = {};
             pack.informacion = prefix.informacion;
             pack.nombre = prefix.nombre
             pack.opciones = prefix.opciones
-            menu[msg[key]] = pack;
+            menu[key] = pack;
 
             div.appendChild(opcion);
         }
