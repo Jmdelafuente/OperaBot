@@ -64,10 +64,10 @@ socketopciones.on("connect", () => {
         for (const [key, prefix] of Object.entries(msg)) {
             console.log(`key ${key} y prefix ${JSON.stringify(prefix)}`);
             var opcion = document.createElement('option');
-            opcion.innerText = msg[key].nombre;
-            opcion.value = msg[key].nombre;
-            opciones[msg[key].nombre] = msg[key].opciones;
-            var informacion = msg[key].informacion;
+            opcion.innerText = prefix.nombre;
+            opcion.value = prefix.nombre;
+            opciones[prefix.nombre] = prefix.opciones;
+            var informacion = prefix.informacion;
             div.appendChild(opcion);
         }
         enviar.innerText = "Enviar";
