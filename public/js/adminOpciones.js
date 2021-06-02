@@ -88,7 +88,7 @@ socketopciones.on("connect", () => {
     })
 
     socketopciones.on("sub-menu",function (msg) {
-        console.log(`estoy en sub-menu ${menu[msg].nombre} y ${menu[msg].informacion} y ${menu[msg].opciones}`);
+        console.log(`estoy en sub-menu ${menu[msg].nombre} y ${menu[msg].opciones}`);
         var string="";
         let div = document.getElementById("selector-menu");
         let text = document.getElementById("editor");
@@ -96,18 +96,18 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string = "<b>titulo del boton: </b>" + element.valor + "<br></br>";
+                string += "<b>titulo del boton: </b>" + element.valor + "<br></br>";
             }
             if (element.nombre != undefined) {
-                string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
+                string +=  "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
             }
             if (element.informacion != undefined) {
-                string = string + "<b>informacion: </b>" + element.informacion + "<br></br>"; 
+                string += "<b>informacion: </b>" + element.informacion + "<br></br>"; 
             }
          });
          }
          if (menu[msg].descripcion!=undefined) {
-             string = string + "<b>Descripcion: </b>" + menu[msg].descripcion;
+             string += "<b>Descripcion: </b>" + menu[msg].descripcion;
          }
         text.innerHTML = string;
     })
