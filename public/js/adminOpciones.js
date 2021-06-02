@@ -97,13 +97,13 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += `<div id=${element.valor}><b>titulo del boton: </b>` + element.valor + `<button id=\"editar-${element.valor}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea>` + element.valor + `<textarea> <button id=\"editar-${element.valor}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.nombre != undefined) {
-                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b>` + element.nombre + `<button id = \"editar-${element.nombre}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea>` + element.nombre + `<textarea> <button id = \"editar-${element.nombre}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.informacion != undefined) {
-                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b>` + element.informacion + `<button id=\"editar-${element.informacion}\" onclick=\"editar('${element.informacion}')\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b> <textarea>` + element.informacion + `<textarea> <button id=\"editar-${element.informacion}\" onclick=\"editar('${element.informacion}')\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             i++;
          });
@@ -111,13 +111,7 @@ socketopciones.on("connect", () => {
          if (menu[msg].descripcion!=undefined) {
              string += "<b>Descripcion: </b>" + menu[msg].descripcion;
          }
-        text.innerHTML = string;
-
+        text.innerHTML = string;        
         
-        
-        function editar(msg) {
-            var text = document.getElementById(`${msg}`);
-            alert(text.textContent);
-        }
     })
 });
