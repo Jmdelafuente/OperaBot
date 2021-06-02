@@ -79,12 +79,12 @@ socketopciones.on("connect", () => {
             pack.value = div.value;
             pack.informacion = informacion;
             pack.opciones = opciones;
-            socketopciones.emit("sub-menu",div.value);
+            socketopciones.emit("sub-menu",pack);
         });
     })
 
     socketopciones.on("sub-menu",function (msg) {
-        console.log(msg);
+        console.log(`estoy en sub-menu ${msg}`);
         var string="";
         let div = document.getElementById("selector-menu");
         let text = document.getElementById("editor");
