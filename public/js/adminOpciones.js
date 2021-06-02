@@ -108,7 +108,7 @@ socketopciones.on("connect", () => {
          });
          }
          if (menu[msg].descripcion!=undefined) {
-             string += `</div id=descripcion_${element.valor}><b>Descripcion: </b>` + menu[msg].descripcion + `</div>`;
+             string += `</div id=descripcion_${menu[msg].nombre}><b>Descripcion: </b>` + menu[msg].descripcion + `</div>`;
          }
         text.innerHTML = string;        
         
