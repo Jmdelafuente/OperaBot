@@ -92,15 +92,16 @@ socketopciones.on("connect", () => {
         let div = document.getElementById("selector-menu");
         let text = document.getElementById("editor");
         //$("#selector-menu").empty();
-        msg.opciones.forEach(element => {
+        if(menu[msg].opciones){
+        menu[msg].opciones.forEach(element => {
             if(element.valor){
                 string = "<b>titulo del boton: </b>" + element.valor + "<br></br>";
             }
             if(element.nombre){
                 string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
             }
-        });
-        
+         });
+         }
         if(msg.informacion){
             string = string + "<b>informacion: </b>" + msg.informacion; 
         }
