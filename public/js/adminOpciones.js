@@ -117,6 +117,6 @@ socketopciones.on("connect", () => {
     var envio = document.getElementById("editor");
     envio.addEventListener('click',function (e) {
         e.preventDefault();
-        alert(text.nextElementSibling());
+        alert("funciona¡");
     })
 });
