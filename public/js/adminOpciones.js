@@ -102,12 +102,12 @@ socketopciones.on("connect", () => {
                 string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
             }
             if (element.informacion != undefined) {
-                string = string + "<b>informacion: </b>" + msg.informacion; 
+                string = string + "<b>informacion: </b>" + element.informacion + "<br></br>"; 
             }
          });
          }
          if (menu[msg].descripcion!=undefined) {
-             string = string + "<b>Descripcion: </b>" + msg.informacion;
+             string = string + "<b>Descripcion: </b>" + menu[msg].descripcion;
          }
         text.innerHTML = string;
     })
