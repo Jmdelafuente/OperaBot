@@ -103,7 +103,7 @@ socketopciones.on("connect", () => {
                 string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b>` + element.nombre + `<button id = \"editar-${element.nombre}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.informacion != undefined) {
-                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b>` + element.informacion + `<button id=\"editar-${element.informacion}\" onclick=\"editar(${element.informacion})\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b>` + element.informacion + `<button id=\"editar-${element.informacion}\" onclick=\"editar('${element.informacion}')\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             i++;
          });
