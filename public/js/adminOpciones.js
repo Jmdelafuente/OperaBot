@@ -80,12 +80,13 @@ socketopciones.on("connect", () => {
         div.addEventListener('change',function (event) {
             event.preventDefault();
             console.log(`obtengo el value del div, ${div.value}`);
+            console.log(`menu con el value, ${menu[div.value]}`);
             socketopciones.emit("sub-menu",menu[div.value]);
         });
     })
 
     socketopciones.on("sub-menu",function (msg) {
-        console.log(`estoy en sub-menu ${msg}`);
+        console.log(`estoy en sub-menu ${JSON.stringify(msg)}`);
         var string="";
         let div = document.getElementById("selector-menu");
         let text = document.getElementById("editor");
