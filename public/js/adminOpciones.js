@@ -90,20 +90,22 @@ socketopciones.on("connect", () => {
     socketopciones.on("sub-menu",function (msg) {
         console.log(`estoy en sub-menu ${menu[msg].nombre} y ${menu[msg].opciones}`);
         var string="";
+        let i=0;
         let div = document.getElementById("selector-menu");
         let text = document.getElementById("editor");
         //$("#selector-menu").empty();
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += "<b>titulo del boton: </b>" + element.valor + "<button id=\"editar-titulo\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
+                string += "<b>titulo del boton: </b>" + element.valor + `<button id=\"editar-titulo\" class=\"btn btn-primary\">Editar</button>` + "<br></br>";
             }
             if (element.nombre != undefined) {
-                string += "<b>tiene submenu: </b>" + element.nombre + "<button id=\"editar-nombre\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
+                string += "<b>tiene submenu: </b>" + element.nombre + `<button id=\"editar-nombre\" class=\"btn btn-primary\">Editar</button>` + "<br></br>";
             }
             if (element.informacion != undefined) {
-                string += "<b>informacion: </b>" + element.informacion + "<button id=\"editar-informacion\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
+                string += "<b>informacion: </b>" + element.informacion + `<button id=\"editar-informacion\" class=\"btn btn-primary\">Editar</button>` + "<br></br>";
             }
+            i++;
          });
          }
          if (menu[msg].descripcion!=undefined) {
@@ -111,20 +113,20 @@ socketopciones.on("connect", () => {
          }
         text.innerHTML = string;
 
-        var editar = document.getElementById("editar-titulo");
-        editar.addEventListener("click",function (msg) {
-           msg.preventDefault(text.textContent);
-           alert(editar) 
+        var editar_titulo = document.getElementById("editar-titulo");
+        editar_titulo.addEventListener("click",function (msg) {
+           msg.preventDefault();
+           alert(text.textContent);
         });
-        var editar = document.getElementById("editar-nombre");
-        editar.addEventListener("click", function (msg) {
-            msg.preventDefault(text.textContent);
-            alert(editar)
+        var editar_nombre = document.getElementById("editar-nombre");
+        editar_nombre.addEventListener("click", function (msg) {
+            msg.preventDefault();
+            alert(text.textContent);
         });
-        var editar = document.getElementById("editar-informacion");
-        editar.addEventListener("click", function (msg) {
-            msg.preventDefault(text.textContent);
-            alert(editar)
+        var editar_info = document.getElementById("editar-informacion");
+        editar_info.addEventListener("click", function (msg) {
+            msg.preventDefault();
+            alert(text.textContent);
         });
     })
 });
