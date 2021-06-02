@@ -54,7 +54,7 @@ socketopciones.on("connect", () => {
 });
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
-        console.log(msg);
+        //console.log(msg);
         let div = document.getElementById("selector-menu");
         let enviar = document.createElement('button');
         enviar.setAttribute("class", "btn btn-primary");
@@ -62,6 +62,7 @@ socketopciones.on("connect", () => {
         let text = document.createElement('div');
         text.setAttribute("id","editor");
         for (const [key, prefix] of Object.entries(msg)) {
+            console.log(`key ${key} y prefix ${prefix}`);
             var opcion = document.createElement('option');
             opcion.innerText = msg[key].nombre;
             opcion.value = msg[key].nombre;
