@@ -77,8 +77,8 @@ socketopciones.on("connect", () => {
             div.appendChild(opcion);
         }
         enviar.innerText = "Enviar";
-        container.appendChild(enviar);
         container.appendChild(text);
+        container.appendChild(enviar);
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
@@ -96,13 +96,13 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += "<b>titulo del boton: </b>" + element.valor + "<br></br>";
+                string += "<b>titulo del boton: </b>" + element.valor + "<button id=\"editar\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
             }
             if (element.nombre != undefined) {
-                string +=  "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
+                string += "<b>tiene submenu: </b>" + element.nombre + "<button id=\"editar\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
             }
             if (element.informacion != undefined) {
-                string += "<b>informacion: </b>" + element.informacion + "<br></br>"; 
+                string += "<b>informacion: </b>" + element.informacion + "<button id=\"editar\" class=\"btn btn-primary\">Editar</button>" + "<br></br>";
             }
          });
          }
@@ -110,5 +110,11 @@ socketopciones.on("connect", () => {
              string += "<b>Descripcion: </b>" + menu[msg].descripcion;
          }
         text.innerHTML = string;
+
+        var editar = document.getElementById("editar");
+        editar.addEventListener("click",function (msg) {
+           msg.preventDefault();
+           alert(editar.value); 
+        });
     })
 });
