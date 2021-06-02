@@ -114,12 +114,6 @@ socketopciones.on("connect", () => {
         text.innerHTML = string;
 
         
-        var editar = document.getElementById(`editar-${element}`);
-        editar.addEventListener("click",function (msg) {
-           msg.preventDefault();
-           var cont = editar.parentNode;
-           alert(cont.textContent);
-        });
         
         function editar(msg) {
             var text = document.getElementById(`${msg}`);
