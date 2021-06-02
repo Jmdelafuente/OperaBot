@@ -54,7 +54,7 @@ socketopciones.on("connect", () => {
 });
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
-        //console.log(msg);
+        console.log(`estoy en selector ${msg}`);
         let div = document.getElementById("selector-menu");
         let enviar = document.createElement('button');
         enviar.setAttribute("class", "btn btn-primary");

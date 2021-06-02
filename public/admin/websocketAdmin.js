@@ -71,7 +71,7 @@ iois.on("connection", function (socket) {
 
 socket.on("obtener-menu",async function (msg) {
    let opciones = await op.obteneropciones();
-   console.log(opciones);
+   //console.log(opciones);
    socket.emit("selector-menu", opciones); 
 });
 
