@@ -95,18 +95,18 @@ socketopciones.on("connect", () => {
         //$("#selector-menu").empty();
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
-            if(element.valor){
+            if (element.valor != undefined) {
                 string = "<b>titulo del boton: </b>" + element.valor + "<br></br>";
             }
-            if(element.nombre){
+            if (element.nombre != undefined) {
                 string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
             }
-            if(element.informacion){
+            if (element.informacion != undefined) {
                 string = string + "<b>informacion: </b>" + msg.informacion; 
             }
          });
          }
-         if (menu[msg].descripcion) {
+         if (menu[msg].descripcion!=undefined) {
              string = string + "<b>Descripcion: </b>" + msg.informacion;
          }
         text.innerHTML = string;
