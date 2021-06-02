@@ -71,6 +71,7 @@ socketopciones.on("connect", () => {
             pack.nombre = prefix.nombre
             opciones = prefix.opciones;
             pack.opciones = opciones;
+            pack.descripcion = prefix.descripcion;
             menu[key] = pack;
 
             div.appendChild(opcion);
@@ -100,10 +101,13 @@ socketopciones.on("connect", () => {
             if(element.nombre){
                 string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
             }
-            if(msg.informacion){
+            if(element.informacion){
                 string = string + "<b>informacion: </b>" + msg.informacion; 
             }
          });
+         }
+         if (menu[msg].descripcion) {
+             string = string + "<b>Descripcion: </b>" + msg.informacion;
          }
         text.innerHTML = string;
     })
