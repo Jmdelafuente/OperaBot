@@ -62,7 +62,7 @@ socketopciones.on("connect", () => {
         let text = document.createElement('div');
         text.setAttribute("id","editor");
         for (const [key, prefix] of Object.entries(msg)) {
-            console.log(`key ${key} y prefix ${prefix}`);
+            console.log(`key ${key} y prefix ${JSON.stringify(prefix)}`);
             var opcion = document.createElement('option');
             opcion.innerText = msg[key].nombre;
             opcion.value = msg[key].nombre;
