@@ -97,13 +97,13 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += `<div id=${element.valor}><b>titulo del boton: </b>` + element.valor + `<button id=\"editar-titulo\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=${element.valor}><b>titulo del boton: </b>` + element.valor + `<button id=\"editar\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.nombre != undefined) {
-                string += "<b>tiene submenu: </b>" + element.nombre + `<button id=\"editar-nombre\" class=\"btn btn-primary\">Editar</button>` + "<br></br>";
+                string += `<div id=${element.nombre}><b>tiene submenu: </b>` + element.nombre + ` < button id = \"editar\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.informacion != undefined) {
-                string += "<b>informacion: </b>" + element.informacion + `<button id=\"editar-informacion\" class=\"btn btn-primary\">Editar</button>` + "<br></br>";
+                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b>` + element.informacion + `<button id=\"editar\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             i++;
          });
@@ -113,10 +113,10 @@ socketopciones.on("connect", () => {
          }
         text.innerHTML = string;
 
-        var editar_titulo = document.getElementById("editar-titulo");
-        editar_titulo.addEventListener("click",function (msg) {
+        var editar = document.getElementById("editar");
+        editar.addEventListener("click",function (msg) {
            msg.preventDefault();
-           var cont = editar_titulo.parentNode;
+           var cont = editar.parentNode;
            alert(cont.textContent);
         });
         var editar_nombre = document.getElementById("editar-nombre");
