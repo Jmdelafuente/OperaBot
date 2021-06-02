@@ -79,8 +79,8 @@ socketopciones.on("connect", () => {
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
-            console.log(`obtengo el value del div, ${opcion.value}`);
-            socketopciones.emit("sub-menu",menu[opcion.value]);
+            console.log(`obtengo el value del div, ${div.value}`);
+            socketopciones.emit("sub-menu",menu[div.value]);
         });
     })
 
