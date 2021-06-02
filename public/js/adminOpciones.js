@@ -82,13 +82,12 @@ socketopciones.on("connect", () => {
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
-            console.log(`obtengo el value del div, ${div.value}`);
             socketopciones.emit("sub-menu",div.value);
         });
     })
 
     socketopciones.on("sub-menu",function (msg) {
-        console.log(`estoy en sub-menu ${menu[msg].nombre} y ${menu[msg].opciones}`);
+
         var string="";
         let i=0;
         let div = document.getElementById("selector-menu");
@@ -97,21 +96,27 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea style = width: 50%;>` + element.valor + `</textarea> <button id=\"editar-${element.valor}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea style = \"width:50%\">` + element.valor + `</textarea> </div>`;
             }
             if (element.nombre != undefined) {
-                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea style = width: 50%;>` + element.nombre + `</textarea> <button id = \"editar-${element.nombre}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea style = \"width:50%\">` + element.nombre + `</textarea> </div>`;
             }
             if (element.informacion != undefined) {
-                string += `<div id=\"informacion_${element.valor}\"><b>informacion: </b> <textarea style = width: 50%;>` + element.informacion + `</textarea> <button id=\"editar-${element.informacion}\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"informacion_${element.valor}\"><b>informacion: </b> <textarea style = \"width:50%\">` + element.informacion + `</textarea> </div>`;
             }
             i++;
          });
          }
          if (menu[msg].descripcion!=undefined) {
-             string += `</div id=descripcion_${element.valor}><b>Descripcion: </b>` + menu[msg].descripcion + `<button id=\"editar-${menu[msg].descripcion}\" class=\"btn btn-primary\">Editar</button></div>`;
+             string += `</div id=descripcion_${element.valor}><b>Descripcion: </b>` + menu[msg].descripcion + `</div>`;
          }
         text.innerHTML = string;        
         
+    });
+
+    var envio = document.getElementById("editor");
+    envio.addEventListener('click',function (e) {
+        e.preventDefault();
+        alert(text.nextElementSibling());
     })
 });
