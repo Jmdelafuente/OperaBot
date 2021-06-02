@@ -97,13 +97,13 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += `<div id=${element.valor}><b>titulo del boton: </b>` + element.valor + `<button id=\"editar\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=${element.valor}><b>titulo del boton: </b>` + element.valor + `<button id=\"editar-${element.valor}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.nombre != undefined) {
-                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b>` + element.nombre + "<button id = \"editar\" class=\"btn btn-primary\">Editar</button></div>";
+                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b>` + element.nombre + `<button id = \"editar-${element.nombre}\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.informacion != undefined) {
-                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b>` + element.informacion + `<button id=\"editar\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b>` + element.informacion + `<button id=\"editar-${element.informacion}\" onclick=\"editar(${element.informacion})\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             i++;
          });
@@ -113,21 +113,17 @@ socketopciones.on("connect", () => {
          }
         text.innerHTML = string;
 
-        var editar = document.getElementById("editar");
+        
+        var editar = document.getElementById(`editar-${element}`);
         editar.addEventListener("click",function (msg) {
            msg.preventDefault();
            var cont = editar.parentNode;
            alert(cont.textContent);
         });
-        var editar_nombre = document.getElementById("editar-nombre");
-        editar_nombre.addEventListener("click", function (msg) {
-            msg.preventDefault();
+        
+        function editar(msg) {
+            var text = document.getElementById(`${msg}`);
             alert(text.textContent);
-        });
-        var editar_info = document.getElementById("editar-informacion");
-        editar_info.addEventListener("click", function (msg) {
-            msg.preventDefault();
-            alert(text.textContent);
-        });
+        }
     })
 });
