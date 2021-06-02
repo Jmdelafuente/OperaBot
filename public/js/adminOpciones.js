@@ -100,11 +100,11 @@ socketopciones.on("connect", () => {
             if(element.nombre){
                 string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
             }
+            if(msg.informacion){
+                string = string + "<b>informacion: </b>" + msg.informacion; 
+            }
          });
          }
-        if(msg.informacion){
-            string = string + "<b>informacion: </b>" + msg.informacion; 
-        }
         text.innerHTML = string;
     })
 });
