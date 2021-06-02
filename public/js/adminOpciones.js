@@ -2,7 +2,7 @@
 const SURLopciones = "128.53.80.105";
 //const SURLopciones = "https://chat.muninqn.gov.ar/operadores/admin/";
 const socketopciones = io(`${SURLopciones}:4002`);
-
+let menu = [];
 
 $(function () {
     // * FUNCIONES AUXILIARES * //
@@ -53,7 +53,6 @@ socketopciones.on("connect", () => {
     
 });
     socketopciones.on("selector-menu",function (msg) {
-        let opciones = [];
         console.log(`estoy en selector ${msg}`);
         let div = document.getElementById("selector-menu");
         let enviar = document.createElement('button');
@@ -65,9 +64,13 @@ socketopciones.on("connect", () => {
             console.log(`key ${key} y prefix ${JSON.stringify(prefix)}`);
             var opcion = document.createElement('option');
             opcion.innerText = prefix.nombre;
-            opcion.value = prefix.nombre;
-            opciones[prefix.nombre] = prefix.opciones;
-            var informacion = prefix.informacion;
+            opcion.value = msg[key];
+            var pack = {};
+            pack.informacion = prefix.informacion;
+            pack.nombre = prefix.nombre
+            pack.opciones = prefix.opciones
+            menu[msg[key]] = pack;
+
             div.appendChild(opcion);
         }
         enviar.innerText = "Enviar";
@@ -76,11 +79,8 @@ socketopciones.on("connect", () => {
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
-            var pack = {};
-            pack.value = div.value;
-            pack.informacion = informacion;
-            pack.opciones = opciones;
-            socketopciones.emit("sub-menu",pack);
+            console.log(`obtengo el value del div, ${div.value}`);
+            socketopciones.emit("sub-menu",menu[div.value]);
         });
     })
 
