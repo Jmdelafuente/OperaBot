@@ -100,7 +100,7 @@ socketopciones.on("connect", () => {
                 string += `<div id=${element.valor}><b>titulo del boton: </b>` + element.valor + `<button id=\"editar\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.nombre != undefined) {
-                string += `<div id=${element.nombre}><b>tiene submenu: </b>` + element.nombre + ` < button id = \"editar\" class=\"btn btn-primary\">Editar</button></div>`;
+                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b>` + element.nombre + "<button id = \"editar\" class=\"btn btn-primary\">Editar</button></div>";
             }
             if (element.informacion != undefined) {
                 string += `<div id=\"informacion de ${element.valor}\"><b>informacion: </b>` + element.informacion + `<button id=\"editar\" class=\"btn btn-primary\">Editar</button></div>`;
