@@ -97,7 +97,7 @@ socketopciones.on("connect", () => {
         if(menu[msg].opciones){
         menu[msg].opciones.forEach(element => {
             if (element.valor != undefined) {
-                string += "<b>titulo del boton: </b>" + element.valor + `<button id=\"editar-titulo\" class=\"btn btn-primary\">Editar</button>` + "<br></br>";
+                string += `<div id=${element.valor}><b>titulo del boton: </b>` + element.valor + `<button id=\"editar-titulo\" class=\"btn btn-primary\">Editar</button></div>`;
             }
             if (element.nombre != undefined) {
                 string += "<b>tiene submenu: </b>" + element.nombre + `<button id=\"editar-nombre\" class=\"btn btn-primary\">Editar</button>` + "<br></br>";
@@ -116,7 +116,8 @@ socketopciones.on("connect", () => {
         var editar_titulo = document.getElementById("editar-titulo");
         editar_titulo.addEventListener("click",function (msg) {
            msg.preventDefault();
-           alert(text.textContent);
+           var cont = editar_titulo.parentNode;
+           alert(cont.textContent);
         });
         var editar_nombre = document.getElementById("editar-nombre");
         editar_nombre.addEventListener("click", function (msg) {
