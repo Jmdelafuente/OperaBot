@@ -66,6 +66,7 @@ socketopciones.on("connect", () => {
             opcion.innerText = msg[key].nombre;
             opcion.value = msg[key].nombre;
             opciones[msg[key].nombre] = msg[key].opciones;
+            var informacion = msg[key].informacion;
             div.appendChild(opcion);
         }
         enviar.innerText = "Enviar";
@@ -74,7 +75,10 @@ socketopciones.on("connect", () => {
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
-            
+            var pack = {};
+            pack.value = div.value;
+            pack.informacion = informacion;
+            pack.opciones = opciones;
             socketopciones.emit("sub-menu",div.value);
         });
     })
@@ -91,10 +95,12 @@ socketopciones.on("connect", () => {
             }
             if(element.nombre){
                 string = string + "<b>tiene submenu: </b>" + element.nombre + "<br></br>";
-
             }
-            text.innerHTML = string;
         });
-
+        
+        if(msg.informacion){
+            string = string + "<b>informacion: </b>" + msg.informacion; 
+        }
+        text.innerHTML = string;
     })
 });
