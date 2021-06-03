@@ -133,7 +133,7 @@ socketopciones.on("connect", () => {
        var titulo = document.getElementById("titulo");
        let content = document.getElementById("content");
        while(content.firstChild){
-           content.removeChild(element.firstChild);
+           content.removeChild(content.firstChild);
        }
       
        titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
