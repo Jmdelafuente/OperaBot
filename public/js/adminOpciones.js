@@ -68,7 +68,7 @@ socketopciones.on("connect", () => {
         titulo.setAttribute("id","titulo");
         content.setAttribute("id","content");
         for (const [key, prefix] of Object.entries(msg)) {
-            console.log(`key ${key} y prefix ${JSON.stringify(prefix)}`);
+          
             var opcion = document.createElement('option');
             opcion.innerText = prefix.nombre;
             opcion.value = key;
@@ -132,7 +132,7 @@ socketopciones.on("connect", () => {
     socketopciones.on("menu-grafico",function (msg) {
        var titulo = document.getElementById("titulo");
        let content = document.getElementById("content");
-       content.remove();
+       
       
        titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
         menu[msg].opciones.forEach(element => {
