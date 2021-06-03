@@ -145,6 +145,7 @@ socketopciones.on("connect", () => {
              if (element.informacion != undefined) {
                  let titulo_boton = document.createElement('div');
                  let textarea = document.createElement('textarea');
+                 textarea.setAttribute('style', "width:50%");
                  content.appendChild(titulo_boton);
                  content.appendChild(textarea);
                  titulo_boton.innerHTML = "<b>" + element.nombre + "</b>";
