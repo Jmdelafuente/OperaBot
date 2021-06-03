@@ -54,13 +54,18 @@ socketopciones.on("connect", () => {
 });
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
-        console.log(`estoy en selector ${msg}`);
         let div = document.getElementById("selector-menu");
         let enviar = document.createElement('button');
         enviar.setAttribute("class", "btn btn-primary");
         let container= document.getElementById("div-menu");
         let text = document.createElement('div');
         text.setAttribute("id","editor");
+        enviar.setAttribute("id", "enviar_opciones");
+        let contenedor = document.createElement('div');
+        var titulo = document.createElement('div');
+        let content = document.createElement('div');
+        titulo.setAttribute("id","titulo");
+        content.setAttribute("id","content");
         for (const [key, prefix] of Object.entries(msg)) {
             console.log(`key ${key} y prefix ${JSON.stringify(prefix)}`);
             var opcion = document.createElement('option');
@@ -77,15 +82,18 @@ socketopciones.on("connect", () => {
             div.appendChild(opcion);
         }
         enviar.innerText = "Enviar";
+        contenedor.appendChild(titulo);
+        contenedor.appendChild(content);
         container.appendChild(text);
         container.appendChild(enviar);
+        container.appendChild(contenedor);
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
             socketopciones.emit("sub-menu",div.value);
         });
 
-         var envio = document.getElementById("editor");
+         var envio = document.getElementById("enviar_opciones");
          envio.addEventListener('click', function (e) {
              e.preventDefault();
              alert("funciona¡");
@@ -121,17 +129,15 @@ socketopciones.on("connect", () => {
     });
 
     socketopciones.on("menu-grafico",function (msg) {
-       let container = document.getElementById("div-menu");
-       let contenedor = document.createElement('div');
-       let content = document.createElement('div');
-       let titulo = document.createElement('div');
-      
-       if (menu[msg].informacion){
+       var titulo = document.getElementById("titulo");
+       let content = document.getElementById("content");
+     
+       if (menu[msg].informacion != undefined){
            let textarea = document.createElement('textarea');
             content.appendChild(textarea);
             textarea.innerHTML = menu[msg].informacion
         }
-       titulo.innerHTML=menu[msg].nombre;
+       titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
         menu[msg].opciones.forEach(element => {
             var btn = document.createElement("button");
             btn.setAttribute("value", element.valor);
@@ -145,10 +151,8 @@ socketopciones.on("connect", () => {
             });
 
         });
-        let div = document.getElementById("div-menu");
-         contenedor.appendChild(titulo);
-         contenedor.appendChild(content);
-         div.appendChild(contenedor);
+
+        
     });
 
    
