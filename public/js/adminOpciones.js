@@ -132,7 +132,9 @@ socketopciones.on("connect", () => {
     socketopciones.on("menu-grafico",function (msg) {
        var titulo = document.getElementById("titulo");
        let content = document.getElementById("content");
-       
+       if(content.childNodes.length != 0){
+           content.remove();
+       }
       
        titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
         menu[msg].opciones.forEach(element => {
@@ -146,7 +148,7 @@ socketopciones.on("connect", () => {
                  content.appendChild(titulo_boton);
                  content.appendChild(textarea);
                  titulo_boton.innerHTML = "<b>" + element.nombre + "</b>";
-                 textarea.innerHTML = menu[msg].informacion
+                 textarea.innerHTML = element.informacion;
              }
             content.appendChild(btn);
             btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
