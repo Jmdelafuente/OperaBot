@@ -145,10 +145,10 @@ socketopciones.on("connect", () => {
             });
 
         });
-        let container = document.getElementById("div-menu");
+        let div = document.getElementById("div-menu");
          contenedor.appendChild(titulo);
          contenedor.appendChild(content);
-         container.appendChild(contenedor);
+         div.appendChild(contenedor);
     });
 
    
