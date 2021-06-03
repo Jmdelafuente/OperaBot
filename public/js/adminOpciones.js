@@ -121,8 +121,16 @@ socketopciones.on("connect", () => {
     });
 
     socketopciones.on("menu-grafico",function (msg) {
-       let textarea = document.createElement('textarea');
+       let contenedor = document.createElement('div');
+       let content = document.createElement('div');
        let titulo = document.createElement('div');
+       contenedor.appendChild(titulo);
+       contenedor.appendChild(content);
+       if (menu[msg].informacion){
+           let textarea = document.createElement('textarea');
+            content.appendChild(textarea);
+            textarea.innerHTML = menu[msg].informacion
+        }
        titulo.innerHTML=menu[msg].nombre;
         menu[msg].opciones.forEach(element => {
             var btn = document.createElement("button");
