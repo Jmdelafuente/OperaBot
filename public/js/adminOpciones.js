@@ -132,8 +132,8 @@ socketopciones.on("connect", () => {
     socketopciones.on("menu-grafico",function (msg) {
        var titulo = document.getElementById("titulo");
        let content = document.getElementById("content");
-       if(content.childNodes.length != 0){
-           content.remove();
+       while(content.firstChild){
+           content.removeChild(element.firstChild);
        }
       
        titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
