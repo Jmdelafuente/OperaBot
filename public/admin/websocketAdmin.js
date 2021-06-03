@@ -81,6 +81,7 @@ socket.on("sub-menu", function (msg) {
     //pack.nombre = opcion.nombre;
     //pack.opciones = opcion.opciones;
     socket.emit("sub-menu",msg);
+    socket.emit("menu-grafico",msg);
 })
 
 socket.on("opciones_admin",function (msg) {

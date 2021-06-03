@@ -120,5 +120,24 @@ socketopciones.on("connect", () => {
         
     });
 
+    socketopciones.on("menu-grafico",function (msg) {
+       let textarea = document.createElement('textarea');
+       let titulo = document.createElement('div');
+       titulo.innerHTML=menu[msg].nombre;
+        menu[msg].opciones.forEach(element => {
+            var btn = document.createElement("button");
+            btn.setAttribute("value", element.valor);
+            btn.setAttribute("id", msg);
+            btn.innerText = element.valor;
+            content.appendChild(btn);
+            btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
+            btn.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        alert("funca");
+            });
+
+        });
+    });
+
    
 });
