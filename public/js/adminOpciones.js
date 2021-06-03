@@ -121,11 +121,11 @@ socketopciones.on("connect", () => {
     });
 
     socketopciones.on("menu-grafico",function (msg) {
+       let container = document.getElementById("div-menu");
        let contenedor = document.createElement('div');
        let content = document.createElement('div');
        let titulo = document.createElement('div');
-       contenedor.appendChild(titulo);
-       contenedor.appendChild(content);
+      
        if (menu[msg].informacion){
            let textarea = document.createElement('textarea');
             content.appendChild(textarea);
@@ -145,6 +145,10 @@ socketopciones.on("connect", () => {
             });
 
         });
+        let container = document.getElementById("div-menu");
+         contenedor.appendChild(titulo);
+         contenedor.appendChild(content);
+         container.appendChild(contenedor);
     });
 
    
