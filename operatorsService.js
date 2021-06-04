@@ -306,7 +306,7 @@ function obtenerplantillas() {
 
 function modificaropciones(msg) {
   opciones.modificarOpciones(msg);
-  messenger.cambiar_opciones(msg);
+  //messenger.cambiar_opciones(msg);
 }
 
 function modificarPlantilla(msg) {

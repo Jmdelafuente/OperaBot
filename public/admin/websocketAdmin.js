@@ -85,16 +85,14 @@ socket.on("sub-menu", function (msg) {
 })
 
 socket.on("editar_menu",async function (msg) {
-    let opciones = await op.obteneropciones();
+  
     let json = "[";
     msg.forEach(element => {
-        json += JSON.stringify(element);
+        json += element;
     });
-
     json += "]";
-    
-    console.log(json);
-    console.log(`opciones ${JSON.stringify(opciones)}`);
+
+    op.modificarOpciones(json);
 })
 
 socket.on("opciones_admin",function (msg) {
