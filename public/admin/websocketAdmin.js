@@ -92,7 +92,7 @@ socket.on("editar_menu",async function (msg) {
     });
     json += "]";
 
-    op.modificarOpciones(json);
+    op.modificaropciones(json);
 })
 
 socket.on("opciones_admin",function (msg) {
