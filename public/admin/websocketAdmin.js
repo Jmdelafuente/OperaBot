@@ -88,7 +88,7 @@ socket.on("editar_menu",async function (msg) {
   
     let json = "";
     msg.forEach(element => {
-        json += element;
+        json += JSON.stringify(element);
     });
     //json += "]";
 
