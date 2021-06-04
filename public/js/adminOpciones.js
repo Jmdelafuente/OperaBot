@@ -97,7 +97,8 @@ socketopciones.on("connect", () => {
          var envio = document.getElementById("enviar_opciones");
          envio.addEventListener('click', function (e) {
              e.preventDefault();
-             let opcion = document.getElementById("titulo").value;
+             let opcion = $('#titulo').attr('data-value');;
+
              console.log(menu[opcion]);
              console.log(menu[opcion].opciones);
          });
@@ -137,7 +138,7 @@ socketopciones.on("connect", () => {
        while(content.firstChild){
            content.removeChild(content.firstChild);
        }
-       titulo.setAttribute('value',msg);
+       titulo.setAttribute('data-value', msg);
        titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
         menu[msg].opciones.forEach(element => {
             var btn = document.createElement("button");
