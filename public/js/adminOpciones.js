@@ -99,7 +99,7 @@ socketopciones.on("connect", () => {
              e.preventDefault();
              let opcion = document.getElementById("titulo").value;
              console.log(menu[opcion]);
-             console.log(document.getElementById(menu[opcion].opciones));
+             console.log(menu[opcion].opciones);
          });
     })
 
