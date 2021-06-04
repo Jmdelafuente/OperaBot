@@ -92,9 +92,9 @@ socket.on("editar_menu",async function (msg) {
     });
 
     json += "]";
-
+    
     console.log(json);
-    console.log(`opciones ${opciones}`);
+    console.log(`opciones ${JSON.stringify(opciones)}`);
 })
 
 socket.on("opciones_admin",function (msg) {
