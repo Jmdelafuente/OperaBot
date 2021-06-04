@@ -86,11 +86,11 @@ socket.on("sub-menu", function (msg) {
 
 socket.on("editar_menu",async function (msg) {
   
-    let json = "[";
+    let json = "";
     msg.forEach(element => {
         json += element;
     });
-    json += "]";
+    //json += "]";
 
     op.modificaropciones(json);
 })
