@@ -80,7 +80,7 @@ socket.on("sub-menu", function (msg) {
     //var pack = {};
     //pack.nombre = opcion.nombre;
     //pack.opciones = opcion.opciones;
-    socket.emit("sub-menu",msg);
+    //socket.emit("sub-menu",msg);
     socket.emit("menu-grafico",msg);
 })
 

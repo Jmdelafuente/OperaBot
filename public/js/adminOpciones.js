@@ -86,8 +86,8 @@ socketopciones.on("connect", () => {
         contenedor.appendChild(titulo);
         contenedor.appendChild(content);
         container.appendChild(text);
-        container.appendChild(enviar);
         container.appendChild(contenedor);
+        container.appendChild(enviar);
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
@@ -97,8 +97,10 @@ socketopciones.on("connect", () => {
          var envio = document.getElementById("enviar_opciones");
          envio.addEventListener('click', function (e) {
              e.preventDefault();
-             alert("funciona¡");
-         })
+             let opcion = document.getElementById("titulo").value;
+             console.log(menu[opcion]);
+             console.log(document.getElementById(menu[opcion].opciones));
+         });
     })
 
     socketopciones.on("sub-menu",function (msg) {
@@ -135,17 +137,18 @@ socketopciones.on("connect", () => {
        while(content.firstChild){
            content.removeChild(content.firstChild);
        }
-      
+       titulo.setAttribute('value',msg);
        titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
         menu[msg].opciones.forEach(element => {
             var btn = document.createElement("button");
             btn.setAttribute("value", element.valor);
-            btn.setAttribute("id", msg);
+            btn.setAttribute("id", element.nombre);
             btn.innerText = element.valor;
              if (element.informacion != undefined) {
                  let titulo_boton = document.createElement('div');
                  let textarea = document.createElement('textarea');
                  textarea.setAttribute('style', "width:50%");
+                 textarea.setAttribute("id",element.valor);
                  content.appendChild(titulo_boton);
                  content.appendChild(textarea);
                  titulo_boton.innerHTML = "<b>" + element.nombre + "</b>";
