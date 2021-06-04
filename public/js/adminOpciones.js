@@ -107,6 +107,8 @@ socketopciones.on("connect", () => {
                 }
              });
              console.log(menu[opcion]);
+             socketopciones.emit("editar_menu",menu);
+             //alert("Se modifico el menu");
          });
     })
 

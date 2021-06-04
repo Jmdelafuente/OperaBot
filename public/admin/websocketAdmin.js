@@ -84,6 +84,17 @@ socket.on("sub-menu", function (msg) {
     socket.emit("menu-grafico",msg);
 })
 
+socket.on("editar_menu",function (msg) {
+    let json = "[";
+    msg.forEach(element => {
+        json += element;
+    });
+
+    json += "]";
+
+    console.log(json);
+})
+
 socket.on("opciones_admin",function (msg) {
     let opcion = JSON.stringify(op.obteneropciones());
     let nuevasopciones = msg;
