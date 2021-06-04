@@ -84,7 +84,7 @@ socket.on("sub-menu", function (msg) {
     socket.emit("menu-grafico",msg);
 })
 
-socket.on("editar_menu",function (msg) {
+socket.on("editar_menu",async function (msg) {
     let opciones = await op.obteneropciones();
     let json = "[";
     msg.forEach(element => {
