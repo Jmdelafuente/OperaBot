@@ -100,7 +100,13 @@ socketopciones.on("connect", () => {
              let opcion = $('#titulo').attr('data-value');;
 
              console.log(menu[opcion]);
-             console.log(menu[opcion].opciones);
+             menu[opcion].opciones.forEach(element => {
+                let info = document.getElementById(element.valor).value;
+                if(element.informacion != info){
+                    element.informacion = info;
+                }
+             });
+             console.log(menu[opcion]);
          });
     })
 
