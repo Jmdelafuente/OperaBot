@@ -370,6 +370,7 @@ class Chat {
 
   async chat_cerrado(estado){
     this.estado = estado;
+    var res;
     await axios
       .post(services.URLs[this.origin] + "/closeChat", {
         body: { id: this.id, text: estado },
