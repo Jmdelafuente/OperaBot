@@ -3,8 +3,9 @@ let rawdata = fs.readFileSync('./configs/diccionario-opciones.json');
 let dic = JSON.parse(rawdata);
 
 function modificarOpciones(msg) {
+    console.log(`llegue a modificar ${JSON.stringify(msg)}`);
     fs.writeFile('./configs/diccionario-opciones.json', msg, 'utf8', (err) => {
-     if(err) throw err;
+     if(err){ console.log(err);throw err;}
      console.log('se guardo el archivo');   
     });
 }

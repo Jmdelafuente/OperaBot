@@ -230,10 +230,9 @@ async function closeChat(id) {
 
 //TODO: parte del administrador, cuando modifique el menú que se envie a burbuja el nuevo menú 
 async function cambiar_opciones(msg) {
-  
     let res;
     await axios
-      .post(services.URLs[this.origin] + "/modificaropciones", {
+      .post(services.URLs['P'] + "/modificaropciones", {
         body: services.bodyParser('P', 0, msg),
         headers: {
           "Content-Type": "application/json",

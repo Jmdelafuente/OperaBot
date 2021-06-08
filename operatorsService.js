@@ -244,7 +244,7 @@ async function recibirImagen(chat, tipo, nuevo) {
   horaFin.setHours(parseInt(config.END_TIME));
   let horaActual = new Date(Date.now());
   //FIXME: arreglar el if que no entra bien
-  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() < horaFin.getHours()) {
+  if (horaActual.getHours() >= horaInicio.getHours() && horaActual.getHours() <= horaFin.getHours()) {
     // Check if chat is already assigned
     if (!chat_asig[id]) {
       // Se asigna el chat
@@ -306,7 +306,7 @@ function obtenerplantillas() {
 
 function modificaropciones(msg) {
   opciones.modificarOpciones(msg);
-  messenger.cambiar_opciones(msg);
+  //messenger.cambiar_opciones(msg);
 }
 
 function modificarPlantilla(msg) {
@@ -517,6 +517,10 @@ function mandar(msg) {
   });
 }
 
+async function obteneropciones(msg) {
+  return opciones.obteneropciones();
+}
+
 async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
 }
@@ -558,7 +562,7 @@ module.exports.getMoreMessages = getMoreMessages;
 module.exports.recibirMensaje = recibirMensaje;
 module.exports.recibirImagen = recibirImagen;
 module.exports.reconectarOperador = reconectarOperador;
-module.exports.modificarOpciones = modificaropciones;
+module.exports.modificaropciones = modificaropciones;
 module.exports.modificarPlantilla = modificarPlantilla;
 module.exports.operators = operators;
 module.exports.obtenerplantillas = obtenerplantillas;
@@ -570,3 +574,4 @@ module.exports.obtenerNombre = obtenerNombre;
 module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
+module.exports.obteneropciones = obteneropciones;

@@ -14,7 +14,7 @@ var iois = require("socket.io")(http, {
 });
 var path = require("path");
 var plant = require("../../configs/messagesConfig");
-var portFront = process.env.PORT || 4002;
+var portFront = 4002;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
@@ -69,18 +69,30 @@ http.listen(app.get('port'), () => {
 iois.on("connection", function (socket) {
     console.log("user connect");
 
-socket.on("obtener-menu", function (msg) {
-   let opciones = op.obteneropciones();
-   console.log(opciones);
+socket.on("obtener-menu",async function (msg) {
+   let opciones = await op.obteneropciones();
+   //console.log(opciones);
    socket.emit("selector-menu", opciones); 
 });
 
 socket.on("sub-menu", function (msg) {
-    let opcion = menu.filtrarOpciones(msg);
-    var pack = {};
-    pack.nombre = opcion.nombre;
-    pack.opciones = opcion.opciones;
-    socket.emit("sub-menu",pack);
+    //let opcion = menu.filtrarOpciones(msg);
+    //var pack = {};
+    //pack.nombre = opcion.nombre;
+    //pack.opciones = opcion.opciones;
+    //socket.emit("sub-menu",msg);
+    socket.emit("menu-grafico",msg);
+})
+
+socket.on("editar_menu",async function (msg) {
+  
+    let json = "";
+    msg.forEach(element => {
+        json += JSON.stringify(element);
+    });
+    //json += "]";
+
+    op.modificaropciones(json);
 })
 
 socket.on("opciones_admin",function (msg) {

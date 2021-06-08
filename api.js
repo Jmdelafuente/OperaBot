@@ -48,6 +48,7 @@ for (const [key, prefix] of Object.entries(services.PREFIXes)) {
   // * Recibimos nueva imagen de un messenger service
   api.post(`/api/${prefix}/newimage`, jsonParser, (req, res) => {
     // TODO: authenticate origin: usar validateIP con req
+    console.log("entre al api de newimage");
     let data = JSON.parse(req.body.body);
     ms.nuevaImagen(
       data.user,

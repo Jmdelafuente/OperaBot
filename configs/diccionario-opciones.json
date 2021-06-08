@@ -1,8 +1,13 @@
 [{
         "nombre": "Menu Inicial",
         "opciones": [{
+            "nombre": "Medidas en la ciudad",
+            "valor": "Medidas en la ciudad",
+            "informacion":"¡Tenemos que seguir cuidándonos!<br>ℹ️ Nuevas medidas de cuidado, para el período 31/5 al 5/6 de 2021. </br><br>• No se podrá circular en las vías públicas entre las 18:00 hs y las 6:00 hs <br>• Quedan exceptuadas de la restricción a la circulación nocturna:</br><br>- Actividades y servicios esenciales.</br><br>- Las personas afectadas a las actividades industriales que se encuentren trabajando en horario nocturno.</br> <br> - Las personas que deban retornar a su domicilio habitual desde su lugar de trabajo o concurrir al mismo. Dicha circunstancia deberá ser debidamente acreditada.</br><br>Todas las personas exceptuadas deberán llevar el “Certificado Único Habilitante para Circulación - Emergencia COVID-19” – Para tramitarlo ingresá a: ¬https://www.argentina.gob.ar/circular/tramite¬ </br> <br> Si tenés dos o más síntomas compatibles con #Covid19, te recomendamos acercarte. No olvides:</br><br>😷 Usar Barbijo o tapabocas.</br><br>↔️ Mantener distancia.</br><br>❌ No compartir mate ni utensilios.</br><br>🧼 Lavarte regularmente las manos.</br>"
+        },{
             "nombre": "Licencia de conducir",
-            "valor": "Licencia de conducir"
+            "valor": "Licencia de conducir",
+            "informacion": "¿En qué te podemos ayudar?"
         }, {
             "nombre": "Tributos municipales",
             "valor": "Tributos municipales"
@@ -17,16 +22,40 @@
             "nombre": "Whatsapp",
             "valor": "A través de whatsapp"
         }, {
-            "nombre": "respuesta burbuja",
-            "valor": "A través del chat"
+            "nombre": "respuesta burbuja prueba",
+            "valor": "A traves del chat"
         }],
         "descripcion": "Se da a elejir el medio por el cual quieren comunicarse"
+    },{
+        "nombre": "Medidas en la ciudad",
+        "opciones":[{
+            "nombre": "Actividades",
+            "valor": "Actividades",
+            "informacion":"Se suspenden:<br>❌  Reuniones sociales en domicilios particulares y en espacios públicos al aire libre.</br><br>❌ Las competencias deportivas de todo tipo, la actividad de clubes deportivos, o cualquier otra actividad deportiva de carácter grupal, o que implique aglomeración de personas.</br><br>❌ Las actividades religiosas en espacios cerrados y abiertos, pudiendo realizarse ceremonias virtuales.</br><br>❌ Teatros, cines, museos y bibliotecas, casinos, bingos y discotecas.</br><br>❌ Actividades y actos oficiales provinciales y municipales.</br><br>Se permite:</br><br>✔ Las actividades comerciales podrán funcionar y atender desde las 6:00 hs hasta las 18:00 hs, de acuerdo a los protocolos sanitarios aprobados, y con un máximo del 30% del aforo.</br><br>✔ Las farmacias y estaciones de servicio podrán funcionar durante las 24 horas.</br><br>✔Los locales gastronómicos podrán funcionar y atender clientes en espacios habilitados al aire libre, desde las 6:00 hs hasta las 18:00 hs, respetando los correspondientes protocolos, con delivery o take away hasta 23:00 hs.</br><br>✔El transporte público solo estará habilitado para las actividades esenciales.</br><br>Esenciales</br><br>El Decreto del PEN 334/21 determina las actividades consideradas esenciales. Podes consultarlas en el siguiente link:</br><br> ¬https://www.boletinoficial.gob.ar/detalleAviso/primera/244721/20210522¬ </br>"
+        },{
+            "nombre":"Programa DETECTAR",
+            "valor":"Programa DETECTAR",
+            "informacion":"📍Gimnasio Colegio San Martin – lunes 31/05 a viernes 04/06 de 8.30 a 18 hs.<br>📍Estadio Ruca Che - lunes a viernes 8:30 a 15 hs. // sábado y domingo 8.30 a 18 hs.</br>"
+        }]
+    },{
+        "nombre":"Actividades",
+        "opciones":[{
+            "nombre": "Menu Inicial",
+            "valor": "Volver"
+        }]
+    },{
+        "nombre":"Programa DETECTAR",
+        "opciones":[{
+            "nombre": "Menu Inicial",
+            "valor": "Volver"
+        }]
     },
     {
         "nombre": "Licencia de conducir",
         "opciones": [{
             "nombre": "Requisitos",
-            "valor": "Requisitos"
+            "valor": "Requisitos",
+            "informacion":"¿Qué trámite deseas realizar?"
         }, {
             "nombre": "turnos licencia",
             "valor": "Turnos",
@@ -40,10 +69,12 @@
         "nombre": "Requisitos",
         "opciones": [{
             "nombre": "Para renovar tu licencia",
-            "valor": "Para renovar "
+            "valor": "Renovar",
+            "informacion":"¿Qué tipo de licencia deseas renovar?"
         }, {
             "nombre": "Para habilitar tu licencia",
-            "valor": "Para sacar por primera vez"
+            "valor": "Sacar por primera vez",
+            "informacion": "¿Qué tipo de licencia necesitas?"
         }, {
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -56,14 +87,15 @@
         "nombre": "Para habilitar tu licencia",
         "opciones": [{
             "nombre": "habilitar Moto",
-            "valor": "Moto"
+            "valor": "Moto"           
         }, {
             "nombre": "habilitar Auto",
             "valor": "Auto",
-            "informacion": "Las subclases se dividen en vehículo solo (B1) y vehículo con carro (B2) En caso de la clase B2 se debe agregar la documentación del carro(Cédula de identificación y seguro con patente declarada)"
+            "informacion": "<br>Las subclases se dividen en vehículo solo (B1) y vehículo con carro (B2) En caso de la clase B2 se debe agregar la documentación del carro(Cédula de identificación y seguro con patente declarada)</br> <br>Seleccioná tu edad</br>"
         }, {
             "nombre": "Profesionales",
-            "valor": "Profesionales"
+            "valor": "Profesionales",
+            "informacion":"¿Qué clase de licencia necesitas?"
         }, {
             "nombre": "Requisitos",
             "valor": "Volver"
@@ -72,7 +104,7 @@
 
     },{
         "nombre": "habilitar Moto",
-        "opciones":[{"nombre":"habilitar Moto baja", "valor":"150cc"},{"nombre":"habilitar Moto alta","valor":"Más de 300cc"}]
+        "opciones":[{"nombre":"habilitar Moto baja", "valor":"150cc", "informacion":"Seleccioná tu edad"},{"nombre":"habilitar Moto alta","valor":"Más de 300cc", "informacion":"Seleccioná tu edad"}]
     } ,{
         "nombre":"Profesionales",
         "opciones": [{
@@ -98,13 +130,16 @@
         "nombre": "Para renovar tu licencia",
         "opciones": [{
             "nombre": "renovar Moto",
-            "valor": "Moto"
+            "valor": "Moto",
+            "informacion":"Seleccioná tu edad"
         }, {
             "nombre": "renovar Auto",
-            "valor": "Auto"
+            "valor": "Auto",
+            "informacion":"Seleccioná tu edad"
         }, {
             "nombre": "renovar Profesionales",
-            "valor": "Profesionales"
+            "valor": "Profesionales",
+            "informacion":"¿Qué clase de licencia necesitas?"
         },{
             "nombre": "Habla con nosotros",
             "valor": "Chatea con nosotros"
@@ -204,12 +239,9 @@
         "opciones": [{
             "nombre": "Menu Inicial",
             "valor": "Volver"
-        }, {
-            "nombre": "Habla con nosotros",
-            "valor": "Chatea con nosotros"
         }]
     }, {
-        "nombre": "respuesta burbuja",
+        "nombre": "respuesta burbuja prueba",
         "opciones": []
     }, {
         "nombre": "renovar Auto",
@@ -768,11 +800,11 @@
         "opciones": [{
             "nombre": "Sin clave",
             "valor": "IMPRIMÍ TUS RECIBOS",
-            "informacion": "Para obtener las boletas de tus tributos municipales, debés ingresar a ¬https://www.neuquencapital.gov.ar¬ , hacer click en el botón de la impresora en el costado izquierdo. SIN CLAVE: podrás descargar las boletas del semestre en curso.\nElegís el tributo que deseas abonar, ingresás los datos solicitados y trasladá el tilde hacia el final.\nSi querés que te la enviemos por acá o por mail, te solicito que nos envíes el tributo que necesitás(dominio, nomenclatura catastral, número de licencia comercial, etc) y un correo electrónico."
+            "informacion": "Para obtener las boletas de tus tributos municipales, debés ingresar a ¬https://www.neuquencapital.gov.ar¬ , hacé click en el botón “Paga / Obtené  tus tributos”. SIN CLAVE: podrás descargar las boletas del semestre en curso.\nElegís el tributo que deseas abonar, ingresás los datos solicitados y trasladá el tilde hacia el final.\nSi querés que te la enviemos por acá o por mail, te solicito que nos envíes el tributo que necesitás(dominio, nomenclatura catastral, número de licencia comercial, etc) y un correo electrónico."
         }, {
             "nombre": "Con clave",
             "valor": "CONOCÉ TU SITUACIÓN TRIBUTARIA",
-            "informacion": "Si querés conocer toda tu situación tributaria debés ingresar al ícono CON CLAVE. Para realizar el usuario y contraseña te solicitamos que nos envíes tu nombre completo, DNI, correo electrónico y teléfono.\nLuego de 48 hs podrás ingresar a nuestra página, hace click en el ícono de la impresora del costado izquierdo, luego en CON CLAVE.Tu usuario será tu número de DNI y tu contraseña será tu número de DNI, luego el sistema te solicitará que lo cambies."
+            "informacion": "Si querés conocer toda tu situación tributaria debés ingresar al ícono CON CLAVE. Para realizar el usuario y contraseña te solicitamos que nos envíes tu nombre completo, DNI, correo electrónico y teléfono.\nLuego de 48 hs podrás ingresar a nuestra página,  hacé click en el botón “Paga / Obtené  tus tributos”, luego en CON CLAVE.Tu usuario será tu número de DNI y tu contraseña será tu número de DNI, luego el sistema te solicitará que lo cambies."
         }, {
             "nombre": "Tributos municipales",
             "valor": "Volver"

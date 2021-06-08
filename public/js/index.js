@@ -1,7 +1,7 @@
 //const SURL = "http://localhost";
-//const SURL = "128.53.80.105";
+const SURL = "128.53.80.105";
 //const socket = io(`${SURL}`, { 'forceNew': true, path: '/operadores/socket.io' });
-const SURL = "https://chat.muninqn.gov.ar";
+//const SURL = "https://chat.muninqn.gov.ar";
 const socket = io(`${SURL}` , {'forceNew': true, path:'/operadores/socket.io'});
 
 var blueprints = {};
@@ -691,7 +691,7 @@ $(function () {
     // socket.emit("",{});
   }
   socket.on("connect", function () {
-    console.log(`conn: ${conn}, params: ${params}`);
+    //console.log(`conn: ${conn}, params: ${params}`);
     socket.emit("new_operator", params);
     conn = true;
   });
