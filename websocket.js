@@ -13,7 +13,7 @@ var io = require("socket.io")(http, {
 });
 var path = require("path");
 var plant = require("./configs/messagesConfig");
-var portFront = 6001;
+var portFront = 2999;
 var sockets = {};
 var sessions = {}; // SESSIONKEY -> Socket para chequear si sufre desconexion temporal
 
