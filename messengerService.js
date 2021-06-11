@@ -158,6 +158,7 @@ async function cambiar_Email(id) {
 }
 
 async function enviarArchivo(id, cont, type, operadorid) {
+  console.log("estoy en enviar archivo de messenger Service");
   var chat = chatsList[id];
   let res = await chat.enviarArchivo(cont, type, operadorid);
   return res;

@@ -542,20 +542,20 @@ $(function () {
 
 
         if (mime.substring(0, 5) == 'image') {
+          console.log("estoy en mime imagen");
           pack.type = 'image';
-          pack.operadorid = sessionStorage.getItem("operadorid");
           socket.emit('adjunto-archivo', pack);
           addMessage(imagen, 'E', hora, "image");
           } else if (mime == 'application/pdf'){
+          console.log("estoy en mime pdf");
           pack.type = 'pdf';
-          pack.operadorid = sessionStorage.getItem("operadorid");
           socket.emit('adjunto-archivo', pack);
           addMessage(imagen, 'E', hora, "pdf");
           }
 
         });
       } else {
-        let mensaje = "Archivo demasiado pesada";
+        let mensaje = "Archivo demasiado pesado";
         socket.emit('send_op_message', mensaje);
         addMessage(mensaje, 'E', hora, 'message');
       }

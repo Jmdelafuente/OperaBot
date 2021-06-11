@@ -142,6 +142,7 @@ class Chat {
   }
 
   async enviarArchivo(cont, type, operadorid) {
+    console.log("estoy en enviar archivo de chat");
     let res;
     await axios
       .post(services.URLs[this.origin] + "/newfiles", {

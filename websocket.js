@@ -183,6 +183,7 @@ io.on("connection", function (socket) {
   })
 
   socket.on('adjunto-archivo', function (msg) {
+    console.log("estoy en adjuntar archivo websockets");
     op.enviarArchivo(msg.id, msg.contenido, msg.type, msg.operadorid);
   });
 

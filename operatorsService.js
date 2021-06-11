@@ -359,6 +359,7 @@ async function enviarWAMessage(id, cont) {
 }
 
 async function enviarArchivo(id, cont, type, operadorid) {
+  console.log("estoy en enviar archivo de OperadorService");
   messenger.enviarArchivo(id, cont, type, operadorid); 
 }
 
