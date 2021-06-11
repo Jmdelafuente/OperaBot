@@ -8,8 +8,8 @@ var io = require("socket.io")(http, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    maxHttpBufferSize: 1e8
   },
+  maxHttpBufferSize: 1e8,
   allowEIO3:true
 });
 var path = require("path");
