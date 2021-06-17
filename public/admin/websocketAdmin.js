@@ -2,15 +2,16 @@ const express = require("express");
 var app = express();
 var cors = require("cors");
 var helmet = require("helmet");
-var menu = require("../../configs/opciones");
+var config_opcion = require("../../configs/opciones");
+var menu = require("../../models/menu");
 var http = require("http").Server(app);
 var iois = require("socket.io")(http, {
-    
     cors: {
         origin: "*",
         methods: ["GET", "POST"],
     },
-
+    maxHttpBufferSize: 1e8,
+    allowEIO3: true
 });
 var path = require("path");
 var plant = require("../../configs/messagesConfig");
@@ -45,7 +46,7 @@ app.set("port", portFront);
 
 app.use('/static',express.static(path.join(__dirname, "../../public")));
 
-app.get("/operadores/admin/", function (req, res) {
+app.get("/admin/", function (req, res) {
     console.log(__dirname);
     console.log(path.join(__dirname, "../../public"));
     console.log("entre al get");
