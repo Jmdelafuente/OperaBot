@@ -4,7 +4,7 @@
 const SURLopciones = "https://chat.muninqn.gov.ar";
 const socketopciones = io(`${SURLopciones}`, {
     'forceNew': true,
-    path: '/operadores/admin/socket.io'
+    path: '/operadores/socket.io'
 });
 let menu = [];
 
