@@ -9,8 +9,7 @@ var iois = require("socket.io")(http, {
     cors: {
         origin: "*",
         methods: ["GET", "POST"],
-    },
-    path: '/operadores/admin/',    
+    },    
     maxHttpBufferSize: 1e8,
     allowEIO3: true
 });
