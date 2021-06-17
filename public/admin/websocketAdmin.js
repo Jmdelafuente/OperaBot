@@ -10,6 +10,7 @@ var iois = require("socket.io")(http, {
         origin: "*",
         methods: ["GET", "POST"],
     },
+    path: '/operadores/admin/',    
     maxHttpBufferSize: 1e8,
     allowEIO3: true
 });
