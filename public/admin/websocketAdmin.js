@@ -46,7 +46,7 @@ app.set("port", portFront);
 
 app.use('/static',express.static(path.join(__dirname, "../../public")));
 
-app.get("/admin/", function (req, res) {
+app.get("/operadores/admin/", function (req, res) {
     console.log(__dirname);
     console.log(path.join(__dirname, "../../public"));
     console.log("entre al get");
@@ -68,7 +68,7 @@ http.listen(app.get('port'), () => {
 });
 
 iois.on("connection", function (socket) {
-    console.log("user connect");
+    console.log("user connect a websocket admin");
 
 socket.on("obtener-menu",async function (msg) {
    let opciones = await op.obteneropciones();

@@ -4,7 +4,7 @@
 const SURLopciones = "https://chat.muninqn.gov.ar";
 const socketopciones = io(`${SURLopciones}`, {
     'forceNew': true,
-    path: '/admin/socket.io'
+    path: '/operadores/admin/socket.io'
 });
 let menu = [];
 
@@ -54,7 +54,7 @@ $(function () {
 //fede termina la parte del summernote
 
 socketopciones.on("connect", () => {
-    
+    console.log("sipisi");
 });
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
