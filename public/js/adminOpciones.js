@@ -106,7 +106,7 @@ $(function () {
     });
 
 socketopciones.on("connect", () => {
-    console.log("sipisi");
+    console.log("vamooo nenee!!");
 });
 
 
