@@ -205,27 +205,47 @@ socketopciones.on("connect", () => {
                 }
                 titulo.setAttribute('data-value', msg);
                 titulo.innerHTML = "<b>" + menu[msg].nombre + "</b>";
+                // links para despues intercambiarlos
                 var links = "";
+                menu[msg].link.forEach(element => {
+                    links = links +", " + element;
+                });
+                links = links.slice(2,links.length);
+                //botones que serian submenos
+                var botones = "";
+                var div_botones = document.createElement('div');
                 menu[msg].opciones.forEach(element => {
                     var btn = document.createElement("button");
                     btn.setAttribute("id", element);
                     btn.innerText = element;
-                    links = links +", " + element;
+                    botones = botones + ", " + element;
+                    div_botones.appendChild(btn);
                 });
-                links = links.slice(2,links.length);
+                botones = botones.slice(2, botones.length);
                 let boton_enviar = document.createElement('button');
+                let div_info = document.createElement('div');
+                let titulo_info = document.createElement('p');
                 let textarea_info = document.createElement('textarea');
                 let textarea_links = document.createElement('textarea');
+                let textarea_botones = document.createElement('textarea');
                 boton_enviar.setAttribute('id','enviar-menu');
+                div_info.setAttribute('id','div-info');
+                titulo_info.innerHTML = "<b>Informacion: </b>";
                 textarea_info.setAttribute('style', "width:50%");
                 textarea_info.setAttribute("id", `info-${menu[msg].nombre}`);
                 textarea_links.setAttribute('style', "width:50%");
                 textarea_links.setAttribute("id", `link-${menu[msg].nombre}`);
-                content.appendChild(textarea_info);
+                textarea_botones.setAttribute('style', "width:50%");
+                textarea_links.setAttribute("id", `botones-${menu[msg].nombre}`);
+                div_info.appendChild(titulo_info);
+                div_info.appendChild(textarea_info);
+                content.appendChild(div_info);
                 content.appendChild(textarea_links);
+                content.appendChild(textarea_botones);
+                content.appendChild(div_botones);
                 textarea_info.innerHTML = menu[msg].informacion;
                 textarea_links.innerHTML = menu[msg].link;
-
+                textarea_botones.innerHTML = menu[msg].opciones;
             });
     /*socketopciones.on("menu-grafico",function (msg) {
        var titulo = document.getElementById("titulo");
