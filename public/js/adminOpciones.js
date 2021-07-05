@@ -220,8 +220,8 @@ socketopciones.on("connect", () => {
                 menu[msg].opciones.forEach((element,i) => {
                     var btn = document.createElement("button");
                    
-                    if(i==menu.length){
-                        element  = "volver";
+                    if(i == (menu.length - 1)){
+                        element = "volver";
                     }
                     btn.setAttribute("id", element);
                     btn.innerText = element;
