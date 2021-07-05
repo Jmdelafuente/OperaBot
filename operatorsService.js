@@ -519,7 +519,8 @@ function mandar(msg) {
 }
 
 async function obteneropciones(msg) {
-  return opciones.obteneropciones();
+  //return opciones.obteneropciones();
+  return opciones.obtenermenu();
 }
 
 async function cambiar_Email(chatId) {

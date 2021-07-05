@@ -1,6 +1,8 @@
 const fs = require('fs');
 let rawdata = fs.readFileSync('./configs/diccionario-opciones.json');
+let data = fs.readFileSync('./configs/diccionario-menu.json');
 let dic = JSON.parse(rawdata);
+let nuevo_menu = JSON.parse(data);
 
 function modificarOpciones(msg) {
     console.log(`llegue a modificar ${JSON.stringify(msg)}`);
@@ -12,6 +14,10 @@ function modificarOpciones(msg) {
 
 function obteneropciones(msg){
 return dic;
+}
+
+function obtenermenu(msg) {
+    return nuevo_menu;
 }
 
 function agregar_menu(msg) {
@@ -36,4 +42,5 @@ function filtrarOpciones(msg){
 module.exports.filtrarOpciones = filtrarOpciones;
 module.exports.obteneropciones = obteneropciones;
 module.exports.modificarOpciones = modificarOpciones;
+module.exports.obtenermenu = obtenermenu;
 
