@@ -38,6 +38,7 @@ $(function () {
       
     $('#crear-menu').click(function (event) {
         event.preventDefault();
+        console.log("ajaa");
         var content = document.createElement("div");   
         var contenedor = document.createElement("div");   
         var nombre = document.createElement("input");   
