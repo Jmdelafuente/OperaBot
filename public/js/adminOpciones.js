@@ -62,12 +62,12 @@ $(function () {
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
         enviar.innerText = "Enviar";
-        div.appendChild(contenedor);
         contenedor.appendChild(nombre);
         contenedor.appendChild(submenus);
         contenedor.appendChild(informacion);
         contenedor.appendChild(links);
         contenedor.appendChild(enviar);
+        div.appendChild(contenedor);
         //content.appendChild(contenedor);
         console.log("despues del contenedor");
         enviar.addEventListener('click',function (event) {
