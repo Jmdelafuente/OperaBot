@@ -217,10 +217,10 @@ socketopciones.on("connect", () => {
                 //botones que serian submenos
                 var botones = "";
                 var div_botones = document.createElement('div');
-                menu[msg].opciones.forEach(element => {
+                menu[msg].opciones.forEach((element,i) => {
                     var btn = document.createElement("button");
-                    var ultimo = menu[menu.length-1];
-                    if(element==ultimo){
+                   
+                    if(i==menu.length){
                         element  = "volver";
                     }
                     btn.setAttribute("id", element);
