@@ -56,20 +56,19 @@ $(function () {
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
-        console.log("antes de los placeholder");
+   
         nombre.placeholder = "Nombre del menú";
         informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
         enviar.innerText = "Enviar";
-        console.log("antes de append");
+        div.appendChild(contenedor);
         contenedor.appendChild(nombre);
         contenedor.appendChild(submenus);
         contenedor.appendChild(informacion);
         contenedor.appendChild(links);
         contenedor.appendChild(enviar);
-        console.log("antes del contenedor");
-        content.appendChild(contenedor);
+        //content.appendChild(contenedor);
         console.log("despues del contenedor");
         enviar.addEventListener('click',function (event) {
             event.preventDefault();
