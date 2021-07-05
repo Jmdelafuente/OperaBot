@@ -1,160 +1,94 @@
-<!doctype html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>147 Atenci&oacute;n al Ciudadano</title>
-  <script src="js/jquery-3.5.1.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <link rel="stylesheet" href="css/font-awesome5-5-all.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/unreadmessages.css">
-  <link rel="stylesheet" href="css/imagehover.css">
-</head>
-
-<body>
-  <div class="container-fluid h-100">
-    <div class="row justify-content-center h-100">
-      <div class="col-md-4 col-xl-3 chat">
-        <div class="card mb-sm-3 mb-md-0 contacts_card">
-          <div class="card-header">
-            <div class="input-group">
-              <input id="buscar" type="text" placeholder="Buscar..." name="" class="form-control search">
-              <div class="input-group-prepend">
-                <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
-              </div>
-            </div>
-            <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-todos-tab" data-toggle="tab" href="#nav-todos" role="tab"
-                  aria-controls="nav-todos" aria-selected="true">Todos</a>
-                <a class="nav-item nav-link" id="nav-asignados-tab" data-toggle="tab" href="#nav-asignados" role="tab"
-                  aria-controls="nav-asignados" aria-selected="false">Asignados</a>
-                 
-                 <!-- <a class="nav-item nav-link" id="nav-no-leidos-tab" data-toggle="tab" href="#nav-no-leidos" role="tab"
-                  aria-controls="nav-asignados" aria-selected="false">No Leidos</a>-->
-              </div>
-          </div>
-          <!-- Pestanas de la barra lateral -->
-          <div class="tab-content" id="nav-tabContent">
-            <!-- Todos los chats -->
-            <div class="tab-pane fade show active" data-href="#nav-todos" id="nav-todos" role="tabpanel"
-              aria-labelledby="nav-todos-tab">
-              <div class="contacts list-group" id="listaContactos">
-
-              </div>
-            </div>
-            <!-- Chats asignados -->
-            <div class="tab-pane fade " data-href="#nav-asignados" id="nav-asignados" role="tabpanel"
-              aria-labelledby="nav-asignados-tab">
-              <div class="contacts list-group" id="listaContactosAsignados">
-              </div>
-            </div>
-            <!-- Chats No leidos -->
-            <!--
-            <div class="tab-pane fade " data-href="#nav-no-leidos" id="nav-no-leidos" role="tabpanel"
-              aria-labelledby="nav-no-leidos-tab">
-              <div class="contacts list-group" id="listaContactosAsignados">
-              </div>
-            </div> -->
-          </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/font-awesome5-5-all.css" />
+    <link rel="stylesheet" href="../css/adminstyle.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/unreadmessages.css" />
+    <link rel="stylesheet" href="../css/imagehover.css" />
+    
+    <title>Administrador</title>
+  </head>
+  <body>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <!--<li class="nav-item" role="presentation">
+        <a
+          class="nav-link active"
+          id="home-tab"
+          data-toggle="tab"
+          href="#home"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+          >Home</a
+        >
+      </li>-->
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="chat-tab"
+          data-toggle="tab"
+          href="#chat"
+          role="tab"
+          aria-controls="chat"
+          aria-selected="false"
+          >Chats</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="opciones-tab"
+          data-toggle="tab"
+          href="#opciones"
+          role="tab"
+          aria-controls="opciones"
+          aria-selected="false"
+          >Opciones</a
+        >
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <!--<div
+        class="tab-pane fade show active"
+        id="home"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+      >
+     <div class="embed-responsive embed-responsive-1by1 iframe">
+        <iframe src="home.html" frameborder="0" allowfullscreen></iframe>
       </div>
-      <div class="col-md-6 col-xl-8 chat">
-        <div class="card">
-          <div class="card-header msg_head">
-            <div class="d-flex bd-highlight">
-              <div class="img_cont">
-                <img src="user-profile.png" class="rounded-circle user_img">
-                <span class="online_icon"></span>
-              </div>
-              <div class="user_info" id="usuarioActivo">
-                <span id="nombreActivo">Chat con Usuario 1</span>
-                <p id="informacionActivo"><i class="fab fa-2x fa-whatsapp" id='logo-origen'></i></p>
-              </div>
-              <div class="video_cam">
-                <span><i class="fas fa-window-close" id='cerrarChat'></i></span>
-                <span><i class="fas fa-tags" id="etiquetas"></i></span>
-              </div>
-            </div>
-            <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-            <div class="action_menu">
-              <ul>
-                <li id="menu-plantillas" type="button" data-toggle="modal" data-target="#plantillas"><i
-                    class="fas fa-user-circle"></i> Plantillas</li>
-                <li id="cambiar_Email" type="button" ><i
-                    class="fas fa-user-circle"></i> cambiar email ciudadano</li>
-                <!--<li><i class="fas fa-plus"></i> Accion 3</li>
-                <li><i class="fas fa-ban"></i> Accion 4</li>-->
-              </ul>
-            </div>
-          </div>
-
-          <!-- Modal de plantillas-->
-          <div class="modal" id="plantillas">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Elegir una plantilla</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div id="modal-body-plantillas" class="modal-body-opciones">
-                  Las plantillas disponibles son las siguientes:
-                </div>
-              </div>
-            </div>
-          </div>
-
-              <!-- Modal de etiquetas-->
-          <div class="modal" id="modal-etiquetas">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Etiquetas</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div id="modal-body-etiquetas" class="modal-body-etiquetas">
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="mx-auto" id='mensajes-anteriores'>Cargar mas mensajes</div> -->
-          <div id="mensajes" class="card-body msg_card_body h-50">
-
-          </div>
-          <div class="card-footer">
-            <form action="" class="input-group">
-              <input type="hidden" name="idChat" id="idChat" value="">
-              <div class="input-group-append">
-                <label for="adjuntar" class="input-group-text attach_btn">
-                  <input id="adjuntar" name="adjuntar" type="file" class="input-group-text attach_btn"
-                    onclick="this.value=null" hidden><i class="fas fa-paperclip"></i></input>
-                </label>
-
-              </div>
-              <div class="autocomplete form-control type_msg clearable-input">
-                <input id="m" autocomplete="off" class="form-control border-0" placeholder="Mensaje..." />
-                <span data-clear-input>&times;</span>
-              </div>
-              <div class="input-group-append">
-                <button id="enviar" type="submit" class="btn enviar"><span class="input-group-text send_btn"><i
-                      class="fas fa-location-arrow"></i></span></button>
-              </div>
-            </form>
-          </div>
-        </div>
+      </div>-->
+      <div
+        class="tab-pane fade"
+        id="chat"
+        role="tabpanel"
+        aria-labelledby="chat-tab"
+      >
+      <div class="embed-responsive embed-responsive-1by1 iframe">
+        <iframe id="frame_chat" rameborder="0" allowfullscreen></iframe>
+      </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="opciones"
+        role="tabpanel"
+        aria-labelledby="opciones-tab"
+      >
+      <div class="embed-responsive embed-responsive-1by1 iframe">
+        <iframe id="frame_opciones" frameborder="0" allowfullscreen></iframe>
+      </div>
       </div>
     </div>
-  </div>
-</body>
-<script src="js/twemoji.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/autocomplete.js"></script>
-<script src="js/index.js" defer></script>
-
-
+  </body>
+  <script src="../js/twemoji.min.js"></script>
+  <script src="../js/socket.io.js"></script>
+  <script src="../js/jquery-3.5.1.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/autocomplete.js"></script>
+  <script src="../js/adminindex.js"></script>
+  <!-- <script src="../js/index.js"></script> -->
 </html>
