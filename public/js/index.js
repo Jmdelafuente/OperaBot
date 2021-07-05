@@ -1,7 +1,7 @@
 //const SURL = "http://localhost";
-const SURL = "128.53.80.105";
+//const SURL = "128.53.80.105";
 //const socket = io(`${SURL}`, { 'forceNew': true, path: '/operadores/socket.io' });
-//const SURL = "https://chat.muninqn.gov.ar";
+const SURL = "https://chat.muninqn.gov.ar";
 const socket = io(`${SURL}` , {'forceNew': true, path:'/operadores/socket.io'});
 
 var blueprints = {};
@@ -381,6 +381,8 @@ $(function () {
         unreadMessages(id, asign);
       }
     }
+      $("#listaContactos li").slice(20).hide();
+
   }
 
   /**
@@ -540,20 +542,20 @@ $(function () {
 
 
         if (mime.substring(0, 5) == 'image') {
+          console.log("estoy en mime imagen");
           pack.type = 'image';
-          pack.operadorid = sessionStorage.getItem("operadorid");
           socket.emit('adjunto-archivo', pack);
           addMessage(imagen, 'E', hora, "image");
           } else if (mime == 'application/pdf'){
+          console.log("estoy en mime pdf");
           pack.type = 'pdf';
-          pack.operadorid = sessionStorage.getItem("operadorid");
           socket.emit('adjunto-archivo', pack);
           addMessage(imagen, 'E', hora, "pdf");
           }
 
         });
       } else {
-        let mensaje = "Archivo demasiado pesada";
+        let mensaje = "Archivo demasiado pesado";
         socket.emit('send_op_message', mensaje);
         addMessage(mensaje, 'E', hora, 'message');
       }
@@ -971,6 +973,19 @@ socket.on("borrar_tags", function (msg) {
     }
     div.scrollTop = div.scrollHeight;
   });*/
+
+  var mincount = 20;
+  var maxcount = 40;
+
+
+  $("#listaContactos").scroll(function () {
+    var elem = document.getElementById("listaContactos");
+    if (elem.scrollTop >= elem.scrollHeight - 550) {
+      $("#listaContactos li").slice(mincount, maxcount).fadeIn(1200);
+      mincount = mincount + 20;
+      maxcount = maxcount + 20;
+    }
+  });
 
     // funcionalidad para buscar un chat en base a su email o telefono
     $(document).ready(function () {

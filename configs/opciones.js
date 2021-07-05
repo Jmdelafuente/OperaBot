@@ -14,6 +14,11 @@ function obteneropciones(msg){
 return dic;
 }
 
+function agregar_menu(msg) {
+    var nombre = msg.nombre;
+ 
+}
+
 function filtrarOpciones(msg){
     let retorno ={};
     var filtrado = dic.filter(function (v) {

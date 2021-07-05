@@ -359,6 +359,7 @@ async function enviarWAMessage(id, cont) {
 }
 
 async function enviarArchivo(id, cont, type, operadorid) {
+  console.log("estoy en enviar archivo de OperadorService");
   messenger.enviarArchivo(id, cont, type, operadorid); 
 }
 
@@ -523,6 +524,10 @@ async function obteneropciones(msg) {
 
 async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
+}
+
+async function agregar_menu(msg) {
+  opciones.agregar_menu(msg);
 }
 
 async function validar(token) {

@@ -1,0 +1,335 @@
+[
+    {"nombre":"Menu Inicial",
+     "opciones":["Medidas en la ciudad","Licencia de conducir","Tributos municipales","Chatea con nosotros"]   
+    },
+    {
+      "nombre":"Chatea con nosotros",
+      "opciones":["A través de whatsapp","A través del chat","Menu Inicial"]  
+    },
+    {
+        "nombre":"Medidas en la ciudad",
+        "opciones":["Actividades","Programa DETECTAR","Menu Inicial"],
+        "informacion":"<br>¡Tenemos que seguir cuidándonos!</br><br>ℹ️ Nuevas medidas de cuidado a partir del 28 de junio hasta el día 04 de julio de 2021.</br><br>• No se podrá circular en la vía pública entre las 22:00 hs y las 6:00 hs del día siguiente.</br><br>• Quedan exceptuadas de la restricción a la circulación nocturna:</br><br>- Actividades y servicios esenciales</br><br>- Las personas que se desempeñen laboralmente en farmacias y estaciones de servicios para el expendio de combustibles.</br><br>- Aquellas personas que se encuentren trabajando en locales gastronómicos (elaboración o envío), o para aquellos clientes que se dirijan al retiro en locales gastronómicos de cercanía (hasta las 00:00 hs)</br><br>Todas las personas exceptuadas deberán llevar el “Certificado Único Habilitante para Circulación - Emergencia COVID-19” – Para tramitarlo ingresa a: https://www.argentina.gob.ar/circular/tramite</br>", 
+        "link":["https://www.argentina.gob.ar/circular/tramite"]
+    },
+    {
+        "nombre":"Actividades",
+        "opciones":["Menu Inicial"],
+        "informacion":"<br>Se habilitan:</br><br>✔ Las actividades comerciales; que podrán funcionar y atender desde las 6:00 hs hasta las 22:00 hs, de acuerdo a los protocolos sanitarios aprobados, y con un máximo del 30% del aforo, en relación a la capacidad.</br><br>✔ Las farmacias y estaciones de servicio, podrán funcionar durante las 24 horas.</br><br>✔ Los locales gastronómicos (bar, restaurante etc.) podrán funcionar y atender clientes en espacios habilitados al aire libre, desde las 6:00 hs hasta las 00:00 hs, respetando los correspondientes protocolos y con el aforo al 40%, con la modalidad de reparto o retiro en puerta se podrá realizar hasta 00:00 hs.</br><br>✔ El transporte público solo estará habilitado para las actividades esenciales.</br><br>✔ Las actividades religiosas en horarios de circulación permitidos con un máximo del 30% del aforo.</br><br>✔ Teatros, cines, museos y bibliotecas en horario de circulación permitido con un aforo máximo del 30%</br><br>Se autoriza:</br><br>✔ La práctica recreativa de deportes en clubes y asociaciones deportivas, en espacios cerrados y abiertos, con un máximo del 30% de aforo y bajo el estricto cumplimiento de los protocolos sanitarios.</br><br>✔ Academias y Talleres Artísticos, podrán dar clases individuales o grupos reducidos en los horarios de circulación permitido.</br><br>Se suspenden:</br><br>❌ Reuniones sociales en domicilios particulares y en espacios públicos al aire libre.</br><br>❌ Casinos, bingos y discotecas.</br>"
+    },
+    {
+        "nombre":"Programa DETECTAR",
+        "opciones":["Menu Inicial"],
+        "informacion":"<br>📍Gimnasio Escuela San Martín (Ameghino y Buenos Aires). Todos los días, de 8.30 a 18. Atención por orden de llegada.</br><br>📍Gimnasio Ruca Che (Antártida Argentina 3.901). Lunes a viernes, de 8.30 a 15; y sábado y domingo, de 8.30 a 18. Atención por orden de llegada.</br><br>📍Centro de salud Villa María (Avenida Olascoaga 1.110). Lunes a viernes de 9 a 13. Atención con turno programado. Teléfono: 0299-449500 int. 3574/3575.</br><br>📍Centro de salud Almafuerte (Calle 6, Gervasoni s/n). Lunes a viernes, de 8.30 a 12. Atención por orden de llegada. Teléfono: 0299-4494778.</br><br>📍Centro de salud Villa Farrel (Independencia 1234, ingreso por Calle Amancay). Lunes a viernes, de 9 a 12. Atención con turno programado. Teléfono: 0299-4430507.</br><br>📍Centro de salud Parque Industrial (Calle 4 y Calle 9). Lunes a viernes, de 9 a 12. Atención con turno programado. Teléfono: 0299-4413502.</br><br>📍Centro de Salud Nueva Esperanza (República de Italia 1664). Lunes, miércoles y viernes, de 12 a 14:30; y martes y jueves, de 8.30 a 11.30. Atención por orden de llegada. Teléfono: 0299-4495200 int. 3603/3602.</br><br>📍Centro de salud Valentina Sur (El Dorado 4246). Lunes, martes, jueves y viernes, de 12.30 a 14.30. Atención por orden de llegada. Teléfono: 0299-4440636.</br><br>📍Centro de salud Progreso (Arabarco 571). Lunes a viernes, de 9 a 13. Atención con turno programado. Teléfono: 0299-4430521.</br><br>📍Centro de salud Don Bosco (Remigio Bosch y Aimogasta). Lunes y miércoles, de 9 a 12; y martes y jueves, de 9 a 12. Atención por orden de llegada. Teléfono: 0299-4423819/4430495/155359033.</br><br>📍Sociedad Vecinal del Barrio Confluencia (Correntoso y Cerro Catedral). Lunes a viernes, de 9 a 12. Teléfono: 0299-4402375.</br> <br> Si tenés dos o más síntomas compatibles con #Covid19, te recomendamos acercarte. No olvides:</br><br>😷 Usar Barbijo o tapabocas.</br><br>↔️ Mantener distancia.</br><br>❌ No compartir mate ni utensilios.</br><br>🧼 Lavarte regularmente las manos.</br>"
+    },
+    {
+        "nombre":"Licencia de conducir",
+        "opciones":["Requisitos","turnos para licencia","Menu Inicial"],
+        "informacion":"¿En qué te podemos ayudar?"
+    },
+    {
+        "nombre":"Requisitos",
+        "opciones":["Renovar","Sacar por primera vez","Chatea con nosotros","Licencia de conducir"],
+        "informacion":"¿Qué trámite deseas realizar?"
+    },
+    {
+        "nombre":"turnos para licencia",
+        "opciones":["Menu Inicial"],
+        "informacion":"Para sacar un turno para renovación, habilitación, robo/extravío ó ampliación de tu licencia de conducir, debés registrarte en nuestra web: https://weblogin.muninqn.gov.ar/ Ingresá en el ícono de Licencia de Conducir donde podes elegir el día, la hora y la delegación que quieras. Si tenés que modificarlo o cancelarlo, lo podrás hacer desde tu mismo usuario. Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de “Chatea con nosotros” ",
+        "link":["https://weblogin.muninqn.gov.ar/"]
+    },
+    {
+        "nombre":"Renovar",
+        "opciones":["renovar Moto","renovar Auto","renovar Profesionales","Chatea con nosotros","Requisitos"],
+        "informacion":"¿Qué tipo de licencia deseas renovar?"
+    },
+    {
+        "nombre":"renovar Moto",
+        "opciones":["renovar moto entre 18 y 59","renovar moto entre 60 y 65","Mayores de 65 años","Chatea con nosotros","Para renovar tu licencia"],
+        "informacion":"Seleccioná tu edad"
+    },
+    {
+        "nombre":"renovar moto entre 18 y 59",
+        "opciones":["turnos para licencia","Chatea con nosotros","Menu Inicial"],
+        "informacion":"Requisitos para renovación 18 a 59 años - moto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar \n• DNI Original y fotocopia (último ejemplar siempre) \n• Original de la licencia anterior (hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI) \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma",
+        "link":["https://boletacenat.safit.com.ar"]
+    },
+    {
+        "nombre":"renovar moto entre 60 y 65",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Moto"],
+        "informacion":"Requisitos para renovación 60 a 65 años - moto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"Mayores de 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Moto"],
+        "informacion":"Requisitos para renovación de 65 años en adelante - moto:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico.",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar Auto",
+        "opciones":["renovar auto entre 21 y 59 años","renovar auto entre 60 y 65 años","renovar auto mayor de 65 años","Chatea con nosotros","Para renovar tu licencia"],
+        "informacion":"Seleccioná tu edad"
+    },
+    {
+        "nombre":"renovar auto entre 21 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Auto"],
+        "informacion":"Requisitos para renovación 21 a 59 años - auto:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico.",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar auto entre 60 y 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Auto"],
+        "informacion":"Requisitos para renovación 60 a 65 años - auto:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma.",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar auto mayor de 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Auto"],
+        "informacion":"Requisitos para renovación de 65 años en adelante - auto:\n•Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado de legalidad(en caso de que sea de otro municipio)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y electrocardiograma, Electrocardiograma con certificado de aptitud para conducir.\n•Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar Profesionales",
+        "opciones":["renovar CLASE C","renovar CLASE D","renovar CLASE E","Chatea con nosotros","Requisitos"],
+        "informacion":"¿Qué clase de licencia necesitas?"
+    },
+    {
+        "nombre":"renovar CLASE C",
+        "opciones":["renovar clase C entre 21 y 59 años","renovar clase C entre 60 y 65 años","renovar clase C mayores de 65 años","Chatea con nosotros","Para renovar tu licencia"]
+    },
+    {
+        "nombre":"renovar CLASE D",
+        "opciones":["renovar clase D entre 21 y 59 años","renovar clase D entre 60 y 65 años","renovar clase D mayores de 65 años","Chatea con nosotros","Para renovar tu licencia"]
+    },
+    {
+        "nombre":"renovar CLASE E",
+        "opciones":["renovar clase E entre 21 y 59 años","renovar clase E entre 60 y 65 años","renovar clase E mayores de 65 años","Chatea con nosotros","Para renovar tu licencia"]
+    },
+    {
+        "nombre":"renovar clase C entre 21 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Se debe tener al menos un (1) año de antigüedad en clase B\nRequisitos para renovación 21 a 59 años - profesional C:\n• Boleta de CENAT impresa y pagada (con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar clase C entre 60 y 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Se debe tener al menos un (1) año de antigüedad en clase B\nRequisitos para renovación 60 a 65 años - profesional C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar clase C mayores de 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Se debe tener al menos un (1) año de antigüedad en clase B\nRequisitos para renovación de 65 años en adelante - profesional C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar clase D entre 21 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Requisitos para renovación 21 a 59 años - profesional D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico ",
+        "link":["https://boletacenat.safit.com.ar/", "http://www.dnrec.jus.gov.ar"]
+    },
+    {
+        "nombre":"renovar clase D entre 60 y 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Requisitos para renovación 60 a 65 años - profesional D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar \n•Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico",
+        "link":["https://boletacenat.safit.com.ar/","http://www.dnrec.jus.gov.ar"]
+    },
+    {
+        "nombre":"renovar clase D mayores de 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Requisitos para renovación de 65 años en adelante - profesional D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) http://www.dnrec.jus.gov.ar \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n• Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)",
+        "link":["https://boletacenat.safit.com.ar/","http://www.dnrec.jus.gov.ar"]
+    },
+    {
+        "nombre":"renovar clase E entre 21 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Requisitos para renovación 21 a 59 años - profesional E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar clase E entre 60 y 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Requisitos para renovación 60 a 65 años - profesional E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"renovar clase E mayores de 65 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","renovar Profesionales"],
+        "informacion":"Requisitos para renovacion de 65 años en adelante - profesional E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia anterior(hasta 90 días de vencida, o hasta 90 días de realizado el cambio de domicilio en el DNI)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Originales y fotocopias de tarjeta verde y seguro vigente para la habilitación de la categoría a cargo.En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.\n•Rendir examen teórico práctico con el vehículo en condiciones óptimas, sin vidrios polarizados y con el extintor amurado dentro de la cabina(exceptuados clase A de estos últimos dos requisitos)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"Sacar por primera vez",
+        "opciones":["habilitar Moto", "habilitar Auto","Profesionales","Requisitos"],
+        "informacion":"¿Qué tipo de licencia necesitas?"
+    },
+    {
+        "nombre":"habilitar Moto",
+        "opciones":["Moto de 150cc","Moto de más de 300cc"],
+        "informacion":"Indique la cilindrada del vehículo"
+    },
+    {
+        "nombre":"Moto de 150cc",
+        "opciones":["habilitar moto con 17 años","habilitar moto entre 18 y 59 años","habilitar moto mayores de 60 años","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Seleccioná tu edad"
+    },
+    {
+        "nombre":"habilitar moto con 17 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Importante, se habilitan solo hasta 150cc de cilindrada.\nRequisitos para habilitación 17 años - moto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción.(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar moto entre 18 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 18 a 59 años - moto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar moto mayores de 60 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 60 años en adelante - moto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir y Electroencefalograma\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos)Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"Moto de más de 300cc",
+        "opciones":["habilitar moto entre 18 y 59 años","habilitar moto mayores de 60 años","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Seleccioná tu edad"
+    },
+    {
+        "nombre":"habilitar moto entre 18 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 21 a 59 años - moto:\n Se debe tener al menos un(1) año de antigüedad en cilindradas inferiores\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia(último ejemplar siempre)\n• Original de CUALQUIER licencia DE CONDUCIR DE CUALQUIER CLASE VIGENTE\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos).Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n•Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar moto mayores de 60 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 60 años en adelante - moto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia(último ejemplar siempre)\n• Original de CUALQUIER licencia DE CONDUCIR DE CUALQUIER CLASE VIGENTE\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electrocardiograma con certificado de aptitud para conducir, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos).Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n•Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar Auto",
+        "opciones":["habilitar auto con 17 años","habilitar auto entre 18 y 59 años","habilitar auto mayores de 60 años","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"<br>Las subclases se dividen en vehículo solo (B1) y vehículo con carro (B2) En caso de la clase B2 se debe agregar la documentación del carro(Cédula de identificación y seguro con patente declarada)</br> <br>Seleccioná tu edad</br>"
+    },
+    {
+        "nombre":"habilitar auto con 17 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 17 años - auto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n•DNI Original y fotocopia (último ejemplar siempre)\n• Original y fotocopia acta de nacimiento\n• Fotocopia DNI padre / madre / tutor\n• Requiere declaración jurada de madre / padre / tutor autorizando la conducción(el mismo, se firma en el mismo lugar)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar auto entre 18 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos apra habilitación 18 a 59 años - auto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar auto mayores de 60 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 60 años en adelante - auto:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"Profesionales",
+        "opciones":["habilitar CLASE C","habilitar CLASE D","habilitar CLASE E","Chatea con nosotros","Requisitos"],
+        "informacion":"¿Qué clase de licencia necesitas?"
+    },
+    {
+        "nombre":"habilitar CLASE C",
+        "opciones":["habilitar clase C entre 21 y 59 años","habilitar clase C mayores de 60 años","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Las subclases se dividen de acuerdo al peso del camión y la carga"
+    },
+    {
+        "nombre":"habilitar CLASE D",
+        "opciones":["habilitar clase D entre 21 y 59 años","habilitar clase D mayores de 60 años","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Transporte de pasajeros Las subclases se dividen de acuerdo a las plazas del vehículo."
+    },
+     {
+        "nombre":"habilitar CLASE E",
+        "opciones":["habilitar clase E entre 21 y 59 años","habilitar clase E mayores de 60 años","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Las subclases se dividen en vehículos articulados (E1) y maquinaria especial no agrícola (E2)"
+    },
+    {
+        "nombre":"habilitar clase C entre 21 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitacion 21 a 59 años - profesional C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Original de licencia de conducir categoría B vigente, con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar clase C mayores de 60 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 60 en adelante profesional C:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar clase D entre 21 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 21 a 59 años - profesional D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Certificado Nacional de Antecedentes Penales(Hasta 30 días de emitido) ¬http://www.dnrec.jus.gov.ar¬ \n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar clase D mayores de 60 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 60 años en adelante - profesional D:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar)",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar clase E entre 21 y 59 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 21 a 59 años - profesional E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre)\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo\n• Apto Psicofísico, Electroencefalograma y Psicológico\n• Certificación de curso profesional(Recordamos que el curso en esta instancia es online, podes acceder al mismo desde el menú cursos) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"habilitar clase E mayores de 60 años",
+        "opciones":["turnos para licencia","Chatea con nosotros","Sacar por primera vez"],
+        "informacion":"Requisitos para habilitación 60 años en adelante - profesional E:\n• Boleta de CENAT impresa y pagada(con comprobante de pago adjunto) https://boletacenat.safit.com.ar/ \n• DNI Original y fotocopia (último ejemplar siempre) Se realizará un examen de detección de fallas, el cual será excluyente en caso de no aprobarlo.\n• Original de la licencia DE CONDUCIR categoría B VIGENTE con antigüedad de 1 año.\n• Debe CONOCER su n° de CUIL, y su grupo y factor sanguíneo \n• Apto Psicofísico y Electrocardiograma con certificado de aptitud para conducir, Psicológico\n• Certificación de curso(Recordamos que el curso en esta instancia es online, podés acceder al mismo desde el menú cursos)\n• Original y fotocopia de Tarjeta Verde y póliza del Seguro Vigente del vehículo en el que se va a rendir(el mismo debe corresponder con la categoría que va a solicitar).En caso de los camiones articulados se requiere la documentación tanto del camión como del acoplado.",
+        "link":["https://boletacenat.safit.com.ar/"]
+    },
+    {
+        "nombre":"turnos para licencia",
+        "opciones":["Chatea con nosotros","Menu Inicial"]
+    },
+    {
+        "nombre":"Tributos municipales",
+        "opciones":["Obtencion de recibos","Metodos de pago","Menu Inicial"]
+    },
+    {
+        "nombre":"Obtencion de recibos",
+        "opciones":["IMPRIMÍ TUS RECIBOS","CONOCÉ TU SITUACIÓN TRIBUTARIA","Tributos municipales"],
+        "informacion":"Si necesitás que te ayudemos, llamanos al 147 de lunes a lunes de 8 a 20 hs o hacé click en el botón de \"Chatea con nosotros\" Tené en cuenta que estamos chateando con muchos vecinos y podemos tardar un poco."
+    },
+    {
+        "nombre":"IMPRIMÍ TUS RECIBOS",
+        "opciones":["Pagina Web","Chatea con nosotros","Tributos municipales"],
+        "informacion":"Para obtener las boletas de tus tributos municipales, debés ingresar a https://www.neuquencapital.gov.ar , hacé click en el botón “Paga / Obtené  tus tributos”. SIN CLAVE: podrás descargar las boletas del semestre en curso.\nElegís el tributo que deseas abonar, ingresás los datos solicitados y trasladá el tilde hacia el final.\nSi querés que te la enviemos por acá o por mail, te solicito que nos envíes el tributo que necesitás(dominio, nomenclatura catastral, número de licencia comercial, etc) y un correo electrónico.",
+        "link":["https://www.neuquencapital.gov.ar"]
+    },
+    {
+        "nombre":"Pagina Web",
+        "opciones":["Chatea con nosotros","Tributos municipales"],
+        "informacion":"Si tenes algún incoveniente podes comunicarte con nosotros en el botón de \"Chatea con nosotros\""
+    },
+    {
+        "nombre":"CONOCÉ TU SITUACIÓN TRIBUTARIA",
+        "opciones":["Pagina Web","Chatea con nosotros","Tributos municipales"],
+        "informacion":"Si querés conocer toda tu situación tributaria debés ingresar al ícono CON CLAVE. Para realizar el usuario y contraseña te solicitamos que nos envíes tu nombre completo, DNI, correo electrónico y teléfono.\nLuego de 48 hs podrás ingresar a nuestra página,  hacé click en el botón “Paga / Obtené  tus tributos”, luego en CON CLAVE.Tu usuario será tu número de DNI y tu contraseña será tu número de DNI, luego el sistema te solicitará que lo cambies."
+    },
+    {
+        "nombre":"Metodos de pago",
+        "opciones":["Metodo online","Formas de pago","Tributos municipales"]
+    },
+    {
+        "nombre":"Metodo online",
+        "opciones":["Chatea con nosotros","Metodos de pago"],
+        "informacion":"Si tenes algun incoveniente podes comunicarte con nosotros en el botón de \"Chatea con nosotros\""
+    },
+    {
+        "nombre":"Formas de pago",
+        "opciones":["Chatea con nosotros","Metodos de pago"],
+        "informacion":"Si tenes algun incoveniente podes comunicarte con nosotros en el botón de \"Chatea con nosotros\""
+    }
+]
