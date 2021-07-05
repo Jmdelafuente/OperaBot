@@ -56,6 +56,7 @@ $(function () {
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
+        console.log("antes de los placeholder");
         nombre.placeholder = "Nombre del menú";
         informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
