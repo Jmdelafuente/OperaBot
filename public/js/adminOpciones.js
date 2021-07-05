@@ -42,12 +42,23 @@ $(function () {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         var div = document.getElementById("div-creacion");
-        var content = document.createElement("div");   
-        var contenedor = document.createElement("div");   
-        var nombre = document.createElement("input");   
-        var valor = document.createElement("input");   
-        var informacion = document.createElement("input");   
-        var submenus = document.createElement("input");   
+        var content = document.createElement("div");
+        var contenedor = document.createElement("div");
+        var div_nombre = document.createElement("div");
+        let titulo_nombre = document.createElement('p');
+        titulo_nombre.innerHTML = "<b>Nombre del menú: </b>";
+        var nombre = document.createElement("input");  
+        var div_informacion = document.createElement("div");
+        let titulo_informacion = document.createElement('p');
+        titulo_informacion.innerHTML = "<b>Información: </b>"; 
+        var informacion = document.createElement("input");
+        var div_submenu = document.createElement("div");
+        let titulo_submenu = document.createElement('p');
+        titulo_submenu.innerHTML = "<b>opciones de los submenús: </b>";   
+        var submenus = document.createElement("input");
+        var div_link = document.createElement("div");
+        let titulo_link = document.createElement('p'); 
+        titulo_link.innerHTML = "<b>Links: </b>";
         var links = document.createElement("input");
         var enviar = document.createElement('button');
         content.setAttribute('id', 'div-creaciones');
@@ -62,10 +73,19 @@ $(function () {
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
         enviar.innerText = "Enviar";
-        contenedor.appendChild(nombre);
-        contenedor.appendChild(submenus);
-        contenedor.appendChild(informacion);
-        contenedor.appendChild(links);
+
+        div_nombre.appendChild(titulo_nombre);
+        div_nombre.appendChild(nombre);
+        contenedor.appendChild(div_nombre);
+        div_submenu.appendChild(titulo_submenu);
+        div_submenu.appendChild(submenus);
+        contenedor.appendChild(div_submenu);
+        div_informacion.appendChild(titulo_informacion);
+        div_informacion.appendChild(informacion);
+        contenedor.appendChild(div_informacion);
+        div_link.appendChild(titulo_link);
+        div_link.appendChild(links);
+        contenedor.appendChild(div_link);
         contenedor.appendChild(enviar);
         div.appendChild(contenedor);
         //content.appendChild(contenedor);
@@ -218,8 +238,12 @@ socketopciones.on("connect", () => {
                 var botones = "";
                 var div_botones = document.createElement('div');
                 div_botones.setAttribute('id','div-botones');
+                let titulo_botones = document.createElement('p');
+                titulo_botones.innerHTML = "<b>Asi quedaria el menu</b>"
+                div_botones.appendChild(titulo_botones);
                 menu[msg].opciones.forEach((element,i) => {
                     var btn = document.createElement("button");
+                    btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
                     var titulo = element;
                     if(i == (menu.length - 1)){
                         console.log(element);
