@@ -258,7 +258,7 @@ socketopciones.on("connect", () => {
                 div_links.appendChild(titulo_links);
                 div_links.appendChild(textarea_links);
                 div_opciones.appendChild(titulo_opciones);
-                div_opciones.appendChild(div_opciones);
+                div_opciones.appendChild(textarea_botones);
                 content.appendChild(div_info);
                 content.appendChild(div_links);
                 content.appendChild(div_opciones);
