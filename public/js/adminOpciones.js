@@ -70,6 +70,7 @@ $(function () {
         contenedor.appendChild(enviar);
         console.log("antes del contenedor");
         content.appendChild(contenedor);
+        console.log("despues del contenedor");
         enviar.addEventListener('click',function (event) {
             event.preventDefault();
             var links_listos = [];
