@@ -219,6 +219,10 @@ socketopciones.on("connect", () => {
                 var div_botones = document.createElement('div');
                 menu[msg].opciones.forEach(element => {
                     var btn = document.createElement("button");
+                    var ultimo = menu[menu.length-1];
+                    if(element==ultimo){
+                        element  = "volver";
+                    }
                     btn.setAttribute("id", element);
                     btn.innerText = element;
                     botones = botones + ", " + element;
@@ -228,13 +232,21 @@ socketopciones.on("connect", () => {
                 }
                 let boton_enviar = document.createElement('button');
                 let div_info = document.createElement('div');
+                let div_links = document.createElement('div');
+                let div_opciones = document.createElement('div');
                 let titulo_info = document.createElement('p');
+                let titulo_links = document.createElement('p');
+                let titulo_opciones = document.createElement('p');
                 let textarea_info = document.createElement('textarea');
                 let textarea_links = document.createElement('textarea');
                 let textarea_botones = document.createElement('textarea');
                 boton_enviar.setAttribute('id','enviar-menu');
                 div_info.setAttribute('id','div-info');
+                div_links.setAttribute('id','div-links');
+                div_opciones.setAttribute('id','div-opciones');
                 titulo_info.innerHTML = "<b>Informacion: </b>";
+                titulo_links.innerHTML = "<b>Links: </b>";
+                titulo_opciones.innerHTML = "<b>Botones: </b>";
                 textarea_info.setAttribute('style', "width:50%");
                 textarea_info.setAttribute("id", `info-${menu[msg].nombre}`);
                 textarea_links.setAttribute('style', "width:50%");
@@ -243,9 +255,13 @@ socketopciones.on("connect", () => {
                 textarea_links.setAttribute("id", `botones-${menu[msg].nombre}`);
                 div_info.appendChild(titulo_info);
                 div_info.appendChild(textarea_info);
+                div_links.appendChild(titulo_links);
+                div_links.appendChild(textarea_links);
+                div_opciones.appendChild(titulo_opciones);
+                div_opciones.appendChild(div_opciones);
                 content.appendChild(div_info);
-                content.appendChild(textarea_links);
-                content.appendChild(textarea_botones);
+                content.appendChild(div_links);
+                content.appendChild(div_opciones);
                 content.appendChild(div_botones);
                 textarea_info.innerHTML = menu[msg].informacion;
                 textarea_links.innerHTML = menu[msg].link;
