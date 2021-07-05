@@ -206,11 +206,14 @@ socketopciones.on("connect", () => {
                 titulo.setAttribute('data-value', msg);
                 titulo.innerHTML = "<b>" + menu[msg].nombre + "</b>";
                 // links para despues intercambiarlos
+                if (menu[msg].link){
                 var links = "";
                 menu[msg].link.forEach(element => {
                     links = links +", " + element;
                 });
                 links = links.slice(2,links.length);
+                }
+                if (menu[msg].opciones){
                 //botones que serian submenos
                 var botones = "";
                 var div_botones = document.createElement('div');
@@ -222,6 +225,7 @@ socketopciones.on("connect", () => {
                     div_botones.appendChild(btn);
                 });
                 botones = botones.slice(2, botones.length);
+                }
                 let boton_enviar = document.createElement('button');
                 let div_info = document.createElement('div');
                 let titulo_info = document.createElement('p');
