@@ -526,6 +526,10 @@ async function cambiar_Email(chatId) {
   messenger.cambiar_Email(chatId);
 }
 
+async function agregar_menu(msg) {
+  opciones.agregar_menu(msg);
+}
+
 async function validar(token) {
   let op = new Operador();
   let res = -1;

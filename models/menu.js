@@ -2,9 +2,9 @@ class Menu {
     /**
      *Creates an instance of Menu.
      * @param {*} nombre nombre que indica en que menu se encuentra situado
-     * @param {*} botones botones que aparecen en el menu, que indican submenus 
+     * @param {[*]} botones botones que aparecen en el menu, que indican submenus 
      * @param {*} informacion informacion que acompaña al menu en forma de mensaje
-     * @param {*} link si el mensaje en informacion tiene un link, debe estar en esta lista
+     * @param {[*]} link si el mensaje en informacion tiene un link, debe estar en esta lista
      * @memberof Menu
      */
     constructor(
@@ -37,16 +37,18 @@ class Menu {
     }
 
     remplazarLink() {
-        link.forEach(element => {
-            if (informacion.includes(element)) {
-                var inicio = informacion.indexOf(element);
-                var fin = inicio + element.length;
-                var nuevo = informacion.substring(inicio, fin);
-                var link = nuevo.link(element);
-                var nueva_info = string.replace(nuevo, link);
-                this.informacion = nueva_info;
-            }
-        });
+        if (Object.keys(this.link).length === 0){
+            link.forEach(element => {
+                if (informacion.includes(element)) {
+                    var inicio = informacion.indexOf(element);
+                    var fin = inicio + element.length;
+                    var nuevo = informacion.substring(inicio, fin);
+                    var link = nuevo.link(element);
+                    var nueva_info = string.replace(nuevo, link);
+                    this.informacion = nueva_info;
+                }
+            });
+        }
     }
 
      setNombre(nuevoNombre) {

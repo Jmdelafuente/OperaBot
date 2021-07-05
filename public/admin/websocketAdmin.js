@@ -47,9 +47,7 @@ app.set("port", portFront);
 app.use('/static',express.static(path.join(__dirname, "../../public")));
 
 app.get("/operadores/admin/", function (req, res) {
-    console.log(__dirname);
-    console.log(path.join(__dirname, "../../public"));
-    console.log("entre al get");
+  console.log("entre al get");
   let param = req.query.SESSIONKEY;
   let perfil = op.validar(param);
   if(perfil != -1){
@@ -68,20 +66,14 @@ http.listen(app.get('port'), () => {
 });
 
 iois.on("connection", function (socket) {
-    console.log("user connect a websocket admin");
+    console.log("user connect en websocket admin");
 
 socket.on("obtener-menu",async function (msg) {
    let opciones = await op.obteneropciones();
-   //console.log(opciones);
    socket.emit("selector-menu", opciones); 
 });
 
 socket.on("sub-menu", function (msg) {
-    //let opcion = menu.filtrarOpciones(msg);
-    //var pack = {};
-    //pack.nombre = opcion.nombre;
-    //pack.opciones = opcion.opciones;
-    //socket.emit("sub-menu",msg);
     socket.emit("menu-grafico",msg);
 })
 
@@ -95,6 +87,14 @@ socket.on("editar_menu",async function (msg) {
 
     op.modificaropciones(json);
 })
+
+socket.on("nuevo_menu",function (msg) {
+   //nuevo menu
+   console.log(`menu en nuevo_menu ${msg}`)
+   //op.agregar_menu(msg);
+   //var menu = new Menu(msg.nombre,msg.submenus,msg.informacion,msg.links);
+
+});
 
 socket.on("opciones_admin",function (msg) {
     let opcion = JSON.stringify(op.obteneropciones());
