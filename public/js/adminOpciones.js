@@ -50,6 +50,8 @@ $(function () {
         var submenus = document.createElement("input");   
         var links = document.createElement("input");
         var enviar = document.createElement('button');
+        content.setAttribute('id', 'div-creaciones');
+        contenedor.setAttribute('id','contenedor-creacion');
         nombre.setAttribute('id','nombre-menu');
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
@@ -63,6 +65,8 @@ $(function () {
         contenedor.appendChild(submenus);
         contenedor.appendChild(informacion);
         contenedor.appendChild(links);
+        contenedor.appendChild(enviar);
+        content.appendChild(contenedor);
         enviar.addEventListener('click',function (event) {
             event.preventDefault();
             var links_listos = [];
@@ -85,8 +89,7 @@ $(function () {
             
             socketopciones.emit("nuevo_menu",pack);
         });
-        contenedor.appendChild(enviar);
-        content.appendChild(contenedor);
+       
     });
     
 
