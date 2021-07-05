@@ -217,6 +217,7 @@ socketopciones.on("connect", () => {
                 //botones que serian submenos
                 var botones = "";
                 var div_botones = document.createElement('div');
+                div_botones.setAttribute('id','div-botones');
                 menu[msg].opciones.forEach((element,i) => {
                     var btn = document.createElement("button");
                     var titulo = element;
