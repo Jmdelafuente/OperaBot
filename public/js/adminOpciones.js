@@ -39,7 +39,9 @@ $(function () {
     $('#crear-menu').click(function (event) {
         event.preventDefault();
         console.log("ajaa");
-        var content = document.createElement("div");   
+        let botones_iniciales = document.getElementById("opciones-iniciales");
+        botones_iniciales.setAttribute("style", "display: none");
+        var content = document.getElementById("div-crecion");
         var contenedor = document.createElement("div");   
         var nombre = document.createElement("input");   
         var valor = document.createElement("input");   
