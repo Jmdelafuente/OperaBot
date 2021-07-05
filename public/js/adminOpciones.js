@@ -219,12 +219,13 @@ socketopciones.on("connect", () => {
                 var div_botones = document.createElement('div');
                 menu[msg].opciones.forEach((element,i) => {
                     var btn = document.createElement("button");
-                   
+                    var titulo = element;
                     if(i == (menu.length - 1)){
-                        element = "volver";
+                        console.log(element);
+                        titulo = "volver";
                     }
                     btn.setAttribute("id", element);
-                    btn.innerText = element;
+                    btn.innerText = titulo;
                     botones = botones + ", " + element;
                     div_botones.appendChild(btn);
                 });
