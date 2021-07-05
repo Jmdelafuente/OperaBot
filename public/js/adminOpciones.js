@@ -41,7 +41,7 @@ $(function () {
         console.log("ajaa");
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
-        var div = document.getElementById("div-crecion");
+        var div = document.getElementById("div-creacion");
         var content = document.createElement("div");   
         var contenedor = document.createElement("div");   
         var nombre = document.createElement("input");   
