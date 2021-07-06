@@ -197,6 +197,34 @@ socketopciones.on("connect", () => {
          });*/
     })
 
+    socketopciones.on("sub-menu",function (msg) {
+
+        var string="";
+        let i=0;
+        let div = document.getElementById("selector-menu");
+        let text = document.getElementById("editor");
+        //$("#selector-menu").empty();
+        if(menu[msg].opciones){
+        menu[msg].opciones.forEach(element => {
+            if (element.valor != undefined) {
+                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea style = \"width:50%\">` + element.valor + `</textarea> </div>`;
+            }
+            if (element.nombre != undefined) {
+                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea style = \"width:50%\">` + element.nombre + `</textarea> </div>`;
+            }
+            if (element.informacion != undefined) {
+                string += `<div id=\"informacion_${element.valor}\"><b>informacion: </b> <textarea style = \"width:50%\">` + element.informacion + `</textarea> </div>`;
+            }
+            i++;
+         });
+         }
+         if (menu[msg].descripcion!=undefined) {
+             string += `</div id=descripcion_${menu[msg].nombre}><b>Descripcion: </b>` + menu[msg].descripcion + `</div>`;
+         }
+        text.innerHTML = string;        
+        
+    });
+
 
     socketopciones.on("menu-grafico", function (msg) {
                 var titulo = document.getElementById("titulo");
