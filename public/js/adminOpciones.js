@@ -175,7 +175,7 @@ socketopciones.on("connect", () => {
         contenedor.appendChild(content);
         container.appendChild(text);
         container.appendChild(contenedor);
-        container.appendChild(enviar);
+        //container.appendChild(enviar);
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
