@@ -299,8 +299,6 @@ socketopciones.on("connect", () => {
                 boton_enviar.addEventListener('click',function (event) {
                     event.preventDefault();
                     //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
-                    let opcion = $('#titulo').attr('data-value');
-                    console.log(`menú seleccionado: ${opcion}`);
                     let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
                     console.log(`en info hay = ${data_info}`);
                     let data_links = document.getElementById(`link-${menu[msg].nombre}`).value;
@@ -308,7 +306,7 @@ socketopciones.on("connect", () => {
                     let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
                     console.log(`en botones hay = ${data_botones}`);
                     let nuevo_menu = {};
-                    nuevo_menu.nombre = opcion;
+                    nuevo_menu.nombre = menu[msg].nombre;
                     nuevo_menu.informacion = data_info;
                     nuevo_menu.link = data_links;
                     nuevo_menu.opciones = data_botones;
