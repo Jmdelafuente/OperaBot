@@ -42,6 +42,7 @@ $(function () {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         var div = document.getElementById("div-creacion");
+        let div_alerta = document.createElement('div');
         var content = document.createElement("div");
         var contenedor = document.createElement("div");
         var div_nombre = document.createElement("div");
@@ -71,12 +72,13 @@ $(function () {
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
-   
+        
         nombre.placeholder = "Nombre del menú";
         informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
         enviar.innerText = "Enviar";
+        div_alerta.innerHTML = "<b> Aclaración: </b><br></br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br></br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
 
         div_nombre.appendChild(titulo_nombre);
         div_nombre.appendChild(nombre);
@@ -90,6 +92,7 @@ $(function () {
         div_link.appendChild(titulo_link);
         div_link.appendChild(links);
         contenedor.appendChild(div_link);
+        contenedor.appendChild(div_alerta);
         contenedor.appendChild(enviar);
         div.appendChild(contenedor);
         //content.appendChild(contenedor);
@@ -125,6 +128,8 @@ $(function () {
         socketopciones.emit("obtener-menu");
         let select = document.getElementById("div-menu");
         select.removeAttribute("style");
+        let titulo_selector = document.getElementById('titulo-selector');
+        titulo_selector.innerHTML = "Seleccione el menú que desea editar";
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
     });
@@ -137,12 +142,12 @@ socketopciones.on("connect", () => {
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
         let div = document.getElementById("selector-menu");
-        let enviar = document.createElement('button');
-        enviar.setAttribute("class", "btn btn-primary");
+        //let enviar = document.createElement('button');
+        //enviar.setAttribute("class", "btn btn-primary");
         let container= document.getElementById("div-menu");
         let text = document.createElement('div');
         text.setAttribute("id","editor");
-        enviar.setAttribute("id", "enviar_opciones");
+        //enviar.setAttribute("id", "enviar_opciones");
         let contenedor = document.createElement('div');
         var titulo = document.createElement('div');
         let content = document.createElement('div');
@@ -177,7 +182,7 @@ socketopciones.on("connect", () => {
             socketopciones.emit("sub-menu",div.value);
         });
 
-         var envio = document.getElementById("enviar_opciones");
+         /*var envio = document.getElementById("enviar_opciones");
          envio.addEventListener('click', function (e) {
              e.preventDefault();
              let opcion = $('#titulo').attr('data-value');
@@ -189,37 +194,9 @@ socketopciones.on("connect", () => {
              console.log(menu[opcion]);
              socketopciones.emit("editar_menu",menu);
              //alert("Se modifico el menu");
-             //location.reload(); //una vez se haya modificado, recargamos la pagina
-         });
+         });*/
     })
 
-    socketopciones.on("sub-menu",function (msg) {
-
-        var string="";
-        let i=0;
-        let div = document.getElementById("selector-menu");
-        let text = document.getElementById("editor");
-        //$("#selector-menu").empty();
-        if(menu[msg].opciones){
-        menu[msg].opciones.forEach(element => {
-            if (element.valor != undefined) {
-                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea style = \"width:50%\">` + element.valor + `</textarea> </div>`;
-            }
-            if (element.nombre != undefined) {
-                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea style = \"width:50%\">` + element.nombre + `</textarea> </div>`;
-            }
-            if (element.informacion != undefined) {
-                string += `<div id=\"informacion_${element.valor}\"><b>informacion: </b> <textarea style = \"width:50%\">` + element.informacion + `</textarea> </div>`;
-            }
-            i++;
-         });
-         }
-         if (menu[msg].descripcion!=undefined) {
-             string += `</div id=descripcion_${menu[msg].nombre}><b>Descripcion: </b>` + menu[msg].descripcion + `</div>`;
-         }
-        text.innerHTML = string;        
-        
-    });
 
     socketopciones.on("menu-grafico", function (msg) {
                 var titulo = document.getElementById("titulo");
@@ -238,7 +215,7 @@ socketopciones.on("connect", () => {
                 links = links.slice(2,links.length);
                 }
                 if (menu[msg].opciones){
-                //botones que serian submenos
+                //botones que serian submenus
                 var botones = "";
                 var div_botones = document.createElement('div');
                 div_botones.setAttribute('id','div-botones');
@@ -246,6 +223,7 @@ socketopciones.on("connect", () => {
                 titulo_botones.innerHTML = "<b>Asi quedaria el menu</b>"
                 div_botones.appendChild(titulo_botones);
                 menu[msg].opciones.forEach((element,i) => {
+                    console.log(`el valor i = ${i} y menu long = ${menu.length}`);
                     var btn = document.createElement("button");
                     btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
                     var titulo = element;
@@ -261,6 +239,7 @@ socketopciones.on("connect", () => {
                 botones = botones.slice(2, botones.length);
                 }
                 let boton_enviar = document.createElement('button');
+                let div_alerta = document.createElement('div'); 
                 let div_info = document.createElement('div');
                 let div_links = document.createElement('div');
                 let div_opciones = document.createElement('div');
@@ -270,7 +249,9 @@ socketopciones.on("connect", () => {
                 let textarea_info = document.createElement('textarea');
                 let textarea_links = document.createElement('textarea');
                 let textarea_botones = document.createElement('textarea');
+                div_alerta.innerHTML = "<b> Aclaración: </b><br></br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br></br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
                 boton_enviar.setAttribute('id','enviar-menu');
+                boton_enviar.className = "btn btn-primary";
                 div_info.setAttribute('id','div-info');
                 div_links.setAttribute('id','div-links');
                 div_opciones.setAttribute('id','div-opciones');
@@ -292,49 +273,56 @@ socketopciones.on("connect", () => {
                 content.appendChild(div_info);
                 content.appendChild(div_links);
                 content.appendChild(div_opciones);
+                content.appendChild(div_alerta);
                 content.appendChild(div_botones);
                 textarea_info.innerHTML = menu[msg].informacion;
                 textarea_links.innerHTML = menu[msg].link;
                 textarea_botones.innerHTML = menu[msg].opciones;
-            });
-    /*socketopciones.on("menu-grafico",function (msg) {
-       var titulo = document.getElementById("titulo");
-       let content = document.getElementById("content");
-       while(content.firstChild){
-           content.removeChild(content.firstChild);
-       }
-       titulo.setAttribute('data-value', msg);
-       titulo.innerHTML= "<b>" + menu[msg].nombre + "</b>";
-        menu[msg].opciones.forEach(element => {
-            var btn = document.createElement("button");
-            btn.setAttribute("value", element.valor);
-            btn.setAttribute("id", element.nombre);
-            btn.innerText = element.valor;
-             if (element.informacion != undefined) {
-                 let titulo_boton = document.createElement('div');
-                 let textarea = document.createElement('textarea');
-                 textarea.setAttribute('style', "width:50%");
-                 textarea.setAttribute("id",element.valor);
-                 content.appendChild(titulo_boton);
-                 content.appendChild(textarea);
-                 titulo_boton.innerHTML = "<b>" + element.nombre + "</b>";
-                 textarea.innerHTML = element.informacion;
-             }
-            content.appendChild(btn);
-            btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
-            btn.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        alert("funca");
+                boton_enviar.addEventListener('click',function (event) {
+                    event.preventDefault();
+                    //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
+                    let opcion = $('#titulo').attr('data-value');
+                    console.log(`menú seleccionado: ${opcion}`);
+                    let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
+                    console.log(`en info hay = ${data_info}`);
+                    let data_links = document.getElementById(`link-${menu[msg].nombre}`).value;
+                    console.log(`en links hay = ${data_links}`);
+                    let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
+                    console.log(`en botones hay = ${data_botones}`);
+                });
             });
 
+    $('#obtener.menu').click(function (event){
+        event.preventDefault();
+        let select = document.getElementById("div-menu");
+        select.removeAttribute("style");
+        let botones_iniciales = document.getElementById("opciones-iniciales");
+        botones_iniciales.setAttribute("style", "display: none");
+        let titulo_selector = document.getElementById('titulo-selector');
+        titulo_selector.innerHTML = "Seleccione el menú que desea";
+        let div = document.getElementById("selector-menu");
+        div.addEventListener('change',function (event) {
+            socketopciones.info(menu[div.value].nombre);
         });
+    });
 
-        
-    });*/
-
+    socketopciones.on("info",function (msg) {
+       console.log(`obtenido fue = ${JSON.stringify(msg)}`); 
+    });
 
     $('#borrar-menu').click(function (event) {
         event.preventDefault();
+        socketopciones.emit("obtener-menu");
+        let select = document.getElementById("div-menu");
+        select.removeAttribute("style");
+        let botones_iniciales = document.getElementById("opciones-iniciales");
+        botones_iniciales.setAttribute("style", "display: none");
+        let titulo_selector = document.getElementById('titulo-selector');
+        titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
+        let div = document.getElementById("selector-menu");
+        div.addEventListener('change',function (event) {
+            //socketopciones.borrar(menu[div.value].nombre);
+        });
     });
 
    

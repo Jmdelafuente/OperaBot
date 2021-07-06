@@ -75,7 +75,12 @@ socket.on("obtener-menu",async function (msg) {
 
 socket.on("sub-menu", function (msg) {
     socket.emit("menu-grafico",msg);
-})
+});
+
+socket.on("info", function(msg){
+    let obtenido = config_opcion.filtrarOpciones(msg);
+    socket.emit("info",obtenido);
+});
 
 socket.on("editar_menu",async function (msg) {
   

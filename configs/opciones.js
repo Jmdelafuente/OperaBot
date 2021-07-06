@@ -31,8 +31,10 @@ function filtrarOpciones(msg){
         return v.nombre == msg 
     });
     if(Object.keys(filtrado).length!=0){
-        retorno.nombre = filtrado[0].nombre,
-        retorno.opciones = filtrado[0].opciones
+        retorno.nombre = filtrado[0].nombre;
+        retorno.opciones = filtrado[0].opciones;
+        retorno.informacion = filtrado[0].informacion;
+        retorno.link = filtrado[0].link;
     }
 
     return retorno;
