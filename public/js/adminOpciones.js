@@ -112,13 +112,13 @@ $(function () {
                 links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
                 pack.links = links_listos;
             }
-            var submenus_tomados = document.getElementById('submenus-menu');
+            var submenus_tomados = document.getElementById('submenus-menu').value;
             if(submenus_tomados){
                 var submenus_preparados = submenus_tomados.split(",");
                 submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
                 pack.submenus = submenus_listos;
             }
-            
+            volver('#contenedor-creacion');
             socketopciones.emit("nuevo_menu",pack);
         });
        
@@ -298,7 +298,7 @@ socketopciones.on("connect", () => {
                     nuevo_menu.botones = data_botones;
                     socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
-                    volver();
+                    volver('#contenedor');
                 });
             });
 
@@ -336,7 +336,7 @@ socketopciones.on("connect", () => {
     });
 
     function volver(msg) {
-        $('#contenedor').remove();
+        $(`${msg}`).remove();
         let select = document.getElementById("div-menu");
         select.setAttribute("style","display: none");
         let botones_iniciales = document.getElementById("opciones-iniciales");
