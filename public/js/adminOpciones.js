@@ -220,8 +220,9 @@ socketopciones.on("connect", () => {
                 var botones = "";
                 var div_botones = document.createElement('div');
                 div_botones.setAttribute('id','div-botones');
+                div_botones.setAttribute('style',"padding: 2% 0;")
                 let titulo_botones = document.createElement('p');
-                titulo_botones.innerHTML = "<b>Asi quedaria el menu</b>"
+                titulo_botones.innerHTML = "<b>Asi quedaria el menú:</b>"
                 div_botones.appendChild(titulo_botones);
                 menu[msg].opciones.forEach((element,i) => {
                     var btn = document.createElement("button");
@@ -240,6 +241,8 @@ socketopciones.on("connect", () => {
                 }
                 let boton_enviar = document.createElement('button');
                 let div_alerta = document.createElement('div'); 
+                div_alerta.setAttribute('id','alerta');
+                div_alert.setAttribute('style','padding: 1% 0;');
                 let div_info = document.createElement('div');
                 let div_links = document.createElement('div');
                 let div_opciones = document.createElement('div');
@@ -249,7 +252,7 @@ socketopciones.on("connect", () => {
                 let textarea_info = document.createElement('textarea');
                 let textarea_links = document.createElement('textarea');
                 let textarea_botones = document.createElement('textarea');
-                div_alerta.innerHTML = "<b> Aclaración: </b><br></br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br></br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
+                div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
                 boton_enviar.setAttribute('id','enviar-menu');
                 boton_enviar.className = "btn btn-primary";
                 div_info.setAttribute('id','div-info');
