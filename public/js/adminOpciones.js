@@ -257,6 +257,7 @@ socketopciones.on("connect", () => {
                 div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
                 boton_enviar.setAttribute('id','enviar-menu');
                 boton_enviar.className = "btn btn-primary";
+                boton_enviar.innerHTML = "Enviar";
                 div_info.setAttribute('id','div-info');
                 div_links.setAttribute('id','div-links');
                 div_opciones.setAttribute('id','div-opciones');
@@ -287,7 +288,6 @@ socketopciones.on("connect", () => {
                 boton_enviar.addEventListener('click',function (event) {
                     event.preventDefault();
                     //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
-                    e.preventDefault();
                     let opcion = $('#titulo').attr('data-value');
                     console.log(`menú seleccionado: ${opcion}`);
                     let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
@@ -297,6 +297,7 @@ socketopciones.on("connect", () => {
                     let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
                     console.log(`en botones hay = ${data_botones}`);
                     //alert("Se modifico el menu");
+                    
                 });
             });
 
