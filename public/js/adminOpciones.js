@@ -41,6 +41,8 @@ $(function () {
         console.log("ajaa");
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
+        var boton_volver = document.createElement('button');
+        boton_volver.setAttribute('id','volver-creacion');
         var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
         div_alerta.setAttribute('id','alerta-crear');
@@ -80,6 +82,7 @@ $(function () {
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
         enviar.innerText = "Enviar";
+        boton_volver.innerText = "Volver";
         div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
 
         div_nombre.appendChild(titulo_nombre);
@@ -96,6 +99,7 @@ $(function () {
         contenedor.appendChild(div_link);
         contenedor.appendChild(div_alerta);
         contenedor.appendChild(enviar);
+        contenedor.appendChild(boton_volver);
         div.appendChild(contenedor);
         //content.appendChild(contenedor);
 
@@ -121,6 +125,10 @@ $(function () {
             volver('#contenedor-creacion');
             socketopciones.emit("nuevo_menu",pack);
         });
+        boton_volver.addEventListener('click',function (event) {
+            event.preventDefault();
+            volver('#contenedor-creacion');
+         });
        
     });
     
@@ -229,6 +237,8 @@ socketopciones.on("connect", () => {
                 botones = botones.slice(2, botones.length);
                 }
                 let boton_enviar = document.createElement('button');
+                let boton_volver = document.createElement('button');
+                boton_volver.setAttribute('id','volver-editar');
                 let div_alerta = document.createElement('div'); 
                 div_alerta.setAttribute('id','alerta-editar');
                 div_alerta.setAttribute('style','padding: 1% 0;');
@@ -269,6 +279,7 @@ socketopciones.on("connect", () => {
                 content.appendChild(div_alerta);
                 content.appendChild(div_botones);
                 content.appendChild(boton_enviar);
+                content.appendChild(boton_volver);
                 if(menu[msg].informacion==undefined){
                     textarea_info.innerHTML = "No contiene información";
                 }else{
@@ -299,6 +310,10 @@ socketopciones.on("connect", () => {
                     socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
+                });
+                boton_volver.addEventListener('click',function (event) {
+                   event.preventDefault();
+                   volver('#contenedor');
                 });
             });
 
