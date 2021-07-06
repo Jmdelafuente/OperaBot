@@ -43,6 +43,8 @@ $(function () {
         botones_iniciales.setAttribute("style", "display: none");
         var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
+        div_alerta.setAttribute('id','alerta-crear');
+        div_alerta.setAttribute('style','padding: 1% 0;');
         var content = document.createElement("div");
         var contenedor = document.createElement("div");
         var div_nombre = document.createElement("div");
@@ -78,7 +80,7 @@ $(function () {
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
         enviar.innerText = "Enviar";
-        div_alerta.innerHTML = "<b> Aclaración: </b><br></br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br></br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
+        div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
 
         div_nombre.appendChild(titulo_nombre);
         div_nombre.appendChild(nombre);
@@ -95,8 +97,8 @@ $(function () {
         contenedor.appendChild(div_alerta);
         contenedor.appendChild(enviar);
         div.appendChild(contenedor);
-        //content.appendChild(contenedor);
-        console.log("despues del contenedor");
+        content.appendChild(contenedor);
+
         enviar.addEventListener('click',function (event) {
             event.preventDefault();
             var links_listos = [];
@@ -241,8 +243,8 @@ socketopciones.on("connect", () => {
                 }
                 let boton_enviar = document.createElement('button');
                 let div_alerta = document.createElement('div'); 
-                div_alerta.setAttribute('id','alerta');
-                div_alert.setAttribute('style','padding: 1% 0;');
+                div_alerta.setAttribute('id','alerta-editar');
+                div_alerta.setAttribute('style','padding: 1% 0;');
                 let div_info = document.createElement('div');
                 let div_links = document.createElement('div');
                 let div_opciones = document.createElement('div');
