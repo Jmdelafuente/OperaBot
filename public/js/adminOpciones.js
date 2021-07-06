@@ -76,8 +76,8 @@ $(function () {
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
-        boton_enviar.className = "btn btn-primary";
-        boton_volver.className = "btn btn-primary";
+        boton_enviar.className = "btn btn-primary mx-3";
+        boton_volver.className = "btn btn-primary mx-3";
 
         
         nombre.placeholder = "Nombre del menú";
