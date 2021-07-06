@@ -309,12 +309,12 @@ socketopciones.on("connect", () => {
                     console.log(`en botones hay = ${data_botones}`);
                     let nuevo_menu = {};
                     nuevo_menu.nombre = opcion;
-                    nuevo_menu.info = data_info;
+                    nuevo_menu.informacion = data_info;
                     nuevo_menu.link = data_links;
-                    nuevo_menu.botones = data_botones;
-                    console.log(nuevo_menu);
+                    nuevo_menu.opciones = data_botones;
+                    
                     console.log(JSON.stringify(nuevo_menu));
-                    //socketopciones.emit("modificar",nuevo_menu);
+                    socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
                 });
