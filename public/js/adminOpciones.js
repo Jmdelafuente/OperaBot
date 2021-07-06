@@ -142,12 +142,12 @@ socketopciones.on("connect", () => {
     socketopciones.on("selector-menu",function (msg) {
         let opciones = [];
         let div = document.getElementById("selector-menu");
-        //let enviar = document.createElement('button');
-        //enviar.setAttribute("class", "btn btn-primary");
+        let enviar = document.createElement('button');
+        enviar.setAttribute("class", "btn btn-primary");
         let container= document.getElementById("div-menu");
         let text = document.createElement('div');
         text.setAttribute("id","editor");
-        //enviar.setAttribute("id", "enviar_opciones");
+        enviar.setAttribute("id", "enviar_opciones");
         let contenedor = document.createElement('div');
         var titulo = document.createElement('div');
         let content = document.createElement('div');
@@ -170,60 +170,33 @@ socketopciones.on("connect", () => {
 
             div.appendChild(opcion);
         }
-        //enviar.innerText = "Enviar";
+        enviar.innerText = "Enviar";
         contenedor.appendChild(titulo);
         contenedor.appendChild(content);
         container.appendChild(text);
         container.appendChild(contenedor);
-        //container.appendChild(enviar);
+        container.appendChild(enviar);
         
         div.addEventListener('change',function (event) {
             event.preventDefault();
             socketopciones.emit("sub-menu",div.value);
         });
 
-         /*var envio = document.getElementById("enviar_opciones");
+         var envio = document.getElementById("enviar_opciones");
          envio.addEventListener('click', function (e) {
              e.preventDefault();
              let opcion = $('#titulo').attr('data-value');
-             console.log(menu[opcion]);
-             let info = document.getElementById(`info-${menu[opcion].nombre}`).value;
-             menu[opcion].informacion = info;
-             let link = document.getElementById(`link-${menu[opcion].nombre}`).value;
-             menu[opcion].link = link;
-             console.log(menu[opcion]);
-             socketopciones.emit("editar_menu",menu);
+             console.log(`menú seleccionado: ${opcion}`);
+             let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
+             console.log(`en info hay = ${data_info}`);
+             let data_links = document.getElementById(`link-${menu[msg].nombre}`).value;
+             console.log(`en links hay = ${data_links}`);
+             let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
+             console.log(`en botones hay = ${data_botones}`);
              //alert("Se modifico el menu");
-         });*/
+         });
     })
 
-    socketopciones.on("sub-menu",function (msg) {
-
-        var string="";
-        let i=0;
-        let div = document.getElementById("selector-menu");
-        let text = document.getElementById("editor");
-        //$("#selector-menu").empty();
-        if(menu[msg].opciones){
-        menu[msg].opciones.forEach(element => {
-            if (element.valor != undefined) {
-                string += `<div id=${element.valor}><b>titulo del boton: </b> <textarea style = \"width:50%\">` + element.valor + `</textarea> </div>`;
-            }
-            if (element.nombre != undefined) {
-                string += `<div id=\"${element.nombre}\"><b>tiene submenu: </b> <textarea style = \"width:50%\">` + element.nombre + `</textarea> </div>`;
-            }
-            if (element.informacion != undefined) {
-                string += `<div id=\"informacion_${element.valor}\"><b>informacion: </b> <textarea style = \"width:50%\">` + element.informacion + `</textarea> </div>`;
-            }
-            i++;
-         });
-         }
-         if (menu[msg].descripcion!=undefined) {
-             string += `</div id=descripcion_${menu[msg].nombre}><b>Descripcion: </b>` + menu[msg].descripcion + `</div>`;
-         }
-        text.innerHTML = string;        
-        
-    });
 
 
     socketopciones.on("menu-grafico", function (msg) {
@@ -251,11 +224,10 @@ socketopciones.on("connect", () => {
                 titulo_botones.innerHTML = "<b>Asi quedaria el menu</b>"
                 div_botones.appendChild(titulo_botones);
                 menu[msg].opciones.forEach((element,i) => {
-                    console.log(`el valor i = ${i} y menu long = ${menu.length}`);
                     var btn = document.createElement("button");
                     btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
                     var titulo = element;
-                    if(i == (menu.length - 1)){
+                    if(i == (menu[msg].opciones.length - 1)){
                         console.log(element);
                         titulo = "volver";
                     }
@@ -308,15 +280,15 @@ socketopciones.on("connect", () => {
                 textarea_botones.innerHTML = menu[msg].opciones;
                 boton_enviar.addEventListener('click',function (event) {
                     event.preventDefault();
-                    //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
+                    /*codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
                     let opcion = $('#titulo').attr('data-value');
-                    console.log(`menú seleccionado: ${opcion}`);
-                    let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
-                    console.log(`en info hay = ${data_info}`);
-                    let data_links = document.getElementById(`link-${menu[msg].nombre}`).value;
-                    console.log(`en links hay = ${data_links}`);
-                    let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
-                    console.log(`en botones hay = ${data_botones}`);
+                    console.log(menu[opcion]);
+                    let info = document.getElementById(`info-${menu[opcion].nombre}`).value;
+                    menu[opcion].informacion = info;
+                    let link = document.getElementById(`link-${menu[opcion].nombre}`).value;
+                    menu[opcion].link = link;
+                    console.log(menu[opcion]);
+                    socketopciones.emit("editar_menu",menu);*/
                 });
             });
 
