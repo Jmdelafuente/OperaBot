@@ -170,7 +170,7 @@ socketopciones.on("connect", () => {
 
             div.appendChild(opcion);
         }
-        enviar.innerText = "Enviar";
+        //enviar.innerText = "Enviar";
         contenedor.appendChild(titulo);
         contenedor.appendChild(content);
         container.appendChild(text);
@@ -319,42 +319,39 @@ socketopciones.on("connect", () => {
                     console.log(`en botones hay = ${data_botones}`);
                 });
             });
+
+    $('#obtener.menu').click(function (event){
+        event.preventDefault();
+        let select = document.getElementById("div-menu");
+        select.removeAttribute("style");
+        let botones_iniciales = document.getElementById("opciones-iniciales");
+        botones_iniciales.setAttribute("style", "display: none");
+        let titulo_selector = document.getElementById('titulo-selector');
+        titulo_selector.innerHTML = "Seleccione el menú que desea";
+        let div = document.getElementById("selector-menu");
+        div.addEventListener('change',function (event) {
+            socketopciones.info(menu[div.value].nombre);
+        });
+    });
+
+    socketopciones.on("info",function (msg) {
+       console.log(`obtenido fue = ${JSON.stringify(msg)}`); 
+    });
+
+    $('#borrar-menu').click(function (event) {
+        event.preventDefault();
+        socketopciones.emit("obtener-menu");
+        let select = document.getElementById("div-menu");
+        select.removeAttribute("style");
+        let botones_iniciales = document.getElementById("opciones-iniciales");
+        botones_iniciales.setAttribute("style", "display: none");
+        let titulo_selector = document.getElementById('titulo-selector');
+        titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
+        let div = document.getElementById("selector-menu");
+        div.addEventListener('change',function (event) {
+            //socketopciones.borrar(menu[div.value].nombre);
+        });
+    });
+
    
 });
-
-
-
-/*
-$('#obtener.menu').click(function (event){
-    event.preventDefault();
-    let select = document.getElementById("div-menu");
-    select.removeAttribute("style");
-    let botones_iniciales = document.getElementById("opciones-iniciales");
-    botones_iniciales.setAttribute("style", "display: none");
-    let titulo_selector = document.getElementById('titulo-selector');
-    titulo_selector.innerHTML = "Seleccione el menú que desea";
-    let div = document.getElementById("selector-menu");
-    div.addEventListener('change',function (event) {
-        socketopciones.info(menu[div.value].nombre);
-    });
-});
-
-socketopciones.on("info",function (msg) {
-   console.log(`obtenido fue = ${JSON.stringify(msg)}`); 
-});
-
-$('#borrar-menu').click(function (event) {
-    event.preventDefault();
-    socketopciones.emit("obtener-menu");
-    let select = document.getElementById("div-menu");
-    select.removeAttribute("style");
-    let botones_iniciales = document.getElementById("opciones-iniciales");
-    botones_iniciales.setAttribute("style", "display: none");
-    let titulo_selector = document.getElementById('titulo-selector');
-    titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
-    let div = document.getElementById("selector-menu");
-    div.addEventListener('change',function (event) {
-        //socketopciones.borrar(menu[div.value].nombre);
-    });
-});
-*/
