@@ -17,6 +17,8 @@ function obteneropciones(msg) {
 }
 
 function obtenermenu(msg) {
+    data = fs.readFileSync('./configs/diccionario-menu.json');
+    nuevo_menu = JSON.parse(data);
     return nuevo_menu;
 }
 
