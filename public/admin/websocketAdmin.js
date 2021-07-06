@@ -70,7 +70,7 @@ iois.on("connection", function (socket) {
 
 socket.on("obtener-menu",async function (msg) {
    let opciones = await op.obteneropciones();
-   console.log(JSON.stringify(opciones));
+   //console.log(JSON.stringify(opciones));
    socket.emit("selector-menu", opciones); 
 });
 
@@ -85,7 +85,7 @@ socket.on("info", function(msg){
 
 socket.on("modificar", function (msg) {
    config_opcion.modificar(msg);
-   var nuevo = config_opcion.obteneropciones();
+   var nuevo = config_opcion.obtenermenu();
    socket.emit("mostrar", nuevo);
 });
 
