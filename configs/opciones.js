@@ -33,7 +33,7 @@ function modificar(msg) {
             nuevo_menu[i].opciones = msg.botones; 
          }
         });
-    fs.writeFile('./configs/diccionario-opciones.json', nuevo_menu, (err)=>{
+    fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, (err)=>{
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
@@ -59,4 +59,5 @@ module.exports.filtrarOpciones = filtrarOpciones;
 module.exports.obteneropciones = obteneropciones;
 module.exports.modificarOpciones = modificarOpciones;
 module.exports.obtenermenu = obtenermenu;
+module.exports.modificar = modificar;
 

@@ -69,7 +69,7 @@ iois.on("connection", function (socket) {
     console.log("user connect en websocket admin");
 
 socket.on("obtener-menu",async function (msg) {
-   let opciones = await op.obteneropciones();
+   let opciones = await op.obtenermenu();
    socket.emit("selector-menu", opciones); 
 });
 
@@ -83,7 +83,9 @@ socket.on("info", function(msg){
 });
 
 socket.on("modificar", function (msg) {
-    
+   config_opcion.modificar(msg);
+   var nuevo = config_opcion.obtenermenu();
+   socket.emit("mostrar", nuevo);
 });
 
 socket.on("editar_menu",async function (msg) {

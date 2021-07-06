@@ -86,7 +86,7 @@ $(function () {
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
         boton_enviar.innerText = "Enviar";
         boton_volver.innerText = "Volver";
-        div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
+        div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus (Botones) debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
 
         div_nombre.appendChild(titulo_nombre);
         div_nombre.appendChild(nombre);
@@ -242,8 +242,8 @@ socketopciones.on("connect", () => {
                 let boton_enviar = document.createElement('button');
                 let boton_volver = document.createElement('button');
                 boton_volver.setAttribute('id','volver-editar');
-                boton_enviar.className = "btn btn-primary";
-                boton_volver.className = "btn btn-primary";
+                boton_enviar.className = "btn btn-primary mx-3";
+                boton_volver.className = "btn btn-primary mx-3";
                 let div_alerta = document.createElement('div'); 
                 div_alerta.setAttribute('id','alerta-editar');
                 div_alerta.setAttribute('style','padding: 1% 0;');
@@ -256,9 +256,8 @@ socketopciones.on("connect", () => {
                 let textarea_info = document.createElement('textarea');
                 let textarea_links = document.createElement('textarea');
                 let textarea_botones = document.createElement('textarea');
-                div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
+                div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus (Botones) debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
                 boton_enviar.setAttribute('id','enviar-menu');
-                boton_enviar.className = "btn btn-primary";
                 boton_enviar.innerHTML = "Enviar";
                 boton_volver.innerHTML = "Volver";
                 div_info.setAttribute('id','div-info');
@@ -363,5 +362,9 @@ socketopciones.on("connect", () => {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.removeAttribute("style");        
     }
+
+    socketopciones.on("mostrar",function (msg) {
+       console.log(JSON.stringify(msg)); 
+    });
    
 });
