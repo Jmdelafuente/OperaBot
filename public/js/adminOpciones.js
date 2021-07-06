@@ -97,7 +97,7 @@ $(function () {
         contenedor.appendChild(div_alerta);
         contenedor.appendChild(enviar);
         div.appendChild(contenedor);
-        content.appendChild(contenedor);
+        //content.appendChild(contenedor);
 
         enviar.addEventListener('click',function (event) {
             event.preventDefault();
