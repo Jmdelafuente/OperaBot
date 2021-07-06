@@ -282,8 +282,16 @@ socketopciones.on("connect", () => {
                 content.appendChild(div_alerta);
                 content.appendChild(div_botones);
                 content.appendChild(boton_enviar);
-                textarea_info.innerHTML = menu[msg].informacion;
-                textarea_links.innerHTML = menu[msg].link;
+                if(menu[msg].informacion==undefined){
+                    textarea_info.innerHTML = "No contiene información";
+                }else{
+                    textarea_info.innerHTML = menu[msg].informacion;
+                }
+                if(menu[msg].link == undefined){
+                    textarea_links.innerHTML = "No contiene links";
+                }else{
+                    textarea_links.innerHTML = menu[msg].link;
+                }
                 textarea_botones.innerHTML = menu[msg].opciones;
                 boton_enviar.addEventListener('click',function (event) {
                     event.preventDefault();
@@ -297,7 +305,7 @@ socketopciones.on("connect", () => {
                     let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
                     console.log(`en botones hay = ${data_botones}`);
                     //alert("Se modifico el menu");
-                    
+
                 });
             });
 
