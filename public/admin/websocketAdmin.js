@@ -82,6 +82,10 @@ socket.on("info", function(msg){
     socket.emit("info",obtenido);
 });
 
+socket.on("modificar", function (msg) {
+    
+});
+
 socket.on("editar_menu",async function (msg) {
   
     let json = "";

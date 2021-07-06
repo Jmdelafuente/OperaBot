@@ -7,13 +7,13 @@ let nuevo_menu = JSON.parse(data);
 function modificarOpciones(msg) {
     console.log(`llegue a modificar ${JSON.stringify(msg)}`);
     fs.writeFile('./configs/diccionario-opciones.json', msg, 'utf8', (err) => {
-     if(err){ console.log(err);throw err;}
-     console.log('se guardo el archivo');   
+        if (err) { console.log(err); throw err; }
+        console.log('se guardo el archivo');
     });
 }
 
-function obteneropciones(msg){
-return dic;
+function obteneropciones(msg) {
+    return dic;
 }
 
 function obtenermenu(msg) {
@@ -22,15 +22,29 @@ function obtenermenu(msg) {
 
 function agregar_menu(msg) {
     var nombre = msg.nombre;
- 
+
 }
 
-function filtrarOpciones(msg){
-    let retorno ={};
-    var filtrado = dic.filter(function (v) {
-        return v.nombre == msg 
+function modificar(msg) {
+    nuevo_menu.forEach((element, i) => {
+         if (element.nombre == msg.nombre) {
+            nuevo_menu[i].informacion = msg.info;
+            nuevo_menu[i].link = msg.link;
+            nuevo_menu[i].opciones = msg.botones; 
+         }
+        });
+    fs.writeFile('./configs/diccionario-opciones.json', nuevo_menu, (err)=>{
+        if (err) { console.log(err); throw err; }
+        console.log('se guardo el archivo');
     });
-    if(Object.keys(filtrado).length!=0){
+}
+
+function filtrarOpciones(msg) {
+    let retorno = {};
+    var filtrado = dic.filter(function (v) {
+        return v.nombre == msg
+    });
+    if (Object.keys(filtrado).length != 0) {
         retorno.nombre = filtrado[0].nombre;
         retorno.opciones = filtrado[0].opciones;
         retorno.informacion = filtrado[0].informacion;

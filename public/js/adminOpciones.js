@@ -155,6 +155,7 @@ socketopciones.on("connect", () => {
         let content = document.createElement('div');
         contenedor.setAttribute("id","contenedor");
         titulo.setAttribute("id","titulo");
+        titulo.setAttribute('style','padding: 1% 0;');
         content.setAttribute("id","content");
         for (const [key, prefix] of Object.entries(msg)) {
           
@@ -183,20 +184,6 @@ socketopciones.on("connect", () => {
             event.preventDefault();
             socketopciones.emit("sub-menu",div.value);
         });
-
-         /*var envio = document.getElementById("enviar_opciones");
-         envio.addEventListener('click', function (e) {
-             e.preventDefault();
-             let opcion = $('#titulo').attr('data-value');
-             console.log(`menú seleccionado: ${opcion}`);
-             let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
-             console.log(`en info hay = ${data_info}`);
-             let data_links = document.getElementById(`link-${menu[msg].nombre}`).value;
-             console.log(`en links hay = ${data_links}`);
-             let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
-             console.log(`en botones hay = ${data_botones}`);
-             //alert("Se modifico el menu");
-         });*/
     })
 
 
@@ -304,8 +291,14 @@ socketopciones.on("connect", () => {
                     console.log(`en links hay = ${data_links}`);
                     let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
                     console.log(`en botones hay = ${data_botones}`);
+                    let nuevo_menu = {};
+                    nuevo_menu.nombre = opcion;
+                    nuevo_menu.info = data_info;
+                    nuevo_menu.link = data_links;
+                    nuevo_menu.botones = data_botones;
+                    socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
-
+                    volver();
                 });
             });
 
@@ -342,5 +335,12 @@ socketopciones.on("connect", () => {
         });
     });
 
+    function volver(msg) {
+        $('#contenedor').remove();
+        let select = document.getElementById("div-menu");
+        select.setAttribute("style","display: none");
+        let botones_iniciales = document.getElementById("opciones-iniciales");
+        botones_iniciales.removeAttribute("style");        
+    }
    
 });
