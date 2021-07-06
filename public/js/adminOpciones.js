@@ -269,7 +269,7 @@ socketopciones.on("connect", () => {
                 textarea_links.setAttribute('style', "width:50%");
                 textarea_links.setAttribute("id", `link-${menu[msg].nombre}`);
                 textarea_botones.setAttribute('style', "width:50%");
-                textarea_links.setAttribute("id", `botones-${menu[msg].nombre}`);
+                textarea_botones.setAttribute("id", `botones-${menu[msg].nombre}`);
                 div_info.appendChild(titulo_info);
                 div_info.appendChild(textarea_info);
                 div_links.appendChild(titulo_links);
