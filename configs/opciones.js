@@ -28,12 +28,12 @@ function agregar_menu(msg) {
 }
 
 function modificar(msg) {
+    console.log(JSON.parse(msg));
+    
     nuevo_menu.forEach((element, i) => {
          if (element.nombre == msg.nombre) {
-            nuevo_menu[i].informacion = msg.info;
-            nuevo_menu[i].link = msg.link;
-            nuevo_menu[i].opciones = msg.botones; 
-         }
+            nuevo_menu[i] = JSON.parse(msg);
+        }
         });
     fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, (err)=>{
         if (err) { console.log(err); throw err; }
