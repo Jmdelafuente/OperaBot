@@ -69,19 +69,22 @@ $(function () {
         titulo_link.innerHTML = "<b>Links: </b>";
         var links = document.createElement("input");
         links.setAttribute('style','width:60%'); 
-        var enviar = document.createElement('button');
+        var boton_enviar = document.createElement('button');
         content.setAttribute('id', 'div-creaciones');
         contenedor.setAttribute('id','contenedor-creacion');
         nombre.setAttribute('id','nombre-menu');
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
+        boton_enviar.className = "btn btn-primary";
+        boton_volver.className = "btn btn-primary";
+
         
         nombre.placeholder = "Nombre del menú";
         informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
-        enviar.innerText = "Enviar";
+        boton_enviar.innerText = "Enviar";
         boton_volver.innerText = "Volver";
         div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
 
@@ -98,12 +101,12 @@ $(function () {
         div_link.appendChild(links);
         contenedor.appendChild(div_link);
         contenedor.appendChild(div_alerta);
-        contenedor.appendChild(enviar);
+        contenedor.appendChild(boton_enviar);
         contenedor.appendChild(boton_volver);
         div.appendChild(contenedor);
         //content.appendChild(contenedor);
 
-        enviar.addEventListener('click',function (event) {
+        boton_enviar.addEventListener('click',function (event) {
             event.preventDefault();
             var links_listos = [];
             var submenus_listos = [];
@@ -239,6 +242,8 @@ socketopciones.on("connect", () => {
                 let boton_enviar = document.createElement('button');
                 let boton_volver = document.createElement('button');
                 boton_volver.setAttribute('id','volver-editar');
+                boton_enviar.className = "btn btn-primary";
+                boton_volver.className = "btn btn-primary";
                 let div_alerta = document.createElement('div'); 
                 div_alerta.setAttribute('id','alerta-editar');
                 div_alerta.setAttribute('style','padding: 1% 0;');
@@ -255,6 +260,7 @@ socketopciones.on("connect", () => {
                 boton_enviar.setAttribute('id','enviar-menu');
                 boton_enviar.className = "btn btn-primary";
                 boton_enviar.innerHTML = "Enviar";
+                boton_volver.innerHTML = "Volver";
                 div_info.setAttribute('id','div-info');
                 div_links.setAttribute('id','div-links');
                 div_opciones.setAttribute('id','div-opciones');
