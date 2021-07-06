@@ -313,7 +313,7 @@ socketopciones.on("connect", () => {
                     nuevo_menu.link = data_links;
                     nuevo_menu.botones = data_botones;
                     console.log(nuevo_menu);
-                    console.log(JSON.parse(nuevo_menu));
+                    console.log(JSON.stringify(nuevo_menu));
                     //socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
