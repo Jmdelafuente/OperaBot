@@ -28,8 +28,11 @@ function agregar_menu(msg) {
 }
 
 function modificar(msg) {
-        console.log(`nuevo menu antes de cambio ${JSON.stringify(nuevo_menu)}`);
+        //console.log(`nuevo menu antes de cambio ${JSON.stringify(nuevo_menu)}`);
     nuevo_menu.forEach((element, i) => {
+        console.log(element);
+        console.log(msg);
+        console.log(JSON.stringify(msg));
          if (element.nombre == msg.nombre) {
              console.log(`MENU DEL ELEMENTO HAJSIOHDAIOSHYDIOSA ${nuevo_menu[i]}`);
              nuevo_menu[i] = JSON.stringify(msg.contenido);
@@ -40,7 +43,7 @@ function modificar(msg) {
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
-        console.log(`nuevo menu despues de cambio ${JSON.stringify(nuevo_menu)}`);
+        //console.log(`nuevo menu despues de cambio ${JSON.stringify(nuevo_menu)}`);
 
 }
 
