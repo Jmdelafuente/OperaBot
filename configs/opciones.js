@@ -29,6 +29,7 @@ function agregar_menu(msg) {
 
 function modificar(msg) {
         console.log(`nuevo menu antes de cambio ${JSON.stringify(nuevo_menu)}`);
+        console.log(JSON.stringify(msg));
     nuevo_menu.forEach((element, i) => {
          if (element.nombre == msg.nombre) {
              nuevo_menu[i] = JSON.stringify(JSON.stringify(msg));
