@@ -332,6 +332,7 @@ socketopciones.on("connect", () => {
 
                     var json_menu = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"" + "," + "\"link\":[" + nuevo_menu.link + "]}";
                     
+                    console.log(json_menu);
                     console.log(`y para el json seria: ${JSON.parse(json_menu)}`);
                     //socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
