@@ -323,7 +323,7 @@ socketopciones.on("connect", () => {
                     }
                     console.log(`en los botones procesados serian = ${data_botones}`);
                     let data_info = "\"" + document.getElementById(`info-${menu[msg].nombre}`).value + "\",";
-                    console.log(`en informacion = ${data_info}`);
+                    console.log(`en Menu nuevo = ${"\"" +menu[msg].nombre+ "\""} op = ${data_botones} info = ${data_info} link = ${data_links}`);
                     let nuevo_menu = {};
                     nuevo_menu.nombre = "\"" +menu[msg].nombre+ "\"";
                     nuevo_menu.opciones = data_botones;
