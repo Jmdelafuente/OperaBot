@@ -298,16 +298,17 @@ socketopciones.on("connect", () => {
                 boton_enviar.addEventListener('click',function (event) {
                     event.preventDefault();
                     //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
-                    var data_links = [];
-                    var data_botones = [];
+                    var data_links = "";
+                    var data_botones = "";
                     let links_tomados = document.getElementById(`link-${menu[msg].nombre}`).value;
                     console.log(`en links hay = ${links_tomados}`);
                     if (links_tomados) {
                         var links_preparados = links_tomados.split(",");
                         links_preparados.forEach(element => {
                             var link = element.trim();
-                            data_links.push(link);
+                            data_links = data_links + "\"" + link +  "\",";
                         });
+                        data_links = data_links.slice(0,-1);
                     }
                     console.log(`en los links procesados serian = ${data_links}`);
                     var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
@@ -316,20 +317,23 @@ socketopciones.on("connect", () => {
                         var submenus_preparados = submenus_tomados.split(",");
                         submenus_preparados.forEach(element => {
                             var submenu = element.trim();
-                            data_botones.push(submenu);
+                            data_botones = data_botones + "\"" + submenu + "\",";
                         });
+                        data_botones = data_botones.slice(0,-1);
                     }
                     console.log(`en los botones procesados serian = ${data_botones}`);
-                    let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
-                    console.log(`en info hay = ${data_info}`);
+                    let data_info = "\"" + document.getElementById(`info-${menu[msg].nombre}`).value + "\",";
+                    console.log(`en informacion = ${data_info}`);
                     let nuevo_menu = {};
-                    nuevo_menu.nombre = menu[msg].nombre;
-                    nuevo_menu.informacion = data_info;
-                    nuevo_menu.link = data_links;
+                    /*nuevo_menu.nombre = "\"" +menu[msg].nombre+ "\"";
                     nuevo_menu.opciones = data_botones;
+                    nuevo_menu.informacion = data_info;
+                    nuevo_menu.link = data_links;*/
+
+                    var json_menu = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"" + "," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"" + "," + "\"link\":[" + nuevo_menu.link + "]}";
                     
-                    console.log(JSON.stringify(nuevo_menu));
-                    socketopciones.emit("modificar",nuevo_menu);
+                    console.log(`y para el json seria: ${JSON.parse(nuevo_menu)}`);
+                    //socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
                 });
