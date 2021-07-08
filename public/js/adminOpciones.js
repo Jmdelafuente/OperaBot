@@ -300,15 +300,19 @@ socketopciones.on("connect", () => {
                     //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
                     var data_links = "";
                     var data_botones = "";
+                    var links_listos = [];
+                    var submenus_listos = [];
                     let links_tomados = document.getElementById(`link-${menu[msg].nombre}`).value;
                     console.log(`en links hay = ${links_tomados}`);
                     if (links_tomados) {
                         var links_preparados = links_tomados.split(",");
                         links_preparados.forEach(element => {
                             var link = element.trim();
-                            data_links = data_links + "\"" + link +  "\",";
+                            data_links = "\"" + link +  "\"";
+                            links_listos.push(data_links);
                         });
-                        data_links = data_links.slice(0,-1);
+                        //data_links = data_links.slice(0,-1);
+                        
                     }
                     console.log(`en los links procesados serian = ${data_links}`);
                     var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
@@ -317,9 +321,10 @@ socketopciones.on("connect", () => {
                         var submenus_preparados = submenus_tomados.split(",");
                         submenus_preparados.forEach(element => {
                             var submenu = element.trim();
-                            data_botones = data_botones + "\"" + submenu + "\",";
+                            data_botones = "\"" + submenu + "\"";
+                            submenus_listos.push(data_botones);
                         });
-                        data_botones = data_botones.slice(0,-1);
+                       //data_botones = data_botones.slice(0,-1);
                     }
                     console.log(`en los botones procesados serian = ${data_botones}`);
                     let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
@@ -330,13 +335,12 @@ socketopciones.on("connect", () => {
                     nuevo_menu.informacion = data_info;
                     nuevo_menu.link = data_links;
 
-                    var json_menu = {};
-                    json_menu.nombre = menu[msg].nombre;
-                    json_menu.contenido = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
+                    //var json_menu = {};
+                    //json_menu.nombre = menu[msg].nombre;
+                    //json_menu.contenido = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
                     
-                    console.log(json_menu);
-                    console.log(`y para el json seria: ${JSON.parse(json_menu.contenido)}`);
-                    socketopciones.emit("modificar",json_menu);
+                    console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
+                    socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
                 });

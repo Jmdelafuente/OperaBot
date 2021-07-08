@@ -35,7 +35,7 @@ function modificar(msg) {
         console.log(JSON.stringify(msg));
          if (element.nombre == msg.nombre) {
              console.log(`MENU DEL ELEMENTO HAJSIOHDAIOSHYDIOSA ${nuevo_menu[i]}`);
-             nuevo_menu[i] = JSON.stringify(msg.contenido);
+             nuevo_menu[i] = JSON.stringify(JSON.stringify(msg));
              console.log(`MENU DEL ELEMENTO HAJSIOHDAIOSHYDIOSA ${nuevo_menu[i]}`);
         }
         });
