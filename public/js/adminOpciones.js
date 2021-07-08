@@ -322,15 +322,15 @@ socketopciones.on("connect", () => {
                         data_botones = data_botones.slice(0,-1);
                     }
                     console.log(`en los botones procesados serian = ${data_botones}`);
-                    let data_info = "\"" + document.getElementById(`info-${menu[msg].nombre}`).value + "\",";
+                    let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
                     console.log(`en Menu nuevo = ${"\"" +menu[msg].nombre+ "\""} op = ${data_botones} info = ${data_info} link = ${data_links}`);
                     let nuevo_menu = {};
-                    nuevo_menu.nombre = "\"" +menu[msg].nombre+ "\"";
+                    nuevo_menu.nombre = menu[msg].nombre;
                     nuevo_menu.opciones = data_botones;
                     nuevo_menu.informacion = data_info;
                     nuevo_menu.link = data_links;
 
-                    var json_menu = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"" + "," + "\"link\":[" + nuevo_menu.link + "]}";
+                    var json_menu = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
                     
                     console.log(json_menu);
                     console.log(`y para el json seria: ${JSON.parse(json_menu)}`);
