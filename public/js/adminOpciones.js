@@ -77,9 +77,7 @@ $(function () {
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
         boton_enviar.className = "btn btn-primary mx-3";
-        boton_volver.className = "btn btn-primary mx-3";
-
-        
+        boton_volver.className = "btn btn-primary mx-3";        
         nombre.placeholder = "Nombre del menú";
         informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
@@ -216,7 +214,8 @@ socketopciones.on("connect", () => {
                 links = links.slice(2,links.length);
                 }
                 if (menu[msg].opciones){
-                //botones que serian submenus
+  
+                    //botones que serian submenus
                 var botones = "";
                 var div_botones = document.createElement('div');
                 div_botones.setAttribute('id','div-botones');
@@ -299,12 +298,30 @@ socketopciones.on("connect", () => {
                 boton_enviar.addEventListener('click',function (event) {
                     event.preventDefault();
                     //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
+                    var data_links = [];
+                    var data_botones = [];
+                    let links_tomados = document.getElementById(`link-${menu[msg].nombre}`).value;
+                    console.log(`en links hay = ${links_tomados}`);
+                    if (links_tomados) {
+                        var links_preparados = links_tomados.split(",");
+                        links_preparados.forEach(element => {
+                            var link = element.trim();
+                            data_links.push(link);
+                        });
+                    }
+                    console.log(`en los links procesados serian = ${data_links}`);
+                    var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
+                    console.log(`en botones hay = ${submenus_tomados}`);
+                    if (submenus_tomados) {
+                        var submenus_preparados = submenus_tomados.split(",");
+                        submenus_preparados.forEach(element => {
+                            var submenu = element.trim();
+                            data_botones.push(submenu);
+                        });
+                    }
+                    console.log(`en los botones procesados serian = ${data_botones}`);
                     let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
                     console.log(`en info hay = ${data_info}`);
-                    let data_links = document.getElementById(`link-${menu[msg].nombre}`).value;
-                    console.log(`en links hay = ${data_links}`);
-                    let data_botones = document.getElementById(`botones-${menu[msg].nombre}`).value;
-                    console.log(`en botones hay = ${data_botones}`);
                     let nuevo_menu = {};
                     nuevo_menu.nombre = menu[msg].nombre;
                     nuevo_menu.informacion = data_info;
