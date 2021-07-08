@@ -285,12 +285,12 @@ socketopciones.on("connect", () => {
                 content.appendChild(boton_enviar);
                 content.appendChild(boton_volver);
                 if(menu[msg].informacion==undefined){
-                    textarea_info.innerHTML = "No contiene información";
+                    textarea_info.placeholder = "No contiene información";
                 }else{
                     textarea_info.innerHTML = menu[msg].informacion;
                 }
                 if(menu[msg].link == undefined){
-                    textarea_links.innerHTML = "No contiene links";
+                    textarea_links.placeholder = "No contiene links";
                 }else{
                     textarea_links.innerHTML = menu[msg].link;
                 }
