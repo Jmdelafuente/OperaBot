@@ -200,7 +200,9 @@ socketopciones.on("connect", () => {
     socketopciones.on("menu-grafico", function (msg) {
                 var titulo = document.getElementById("titulo");
                 let content = document.getElementById("content");
-               
+                while (content && content.firstChild) {
+                    content.removeChild(content.firstChild);
+                }
                 titulo.setAttribute('data-value', msg);
                 titulo.innerHTML = "<b>" + menu[msg].nombre + "</b>";
                 // links para despues intercambiarlos
