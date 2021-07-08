@@ -28,16 +28,18 @@ function agregar_menu(msg) {
 }
 
 function modificar(msg) {
-        
+        console.log(`nuevo menu antes de cambio ${nuevo_menu}`);
     nuevo_menu.forEach((element, i) => {
          if (element.nombre == msg.nombre) {
-            nuevo_menu[i] = JSON.parse(msg);
+            nuevo_menu[i] = msg;
         }
         });
     fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, (err)=>{
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
+        console.log(`nuevo menu despues de cambio ${nuevo_menu}`);
+
 }
 
 function filtrarOpciones(msg) {
