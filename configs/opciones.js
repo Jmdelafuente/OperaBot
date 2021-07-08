@@ -28,7 +28,7 @@ function agregar_menu(msg) {
 }
 
 function modificar(msg) {
-        console.log(`nuevo menu antes de cambio ${nuevo_menu}`);
+        console.log(`nuevo menu antes de cambio ${JSON.stringify(nuevo_menu)}`);
     nuevo_menu.forEach((element, i) => {
          if (element.nombre == msg.nombre) {
             nuevo_menu[i] = msg;
@@ -38,7 +38,7 @@ function modificar(msg) {
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
-        console.log(`nuevo menu despues de cambio ${nuevo_menu}`);
+        console.log(`nuevo menu despues de cambio ${JSON.stringify(nuevo_menu)}`);
 
 }
 
