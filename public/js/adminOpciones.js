@@ -308,8 +308,7 @@ socketopciones.on("connect", () => {
                         var links_preparados = links_tomados.split(",");
                         links_preparados.forEach(element => {
                             var link = element.trim();
-                            data_links = "\"" + link +  "\"";
-                            links_listos.push(data_links);
+                            links_listos.push(link);
                         });
                         //data_links = data_links.slice(0,-1);
                         
@@ -321,19 +320,18 @@ socketopciones.on("connect", () => {
                         var submenus_preparados = submenus_tomados.split(",");
                         submenus_preparados.forEach(element => {
                             var submenu = element.trim();
-                            data_botones = "\"" + submenu + "\"";
-                            submenus_listos.push(data_botones);
+                            submenus_listos.push(submenu);
                         });
                        //data_botones = data_botones.slice(0,-1);
                     }
                     console.log(`en los botones procesados serian = ${data_botones}`);
                     let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
-                    console.log(`en Menu nuevo = ${"\"" +menu[msg].nombre+ "\""} op = ${data_botones} info = ${data_info} link = ${data_links}`);
                     let nuevo_menu = {};
                     nuevo_menu.nombre = menu[msg].nombre;
                     nuevo_menu.opciones = data_botones;
                     nuevo_menu.informacion = data_info;
                     nuevo_menu.link = data_links;
+                    console.log(`en Menu nuevo ${nuevo_menu}`);
 
                     //var json_menu = {};
                     //json_menu.nombre = menu[msg].nombre;
