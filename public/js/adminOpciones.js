@@ -325,12 +325,12 @@ socketopciones.on("connect", () => {
                     let data_info = "\"" + document.getElementById(`info-${menu[msg].nombre}`).value + "\",";
                     console.log(`en informacion = ${data_info}`);
                     let nuevo_menu = {};
-                    /*nuevo_menu.nombre = "\"" +menu[msg].nombre+ "\"";
+                    nuevo_menu.nombre = "\"" +menu[msg].nombre+ "\"";
                     nuevo_menu.opciones = data_botones;
                     nuevo_menu.informacion = data_info;
-                    nuevo_menu.link = data_links;*/
+                    nuevo_menu.link = data_links;
 
-                    var json_menu = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"" + "," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"" + "," + "\"link\":[" + nuevo_menu.link + "]}";
+                    var json_menu = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"" + "," + "\"link\":[" + nuevo_menu.link + "]}";
                     
                     console.log(`y para el json seria: ${JSON.parse(json_menu)}`);
                     //socketopciones.emit("modificar",nuevo_menu);
