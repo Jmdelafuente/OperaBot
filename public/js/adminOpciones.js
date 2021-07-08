@@ -330,10 +330,12 @@ socketopciones.on("connect", () => {
                     nuevo_menu.informacion = data_info;
                     nuevo_menu.link = data_links;
 
-                    var json_menu = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
+                    var json_menu = {};
+                    json_menu.nombre = menu[msg].nombre;
+                    json_menu.contenido = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
                     
                     console.log(json_menu);
-                    console.log(`y para el json seria: ${JSON.parse(json_menu)}`);
+                    console.log(`y para el json seria: ${JSON.parse(json_menu.contenido)}`);
                     socketopciones.emit("modificar",json_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');

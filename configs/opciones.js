@@ -31,7 +31,9 @@ function modificar(msg) {
         console.log(`nuevo menu antes de cambio ${JSON.stringify(nuevo_menu)}`);
     nuevo_menu.forEach((element, i) => {
          if (element.nombre == msg.nombre) {
-            nuevo_menu[i] = JSON.stringify(msg);
+             console.log(`MENU DEL ELEMENTO HAJSIOHDAIOSHYDIOSA ${nuevo_menu[i]}`);
+             nuevo_menu[i] = JSON.stringify(msg.contenido);
+             console.log(`MENU DEL ELEMENTO HAJSIOHDAIOSHYDIOSA ${nuevo_menu[i]}`);
         }
         });
     fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, 'utf8', (err)=>{
