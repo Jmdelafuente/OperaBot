@@ -31,10 +31,10 @@ function modificar(msg) {
         console.log(`nuevo menu antes de cambio ${JSON.stringify(nuevo_menu)}`);
     nuevo_menu.forEach((element, i) => {
          if (element.nombre == msg.nombre) {
-            nuevo_menu[i] = msg;
+            nuevo_menu[i] = JSON.stringify(msg);
         }
         });
-    fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, (err)=>{
+    fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, 'utf8', (err)=>{
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
