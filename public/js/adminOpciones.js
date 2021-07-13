@@ -393,6 +393,7 @@ socketopciones.on("connect", () => {
     socketopciones.on("mostrar",function (msg) {
        //console.log(`con stringi ${JSON.stringify(msg)}`);
        msg.forEach((element, i) => {
+           console.log(element);
         if (element.nombre == msg.nombre) {
             console.log(`antes de "cambiar" ${nuevo_menu[i]}`);
             var prueba = {};
