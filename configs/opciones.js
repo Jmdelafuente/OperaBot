@@ -26,6 +26,12 @@ function agregar_menu(msg) {
     console.log(`menu en agregar_menu ${msg}`);
     console.log(`menu con stringy en agregar ${JSON.stringify(msg)}`);
     nuevo_menu.push(msg);
+
+    fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, 'utf8', (err)=>{
+        if (err) { console.log(err); throw err; }
+        console.log('se guardo el archivo');
+    });
+
 }
 
 function borrar_menu(msg) {

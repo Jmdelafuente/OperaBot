@@ -361,7 +361,7 @@ socketopciones.on("connect", () => {
         titulo_selector.innerHTML = "Seleccione el menú que desea";
         let div = document.getElementById("selector-menu");
         div.addEventListener('change',function (event) {
-            socketopciones.info(menu[div.value].nombre);
+            socketopciones.emit("info", menu[div.value].nombre);
         });
     });
 
