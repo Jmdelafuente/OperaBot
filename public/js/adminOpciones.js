@@ -304,33 +304,39 @@ socketopciones.on("connect", () => {
                     var submenus_listos = [];
                     let links_tomados = document.getElementById(`link-${menu[msg].nombre}`).value;
                     console.log(`en links hay = ${links_tomados}`);
-                    if (links_tomados) {
+                    if (links_tomados.includes(",")) {
                         var links_preparados = links_tomados.split(",");
                         links_preparados.forEach(element => {
                             var link = element.trim();
+                            link = "\"" + link + "\"";
                             links_listos.push(link);
                         });
                         //data_links = data_links.slice(0,-1);
-                        
+                    }else{
+                        links_tomados = "\"" + links_tomados + "\"";
+                        links_listos.push(links_tomados);                        
                     }
-                    console.log(`en los links procesados serian = ${data_links}`);
+                    console.log(`en los links procesados serian = ${links_listos}`);
                     var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
                     console.log(`en botones hay = ${submenus_tomados}`);
-                    if (submenus_tomados) {
+                    if (submenus_tomados.includes(",")) {
                         var submenus_preparados = submenus_tomados.split(",");
                         submenus_preparados.forEach(element => {
                             var submenu = element.trim();
                             submenus_listos.push(submenu);
                         });
                        //data_botones = data_botones.slice(0,-1);
+                    }else{
+                        submenus_tomados = "\"" + submenus_tomados + "\"";
+                        submenus_listos.push(submenus_tomados);
                     }
-                    console.log(`en los botones procesados serian = ${data_botones}`);
+                    console.log(`en los botones procesados serian = ${submenus_listos}`);
                     let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
                     let nuevo_menu = {};
                     nuevo_menu.nombre = menu[msg].nombre;
-                    nuevo_menu.opciones = data_botones;
+                    nuevo_menu.opciones = submenus_listos;
                     nuevo_menu.informacion = data_info;
-                    nuevo_menu.link = data_links;
+                    nuevo_menu.link = links_listos;
 
                     //var json_menu = {};
                     //json_menu.nombre = menu[msg].nombre;
@@ -407,10 +413,17 @@ socketopciones.on("connect", () => {
             
         }
        });*/
-       var div = document.createElement('div');
-       var ancla = document.getElementById("div-creacion");
-       div.innerHTML = JSON.stringify(msg);
-       ancla.appendChild(div);
+        var div = document.createElement('div');
+        var boton_volver = document.createElement('button');
+        div.setAttribute('id','mostrar');
+        var ancla = document.getElementById("div-creacion");
+        div.innerHTML = JSON.stringify(msg);
+        ancla.appendChild(div);
+        ancla.appendChild(boton_volver);
+        boton_volver.addEventListener('click',function (event) {
+        event.preventDefault();
+        volver('#mostrar');
+     });
     });
    
 });
