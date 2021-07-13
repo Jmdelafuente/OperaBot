@@ -391,8 +391,9 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("mostrar",function (msg) {
-       console.log(`con stringi ${JSON.stringify(msg)}`);
-       console.log(`sin stringi ${msg}`);
+       //console.log(`con stringi ${JSON.stringify(msg)}`);
+       var hue = JSON.stringify(msg);
+       console.log(hue[3]);
        var div = document.createElement('div');
        var ancla = document.getElementById("div-creacion");
        div.innerHTML = JSON.stringify(msg);
