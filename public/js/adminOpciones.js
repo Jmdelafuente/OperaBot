@@ -38,7 +38,6 @@ $(function () {
       
     $('#crear-menu').click(function (event) {
         event.preventDefault();
-        console.log("ajaa");
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         var boton_volver = document.createElement('button');
@@ -112,16 +111,20 @@ $(function () {
             pack.nombre = document.getElementById('nombre-menu').value;
             pack.informacion = document.getElementById('informacion-menu').value;
             var links_tomados = document.getElementById('links-menu').value;
-            if(links_tomados){
+            if(links_tomados.includes(",")){
                 var links_preparados = links_tomados.split(",");
                 links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
                 pack.links = links_listos;
+            }else{
+                pack.links = links_tomados;
             }
             var submenus_tomados = document.getElementById('submenus-menu').value;
-            if(submenus_tomados){
+            if(submenus_tomados.includes(",")){
                 var submenus_preparados = submenus_tomados.split(",");
                 submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
                 pack.submenus = submenus_listos;
+            }else{
+                pack.submenus = submenus_tomados;
             }
             volver('#contenedor-creacion');
             socketopciones.emit("nuevo_menu",pack);
@@ -221,7 +224,7 @@ socketopciones.on("connect", () => {
                 div_botones.setAttribute('id','div-botones');
                 div_botones.setAttribute('style',"padding: 2% 0;")
                 let titulo_botones = document.createElement('p');
-                titulo_botones.innerHTML = "<b>Asi quedaria el menú:</b>"
+                titulo_botones.innerHTML = "<b>Asi se ve el menú actualmente:</b>"
                 div_botones.appendChild(titulo_botones);
                 menu[msg].opciones.forEach((element,i) => {
                     var btn = document.createElement("button");
@@ -303,7 +306,7 @@ socketopciones.on("connect", () => {
                     var links_listos = [];
                     var submenus_listos = [];
                     let links_tomados = document.getElementById(`link-${menu[msg].nombre}`).value;
-                    console.log(`en links hay = ${links_tomados}`);
+                    //console.log(`en links hay = ${links_tomados}`);
                     if (links_tomados.includes(",")) {
                         var links_preparados = links_tomados.split(",");
                         links_preparados.forEach(element => {
@@ -314,9 +317,9 @@ socketopciones.on("connect", () => {
                     }else{
                         links_listos.push(links_tomados);                        
                     }
-                    console.log(`en los links procesados serian = ${links_listos}`);
+                    //console.log(`en los links procesados serian = ${links_listos}`);
                     var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
-                    console.log(`en botones hay = ${submenus_tomados}`);
+                    //console.log(`en botones hay = ${submenus_tomados}`);
                     if (submenus_tomados.includes(",")) {
                         var submenus_preparados = submenus_tomados.split(",");
                         submenus_preparados.forEach(element => {
@@ -327,7 +330,7 @@ socketopciones.on("connect", () => {
                     }else{
                         submenus_listos.push(submenus_tomados);
                     }
-                    console.log(`en los botones procesados serian = ${submenus_listos}`);
+                    //console.log(`en los botones procesados serian = ${submenus_listos}`);
                     let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
                     let nuevo_menu = {};
                     nuevo_menu.nombre = menu[msg].nombre;
@@ -335,11 +338,8 @@ socketopciones.on("connect", () => {
                     nuevo_menu.informacion = data_info;
                     nuevo_menu.link = links_listos;
 
-                    //var json_menu = {};
-                    //json_menu.nombre = menu[msg].nombre;
-                    //json_menu.contenido = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
-                    console.log(`sin el strigi ${nuevo_menu}`);
-                    console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
+                    //console.log(`sin el strigi ${nuevo_menu}`);
+                    //console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
                     socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
@@ -412,6 +412,8 @@ socketopciones.on("connect", () => {
        });*/
         var div = document.createElement('div');
         var boton_volver = document.createElement('button');
+        boton_volver.className("btn btn-primary");
+        boton_volver.innerText("Volver");
         div.setAttribute('id','mostrar');
         var ancla = document.getElementById("div-creacion");
         div.innerHTML = JSON.stringify(msg);

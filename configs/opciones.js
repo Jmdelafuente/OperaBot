@@ -44,21 +44,21 @@ function modificar(msg) {
 }
 
 function modificar2(msg) {
-    console.log(`si stringifyamos en opciones modificar2 antes de "cambiar" ${JSON.stringify(nuevo_menu)}`);
-    console.log(`nombre del menu a cambiar ${msg.nombre}`);
+    //console.log(`si stringifyamos en opciones modificar2 antes de "cambiar" ${JSON.stringify(nuevo_menu)}`);
+    //console.log(`nombre del menu a cambiar ${msg.nombre}`);
     nuevo_menu.forEach((element, i) => {
         //console.log(element);
      if (element.nombre == msg.nombre) {
-         console.log(`antes de "cambiar" ${JSON.stringify(nuevo_menu[i])}`);
+         //console.log(`antes de "cambiar" ${JSON.stringify(nuevo_menu[i])}`);
          
-         console.log(`y dice prueba? ${JSON.stringify(msg)}`);
+         //console.log(`y dice prueba? ${JSON.stringify(msg)}`);
          
          nuevo_menu[i] = msg;
-         console.log(`despues de "cambiar" ${JSON.stringify(nuevo_menu[i])}`);
+         //console.log(`despues de "cambiar" ${JSON.stringify(nuevo_menu[i])}`);
          
      }
     });
-    console.log(`si stringifyamos en opciones modificar2 despues del supuesto cambio ${JSON.stringify(nuevo_menu)}`);
+    //console.log(`si stringifyamos en opciones modificar2 despues del supuesto cambio ${JSON.stringify(nuevo_menu)}`);
     
     //fs.writeFileSync('./configs/diccionario-menu.json', nuevo_menu, 'utf8');
     var prueba = JSON.stringify(nuevo_menu);
