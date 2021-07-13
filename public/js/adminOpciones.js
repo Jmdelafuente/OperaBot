@@ -392,8 +392,21 @@ socketopciones.on("connect", () => {
 
     socketopciones.on("mostrar",function (msg) {
        //console.log(`con stringi ${JSON.stringify(msg)}`);
-       var hue = JSON.stringify(msg);
-       console.log(hue[3]);
+       msg.forEach((element, i) => {
+        if (element.nombre == msg.nombre) {
+            console.log(`antes de "cambiar" ${nuevo_menu[i]}`);
+            var prueba = {};
+            prueba.nombre = "Medidas en la ciudad";
+            prueba.opciones = ["boton1","boton2","boton3","boton4","boton5"];
+            prueba.informacion = "hola si, buen dia que dice que hace que onda?";
+            prueba.link = ["www.google.com"];
+            console.log(`y dice prueba? ${JSON.stringify(prueba)}`);
+            
+            nuevo_menu[i] = JSON.stringify(prueba);
+            console.log(`despues de "cambiar" ${nuevo_menu[i]}`);
+            
+        }
+       });
        var div = document.createElement('div');
        var ancla = document.getElementById("div-creacion");
        div.innerHTML = JSON.stringify(msg);
