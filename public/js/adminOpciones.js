@@ -308,12 +308,10 @@ socketopciones.on("connect", () => {
                         var links_preparados = links_tomados.split(",");
                         links_preparados.forEach(element => {
                             var link = element.trim();
-                            link = "\"" + link + "\"";
                             links_listos.push(link);
                         });
                         //data_links = data_links.slice(0,-1);
                     }else{
-                        links_tomados = "\"" + links_tomados + "\"";
                         links_listos.push(links_tomados);                        
                     }
                     console.log(`en los links procesados serian = ${links_listos}`);
@@ -327,7 +325,6 @@ socketopciones.on("connect", () => {
                         });
                        //data_botones = data_botones.slice(0,-1);
                     }else{
-                        submenus_tomados = "\"" + submenus_tomados + "\"";
                         submenus_listos.push(submenus_tomados);
                     }
                     console.log(`en los botones procesados serian = ${submenus_listos}`);
@@ -341,7 +338,7 @@ socketopciones.on("connect", () => {
                     //var json_menu = {};
                     //json_menu.nombre = menu[msg].nombre;
                     //json_menu.contenido = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
-                    
+                    console.log(`sin el strigi ${nuevo_menu}`);
                     console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
                     socketopciones.emit("modificar2",nuevo_menu);
                     //alert("Se modifico el menu");
