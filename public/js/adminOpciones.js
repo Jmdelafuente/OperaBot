@@ -331,7 +331,6 @@ socketopciones.on("connect", () => {
                     nuevo_menu.opciones = data_botones;
                     nuevo_menu.informacion = data_info;
                     nuevo_menu.link = data_links;
-                    console.log(`en Menu nuevo ${nuevo_menu}`);
 
                     //var json_menu = {};
                     //json_menu.nombre = menu[msg].nombre;
@@ -392,7 +391,7 @@ socketopciones.on("connect", () => {
 
     socketopciones.on("mostrar",function (msg) {
        //console.log(`con stringi ${JSON.stringify(msg)}`);
-       msg.forEach((element, i) => {
+       /*msg.forEach((element, i) => {
            //console.log(element);
         if (element.nombre == "Medidas en la ciudad") {
             console.log(`antes de "cambiar" ${JSON.stringify(msg[i])}`);
@@ -407,7 +406,7 @@ socketopciones.on("connect", () => {
             console.log(`despues de "cambiar" ${JSON.stringify(msg[i])}`);
             
         }
-       });
+       });*/
        var div = document.createElement('div');
        var ancla = document.getElementById("div-creacion");
        div.innerHTML = JSON.stringify(msg);

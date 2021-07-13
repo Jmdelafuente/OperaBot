@@ -45,12 +45,19 @@ function modificar(msg) {
 
 function modificar2(msg) {
     console.log(`si stringifyamos en opciones modificar2 antes de "cambiar" ${JSON.stringify(nuevo_menu)}`);
-   
+    console.log(`nombre del menu a cambiar ${msg.nombre}`);
     nuevo_menu.forEach((element, i) => {
-        if (element.nombre == msg.nombre) {
-            nuevo_menu[i] = JSON.stringify(msg);
-       }
-       });
+        //console.log(element);
+     if (element.nombre == msg.nombre) {
+         console.log(`antes de "cambiar" ${JSON.stringify(nuevo_menu[i])}`);
+         
+         console.log(`y dice prueba? ${JSON.stringify(msg)}`);
+         
+         nuevo_menu[i] = msg;
+         console.log(`despues de "cambiar" ${JSON.stringify(nuevo_menu[i])}`);
+         
+     }
+    });
     
     fs.writeFileSync('./configs/diccionario-menu.json', nuevo_menu, 'utf8');
 
