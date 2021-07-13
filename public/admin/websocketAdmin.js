@@ -84,8 +84,11 @@ socket.on("info", function(msg){
 });
 
 socket.on("modificar", async function (msg) {
-   await config_opcion.modificar(msg);
-   var nuevo = config_opcion.obtenermenu();
+   await config_opcion.modificar2(msg);
+});
+
+socket.on("mostrar" , function (msg) {
+    var nuevo = config_opcion.obtenermenu();
    socket.emit("mostrar", nuevo);
 });
 

@@ -43,6 +43,21 @@ function modificar(msg) {
 
 }
 
+function modificar2(msg) {
+    console.log(`si stringifyamos en opciones modificar2 antes de "cambiar" ${JSON.stringify(nuevo_menu)}`);
+   
+    nuevo_menu.forEach((element, i) => {
+        if (element.nombre == msg.nombre) {
+            nuevo_menu[i] = JSON.stringify(msg);
+       }
+       });
+    
+    fs.writeFileSync('./configs/diccionario-menu.json', nuevo_menu, 'utf8');
+
+    console.log(`si stringifyamos en opciones modificar2 despues del supuesto cambio ${JSON.stringify(nuevo_menu)}`);
+
+}
+
 function filtrarOpciones(msg) {
     let retorno = {};
     var filtrado = dic.filter(function (v) {
@@ -64,4 +79,5 @@ module.exports.obteneropciones = obteneropciones;
 module.exports.modificarOpciones = modificarOpciones;
 module.exports.obtenermenu = obtenermenu;
 module.exports.modificar = modificar;
+module.exports.modificar2 = modificar2;
 

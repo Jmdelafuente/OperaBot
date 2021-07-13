@@ -338,7 +338,7 @@ socketopciones.on("connect", () => {
                     //json_menu.contenido = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
                     
                     console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
-                    socketopciones.emit("modificar",nuevo_menu);
+                    socketopciones.emit("modificar2",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
                 });
@@ -348,8 +348,9 @@ socketopciones.on("connect", () => {
                 });
             });
 
-    $('#obtener.menu').click(function (event){
+    $('#obtener-menu').click(function (event){
         event.preventDefault();
+        socketopciones.emit("mostrar","");
         let select = document.getElementById("div-menu");
         select.removeAttribute("style");
         let botones_iniciales = document.getElementById("opciones-iniciales");
@@ -390,7 +391,12 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("mostrar",function (msg) {
-       console.log(JSON.stringify(msg)); 
+       console.log(`con stringi ${JSON.stringify(msg)}`);
+       console.log(`sin stringi ${msg}`);
+       var div = document.createElement('div');
+       var ancla = document.getElementById("div-creacion");
+       div.innerHTML = JSON.stringify(msg);
+       ancla.appendChild(div);
     });
    
 });
