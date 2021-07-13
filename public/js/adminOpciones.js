@@ -395,7 +395,7 @@ socketopciones.on("connect", () => {
        msg.forEach((element, i) => {
            //console.log(element);
         if (element.nombre == "Medidas en la ciudad") {
-            console.log(`antes de "cambiar" ${nuevo_menu[i]}`);
+            console.log(`antes de "cambiar" ${msg[i]}`);
             var prueba = {};
             prueba.nombre = "Medidas en la ciudad";
             prueba.opciones = ["boton1","boton2","boton3","boton4","boton5"];
@@ -403,8 +403,8 @@ socketopciones.on("connect", () => {
             prueba.link = ["www.google.com"];
             console.log(`y dice prueba? ${JSON.stringify(prueba)}`);
             
-            nuevo_menu[i] = JSON.stringify(prueba);
-            console.log(`despues de "cambiar" ${nuevo_menu[i]}`);
+            msg[i] = JSON.stringify(prueba);
+            console.log(`despues de "cambiar" ${msg[i]}`);
             
         }
        });
