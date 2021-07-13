@@ -412,8 +412,8 @@ socketopciones.on("connect", () => {
        });*/
         var div = document.createElement('div');
         var boton_volver = document.createElement('button');
-        boton_volver.className("btn btn-primary");
-        boton_volver.innerText("Volver");
+        boton_volver.className = "btn btn-primary";
+        boton_volver.innerText = "Volver";
         div.setAttribute('id','mostrar');
         var ancla = document.getElementById("div-creacion");
         div.innerHTML = JSON.stringify(msg);
