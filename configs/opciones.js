@@ -23,27 +23,12 @@ function obtenermenu(msg) {
 }
 
 function agregar_menu(msg) {
-    var nombre = msg.nombre;
-
+    console.log(`menu en agregar_menu ${msg}`);
+    console.log(`menu con stringy en agregar ${JSON.stringify(msg)}`);
+    nuevo_menu.push(msg);
 }
 
 function modificar(msg) {
-        console.log(`nuevo menu antes de cambio ${JSON.stringify(nuevo_menu)}`);
-        console.log(JSON.stringify(msg));
-    nuevo_menu.forEach((element, i) => {
-         if (element.nombre == msg.nombre) {
-             nuevo_menu[i] = JSON.stringify(JSON.stringify(msg));
-        }
-        });
-    fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, 'utf8', (err)=>{
-        if (err) { console.log(err); throw err; }
-        console.log('se guardo el archivo');
-    });
-        console.log(`nuevo menu despues de cambio ${JSON.stringify(nuevo_menu)}`);
-
-}
-
-function modificar2(msg) {
     //console.log(`si stringifyamos en opciones modificar2 antes de "cambiar" ${JSON.stringify(nuevo_menu)}`);
     //console.log(`nombre del menu a cambiar ${msg.nombre}`);
     nuevo_menu.forEach((element, i) => {
@@ -61,8 +46,8 @@ function modificar2(msg) {
     //console.log(`si stringifyamos en opciones modificar2 despues del supuesto cambio ${JSON.stringify(nuevo_menu)}`);
     
     //fs.writeFileSync('./configs/diccionario-menu.json', nuevo_menu, 'utf8');
-    var prueba = JSON.stringify(nuevo_menu);
-    fs.writeFile('./configs/diccionario-menu.json', prueba, 'utf8', (err)=>{
+    var nuevo = JSON.stringify(nuevo_menu);
+    fs.writeFile('./configs/diccionario-menu.json', nuevo, 'utf8', (err)=>{
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
@@ -90,5 +75,6 @@ module.exports.obteneropciones = obteneropciones;
 module.exports.modificarOpciones = modificarOpciones;
 module.exports.obtenermenu = obtenermenu;
 module.exports.modificar = modificar;
-module.exports.modificar2 = modificar2;
+module.exports.agregar_menu = agregar_menu;
+
 

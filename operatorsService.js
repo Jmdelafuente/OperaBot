@@ -581,3 +581,4 @@ module.exports.add_tag = add_tag;
 module.exports.delete_tag = delete_tag;
 module.exports.chat_leido = chat_leido;
 module.exports.obteneropciones = obteneropciones;
+module.exports.agregar_menu = agregar_menu;

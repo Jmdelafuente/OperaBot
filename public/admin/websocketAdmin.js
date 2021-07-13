@@ -84,7 +84,7 @@ socket.on("info", function(msg){
 });
 
 socket.on("modificar", async function (msg) {
-   await config_opcion.modificar2(msg);
+   await config_opcion.modificar(msg);
 });
 
 socket.on("mostrar" , function (msg) {
@@ -92,21 +92,10 @@ socket.on("mostrar" , function (msg) {
    socket.emit("mostrar", nuevo);
 });
 
-socket.on("editar_menu",async function (msg) {
-  
-    let json = "";
-    msg.forEach(element => {
-        json += JSON.stringify(element);
-    });
-    //json += "]";
-
-    op.modificaropciones(json);
-})
-
 socket.on("nuevo_menu",function (msg) {
    //nuevo menu
-   console.log(`menu en nuevo_menu ${msg}`)
-   //op.agregar_menu(msg);
+  
+   op.agregar_menu(msg);
    //var menu = new Menu(msg.nombre,msg.submenus,msg.informacion,msg.links);
 
 });
