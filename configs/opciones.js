@@ -28,6 +28,13 @@ function agregar_menu(msg) {
     nuevo_menu.push(msg);
 }
 
+function borrar_menu(msg) {
+    nuevo_menu = nuevo_menu.filter(function (v) {
+        return v.nombre != msg
+});
+
+}
+
 function modificar(msg) {
     //console.log(`si stringifyamos en opciones modificar2 antes de "cambiar" ${JSON.stringify(nuevo_menu)}`);
     //console.log(`nombre del menu a cambiar ${msg.nombre}`);

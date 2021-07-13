@@ -380,6 +380,7 @@ socketopciones.on("connect", () => {
         titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
         let div = document.getElementById("selector-menu");
         div.addEventListener('change',function (event) {
+            console.log(`en borrar toque el ${div.value} y que es ${menu[div.value].nombre}`);
             //socketopciones.borrar(menu[div.value].nombre);
         });
     });
@@ -417,8 +418,8 @@ socketopciones.on("connect", () => {
         div.setAttribute('id','mostrar');
         var ancla = document.getElementById("div-creacion");
         div.innerHTML = JSON.stringify(msg);
+        div.appendChild(boton_volver);
         ancla.appendChild(div);
-        ancla.appendChild(boton_volver);
         boton_volver.addEventListener('click',function (event) {
         event.preventDefault();
         volver('#mostrar');
