@@ -340,7 +340,7 @@ socketopciones.on("connect", () => {
                     //json_menu.contenido = "{" + "\"nombre\":" + "\"" + nuevo_menu.nombre + "\"," + "\"opciones\":[" + nuevo_menu.opciones + "]," + "\"informacion\":" + "\"" + nuevo_menu.informacion + "\"," + "\"link\":[" + nuevo_menu.link + "]}";
                     console.log(`sin el strigi ${nuevo_menu}`);
                     console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
-                    socketopciones.emit("modificar2",nuevo_menu);
+                    socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
                 });
