@@ -23,12 +23,8 @@ function obtenermenu(msg) {
 }
 
 function agregar_menu(msg) {
-    console.log(`menu en agregar_menu ${msg}`);
-    console.log(`menu con stringy en agregar ${JSON.stringify(msg)}`);
-    
     nuevo_menu.push(msg);
     var nuevo = JSON.stringify(nuevo_menu);
-    console.log(nuevo);
     escribir(nuevo);
 }
 
@@ -43,8 +39,9 @@ function borrar_menu(msg) {
     var element = nuevo_menu.filter(function (v) {
         return v.nombre == msg.nombre; 
     });
-    
+    console.log(`elemento ${element}`);
     var opciones = element.opciones;
+    console.log(opciones);
     var opcion_volver = opciones[opciones.length-1];
     //borrar la opcion deseada en su menu "padre"
     
