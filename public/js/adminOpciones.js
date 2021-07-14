@@ -40,7 +40,6 @@ $(function () {
         event.preventDefault();
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
-        socketopciones.emit("titulos","");
         var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
         div_alerta.setAttribute('id','alerta-crear');
@@ -99,6 +98,8 @@ $(function () {
         contenedor.appendChild(contenedor_editables);
         
         div.appendChild(contenedor);
+
+        socketopciones.emit("titulos","");
         //content.appendChild(contenedor);
 
         boton_enviar.addEventListener('click',function (event) {
@@ -420,10 +421,10 @@ socketopciones.on("connect", () => {
             titulo_selector.appendChild(opcion);
         }
         let content = document.getElementById('contenedor-creacion');
-        //contenedor_titulos.appendChild(contenedor_editables);
-        //contenedor_titulos.appendChild(boton_enviar);
-        //contenedor_titulos.appendChild(boton_volver);
-        //content.appendChild(contenedor_titulos);
+        contenedor_titulos.appendChild(contenedor_editables);
+        contenedor_titulos.appendChild(boton_enviar);
+        contenedor_titulos.appendChild(boton_volver);
+        content.appendChild(contenedor_titulos);
     });
 
     socketopciones.on("mostrar",function (msg) {
