@@ -99,37 +99,6 @@ $(function () {
 
         socketopciones.emit("titulos","");
         //content.appendChild(contenedor);
-
-        boton_enviar.addEventListener('click',function (event) {
-            event.preventDefault();
-            var links_listos = [];
-            var submenus_listos = [];
-            var pack = {};
-            var links_tomados = document.getElementById('links-menu').value;
-            if(links_tomados.includes(",")){
-                var links_preparados = links_tomados.split(",");
-                links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
-            }else{
-               links_listos.push(links_tomados);
-            }
-            var submenus_tomados = document.getElementById('submenus-menu').value;
-            if(submenus_tomados.includes(",")){
-                var submenus_preparados = submenus_tomados.split(",");
-                submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
-            }else{
-                submenus_listos.push(submenus_tomados);
-            }
-            pack.nombre = document.getElementById('nombre-menu').value;
-            pack.informacion = document.getElementById('informacion-menu').value;
-            pack.opciones = submenus_listos;
-            pack.link = links_listos;
-            volver('#contenedor-creacion');
-            socketopciones.emit("nuevo_menu",pack);
-        });
-        boton_volver.addEventListener('click',function (event) {
-            event.preventDefault();
-            volver('#contenedor-creacion');
-         });
        
     });
     
@@ -294,7 +263,56 @@ socketopciones.on("connect", () => {
                     textarea_links.innerHTML = menu[msg].link;
                 }
                 textarea_botones.innerHTML = menu[msg].opciones;
-               
+                boton_enviar.addEventListener('click',function (event) {
+                    event.preventDefault();
+                    //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
+                    var data_links = "";
+                    var data_botones = "";
+                    var links_listos = [];
+                    var submenus_listos = [];
+                    let links_tomados = document.getElementById(`link-${menu[msg].nombre}`).value;
+                    //console.log(`en links hay = ${links_tomados}`);
+                    if (links_tomados.includes(",")) {
+                        var links_preparados = links_tomados.split(",");
+                        links_preparados.forEach(element => {
+                            var link = element.trim();
+                            links_listos.push(link);
+                        });
+                        //data_links = data_links.slice(0,-1);
+                    }else{
+                        links_listos.push(links_tomados);                        
+                    }
+                    //console.log(`en los links procesados serian = ${links_listos}`);
+                    var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
+                    //console.log(`en botones hay = ${submenus_tomados}`);
+                    if (submenus_tomados.includes(",")) {
+                        var submenus_preparados = submenus_tomados.split(",");
+                        submenus_preparados.forEach(element => {
+                            var submenu = element.trim();
+                            submenus_listos.push(submenu);
+                        });
+                       //data_botones = data_botones.slice(0,-1);
+                    }else{
+                        submenus_listos.push(submenus_tomados);
+                    }
+                    //console.log(`en los botones procesados serian = ${submenus_listos}`);
+                    let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
+                    let nuevo_menu = {};
+                    nuevo_menu.nombre = menu[msg].nombre;
+                    nuevo_menu.opciones = submenus_listos;
+                    nuevo_menu.informacion = data_info;
+                    nuevo_menu.link = links_listos;
+
+                    //console.log(`sin el strigi ${nuevo_menu}`);
+                    //console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
+                    socketopciones.emit("modificar",nuevo_menu);
+                    //alert("Se modifico el menu");
+                    volver('#contenedor');
+                });
+                boton_volver.addEventListener('click',function (event) {
+                   event.preventDefault();
+                   volver('#contenedor');
+                });
             });
 
     $('#obtener-menu').click(function (event){
@@ -336,9 +354,8 @@ socketopciones.on("connect", () => {
 
     socketopciones.on("titulos", function (msg) {
         var contenedor_titulos = document.getElementById("contenedor-titulos");
-        var titulos = document.getElementById("titulos-menu");
         let titulo_selector = document.getElementById('selector-titulos');
-        
+        var titulo = document.getElementById("titulos-menu");
         var boton_volver = document.createElement('button');
         boton_volver.setAttribute('id','volver-creacion');
         var boton_enviar = document.createElement('button');
@@ -372,59 +389,41 @@ socketopciones.on("connect", () => {
             titulo_selector.appendChild(opcion);
         }
         let content = document.getElementById('contenedor-creacion');
-        contenedor_titulos.appendChild(titulos);
+        contenedor_titulos.appendChild(titulo);
         contenedor_titulos.appendChild(boton_enviar);
         contenedor_titulos.appendChild(boton_volver);
         content.appendChild(contenedor_titulos);
 
         boton_enviar.addEventListener('click',function (event) {
             event.preventDefault();
-            //codigo para obtener los textareas, armar el paquete con todos los datos y enviarlo
             var links_listos = [];
             var submenus_listos = [];
-            let links_tomados = document.getElementById(`link-${menu[msg].nombre}`).value;
-            //console.log(`en links hay = ${links_tomados}`);
-            if (links_tomados.includes(",")) {
+            var pack = {};
+            var links_tomados = document.getElementById('links-menu').value;
+            if(links_tomados.includes(",")){
                 var links_preparados = links_tomados.split(",");
-                links_preparados.forEach(element => {
-                    var link = element.trim();
-                    links_listos.push(link);
-                });
-                //data_links = data_links.slice(0,-1);
+                links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
             }else{
-                links_listos.push(links_tomados);                        
+               links_listos.push(links_tomados);
             }
-            //console.log(`en los links procesados serian = ${links_listos}`);
-            var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
-            //console.log(`en botones hay = ${submenus_tomados}`);
-            if (submenus_tomados.includes(",")) {
+            var submenus_tomados = document.getElementById('submenus-menu').value;
+            if(submenus_tomados.includes(",")){
                 var submenus_preparados = submenus_tomados.split(",");
-                submenus_preparados.forEach(element => {
-                    var submenu = element.trim();
-                    submenus_listos.push(submenu);
-                });
-               //data_botones = data_botones.slice(0,-1);
+                submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
             }else{
                 submenus_listos.push(submenus_tomados);
             }
-            //console.log(`en los botones procesados serian = ${submenus_listos}`);
-            let data_info = document.getElementById(`info-${menu[msg].nombre}`).value;
-            let nuevo_menu = {};
-            nuevo_menu.nombre = menu[msg].nombre;
-            nuevo_menu.opciones = submenus_listos;
-            nuevo_menu.informacion = data_info;
-            nuevo_menu.link = links_listos;
-
-            //console.log(`sin el strigi ${nuevo_menu}`);
-            //console.log(`y para el json seria: ${JSON.stringify(nuevo_menu)}`);
-            socketopciones.emit("modificar",nuevo_menu);
-            //alert("Se modifico el menu");
-            volver('#contenedor');
+            pack.nombre = document.getElementById('nombre-menu').value;
+            pack.informacion = document.getElementById('informacion-menu').value;
+            pack.opciones = submenus_listos;
+            pack.link = links_listos;
+            volver('#contenedor-creacion');
+            socketopciones.emit("nuevo_menu",pack);
         });
         boton_volver.addEventListener('click',function (event) {
-           event.preventDefault();
-           volver('#contenedor');
-        });
+            event.preventDefault();
+            volver('#contenedor-creacion');
+         });
     });
 
     socketopciones.on("mostrar",function (msg) {
