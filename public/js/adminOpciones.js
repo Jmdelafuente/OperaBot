@@ -79,8 +79,6 @@ $(function () {
         informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
         links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
-        boton_enviar.innerText = "Enviar";
-        boton_volver.innerText = "Volver";
         div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus (Botones) debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
 
         div_nombre.appendChild(titulo_nombre);
@@ -394,7 +392,8 @@ socketopciones.on("connect", () => {
         var boton_enviar = document.createElement('button');
         boton_enviar.className = "btn btn-primary mx-3";
         boton_volver.className = "btn btn-primary mx-3";    
-     
+        boton_enviar.innerText = "Enviar";
+        boton_volver.innerText = "Volver";
         var nombre = document.getElementById("submenu");
         titulo_selector.innerHTML = "Seleccione el menú padre";
         let select = document.getElementById("tablero");
