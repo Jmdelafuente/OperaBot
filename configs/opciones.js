@@ -39,9 +39,9 @@ function borrar_menu(msg) {
     var element = nuevo_menu.filter(function (v) {
         return v.nombre == msg.nombre; 
     });
-    console.log(`elemento ${element}`);
+    console.log(`elemento ${JSON.stringify(element)}`);
     var opciones = element.opciones;
-    console.log(opciones);
+    
     var opcion_volver = opciones[opciones.length-1];
     //borrar la opcion deseada en su menu "padre"
     
