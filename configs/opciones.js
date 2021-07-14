@@ -24,12 +24,13 @@ function obtenermenu(msg) {
 
 function agregar_menu(msg) {
     nuevo_menu.push(msg);
-    var ingresante = JSON.stringify(msg);
+    var ingresante = msg;
     console.log(`ingresante ${ingresante}`);
     console.log(`ingresante opciones ${ingresante.opciones}`);
-    var longitud = ingresante.opciones.length;
+    var longitud = ingresante.opciones.length-1;
     var nombre_padre = ingresante.opciones[longitud];
     console.log(`nombre del padre ${nombre_padre}`);
+    console.log(`nombre del padre stre ${JSON.stringify(nombre_padre)}`);
     
     nuevo_menu.forEach((element, i) => {
         if (element.nombre == nombre_padre) {                  
