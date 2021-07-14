@@ -103,6 +103,7 @@ $(function () {
         contenedor_editables.appendChild(div_link);
         contenedor_editables.appendChild(div_alerta);
         contenedor.appendChild(contenedor_editables);
+        contenedor.appendChild(contenedor_titulos);
         contenedor.appendChild(boton_enviar);
         contenedor.appendChild(boton_volver);
         div.appendChild(contenedor);
