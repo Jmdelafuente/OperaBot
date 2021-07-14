@@ -1,6 +1,6 @@
 [
     {"nombre":"Menu Inicial",
-     "opciones":["Medidas en la ciudad","Licencia de conducir","Tributos municipales","Chatea con nosotros"]   
+     "opciones":["Medidas en la ciudad","Licencia de conducir","Tributos municipales","Chatea con nosotros","Menu Inicial"]   
     },
     {
       "nombre":"Chatea con nosotros",

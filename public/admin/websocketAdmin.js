@@ -78,6 +78,10 @@ socket.on("sub-menu", function (msg) {
     socket.emit("menu-grafico",msg);
 });
 
+socket.on("borrar", function (msg) {
+    config_opcion.borrar_menu(msg); 
+});
+
 socket.on("info", function(msg){
     let obtenido = config_opcion.filtrarOpciones(msg);
     socket.emit("info",obtenido);

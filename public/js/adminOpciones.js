@@ -231,7 +231,6 @@ socketopciones.on("connect", () => {
                     btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
                     var titulo = element;
                     if(i == (menu[msg].opciones.length - 1)){
-                        console.log(element);
                         titulo = "volver";
                     }
                     btn.setAttribute("id", element);
@@ -380,8 +379,8 @@ socketopciones.on("connect", () => {
         titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
         let div = document.getElementById("selector-menu");
         div.addEventListener('change',function (event) {
-            console.log(`en borrar toque el ${div.value} y que es ${menu[div.value].nombre}`);
-            //socketopciones.borrar(menu[div.value].nombre);
+            console.log(`en borrar toque el ${div.value} y que es ${JSON.stringify(menu[div.value])}`);
+            socketopciones.emit("borrar", menu[div.value]);
         });
     });
 
@@ -394,24 +393,7 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("mostrar",function (msg) {
-       //console.log(`con stringi ${JSON.stringify(msg)}`);
-       /*msg.forEach((element, i) => {
-           //console.log(element);
-        if (element.nombre == "Medidas en la ciudad") {
-            console.log(`antes de "cambiar" ${JSON.stringify(msg[i])}`);
-            var prueba = {};
-            prueba.nombre = "Medidas en la ciudad";
-            prueba.opciones = ["boton1","boton2","boton3","boton4","boton5"];
-            prueba.informacion = "hola si, buen dia que dice que hace que onda?";
-            prueba.link = ["www.google.com"];
-            console.log(`y dice prueba? ${JSON.stringify(prueba)}`);
-            
-            msg[i] = prueba;
-            console.log(`despues de "cambiar" ${JSON.stringify(msg[i])}`);
-            
-        }
-       });*/
-        var div = document.createElement('div');
+             var div = document.createElement('div');
         var boton_volver = document.createElement('button');
         boton_volver.className = "btn btn-primary";
         boton_volver.innerText = "Volver";

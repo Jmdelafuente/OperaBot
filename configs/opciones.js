@@ -27,19 +27,64 @@ function agregar_menu(msg) {
     console.log(`menu con stringy en agregar ${JSON.stringify(msg)}`);
     nuevo_menu.push(msg);
 
-    fs.writeFile('./configs/diccionario-menu.json', nuevo_menu, 'utf8', (err)=>{
+    escribir(JSON.stringify(nuevo_menu));
+}
+
+function escribir(msg) {
+    fs.writeFile('./configs/diccionario-menu.json', msg, 'utf8', (err)=>{
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
-
 }
 
 function borrar_menu(msg) {
-    nuevo_menu = nuevo_menu.filter(function (v) {
-        return v.nombre != msg
-});
+    var element = nuevo_menu.filter(function (v) {
+        return v.nombre == msg.nombre; 
+    });
+    
+    var opciones = element.opciones;
+    var opcion_volver = opciones[opciones.length-1];
+    //borrar la opcion deseada en su menu "padre"
+    
+    var menu_anterior = nuevo_menu.filter(function (v) {
+            return v.nombre == opcion_volver; 
+    });
 
+    var array_opciones = menu_anterior.opciones;
+    var index = array_opciones.indexOf(msg.nombre);
+    array_opciones.splice(index,1);
+
+    //borrar todos los "hijos" del hijo?
+    
+    nuevo_menu = nuevo_menu.filter(function (v) {
+        return v.nombre != msg.nombre;
+    });
 }
+
+function padre(msg) {
+    var i = 0;
+    if(msg.length > 1){
+        while(i < opciones.length){
+        borrar_hijos(opciones[i]);
+        i++;
+        }
+    }
+}
+
+ function borrar_hijos(msg) {
+    //tiene hijos??
+     if (msg.length === 0) {
+
+         return;
+     }
+     //si los tiene, vamos a eliminar sus hijos
+     var hijo = nuevo_menu.filter(function (v) {
+         v.nombre = msg[1];
+     });
+     borrar_hijos(hijo.opciones);
+ }  
+
+
 
 function modificar(msg) {
     //console.log(`si stringifyamos en opciones modificar2 antes de "cambiar" ${JSON.stringify(nuevo_menu)}`);
@@ -60,10 +105,7 @@ function modificar(msg) {
     
     //fs.writeFileSync('./configs/diccionario-menu.json', nuevo_menu, 'utf8');
     var nuevo = JSON.stringify(nuevo_menu);
-    fs.writeFile('./configs/diccionario-menu.json', nuevo, 'utf8', (err)=>{
-        if (err) { console.log(err); throw err; }
-        console.log('se guardo el archivo');
-    });
+    escribir(nuevo);
 
 }
 
@@ -89,5 +131,6 @@ module.exports.modificarOpciones = modificarOpciones;
 module.exports.obtenermenu = obtenermenu;
 module.exports.modificar = modificar;
 module.exports.agregar_menu = agregar_menu;
+module.exports.borrar_menu = borrar_menu;
 
 
