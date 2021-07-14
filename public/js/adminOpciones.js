@@ -387,7 +387,7 @@ socketopciones.on("connect", () => {
     socketopciones.on("titulos", function (msg) {
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         let titulo_selector = document.getElementById('selector-titulos');
-        let content = document.getElementById('contenedor-creacion');
+  
         var boton_volver = document.createElement('button');
         boton_volver.setAttribute('id','volver-creacion');
         var boton_enviar = document.createElement('button');
@@ -419,13 +419,11 @@ socketopciones.on("connect", () => {
             menu[key] = pack;
             titulo_selector.appendChild(opcion);
         }
-
+        let content = document.getElementById('contenedor-creacion');
         contenedor_titulos.appendChild(contenedor_editables);
         contenedor_titulos.appendChild(boton_enviar);
         contenedor_titulos.appendChild(boton_volver);
         content.appendChild(contenedor_titulos);
-
-        content.appendChild(contenedor_titulos); 
     });
 
     socketopciones.on("mostrar",function (msg) {
