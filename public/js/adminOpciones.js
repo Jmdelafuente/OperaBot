@@ -41,7 +41,97 @@ $(function () {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         socketopciones.emit("titulos","");
+        var div = document.getElementById("div-creacion");
+        let div_alerta = document.createElement('div');
+        div_alerta.setAttribute('id','alerta-crear');
+        div_alerta.setAttribute('style','padding: 1% 0;');
+        var content = document.createElement("div");
+        var contenedor = document.getElementById("contenedor-creacion");
+        var contenedor_editables = document.getElementById("contenedor-editables");
+        var div_nombre = document.getElementById("nombre");
+        let titulo_nombre = document.createElement('p');
+        titulo_nombre.innerHTML = "<b>Nombre del menú: </b>";
+        var nombre = document.createElement("input"); 
+        nombre.setAttribute('style','width:60%'); 
+        var div_informacion = document.getElementById("informacion");
+        let titulo_informacion = document.createElement('p');
+        titulo_informacion.innerHTML = "<b>Información: </b>"; 
+        var informacion = document.createElement("input");
+        informacion.setAttribute('style','width:60%');
+        var div_submenu = document.getElementById("submenu");
+        let titulo_submenu = document.createElement('p');
+        titulo_submenu.innerHTML = "<b>opciones de los submenús: </b>";   
+        var submenus = document.createElement("input");
+        submenus.setAttribute('style','width:60%');
+        var div_link = document.getElementById("links");
+        let titulo_link = document.createElement('p'); 
+        titulo_link.innerHTML = "<b>Links: </b>";
+        var links = document.createElement("input");
+        links.setAttribute('style','width:60%'); 
+        content.setAttribute('id', 'div-creaciones');
+        contenedor.setAttribute('id','contenedor-creacion');
+        contenedor.className = "row";
+        nombre.setAttribute('id','nombre-menu');
+        submenus.setAttribute('id','submenus-menu');
+        informacion.setAttribute('id','informacion-menu');
+        links.setAttribute('id','links-menu');
+            
+        nombre.placeholder = "Nombre del menú";
+        informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
+        submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
+        links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
+        boton_enviar.innerText = "Enviar";
+        boton_volver.innerText = "Volver";
+        div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus (Botones) debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
+
+        div_nombre.appendChild(titulo_nombre);
+        div_nombre.appendChild(nombre);
+        contenedor_editables.appendChild(div_nombre);
+        div_submenu.appendChild(titulo_submenu);
+        div_submenu.appendChild(submenus);
+        contenedor_editables.appendChild(div_submenu);
+        div_informacion.appendChild(titulo_informacion);
+        div_informacion.appendChild(informacion);
+        contenedor_editables.appendChild(div_informacion);
+        div_link.appendChild(titulo_link);
+        div_link.appendChild(links);
+        contenedor_editables.appendChild(div_link);
+        contenedor.appendChild(contenedor_editables);
         
+        div.appendChild(contenedor);
+        //content.appendChild(contenedor);
+
+        boton_enviar.addEventListener('click',function (event) {
+            event.preventDefault();
+            var links_listos = [];
+            var submenus_listos = [];
+            var pack = {};
+            var links_tomados = document.getElementById('links-menu').value;
+            if(links_tomados.includes(",")){
+                var links_preparados = links_tomados.split(",");
+                links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
+            }else{
+               links_listos.push(links_tomados);
+            }
+            var submenus_tomados = document.getElementById('submenus-menu').value;
+            if(submenus_tomados.includes(",")){
+                var submenus_preparados = submenus_tomados.split(",");
+                submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
+            }else{
+                submenus_listos.push(submenus_tomados);
+            }
+            pack.nombre = document.getElementById('nombre-menu').value;
+            pack.informacion = document.getElementById('informacion-menu').value;
+            pack.opciones = submenus_listos;
+            pack.link = links_listos;
+            volver('#contenedor-creacion');
+            socketopciones.emit("nuevo_menu",pack);
+        });
+        boton_volver.addEventListener('click',function (event) {
+            event.preventDefault();
+            volver('#contenedor-creacion');
+         });
+       
     });
     
 
@@ -295,84 +385,6 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
-        var div = document.getElementById("div-creacion");
-        let div_alerta = document.createElement('div');
-        div_alerta.setAttribute('id','alerta-crear');
-        div_alerta.setAttribute('style','padding: 1% 0;');
-        var content = document.createElement("div");
-        var contenedor = document.getElementById("contenedor-creacion");
-        var contenedor_editables = document.getElementById("contenedor-editables");
-        var div_nombre = document.getElementById("nombre");
-        let titulo_nombre = document.createElement('p');
-        titulo_nombre.innerHTML = "<b>Nombre del menú: </b>";
-        var nombre = document.createElement("input"); 
-        nombre.setAttribute('style','width:60%'); 
-        var div_informacion = document.getElementById("informacion");
-        let titulo_informacion = document.createElement('p');
-        titulo_informacion.innerHTML = "<b>Información: </b>"; 
-        var informacion = document.createElement("input");
-        informacion.setAttribute('style','width:60%');
-        var div_submenu = document.getElementById("submenu");
-        let titulo_submenu = document.createElement('p');
-        titulo_submenu.innerHTML = "<b>opciones de los submenús: </b>";   
-        var submenus = document.createElement("input");
-        submenus.setAttribute('style','width:60%');
-        var div_link = document.getElementById("links");
-        let titulo_link = document.createElement('p'); 
-        titulo_link.innerHTML = "<b>Links: </b>";
-        var links = document.createElement("input");
-        links.setAttribute('style','width:60%'); 
-        content.setAttribute('id', 'div-creaciones');
-        contenedor.setAttribute('id','contenedor-creacion');
-        contenedor.className = "row";
-        nombre.setAttribute('id','nombre-menu');
-        submenus.setAttribute('id','submenus-menu');
-        informacion.setAttribute('id','informacion-menu');
-        links.setAttribute('id','links-menu');
-            
-        nombre.placeholder = "Nombre del menú";
-        informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
-        submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
-        links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
-        boton_enviar.innerText = "Enviar";
-        boton_volver.innerText = "Volver";
-        div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus (Botones) debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
-
-       
-
-        boton_enviar.addEventListener('click',function (event) {
-            event.preventDefault();
-            var links_listos = [];
-            var submenus_listos = [];
-            var pack = {};
-            var links_tomados = document.getElementById('links-menu').value;
-            if(links_tomados.includes(",")){
-                var links_preparados = links_tomados.split(",");
-                links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
-            }else{
-               links_listos.push(links_tomados);
-            }
-            var submenus_tomados = document.getElementById('submenus-menu').value;
-            if(submenus_tomados.includes(",")){
-                var submenus_preparados = submenus_tomados.split(",");
-                submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
-            }else{
-                submenus_listos.push(submenus_tomados);
-            }
-            pack.nombre = document.getElementById('nombre-menu').value;
-            pack.informacion = document.getElementById('informacion-menu').value;
-            pack.opciones = submenus_listos;
-            pack.link = links_listos;
-            volver('#contenedor-creacion');
-            socketopciones.emit("nuevo_menu",pack);
-        });
-        boton_volver.addEventListener('click',function (event) {
-            event.preventDefault();
-            volver('#contenedor-creacion');
-         });
-       
-
-
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         let titulo_selector = document.getElementById('selector-titulos');
         let content = document.getElementById('contenedor-creacion');
@@ -413,22 +425,7 @@ socketopciones.on("connect", () => {
         contenedor_titulos.appendChild(boton_volver);
         content.appendChild(contenedor_titulos);
 
-        div_nombre.appendChild(titulo_nombre);
-        div_nombre.appendChild(nombre);
-        contenedor_editables.appendChild(div_nombre);
-        div_submenu.appendChild(titulo_submenu);
-        div_submenu.appendChild(submenus);
-        contenedor_editables.appendChild(div_submenu);
-        div_informacion.appendChild(titulo_informacion);
-        div_informacion.appendChild(informacion);
-        contenedor_editables.appendChild(div_informacion);
-        div_link.appendChild(titulo_link);
-        div_link.appendChild(links);
-        contenedor_editables.appendChild(div_link);
-        contenedor.appendChild(contenedor_editables);
-        
-        div.appendChild(contenedor);
-        //content.appendChild(contenedor); 
+        content.appendChild(contenedor_titulos); 
     });
 
     socketopciones.on("mostrar",function (msg) {
