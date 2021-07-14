@@ -73,9 +73,10 @@ function borrar_menu(msg) {
     //borrar todos los "hijos" del hijo?
     
     nuevo_menu = nuevo_menu.filter(function (v) {
-        return v.nombre != msg.nombre;
+        return v.nombre != msg;
     });
     
+    console.log(JSON.stringify(nuevo_menu));
     var nuevo = JSON.stringify(nuevo_menu);
     escribir(nuevo);
 }
