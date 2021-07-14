@@ -55,18 +55,18 @@ function borrar_menu(msg) {
     var element = nuevo_menu.filter(function (v) {
         return v.nombre == msg; 
     });
-    console.log(`elemento ${(element[0])}`);
+    element = element[0];
     console.log(`elemento ${JSON.stringify(element)}`);
-    console.log(element[0].opciones);
-    var longitud = element[0].opciones.length-1
-    var opcion_volver = element[0].opciones[longitud];
+    console.log(element.opciones);
+    var longitud = element.opciones.length-1
+    var opcion_volver = element.opciones[longitud];
     //borrar la opcion deseada en su menu "padre"
     
     var menu_anterior = nuevo_menu.filter(function (v) {
             return v.nombre == opcion_volver; 
     });
 
-    var array_opciones = menu_anterior.opciones;
+    var array_opciones = menu_anterior[0].opciones;
     var index = array_opciones.indexOf(msg);
     array_opciones.splice(index,1);
 
@@ -75,6 +75,9 @@ function borrar_menu(msg) {
     nuevo_menu = nuevo_menu.filter(function (v) {
         return v.nombre != msg.nombre;
     });
+    
+    var nuevo = JSON.stringify(nuevo_menu);
+    escribir(nuevo);
 }
 
 function padre(msg) {
