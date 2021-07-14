@@ -41,8 +41,6 @@ $(function () {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         socketopciones.emit("titulos","");
-        var boton_volver = document.createElement('button');
-        boton_volver.setAttribute('id','volver-creacion');
         var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
         div_alerta.setAttribute('id','alerta-crear');
@@ -70,7 +68,6 @@ $(function () {
         titulo_link.innerHTML = "<b>Links: </b>";
         var links = document.createElement("input");
         links.setAttribute('style','width:60%'); 
-        var boton_enviar = document.createElement('button');
         content.setAttribute('id', 'div-creaciones');
         contenedor.setAttribute('id','contenedor-creacion');
         contenedor.className = "row";
@@ -78,8 +75,7 @@ $(function () {
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
-        boton_enviar.className = "btn btn-primary mx-3";
-        boton_volver.className = "btn btn-primary mx-3";        
+            
         nombre.placeholder = "Nombre del menú";
         informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
         submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
@@ -101,8 +97,7 @@ $(function () {
         div_link.appendChild(links);
         contenedor_editables.appendChild(div_link);
         contenedor.appendChild(contenedor_editables);
-        contenedor.appendChild(boton_enviar);
-        contenedor.appendChild(boton_volver);
+        
         div.appendChild(contenedor);
         //content.appendChild(contenedor);
 
@@ -393,6 +388,12 @@ socketopciones.on("connect", () => {
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         let titulo_selector = document.getElementById('selector-titulos');
         let content = document.getElementById('contenedor-creacion');
+        var boton_volver = document.createElement('button');
+        boton_volver.setAttribute('id','volver-creacion');
+        var boton_enviar = document.createElement('button');
+        boton_enviar.className = "btn btn-primary mx-3";
+        boton_volver.className = "btn btn-primary mx-3";    
+     
         var nombre = document.getElementById("submenu");
         titulo_selector.innerHTML = "Seleccione el menú padre";
         let select = document.getElementById("tablero");
@@ -401,7 +402,7 @@ socketopciones.on("connect", () => {
             e.preventDefault();
             console.log(menu[titulo_selector.value].nombre);
             var nombre_input = menu[titulo_selector.value].nombre;
-            nombre.innerText = nombre.innerText + "," + nombre_input;
+            nombre.value = nombre.innerText + "," + nombre_input;
         });
 
           for (const [key, prefix] of Object.entries(msg)) {  
@@ -418,6 +419,12 @@ socketopciones.on("connect", () => {
             menu[key] = pack;
             titulo_selector.appendChild(opcion);
         }
+
+        contenedor_titulos.appendChild(contenedor_editables);
+        contenedor_titulos.appendChild(boton_enviar);
+        contenedor_titulos.appendChild(boton_volver);
+        content.appendChild(contenedor_titulos);
+
         content.appendChild(contenedor_titulos); 
     });
 
