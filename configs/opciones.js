@@ -55,10 +55,10 @@ function borrar_menu(msg) {
         return v.nombre == msg.nombre; 
     });
     console.log(`elemento ${JSON.stringify(element)}`);
-    element = JSON.stringify(element);
     var opciones = element.opciones;
     console.log(opciones);
-    var opcion_volver = opciones[opciones.length-1];
+    var longitud = element.opciones.length-1
+    var opcion_volver = opciones[longitud];
     //borrar la opcion deseada en su menu "padre"
     
     var menu_anterior = nuevo_menu.filter(function (v) {
