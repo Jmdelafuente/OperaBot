@@ -51,9 +51,9 @@ function escribir(msg) {
 }
 
 function borrar_menu(msg) {
-    console.log(`nombre que vino ${msg.nombre}`);
+    console.log(`nombre que vino ${msg}`);
     var element = nuevo_menu.filter(function (v) {
-        return v.nombre == msg.nombre; 
+        return v.nombre == msg; 
     });
     console.log(`elemento ${(element)}`);
     console.log(`elemento ${JSON.stringify(element)}`);

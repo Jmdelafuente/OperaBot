@@ -380,7 +380,7 @@ socketopciones.on("connect", () => {
         let div = document.getElementById("selector-menu");
         div.addEventListener('change',function (event) {
             console.log(`en borrar toque el ${div.value} y que es ${JSON.stringify(menu[div.value])}`);
-            socketopciones.emit("borrar", menu[div.value]);
+            socketopciones.emit("borrar", menu[div.value].nombre);
         });
     });
 
