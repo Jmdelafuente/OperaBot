@@ -74,7 +74,7 @@ socket.on("obtener-menu",async function (msg) {
    socket.emit("selector-menu", opciones); 
 });
 
-socket.on("titulos",function (msg) {
+socket.on("titulos", async function (msg) {
    let opciones = await op.obteneropciones();
    socket.emit("titulos", opciones); 
 });
