@@ -48,7 +48,6 @@ $(function () {
         div_alerta.setAttribute('id','alerta-crear');
         div_alerta.setAttribute('style','padding: 1% 0;');
         var content = document.createElement("div");
-        var tablero = document.createElement("div");
         var contenedor = document.getElementById("contenedor-creacion");
         var contenedor_editables = document.getElementById("contenedor-editables");
         var div_nombre = document.getElementById("nombre");
@@ -101,9 +100,7 @@ $(function () {
         div_link.appendChild(titulo_link);
         div_link.appendChild(links);
         contenedor_editables.appendChild(div_link);
-        contenedor_editables.appendChild(div_alerta);
         contenedor.appendChild(contenedor_editables);
-        contenedor.appendChild(contenedor_titulos);
         contenedor.appendChild(boton_enviar);
         contenedor.appendChild(boton_volver);
         div.appendChild(contenedor);
@@ -393,15 +390,18 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
+        var contenedor_titulos = document.getElementById("contenedor-titulos");
         let titulo_selector = document.getElementById('selector-titulos');
-        var nombre = document.getElementById("nombre");
+        let content = document.getElementById('contenedor-creacion');
+        var nombre = document.getElementById("submenu");
         titulo_selector.innerHTML = "Seleccione el menú padre";
         let select = document.getElementById("tablero");
         select.removeAttribute("style");
         titulo_selector.addEventListener('change',function (e) {
             e.preventDefault();
             console.log(menu[titulo_selector.value].nombre);
-            nombre.innerHTML = menu[titulo_selector.value].nombre;
+            var nombre_input = menu[titulo_selector.value].nombre;
+            nombre.innerText = nombre.innerText + "," + nombre_input;
         });
 
           for (const [key, prefix] of Object.entries(msg)) {  
@@ -416,9 +416,9 @@ socketopciones.on("connect", () => {
             links = prefix.link;
             pack.link = links;
             menu[key] = pack;
-            
             titulo_selector.appendChild(opcion);
-        } 
+        }
+        content.appendChild(contenedor_titulos); 
     });
 
     socketopciones.on("mostrar",function (msg) {
