@@ -33,11 +33,9 @@ function agregar_menu(msg) {
     
     nuevo_menu.forEach((element, i) => {
         if (element.nombre == nombre_padre) {
-            console.log(`esto antes del unshift ${element.opciones}`);                  
-            console.log(`despues ${(element.opciones.unshift(msg.nombre))}`);                  
-            console.log(`opciones en nuevo_menu ${(nuevo_menu[i].opciones)}`);                  
-            nuevo_menu[i].opciones = (element.opciones.unshift(msg.nombre));         
-            console.log(`opciones en nuevo_menu  despues de unshift ${(nuevo_menu[i].opciones)}`);                  
+            console.log(`esto antes del unshift ${nuevo_menu[i].opciones}`);                  
+            nuevo_menu[i].opciones.unshift(msg.nombre);                  
+            console.log(`opciones en nuevo_menu despues de unshift ${(nuevo_menu[i].opciones)}`);                  
         }
     });
     
