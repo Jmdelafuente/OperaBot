@@ -102,9 +102,7 @@ $(function () {
         div_link.appendChild(links);
         contenedor_editables.appendChild(div_link);
         contenedor_editables.appendChild(div_alerta);
-        contenedor_titulos.appendChild(tablero);
         contenedor.appendChild(contenedor_editables);
-        contenedor.appendChild(contenedor_titulos);
         contenedor.appendChild(boton_enviar);
         contenedor.appendChild(boton_volver);
         div.appendChild(contenedor);
@@ -409,6 +407,15 @@ socketopciones.on("connect", () => {
             var opcion = document.createElement('option');
             opcion.innerText = prefix.nombre;
             opcion.value = key;
+            var pack = {};
+            pack.informacion = prefix.informacion;
+            pack.nombre = prefix.nombre
+            opciones = prefix.opciones;
+            pack.opciones = opciones;
+            links = prefix.link;
+            pack.link = links;
+            menu[key] = pack;
+            
             titulo_selector.appendChild(opcion);
         } 
     });
