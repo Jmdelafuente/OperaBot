@@ -116,7 +116,7 @@ $(function () {
                 links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
                 pack.links = links_listos;
             }else{
-                pack.links = links_tomados;
+                pack.links = links_listos.push(links_tomados);
             }
             var submenus_tomados = document.getElementById('submenus-menu').value;
             if(submenus_tomados.includes(",")){
@@ -124,7 +124,7 @@ $(function () {
                 submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
                 pack.submenus = submenus_listos;
             }else{
-                pack.submenus = submenus_tomados;
+                pack.submenus = submenus_listos.push(submenus_tomados);
             }
             volver('#contenedor-creacion');
             socketopciones.emit("nuevo_menu",pack);

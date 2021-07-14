@@ -25,9 +25,11 @@ function obtenermenu(msg) {
 function agregar_menu(msg) {
     console.log(`menu en agregar_menu ${msg}`);
     console.log(`menu con stringy en agregar ${JSON.stringify(msg)}`);
+    
     nuevo_menu.push(msg);
-
-    escribir(JSON.stringify(nuevo_menu));
+    var nuevo = JSON.stringify(nuevo_menu);
+    console.log(nuevo);
+    escribir(nuevo);
 }
 
 function escribir(msg) {
