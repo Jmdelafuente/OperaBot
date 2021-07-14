@@ -352,16 +352,7 @@ socketopciones.on("connect", () => {
     $('#obtener-menu').click(function (event){
         event.preventDefault();
         socketopciones.emit("mostrar","");
-        let select = document.getElementById("div-menu");
-        select.removeAttribute("style");
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.setAttribute("style", "display: none");
-        let titulo_selector = document.getElementById('titulo-selector');
-        titulo_selector.innerHTML = "Seleccione el menú que desea";
-        let div = document.getElementById("selector-menu");
-        div.addEventListener('change',function (event) {
-            socketopciones.emit("info", menu[div.value].nombre);
-        });
+        
     });
 
     socketopciones.on("info",function (msg) {
@@ -396,7 +387,7 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("mostrar",function (msg) {
-             var div = document.createElement('div');
+        var div = document.createElement('div');
         var boton_volver = document.createElement('button');
         boton_volver.className = "btn btn-primary";
         boton_volver.innerText = "Volver";
