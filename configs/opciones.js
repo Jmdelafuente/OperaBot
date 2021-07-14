@@ -26,7 +26,8 @@ function agregar_menu(msg) {
     nuevo_menu.push(msg);
     var ingresante = JSON.stringify(msg);
     console.log(`ingresante ${ingresante}`);
-    var nombre_padre = ingresante.opciones[opciones.length-1];
+    var longitud = ingresante.opciones.length-1;
+    var nombre_padre = ingresante.opciones[longitud];
     console.log(`nombre del padre ${nombre_padre}`);
     
     nuevo_menu.forEach((element, i) => {
