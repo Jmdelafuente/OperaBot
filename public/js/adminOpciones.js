@@ -381,11 +381,14 @@ socketopciones.on("connect", () => {
         div.addEventListener('change',function (event) {
             console.log(`en borrar toque el ${div.value} y que es ${JSON.stringify(menu[div.value])}`);
             socketopciones.emit("borrar", menu[div.value].nombre);
+            volver();
         });
     });
 
     function volver(msg) {
-        $(`${msg}`).remove();
+        if(msg){
+            $(`${msg}`).remove();
+        }
         let select = document.getElementById("div-menu");
         select.setAttribute("style","display: none");
         let botones_iniciales = document.getElementById("opciones-iniciales");
