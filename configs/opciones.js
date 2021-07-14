@@ -51,12 +51,13 @@ function escribir(msg) {
 }
 
 function borrar_menu(msg) {
+    console.log(`nombre que vino ${msg.nombre}`);
     var element = nuevo_menu.filter(function (v) {
         return v.nombre == msg.nombre; 
     });
+    console.log(`elemento ${(element)}`);
     console.log(`elemento ${JSON.stringify(element)}`);
-    var opciones = element.opciones;
-    console.log(opciones);
+    console.log(element.opciones);
     var longitud = element.opciones.length-1
     var opcion_volver = opciones[longitud];
     //borrar la opcion deseada en su menu "padre"
