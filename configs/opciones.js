@@ -24,6 +24,15 @@ function obtenermenu(msg) {
 
 function agregar_menu(msg) {
     nuevo_menu.push(msg);
+    var ingresante = JSON.stringify(msg);
+    var nombre_padre = ingresante.opciones[opciones.length-1];
+    
+    nuevo_menu.forEach((element, i) => {
+        if (element.nombre == nombre_padre) {                  
+            nuevo_menu[i].opciones = (nuevo_menu[i].opciones.unshift(msg.nombre));         
+        }
+    });
+    
     var nuevo = JSON.stringify(nuevo_menu);
     escribir(nuevo);
 }
@@ -40,6 +49,7 @@ function borrar_menu(msg) {
         return v.nombre == msg.nombre; 
     });
     console.log(`elemento ${JSON.stringify(element)}`);
+    element = JSON.stringify(element);
     var opciones = element.opciones;
     console.log(opciones);
     var opcion_volver = opciones[opciones.length-1];
