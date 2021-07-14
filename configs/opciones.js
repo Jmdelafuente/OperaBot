@@ -25,16 +25,19 @@ function obtenermenu(msg) {
 function agregar_menu(msg) {
     nuevo_menu.push(msg);
     var ingresante = msg;
-    console.log(`ingresante ${ingresante}`);
-    console.log(`ingresante opciones ${ingresante.opciones}`);
     var longitud = ingresante.opciones.length-1;
+    console.log(`ingresante opciones longitud ${ingresante.opciones.length-1}`);
     var nombre_padre = ingresante.opciones[longitud];
     console.log(`nombre del padre ${nombre_padre}`);
     console.log(`nombre del padre stre ${JSON.stringify(nombre_padre)}`);
     
     nuevo_menu.forEach((element, i) => {
-        if (element.nombre == nombre_padre) {                  
-            nuevo_menu[i].opciones = (nuevo_menu[i].opciones.unshift(msg.nombre));         
+        if (element.nombre == nombre_padre) {
+            console.log(`esto antes del unshift ${element.opciones}`);                  
+            console.log(`despues ${(element.opciones.unshift(msg.nombre))}`);                  
+            console.log(`opciones en nuevo_menu ${(nuevo_menu[i].opciones)}`);                  
+            nuevo_menu[i].opciones = (element.opciones.unshift(msg.nombre));         
+            console.log(`opciones en nuevo_menu  despues de unshift ${(nuevo_menu[i].opciones)}`);                  
         }
     });
     
