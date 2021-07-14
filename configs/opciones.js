@@ -55,11 +55,11 @@ function borrar_menu(msg) {
     var element = nuevo_menu.filter(function (v) {
         return v.nombre == msg; 
     });
-    console.log(`elemento ${(element)}`);
+    console.log(`elemento ${(element[0])}`);
     console.log(`elemento ${JSON.stringify(element)}`);
-    console.log(element.opciones);
-    var longitud = element.opciones.length-1
-    var opcion_volver = opciones[longitud];
+    console.log(element[0].opciones);
+    var longitud = element[0].opciones.length-1
+    var opcion_volver = element[0].opciones[longitud];
     //borrar la opcion deseada en su menu "padre"
     
     var menu_anterior = nuevo_menu.filter(function (v) {
@@ -67,7 +67,7 @@ function borrar_menu(msg) {
     });
 
     var array_opciones = menu_anterior.opciones;
-    var index = array_opciones.indexOf(msg.nombre);
+    var index = array_opciones.indexOf(msg);
     array_opciones.splice(index,1);
 
     //borrar todos los "hijos" del hijo?
