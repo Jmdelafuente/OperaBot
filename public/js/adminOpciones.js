@@ -108,13 +108,10 @@ $(function () {
             var links_listos = [];
             var submenus_listos = [];
             var pack = {};
-            pack.nombre = document.getElementById('nombre-menu').value;
-            pack.informacion = document.getElementById('informacion-menu').value;
             var links_tomados = document.getElementById('links-menu').value;
             if(links_tomados.includes(",")){
                 var links_preparados = links_tomados.split(",");
                 links_preparados.forEach(element => {var link = element.trim(); links_listos.push(link);});
-                pack.links = links_listos;
             }else{
                links_listos.push(links_tomados);
             }
@@ -122,11 +119,12 @@ $(function () {
             if(submenus_tomados.includes(",")){
                 var submenus_preparados = submenus_tomados.split(",");
                 submenus_preparados.forEach(element => {var submenu = element.trim(); submenus_listos.push(submenu);});
-                pack.submenus = submenus_listos;
             }else{
                 submenus_listos.push(submenus_tomados);
             }
-            pack.submenus = submenus_listos;
+            pack.nombre = document.getElementById('nombre-menu').value;
+            pack.informacion = document.getElementById('informacion-menu').value;
+            pack.opciones = submenus_listos;
             pack.link = links_listos;
             volver('#contenedor-creacion');
             socketopciones.emit("nuevo_menu",pack);
