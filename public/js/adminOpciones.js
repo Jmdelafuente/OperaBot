@@ -40,6 +40,7 @@ $(function () {
         event.preventDefault();
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
+        socketopciones.emit("titulos","");
         var boton_volver = document.createElement('button');
         boton_volver.setAttribute('id','volver-creacion');
         var div = document.getElementById("div-creacion");
@@ -47,23 +48,25 @@ $(function () {
         div_alerta.setAttribute('id','alerta-crear');
         div_alerta.setAttribute('style','padding: 1% 0;');
         var content = document.createElement("div");
-        var contenedor = document.createElement("div");
-        var div_nombre = document.createElement("div");
+        var tablero = document.createElement("div");
+        var contenedor = document.getElementById("contenedor-creacion");
+        var contenedor_editables = document.getElementById("contenedor-editables");
+        var div_nombre = document.getElementById("nombre");
         let titulo_nombre = document.createElement('p');
         titulo_nombre.innerHTML = "<b>Nombre del menú: </b>";
         var nombre = document.createElement("input"); 
         nombre.setAttribute('style','width:60%'); 
-        var div_informacion = document.createElement("div");
+        var div_informacion = document.getElementById("informacion");
         let titulo_informacion = document.createElement('p');
         titulo_informacion.innerHTML = "<b>Información: </b>"; 
         var informacion = document.createElement("input");
         informacion.setAttribute('style','width:60%');
-        var div_submenu = document.createElement("div");
+        var div_submenu = document.getElementById("submenu");
         let titulo_submenu = document.createElement('p');
         titulo_submenu.innerHTML = "<b>opciones de los submenús: </b>";   
         var submenus = document.createElement("input");
         submenus.setAttribute('style','width:60%');
-        var div_link = document.createElement("div");
+        var div_link = document.getElementById("links");
         let titulo_link = document.createElement('p'); 
         titulo_link.innerHTML = "<b>Links: </b>";
         var links = document.createElement("input");
@@ -71,6 +74,7 @@ $(function () {
         var boton_enviar = document.createElement('button');
         content.setAttribute('id', 'div-creaciones');
         contenedor.setAttribute('id','contenedor-creacion');
+        contenedor.className = "row";
         nombre.setAttribute('id','nombre-menu');
         submenus.setAttribute('id','submenus-menu');
         informacion.setAttribute('id','informacion-menu');
@@ -87,17 +91,20 @@ $(function () {
 
         div_nombre.appendChild(titulo_nombre);
         div_nombre.appendChild(nombre);
-        contenedor.appendChild(div_nombre);
+        contenedor_editables.appendChild(div_nombre);
         div_submenu.appendChild(titulo_submenu);
         div_submenu.appendChild(submenus);
-        contenedor.appendChild(div_submenu);
+        contenedor_editables.appendChild(div_submenu);
         div_informacion.appendChild(titulo_informacion);
         div_informacion.appendChild(informacion);
-        contenedor.appendChild(div_informacion);
+        contenedor_editables.appendChild(div_informacion);
         div_link.appendChild(titulo_link);
         div_link.appendChild(links);
-        contenedor.appendChild(div_link);
-        contenedor.appendChild(div_alerta);
+        contenedor_editables.appendChild(div_link);
+        contenedor_editables.appendChild(div_alerta);
+        contenedor_titulos.appendChild(tablero);
+        contenedor.appendChild(contenedor_editables);
+        contenedor.appendChild(contenedor_titulos);
         contenedor.appendChild(boton_enviar);
         contenedor.appendChild(boton_volver);
         div.appendChild(contenedor);
@@ -385,6 +392,26 @@ socketopciones.on("connect", () => {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.removeAttribute("style");        
     }
+
+    socketopciones.on("titulos", function (msg) {
+        let titulo_selector = document.getElementById('selector-titulos');
+        var nombre = document.getElementById("nombre");
+        titulo_selector.innerHTML = "Seleccione el menú padre";
+        let select = document.getElementById("tablero");
+        select.removeAttribute("style");
+        titulo_selector.addEventListener('change',function (e) {
+            e.preventDefault();
+            console.log(menu[titulo_selector.value].nombre);
+            nombre.innerHTML = menu[titulo_selector.value].nombre;
+        });
+
+          for (const [key, prefix] of Object.entries(msg)) {  
+            var opcion = document.createElement('option');
+            opcion.innerText = prefix.nombre;
+            opcion.value = key;
+            titulo_selector.appendChild(opcion);
+        } 
+    });
 
     socketopciones.on("mostrar",function (msg) {
         var div = document.createElement('div');
