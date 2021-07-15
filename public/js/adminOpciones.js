@@ -405,7 +405,7 @@ socketopciones.on("connect", () => {
             pack.opciones = submenus_listos;
             pack.link = links_listos;
             var menu_boton
-            for (let index = 0; index < array.length-1; index++) {
+            for (let index = 0; index < submenus_listos.length-1; index++) {
                 menu_boton += submenus_listos[index] + ",";
             }
             menu_boton = menu_boton.slice(0,-1);
