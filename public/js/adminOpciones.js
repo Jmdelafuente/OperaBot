@@ -105,22 +105,11 @@ socketopciones.on("connect", () => {
         titulo.setAttribute("id","titulo");
         titulo.setAttribute('style','padding: 1% 0;');
         content.setAttribute("id","content");
-        for (const [key, prefix] of Object.entries(msg)) {
-          
-            var opcion = document.createElement('option');
-            opcion.innerText = prefix.nombre;
-            opcion.value = key;
-            var pack = {};
-            pack.informacion = prefix.informacion;
-            pack.nombre = prefix.nombre
-            opciones = prefix.opciones;
-            pack.opciones = opciones;
-            links = prefix.link;
-            pack.link = links;
-            menu[key] = pack;
-
-            div.appendChild(opcion);
-        }
+        var pack = {};
+        pack.menu = msg;
+        pack.selector = "selector-menu";
+        crear_selector(pack);
+       
         //enviar.innerText = "Enviar";
         contenedor.appendChild(titulo);
         contenedor.appendChild(content);
@@ -378,21 +367,11 @@ socketopciones.on("connect", () => {
             var nombre_input = menu[titulo_selector.value].nombre;
             nombre.value = nombre.value +  nombre_input;
         });
-
-          for (const [key, prefix] of Object.entries(msg)) {  
-            var opcion = document.createElement('option');
-            opcion.innerText = prefix.nombre;
-            opcion.value = key;
-            var pack = {};
-            pack.informacion = prefix.informacion;
-            pack.nombre = prefix.nombre
-            opciones = prefix.opciones;
-            pack.opciones = opciones;
-            links = prefix.link;
-            pack.link = links;
-            menu[key] = pack;
-            titulo_selector.appendChild(opcion);
-        }
+        var pack = {};
+        pack.menu = msg;
+        pack.selector = "selector-titulos";
+        crear_selector(pack);
+    
         let content = document.getElementById('contenedor-creacion');
         contenedor_titulos.appendChild(titulo);
         
