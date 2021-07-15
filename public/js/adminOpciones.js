@@ -458,10 +458,10 @@ socketopciones.on("connect", () => {
     });
 
     function borrar_inputs(msg) {
-        $('#nombre').empty();
-        $('#submenu').empty();
-        $('#informacion').empty();
-        $('#links').empty();
+        $('#nombre').val("");
+        $('#submenu').val("");
+        $('#informacion').val("");
+        $('#links').val("");
         $('#selector-titulos').empty();
         $('#selector-menu-borrar').empty();
         $('#selector-menu').empty();
