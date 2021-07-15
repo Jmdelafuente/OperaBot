@@ -382,9 +382,11 @@ socketopciones.on("connect", () => {
             pack.informacion = document.getElementById('informacion-menu').value;
             pack.opciones = submenus_listos;
             pack.link = links_listos;
-            ocultar('#contenedor-creacion');
+            if(confirm("Esta seguro?")){
+                ocultar('#contenedor-creacion');
+                socketopciones.emit("nuevo_menu",pack);
+            }
             $('#contenedor-titulos').show();
-            socketopciones.emit("nuevo_menu",pack);
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
