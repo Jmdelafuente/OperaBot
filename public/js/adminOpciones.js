@@ -404,16 +404,16 @@ socketopciones.on("connect", () => {
             pack.informacion = document.getElementById('informacion-menu').value;
             pack.opciones = submenus_listos;
             pack.link = links_listos;
-            socketopciones.emit("nuevo_menu",pack);
-            $('#contenedor-titulos').show();
-            ocultar('#contenedor-creacion');
-            borrar_inputs();
             var menu_boton
             for (let index = 0; index < array.length-1; index++) {
                 menu_boton += submenus_listos[index] + ",";
             }
             menu_boton = menu_boton.slice(0,-1);
+            socketopciones.emit("nuevo_menu",pack);
             alert(`Recuerde que los submenus nuevos ${menu_boton} , deben ser creados y completados para que funcionen como tal`);
+            borrar_inputs();
+            ocultar('#contenedor-creacion');
+            $('#contenedor-titulos').show();
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
