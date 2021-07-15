@@ -66,12 +66,12 @@ function borrar_menu(msg) {
             return v.nombre == opcion_volver; 
     });
 
-    var array_opciones = menu_anterior[0].opciones;
-    var index = array_opciones.indexOf(msg);
-    array_opciones.splice(index,1);
-
+    if(menu_anterior[0]){
+        var array_opciones = menu_anterior[0].opciones;
+        var index = array_opciones.indexOf(msg);
+        array_opciones.splice(index,1);
+    }
     //borrar todos los "hijos" del hijo?
-    
     nuevo_menu = nuevo_menu.filter(function (v) {
         return v.nombre != msg;
     });
