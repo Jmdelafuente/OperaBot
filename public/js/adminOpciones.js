@@ -439,10 +439,11 @@ socketopciones.on("connect", () => {
             pack.link = links_listos;
             var menu_boton = "";
             for (let index = 0; index < submenus_listos.length-1; index++) {
-                if(index == submenus_listos.length-3){
+                if(index == submenus_listos.length-2){
                     menu_boton += submenus_listos[index] + " y ";
+                }else{
+                    menu_boton += submenus_listos[index] + ", ";
                 }
-                menu_boton += submenus_listos[index] + ", ";
             }
             menu_boton = menu_boton.slice(0,-2);
             socketopciones.emit("nuevo_menu",pack);
