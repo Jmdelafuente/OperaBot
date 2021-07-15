@@ -267,12 +267,14 @@ socketopciones.on("connect", () => {
                     socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
+                    $('#selector-menu').empty();
                     let select = document.getElementById("div-menu");
                     select.setAttribute("style","display: none");
                 });
                 boton_volver.addEventListener('click',function (event) {
                    event.preventDefault();
                    volver('#contenedor');
+                   $('#selector-menu').empty();
                    let select = document.getElementById("div-menu");
                    select.setAttribute("style","display: none");
                 });
@@ -321,23 +323,23 @@ socketopciones.on("connect", () => {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         let borrar_selector = document.getElementById('selector-menu-borrar');
-        
-        let div = document.getElementById("selector-menu-borrar");
         var pack = {};
         pack.menu = msg;
         pack.selector = "selector-menu-borrar";
         crear_selector(pack);
-
-        div.addEventListener('change',function (event) {
-            if(menu[div.value].nombre != 'Menu Inicial'){
-                if(confirm(`Esta por borrar el menú ${menu[div.value].nombre}, esta acción es irreversible, ¿Esta seguro de seguir adelante el borrado?`)){
-                socketopciones.emit("borrar", menu[div.value].nombre);
+        var nombre_menu = menu[borrar_selector.value].nombre;
+        borrar_selector.addEventListener('change',function (event) {
+            if(nombre_menu != 'Menu Inicial'){
+                if(confirm(`Esta por borrar el menú ${nombre_menu}, esta acción es irreversible, ¿Esta seguro de seguir adelante el borrado?`)){
+                socketopciones.emit("borrar", nombre_menu);
+                
             }
             }else{
                 alert("No puede eliminarse el Menú Inicial, lo siento, pero como queres borrar el menu inicial?, que pasa, a ver?")
             }
 
             volver();
+            $('#selector-menu-borrar').empty();
             select.setAttribute("style","display: none");
         });
     });
@@ -404,11 +406,13 @@ socketopciones.on("connect", () => {
             socketopciones.emit("nuevo_menu",pack);
             $('#contenedor-titulos').show();
             ocultar('#contenedor-creacion');
+            $('#selector-titulos').empty();
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
             ocultar('#contenedor-creacion');
             $('#contenedor-titulos').show();
+            $('#selector-titulos').empty();
          });
     });
 
