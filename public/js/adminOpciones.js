@@ -337,7 +337,7 @@ socketopciones.on("connect", () => {
         titulo_selector.addEventListener('change',function (e) {
             e.preventDefault();
             var nombre_input = menu[titulo_selector.value].nombre;
-            nombre.value = nombre.innerText + "," + nombre_input;
+            nombre.value = nombre.value + "," + nombre_input;
         });
 
           for (const [key, prefix] of Object.entries(msg)) {  
