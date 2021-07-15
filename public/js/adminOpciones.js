@@ -37,7 +37,8 @@ $(function () {
 
       
     $('#crear-menu').click(function (event) {
-        window.location.replace(`${SURLopciones}/operadores/creacion.html`);
+        var iframe_opcion = document.getElementById("frame_opciones");
+        iframe_opcion.setAttribute('src', `../creacion.html?${window.location.search.substr(1)}`);
         event.preventDefault();
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
