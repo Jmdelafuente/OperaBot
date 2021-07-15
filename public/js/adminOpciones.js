@@ -37,6 +37,7 @@ $(function () {
 
       
     $('#crear-menu').click(function (event) {
+        window.location.replace(`${SURLopciones}/operadores/creacion.html`);
         event.preventDefault();
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
