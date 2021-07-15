@@ -309,7 +309,7 @@ socketopciones.on("connect", () => {
         select.removeAttribute("style");
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
-        let borrar_selector = document.getElementById('borrar-selector');
+        let borrar_selector = document.getElementById('selector-menu-borrar');
         
         let div = document.getElementById("selector-menu-borrar");
         
