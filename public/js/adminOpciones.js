@@ -272,14 +272,14 @@ socketopciones.on("connect", () => {
                     //alert("Se modifico el menu");
                     volver('#contenedor');
                     $('#selector-menu').empty();
-                    borrar_inputs();
+                    $('input[type="text"]').val("");
                     let select = document.getElementById("div-menu");
                     select.setAttribute("style","display: none");
                 });
                 boton_volver.addEventListener('click',function (event) {
                    event.preventDefault();
                    volver('#contenedor');
-                   borrar_inputs();
+                   $('input[type="text"]').val("");
                    let select = document.getElementById("div-menu");
                    select.setAttribute("style","display: none");
                 });
@@ -373,7 +373,7 @@ socketopciones.on("connect", () => {
             }
 
             volver();
-            borrar_inputs();
+            $('input[type="text"]').val("");
             select.setAttribute("style","display: none");
         });
     });
@@ -388,6 +388,7 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
+        $('#contenedor-titulos').show();
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         var contener_botones = document.getElementById("contener_botones")
         let titulo_selector = document.getElementById('selector-titulos');
@@ -446,14 +447,14 @@ socketopciones.on("connect", () => {
             }
             menu_boton = menu_boton.slice(0,-2);
             socketopciones.emit("nuevo_menu",pack);
-            borrar_inputs();
+            $('input[type="text"]').val("");
             alert(`Recuerde que los submenus nuevos ${menu_boton} , deben ser creados y completados para que funcionen como tal`);
             ocultar('#contenedor-creacion');
             $('#contenedor-titulos').show();
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
-            borrar_inputs();
+            $('input[type="text"]').val("");
             ocultar('#contenedor-creacion');
             $('#contenedor-titulos').show();
          
@@ -498,3 +499,5 @@ socketopciones.on("connect", () => {
     });
    
 });
+
+/*crear mas html para cada una de las opciones */
