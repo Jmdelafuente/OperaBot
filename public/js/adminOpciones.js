@@ -268,13 +268,14 @@ socketopciones.on("connect", () => {
                     //alert("Se modifico el menu");
                     volver('#contenedor');
                     $('#selector-menu').empty();
+                    borrar_inputs();
                     let select = document.getElementById("div-menu");
                     select.setAttribute("style","display: none");
                 });
                 boton_volver.addEventListener('click',function (event) {
                    event.preventDefault();
                    volver('#contenedor');
-                   $('#selector-menu').empty();
+                   borrar_inputs();
                    let select = document.getElementById("div-menu");
                    select.setAttribute("style","display: none");
                 });
@@ -339,7 +340,7 @@ socketopciones.on("connect", () => {
             }
 
             volver();
-            $('#selector-menu-borrar').empty();
+            borrar_inputs();
             select.setAttribute("style","display: none");
         });
     });
@@ -406,15 +407,34 @@ socketopciones.on("connect", () => {
             socketopciones.emit("nuevo_menu",pack);
             $('#contenedor-titulos').show();
             ocultar('#contenedor-creacion');
-            $('#selector-titulos').empty();
+            borrar_inputs();
+            var menu_boton
+            for (let index = 0; index < array.length-1; index++) {
+                menu_boton += submenus_listos[index] + ",";
+            }
+            menu_boton = menu_boton.slice(0,-1);
+            alert(`Recuerde que los submenus nuevos ${menu_boton} , deben ser creados y completados para que funcionen como tal`);
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
             ocultar('#contenedor-creacion');
+            borrar_inputs();
             $('#contenedor-titulos').show();
-            $('#selector-titulos').empty();
+         
          });
     });
+
+    function borrar_inputs(msg) {
+        $('#nombre').empty();
+        $('#submenu').empty();
+        $('#informacion').empty();
+        $('#links').empty();
+        $('#selector-titulos').empty();
+        $('#selector-menu-borrar').empty();
+        $('#selector-menu').empty();
+
+
+    }
 
     function ocultar(msg) {
         if(msg){
