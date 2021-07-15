@@ -304,16 +304,12 @@ socketopciones.on("connect", () => {
         socketopciones.emit("obtener-menu-borrar");
     });
 
-    socketopciones.on("borrar", function (msg) {
-        let select = document.getElementById("div-menu-borrar");
-        select.removeAttribute("style");
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.setAttribute("style", "display: none");
-        let borrar_selector = document.getElementById('selector-menu-borrar');
-        
-        let div = document.getElementById("selector-menu-borrar");
-        
-        for (const [key, prefix] of Object.entries(msg)) {  
+    function crear_selector(msg) {
+        let selector = document.getElementById(`${msg.selector}`);
+        var opcion = document.createElement('option');
+        opcion.innerText = "seleccione una opción";
+        selector.appendChild(opcion);
+        for (const [key, prefix] of Object.entries(msg.menu)) {  
             var opcion = document.createElement('option');
             opcion.innerText = prefix.nombre;
             opcion.value = key;
@@ -325,8 +321,23 @@ socketopciones.on("connect", () => {
             links = prefix.link;
             pack.link = links;
             menu[key] = pack;
-            borrar_selector.appendChild(opcion);
+            selector.appendChild(opcion);
         }
+
+    }
+
+    socketopciones.on("borrar", function (msg) {
+        let select = document.getElementById("div-menu-borrar");
+        select.removeAttribute("style");
+        let botones_iniciales = document.getElementById("opciones-iniciales");
+        botones_iniciales.setAttribute("style", "display: none");
+        let borrar_selector = document.getElementById('selector-menu-borrar');
+        
+        let div = document.getElementById("selector-menu-borrar");
+        var pack = {};
+        pack.menu = msg;
+        pack.selector = "selector-menu-borrar";
+        crear_selector(pack);
 
         div.addEventListener('change',function (event) {
             if(menu[div.value].nombre != 'Menu Inicial'){
@@ -334,7 +345,7 @@ socketopciones.on("connect", () => {
                 socketopciones.emit("borrar", menu[div.value].nombre);
             }
             }else{
-                alert("No puede eliminarse el Menú Inicial, lo siento, pero como queres borrar el menu inicial?, que paso a ver?")
+                alert("No puede eliminarse el Menú Inicial, lo siento, pero como queres borrar el menu inicial?, que pasa, a ver?")
             }
 
             volver();
