@@ -301,14 +301,33 @@ socketopciones.on("connect", () => {
 
     $('#borrar-menu').click(function (event) {
         event.preventDefault();
-        socketopciones.emit("obtener-menu");
+        socketopciones.emit("obtener-menu-borrar");
+    });
+
+    socketopciones.on("borrar", function (msg) {
         let select = document.getElementById("div-menu-borrar");
         select.removeAttribute("style");
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
-        let titulo_selector = document.getElementById('titulo-selector');
-        titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
+        let borrar_selector = document.getElementById('borrar-selector');
+        borrar_selector.innerHTML = "Seleccione el menú que desea eliminar";
         let div = document.getElementById("selector-menu-borrar");
+        
+        for (const [key, prefix] of Object.entries(msg)) {  
+            var opcion = document.createElement('option');
+            opcion.innerText = prefix.nombre;
+            opcion.value = key;
+            var pack = {};
+            pack.informacion = prefix.informacion;
+            pack.nombre = prefix.nombre
+            opciones = prefix.opciones;
+            pack.opciones = opciones;
+            links = prefix.link;
+            pack.link = links;
+            menu[key] = pack;
+            borrar_selector.appendChild(opcion);
+        }
+
         div.addEventListener('change',function (event) {
             if(menu[div.value].nombre != 'Menu Inicial'){
                 if(confirm(`Esta por borrar el menú ${menu[div.value].nombre}, esta acción es irreversible, ¿Esta seguro de seguir adelante el borrado?`)){
@@ -322,6 +341,7 @@ socketopciones.on("connect", () => {
             select.setAttribute("style","display: none");
         });
     });
+        
 
     function volver(msg) {
         if(msg){

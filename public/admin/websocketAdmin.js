@@ -79,6 +79,12 @@ socket.on("titulos", async function (msg) {
    socket.emit("titulos", opciones); 
 });
 
+socket.on("obtener-menu-borrar", function (msg) {
+    let opciones = await op.obteneropciones();
+    socket.emit("borrar", opciones); 
+    
+});
+
 socket.on("sub-menu", function (msg) {
     socket.emit("menu-grafico",msg);
 });
