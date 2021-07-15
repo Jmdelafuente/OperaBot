@@ -443,8 +443,8 @@ socketopciones.on("connect", () => {
             }
             menu_boton = menu_boton.slice(0,-2);
             socketopciones.emit("nuevo_menu",pack);
-            alert(`Recuerde que los submenus nuevos ${menu_boton} , deben ser creados y completados para que funcionen como tal`);
             borrar_inputs();
+            alert(`Recuerde que los submenus nuevos ${menu_boton} , deben ser creados y completados para que funcionen como tal`);
             ocultar('#contenedor-creacion');
             $('#contenedor-titulos').show();
         });
@@ -458,15 +458,13 @@ socketopciones.on("connect", () => {
     });
 
     function borrar_inputs(msg) {
-        //$('#nombre').empty();
-        //$('#submenu').empty();
-        //$('#informacion').empty();
-        //$('#links').empty();
+        $('#nombre').empty();
+        $('#submenu').empty();
+        $('#informacion').empty();
+        $('#links').empty();
         $('#selector-titulos').empty();
         $('#selector-menu-borrar').empty();
         $('#selector-menu').empty();
-
-
     }
 
     function ocultar(msg) {
