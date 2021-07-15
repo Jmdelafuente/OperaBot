@@ -439,7 +439,7 @@ socketopciones.on("connect", () => {
             pack.link = links_listos;
             var menu_boton = "";
             for (let index = 0; index < submenus_listos.length-1; index++) {
-                if(index == submenus_listos.length-2){
+                if(index == submenus_listos.length-3){
                     menu_boton += submenus_listos[index] + " y ";
                 }else{
                     menu_boton += submenus_listos[index] + ", ";
