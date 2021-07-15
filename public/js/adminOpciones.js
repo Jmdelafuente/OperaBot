@@ -310,7 +310,7 @@ socketopciones.on("connect", () => {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         let borrar_selector = document.getElementById('borrar-selector');
-        borrar_selector.innerHTML = "Seleccione el menú que desea eliminar";
+        
         let div = document.getElementById("selector-menu-borrar");
         
         for (const [key, prefix] of Object.entries(msg)) {  
