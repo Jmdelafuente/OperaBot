@@ -46,6 +46,7 @@ $(function () {
         div_alerta.setAttribute('style','padding: 1% 0;');
         var content = document.createElement("div");
         var contenedor = document.getElementById("contenedor-creacion");
+        $('#contenedor-creacion').show();
         var contenedor_editables = document.getElementById("contenedor-editables");
         var div_nombre = document.getElementById("nombre");
         
@@ -387,7 +388,6 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
-        $('#contenedor-titulos').show();
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         var contener_botones = document.getElementById("contener_botones")
         let titulo_selector = document.getElementById('selector-titulos');
