@@ -327,8 +327,8 @@ socketopciones.on("connect", () => {
         pack.menu = msg;
         pack.selector = "selector-menu-borrar";
         crear_selector(pack);
-        var nombre_menu = menu[borrar_selector.value].nombre;
         borrar_selector.addEventListener('change',function (event) {
+            var nombre_menu = menu[borrar_selector.value].nombre;
             if(nombre_menu != 'Menu Inicial'){
                 if(confirm(`Esta por borrar el menú ${nombre_menu}, esta acción es irreversible, ¿Esta seguro de seguir adelante el borrado?`)){
                 socketopciones.emit("borrar", nombre_menu);
