@@ -383,10 +383,10 @@ socketopciones.on("connect", () => {
             pack.opciones = submenus_listos;
             pack.link = links_listos;
             if(confirm("Esta seguro?")){
-                ocultar('#contenedor-creacion');
                 socketopciones.emit("nuevo_menu",pack);
             }
             $('#contenedor-titulos').show();
+            ocultar('#contenedor-creacion');
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
