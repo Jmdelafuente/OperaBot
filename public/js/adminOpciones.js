@@ -333,7 +333,6 @@ socketopciones.on("connect", () => {
         var nombre = document.getElementById("submenus-menu");
         titulo_selector.innerHTML = "Seleccione el menú padre";
         let select = document.getElementById("tablero");
-        select.removeAttribute("style");
         titulo_selector.addEventListener('change',function (e) {
             e.preventDefault();
             var nombre_input = menu[titulo_selector.value].nombre;
