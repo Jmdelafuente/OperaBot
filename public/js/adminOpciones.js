@@ -49,25 +49,13 @@ $(function () {
         $('#contenedor-creacion').show();
         var contenedor_editables = document.getElementById("contenedor-editables");
         var div_nombre = document.getElementById("nombre");
-        let titulo_nombre = document.createElement('p');
-        titulo_nombre.innerHTML = "<b>Nombre del menú: </b>";
-        var nombre = document.createElement("input"); 
-        nombre.setAttribute('style','width:60%'); 
+        
         var div_informacion = document.getElementById("informacion");
-        let titulo_informacion = document.createElement('p');
-        titulo_informacion.innerHTML = "<b>Información: </b>"; 
-        var informacion = document.createElement("input");
-        informacion.setAttribute('style','width:60%');
+        
         var div_submenu = document.getElementById("submenu");
-        let titulo_submenu = document.createElement('p');
-        titulo_submenu.innerHTML = "<b>opciones de los submenús: </b>";   
-        var submenus = document.createElement("input");
-        submenus.setAttribute('style','width:60%');
+        
         var div_link = document.getElementById("links");
-        let titulo_link = document.createElement('p'); 
-        titulo_link.innerHTML = "<b>Links: </b>";
-        var links = document.createElement("input");
-        links.setAttribute('style','width:60%'); 
+         
         content.setAttribute('id', 'div-creaciones');
         contenedor.setAttribute('id','contenedor-creacion');
         contenedor.className = "row";
@@ -76,23 +64,15 @@ $(function () {
         informacion.setAttribute('id','informacion-menu');
         links.setAttribute('id','links-menu');
             
-        nombre.placeholder = "Nombre del menú";
-        informacion.placeholder = "Información que saldra en forma de mensaje al ciudadano";
-        submenus.placeholder = "Nombre de los submenus (separados por coma) el último debe ser el nombre del menú para volver a atrás"
-        links.placeholder = "Agregar los links (separados por coma, ejemplo www.example.com, www.example2.com)";
-        div_alerta.innerHTML = "<b> Aclaración: </b><br> Nombre de los submenus (Botones) debe ir separados por una coma y el último debe ser el nombre del menú para volver a atrás <br> Los links deben estar separados por coma, por ejemplo: <b>www.exaple.com, www.example2.com</b>";
+        
 
-        div_nombre.appendChild(titulo_nombre);
-        div_nombre.appendChild(nombre);
+      
         contenedor_editables.appendChild(div_nombre);
-        div_submenu.appendChild(titulo_submenu);
-        div_submenu.appendChild(submenus);
+     
         contenedor_editables.appendChild(div_submenu);
-        div_informacion.appendChild(titulo_informacion);
-        div_informacion.appendChild(informacion);
+       
         contenedor_editables.appendChild(div_informacion);
-        div_link.appendChild(titulo_link);
-        div_link.appendChild(links);
+
         contenedor_editables.appendChild(div_link);
         contenedor.appendChild(contenedor_editables);
         
