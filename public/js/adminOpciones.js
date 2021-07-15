@@ -461,10 +461,10 @@ socketopciones.on("connect", () => {
     });
 
     function borrar_inputs(msg) {
-        $('#nombre').val("");
-        $('#submenu').val("");
-        $('#informacion').val("");
-        $('#links').val("");
+        $('#nombre-menu').empty();
+        $('#submenus-menu').empty();
+        $('#informacion-menu').empty();
+        $('#links-menu').empty();
         $('#selector-titulos').empty();
         $('#selector-menu-borrar').empty();
         $('#selector-menu').empty();
