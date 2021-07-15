@@ -46,7 +46,6 @@ $(function () {
         div_alerta.setAttribute('style','padding: 1% 0;');
         var content = document.createElement("div");
         var contenedor = document.getElementById("contenedor-creacion");
-        $('#contenedor-creacion').show();
         var contenedor_editables = document.getElementById("contenedor-editables");
         var div_nombre = document.getElementById("nombre");
         
@@ -463,6 +462,7 @@ socketopciones.on("connect", () => {
 
     function borrar_inputs(msg) {
         $('#nombre-menu').empty();
+        $('#nombre-menu').val("");
         $('#submenus-menu').empty();
         $('#informacion-menu').empty();
         $('#links-menu').empty();
