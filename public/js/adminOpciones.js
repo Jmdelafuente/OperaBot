@@ -323,11 +323,13 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
+        $('#contenedor-titulos').show();
         var contenedor_titulos = document.getElementById("contenedor-titulos");
+        var contener_botones = document.getElementById("contener_botones")
         let titulo_selector = document.getElementById('selector-titulos');
         var titulo = document.getElementById("titulos-menu");
-        var boton_enviar = document.getElementById("boton-enviar-creacion");
-        var boton_volver = document.getElementById("boton-volver-creacion");
+        var boton_volver = document.getElementById('boton-volver-creacion');
+        var boton_enviar = document.getElementById('boton-enviar-creacion');
         var nombre = document.getElementById("submenu");
         titulo_selector.innerHTML = "Seleccione el menú padre";
         let select = document.getElementById("tablero");
@@ -355,9 +357,10 @@ socketopciones.on("connect", () => {
         }
         let content = document.getElementById('contenedor-creacion');
         contenedor_titulos.appendChild(titulo);
-        content.appendChild(contenedor_titulos);
-
         
+        content.appendChild(contenedor_titulos);
+        content.appendChild(contener_botones);
+
         boton_enviar.addEventListener('click',function (event) {
             event.preventDefault();
             var links_listos = [];
@@ -382,11 +385,13 @@ socketopciones.on("connect", () => {
             pack.opciones = submenus_listos;
             pack.link = links_listos;
             ocultar('#contenedor-creacion');
+            $('#contenedor-titulos').show();
             socketopciones.emit("nuevo_menu",pack);
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
             ocultar('#contenedor-creacion');
+            $('#contenedor-titulos').show();
          });
     });
 
