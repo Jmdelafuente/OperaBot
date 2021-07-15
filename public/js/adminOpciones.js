@@ -306,8 +306,14 @@ socketopciones.on("connect", () => {
         titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
         let div = document.getElementById("selector-menu");
         div.addEventListener('change',function (event) {
-            console.log(`en borrar toque el ${div.value} y que es ${JSON.stringify(menu[div.value])}`);
-            socketopciones.emit("borrar", menu[div.value].nombre);
+            if(menu[div.value].nombre != 'Menu Inicial'){
+                if(confirm(`Esta por borrar el menú ${menu[div.value].nombre}, esta acción es irreversible, ¿Esta seguro de seguir adelante el borrado?`)){
+                socketopciones.emit("borrar", menu[div.value].nombre);
+            }
+            }else{
+                alert("No puede eliminarse el Menú Inicial, lo siento, pero como queres borrar el menu inicial?, que paso a ver?")
+            }
+
             volver();
         });
     });
@@ -382,9 +388,7 @@ socketopciones.on("connect", () => {
             pack.informacion = document.getElementById('informacion-menu').value;
             pack.opciones = submenus_listos;
             pack.link = links_listos;
-            if(confirm("Esta seguro?")){
-                socketopciones.emit("nuevo_menu",pack);
-            }
+            socketopciones.emit("nuevo_menu",pack);
             $('#contenedor-titulos').show();
             ocultar('#contenedor-creacion');
         });
