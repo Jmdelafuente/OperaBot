@@ -58,21 +58,10 @@ $(function () {
          
         content.setAttribute('id', 'div-creaciones');
         contenedor.setAttribute('id','contenedor-creacion');
-        contenedor.className = "row";
-        nombre.setAttribute('id','nombre-menu');
-        submenus.setAttribute('id','submenus-menu');
-        informacion.setAttribute('id','informacion-menu');
-        links.setAttribute('id','links-menu');
-            
-        
-
-      
+        contenedor.className = "row";      
         contenedor_editables.appendChild(div_nombre);
-     
         contenedor_editables.appendChild(div_submenu);
-       
         contenedor_editables.appendChild(div_informacion);
-
         contenedor_editables.appendChild(div_link);
         contenedor.appendChild(contenedor_editables);
         
