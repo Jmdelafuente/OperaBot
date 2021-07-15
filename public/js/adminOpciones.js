@@ -357,10 +357,13 @@ socketopciones.on("connect", () => {
         let titulo_selector = document.getElementById('selector-titulos');
         var titulo = document.getElementById("titulos-menu");
         var boton_volver = document.createElement('button');
+        var contener_botones = document.createElement('div');
         boton_volver.setAttribute('id','volver-creacion');
         var boton_enviar = document.createElement('button');
         boton_enviar.className = "btn btn-primary mx-3";
         boton_volver.className = "btn btn-primary mx-3";    
+        contener_botones.setAttribute('id',"contener_botones");
+        contener_botones.setAttribute('style', "margin:auto; margin-top:2%;");
         boton_enviar.innerText = "Enviar";
         boton_volver.innerText = "Volver";
         var nombre = document.getElementById("submenu");
@@ -390,9 +393,11 @@ socketopciones.on("connect", () => {
         }
         let content = document.getElementById('contenedor-creacion');
         contenedor_titulos.appendChild(titulo);
-        contenedor_titulos.appendChild(boton_enviar);
-        contenedor_titulos.appendChild(boton_volver);
+        contener_botones.appendChild(boton_enviar);
+        contener_botones.appendChild(boton_volver);
+
         content.appendChild(contenedor_titulos);
+        content.appendChild(contener_botones);
 
         boton_enviar.addEventListener('click',function (event) {
             event.preventDefault();
