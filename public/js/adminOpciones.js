@@ -278,10 +278,14 @@ socketopciones.on("connect", () => {
                     socketopciones.emit("modificar",nuevo_menu);
                     //alert("Se modifico el menu");
                     volver('#contenedor');
+                    let select = document.getElementById("div-menu");
+                    select.setAttribute("style","display: none");
                 });
                 boton_volver.addEventListener('click',function (event) {
                    event.preventDefault();
                    volver('#contenedor');
+                   let select = document.getElementById("div-menu");
+                   select.setAttribute("style","display: none");
                 });
             });
 
@@ -298,13 +302,13 @@ socketopciones.on("connect", () => {
     $('#borrar-menu').click(function (event) {
         event.preventDefault();
         socketopciones.emit("obtener-menu");
-        let select = document.getElementById("div-menu");
+        let select = document.getElementById("div-menu-borrar");
         select.removeAttribute("style");
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         let titulo_selector = document.getElementById('titulo-selector');
         titulo_selector.innerHTML = "Seleccione el menú que desea eliminar";
-        let div = document.getElementById("selector-menu");
+        let div = document.getElementById("selector-menu-borrar");
         div.addEventListener('change',function (event) {
             if(menu[div.value].nombre != 'Menu Inicial'){
                 if(confirm(`Esta por borrar el menú ${menu[div.value].nombre}, esta acción es irreversible, ¿Esta seguro de seguir adelante el borrado?`)){
@@ -315,6 +319,7 @@ socketopciones.on("connect", () => {
             }
 
             volver();
+            select.setAttribute("style","display: none");
         });
     });
 
@@ -322,8 +327,6 @@ socketopciones.on("connect", () => {
         if(msg){
             $(`${msg}`).remove();
         }
-        let select = document.getElementById("div-menu");
-        select.setAttribute("style","display: none");
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.removeAttribute("style");        
     }
