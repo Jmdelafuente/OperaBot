@@ -323,20 +323,11 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
-        $('#contenedor-titulos').show();
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         let titulo_selector = document.getElementById('selector-titulos');
         var titulo = document.getElementById("titulos-menu");
-        var boton_volver = document.createElement('button');
-        var contener_botones = document.createElement('div');
-        boton_volver.setAttribute('id','volver-creacion');
-        var boton_enviar = document.createElement('button');
-        boton_enviar.className = "btn btn-primary mx-3";
-        boton_volver.className = "btn btn-primary mx-3";    
-        contener_botones.setAttribute('id',"contener_botones");
-        contener_botones.setAttribute('style', "margin:auto; margin-top:2%;");
-        boton_enviar.innerText = "Enviar";
-        boton_volver.innerText = "Volver";
+        var boton_enviar = document.getElementById("boton-enviar-creacion");
+        var boton_volver = document.getElementById("boton-volver-creacion");
         var nombre = document.getElementById("submenu");
         titulo_selector.innerHTML = "Seleccione el menú padre";
         let select = document.getElementById("tablero");
@@ -364,12 +355,9 @@ socketopciones.on("connect", () => {
         }
         let content = document.getElementById('contenedor-creacion');
         contenedor_titulos.appendChild(titulo);
-        contener_botones.appendChild(boton_enviar);
-        contener_botones.appendChild(boton_volver);
-
         content.appendChild(contenedor_titulos);
-        content.appendChild(contener_botones);
 
+        
         boton_enviar.addEventListener('click',function (event) {
             event.preventDefault();
             var links_listos = [];
@@ -394,13 +382,11 @@ socketopciones.on("connect", () => {
             pack.opciones = submenus_listos;
             pack.link = links_listos;
             ocultar('#contenedor-creacion');
-            $('#contenedor-titulos').show();
             socketopciones.emit("nuevo_menu",pack);
         });
         boton_volver.addEventListener('click',function (event) {
             event.preventDefault();
             ocultar('#contenedor-creacion');
-            $('#contenedor-titulos').show();
          });
     });
 
