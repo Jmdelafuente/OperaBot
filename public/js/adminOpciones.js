@@ -167,9 +167,11 @@ socketopciones.on("connect", () => {
                 }
                 let boton_enviar = document.createElement('button');
                 let boton_volver = document.createElement('button');
+                let boton_prueba = document.createElement('button');
                 boton_volver.setAttribute('id','volver-editar');
                 boton_enviar.className = "btn btn-primary mx-3";
                 boton_volver.className = "btn btn-primary mx-3";
+                boton_prueba.className = "btn btn-primary mx-3";
                 let div_alerta = document.createElement('div'); 
                 div_alerta.setAttribute('id','alerta-editar');
                 div_alerta.setAttribute('style','padding: 1% 0;');
@@ -186,6 +188,7 @@ socketopciones.on("connect", () => {
                 boton_enviar.setAttribute('id','enviar-menu');
                 boton_enviar.innerHTML = "Enviar";
                 boton_volver.innerHTML = "Volver";
+                boton_prueba.innerHTML = "Ver menú editado";
                 div_info.setAttribute('id','div-info');
                 div_links.setAttribute('id','div-links');
                 div_opciones.setAttribute('id','div-opciones');
@@ -211,6 +214,7 @@ socketopciones.on("connect", () => {
                 content.appendChild(div_botones);
                 content.appendChild(boton_enviar);
                 content.appendChild(boton_volver);
+                content.appendChild(boton_prueba);
                 if(menu[msg].informacion==undefined){
                     textarea_info.placeholder = "No contiene información";
                 }else{
@@ -278,6 +282,35 @@ socketopciones.on("connect", () => {
                    borrar_inputs();
                    let select = document.getElementById("div-menu");
                    select.setAttribute("style","display: none");
+                });
+                boton_prueba.addEventListener('click',function (event) {
+                    event.preventDefault();
+                    var submenus_listos = [];
+                    var submenus_tomados = document.getElementById(`botones-${menu[msg].nombre}`).value;
+                    if (submenus_tomados.includes(",")) {
+                        var submenus_preparados = submenus_tomados.split(",");
+                        submenus_preparados.forEach(element => {
+                            var submenu = element.trim();
+                            submenus_listos.push(submenu);
+                        });
+                    }else{
+                        submenus_listos.push(submenus_tomados);
+                    }
+
+                    submenus_listos.forEach((element,i) => {
+                        var btn = document.createElement("button");
+                        btn.className = "btn btn-outline-primary rounded-pill mr-2 opcion-menu";
+                        var titulo = element;
+                        if(i == (menu[msg].opciones.length - 1)){
+                            titulo = "volver";
+                        }
+                        btn.setAttribute("id", element);
+                        btn.innerText = titulo;
+                        botones = botones + ", " + element;
+                        div_botones.appendChild(btn);
+                    });
+                    botones = botones.slice(2, botones.length);
+                    
                 });
             });
 
@@ -404,11 +437,11 @@ socketopciones.on("connect", () => {
             pack.informacion = document.getElementById('informacion-menu').value;
             pack.opciones = submenus_listos;
             pack.link = links_listos;
-            var menu_boton
+            var menu_boton = "";
             for (let index = 0; index < submenus_listos.length-1; index++) {
-                menu_boton += submenus_listos[index] + ",";
+                menu_boton += submenus_listos[index] + ", ";
             }
-            menu_boton = menu_boton.slice(0,-1);
+            menu_boton = menu_boton.slice(0,-2);
             socketopciones.emit("nuevo_menu",pack);
             alert(`Recuerde que los submenus nuevos ${menu_boton} , deben ser creados y completados para que funcionen como tal`);
             borrar_inputs();
