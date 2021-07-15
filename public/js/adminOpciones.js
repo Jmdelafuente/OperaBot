@@ -330,13 +330,12 @@ socketopciones.on("connect", () => {
         var titulo = document.getElementById("titulos-menu");
         var boton_volver = document.getElementById('boton-volver-creacion');
         var boton_enviar = document.getElementById('boton-enviar-creacion');
-        var nombre = document.getElementById("submenu");
+        var nombre = document.getElementById("submenus-menu");
         titulo_selector.innerHTML = "Seleccione el menú padre";
         let select = document.getElementById("tablero");
         select.removeAttribute("style");
         titulo_selector.addEventListener('change',function (e) {
             e.preventDefault();
-            console.log(menu[titulo_selector.value].nombre);
             var nombre_input = menu[titulo_selector.value].nombre;
             nombre.value = nombre.innerText + "," + nombre_input;
         });
