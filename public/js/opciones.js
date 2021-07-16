@@ -1,12 +1,12 @@
-const fs = require('fs');
-let rawdata = fs.readFileSync('./configs/diccionario-opciones.json');
-let data = fs.readFileSync('./configs/diccionario-menu.json');
+import { readFileSync, writeFile, writeFileSync } from 'fs';
+let rawdata = readFileSync('./configs/diccionario-opciones.json');
+let data = readFileSync('./configs/diccionario-menu.json');
 let dic = JSON.parse(rawdata);
 let nuevo_menu = JSON.parse(data);
 
 function modificarOpciones(msg) {
     console.log(`llegue a modificar ${JSON.stringify(msg)}`);
-    fs.writeFile('./configs/diccionario-opciones.json', msg, 'utf8', (err) => {
+    writeFile('./configs/diccionario-opciones.json', msg, 'utf8', (err) => {
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
@@ -17,7 +17,7 @@ function obteneropciones(msg) {
 }
 
 function obtenermenu(msg) {
-    data = fs.readFileSync('./configs/diccionario-menu.json');
+    data = readFileSync('./configs/diccionario-menu.json');
     nuevo_menu = JSON.parse(data);
     return nuevo_menu;
 }
@@ -44,7 +44,7 @@ function agregar_menu(msg) {
 }
 
 function escribir(msg) {
-    fs.writeFile('./configs/diccionario-menu.json', msg, 'utf8', (err)=>{
+    writeFile('./configs/diccionario-menu.json', msg, 'utf8', (err)=>{
         if (err) { console.log(err); throw err; }
         console.log('se guardo el archivo');
     });
@@ -145,12 +145,19 @@ function filtrarOpciones(msg) {
 }
 
 
-module.exports.filtrarOpciones = filtrarOpciones;
-module.exports.obteneropciones = obteneropciones;
-module.exports.modificarOpciones = modificarOpciones;
-module.exports.obtenermenu = obtenermenu;
-module.exports.modificar = modificar;
-module.exports.agregar_menu = agregar_menu;
-module.exports.borrar_menu = borrar_menu;
+const _filtrarOpciones = filtrarOpciones;
+export { _filtrarOpciones as filtrarOpciones };
+const _obteneropciones = obteneropciones;
+export { _obteneropciones as obteneropciones };
+const _modificarOpciones = modificarOpciones;
+export { _modificarOpciones as modificarOpciones };
+const _obtenermenu = obtenermenu;
+export { _obtenermenu as obtenermenu };
+const _modificar = modificar;
+export { _modificar as modificar };
+const _agregar_menu = agregar_menu;
+export { _agregar_menu as agregar_menu };
+const _borrar_menu = borrar_menu;
+export { _borrar_menu as borrar_menu };
 
 
