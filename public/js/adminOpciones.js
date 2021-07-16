@@ -50,10 +50,7 @@ $(function () {
        
         
         //div.appendChild(contenedor);
-        $('#selector-titulos').load(function (e){
-            e.preventDefault();
             socketopciones.emit("titulos","");
-        });
         //content.appendChild(contenedor);
        
     });
@@ -373,13 +370,13 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
-        //var contenedor_titulos = document.getElementById("contenedor-titulos");
-        //var contener_botones = document.getElementById("contener_botones")
-        //var titulo = document.getElementById("titulos-menu");
+        var contenedor_titulos = document.getElementById("contenedor-titulos");
+        var contener_botones = document.getElementById("contener_botones")
+        var titulo = document.getElementById("titulos-menu");
         var boton_volver = document.getElementById('boton-volver-creacion');
         var boton_enviar = document.getElementById('boton-enviar-creacion');
         var nombre = document.getElementById("submenus-menu");
-        //let select = document.getElementById("tablero");
+        let select = document.getElementById("tablero");
         var pack = {};
         pack.menu = msg;
         pack.selector = "selector-titulos";
