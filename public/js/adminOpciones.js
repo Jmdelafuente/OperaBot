@@ -379,11 +379,8 @@ socketopciones.on("connect", () => {
         
 
     function volver(msg) {
-        if(msg){
-            $(`${msg}`).remove();
-        }
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.removeAttribute("style");        
+        var iframe_opcion = document.getElementById("frame_opciones");
+        iframe_opcion.setAttribute('src', `../opciones.html?${window.location.search.substr(1)}`);     
     }
 
     socketopciones.on("titulos", function (msg) {
