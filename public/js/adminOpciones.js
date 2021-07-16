@@ -41,6 +41,10 @@ $(function () {
         let botones_iniciales = document.getElementById("opciones-iniciales");
         var boton_crear = document.getElementById("crear-menu");
         boton_crear.setAttribute('style','display: none;');
+        var visible = document.querySelector(`#opciones-iniciales button[style="display: none;"]`);
+        if(visible){
+            visible.removeAttribute('style');
+        }
         var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
         div_alerta.setAttribute('id','alerta-crear');
@@ -81,8 +85,12 @@ $(function () {
         select.removeAttribute("style");
         let titulo_selector = document.getElementById('titulo-selector');
         titulo_selector.innerHTML = "Seleccione el menú que desea editar";
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.setAttribute("style", "display: none");
+        let boton_editar = document.getElementById("editar-menu");
+        boton_editar.setAttribute("style", "display: none");
+        var visible = document.querySelector(`#opciones-iniciales button[style="display: none;"]`);
+        if(visible){
+            visible.removeAttribute('style');
+        }
     });
 
 socketopciones.on("connect", () => {
@@ -327,6 +335,12 @@ socketopciones.on("connect", () => {
     $('#borrar-menu').click(function (event) {
         event.preventDefault();
         socketopciones.emit("obtener-menu-borrar");
+        let boton_borrar = document.getElementById("borrar-menu");
+        boton_borrar.setAttribute("style", "display: none");
+        var visible = document.querySelector(`#opciones-iniciales button[style="display: none;"]`);
+        if(visible){
+            visible.removeAttribute('style');
+        }
     });
 
     function crear_selector(msg) {
@@ -385,7 +399,6 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
-        $('#contenedor-titulos').show();
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         var contener_botones = document.getElementById("contener_botones")
         let titulo_selector = document.getElementById('selector-titulos');
