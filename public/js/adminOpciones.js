@@ -1,8 +1,8 @@
-const { obtenermenu } = require("../../configs/opciones");
+import { obtenermenu } from "../../configs/opciones";
 
 //const SURLopciones = "http://localhost";
-const SURLopciones = "128.53.80.105";
-const socketopciones = io(`${SURLopciones}:4002`);
+//const SURLopciones = "128.53.80.105";
+//const socketopciones = io(`${SURLopciones}:4002`);
 /*const SURLopciones = "https://chat.muninqn.gov.ar";
 const socketopciones = io(`${SURLopciones}`, {
     'forceNew': true,
