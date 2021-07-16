@@ -371,7 +371,6 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
-        $('#contenedor-titulos').show();
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         var contener_botones = document.getElementById("contener_botones")
         let titulo_selector = document.getElementById('selector-titulos');
@@ -391,11 +390,11 @@ socketopciones.on("connect", () => {
         pack.selector = "selector-titulos";
         crear_selector(pack);
     
-        let content = document.getElementById('contenedor-creacion');
-        contenedor_titulos.appendChild(titulo);
+        //let content = document.getElementById('contenedor-creacion');
+        //contenedor_titulos.appendChild(titulo);
         
-        content.appendChild(contenedor_titulos);
-        content.appendChild(contener_botones);
+        //content.appendChild(contenedor_titulos);
+        //content.appendChild(contener_botones);
 
         boton_enviar.addEventListener('click',function (event) {
             event.preventDefault();
