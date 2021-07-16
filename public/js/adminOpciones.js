@@ -50,9 +50,10 @@ $(function () {
        
         
         //div.appendChild(contenedor);
-        document.onload = function () {
+        $('#selector-titulos').load(function (e){
+            e.preventDefault();
             socketopciones.emit("titulos","");
-        };
+        });
         //content.appendChild(contenedor);
        
     });
