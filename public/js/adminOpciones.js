@@ -42,32 +42,14 @@ $(function () {
         event.preventDefault();
         //let botones_iniciales = document.getElementById("opciones-iniciales");
         //botones_iniciales.setAttribute("style", "display: none");
-        var div = document.getElementById("div-creacion");
+        //var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
         div_alerta.setAttribute('id','alerta-crear');
         div_alerta.setAttribute('style','padding: 1% 0;');
         var content = document.createElement("div");
-        var contenedor = document.getElementById("contenedor-creacion");
-        $('#contenedor-creacion').show();
-        var contenedor_editables = document.getElementById("contenedor-editables");
-        var div_nombre = document.getElementById("nombre");
+       
         
-        var div_informacion = document.getElementById("informacion");
-        
-        var div_submenu = document.getElementById("submenu");
-        
-        var div_link = document.getElementById("links");
-         
-        content.setAttribute('id', 'div-creaciones');
-        contenedor.setAttribute('id','contenedor-creacion');
-        contenedor.className = "row";      
-        contenedor_editables.appendChild(div_nombre);
-        contenedor_editables.appendChild(div_submenu);
-        contenedor_editables.appendChild(div_informacion);
-        contenedor_editables.appendChild(div_link);
-        contenedor.appendChild(contenedor_editables);
-        
-        div.appendChild(contenedor);
+        //div.appendChild(contenedor);
 
         socketopciones.emit("titulos","");
         //content.appendChild(contenedor);
