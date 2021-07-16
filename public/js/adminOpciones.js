@@ -1,4 +1,4 @@
-import { obtenermenu } from "../../configs/opciones";
+
 
 //const SURLopciones = "http://localhost";
 //const SURLopciones = "128.53.80.105";
