@@ -1,5 +1,3 @@
-
-
 //const SURLopciones = "http://localhost";
 const SURLopciones = "128.53.80.105";
 const socketopciones = io(`${SURLopciones}:4002`);
@@ -42,7 +40,7 @@ $(function () {
         event.preventDefault();
         let botones_iniciales = document.getElementById("opciones-iniciales");
         var boton_crear = document.getElementById("crear-menu");
-        boton_crear.setAttribute("style", "display: none");
+        boton_crear.setAttribute('style','display: none;');
         var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
         div_alerta.setAttribute('id','alerta-crear');
@@ -70,8 +68,7 @@ $(function () {
         
         botones_iniciales.appendChild(contenedor);
 
-        var menu = obtenermenu();
-        titulos(menu);
+        socketopciones.emit("titulos","");
         //content.appendChild(contenedor);
        
     });
@@ -387,7 +384,7 @@ socketopciones.on("connect", () => {
         iframe_opcion.setAttribute('src', `../opciones.html?${window.location.search.substr(1)}`);     
     }
 
-    function titulos(msg) {
+    socketopciones.on("titulos", function (msg) {
         $('#contenedor-titulos').show();
         var contenedor_titulos = document.getElementById("contenedor-titulos");
         var contener_botones = document.getElementById("contener_botones")
@@ -459,7 +456,7 @@ socketopciones.on("connect", () => {
             $('#contenedor-titulos').show();
          
          });
-    };
+    });
 
     function borrar_inputs(msg) {
         $('#nombre-menu').empty();

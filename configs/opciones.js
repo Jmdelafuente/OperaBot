@@ -72,6 +72,7 @@ function borrar_menu(msg) {
         array_opciones.splice(index,1);
     }
     //borrar todos los "hijos" del hijo?
+
     nuevo_menu = nuevo_menu.filter(function (v) {
         return v.nombre != msg;
     });
