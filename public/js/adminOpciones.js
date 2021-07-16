@@ -314,7 +314,8 @@ socketopciones.on("connect", () => {
     });
 
     function crear_selector(msg) {
-        let selector = document.getElementById(`${msg.selector}`);
+        
+        let selector = document.getElementById('frame_opciones').contentWindow.document.getElementById(`${msg.selector}`);
         var opcion = document.createElement('option');
         opcion.innerText = "seleccione una opción";
         selector.appendChild(opcion);
