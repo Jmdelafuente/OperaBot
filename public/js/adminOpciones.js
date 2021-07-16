@@ -38,10 +38,10 @@ $(function () {
       
     $('#crear-menu').click(function (event) {
         var iframe_opcion = parent.document.getElementById("frame_opciones");
-        iframe_opcion.setAttribute('src', `creacion.html?${window.location.search.substr(1)}`);
+        iframe_opcion.setAttribute('src', `../creacion.html?${window.location.search.substr(1)}`);
         event.preventDefault();
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.setAttribute("style", "display: none");
+        //let botones_iniciales = document.getElementById("opciones-iniciales");
+        //botones_iniciales.setAttribute("style", "display: none");
         var div = document.getElementById("div-creacion");
         let div_alerta = document.createElement('div');
         div_alerta.setAttribute('id','alerta-crear');
@@ -78,12 +78,13 @@ $(function () {
     $('#editar-menu').click(function (event) {
         event.preventDefault();
         socketopciones.emit("obtener-menu");
-        let select = document.getElementById("div-menu");
-        select.removeAttribute("style");
-        let titulo_selector = document.getElementById('titulo-selector');
-        titulo_selector.innerHTML = "Seleccione el menú que desea editar";
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.setAttribute("style", "display: none");
+        iframe_opcion.setAttribute('src', `../editar.html?${window.location.search.substr(1)}`);
+        //let select = document.getElementById("div-menu");
+        //select.removeAttribute("style");
+        //let titulo_selector = document.getElementById('titulo-selector');
+        //titulo_selector.innerHTML = "Seleccione el menú que desea editar";
+        //let botones_iniciales = document.getElementById("opciones-iniciales");
+        //botones_iniciales.setAttribute("style", "display: none");
     });
 
 socketopciones.on("connect", () => {
@@ -275,15 +276,15 @@ socketopciones.on("connect", () => {
                     volver('#contenedor');
                     $('#selector-menu').empty();
                     $('input[type="text"]').val("");
-                    let select = document.getElementById("div-menu");
-                    select.setAttribute("style","display: none");
+                    //let select = document.getElementById("div-menu");
+                    //select.setAttribute("style","display: none");
                 });
                 boton_volver.addEventListener('click',function (event) {
                    event.preventDefault();
                    volver('#contenedor');
                    $('input[type="text"]').val("");
-                   let select = document.getElementById("div-menu");
-                   select.setAttribute("style","display: none");
+                   //let select = document.getElementById("div-menu");
+                   //select.setAttribute("style","display: none");
                 });
                 boton_prueba.addEventListener('click',function (event) {
                     event.preventDefault();
@@ -354,10 +355,10 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("borrar", function (msg) {
-        let select = document.getElementById("div-menu-borrar");
-        select.removeAttribute("style");
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.setAttribute("style", "display: none");
+        //let select = document.getElementById("div-menu-borrar");
+        //select.removeAttribute("style");
+        //let botones_iniciales = document.getElementById("opciones-iniciales");
+        //botones_iniciales.setAttribute("style", "display: none");
         let borrar_selector = document.getElementById('selector-menu-borrar');
         var pack = {};
         pack.menu = msg;
@@ -376,17 +377,15 @@ socketopciones.on("connect", () => {
 
             volver();
             $('input[type="text"]').val("");
-            select.setAttribute("style","display: none");
+            //select.setAttribute("style","display: none");
         });
     });
         
 
     function volver(msg) {
-        if(msg){
-            $(`${msg}`).remove();
-        }
-        let botones_iniciales = document.getElementById("opciones-iniciales");
-        botones_iniciales.removeAttribute("style");        
+       
+        iframe_opcion.setAttribute('src', `../opciones.html?${window.location.search.substr(1)}`);
+    
     }
 
     socketopciones.on("titulos", function (msg) {
