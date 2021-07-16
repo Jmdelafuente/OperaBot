@@ -13,7 +13,21 @@
     
   </head>
 <body>
-   
+    <div id="div-menu" class="form-group" style="display: none;">
+      <label id='titulo-selector' for="sel1"></label>
+      <select class="form-control" id="selector-menu">
+      </select>
+    </div>
+    
+    <div id="div-menu-borrar" class="form-group" style="display: none;">
+      <label for="sel1">Seleccione el menú que quiera borrar:</label>
+      <select id="selector-menu-borrar" class="form-control">
+      </select>
+    </div> 
+
+
+    
+
     <form id="opciones-iniciales" method="" >
       <button id="editar-plantilla" type="submit" class="editar-plantilla btn btn-primary" >Editar Plantilla</button>
       <button id="crear-plantilla" type="submit" class="crear-plantilla btn btn-primary" >Crear Plantilla</button>
@@ -26,6 +40,24 @@
       
     </form>
 
+
+    <div id="div-creacion">
+      
+    </div>
+
+    
+
+    <div id="contenedor-titulos" class="col-4" style="display: none;">
+      <div id="titulos-menu" class="col"></div>
+      <div id="tablero" class="form-group" style="margin-top: 50%;">
+        <label id="titulos-disponibles" for="sel1"></label>
+        <select class="form-control" id="selector-titulos">
+        </select>
+      </div>
+    </div>   
+
+   
+     
 </body>
 
  <script src="js/twemoji.min.js"></script>
