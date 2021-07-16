@@ -371,15 +371,14 @@ socketopciones.on("connect", () => {
     }
 
     socketopciones.on("titulos", function (msg) {
-        var contenedor_titulos = document.getElementById("contenedor-titulos");
-        var contener_botones = document.getElementById("contener_botones")
+        //var contenedor_titulos = document.getElementById("contenedor-titulos");
+        //var contener_botones = document.getElementById("contener_botones")
         let titulo_selector = document.getElementById('selector-titulos');
-        var titulo = document.getElementById("titulos-menu");
+        //var titulo = document.getElementById("titulos-menu");
         var boton_volver = document.getElementById('boton-volver-creacion');
         var boton_enviar = document.getElementById('boton-enviar-creacion');
         var nombre = document.getElementById("submenus-menu");
-        titulo_selector.innerHTML = "Seleccione el menú padre";
-        let select = document.getElementById("tablero");
+        //let select = document.getElementById("tablero");
         titulo_selector.addEventListener('change',function (e) {
             e.preventDefault();
             var nombre_input = menu[titulo_selector.value].nombre;
