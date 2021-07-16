@@ -39,7 +39,7 @@ $(function () {
     $('#crear-menu').click(function (event) {
         event.preventDefault();
         var iframe_opcion = document.getElementById("frame_opciones");
-        iframe_opcion.setAttribute('src', `../opciones.html?${window.location.search.substr(1)}`);   
+        iframe_opcion.setAttribute('src', `../creacion.html?${window.location.search.substr(1)}`);   
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
         var div = document.getElementById("div-creacion");
