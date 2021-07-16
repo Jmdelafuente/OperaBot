@@ -38,8 +38,7 @@ $(function () {
       
     $('#crear-menu').click(function (event) {
         var iframe_opcion = parent.document.getElementById("frame_opciones");
-        //window.frames["frame_opciones"].location 
-        iframe_opcion.setAttribute('src', `../creacion.html?${window.location.search.substr(1)}`);
+        iframe_opcion.setAttribute('src', `../admin/creacion.html?${window.location.search.substr(1)}`);
         event.preventDefault();
         let botones_iniciales = document.getElementById("opciones-iniciales");
         botones_iniciales.setAttribute("style", "display: none");
