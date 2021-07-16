@@ -373,21 +373,21 @@ socketopciones.on("connect", () => {
     socketopciones.on("titulos", function (msg) {
         //var contenedor_titulos = document.getElementById("contenedor-titulos");
         //var contener_botones = document.getElementById("contener_botones")
-        let titulo_selector = document.getElementById('selector-titulos');
         //var titulo = document.getElementById("titulos-menu");
         var boton_volver = document.getElementById('boton-volver-creacion');
         var boton_enviar = document.getElementById('boton-enviar-creacion');
         var nombre = document.getElementById("submenus-menu");
         //let select = document.getElementById("tablero");
+        var pack = {};
+        pack.menu = msg;
+        pack.selector = "selector-titulos";
+        crear_selector(pack);
+        let titulo_selector = document.getElementById('selector-titulos');
         titulo_selector.addEventListener('change',function (e) {
             e.preventDefault();
             var nombre_input = menu[titulo_selector.value].nombre;
             nombre.value = nombre.value +  nombre_input;
         });
-        var pack = {};
-        pack.menu = msg;
-        pack.selector = "selector-titulos";
-        crear_selector(pack);
     
         //let content = document.getElementById('contenedor-creacion');
         //contenedor_titulos.appendChild(titulo);
