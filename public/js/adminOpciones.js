@@ -50,8 +50,9 @@ $(function () {
        
         
         //div.appendChild(contenedor);
-
-        socketopciones.emit("titulos","");
+        document.onload = function () {
+            socketopciones.emit("titulos","");
+        };
         //content.appendChild(contenedor);
        
     });
