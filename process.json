@@ -1,0 +1,10 @@
+{
+  "script":"app.js",
+  "watch": false,
+  "watch_delay": 1000,
+  "ignore_watch" : ["node_modules", "logs", "public", ".node-persist","src/sessions", "sessions", "src/.node-persist"],
+  "watch_options": {
+    "followSymlinks": false
+  },
+  "name":"OperaBot"
+}
